@@ -1,4 +1,4 @@
-# mrt-doc
+# mrt-doc: Merritt Documentation
 Documentation and Information regarding the Merritt repository
 
 For each service/code repo we would like to include
