@@ -14,3 +14,5 @@ This mrt-doc README will include
 * Logo
 * 1 page text
 wiki will contain all the in-depth information
+
+[Documentation Overview](https://github.com/CDLUC3/mrt-doc/blob/master/img/doc_overview_picture.jpg)
