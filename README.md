@@ -7,7 +7,7 @@ For each service/code repo we would like to include
 * Link to the mrt-docs repo
 * Logo
 * Contact Us (freshdesk / email)
-* License.md
+* [License.md](https://github.com/CDLUC3/dashv2/blob/development/LICENSE.md)
 
 This mrt-doc README will include
 * Outline 
