@@ -3703,7 +3703,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2018-03-12 18:16:36 +0000</string>
+	<string>2018-03-12 18:41:07 +0000</string>
 	<key>Modifier</key>
 	<string>David Moles</string>
 	<key>MovementHandleVisible</key>
@@ -17921,7 +17921,7 @@ Storage Node}</string>
 		</dict>
 		<dict>
 			<key>ActiveLayerIndex</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>AutoAdjust</key>
 			<integer>0</integer>
 			<key>AutosizingMargin</key>
@@ -21464,8 +21464,8 @@ Storage Node}</string>
 \deftab720
 \pard\pardeftab720\qc\partightenfactor0
 
-\f0\b\fs16 \cf2 Storage Service\
-Storage}</string>
+\f0\b\fs16 \cf2 Replication\
+Service Storage}</string>
 									</dict>
 									<key>Wrap</key>
 									<string>NO</string>
@@ -32464,7 +32464,7 @@ Storage}</string>
 					<key>Artboards</key>
 					<false/>
 					<key>Lock</key>
-					<false/>
+					<true/>
 					<key>Name</key>
 					<string>Annotations</string>
 					<key>Print</key>
@@ -32476,7 +32476,7 @@ Storage}</string>
 					<key>Artboards</key>
 					<false/>
 					<key>Lock</key>
-					<true/>
+					<false/>
 					<key>Name</key>
 					<string>Diagram</string>
 					<key>Print</key>
@@ -32543,7 +32543,7 @@ Storage}</string>
 		<key>Sidebar_Tab</key>
 		<integer>0</integer>
 		<key>VisibleRegion</key>
-		<string>{{-181, -45.600000000000001}, {798.79999999999995, 498}}</string>
+		<string>{{-181, 489}, {798.79999999999995, 498}}</string>
 		<key>ZoomValues</key>
 		<array>
 			<array>
