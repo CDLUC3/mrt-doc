@@ -9,7 +9,6 @@
 - [Ingest Services](#ingest-services)
 - [Inventory Build](#inventory-build)
 - [Inventory Relationships](#inventory-relationships)
-- [Inventory Service](#inventory-service)
 - [Maven / Jenkins](#maven--jenkins)
 - [Storage](#storage)
 
@@ -48,10 +47,6 @@
 ## Inventory Relationships
 
 ![Inventory Relationships](merritt-inventory-relationships-1440.png)
-
-## Inventory Service
-
-![Inventory Service](merritt-inventory-service-1440.png)
 
 ## Maven / Jenkins
 
