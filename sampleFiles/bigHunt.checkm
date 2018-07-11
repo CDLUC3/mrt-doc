@@ -1,0 +1,9 @@
+#%checkm_0.7
+#%profile | http://uc3.cdlib.org/registry/ingest/manifest/mrt-ingest-manifest
+#%prefix | mrt: | http://merritt.cdlib.org/terms#
+#%prefix | nfo: | http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#
+#%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:mimeType
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/master/sampleFiles/bigHunt2.jpg |  |  | 76935 |  | bigHunt2.jpg
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/master/sampleFiles/bigHunt3.jpg |  |  | 55408 |  | bigHunt3.jpg
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/master/sampleFiles/bigHunt.txt |  |  | 33 |  | bigHunt.txt
+#%eof
