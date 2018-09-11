@@ -2,6 +2,13 @@
 
 (Stephen, David L., David M., Mark, Jim, Perry)
 
+- [Background](#background)
+- [The issue](#the-issue)
+- [Questions](#questions)
+- [Options](#options)
+- [Opinions](#opinions)
+- [Action items](#action-items)
+
 ## Background
 
 Current storage back-ends:
@@ -58,6 +65,15 @@ worse.
    2. for ourselves managing services?
 
 ## Options
+
+1. [Open back\-ends up to more IPs](#open-back-ends-up-to-more-ips)
+1. [Use Storage service to retrieve content](#use-storage-service-to-retrieve-content)
+1. [Add audit &amp; replication functionality to Storage service](#add-audit--replication-functionality-to-storage-service)
+1. [Run a web proxy](#run-a-web-proxy)
+1. [Use an Amazon web proxy service](#use-an-amazon-web-proxy-service)
+1. [Open outside S3 buckets to entire EC2 group](#open-outside-s3-buckets-to-entire-ec2-group)
+1. [Run a network\-level proxy or gateway](#run-a-network-level-proxy-or-gateway)
+1. [Use a network\-level Amazon proxy or gateway service](#use-a-network-level-amazon-proxy-or-gateway-service)
 
 ### Open back-ends up to more IPs
 
