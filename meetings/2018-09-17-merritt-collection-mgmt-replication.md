@@ -209,7 +209,7 @@ different storage locations in the same _storage pool_ (see below).
 
 ### "pooled storage node"
 
-1. treat all pooled storage as a single storage node for the purposes of
+1. treat each pool of storage as a single storage node for the purposes of
    the storage, replication, and audit services, pushing all complexity
    down into the node implementation.
 2. enhance storage, replication, and audit to support:
