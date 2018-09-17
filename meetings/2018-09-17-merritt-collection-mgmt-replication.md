@@ -1,5 +1,22 @@
 # Merritt Collection Management & Replication
 
+- [Context](#context)
+  - [Objects &amp; collections](#objects--collections)
+  - [Access control](#access-control)
+  - [Storage types](#storage-types)
+  - [Replication](#replication)
+  - [Ingest profiles](#ingest-profiles)
+    - [Ingest configuration](#ingest-configuration)
+    - [Ingest handling](#ingest-handling)
+- [Future storage options](#future-storage-options)
+  - [Near future](#near-future)
+  - [Less near future](#less-near-future)
+- [Challenges](#challenges)
+- [Proposal: Collection management](#proposal-collection-management)
+- [Straw proposals: Pooled storage](#straw-proposals-pooled-storage)
+  - ["storage pool"](#storage-pool)
+  - ["pooled storage node"](#pooled-storage-node)
+
 ## Context
 
 ### Objects & collections
@@ -200,5 +217,4 @@ different storage locations in the same _storage pool_ (see below).
    - multiple retrieval URLs per node
    - replication to/from the same node
    - ???
-
 
