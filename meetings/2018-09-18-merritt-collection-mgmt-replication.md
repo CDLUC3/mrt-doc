@@ -2,6 +2,16 @@
 
 (see [preparatory notes](2018-09-17-merritt-collection-mgmt-replication-prep.md))
 
+- [Context](#context)
+  - [Storage landscape](#storage-landscape)
+    - [UCDN](#ucdn)
+    - [Zenodo](#zenodo)
+    - [SDSC/QF2](#sdscqf2)
+  - [Dryad](#dryad)
+- [Merritt replication](#merritt-replication)
+  - [Immediate plans](#immediate-plans)
+  - [Longer\-term plans](#longer-term-plans)
+
 ## Context
 
 ### Storage landscape
@@ -40,7 +50,7 @@ using it for Dryad backup/secondary storage
 not jump to it -- figure out pros/cons, Zenodo relationship, whether
 we'd ever want to do this for anything other than Dash/Dryad)
 
-#### SDSC/Qumulo
+#### SDSC/QF2
 
 SDSC is hoping to roll out a cheaper (& possibly faster) storage option
 using [Qumulo QF2](https://qumulo.com/discover/qf2-overview/) with an
@@ -65,7 +75,7 @@ Dryad's current replication strategy:
 1. primary: Dryad S3 bucket
 2. backup: copy deposited to
    [DANS](https://dans.knaw.nl/en/front-page?set_language=en) via SWORD
-   - not secondary storage in our sense (deposit-only, not integrated for retrieval)
+   - **not a replica** in our sense (deposit-only, not integrated for retrieval, no fixity checking)
    - hard to work with, esp. for larger objects
    - expensive: ~ $460/TB
 
@@ -75,26 +85,45 @@ Future plans/ideas:
 2. secondary:
    - stop depositing to DANS
    - secondary storage at Zenodo (or other inexpensive European option)
-   - secondary storage at S3/Qumulo (assuming that works out)
+   - secondary storage at S3/QF2 (assuming that works out)
+3. institutional copies:
+   - for institutions that have legal or policy reasons to want their own copies
+   - not a replica in our sense (no fixity checking, can't be used as access copy)
+   - shouldn't be implemented at the Merritt level if it's only for Dash/Dryad
+   - could just be some kind of harvester integration
 
-## Merritt replication: immediate plans
+## Merritt replication
+
+### Immediate plans
 
 1. existing collections (except Dash) will continue to be stored and replicated
-   as they are now
+   **as they are now**
    1. primary storage:
      - CDL S3 bucket (public)
      - SDSC/OpenStack (private)
    2. secondary storage:
      - SDSC/OpenStack (public)
      - Glacier (private)
-2. Dash content, including ONEShare, will be migrated to Dash/Dryad
+2. Dash content, including ONEShare, will be **migrated** to Dash/Dryad
+   - shut down storage at UNM
+   - ONEShare DataONE member node future TBD, but certainly won't involve
+     copying all Dryad content to New Mexico
 3. General Dryad collection will have:
    1. primary storage: Dryad's S3 bucket
-   2. secondary storage: TBD
-      - probably none, pro tem
+   2. secondary storage: TBD (probably none, pro tem)
+      - future: S3/QF2 via Merritt?
 4. UC Dryad collections will have:
    1. primary storage: Dryad's S3 bucket
    2. secondary storage: TBD
-      - UCSB will use Cloudhost pro tem, but probably not long term
-      - storage node for every campus is not something we want to support
+      - ⚠️ UCSB will use Cloudhost pro tem, but **probably not long term**
+      - ⚠️ storage node for every campus is **not** something we want to support
+
+### Longer-term plans
+
+- ⚠️ **no** plans for pooled storage
+- prove out SDSC/QF2, possibly migrate off SDSC/OpenStack
+- simplify storage management / administration
+- look for strategies to get to free storage
+
+
 
