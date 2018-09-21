@@ -27,7 +27,8 @@ using it for Dryad backup/secondary storage
 
 - pros: 
   - in Europe -> good story for EU users/institutions
-  - cheap? (free?)
+  - marginally cheaper than DANS (see below) at ~ $390/TB, much easier to
+    integrate
 - cons: not an object store
   - [REST API](http://developers.zenodo.org/)
   - models a "deposition" as a group of files, but not
@@ -46,7 +47,7 @@ using [Qumulo QF2](https://qumulo.com/discover/qf2-overview/) with an
 S3-compatible [Minio](https://www.minio.io/) front-end.
 
 - targeted at $70/TB/yr (4-5 times cheaper than current SDSC/OpenStack
-  offering)
+  offering; compare Amazon at $23/TB?)
 - CDL (Merritt) would be one of the first test users
 - open questions: 
   - reliability
@@ -66,7 +67,7 @@ Dryad's current replication strategy:
    [DANS](https://dans.knaw.nl/en/front-page?set_language=en) via SWORD
    - not secondary storage in our sense (deposit-only, not integrated for retrieval)
    - hard to work with, esp. for larger objects
-   - very very expensive
+   - expensive: ~ $460/TB
 
 Future plans/ideas:
 
