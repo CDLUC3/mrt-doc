@@ -1,4 +1,4 @@
-# Merritt Collection Management & Replication
+# Merritt Collection Management & Replication: Preparatory notes
 
 - [Context](#context)
   - [Objects &amp; collections](#objects--collections)
