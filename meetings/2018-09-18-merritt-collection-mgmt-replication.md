@@ -57,7 +57,7 @@ using [Qumulo QF2](https://qumulo.com/discover/qf2-overview/) with an
 S3-compatible [Minio](https://www.minio.io/) front-end.
 
 - targeted at $70/TB/yr (4-5 times cheaper than current SDSC/OpenStack
-  offering; compare Amazon at $23/TB?)
+  offering; compare Amazon at $250-$280/TB?)
 - CDL (Merritt) would be one of the first test users
 - open questions: 
   - reliability
