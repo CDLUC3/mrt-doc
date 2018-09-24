@@ -1,5 +1,6 @@
 # Simplifying Merritt: Preparatory notes
 
+- [Framing questions](#framing-questions)
 - [Amazon / IT resource footprint](#amazon--it-resource-footprint)
   - [AWS Costs](#aws-costs)
   - [Thoughts on AWS costs](#thoughts-on-aws-costs)
@@ -10,6 +11,12 @@
     - [Thoughts on environments](#thoughts-on-environments)
   - [Big picture: Architecture](#big-picture-architecture)
     - [Thoughts on architecture](#thoughts-on-architecture)
+
+## Framing questions
+
+1.	What (with regard to Merritt) would you rather not have to do? Why do
+    you have to do it?
+2.	What would you like to do that you can't? Why not?
 
 ## Amazon / IT resource footprint
 
