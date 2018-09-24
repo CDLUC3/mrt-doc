@@ -46,9 +46,8 @@ By service:
     that is; presumably this is just working space, i.e. not configuration etc.?
 - do all our boxes need to be as big as they are? (yes is a valid answer)
 - how can we reduce our dependence on fixed storage?
-  - pilot [EFS](https://aws.amazon.com/efs/) project for DPN: what metrics would we
-    need in order to gather data from that, that would allow us to decide where EFS
-    could fit into our regular workflow?
+  - what kind of pilot pilot [EFS](https://aws.amazon.com/efs/) project would
+    we need to decide where EFS could fit into our regular workflow?
   - local copies / local storage
     - how often do uploads to S3 fail? to SDSC?
     - how often do downloads from S3 fail? from SDSC?
