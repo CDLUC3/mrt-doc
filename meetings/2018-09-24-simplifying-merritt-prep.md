@@ -1,5 +1,16 @@
 # Simplifying Merritt: Preparatory notes
 
+- [Amazon / IT resource footprint](#amazon--it-resource-footprint)
+  - [AWS Costs](#aws-costs)
+  - [Thoughts on AWS costs](#thoughts-on-aws-costs)
+- [Effort / workload](#effort--workload)
+  - [Best practices](#best-practices)
+    - [Thoughts on best practices](#thoughts-on-best-practices)
+  - [Environments](#environments)
+    - [Thoughts on environments](#thoughts-on-environments)
+  - [Big picture: Architecture](#big-picture-architecture)
+    - [Thoughts on architecture](#thoughts-on-architecture)
+
 ## Amazon / IT resource footprint
 
 ### AWS Costs
@@ -84,6 +95,12 @@ definitions and recommendations -- contributions welcome.)
 - are there ways we can simplify configuration and (hopefully) at the
   same time make our environments more consistent with production?
 
+#### Thoughts on environments
+
+- cost is overwhelmingly for production environments, but dev/stage add
+  complexity
+- if we were setting up dev and stage from scratch, what would we want/need?
+
 ### Big picture: Architecture
 
 - promise of microservices ([Abrams et al.
@@ -131,8 +148,8 @@ definitions and recommendations -- contributions welcome.)
   - basic monitoring (we probably have this)
   - rapid application deployment (yes and no)
 
-### Thoughts on architecture
+#### Thoughts on architecture
 
 1. what would we do differently, now that we have several years of experience?
-   what would our ideal Merritt architecture look like now?
-2. what can we do to move closer to that ideal?
+2. what would our ideal Merritt architecture look like now?
+3. how can we get closer to that?
