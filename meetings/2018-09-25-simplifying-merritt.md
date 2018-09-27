@@ -94,8 +94,7 @@ Longer term action items:
   - may require coordination between services & load balancers?
 - when services are unavailable, time out & retry gracefully
 - simplify state determination
-- track down underlying cause for needing manual intervention on restart &
-  eliminate it
+- track down & eliminate underlying cause(s) for needing manual intervention on restart
 - figure out how not to lock ingest jobs to servers (more on that below)
 
 (Note: we should figure out which of these are either lowest-hanging fruit or most
@@ -132,4 +131,71 @@ LDAP:
 4. move authentication from LDAP to Devise (compare notes w/DMPTool)
 5. anything else before we can shut LDAP down?
 
+### Local copies
+
+Making local copies limits the size of objects we can handle, introduces
+complexity (e.g. locking ingest jobs to servers), probably increases costs
+(storage on each server), and may reduce performance (at least in some
+scenarios).
+
+#### Action items / questions to answer
+
+Questions:
+
+- In the past we've said we have to make local copies because services / the network are
+  unreliable.
+  - just how unreliable are they? can we quantify that?
+  - where can we mitigate w/retries etc., and where is that not possible?
+
+Straw proposal:
+
+- Ingest
+  - stream uploads directly to S3 (even for collections where S3 is not primary)
+  - return S3 URLs instead of ingest server URLs
+- Storage
+  - uploads:
+    - abstract move/copy/store operation across different combinations of storage:
+      - S3 -> same S3 bucket: no-op
+      - S3 -> different S3 bucket: use s3 sync, verify, delete
+      - S3 -> OpenStack: stream instead of making local copy
+        - maybe use [rclone](https://rclone.org/)?
+      - S3 -> Cloudhost: stream instead of making local copy
+        - create [pre-signed URL](https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html)
+          & pull from Cloudhost side?
+    - downloads:
+      - Use `ZipOutputStream` to stream large zip files directly to network
+- Audit
+  - stream directly from storage
+- Replication
+  - from S3: see above under storage/uploads
+  - OpenStack -> S3: stream instead of making local copy
+    - maybe use [rclone](https://rclone.org/)?
+  - Cloudhost -> S3: just don't support it?
+
+Alternatives / other areas to explore:
+
+- use [s3fs-fuse](https://github.com/s3fs-fuse/s3fs-fuse/wiki/Fuse-Over-Amazon)
+  to provide an S3-backed "local" filesystem
+- look at [Dat](http://datproject.org/) and/or other alternatives to straight HTTP
+  for large file transfers
+
+Are there other issues unique to each service that need to be addressed?
+
+### Scale
+
+We want to be able to handle very very large objects -- currently > 500 GB
+is hard, > 1 TB can't be downloaded; > 10 TB is nearly impossible.
+
+Issues include:
+
+- factors out of our control on the submitter's side
+- local copies for ingest, storage, audit & replication
+- ????
+
+#### Action items / questions to answer
+
+- don't make local copies
+- look at [Dat](http://datproject.org/) and/or other alternatives to straight HTTP
+  for large file transfers
+- other issues?
 
