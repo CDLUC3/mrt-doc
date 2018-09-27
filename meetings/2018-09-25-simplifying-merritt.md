@@ -1,127 +1,135 @@
-# By Facet
+# 2018-09-25: Simplifying Merritt
 
-## Big picture
+See:
 
-### Want
+- [preparatory notes](2018-09-24-simplifying-merritt-prep.md)
+- [whiteboard / meeting notes](https://docs.google.com/document/d/1-45bYKxiyDlJx5LrJIbMdPzPYXX8ALon6sQDVspIJLM/edit) (Google Docs)
 
-- concentrate on tasks w/o reacting to crises
+## Issues
 
-### Don’t want
+### Reactive process
 
-- react to service problems
+We want to be able to concentrate on tasks rather than be constantly
+reacting to crises & service problems.
 
-## Architecture/Ops
+We also have a problem with jumping onto tasks prematurely because
+they happen to be a topic of conversation, or because some outside
+stakeholder is suddenly ready for us or suddenly taking an interest.
+
+#### Action items / questions to answer
+
+1. crises
+   - what can we learn from past crises?
+   - what can we do to reduce the frequency of crises?
+   - do we have a clear sense of what's a crisis and what's not?
+   - what can we do to handle crises better when they arise, to minimize
+     impact on the team?
+2. lack of focus
+   - are we setting priorities clearly?
+   - what causes us to jump on new tasks out of order?
+   - who should be managing the schedule / gatekeeping outside requests?
+   - are there bigger questions we need to answer about how we decide what
+     to work on?
 
 ### Service management
 
-#### Want
+#### Deployment
 
-- painlessly add/remove instances from load balancer
-- query current state of any service
-- put services in “closing” state (finish existing jobs, don’t accept new ones)
-- distinguish “state” from “status” from whatever
-- add/remove/redeploy any instance of any service at will
+We want to be able to add/remove/redeploy any instance of any service at
+will. Obstacles to that include:
 
-#### Don’t want
+- complexity of deployment/configuration
+  - configuration of individual servers (e.g. repository/node directories on storage)
+  - configuration of communication between services (mostly load-balanced, sometimes server-locked)
+    - what's server-locked (in configuration) besides UNM? UCSB?
+    - note that we can probably remove UNM storage early next year
+  - per-server Capistrano environment configurations
+- complexity of managing load balancers (ALB, ELB, Apache)
+- complexity of startup process
+  - order dependence of services (everything depends on storage)
+  - manual intervention on restart
+- fragility of long-running processes
+- difficulty of determining current state of the system
+- lack of orderly shutdown process (no "closing" state that can finish
+  existing work without accepting new work)
 
-- unnecessary backups
-- manual reboots
-- care whether there’s activity when doing maintenance
-- care which services come up in which order (“Storage is the problem child”)
-- manage Apache rewrite rules
-- double & triple encode/decode URLs and ARKs
-- run an LDAP server
-- write stupid little Perl scripts
+Note that these same issues also make it difficult or impossible for us to
+move to automatic patching / restarts.
 
-### Deployment
+##### Action items / questions to answer
 
-#### Want
+Some long-term goals:
 
-- separate “service” from “server”
-- hot-swap production environments (blue/green deployment)
-- autoscale Merritt (up & down) / have services respond to demand
+- [blue/green deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html)
+- [continuous delivery](https://martinfowler.com/bliki/ContinuousDelivery.html)
 
-### Testing
+Short- to medium-term action items (as much as possible before move to Linux 2):
 
-#### Want
+1. for each service, figure out what's involved in setting up a new instance
+   & make a checklist (to some extent these may already exist)
+   - system configuration, packages, etc.
+   - additional software installation (Tomcat?)
+   - Merritt software
+     - build
+     - deployment
+     - configuration
+   - Apache and/or ALB
+2. figure out *how* we want to add/remove/redeploy services (ideally)
+   - some combination of Puppet and Capistrano?
+   - target audience: Jim? Mark? Perry?
+3. identify places where we assume a certain fixed set of servers
+   - load balancers
+   - Capistrano environments
+   - UNM storage nodes (note: we can probably remove these early next year)
+   - ???
+4. for each service and server, make sure all (production) configuration is
+   under source control
+5. for each service:
+   - identify obstacles to fully automated setup
+   - make a plan to remove those obstacles
 
-- realistic test environments & workloads, incl. heterogeneous storage
-- test against production content (for scale)
+Longer term action items:
 
-## Administration
+- introduce "closing" state for orderly shutdown
+  - may require coordination between services & load balancers?
+- when services are unavailable, time out & retry gracefully
+- simplify state determination
+- track down underlying cause for needing manual intervention on restart &
+  eliminate it
+- figure out how not to lock ingest jobs to servers (more on that below)
 
-### Want
+(Note: we should figure out which of these are either lowest-hanging fruit or most
+bang for the buck, and prioritize those)
 
-- trace jobs through workflow
-- make it easy for customers to detect problems
-- dashboard
+#### Complexity
 
-### Don’t Want
+Apache
 
-- monitor the Ingest pipeline
+- 65 distinct rewrite rules
+- multiple roles: load balancer, front end, URL munger...?
+- leads to double or triple encoding/unencoding
 
-## Services/Integrations
+LDAP
 
-### Want
+- authentication (username/password)
+- authorization (user permissions by collection)
+- user profile metadata (name, phone, etc.)
+- UI (`mrt-dashboard`) code is inconsistent in its use of LDAP vs. database for collections
 
-- ingest multiple versions of same object concurrently
-- stop making local copies
-- modernize logging
+##### Action items / questions to answer
 
-### Don’t Want
+Apache:
 
-- tie other people’s environments to our QA environment
-- support different access paths for Dash & eScholarship
-- lock Ingest jobs to servers
-- deal with the complexity of multiple storage technologies
-- be constrained by the differing capabilities of multiple storage technologies
-- have to re-ingest to move content
-- spend six-month periods migrating services/content (Solaris→SUSE→AWS→Linux 2, local storage→SDSC→+NFS→S3→S3 RR→…)
+- are there any rewrite rules we can already remove?
+- is anything going through Apache that doesn't need to?
+- what are the obstacles to eliminating Apache entirely?
 
-## Collection management
+LDAP:
 
-### Want
+1. refactor `mrt-dashboard` to isolate LDAP code
+2. move user profile & authorizations to inv database (unless someone has a better idea)
+3. add some kind of collection admin interface for Perry
+4. move authentication from LDAP to Devise (compare notes w/DMPTool)
+5. anything else before we can shut LDAP down?
 
-- move objects between collections
-- support large numbers of collections / hierarchical collections
-
-### Don’t Want
-
-- tie objects to collections
-- duplicate info between database, LDAP, Ingest profiles
-- manually manage collections / ingest profiles
-
-## Scale
-
-### Want
-
-- handle very very large objects (&gt; 500 GB is hard; &gt; 1 TB can’t be downloaded; &gt; 10 TB is nearly impossible)
-- handle the scale we’d get if storage was free
-
-### Don’t Want
-
-## Cost
-
-### Want
-
-- stop charging for storage (esp. stop charging libraries for dark archive)
-
-### Don’t Want
-
-- see people make bad preservation decisions due to cost
-- see libraries & campuses afraid to use our services due to cost fears
-
-# Action items
-
-## Architecture/Ops
-
-### Consolidate dev & stage environments
-
-- proposal: shut down dev environment, keep stage, move dash-demo to production
-- note: not everything with -dev is part of the “dev environment”
-- need to coordinate with Dash
-
-### Eliminate unnecessary backups
-
-- See Pivotal ticket: https://www.pivotaltracker.com/story/show/160775775
 
