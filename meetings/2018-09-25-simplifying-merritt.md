@@ -47,7 +47,6 @@ will. Obstacles to that include:
 - complexity of managing load balancers (ALB, ELB, Apache)
 - complexity of startup process
   - order dependence of services (everything depends on storage)
-  - manual intervention on restart
 - fragility of long-running processes
 - difficulty of determining current state of the system
 - lack of orderly shutdown process (no "closing" state that can finish
@@ -96,8 +95,9 @@ Longer term action items:
   - may require coordination between services & load balancers?
 - when services are unavailable, time out & retry gracefully
 - simplify state determination
-- track down & eliminate underlying cause(s) for needing manual intervention on restart
 - figure out how not to lock ingest jobs to servers (more on that below)
+
+Q: Do we need a 'starting' state as well as a 'closing' state?
 
 (Note: we should figure out which of these are either lowest-hanging fruit or most
 bang for the buck, and prioritize those)
