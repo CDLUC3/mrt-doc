@@ -88,6 +88,8 @@ Short- to medium-term action items (as much as possible before move to Linux 2):
    - identify obstacles to fully automated setup
    - make a plan to remove those obstacles
 
+(One idea, per Jim: a small 'bootstrap' instance with one of every service)
+
 Longer term action items:
 
 - introduce "closing" state for orderly shutdown
@@ -127,8 +129,10 @@ LDAP:
 
 1. refactor `mrt-dashboard` to isolate LDAP code
 2. move user profile & authorizations to inv database (unless someone has a better idea)
+   - requires code changes to: UI, `mrt-sword`, ...?
 3. add some kind of collection admin interface for Perry
 4. move authentication from LDAP to Devise (compare notes w/DMPTool)
+   - open question: how `mrt-sword` should authenticate
 5. anything else before we can shut LDAP down?
 
 ### Local copies
