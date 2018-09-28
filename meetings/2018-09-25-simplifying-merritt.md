@@ -199,12 +199,12 @@ Issues include:
 - lack of scalability testing / load testing
 - ????
 
-
 #### Action items / questions to answer
 
 - don't make local copies
 - look at [Dat](http://datproject.org/) and/or other alternatives to straight HTTP
   for large file transfers
+- support incremental deposit w/o "versioning"
 - scalability/load testing (UI, Ingest, …?)
 - other issues?
 
@@ -342,3 +342,32 @@ research data but little to none for library data, esp. dark archives.
   - [IBM Regional Cold Vault](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage): $72/TB/year
   - [Oracle Archive Storage](https://cloud.oracle.com/storage/pricing): $32/TB/year
   - SDSC Qumulo / Minio: ca. $70/TB/year (projected)
+
+### Miscellaneous
+
+#### Action items / questions to answer
+
+Ingest:
+
+- if we stop making local copies, what else do we need to do to stop locking
+  jobs to ingest servers?
+- what would we need to do to ingest and inventory to support ingesting multiple
+  versions of the same object out of order? (simplifying assumption: the start of
+  each ingest job is ordered correctly by version, it's the finish that isn't,
+  e.g. when the first version is large and subsequent versions are small)
+
+Storage:
+
+- how can we mitigate the complexity of multiple storage technologies?
+  - what are the areas in which supporting multiple technologies becomes a
+    problem?
+  - can we reduce the number of storage technologies we support?
+- what do we need to do to be able to move content w/o re-ingesting?
+
+Other:
+
+- modernize logging / make logging consistent
+  - figure out what this would mean
+- can we move Dash/Dryad to a Merritt Express–based model cf. eScholarship?
+  - investigate generating [pre-signed URL](https://docs.aws.amazon.com/AmazonS3/latest/dev/ShareObjectPreSignedURL.html)s to give clients direct access to S3 so it doesn't have to be streamed through another server
+
