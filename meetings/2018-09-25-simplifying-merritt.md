@@ -262,3 +262,19 @@ production-scale write testing
 - make sure servers and writable S3 test bucket are in the same region
   so we don't have data transfer charges
 - other concerns?
+
+### Administration
+
+We want it to be easy for customers to monitor the progress of their ingest
+jobs and/or be notified when problems occur, and we don't want Perry to
+have to keep an eye on the ingest pipeline himself; we also want better
+tools for tracing jobs through the workflow, and some sort of an
+administrative dashboard.
+
+#### Action items / questions to answer
+
+- what are the limitations of our current ability to trace jobs through the
+  workflow? do we need to attach more metadata, job IDs, etc. somehow?
+- how can we improve notifications?
+- how can we improve workflow visibility?
+- what features do we want in a dashboard?
