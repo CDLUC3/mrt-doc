@@ -203,3 +203,53 @@ Issues include:
   for large file transfers
 - other issues?
 
+### Environments / Testing
+
+We don't need to support both "dev" and "stage" environments. what we need is:
+
+1. one QA environment, as realistic as possible
+2. a certain number of machines (VM) for exploratory/experimental development
+3. a safe way to test against production content, probably read-only
+
+#### Action items / questions to answer
+
+- environments: immediate
+  1. create new Dash demo collection in production, delete old one from
+     stage (need to coordinate w/Dash)
+  2. identify which machines with a `-dev` suffix are not really part of the
+     dev environment (`uc3-mrtreplic1-dev`, `uc3-mrtdat1-dev` ... others?)
+  3. decomission the other `-dev` machines (need to coordinate w/Dash)
+
+- environments: medium-term / Linux2 migration
+  1. inventory current `-stg` and `-prd` environments, as well as "not
+     really dev" `-dev` machines above
+  2. plan new Linux2 environments:
+     - `-prd`: new production environment
+     - `-stg`: new QA environment, based on `-prd`
+       - plus: Cloudhost native & Docker, at least pro tem
+     - `-dev`: non-"environment" experimental/test machine(s); new name(s)?
+  3. stand up new `-dev` machine(s)
+  4. shut down remaining old `-dev` machines
+  5. stand up new `-stg` environment to prove out Linux2
+     - possibly rotating new Linux2 machines into load balancer etc. to simulate
+       production migration
+  6. stand up new `-prd` environment
+     - rotating Linux2 new machines into load balancer etc.
+  7. shut down old `-stg` and `-prd` environments (need to coordiante w/Dash)
+
+- production-scale read-only testing
+  - figure out what kind of tests we need to run, and what environments we
+    need for those tests (is this our `-stg` environment, or our experimental
+    environments?)
+  - talk to IAS about Amazon options for limiting S3 access to read-only
+    for certain boxes
+  - talk to SDSC about read-only credentials for OpenStack access
+  - other concerns?
+
+- production-scale write testing
+  - figure out what we can learn from either small numbers of large
+    objects, or large numbers of small objects, either of which we should
+    be able to afford
+  - make sure servers and writable S3 test bucket are in the same region
+    so we don't have data transfer charges
+  - other concerns?
