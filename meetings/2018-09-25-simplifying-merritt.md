@@ -278,3 +278,46 @@ administrative dashboard.
 - how can we improve notifications?
 - how can we improve workflow visibility?
 - what features do we want in a dashboard?
+
+### Collection management
+
+We want to be able to move objects easily between collections. Users,
+especially libraries, want better tools for organizing their objects into
+collections -- larger numbers of collections, hierarchical collections,
+etc.
+
+Meanwhile, creating and administering collections is more trouble than it should
+be. Information about collections is distributed between LDAP, the
+inventory database, and ingest profile files.
+
+#### Action items / questions to answer
+
+Simplifying collection administration:
+
+- stop using LDAP for authorization (see above under [Complexity](#complexity))
+- simplify ingest (proposal) :
+  - pass collection mnemonic or ARK to ingest instead of profile
+  - use the database instead of LDAP to identify collection "ingest profile"
+    (but see below)
+  - get storage node info from inv database
+  - move notification email into inv database
+  - separate out ARK minting configuration (between shoulder, & minter URL,
+    probably < 10 different configurations)
+  - separate out ingest handling (probably < 5 different configurations)
+  - use DB to identify ARK minting & ingest handling "profile"
+- give Perry some better tools for creating/modifying collections
+
+Supporting object moves & different collection management scenarios:
+
+- obstacles to moving objects between collections?
+- obstacles to large numbers of collections?
+- obstacles to hierarchical collections?
+  - conceptual problems
+  - UX problems for ordinary users
+  - UX problems for administrators
+  - special curatorial UX?
+- in light of the above, consider separating "collection" into some/all of:
+  - curatorial collection
+  - access control context
+  - ARK minting configuration
+  - storage/replication configuration
