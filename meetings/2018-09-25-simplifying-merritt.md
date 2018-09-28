@@ -187,20 +187,25 @@ Are there other issues unique to each service that need to be addressed?
 
 ### Scale
 
-We want to be able to handle very very large objects -- currently > 500 GB
-is hard, > 1 TB can't be downloaded; > 10 TB is nearly impossible.
+We want to be able to handle very very large objects -- currently 500 GB is
+hard, 1 TB can't be downloaded; 10 TB is nearly impossible. We also want to
+be able to handle the volume of requests/submissions we'd get if we could
+provide libraries with free storage.
 
 Issues include:
 
 - factors out of our control on the submitter's side
 - local copies for ingest, storage, audit & replication
+- lack of scalability testing / load testing
 - ????
+
 
 #### Action items / questions to answer
 
 - don't make local copies
 - look at [Dat](http://datproject.org/) and/or other alternatives to straight HTTP
   for large file transfers
+- scalability/load testing (UI, Ingest, …?)
 - other issues?
 
 ### Environments / Testing
