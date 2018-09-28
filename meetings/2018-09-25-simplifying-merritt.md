@@ -347,13 +347,13 @@ research data but little to none for library data, esp. dark archives.
 - why are outside providers interested in free storage for research data, but
   not for libraries?
 - what can we do to bring on-line storage costs down?
-  - SDSC Qumulo / Minio: ca. $70/TB/year (projected)
+  - SDSC QF2 / Minio: ca. $70/TB/year (projected)
   - [Backblaze B2](https://www.backblaze.com/b2/cloud-storage-pricing.html): $60/TB/year
 - what can we do to bring dark-archive storage costs down?
   - [Glacier](https://aws.amazon.com/glacier/pricing/): $48/TB/year
   - [IBM Regional Cold Vault](https://www.ibm.com/cloud-computing/bluemix/pricing-object-storage): $72/TB/year
   - [Oracle Archive Storage](https://cloud.oracle.com/storage/pricing): $32/TB/year
-  - SDSC Qumulo / Minio: ca. $70/TB/year (projected)
+  - SDSC QF2 / Minio: ca. $70/TB/year (projected)
 
 ## Miscellaneous
 
