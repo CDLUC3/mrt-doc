@@ -127,13 +127,13 @@ Apache:
 
 LDAP:
 
-1. refactor `mrt-dashboard` to isolate LDAP code
-2. move user profile & authorizations to inv database (unless someone has a better idea)
-   - requires code changes to: UI, `mrt-sword`, ...?
-3. add some kind of collection admin interface for Perry
-4. move authentication from LDAP to Devise (compare notes w/DMPTool)
-   - open question: how `mrt-sword` should authenticate
-5. anything else before we can shut LDAP down?
+- is there an auth/auth solution that:
+  1. can be based on the inv database
+  2. can work with Rails (ideally with Devise, cf. DMPTool)
+  3. can replace LDAP auth/auth in `mrt-sword` and `mrtexpress`?
+- if `mrt-sword` and `mrtexpress` already talk to the inv database,
+  maybe we can move the authorization piece and keep LDAP just for
+  authentication, as a first step
 
 ### Local copies
 
