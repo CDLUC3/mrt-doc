@@ -22,4 +22,5 @@ Topics:
   - Storage open questions: [#21](https://github.com/CDLUC3/mrt-doc/issues/21)
   - Logging: [#22](https://github.com/CDLUC3/mrt-doc/issues/22)
   - Move Dash/Dryad to Merritt Express: [#23](https://github.com/CDLUC3/mrt-doc/issues/23)
+  - Inventory open questions: [#24](https://github.com/CDLUC3/mrt-doc/issues/24)
 
