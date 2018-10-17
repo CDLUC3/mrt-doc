@@ -73,6 +73,7 @@ they all just be `dpr2`?
 - "stg" in case we need open ports
 - general test environment for Docker-based deployments
 - would replace cloudhost+docker test environment from `dat1-dev`
+- t2.small (cf. dat1-dev)
 
 ### `uc3-mrtsandbox1-stg`
 
