@@ -30,7 +30,7 @@ were cloud storage.
 2. A UC/CDL project in which campuses each commit to providing 1 PB of
    storage for to-be-determined research-data-related purposes.
 
-   (On this understanding, UCSB is _not_ a participanet in UCDN.)
+   (On this understanding, UCSB is _not_ a participant in UCDN.)
 
 ## Questions, answers, concerns, discussions
 
@@ -96,7 +96,7 @@ were cloud storage.
 
    Campuses should talk to SDSC about their experiences.
 
-. **We need an MoU with the UCDN campuses like we had for UNM.**
+5. **We need an MoU with the UCDN campuses like we had for UNM.**
 
    This should include whatever decisions we make about their responsibilities.
    (And not take on as much responsbility ourselves as we took on with UNM.)
