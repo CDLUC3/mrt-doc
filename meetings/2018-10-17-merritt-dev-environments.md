@@ -77,7 +77,7 @@ they all just be `dpr2`?
 
 ### `uc3-mrtsandbox1-stg`
 
-- sandbox machine for David L
+- daily development machine for David L
 - similar specs to `uc3-mrtreplic2-dev`
   - could it be a t2.medium (cf. `uc3-mrtaudit1-prd`, `uc3-mrtreplic2-stg`) 
     instead of c4.large?
