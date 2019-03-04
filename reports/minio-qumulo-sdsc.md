@@ -167,10 +167,11 @@ string as a key, with the following exceptions:
 that do not appear to cause problems when using the S3 API.)
 
 As for invalid Unicode strings, in general the Minio+QF2 system appears to
-disallow keys that are not valid UTF-8 byte strings. However, exactly how these
-are treated may depend on the client library being used to access the system,
-and it is possible that a different client library (e.g. in Java or Python) 
-might encode these differently and produce different results.
+disallow keys that are not valid UTF-8 byte strings. However, exactly how
+these are treated may depend on the client locale and the client library
+being used to access the system, and it is possible that a different client
+library (e.g. in Java or Python) or one running in a different locale might
+encode these differently and produce different results.
 
 This is somewhat more restrictive than Amazon, which appears to only
 disallow the empty string, `.`, and keys beginning with `..`, but still
