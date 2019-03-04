@@ -159,10 +159,11 @@ string as a key, with the following exceptions:
 - keys containing the Unicode character LINE FEED, `U+000A` (newline, `\n`,
   ASCII LF)
 - keys containing a backslash `\`
-- keys consisting of the single character `.`
-- keys starting with `..`
+- keys consisting of the single character `.` (not possible in Merritt
+  due to key structure)
+- keys starting with `..` (not possible in Merritt due to key structure)
 
-(Note that the Minio _client_ disallows other characters, such as `^` and `*`,
+(Note the Minio _client_ disallows other characters, such as `^` and `*`,
 that do not appear to cause problems when using the S3 API.)
 
 As for invalid Unicode strings, in general the Minio+QF2 system appears to
