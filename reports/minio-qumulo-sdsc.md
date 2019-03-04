@@ -185,7 +185,7 @@ For the full list of results, see [this
 gist](https://gist.github.com/dmolesUC3/0d59af99d4c38f94ce8a46ebb1edac4e).
 Note that the results are given as [quoted Go string
 literals](https://golang.org/pkg/strconv/#Quote), so, e.g., `"\\"` represents
-the single character `\`' and `"\\\\"` the two-character sequence `\\`.
+the single character `\` and `"\\\\"` the two-character sequence `\\`.
 
 ### Unicode
 
