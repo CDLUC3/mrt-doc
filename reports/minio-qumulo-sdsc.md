@@ -8,6 +8,23 @@ Tests were performed using [cos](https://github.com/dmolesUC3/cos), a
 cloud object storage test tool developed in house, based on Amazon's 
 [AWS SDK for Go](https://docs.aws.amazon.com/sdk-for-go/api/service/s3/).
 
+## Summary
+
+The SDSC Minio+QF2 system performed excellently and there appear to be no
+barriers to adopting it as storage for Merritt.
+
+### Table of Contents
+
+- [Performance](#performance)
+   - [Files per prefix](#files-per-prefix)
+   - [Large files](#large-files)
+- [Allowable filenames](#allowable-filenames)
+   - [Ad-hoc file lists](#ad-hoc-file-lists)
+   - [Unicode](#unicode)
+      - [Unicode categories, properties, and scripts](#unicode-categories-properties-and-scripts)
+      - [Emoji](#emoji)
+      - [UTF8 invalid sequences](#utf8-invalid-sequences)
+
 ## Performance
 
 ### Files per prefix
@@ -157,6 +174,9 @@ might encode these differently and produce different results.
 This is somewhat more restrictive than Amazon, which appears to only
 disallow the empty string, `.`, and keys beginning with `..`, but still
 quite permissive.
+
+A test with the 1733 Merritt filenames containing non-Latin characters
+(characters outside the Unicode Latin 1 range) revealed no issues.
 
 ### Ad-hoc file lists
 
