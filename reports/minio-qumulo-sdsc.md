@@ -454,13 +454,13 @@ cos suite 's3://cdl.sdsc.test/' --endpoint  'https://cdl.qs3.sdsc.edu/' -v --uni
 ✅ 1. Unicode invalid characters: Non-Character (66 characters): successful (523ms)
 ✅ 2. Unicode invalid characters: UTF8 Invalid Bytes (11 characters): successful (443ms)
 ❌ 3. UTF8 invalid sequences: 1 byte (2 sequences): FAILED (306ms)
-2 invalid sequences: "\xff [0xff]\n, \x80 [0x80]\n"
+2 invalid sequences: "\xff [0xff], \x80 [0x80]"
 ❌ 4. UTF8 invalid sequences: 2 bytes (8 sequences): FAILED (2s)
-8 invalid sequences: "\xc1\x80 [0xc1 0x80]\n, \xe0\x80 [0xe0 0x80]\n, \xc1\xbf [0xc1 0xbf]\n, …"
+8 invalid sequences: "\xc1\x80 [0xc1 0x80], \xe0\x80 [0xe0 0x80], \xc1\xbf [0xc1 0xbf], …"
 ❌ 5. UTF8 invalid sequences: 3 bytes (56 sequences): FAILED (16s)
-56 invalid sequences: "ߠ\x80 [0xdf 0xa0 0x80]\n, ߠ\xbf [0xdf 0xa0 0xbf]\n, …"
+56 invalid sequences: "ߠ\x80 [0xdf 0xa0 0x80], ߠ\xbf [0xdf 0xa0 0xbf], …"
 ❌ 6. UTF8 invalid sequences: 4 bytes (112 sequences): FAILED (33s)
-112 invalid sequences: "\uf400\x80 [0xef 0x90 0x80 0x80]\n, \uf400\xbf [0xef 0x90 0x80 0xbf]\n, …"
+112 invalid sequences: "\uf400\x80 [0xef 0x90 0x80 0x80], \uf400\xbf [0xef 0x90 0x80 0xbf], …"
 ```
 
 
