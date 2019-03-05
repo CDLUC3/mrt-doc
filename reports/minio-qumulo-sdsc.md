@@ -269,9 +269,9 @@ cos suite 's3://cdl.sdsc.test/' --endpoint  'https://cdl.qs3.sdsc.edu/' -v --uni
 ✅ 19. Unicode properties: Other_Lowercase (189 characters): successful (2s)
 ✅ 20. Unicode properties: Other_Math (1362 characters): successful (16s)
 ✅ 21. Unicode properties: Other_Uppercase (120 characters): successful (888ms)
-✅ 22. Unicode properties: Pattern_Syntax (2760 characters): successful (35s)
+❌ 22. Unicode properties: Pattern_Syntax (2760 characters): successful (35s)
 1 invalid characters: "\\"
-✅ 23. Unicode properties: Pattern_White_Space (11 characters): successful (1s)
+❌ 23. Unicode properties: Pattern_White_Space (11 characters): successful (1s)
 1 invalid characters: "\n"
 ✅ 24. Unicode properties: Prepended_Concatenation_Mark (10 characters): successful (345ms)
 ✅ 25. Unicode properties: Quotation_Mark (30 characters): successful (383ms)
@@ -283,7 +283,7 @@ cos suite 's3://cdl.sdsc.test/' --endpoint  'https://cdl.qs3.sdsc.edu/' -v --uni
 ✅ 31. Unicode properties: Terminal_Punctuation (252 characters): successful (2s)
 ✅ 32. Unicode properties: Unified_Ideograph (87882 characters): successful (18m 9s)
 ✅ 33. Unicode properties: Variation_Selector (259 characters): successful (3s)
-✅ 34. Unicode properties: White_Space (25 characters): successful (2s)
+❌ 34. Unicode properties: White_Space (25 characters): successful (2s)
 1 invalid characters: "\n"
 ✅ 35. Unicode scripts: Adlam (87 characters): successful (782ms)
 ✅ 36. Unicode scripts: Ahom (57 characters): successful (372ms)
@@ -308,7 +308,7 @@ cos suite 's3://cdl.sdsc.test/' --endpoint  'https://cdl.qs3.sdsc.edu/' -v --uni
 ✅ 55. Unicode scripts: Chakma (67 characters): successful (877ms)
 ✅ 56. Unicode scripts: Cham (83 characters): successful (418ms)
 ✅ 57. Unicode scripts: Cherokee (172 characters): successful (1s)
-✅ 58. Unicode scripts: Common (7363 characters): successful (1m 18s)
+❌ 58. Unicode scripts: Common (7363 characters): successful (1m 18s)
 3 invalid characters: "\x00\n\\"
 ✅ 59. Unicode scripts: Coptic (137 characters): successful (892ms)
 ✅ 60. Unicode scripts: Cuneiform (1234 characters): successful (16s)
