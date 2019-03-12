@@ -135,7 +135,7 @@ cos suite 's3://cdl.sdsc.test/' --endpoint  'https://cdl.qs3.sdsc.edu/' -v --siz
 ✅ 14. create/retrieve/verify/delete 1T file: successful (19h 31m 12s)
 ```
 
-A separate test 1-TiB test using `cos crvd` to distinguish upload and
+A separate 1-TiB test using `cos crvd` to distinguish upload and
 download times showed about 7h 7m upload, 12h 41m download, for a total of
 19h 48m.
 
