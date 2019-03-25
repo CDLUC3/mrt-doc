@@ -32,7 +32,8 @@ Conclusions:
    the fiscal year.
 2. Even if we take an aggressive approach to moving off OpenStack, we are
    likely to have content in both systems for some months.
-3. John and/or Kurt should discuss the fiscal issues with Ryan/Brian.
+3. John C. confirms we are OK to absorb the charges as an infrastructure
+   cost during the migration/validation
 
 ### Open question: Dryad
 
