@@ -14,7 +14,7 @@ Existing system (WebGenDB (sp.?))
 - prev year: 30,000 images
 - next year: 1.35 million images
 
-New system ([TIND](https://tind.io))
+New system ([TIND](https://tind.io)) to go live fall 2019
 
 - Stores JPEGs; TIFFs are in Merritt
   - Base filename used as key
