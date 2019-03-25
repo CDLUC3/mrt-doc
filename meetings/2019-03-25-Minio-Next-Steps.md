@@ -33,3 +33,8 @@ Conclusions:
 2. Even if we take an aggressive approach to moving off OpenStack, we are
    likely to have content in both systems for some months.
 3. John and/or Kurt should discuss the fiscal issues with Ryan/Brian.
+
+### Open question: Dryad
+
+- When Dryad content is in Minio/Qumulo: Dryad pay SDSC directly, or do we
+  recharge them?
