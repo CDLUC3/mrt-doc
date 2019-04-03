@@ -252,3 +252,15 @@ Note: currently we have no stable releases, only snapshots.
       +/-:
 
       - treats snapshots like stable releases
+
+## Useful links
+
+- Stephen Connolly, ["Should you deploy
+  -SNAPSHOTS?"](https://www.cloudbees.com/blog/should-you-deploy-snapshots)
+- Stephen Connolly, ["A new way to do continuous delivery with Maven and
+  Jenkins
+  Pipeline"](https://www.cloudbees.com/blog/new-way-do-continuous-delivery-maven-and-jenkins-pipeline)
+
+  > So what we really want to do is actually run a release build for every
+  > commit, but have the preparation for a no-op, and only push the tags if
+  > the release goes anywhere.
