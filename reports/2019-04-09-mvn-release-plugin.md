@@ -12,6 +12,7 @@ details.
 - [Preparing the release](#preparing-the-release)
 - [Performing the release](#performing-the-release)
 - [Rolling back a release](#rolling-back-a-release)
+- [Open questions](#open-questions)
 
 (For full documentation, see the [plugin site](http://maven.apache.org/maven-release/maven-release-plugin/).)
 
@@ -201,3 +202,75 @@ At this point, there are a couple of options:
    git tag --delete 2.0          # delete tag '2.0' locally
    git push --delete origin 2.0  # delete tag '2.0' on GitHub
    ```
+
+---
+
+# Open questions
+
+Note: currently we have no stable releases, only snapshots.
+
+1. When do we want to deploy snapshots to Nexus?
+
+   1. continuously? (with every successful build, ≃ every commit)
+
+      pros:
+
+      - easy to deploy "current" test environment
+      - snapshot repository matches build server
+      - other developers can always get the latest code
+      - changes that affect other developers can be spotted early
+
+      cons:
+
+      - other developers may see changes unexpectedly
+
+      +/-:
+
+      - treats snapshots as disposable
+
+   1. nightly?
+
+      pros:
+
+      - easy to deploy "nightly build" environment
+      - other developers can always get the latest code
+      - changes that affect other developers can be spotted early
+
+      cons:
+
+      - other developers may see changes unexpectedly
+
+      +/-:
+
+      - treats snapshots as disposable
+      - snapshot repository is a little behind build server
+
+   1. when a developer explicitly decides to?
+
+      pros:
+
+      - developer gets to decide when other developers should
+        see the code
+
+      cons:
+
+      - hard to deploy nightly/current test environment
+      - snapshot repository doesn't match build server
+      - changes that affect other developers may not be spotted
+        till relatively late
+
+      +/-:
+
+      - treats snapshots like stable releases
+
+## Useful links
+
+- Stephen Connolly, ["Should you deploy
+  -SNAPSHOTS?"](https://www.cloudbees.com/blog/should-you-deploy-snapshots)
+- Stephen Connolly, ["A new way to do continuous delivery with Maven and
+  Jenkins
+  Pipeline"](https://www.cloudbees.com/blog/new-way-do-continuous-delivery-maven-and-jenkins-pipeline)
+
+  > So what we really want to do is actually run a release build for every
+  > commit, but have the preparation for a no-op, and only push the tags if
+  > the release goes anywhere.
