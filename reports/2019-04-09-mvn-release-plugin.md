@@ -1,9 +1,9 @@
-# Maven Release Plugin Cheat Sheet for Merritt
+# 2019-04-09: Maven release plugin notes
 
 Traditionally, a Maven release consists of two phases, **preparing** the
-release and **performing** the release. Only the first step is relevant to
-Merritt (see ["Performing the release"](#performing-the-release) below for
-an explanation why).
+release and **performing** the release. Preparing the release builds, sets
+version numbers, and commits to source control. Performing the release
+pushes artifacts to a repository.
 
 In addition, the release plugin allows you to **roll back** a release, with
 some caveats. See ["Rolling back a release"](#rolling-back-a-release) below for
@@ -14,6 +14,13 @@ details.
 - [Rolling back a release](#rolling-back-a-release)
 
 (For full documentation, see the [plugin site](http://maven.apache.org/maven-release/maven-release-plugin/).)
+
+> **Note:** This document covers the Maven release plugin, but the Maven
+> release plugin may not be the best way to achieve these goals. See these
+> blog posts:
+> 
+> - Stephen Connolly, [A New Way to Do Continuous Delivery with Maven and Jenkins Pipeline](https://www.cloudbees.com/blog/new-way-do-continuous-delivery-maven-and-jenkins-pipeline), CloudBees blog, 2016-05-04
+> - Stephen Connolly, [Apache Maven & Continuous Delivery/Deployment - The DevOptics team's approach](https://www.cloudbees.com/blog/apache-maven-continuous-deliverydeployment-devoptics-teams-approach), CloudBees blog, 2019-03-26
 
 ## Preparing the release
 
@@ -115,11 +122,14 @@ index 239afdf..8044af2 100644
 
 ## Performing the release
 
-Performing a release assumes we use `mvn deploy` to push artifacts to a
-repository and `site-deploy` to build and deploy a standard Maven
-documentation site. Since we don't do either of those things (we use a
-Jenkins post-build step to push artifacts to the repo, and we don't build
-a Maven doc site at all), we don't care about the "perform" phase.
+Performing a release uses `mvn deploy` to push artifacts to a repository
+(in our case Nexus). (By default, it also uses `site-deploy` to build and
+deploy a standard Maven documentation site, which we don't need or want,
+so we'd need to disable that).
+
+Note that only some of our projects currently include a deploy step, and
+some of those are handled by Jenkins rather than by Maven. We would want to
+make this consistent.
 
 ## Rolling back a release
 
