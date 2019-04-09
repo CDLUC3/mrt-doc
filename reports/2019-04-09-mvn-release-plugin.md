@@ -12,16 +12,14 @@ details.
 - [Preparing the release](#preparing-the-release)
 - [Performing the release](#performing-the-release)
 - [Rolling back a release](#rolling-back-a-release)
-- [Open questions](#open-questions)
+- [Useful reading](#useful-reading)
 
 (For full documentation, see the [plugin site](http://maven.apache.org/maven-release/maven-release-plugin/).)
 
 > **Note:** This document covers the Maven release plugin, but the Maven
-> release plugin may not be the best way to achieve these goals. See these
-> blog posts:
+> release plugin may not be the best way to achieve these goals. See 
+> [Useful reading](#useful-reading) below.
 > 
-> - Stephen Connolly, [A New Way to Do Continuous Delivery with Maven and Jenkins Pipeline](https://www.cloudbees.com/blog/new-way-do-continuous-delivery-maven-and-jenkins-pipeline), CloudBees blog, 2016-05-04
-> - Stephen Connolly, [Apache Maven & Continuous Delivery/Deployment - The DevOptics team's approach](https://www.cloudbees.com/blog/apache-maven-continuous-deliverydeployment-devoptics-teams-approach), CloudBees blog, 2019-03-26
 
 ## Preparing the release
 
@@ -205,72 +203,28 @@ At this point, there are a couple of options:
 
 ---
 
-# Open questions
+## Useful reading
 
-Note: currently we have no stable releases, only snapshots.
+Three blog posts from Stephen Connolly of CloudBees:
 
-1. When do we want to deploy snapshots to Nexus?
+- [Should You Deploy -SNAPSHOTs?](https://www.cloudbees.com/blog/should-you-deploy-snapshots), 2012-12-22
 
-   1. continuously? (with every successful build, ≃ every commit)
+  > Define the -SNAPSHOT deployment policy. This is the most important
+  > thing you can do. Let everyone know that -SNAPSHOTs will be deployed,
+  > e.g. every day at 1am GMT, or every Sunday, or every hour, or on every
+  > commit, or whenever Joe decides to push a new -SNAPSHOT to the
+  > repository. I don’t mind so much what policy you pick. Just pick a
+  > policy and let everyone know.
 
-      pros:
-
-      - easy to deploy "current" test environment
-      - snapshot repository matches build server
-      - other developers can always get the latest code
-      - changes that affect other developers can be spotted early
-
-      cons:
-
-      - other developers may see changes unexpectedly
-
-      +/-:
-
-      - treats snapshots as disposable
-
-   1. nightly?
-
-      pros:
-
-      - easy to deploy "nightly build" environment
-      - other developers can always get the latest code
-      - changes that affect other developers can be spotted early
-
-      cons:
-
-      - other developers may see changes unexpectedly
-
-      +/-:
-
-      - treats snapshots as disposable
-      - snapshot repository is a little behind build server
-
-   1. when a developer explicitly decides to?
-
-      pros:
-
-      - developer gets to decide when other developers should
-        see the code
-
-      cons:
-
-      - hard to deploy nightly/current test environment
-      - snapshot repository doesn't match build server
-      - changes that affect other developers may not be spotted
-        till relatively late
-
-      +/-:
-
-      - treats snapshots like stable releases
-
-## Useful links
-
-- Stephen Connolly, ["Should you deploy
-  -SNAPSHOTS?"](https://www.cloudbees.com/blog/should-you-deploy-snapshots)
-- Stephen Connolly, ["A new way to do continuous delivery with Maven and
-  Jenkins
-  Pipeline"](https://www.cloudbees.com/blog/new-way-do-continuous-delivery-maven-and-jenkins-pipeline)
+- [A New Way to Do Continuous Delivery with Maven and Jenkins Pipeline](https://www.cloudbees.com/blog/new-way-do-continuous-delivery-maven-and-jenkins-pipeline), 2016-05-04
 
   > So what we really want to do is actually run a release build for every
   > commit, but have the preparation for a no-op, and only push the tags if
   > the release goes anywhere.
+
+- [Apache Maven & Continuous Delivery/Deployment - The DevOptics team's approach](https://www.cloudbees.com/blog/apache-maven-continuous-deliverydeployment-devoptics-teams-approach), 2019-03-26
+
+  > If you use Apache Maven, you will likely have met the Maven Release
+  > Plugin. This is not so much of a plugin as a toolkit for building
+  > plugins that release and a sample plugin that matches the needs and
+  > requirements of the Apache Maven project for releasing.
