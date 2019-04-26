@@ -1,5 +1,13 @@
 # 2019-04-26 Merritt Versioning Proposal
 
+## Table of Contents
+
+- [Calendar Versioning](#calendar-versioning)
+- [What about semantic versioning?](#what-about-semantic-versioning)
+   - [Arguments against using semantic versioning for Merritt](#arguments-against-using-semantic-versioning-for-merritt)
+- [Calendar versioning with Maven](#calendar-versioning-with-maven)
+- [Transitioning Maven projects to stable version numbers](#transitioning-maven-projects-to-stable-version-numbers)
+
 ## Calendar Versioning
 
 Last year we adopted [calendar versioning](https://calver.org/) for the
