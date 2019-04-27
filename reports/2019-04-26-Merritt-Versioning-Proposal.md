@@ -279,19 +279,19 @@ of the upstream project. To release, one would first stabilize, tag, and
 release the upstream project, then change the downstream project to use the
 new stable release of the downstream project, then tag and release that.
 
-| State                                              | `mrt-core`      | `mrt-inventorysrc` | `mrt-inventorysrc` depends on `mrt-core` |
-| ---                                                | ---             | ---                | ---                                      |
-| initial                                            | 2.0-SNAPSHOT    | 1.0-SNAPSHOT       | 2.0-SNAPSHOT                             |
-| tag/release `mrt-core`                             | 2019.1          | 1.0-SNAPSHOT       | 2.0-SNAPSHOT                             |
-| continue `mrt-core` development                    | 2019.2-SNAPSHOT |                    |                                          |
-| tag/release `mrt-inventorysrc`                     |                 | 2019.1             | 2019.1                                   |
-| continue `mrt-inventorysrc` development            |                 | 2019.2-SNAPSHOT    | 2019.1                                   |
-| co-develop `mrt-core` and `mrt-inventorysrc`       |                 | 2019.2-SNAPSHOT    | 2019.2-SNAPSHOT                          |
-| tag/release `mrt-core`                             | 2019.2          |                    |                                          |
-| continue `mrt-core` development                    | 2019.3-SNAPSHOT |                    |                                          |
-| update `mrt-inventorysrc` to use stable `mrt-core` |                 | 2019.2-SNAPSHOT    | 2019-2                                   |
-| tag/release `mrt-inventorysrc`                     |                 | 2019.2             | 2019.2                                   |
-| continue `mrt-inventorysrc` development            |                 | 2019.3             | 2019.2                                   |
+| State                                              | `mrt-core`      | `mrt-inventorysrc` | depends on `mrt-core` |
+| ---                                                | ---             | ---                | ---                   |
+| initial                                            | 2.0-SNAPSHOT    | 1.0-SNAPSHOT       | 2.0-SNAPSHOT          |
+| tag/release `mrt-core`                             | 2019.1          | 1.0-SNAPSHOT       | 2.0-SNAPSHOT          |
+| continue `mrt-core` development                    | 2019.2-SNAPSHOT |                    |                       |
+| tag/release `mrt-inventorysrc`                     |                 | 2019.1             | 2019.1                |
+| continue `mrt-inventorysrc` development            |                 | 2019.2-SNAPSHOT    | 2019.1                |
+| co-develop `mrt-core` and `mrt-inventorysrc`       |                 | 2019.2-SNAPSHOT    | 2019.2-SNAPSHOT       |
+| tag/release `mrt-core`                             | 2019.2          |                    |                       |
+| continue `mrt-core` development                    | 2019.3-SNAPSHOT |                    |                       |
+| update `mrt-inventorysrc` to use stable `mrt-core` |                 | 2019.2-SNAPSHOT    | 2019-2                |
+| tag/release `mrt-inventorysrc`                     |                 | 2019.2             | 2019.2                |
+| continue `mrt-inventorysrc` development            |                 | 2019.3             | 2019.2                |
 
 Note that there are various Maven tools available for things like making
 sure you don't release anything that depends on a SNAPSHOT version, and for
