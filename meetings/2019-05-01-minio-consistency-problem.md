@@ -60,4 +60,4 @@ command line to:
 
 ![whiteboard][whiteboard]
 
-[whiteboard]: /CDLUC3/mrt-doc/blob/master/meetings/2019-05-01-minio-consistency-problem.jpg
+[whiteboard]: https://raw.githubusercontent.com/CDLUC3/mrt-doc/master/meetings/2019-05-01-minio-consistency-problem.jpg
