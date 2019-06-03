@@ -7,11 +7,9 @@ Contact: [dmoles@dmoles.net](mailto:dmoles@dmoles.net) (UCB email address TBD)
 - Separation date / last day in office: 2019-06-07 (Friday) 
 - First day at UCB: 2019-06-10 (Monday)
 
-## GitHub repositories
+## Current projects
 
-### Current projects
-
-#### UCB/TIND
+### UCB/TIND
 
 - kickoff meeting 2019-03-22
   - [David M's
@@ -20,6 +18,25 @@ Contact: [dmoles@dmoles.net](mailto:dmoles@dmoles.net) (UCB email address TBD)
   notes](https://docs.google.com/document/d/18J34v_fKEj_9MJiC9hEssbyFLeCHyIvqk_qI8DsNlXY/edit)
   (official, much more detailed)
 - code: [mrt-tind-harvester](#mrt-tind-harvester)
+
+## GitHub repositories
+
+- [Active](#active)
+   - [mrt-dashboard](#mrt-dashboard)
+   - [mrt-doc](#mrt-doc)
+   - [mrt-ingest-ruby](#mrt-ingest-ruby)
+   - [mrt-jenkins-docker](#mrt-jenkins-docker)
+   - [mrt-tind-harvester](#mrt-tind-harvester)
+   - [uc3-tools](#uc3-tools)
+      - [minio-concurrency-test](#minio-concurrency-test)
+      - [uc3-build-info](#uc3-build-info)
+      - [uc3-system-info](#uc3-system-info)
+   - [cos](#cos)
+   - [mrt-bits](#mrt-bits)
+   - [mrt-core2 (branch: mrt-release-plugin)](#mrt-core2-branch-mrt-release-plugin)
+- [Archived](#archived)
+   - [eoth-tools](#eoth-tools)
+   - [merritt-aws](#merritt-aws)
 
 ### Active
 
