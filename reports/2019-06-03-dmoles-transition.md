@@ -40,13 +40,16 @@ Contact: [dmoles@dmoles.net](mailto:dmoles@dmoles.net) (UCB email address TBD)
 
 ### Active
 
-#### [mrt-dashboard](https://github.com/CDLUC3/mrt-dashboard)
+#### mrt-dashboard
 
+- Repository: https://github.com/CDLUC3/mrt-dashboard
 - Language: Ruby
 
 Merritt UI.
 
-#### [mrt-doc](https://github.com/CDLUC3/mrt-doc)
+#### mrt-doc
+
+- Repository: https://github.com/CDLUC3/mrt-doc
 
 Merritt documentation repository. In addition to the
 [wiki](https://github.com/CDLUC3/mrt-doc/wiki), includes:
@@ -62,16 +65,18 @@ This project also includes a number of GitHub issues taken from the
 meeting](https://github.com/CDLUC3/mrt-doc/blob/master/meetings/2018-09-25-simplifying-merritt.md)
 (see link for list).
 
-#### [mrt-ingest-ruby](https://github.com/CDLUC3/mrt-ingest-ruby)
+#### mrt-ingest-ruby
 
+- Repository: https://github.com/CDLUC3/mrt-ingest-ruby
 - Language: Ruby
 
 Ruby gem for submitting objects to Merritt Ingest. Note that
 [mrt-tind-harvester](#mrt-tind-harvester) uses the current release, while
 [mrt-dashboard](#mrt-dashboard) is still on an older version.
 
-#### [mrt-jenkins-docker](https://github.com/CDLUC3/mrt-jenkins-docker)
+#### mrt-jenkins-docker
 
+- Repository: https://github.com/CDLUC3/mrt-jenkins-docker
 - Languages: Docker, Python
 
 Dockerfile for a Jenkins continuous integration server using Jenkins
@@ -92,17 +97,21 @@ Jenkins in the future:
   including a parameterized build of [mrt-core2](#mrt-core2) for both JDK 8
   and JDK 11
 
-#### [mrt-tind-harvester](https://github.com/CDLUC3/mrt-tind-harvester)
+#### mrt-tind-harvester
 
+- Repository: https://github.com/CDLUC3/mrt-tind-harvester
 - Language: Ruby
 
 Gem / standalone application for harvesting from the [UCB TIND
 DAMS](#ucb-tind).
 
-#### [uc3-tools](https://github.com/CDLUC3/uc3-tools)
+#### uc3-tools
 
-##### [minio-concurrency-test](https://github.com/CDLUC3/uc3-tools/tree/master/minio-concurrency-test)
+- Repository: https://github.com/CDLUC3/uc3-tools
 
+##### minio-concurrency-test
+
+- Repository: https://github.com/CDLUC3/uc3-tools/tree/master/minio-concurrency-test
 - Language: Python
 
 Test script developed in the hope of replicating Minio consistency issue
@@ -111,8 +120,9 @@ order to rapidly upload files to Minio (or any S3 endpoint) from one client
 and, using SSH, download and verify them from a different client. (The
 issue could not be replicated.)
 
-##### [uc3-build-info](https://github.com/CDLUC3/uc3-tools/tree/master/uc3-build-info)
+##### uc3-build-info
 
+- Repository: https://github.com/CDLUC3/uc3-tools/tree/master/uc3-build-info
 - Language: Go
 
 Utility that uses the GitHub and Jenkins APIs to gather information about
@@ -125,8 +135,9 @@ Used to generate the ["Merritt Maven/Jenkins
 builds"](https://confluence.ucop.edu/pages/viewpage.action?pageId=214958788) 
 Confluence page.
 
-##### [uc3-system-info](https://github.com/CDLUC3/uc3-tools/tree/master/uc3-system-info)
+##### uc3-system-info
 
+- Repository: https://github.com/CDLUC3/uc3-tools/tree/master/uc3-system-info
 - Language: Go
 
 Utility that reads (a local copy of) the
@@ -145,15 +156,17 @@ Can be used to
 a Merritt object in AWS, Minio, or OpenStack/Swift based on an ARK and
 storage node number.
 
-#### [cos](https://github.com/dmolesUC/cos)
+#### cos
 
+- Repository: https://github.com/dmolesUC/cos
 - Language: Go
 
 A tool for testing and validating cloud object storage. Could be a model
 for a streaming audit or replication service requiring no local storage.
 
-#### [mrt-bits](https://github.com/dmolesUC/mrt-bits)
+#### mrt-bits
 
+- Repository: https://github.com/dmolesUC/mrt-bits
 - Language: Go
 
 An experimental tool for streaming access to stored Merritt content.
@@ -163,7 +176,9 @@ for streaming entire objects as an uncompressed ZIP file, including
 precalculating the expected size of the ZIP archive. Could be a model for
 an improved Merritt Express.
 
-#### mrt-core2 (branch: [mrt-release-plugin](https://github.com/CDLUC3/mrt-core2/tree/mrt-release-plugin))
+#### mrt-core2 (branch: mrt-release-plugin)
+
+- Repository: https://github.com/CDLUC3/mrt-core2/tree/mrt-release-plugin
 
 Updates [mrt-core2](https://github.com/CDLUC3/mrt-core2/) to:
 
@@ -177,16 +192,18 @@ Updates [mrt-core2](https://github.com/CDLUC3/mrt-core2/) to:
 
 ### Archived
 
-#### [eoth-tools](https://github.com/CDLUC3/eoth-tools)
+#### eoth-tools
 
+- Repository: https://github.com/CDLUC3/eoth-tools
 - Language: Scala
 
 Tools for mucking around with [eothxtf](https://github.com/CDLUC3/eothxtf).
 Mostly used for identifying systematic problems in and differences between
 2012 and 2008 EOTH crawls.
 
-#### [merritt-aws](https://github.com/CDLUC3/merritt-aws)
+#### merritt-aws
 
+- Repository: https://github.com/CDLUC3/merritt-aws
 - Language: Python (Jupyter)
 
 [Jupyter Notebook](https://jupyter.org/) environment for analyzing Merritt
