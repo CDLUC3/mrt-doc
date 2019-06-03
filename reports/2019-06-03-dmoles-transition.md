@@ -195,7 +195,7 @@ and modifying the
 [`__read_costs`](https://github.com/CDLUC3/merritt-aws/blob/master/src/costs.py)
 function to read the new files.
 
-### Archived
+### Other
 
 Repositories not transferred to CDLUC3, that might still be of interest.
 
@@ -212,10 +212,10 @@ for a streaming audit or replication service requiring no local storage.
 - Repository: https://github.com/dmolesUC/mrt-bits
 - Language: Go
 
-An experimental tool for streaming access to stored Merritt content.
-Includes [proof of concept
+An experimental tool for streaming access to stored cloud content. Includes
+[proof of concept
 code](https://github.com/dmolesUC/mrt-bits/blob/master/operations/archive.go)
-for streaming entire objects as an uncompressed ZIP file, including
-precalculating the expected size of the ZIP archive. Could be a model for
-an improved Merritt Express.
+for streaming entire objects (or other cloud "subdirectories") as an
+uncompressed ZIP file, including precalculating the expected size of the
+ZIP archive. Could be a model for an improved Merritt Express.
 
