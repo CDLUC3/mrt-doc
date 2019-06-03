@@ -22,6 +22,7 @@ Contact: [dmoles@dmoles.net](mailto:dmoles@dmoles.net) (UCB email address TBD)
 ## GitHub repositories
 
 - [Active](#active)
+   - [mrt-core2 (branch: mrt-release-plugin)](#mrt-core2-branch-mrt-release-plugin)
    - [mrt-dashboard](#mrt-dashboard)
    - [mrt-doc](#mrt-doc)
    - [mrt-ingest-ruby](#mrt-ingest-ruby)
@@ -31,14 +32,28 @@ Contact: [dmoles@dmoles.net](mailto:dmoles@dmoles.net) (UCB email address TBD)
       - [minio-concurrency-test](#minio-concurrency-test)
       - [uc3-build-info](#uc3-build-info)
       - [uc3-system-info](#uc3-system-info)
-   - [cos](#cos)
-   - [mrt-bits](#mrt-bits)
-   - [mrt-core2 (branch: mrt-release-plugin)](#mrt-core2-branch-mrt-release-plugin)
 - [Archived](#archived)
    - [eoth-tools](#eoth-tools)
    - [merritt-aws](#merritt-aws)
+- [Other](#other)
+   - [cos](#cos)
+   - [mrt-bits](#mrt-bits)
 
 ### Active
+
+#### mrt-core2 (branch: mrt-release-plugin)
+
+- Repository: https://github.com/CDLUC3/mrt-core2/tree/mrt-release-plugin
+
+Updates [mrt-core2](https://github.com/CDLUC3/mrt-core2/) to:
+
+- explicitly import JAXB (no longer part of JDK distribution; needed for
+  JDK 11)
+- inherit properties from the [parent
+  POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Project_Inheritance)
+- add a [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/)
+- support the [Maven release
+  plugin](https://github.com/CDLUC3/mrt-doc/blob/master/reports/2019-04-09-mvn-release-plugin.md)
 
 #### mrt-dashboard
 
@@ -156,40 +171,6 @@ Can be used to
 a Merritt object in AWS, Minio, or OpenStack/Swift based on an ARK and
 storage node number.
 
-#### cos
-
-- Repository: https://github.com/dmolesUC/cos
-- Language: Go
-
-A tool for testing and validating cloud object storage. Could be a model
-for a streaming audit or replication service requiring no local storage.
-
-#### mrt-bits
-
-- Repository: https://github.com/dmolesUC/mrt-bits
-- Language: Go
-
-An experimental tool for streaming access to stored Merritt content.
-Includes [proof of concept
-code](https://github.com/dmolesUC/mrt-bits/blob/master/operations/archive.go)
-for streaming entire objects as an uncompressed ZIP file, including
-precalculating the expected size of the ZIP archive. Could be a model for
-an improved Merritt Express.
-
-#### mrt-core2 (branch: mrt-release-plugin)
-
-- Repository: https://github.com/CDLUC3/mrt-core2/tree/mrt-release-plugin
-
-Updates [mrt-core2](https://github.com/CDLUC3/mrt-core2/) to:
-
-- explicitly import JAXB (no longer part of JDK distribution; needed for
-  JDK 11)
-- inherit properties from the [parent
-  POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Project_Inheritance)
-- add a [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/)
-- support the [Maven release
-  plugin](https://github.com/CDLUC3/mrt-doc/blob/master/reports/2019-04-09-mvn-release-plugin.md)
-
 ### Archived
 
 #### eoth-tools
@@ -213,3 +194,28 @@ by adding CSV files to the
 and modifying the
 [`__read_costs`](https://github.com/CDLUC3/merritt-aws/blob/master/src/costs.py)
 function to read the new files.
+
+### Archived
+
+Repositories not transferred to CDLUC3, that might still be of interest.
+
+#### cos
+
+- Repository: https://github.com/dmolesUC/cos
+- Language: Go
+
+A tool for testing and validating cloud object storage. Could be a model
+for a streaming audit or replication service requiring no local storage.
+
+#### mrt-bits
+
+- Repository: https://github.com/dmolesUC/mrt-bits
+- Language: Go
+
+An experimental tool for streaming access to stored Merritt content.
+Includes [proof of concept
+code](https://github.com/dmolesUC/mrt-bits/blob/master/operations/archive.go)
+for streaming entire objects as an uncompressed ZIP file, including
+precalculating the expected size of the ZIP archive. Could be a model for
+an improved Merritt Express.
+
