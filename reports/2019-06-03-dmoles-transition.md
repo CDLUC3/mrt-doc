@@ -28,6 +28,7 @@
    - [Merritt build/deployment improvements](#merritt-builddeployment-improvements)
    - [Decommissioning Merritt dev environments](#decommissioning-merritt-dev-environments)
    - [Simplifying Merritt](#simplifying-merritt)
+   - [JDK 11 transition](https://github.com/CDLUC3/mrt-doc/wiki/JDK-11-Roadmap)
 
 ### Active
 
