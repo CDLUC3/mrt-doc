@@ -1,15 +1,37 @@
 # David Moles: Transition (2019-06-03)
 
-Contact: [dmoles@dmoles.net](mailto:dmoles@dmoles.net) (UCB email address TBD)
-
-## Schedule
-
 - Separation date / last day in office: 2019-06-07 (Friday) 
 - First day at UCB: 2019-06-10 (Monday)
+- Contact: [dmoles@dmoles.net](mailto:dmoles@dmoles.net) (UCB email address TBD)
 
-## Current projects
+## Table of contents
 
-### UCB/TIND
+- [Projects](#projects)
+   - [Active](#active)
+   - [Recently completed](#recently-completed)
+   - [On hold](#on-hold)
+- [GitHub repositories](#github-repositories)
+   - [Active](#active-1)
+   - [Archived](#archived)
+   - [Other](#other)
+
+---
+
+## Projects
+
+- [Active](#active)
+   - [UCB/TIND](#ucbtind)
+   - [New Atom feeds](#new-atom-feeds)
+- [Recently completed](#recently-completed)
+   - [Minio evaluation](#minio-evaluation)
+- [On hold](#on-hold)
+   - [Merritt build/deployment improvements](#merritt-builddeployment-improvements)
+   - [Decommissioning Merritt dev environments](#decommissioning-merritt-dev-environments)
+   - [Simplifying Merritt](#simplifying-merritt)
+
+### Active
+
+#### UCB/TIND
 
 - kickoff meeting 2019-03-22
   - [David M's
@@ -18,6 +40,40 @@ Contact: [dmoles@dmoles.net](mailto:dmoles@dmoles.net) (UCB email address TBD)
   notes](https://docs.google.com/document/d/18J34v_fKEj_9MJiC9hEssbyFLeCHyIvqk_qI8DsNlXY/edit)
   (official, much more detailed)
 - code: [mrt-tind-harvester](#mrt-tind-harvester)
+
+#### New Atom feeds
+
+- [new Atom feed shell scripts](https://github.com/cdlib/mrt-dashboard-config/tree/master/atom/bin)
+- [new Rake tasks for generating scripts](https://github.com/CDLUC3/mrt-dashboard/blob/master/lib/tasks/atom.rake)
+
+### Recently completed
+
+#### Minio evaluation
+
+- [Minio+QF2 Test Results](https://github.com/CDLUC3/mrt-doc/blob/master/reports/2019-03-04-minio-qumulo-sdsc.md)
+
+### On hold
+
+#### Merritt build/deployment improvements
+
+- [Objectives](https://github.com/CDLUC3/mrt-doc/blob/master/meetings/2019-04-08-build-deployment.md) (2019-04-08)
+- [Maven release plugin notes](https://github.com/CDLUC3/mrt-doc/blob/master/reports/2019-04-09-mvn-release-plugin.md) (2019-04-09)
+- [Proposed tasks](https://github.com/CDLUC3/mrt-doc/blob/master/meetings/2019-04-10-merritt-build-tasks.md) (2019-04-10)
+- [Merritt versioning proposal](https://github.com/CDLUC3/mrt-doc/blob/master/reports/2019-04-26-Merritt-Versioning-Proposal.md) (2019-04-26)
+
+#### Decommissioning Merritt dev environments
+
+- [Meeting notes](https://github.com/CDLUC3/mrt-doc/blob/master/meetings/2018-10-17-merritt-dev-environments.md) (2018-10-17)
+- Open issue for Linux 2 migration: stage should have the same load-balancing configuration as production
+- **Q:** Is David L. still using some dev servers for testing?
+
+#### Simplifying Merritt
+
+- [Preparatory notes](https://github.com/CDLUC3/mrt-doc/blob/master/meetings/2018-09-24-simplifying-merritt-prep.md) (2018-09-24)
+- [Meeting notes](https://github.com/CDLUC3/mrt-doc/blob/master/meetings/2018-09-25-simplifying-merritt.md) (2018-09-25)
+- Resulting [GitHub issues](https://github.com/CDLUC3/mrt-doc/blob/master/meetings/2018-09-25-simplifying-merritt.md)
+
+---
 
 ## GitHub repositories
 
@@ -218,4 +274,6 @@ code](https://github.com/dmolesUC/mrt-bits/blob/master/operations/archive.go)
 for streaming entire objects (or other cloud "subdirectories") as an
 uncompressed ZIP file, including precalculating the expected size of the
 ZIP archive. Could be a model for an improved Merritt Express.
+
+---
 
