@@ -36,6 +36,10 @@ Collected links with potential relevance to Merritt.
   > use for working with models in a general way, allowing adopters to
   > easily use custom models with any tool.
 
+- [Cursive Data Model](https://docs.google.com/document/d/1ZkwoRjEETaceu2OvlZ8w1qYmunoLlhAUSnmPHBjPzFs/edit#heading=h.cuv4lubqjk0k)
+
+  (Stephen's proposal for a Merritt follow-on data model)
+
 - [Oxford Common File System Layout](https://ocfl.io/)
 
   > This Oxford Common File Layout (OCFL) specification describes an
