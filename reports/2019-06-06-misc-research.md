@@ -48,6 +48,15 @@ Collected links with potential relevance to Merritt.
   > promote long-term object management best practices within digital
   > repositories.
 
+- [Full draft of “Theory & Craft of Digital Preservation”](http://www.trevorowens.org/2017/06/full-draft-of-theory-craft-of-digital-preservation/)
+
+  > This book serves as both a basic introduction to the issues and
+  > practices of digital preservation and a theoretical framework for
+  > deliberately and intentionally approaching digital preservation as a
+  > field with multiple lineages. The intended audience is current and
+  > emerging library, archive, and museum professionals as well as the
+  > scholars and researchers who interface with these fields.
+
 ## Web archiving
 
 - [Technical documentation for the UK Web Archive](https://github.com/ukwa/ukwa-documentation/blob/master/README.md)
