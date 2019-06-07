@@ -40,6 +40,13 @@ Collected links with potential relevance to Merritt.
 
   (Stephen's proposal for a Merritt follow-on data model)
 
+- [“Principles for curation infrastructure”](https://docs.google.com/spreadsheets/d/1o1f1EjxCmgBOa7okJafp7a5jJvzLaRPW30ETQ10RX54/edit#gid=2142084961)
+
+  (Stephen's spreadsheet “to make explicit associations between fundamental
+  assumptions and the consequent goals implied by those assumptions,
+  strategies for meeting those goals, and (ultimately) technologies that
+  embody or enable those strategies.“)
+
 - [Oxford Common File System Layout](https://ocfl.io/)
 
   > This Oxford Common File Layout (OCFL) specification describes an
@@ -56,6 +63,22 @@ Collected links with potential relevance to Merritt.
   > field with multiple lineages. The intended audience is current and
   > emerging library, archive, and museum professionals as well as the
   > scholars and researchers who interface with these fields.
+
+- [“But that's not preservation!” Notes on preservation's divergent lineages](http://www.trevorowens.org/2016/07/but-thats-not-preservation-notes-on-preservations-divergent-lineages/)
+
+  > Preservation means a lot of different things in different contexts.
+  > Each of those contexts has its own history. Those histories are tied up
+  > in the changing nature of the mediums and objects for which each
+  > conception of preservation and conservation was developed. All too
+  > often, discussions of digital preservation start by contrasting digital
+  > media to analog media. This contrast forces a series of false
+  > dichotomies.
+
+- [Merritt future feature list](https://docs.google.com/spreadsheets/d/1Tb9Cp7juqXbhzNPj8SJl9pFTCgNVS41Qx64IC7QZEH0/edit#gid=0)
+
+  (Based on [“Merritt future
+  brainstorming”](https://github.com/CDLUC3/mrt-doc/blob/master/meetings/2016-07-06-merritt-future-brainstorming.md)
+  meeting)
 
 ## Web archiving
 
@@ -95,7 +118,45 @@ Collected links with potential relevance to Merritt.
   > teams, raising the importance of technical excellence, and organizing
   > our teams around products (rather than projects).
 
+## Architecture
+
+- [“How do you cut a monolith in half?”](https://programmingisterrible.com/post/162346490883/how-do-you-cut-a-monolith-in-half)
+
+  > When you cut a larger service apart, where you cut depends on latency,
+  > resources, and access to state, but it also depends on error handling,
+  > availably and recovery processes. It depends, but you probably don’t
+  > want to depend on a message broker. …
+  >
+  > In practice, a message broker is a service that transforms network
+  > errors and machine failures into filled disks. Then you add more disks.
+  > …
+  >
+  > Be warned: A distributed system is something you can draw on a
+  > whiteboard pretty quickly, but it’ll take hours to explain how all the
+  > pieces interact.
+
+- [“Blockchain as the infrastructure for science?”](https://blog.dshr.org/2017/05/blockchain-as-infrastructure-for-science.html?m=1)
+
+  > I understand the theoretical advantages of peer-to-peer (P2P)
+  > technology. But after nearly two decades researching, designing,
+  > building, deploying and operating P2P systems I have learned a lot
+  > about how hard it is for these theoretical advantages actually to be
+  > obtained at scale, in the real world, for the long term.
+
+
 ## Useful technologies
+
+- [“AWS tips I wish I'd known before I started”](https://wblinks.com/notes/aws-tips-i-wish-id-known-before-i-started/)
+
+  > Store no application state on your servers. … 
+  >
+  > Store extra information in your logs. …
+  >
+  > Disable SSH access to all servers. … If you have to SSH into your
+  > servers, then your automation has failed. …
+  >
+  > Servers are ephemeral, you don't care about them. You only care about
+  > the service as a whole.
 
 - [Containerizing Continuous Delivery in
   Java](https://proquest.safaribooksonline.com/book/programming/java/9781491986851)
