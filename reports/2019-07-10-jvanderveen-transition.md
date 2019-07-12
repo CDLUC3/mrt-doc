@@ -9,16 +9,18 @@
 - add to below
   - notes for reboot
   - notes for triaging nagios problems
-  
+  - List of Puppet branches and their uses
+- add to github:
+  - ~/tools/aws/logged_status 
+  - ~/tools/check_mrtstore.pl
 
 - [Projects](#projects)
    - [Active](#active)
+   - [Patch/reboot notes](2019-07-12-patch-notes.txt)
    - [Recently completed](#recently-completed)
    - [On hold](#on-hold)
 - [GitHub repositories](#github-repositories)
-   - [Active](#active-1)
-   - [Archived](#archived)
-   - [Other](#other)
+   - [UC3 System Inventory](#uc3-system-inventory)
 
 ---
 
@@ -42,6 +44,7 @@
 #### EFS Merritt temp space
 
 #### Merritt development servers
+(Docker servers for Merritt developers)
 
 
 ### Recently completed
@@ -75,25 +78,12 @@
 
 ## GitHub repositories
 
-- [Active](#active)
-   - [mrt-core2 (branch: mrt-release-plugin)](#mrt-core2-branch-mrt-release-plugin)
-   - [mrt-dashboard](#mrt-dashboard)
-   - [mrt-doc](#mrt-doc)
-   - [mrt-ingest-ruby](#mrt-ingest-ruby)
-   - [mrt-jenkins-docker](#mrt-jenkins-docker)
-   - [mrt-tind-harvester](#mrt-tind-harvester)
-   - [uc3-tools](#uc3-tools)
-      - [minio-concurrency-test](#minio-concurrency-test)
-      - [uc3-build-info](#uc3-build-info)
-      - [uc3-system-info](#uc3-system-info)
-- [Archived](#archived)
-   - [eoth-tools](#eoth-tools)
-   - [merritt-aws](#merritt-aws)
-- [Other](#other)
-   - [cos](#cos)
-   - [mrt-bits](#mrt-bits)
+### UC3 System Inventory
 
-### Active
+- Repository: [https://github.com/cdlib/uc3_system_inventory/issues](https://github.com/cdlib/uc3_system_inventory/issues)
+- This is a neat Capistrano task that Mark Reyes came up with, to which I have
+  added a bunch of tasks.
+- Incomplete/unprioritized work is listed in [issues](https://github.com/cdlib/uc3_system_inventory/issues)
 
 #### mrt-core2 (branch: mrt-release-plugin)
 
