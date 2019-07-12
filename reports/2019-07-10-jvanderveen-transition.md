@@ -14,6 +14,7 @@
    - [Merritt development servers](#merritt-development-servers)
 - [GitHub repositories](#github-repositories)
    - [UC3 System Inventory](#uc3-system-inventory)
+   - [DevOps Kit](#devops-kit)
 
 ---
 
@@ -55,6 +56,9 @@ Software requirements need to be nailed down with David Loy (& others?)
   added a bunch of tasks.
 - Incomplete/unprioritized work is listed in [issues](https://github.com/cdlib/uc3_system_inventory/issues)
 
+### DevOps Kit
+
+- Repository: [https://github.com/cdlib/devops-kit](https://github.com/cdlib/devops-kit)
 
 ### uc3-tools
 
