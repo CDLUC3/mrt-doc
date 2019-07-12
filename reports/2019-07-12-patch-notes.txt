@@ -1,0 +1,75 @@
+PRE-PATCH CHECKS
+
+Record list of stopped systems -- these need to be started up for patching, then stopped afterwards
+
+$ ssh uc3-aws2-ops
+$ ~jvanderv/tools/aws/logged_status
+$ grep stopped ~jvanderv/tmp/uc3_ec2_status.$(date +'%Y%m%d')
+
+
+Start all stopped systems
+
+(still on the ops server)
+$ sudo su - uc3aws
+$ grep stopped ~jvanderv/tmp/uc3_ec2_status.$(date +'%Y%m%d') | awk '{print $1}' | xargs echo
+(copy/paste the list of servers into this command in place of '@')
+$ ./ec2-manual.bash @ start
+NB: The EC2 scripts sometimes have trouble if you invoke them via a shell loop due to temp files.
+Check that all systems have started. (This was an issue during the North American eclipse, but easy enough to check.)
+$ grep stopped ~jvanderv/tmp/uc3_ec2_status.$(date +'%Y%m%d') | awk '{print $1}' | xargs ./ec2-status.bash
+
+
+Merritt/Dash/Dryad checks
+
+Storage servers -- Check all dev, stg, prd servers for the past 3 days (default "window" per Merritt team), adjust earlier if "3 days ago" is a weekend, holiday, or script returns a "No data" error. (An old example shown below.)
+
+$ ssh uc3-mrtstore2-dev
+$ tools/check_mrtstore.pl
+No data from 'grep -A400000 ^19-Aug-2017 /apps/dpr2store/apps/storage35121/tomcat/logs/catalina.out'
+$ tools/check_mrtstore.pl -t '4 days ago'
+ASYNC jobs will have to be manually checked, e.g. look for email (CC's) telling the requestor that download is ready.
+INCOMPLETE entries will have to be manually checked. Look at catalina logs.
+Deleted ARKs have only happened once, but required a lot of manual checking.
+
+Repeat the above process on all storage servers.
+
+Ingest servers -- Look for active ingest jobs less than 7 days old.
+$ for h in uc3-mrtingest1-dev uc3-ingest01-stg uc3-ingest02-stg uc3-ingest01-prd uc3-ingest02-prd uc3-ingest03-prd; do echo $h; ssh $h 'ls -dlt $(find ~dpr2/ingest_home/queue/ -name producer -type d -mtime -7)'; echo; done
+uc3-mrtingest1-dev
+drwxr-xr-x 19 jvanderv users 4096 May 11 07:52 .
+(snip)
+
+(The '.' dirs are due to find(1) returning nothing, and 'ls -dlt ' having no explicit operands -- this is exactly what you want to see, for each ingest server in the list.)
+
+Check all Dash/Dryad servers for active submissions
+
+ssh to each server (dev, stg, prd) and run:
+$ </dash2/init.d/in-progress.dash2 sudo su - dash2
+(Doesn't follow Unix status return convention, need to manually check output)
+
+
+PATCHING
+
+Most dev and stg systems are stopped overnight. Patch all dev and stg systems in the afternoon the day before patching production. General steps for patching dev/stg/prd:
+
+#1 Notify UC3 and IAS
+#2 Schedule Nagios downtime for all services of the environment e.g. https://nagios.cdlib.org/nagios/cgi-bin/cmd.cgi?cmd_typ=85&hostgroup=uc3-dev
+#3 Test patch command (on Capistrano system, uc3-mrtingest1-dev): cap development yum:check-update
+#4 Patch: cap development yum:update
+#5 Reboot -- See REBOOTING below
+#6 Wait 10 minutes, check for alerts on https://nagios.cdlib.org/ (You will not receive email alerts, due to downtime. You must check manually.)
+#7 Notify UC3 and IAS of completion
+
+
+REBOOTING
+
+For dev and stg, you can patch late in the afternoon (~16:00-17:00?), then wait for the 5x12 schedule to shut down most dev/stg machines at 19:00. After 19:00, manually reboot any dev/stg systems that are still running. To see what is running:
+
+$ ssh uc3-aws2-ops
+$ ~jvanderv/tools/aws/logged_status
+$ grep running ~jvanderv/tmp/uc3_ec2_status.$(date +'%Y%m%d') | grep -e -dev -e -stg
+
+Microservice ordering: reboot ldap servers, then storage, then UI servers, then everything except web. Check Dash UI server for in-progress submissions before rebooting EACH Merritt storage (OR INGEST?) server (in same environment)! All storage servers should be quiescent before rebooting web server.
+
+Dash: check for active submissions via ~dash2/init.d/ reboot UI, once it disconnects reboot solr. The solr server should come up before UI+shibboleth.
+
