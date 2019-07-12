@@ -6,17 +6,12 @@
 
 ## Table of contents
 
-- add to below
-  - notes for reboot
-  - notes for triaging nagios problems
-  - List of Puppet branches and their uses
-- add to github:
-  - ~/tools/aws/logged_status 
-  - ~/tools/check_mrtstore.pl
-
 - [Projects](#projects)
-   - [Active](#active)
    - [Patch/reboot notes](2019-07-12-patch-notes.txt)
+   - [Triaging Nagios alerts](#triaging-nagios-alerts)
+   - [Linux2 migration](#linux2-migration)
+   - [EFS Merritt temp space](#efs-merritt-temp-space)
+   - [Merritt development servers](#merritt-development-servers)
 - [GitHub repositories](#github-repositories)
    - [UC3 System Inventory](#uc3-system-inventory)
 
@@ -24,22 +19,34 @@
 
 ## Projects
 
-- [Active](#active)
-
-### Active
+### Triaging Nagios alerts
 
 ### Linux2 migration
 
+Puppet branches
+
 ### EFS Merritt temp space
 
+For use case similar to `/tmp`, the trick with EFS is to use provisioned I/O.
+To calculate how many IO operations to pay for, we need to know:
+
+- How large is the largest expected object? (Or collection, as appropriate.)
+- What is the maximum time we can affort for processing the largest object?
+
+See the spreadsheet (link!) used for Dryad.
+
 ### Merritt development servers
-(Docker servers for Merritt developers)
 
-
+Docker servers for Merritt developers.
+Software requirements need to be nailed down with David Loy (& others?)
 
 ---
 
 ## GitHub repositories
+
+- add to github:
+  - ~/tools/aws/logged_status
+  - ~/tools/check_mrtstore.pl
 
 ### UC3 System Inventory
 
