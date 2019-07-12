@@ -12,6 +12,7 @@
    - [Linux2 migration](#linux2-migration)
    - [EFS Merritt temp space](#efs-merritt-temp-space)
    - [Merritt development servers](#merritt-development-servers)
+   - [Personal Cron Tabs](#personal-crontabs)
 - [GitHub repositories](#github-repositories)
    - [UC3 System Inventory](#uc3-system-inventory)
    - [DevOps Kit](#devops-kit)
@@ -59,6 +60,25 @@ Software requirements need to be nailed down with David Loy (& others?)
 ### DevOps Kit
 
 - Repository: [https://github.com/cdlib/devops-kit](https://github.com/cdlib/devops-kit)
+
+### Personal Crontabs
+Entries from my personal crontab on uc3-mrtingest1-dev, the update server.
+Whoever runs the UC3 inventory report will need credentials for that GitHub account.
+Somebody with read-access to the Puppet repo will need to run the `git_pull.cron`.
+
+```
+[ Fri Jul 12, 14:11 jvanderv@uc3-mrtingest1-dev:~ ]
+$ crontab -l
+MAILTO=jim.vanderveen@ucop.edu
+
+# Run UC3 inventory report every Tuesday morning.
+# 15 7 * * Tue /home/jvanderv/git_and_hub/uc3_system_inventory/run_reports.sh
+15 7 * * Tue $HOME/git_and_hub/uc3_system_inventory/run_reports.sh
+
+# Update puppet read-only working copy weekday evenings.
+45 17 * * 1-5 $HOME/puppet-read-only/git_pull.cron
+```
+
 
 ### uc3-tools
 
