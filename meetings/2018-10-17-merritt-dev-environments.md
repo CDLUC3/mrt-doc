@@ -75,23 +75,21 @@ they all just be `dpr2`?
 - would replace cloudhost+docker test environment from `dat1-dev`
 - t2.small (cf. dat1-dev)
 
-### `uc3-mrtsandbox1-stg`
+### `uc3-sandbox2-stg`
 
 - daily development machine for David L
-- similar specs to `uc3-mrtreplic2-dev`
-  - could it be a t2.medium (cf. `uc3-mrtaudit1-prd`, `uc3-mrtreplic2-stg`) 
-    instead of c4.large?
+- c4.large
 - copy files over from `uc3-mrtreplic2-dev` (David L should do this, or at
   least supervise)
+- up 24/7 currently to support IDE setup 
+- supports Docker; managed by dpr2 role acct
+- dpr2 and replic2 role accounts
+- StopStart tag is removed so the system is running processes during off hours. 
+- Uc3-mrtsandbox2-stg will have 2 EBS volumes with dpr2 and replic2 roles accounts assigned to it.
+-- Each role will have 129GB of space dedicated to it.
+-- S3 bucket access will be identical to uc3-mrtreplic2-dev
+- Note: We will check up on resource usage via Librato overtime and may adjust size accordingly.
 
-**Q:** does `uc3-mrtsandbox1-stg` need to be up 24/7, or can it be
-on-demand?
-
-### `uc3-mrtsandbox2-stg`
-
-- sandbox machine for David M
-- similar specs to `uc3-mrtdat1-dev`
-- can be on-demand
 
 ## Plan
 
