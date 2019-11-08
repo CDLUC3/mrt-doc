@@ -53,3 +53,5 @@ This idea came up in our retrospective conversation on 11/6/2019.
   
 ## Locate source code for sf.net jar files
 - Look at docker build to see how these are included from maven repo
+
+## Create Docker Stack for Dryad + Merritt
