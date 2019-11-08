@@ -47,3 +47,9 @@ This idea came up in our retrospective conversation on 11/6/2019.
 
 ## Explore AWS SSM Parameter Store for Microservice properties
 - https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html
+- Create standard mechanism for property deployment
+  - not dependent on maven build
+  - allow for easy insertion at runtime (docker volume/env override)
+  
+## Locate source code for sf.net jar files
+- Look at docker build to see how these are included from maven repo
