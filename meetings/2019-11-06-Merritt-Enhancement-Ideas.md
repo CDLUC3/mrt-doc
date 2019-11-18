@@ -55,3 +55,11 @@ This idea came up in our retrospective conversation on 11/6/2019.
 - Look at docker build to see how these are included from maven repo
 
 ## Create Docker Stack for Dryad + Merritt
+
+## Make smtp server configurable
+This may be needed for Docker end to end testing.
+- UI defaults to localhost (unverified)
+- Hard coded in ingest code.
+  - Consider config parameter
+- Storage service seems to use a config property
+
