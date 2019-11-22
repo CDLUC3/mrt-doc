@@ -36,6 +36,7 @@ Is there a suitable backup repository to utilize?
 
 ## Standardize service log entries
 - Output standard log headers: service, date, time, log level, ark (where applicable), message
+- Implement consistent operational controls to turn on/off debug levels
 - Explore AWS options for log consolidation and query
 
 ## Reverse Manifest/Download Manifest
