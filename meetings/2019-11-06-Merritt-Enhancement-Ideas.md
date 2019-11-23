@@ -37,6 +37,10 @@ Is there a suitable backup repository to utilize?
 ## Standardize service log entries
 - Output standard log headers: service, date, time, log level, ark (where applicable), message
 - Implement consistent operational controls to turn on/off debug levels
+  - Storage log levels (compiled props)
+  - Storage hard coded (DEBUG=false)
+  - Want same mechanism for Java and Ruby
+  - Ingest - have not explored mechanism
 - Explore AWS options for log consolidation and query
 
 ## Reverse Manifest/Download Manifest
