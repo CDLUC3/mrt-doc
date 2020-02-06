@@ -10,8 +10,6 @@
 - GET manifest/{objectid}
 - POST service/{setType}
   - Start, Shutown, Pause
-- ~DELETE delete/{nodeS}/{objectIDS}~
-  - Commented out
 - DELETE invdelete/{nodeS}/{objectIDS}
 - DELETE deletesecondary/{objectIDS}
 - POST add/{objectIDS}
@@ -21,6 +19,10 @@
 - POST addmap/{collectionIDS}/{nodeS}
 - GET match/{sourceNode}/{targetNode}/{objectid}
 - GET match/{sourceNode}/{objectid}
+
+#### No longer applicable
+- DELETE delete/{nodeS}/{objectIDS}
+  - Commented out
 
 ## [mrt_store](https://github.com/CDLUC3/mrt-store/blob/master/store-src/src/main/java/org/cdlib/mrt/store/app/jersey/store/JerseyStorage.java)
 
@@ -154,9 +156,9 @@
 - GET d/:object/:version/\*file
   - file#download
 - GET u/:object
-  - object#download_user
+  - object#download_user (producer files only)
 - GET u/:object/:version
-  - version#download_user
+  - version#download_user (producer files only)
 - GET dm/:object
   - object#download_manifest
 - GET s/:group
@@ -176,5 +178,27 @@
 
 ## [mrt-oai](https://github.com/CDLUC3/mrt-oai/blob/master/oai-src/src/main/java/org/cdlib/mrt/oai/app/jersey/oai/JerseyOAIMrt.java)
 
-- GET /oai/v2
+- GET /oai/v2?verb={verb}
+  - Identify, ListIdentifiers, ListSets, ListRecords, ListMetadataFormats
 - GET state
+
+## mrt-express
+
+- dl/{ark}/{file}
+- dv/{ver}/{ark}/{file}
+
+#### Signed URL proof of concept
+- pdl/{ark}/{file}
+- pdv/{ver}/{ark}/{file}
+
+## Dryad Use of Merritt API's
+- sword
+- oai
+- express
+  - /dl/{ark}/{file}
+  - /dv/{ver}/{ark}/{file}
+- dashboard
+  - /d/{object}
+  - /d/{object}/{version}
+  - /u/{object}
+  - /u/{object}/{version}
