@@ -60,4 +60,10 @@
 - api presign-obj/:object/:version/:file?format=:format
   - replaces ui: presign-obj/:object/:version/:file?format=:format  
 - api presign-obj-by-token/:token
-  - replaces ui: presign-obj-by-token/:token  
+  - replaces ui: presign-obj-by-token/:token
+
+## Phase 5
+
+## Documentation Note
+
+As each phase is completed, the relevant endpoint items should be migrated to [README.md](README.md).  
