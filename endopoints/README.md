@@ -58,7 +58,7 @@
 - POST producerasync/{nodeid}/{objectid}/{versionid}
 - POST producerasync/{nodeid}/{objectid}
 
-## [mrt_audit](https://github.com/CDLUC3/mrt-audit/blob/master/audit-src/src/main/java/org/cdlib/mrt/audit/app/jersey/fixity/JerseyFixity.java)
+## [mrt_audit](https://github.com/CDLUC3/mrt-audit/blob/master/audit-src/src/main/java/org/cdlib/mrt/audit/app/jersey/fixity/JerseyFixity.java)
 
 - GET /state
 - GET /status
