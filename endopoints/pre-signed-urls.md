@@ -39,7 +39,3 @@
   - replaces ui: d/:object/:version/:file  
 - api presign-obj/:object/:version/:file?format=:format
   - replaces ui: presign-obj/:object/:version/:file?format=:format  
-
-
-
--
