@@ -59,3 +59,5 @@
   - replaces ui: d/:object/:version/:file  
 - api presign-obj/:object/:version/:file?format=:format
   - replaces ui: presign-obj/:object/:version/:file?format=:format  
+- api presign-obj-by-token/:token
+  - replaces ui: presign-obj-by-token/:token  
