@@ -1,3 +1,23 @@
+Presigned URL Phased Implementation
+- Phase 1 - Provide signed URL delivery for file objects
+  - Retain the endpoint for direct object download.
+  - Open Context would likely need to continue with this interface.
+  - Dryad and Merritt UI always ask for signed URL for files.
+  - When unsupported (Pairtree, UNM), redirect to the direct download URL.
+  - Identify remaining Merritt Express clients to determine if signed URL's could substitute
+- Phase 2 - Provide signed URL delivery for objects/versions
+  - This makes all object/version downloads effectively async.
+  - Deprecate email notification for objects/versions in Dryad.
+  - Determine the need for email notification in the Merritt UI.
+  - Client applications will poll the storage service to determine when a signed URL is ready.
+- Phase 3 - Queue all object/version requests in the storage service to make the service more resilient if bombarded with retrieval requests.
+  - Requests to assemble and deliver objects/versions will be satisfied based on the capacity of the storage service.
+- Phase 4 - Create a Merritt Retrieval API that is unbundled from the Merritt UI
+  - If not already retired, migrate any remaining Express clients to this API.
+  - Migrate other clients of the Merritt UI (such as Open Context) to this API
+- Phase 5 - Extend Merritt API to convey ingest status information
+  - While this is unrelated to the pre-signed work, this API could become a home to satisfy some of the API type requests that have been mentioned.
+
 ## Phase 1
 
 - ui: GET [presign-file/:object/:version/:file](ui/presign-file.md)
