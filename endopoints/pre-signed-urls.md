@@ -31,7 +31,7 @@
 
 ## Phase 2
 
-- [ui: GET presign-obj/:object/:version/:file?format=:format](ui/presign-obj.md)
+- [ui: GET presign-obj/:object/:version?format=:format](ui/presign-obj.md)
   - replaces GET async/:object
   - replaces GET async/:object/:version
   - replaces GET asyncd/:object
@@ -41,7 +41,7 @@
   - replaces GET d/:object/:version/\*file
   - replaces GET u/:object
   - replaces GET u/:object/:version
-- [inventory: GET presign-obj/:object/:version/:file](inventory/presign-obj.md)
+- [inventory: GET presign-obj/:object/:version](inventory/presign-obj.md)
 - [storage: POST presign-obj/:node/:key?format=:format&timeout=:timeout](storage/presign-obj.md)
 - [ui: GET presign-obj-by-token/:token](ui/presign-obj-by-token.md)
 - [storage: GET presign-obj-by-token/:token](storage/presign-obj-by-token.md)
