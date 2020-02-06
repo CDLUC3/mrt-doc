@@ -4,8 +4,6 @@
 - :object - ark
   - must be url encoded
 - :version - version number (or ? for latest version)
-- :file - file name
-  - must be url encoded
 
 ## URL Parameters
 - format: (full|producer) default is full
@@ -21,12 +19,9 @@ Check user authorization to collection
 - Check if user is required to accept terms and conditions
 - Call [inventory: GET presign-obj/:object/:version](../inventory/presign-obj.md) to obtain storage key for object
 - Parse return object to formulate storage request
-- Call [storage: POST presign-obj/:node/:key?format=:format&timeout=:timeout](../storage/presign-obj.md) to obtain a presigned URL for an existing object
+- Call [storage: POST presign-obj/:node/:key?format=:format&timeout=:timeout](../storage/presign-obj.md) to obtain a token for an object to be assembled
 - If 200
- - Parse response object to obtain the signed URL
-- If 409 (UNM or Pairtree/Docker)
- - Construct a download URL to return as a simulated pre-signed url
- - [ ] Note: this download URL will never expire, is this a problem?
+  - Return payload containing the object token
 
 ## Return status codes
 - 200 (payload contains token info)
@@ -36,3 +31,11 @@ Check user authorization to collection
 ## Return headers
 
 ## Return payload
+
+```
+{
+  token: 'uuid',
+  anticipated-size: 12345,
+  anticipated-availability-time: '2009-06-15T13:45:30'
+}
+```

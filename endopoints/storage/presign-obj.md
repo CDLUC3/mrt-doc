@@ -17,15 +17,17 @@
 
 - Generate token (uuid)
 - Is assembly area S3 or cloudhost (Pairtree in Docker)?
+- Create object assembly metadata
+  - size-bytes
+  - timeout
+  - key
+  - format
 - If S3?
   - Create empty object using token
   - Set Object Metadata fields
-    - size-bytes
-    - timeout
-    - key
 - If Cloudhost?
   - Create empty object using the token
-  - Create metadata fields
+  - Find a mechanism to set metadata fields
 - Construct token object
 - Start a new thread to process the request
   - In Phase 3, this will be done by adding the request to Zookeeper
