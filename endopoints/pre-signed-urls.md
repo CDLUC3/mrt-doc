@@ -18,6 +18,13 @@
 - Phase 5 - Extend Merritt API to convey ingest status information
   - While this is unrelated to the pre-signed work, this API could become a home to satisfy some of the API type requests that have been mentioned.
 
+## Questions/TODO's
+
+- [ ] Review the embargo processs.  Understand the actors affected by embargo(author, admin)
+- [ ] Determine if the user acceptance step is still applicable and which actors are impacted.
+- [ ] As the UI replaces actions formerly performed by Express, how is authorization passed into the UI?
+- [ ] When redirecting to a non S3 compatible file URL, should that be a function of the UI/api, or should that be handled within the storage service?
+
 ## Phase 1
 
 - [ui: GET presign-file/:object/:version/:file](ui/presign-file.md)
