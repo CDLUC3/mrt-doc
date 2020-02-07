@@ -6,8 +6,13 @@
 
 ## URL Parameters
 - :timeout
-- format: (full|producer) default is full
+- format: (zip|tar|tag.gz) default is ???
+- content: (producer|all) default is all
+- scope: (object|version)
+- assembly: (embed|link)
+  - this is to capture our idea of a container of links
 - :size-bytes - used to estimate the time required to assemble the object
+  - [ ] David, if this is not provided, what would need to happen to make this calculation?
 
 ## Request Headers
 
@@ -45,7 +50,7 @@
 ```
 {
   token: 'uuid',
-  anticipated-size: 12345,
-  anticipated-availability-time: '2009-06-15T13:45:30'
+  approximate-size-bytes: 12345,
+  anticipated-availability-time: '2019-11-05T08:15:30-08:00'
 }
 ```

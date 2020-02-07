@@ -2,6 +2,8 @@
 
 The purpose of this action is to keep the resolution of keys within the inventory service rather than placing a complex query in the client/UI code.
 
+Note: this is similar to the "versions" endpoint that currently resides in the inventory service.
+
 ## Positional Paramaters
 - :object - ark
 - :version - version number (or ? for latest version)
