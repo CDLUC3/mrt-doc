@@ -5,11 +5,13 @@
   - Dryad and Merritt UI always ask for signed URL for files.
   - When unsupported (Pairtree, UNM), redirect to the direct download URL.
   - Identify remaining Merritt Express clients to determine if signed URL's could substitute
+- Phase 2 Question: Rather than assembling objects for download, deliver a reverse manifest object that permits client-side object assembly. See https://github.com/CDLUC3/mrt-doc/issues/233
 - Phase 2 - Provide signed URL delivery for objects/versions
   - This makes all object/version downloads effectively async.
   - Deprecate email notification for objects/versions in Dryad.
   - Determine the need for email notification in the Merritt UI.
   - Client applications will poll the storage service to determine when a signed URL is ready.
+  - Question: should a client application be able to register a callback to trigger when an object assembly is complete?
 - Phase 3 - Queue all object/version requests in the storage service to make the service more resilient if bombarded with retrieval requests.
   - Requests to assemble and deliver objects/versions will be satisfied based on the capacity of the storage service.
 - Phase 4 - Create a Merritt Retrieval API that is unbundled from the Merritt UI
