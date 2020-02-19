@@ -36,7 +36,7 @@
 - [inventory: GET presign-file/:object/:version/:file](inventory/presign-file.md)
   - permit the UI to connect to inventory
   - question: could this endpoint perform any authorization tasks on behalf of the UI?
-- [storage: POST presign-file/:node/:key?timeout=:timeout](storage/presign-file.md)
+- [storage: GET presign-file/:node/:key?timeout=:timeout](storage/presign-file.md)
 
 ## Phase 2
 
