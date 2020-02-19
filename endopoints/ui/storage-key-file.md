@@ -58,6 +58,8 @@ WHERE
 - 200 (payload contains node id and key)
 - 404
   - obj is not found
+- 500
+  - processing error
 
 ## Return headers
 
@@ -77,5 +79,13 @@ Not found 404
 {
   status: 404,
   message: 'File not found'
+}
+```
+
+Processing error (500)
+```
+{
+  status: 500,
+  message: 'error message'
 }
 ```
