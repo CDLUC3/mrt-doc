@@ -28,12 +28,15 @@
 - If 409 (UNM or Pairtree/Docker)
   - Construct a download URL to return as a simulated pre-signed url
   - [ ] Note: this download URL will never expire, is this a problem?
+- If 403, 404, 500, return
 
 
 ## Return status codes
 
 - 303 if a signed URL is available
+- 403 if request cannot be satisfied
 - 404 if file is not found
+- 500 if a processing error occurred
 
 ## Return headers
 
@@ -42,4 +45,30 @@
 
 ## Return payload
 
-- No payload
+- No payload if redirect is available
+
+Otherwise, pass through return object from storage
+
+403 Offline storage
+```
+{
+   status: 403,
+   message: 'file is in offline storage, request is not supported'
+ }
+```
+
+404 Not found
+```
+{
+   status: 404,
+   message: 'file not found'
+ }
+```
+
+500 Processing error
+```
+{
+   status: 500,
+   message: 'error details'
+ }
+```

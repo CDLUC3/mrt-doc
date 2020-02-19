@@ -23,15 +23,36 @@
 - 200 (payload contains node id and key)
 - 404
   - obj is not found
+- 500
+  - processing error
 
 ## Return headers
 
 ## Return payload
 
+Success 200
 ```
 {
+  status: 200,
   node_id: 1111,
   key: "abcdefghijklmnop",
-  approximate-size-bytes: 12345
+  approximate-size-bytes: 12345,
+  message: ''
+}
+```
+
+Not found 404
+```
+{
+  status: 404,
+  message: 'File not found'
+}
+```
+
+Processing error (500)
+```
+{
+  status: 500,
+  message: 'error message'
 }
 ```
