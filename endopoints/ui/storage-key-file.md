@@ -1,6 +1,6 @@
-# inventory: GET presign-file/:object/:version/:file
+# ui: GET /api/get-storage-key-file/:object/:version/:file
 
-The purpose of this action is to keep the resolution of keys within the inventory service rather than placing a complex query in the client/UI code.
+The purpose of this action is to keep the resolution of keys within an api layer rather than placing a complex query in the client/UI code.
 
 Note: this is similar to the "versions" endpoint that currently resides in the inventory service.
 
