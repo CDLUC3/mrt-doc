@@ -42,15 +42,36 @@
 - 200 (payload contains token info)
 - 404
   - obj is not found
+- 500
+  - processing error
 
 ## Return headers
 
 ## Return payload
 
+Success 200
 ```
 {
+  status: 200,
   token: 'uuid',
   approximate-size-bytes: 12345,
-  anticipated-availability-time: '2019-11-05T08:15:30-08:00'
+  anticipated-availability-time: '2019-11-05T08:15:30-08:00',
+  message: 'Request queued, use token to check status'
+}
+```
+
+Not found 404
+```
+{
+  status: 404,
+  message: 'Object not found'
+}
+```
+
+Processing Error 500
+```
+{
+  status: 500,
+  message: 'error message'
 }
 ```

@@ -65,7 +65,17 @@ WHERE
 
 ```
 {
+  status: 200,
   node_id: 1111,
-  key: "abcdefghijklmnop"
+  key: "abcdefghijklmnop",
+  message: ''
+}
+```
+
+Not found 404
+```
+{
+  status: 404,
+  message: 'File not found'
 }
 ```

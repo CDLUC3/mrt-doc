@@ -30,8 +30,18 @@
 
 ```
 {
+  status: 200,
   node_id: 1111,
   key: "abcdefghijklmnop",
-  approximate-size-bytes: 12345
+  approximate-size-bytes: 12345,
+  message: ''
+}
+```
+
+Not found 404
+```
+{
+  status: 404,
+  message: 'File not found'
 }
 ```
