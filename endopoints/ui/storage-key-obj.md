@@ -1,4 +1,4 @@
-# inventory: GET presign-obj/:object/:version
+# ui: GET /api/get-storage-key-obj/:object/:version
 
 ## Positional Paramaters
 - :object - ark

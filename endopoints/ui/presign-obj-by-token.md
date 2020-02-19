@@ -1,4 +1,4 @@
-# ui: GET presign-obj-by-token/:token
+# ui: GET /api/presign-obj-by-token/:token
 
 ## Positional Paramaters
 - :token - uuid

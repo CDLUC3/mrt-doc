@@ -1,4 +1,4 @@
-# ui: GET presign-obj/:object/:version
+# ui: GET /api/presign-obj/:object/:version
 
 ## Positional Paramaters
 - :object - ark
