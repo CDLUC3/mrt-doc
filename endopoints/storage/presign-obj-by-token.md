@@ -82,6 +82,6 @@ Processing error (500)
 ```
 {
   status: 500,
-  message: '...'
+  message: 'error message'
 }
 ```
