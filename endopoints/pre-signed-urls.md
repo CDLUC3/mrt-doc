@@ -16,6 +16,10 @@
   - Requests to assemble and deliver objects/versions will be satisfied based on the capacity of the storage service.
 - Phase 4 - Create a Merritt Retrieval API that is unbundled from the Merritt UI
   - If not already retired, migrate any remaining Express clients to this API.
+  - Could this API be implemented with AWS Lambda + API Gateway?
+    - A Lambda can run for up to 15 min, so this option is only suitable if the API does not need to stream/upload large binary content directly.
+      - The pre-signed URL solution would work well with this constraint.
+      - The upload operation may not be supportable via lambda.
   - Migrate other clients of the Merritt UI (such as Open Context) to this API
 - Phase 5 - Extend Merritt API to convey ingest status information
   - While this is unrelated to the pre-signed work, this API could become a home to satisfy some of the API type requests that have been mentioned.
