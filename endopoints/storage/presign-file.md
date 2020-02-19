@@ -1,4 +1,4 @@
-# storage: POST presign-file/:node/:key
+# storage: GET presign-file/:node/:key
 
 ## Positional Paramaters
 - :node - storage node id
