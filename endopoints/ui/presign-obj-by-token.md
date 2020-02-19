@@ -26,23 +26,45 @@
   - url is expired
 
 ## Return headers
+- Set Location Header if 303 is returned
 
 ## Return payload
+No payload if 303 is returned
 
 If not ready (202)
 ```
 {
+  status: 202,
   token: 'uuid',
   anticipated-size: 12345,
   anticipated-availability-time: '2009-06-15T13:45:30',
+  message: 'object is not ready'
 }
 ```
 
 If expired (410)
 ```
 {
+  status: 410,
   token: 'uuid',
   anticipated-size: 12345,
-  expiration-time: '2009-06-15T13:45:30'
+  expiration-time: '2009-06-15T13:45:30',
+  message: 'signed url has expired'
+}
+```
+
+Not found 404
+```
+{
+  status: 404,
+  message: 'Object not found'
+}
+```
+
+Processing Error 500
+```
+{
+  status: 500,
+  message: 'error message'
 }
 ```

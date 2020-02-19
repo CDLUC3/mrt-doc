@@ -31,6 +31,7 @@
   - url is not found
 - 410 (payload contains token info)
   - url is expired
+- 500 error occurred
 
 ## Return headers
 
@@ -39,26 +40,48 @@
 If ready (200)
 ```
 {
+  status: 200,
   token: 'uuid',
   anticipated-size: 12345,
   url: 'https://...',
+  message: 'Object is available'
 }
 ```
 
 If not ready  (202)
 ```
 {
+  status: 202
   token: 'uuid',
   anticipated-size: 12345,
-  anticipated-availability-time: '2009-06-15T13:45:30'
+  anticipated-availability-time: '2009-06-15T13:45:30',
+  message: 'Object is not ready'
 }
 ```
 
 If expired (410)
 ```
 {
+  status: 410,
   token: 'uuid',
   anticipated-size: 12345,
-  expiration-time: '2009-06-15T13:45:30'
+  expiration-time: '2009-06-15T13:45:30',
+  message: 'Signed URL has expired'
+}
+```
+
+If not found (404)
+```
+{
+  status: 404,
+  message: 'Object not found'
+}
+```
+
+Processing error (500)
+```
+{
+  status: 500,
+  message: '...'
 }
 ```
