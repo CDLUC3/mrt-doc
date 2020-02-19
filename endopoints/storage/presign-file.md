@@ -35,6 +35,7 @@
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expires
 
+Return signed URL
 ```
 {
   status: 200,
@@ -48,6 +49,15 @@ Time format (set to PT):
 
 Complete date plus hours and minutes:
    YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)
+
+Redirect to download URL
+```
+{
+  status: 409,
+  message: 'Signed URL not supported, redirect to download URL'
+}
+```
+
 
 403 Offline storage
 ```

@@ -30,6 +30,7 @@
 
 ## Return payload
 
+Success 200
 ```
 {
   status: 200,
