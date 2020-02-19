@@ -29,18 +29,16 @@
 
 ## Phase 1
 
-- [ui: GET presign-file/:object/:version/:file](ui/presign-file.md)
+- [ui: GET /api/presign-file/:object/:version/:file](ui/presign-file.md)
   - replaces express: dv/:version/:object/:file
   - replaces express dl/:object/:file
   - limits ui d/:object/:version/:file to non S3 objects
-- [inventory: GET presign-file/:object/:version/:file](inventory/presign-file.md)
-  - permit the UI to connect to inventory
-  - question: could this endpoint perform any authorization tasks on behalf of the UI?
-- [storage: GET presign-file/:node/:key?timeout=:timeout](storage/presign-file.md)
+- [ui: GET /api/get-storage-key-file/:object/:version/:file](ui/storage-key-file.md)
+- [storage: GET /presign-file/:node/:key?timeout=:timeout](storage/presign-file.md)
 
 ## Phase 2
 
-- [ui: GET presign-obj/:object/:version?format=:format](ui/presign-obj.md)
+- [ui: GET /api/presign-obj/:object/:version?format=:format](ui/presign-obj.md)
   - replaces GET async/:object
   - replaces GET async/:object/:version
   - replaces GET asyncd/:object
@@ -50,10 +48,10 @@
   - replaces GET d/:object/:version/\*file
   - replaces GET u/:object
   - replaces GET u/:object/:version
-- [inventory: GET presign-obj/:object/:version](inventory/presign-obj.md)
-- [storage: POST presign-obj/:node/:key?format=:format&timeout=:timeout](storage/presign-obj.md)
-- [ui: GET presign-obj-by-token/:token](ui/presign-obj-by-token.md)
-- [storage: GET presign-obj-by-token/:token](storage/presign-obj-by-token.md)
+- [ui: GET /api/get-storage-key-obj/:object/:version](ui/stoage-key-obj.md)
+- [storage: POST /presign-obj/:node/:key?format=:format&timeout=:timeout](storage/presign-obj.md)
+- [ui: GET /api/presign-obj-by-token/:token](ui/presign-obj-by-token.md)
+- [storage: GET /presign-obj-by-token/:token](storage/presign-obj-by-token.md)
 
 ## Phase 3
 
@@ -62,13 +60,17 @@
 
 ## Phase 4
 
-- api: presign-file/:object/:version/:file
-  - replaces ui: [presign-file/:object/:version/:file]
-- api download-file/:object/:version/:file
+- api: /presign-file/:object/:version/:file
+  - replaces ui: /api/presign-file/:object/:version/:file
+- api: /get-storage-key-file/:object/:version/:file
+  - replaces ui: /api/get-storage-key-file/:object/:version/:file
+- api /download-file/:object/:version/:file
   - replaces ui: d/:object/:version/:file  
-- api presign-obj/:object/:version/:file?format=:format
+- api /presign-obj/:object/:version/:file?format=:format
   - replaces ui: presign-obj/:object/:version/:file?format=:format  
-- api presign-obj-by-token/:token
+- api: /get-storage-key-obj/:object/:version
+  - replaces ui: /api/get-storage-key-obj/:object/:version
+- api /presign-obj-by-token/:token
   - replaces ui: presign-obj-by-token/:token
 
 ## Phase 5
