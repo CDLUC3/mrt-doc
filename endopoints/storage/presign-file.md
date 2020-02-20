@@ -63,7 +63,7 @@ Redirect to download URL
 ```
 {
    status: 403,
-   message: 'file is in offline storage, request is not supported'
+   message: 'File is in offline storage, request is not supported'
  }
 ```
 
@@ -71,7 +71,7 @@ Redirect to download URL
 ```
 {
    status: 404,
-   message: 'file not found'
+   message: 'File not found'
  }
 ```
 

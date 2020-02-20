@@ -62,7 +62,7 @@ Otherwise, pass through return object from storage
 {
    status: 404,
    message: 'file not found'
- }
+}
 ```
 
 500 Processing error
