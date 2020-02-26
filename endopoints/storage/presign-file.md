@@ -41,7 +41,7 @@ Return signed URL
   status: 200,
   url: 'https://...',
   expires: '2019-11-05T08:15:30-08:00',
-  message: ''
+  message: 'Presigned URL created'
 }
 ```
 
