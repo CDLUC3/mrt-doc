@@ -35,7 +35,7 @@
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Expires
 
-Return signed URL
+200 Return signed URL
 ```
 {
   status: 200,
@@ -50,7 +50,7 @@ Time format (set to PT):
 Complete date plus hours and minutes:
    YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)
 
-Redirect to download URL
+409 Redirect to download URL
 ```
 {
   status: 409,
