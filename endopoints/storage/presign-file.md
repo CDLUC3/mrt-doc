@@ -6,6 +6,7 @@
 
 ## URL Parameters
 - :timeout
+- :contentType
 
 ## Request Headers
 
@@ -15,6 +16,7 @@
 
 - Locate object in storage
 - Is storage note is S3 compatible?
+  - Set the ContentType for the CloudObject to :contentType 
   - Create presigned URL
   - Construct return object
 - Otherwise
