@@ -13,7 +13,7 @@
 
 ## Actions
 
-- Call [inventory: GET presign-obj-by-token/:token](../inventory/presign-obj-by-token.md) to determine if object is available
+- Call [storage: GET presign-obj-by-token/:token](../storage/presign-obj-by-token.md) to determine if object is available
 - Parse token object
 
 ## Return status codes
