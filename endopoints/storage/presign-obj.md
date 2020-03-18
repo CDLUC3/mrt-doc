@@ -1,18 +1,13 @@
-# storage: POST presign-obj/:node/:key
+# storage: POST assemble-obj/:node/:object/:version
 
 ## Positional Paramaters
 - :node - storage node id
-- :key - s3 object key
+- :object 
+- :version - optional
 
 ## URL Parameters
-- :timeout
-- format: (zip|tar|tag.gz) default is ???
-- content: (producer|all) default is all
-- scope: (object|version)
-- assembly: (embed|link)
-  - this is to capture our idea of a container of links
-- :size-bytes - used to estimate the time required to assemble the object
-  - [ ] David, if this is not provided, what would need to happen to make this calculation?
+- format: (zip|tar|taggz) default is zip
+- content: (producer|full) default is all
 
 ## Request Headers
 
