@@ -8,14 +8,16 @@
 
 ## URL Parameters
 - format: (full|producer) default is full
-
+- content: (producer|all) default is all
+- assembly: (embed|link) _future param_
+  
 ## Actions
 
 Check user authorization to collection
 - Check if embargo applies to object
 - Check if user is required to accept terms and conditions
 - Get node_number for the ark from the database
-- Call [storage: POST presign-obj/:node/:key?format=:format&timeout=:timeout](../storage/presign-obj.md) to obtain a token for an object to be assembled
+- Call [storage: POST presign-obj/:node/:key?format=:format&content=:content&timeout=:timeout](../storage/presign-obj.md) to obtain a token for an object to be assembled
 - If 200
   - Return payload containing the object token
 
