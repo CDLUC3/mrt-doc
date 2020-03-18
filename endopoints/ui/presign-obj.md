@@ -1,4 +1,4 @@
-# ui: GET /api/presign-obj/:object [ /:version ]
+# ui: GET /api/assemble-obj/:object [ /:version ]
 
 ## Positional Paramaters
 - :object - ark
@@ -15,7 +15,7 @@ Check user authorization to collection
 - Check if embargo applies to object
 - Check if user is required to accept terms and conditions
 - Get node_number for the ark from the database
-- Call [storage: POST presign-obj/:node/:object/:version?format=:format&content=:content](../storage/presign-obj.md) to obtain a token for an object to be assembled
+- Call [storage: POST assemble-obj/:node/:object/:version?format=:format&content=:content](../storage/presign-obj.md) to obtain a token for an object to be assembled
 - If 200
   - Return payload containing the object token
 
