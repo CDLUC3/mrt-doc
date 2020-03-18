@@ -1,15 +1,13 @@
-# ui: GET /api/presign-obj/:object
-# ui: GET /api/presign-version/:object/:version
+# ui: GET /api/presign-obj/:object [ /:version ]
 
 ## Positional Paramaters
 - :object - ark
   - must be url encoded
-- :version - version number (or ? for latest version)
+- :version - version number (optional - if absent return full object)
 
 ## URL Parameters
-- format: (full|producer) default is full
-- content: (producer|all) default is all
-- assembly: (embed|link) _future param_
+- format: (zip|tar|targz) default is full
+- content: (producer|full) default is all
   
 ## Actions
 
@@ -17,7 +15,7 @@ Check user authorization to collection
 - Check if embargo applies to object
 - Check if user is required to accept terms and conditions
 - Get node_number for the ark from the database
-- Call [storage: POST presign-obj/:node/:key?format=:format&content=:content&timeout=:timeout](../storage/presign-obj.md) to obtain a token for an object to be assembled
+- Call [storage: POST presign-obj/:node/:object/:version?format=:format&content=:content](../storage/presign-obj.md) to obtain a token for an object to be assembled
 - If 200
   - Return payload containing the object token
 
