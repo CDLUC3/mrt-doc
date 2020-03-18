@@ -5,7 +5,7 @@
 
 ## URL Parameters
 
-- None
+- timeout=:timeout
 
 ## Request Headers
 
@@ -29,8 +29,6 @@
   - not ready
 - 404
   - url is not found
-- 410 (payload contains token info)
-  - url is expired
 - 500 error occurred
 
 ## Return headers
@@ -56,17 +54,6 @@ If not ready  (202)
   anticipated-size: 12345,
   anticipated-availability-time: '2009-06-15T13:45:30',
   message: 'Object is not ready'
-}
-```
-
-If expired (410)
-```
-{
-  status: 410,
-  token: 'uuid',
-  anticipated-size: 12345,
-  expiration-time: '2009-06-15T13:45:30',
-  message: 'Signed URL has expired'
 }
 ```
 
