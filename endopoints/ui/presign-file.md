@@ -47,28 +47,8 @@
 
 - No payload if redirect is available
 
-Otherwise, pass through return object from storage
+Otherwise, return error page
 
-403 Offline storage
-```
-{
-   status: 403,
-   message: 'file is in offline storage, request is not supported'
- }
-```
-
-404 Not found
-```
-{
-   status: 404,
-   message: 'file not found'
- }
-```
-
-500 Processing error
-```
-{
-   status: 500,
-   message: 'error details'
- }
-```
+- Redirect to 403 error page
+- Redirect to 404 error page
+- Redirect to 500 error page
