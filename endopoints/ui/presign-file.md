@@ -5,11 +5,13 @@
   - must be url encoded
 - :version - version number (or ? for latest version)
 - :file - file name
-  - must be url encoded
+  - the file name should include the prefix "producer/" or "system/".
+  - the file path should be urlencoded
 
 ## URL Parameters
 
-- None
+- no_redirect
+  - if "true", the presigned url will be sent in a json payload rather than in a redirect header
 
 ## Request Headers
 
@@ -33,6 +35,7 @@
 
 ## Return status codes
 
+- 200 if a signed URL is available and ?no_redirect=true
 - 303 if a signed URL is available
 - 403 if request cannot be satisfied
 - 404 if file is not found
@@ -45,7 +48,12 @@
 
 ## Return payload
 
-- No payload if redirect is available
+- if ?no_redirect=true
+```
+{
+  'url': 'https://s3_minio_or_wasabi_presigned_url'
+}
+```
 
 Otherwise, return error page
 
