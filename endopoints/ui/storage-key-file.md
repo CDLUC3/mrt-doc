@@ -8,8 +8,6 @@ Note: this is similar to the "versions" endpoint that currently resides in the i
 - :object - ark
 - :version - version number (or ? for latest version)
 - :file - file name
-  - the file name should include the prefix "producer/" or "system/".
-  - the file path should be urlencoded
 
 ## URL Parameters
 
