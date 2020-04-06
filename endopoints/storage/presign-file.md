@@ -7,6 +7,8 @@
 ## URL Parameters
 - :timeout
 - :contentType
+- :contentDisposition=attachement (optional)
+  - set Content-Disposition: attachment
 
 ## Request Headers
 
