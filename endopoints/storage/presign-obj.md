@@ -2,27 +2,25 @@
 
 ## Positional Paramaters
 - :node - storage node id
-- :object 
+- :object (ark)
 - :version - optional
 
 ## URL Parameters
-- format: (zip|tar|taggz) default is zip
+- format: (zip|tar|targz) default is zip
 - content: (producer|full) default is all
-
-## Request Headers
-
-- [ ] Is any session/user information needed?
+- assemble-node: node to use for object assembly (if other than default)
+  - this would allow Dryad to have a unique retention policy
 
 ## Actions
 
 - Generate token (uuid)
-- Is assembly area S3 or cloudhost (Pairtree in Docker)?
+- Determine assembly node/bucket
 - Create object assembly metadata
   - size-bytes
   - timeout
   - key
   - format
-- If S3?
+- If S3 compatible?
   - Create empty object using token
   - Set Object Metadata fields
 - If Cloudhost?
