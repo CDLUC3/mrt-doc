@@ -12,6 +12,7 @@
 
 - no_redirect
   - if "true", the presigned url will be sent in a json payload rather than in a redirect header
+- :contentDisposition=attachement (optional)
 
 ## Request Headers
 
