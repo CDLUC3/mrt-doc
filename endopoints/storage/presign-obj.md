@@ -74,3 +74,18 @@ Processing Error 500
   message: 'error message'
 }
 ```
+## Questions/Discussions
+Instead of using the assemble-node let the UI control the input :node
+
+Since an invalid version number may be used - a specific version may not be available - this covers both object and version.
+
+- 404 - Change _obj is not found_ to _Object content is not found_ 
+
+Add back in the presign errors
+- 403
+  - Content is in offline storage, request is not supported
+- 409
+  - Signed URL not supported
+  
+I'm thinking that maybe _approximate-size-bytes_ should instead be _cloud-content-bytes_
+This could give an accurate value and avoid questions of efficiancy of zip and gunzip compression etc. _cloud-content-bytes_ should be accurate and hopefully on the upper end of what would be returned for a container file.
