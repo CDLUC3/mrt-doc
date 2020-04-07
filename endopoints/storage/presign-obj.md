@@ -7,7 +7,13 @@
 
 ## URL Parameters
 - format: (zip|tar|targz) default is zip
+  - not exposed Merritt or Dryad UI
 - content: (producer|full) default is all
+  - not exposed in Merritt UI
+  - Dryad defaults to producer
+- full-version: (yes|no) default is yes
+  - if no, then only diffs are returned between versions
+  - not exposed Merritt or Dryad UI
 - assemble-node: node to use for object assembly (if other than default)
   - this would allow Dryad to have a unique retention policy
 
