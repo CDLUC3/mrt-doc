@@ -45,6 +45,8 @@
 - 200 (payload contains token info)
 - 404
   - obj is not found
+- 403
+  - forbidden operation
 - 500
   - processing error
 
