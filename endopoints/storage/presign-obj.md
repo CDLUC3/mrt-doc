@@ -16,6 +16,10 @@
   - not exposed Merritt or Dryad UI
 - assemble-node: node to use for object assembly (if other than default)
   - this would allow Dryad to have a unique retention policy
+  - 7001 is our presumed default value
+  - The storage service will determine if the node is allowable as an assemble-node
+    - does it support presigned urls?
+    - does it support content expiration policies?  (Note that Minio may not)
 
 ## Actions
 
@@ -53,7 +57,7 @@ Success 200
 {
   status: 200,
   token: 'uuid',
-  approximate-size-bytes: 12345,
+  cloud-content-bytes: 12345,
   anticipated-availability-time: '2019-11-05T08:15:30-08:00',
   message: 'Request queued, use token to check status'
 }
@@ -63,7 +67,23 @@ Not found 404
 ```
 {
   status: 404,
-  message: 'Object not found'
+  message: 'Object content is not found'
+}
+```
+
+Forbidden 403 (Content on Glacier)
+```
+{
+  status: 403,
+   message: 'Object content is in offline storage, request is not supported'
+}
+```
+
+Forbidden 403 (Illegal assembly node)
+```
+{
+  status: 403,
+   message: 'Invalid assembly node for presigned delivery'
 }
 ```
 
@@ -74,22 +94,3 @@ Processing Error 500
   message: 'error message'
 }
 ```
-## Questions/Discussions
-Instead of using the assemble-node let the UI control the input :node
-
-Since an invalid version number may be used - a specific version may not be available - this covers both object and version.
-
-- 404 - Change _obj is not found_ to _Object content is not found_ 
-
-Add back in the presign errors
-- 403
-  - Content is in offline storage, request is not supported
-- 409
-  - Signed URL not supported
-  
-I'm thinking that maybe _approximate-size-bytes_ should instead be _cloud-content-bytes_
-This could give an accurate value and avoid questions of efficiancy of zip and gunzip compression etc. _cloud-content-bytes_ should be accurate and hopefully on the upper end of what would be returned for a container file.
-
-### Terry's questions
-
-Does it make sense that the UI is passing the input node?  Are you thinking that if the input node is a dryad node, then the object would be assembled on the dryad node?  I was imaging that cloud objects would not necessarily be constructed on the node in which they are stored.  Therefore, it could be possible to still request a UNM or pairtree object.
