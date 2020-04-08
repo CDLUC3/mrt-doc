@@ -89,3 +89,7 @@ Add back in the presign errors
   
 I'm thinking that maybe _approximate-size-bytes_ should instead be _cloud-content-bytes_
 This could give an accurate value and avoid questions of efficiancy of zip and gunzip compression etc. _cloud-content-bytes_ should be accurate and hopefully on the upper end of what would be returned for a container file.
+
+### Terry's questions
+
+Does it make sense that the UI is passing the input node?  Are you thinking that if the input node is a dryad node, then the object would be assembled on the dryad node?  I was imaging that cloud objects would not necessarily be constructed on the node in which they are stored.  Therefore, it could be possible to still request a UNM or pairtree object.
