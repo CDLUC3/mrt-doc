@@ -8,9 +8,10 @@
 ## URL Parameters
 - format: (zip|tar|targz) default is zip
   - not exposed Merritt or Dryad UI
-- content: (producer|full) default is all
+- content: (producer|full) default is full
   - not exposed in Merritt UI
   - Dryad defaults to producer
+  - The producer option is only supported for version requests.  This parameter is ignored for object requests. 
 - full-version: (yes|no) default is yes
   - if no, then only diffs are returned between versions
   - not exposed Merritt or Dryad UI
