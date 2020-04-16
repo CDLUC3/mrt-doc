@@ -6,6 +6,9 @@
 ## URL Parameters
 
 - timeout=:timeout
+- assemble-node: node to use for object assembly (if other than default)
+  - this would allow Dryad to have a unique retention policy
+  - 7001 is our presumed default value
 
 ## Request Headers
 
@@ -69,6 +72,15 @@ Processing error (500)
 ```
 {
   status: 500,
+  message: 'error message'
+}
+```
+
+Archive creation Processing error (500) 
+```
+{
+  status: 500,
+  token: 'uuid',
   message: 'error message'
 }
 ```
