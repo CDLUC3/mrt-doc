@@ -5,7 +5,8 @@
 
 ## URL Parameters
 
-- None
+- no_redirect
+  - if "true", the presigned url will be sent in a json payload rather than in a redirect header
 
 ## Request Headers
 
