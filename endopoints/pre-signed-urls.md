@@ -49,7 +49,7 @@
   - replaces GET u/:object
   - replaces GET u/:object/:version
 - [ui: GET /api/get-storage-key-obj/:object/:version](ui/storage-key-obj.md)
-- [storage: POST /presign-obj/:node/:key?format=:format&timeout=:timeout](storage/presign-obj.md)
+- [storage: POST /assemble-obj/:node/:key?format=:format&timeout=:timeout](storage/assemble-obj.md)
 - [ui: GET /api/presign-obj-by-token/:token](ui/presign-obj-by-token.md)
 - [storage: GET /presign-obj-by-token/:token](storage/presign-obj-by-token.md)
 
