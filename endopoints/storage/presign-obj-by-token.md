@@ -9,8 +9,8 @@
 - assemble-node: node to use for object assembly (if other than default)
   - this would allow Dryad to have a unique retention policy
   - 7001 is our presumed default value
-- Content-disposition: attachment; filename=some.zip (optional)
-  - set Content-Disposition: attachment; filenanme=some.zip
+- contentDisposition: attachment; filename=some.zip (optional)
+  - set contentDisposition=attachment; filenanme=some.zip
 
 ## Request Headers
 
