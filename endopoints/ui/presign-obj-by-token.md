@@ -7,6 +7,8 @@
 
 - no_redirect
   - if "true", the presigned url will be sent in a json payload rather than in a redirect header
+- filename
+  - name to assign to downloaded file
 
 ## Request Headers
 
