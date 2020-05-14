@@ -1,4 +1,5 @@
-# ui: GET /api/assemble-obj/:object [ /:version ]
+# ui: GET /api/assemble-obj/:object
+# ui: GET /api/assemble-version/:object/:version
 
 ## Positional Paramaters
 - :object - ark
@@ -6,8 +7,9 @@
 - :version - version number (optional - if absent return full object)
 
 ## URL Parameters
-- format: (zip|tar|targz) default is full
-- content: (producer|full) default is all
+- format: (zip|tar|targz) default is zip
+- content: (producer|full) default is full
+  - Dryad uses "producer"
   
 ## Actions
 
@@ -30,18 +32,20 @@ Check user authorization to collection
 
 ## Return payload
 
-Success 200
+__Success 200__
 ```
 {
   status: 200,
   token: 'uuid',
-  approximate-size-bytes: 12345,
+  cloud-content-byte: 12345,
   anticipated-availability-time: '2019-11-05T08:15:30-08:00',
   message: 'Request queued, use token to check status'
 }
 ```
 
-Not found 404
+:question: Does Dryad need an retention expiration time for caching?
+
+__Not found 404__
 ```
 {
   status: 404,
@@ -49,7 +53,7 @@ Not found 404
 }
 ```
 
-Processing Error 500
+__Processing Error 500__
 ```
 {
   status: 500,
