@@ -1,4 +1,5 @@
-# ui: GET /api/assemble-obj/:object [ /:version ]
+# ui: GET /api/assemble-obj/:object
+# ui: GET /api/assemble-version/:object/:version
 
 ## Positional Paramaters
 - :object - ark
@@ -6,8 +7,9 @@
 - :version - version number (optional - if absent return full object)
 
 ## URL Parameters
-- format: (zip|tar|targz) default is full
-- content: (producer|full) default is all
+- format: (zip|tar|targz) default is zip
+- content: (producer|full) default is full
+  - Dryad uses "producer"
   
 ## Actions
 
