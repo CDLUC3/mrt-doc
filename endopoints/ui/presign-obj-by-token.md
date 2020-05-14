@@ -7,6 +7,7 @@
 
 - no_redirect
   - if "true", the presigned url will be sent in a json payload rather than in a redirect header
+  - Note that both the Merritt UI and Dryad UI set this to true
 - filename
   - name to assign to downloaded file
 
@@ -34,7 +35,20 @@
 ## Return payload
 No payload if 303 is returned
 
-If not ready (202)
+__If ready (200) and no_redirect=true__
+```
+{
+  status: 200,
+  message: "Payload contains token info",
+  token: 'uuid',
+  cloud-content-byte: 12345,
+  url: _presigned url_
+}
+```
+
+:question: Does Dryad need the expiration time for the presigned URL for caching purposes?
+
+__If not ready (202)__
 ```
 {
   status: 202,
@@ -45,7 +59,7 @@ If not ready (202)
 }
 ```
 
-If expired (410)
+__If expired (410)__
 ```
 {
   status: 410,
@@ -56,7 +70,7 @@ If expired (410)
 }
 ```
 
-Not found 404
+__Not found 404__
 ```
 {
   status: 404,
@@ -64,7 +78,7 @@ Not found 404
 }
 ```
 
-Processing Error 500
+__Processing Error 500__
 ```
 {
   status: 500,
