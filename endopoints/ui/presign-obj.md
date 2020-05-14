@@ -32,18 +32,20 @@ Check user authorization to collection
 
 ## Return payload
 
-Success 200
+__Success 200__
 ```
 {
   status: 200,
   token: 'uuid',
-  approximate-size-bytes: 12345,
+  cloud-content-byte: 12345,
   anticipated-availability-time: '2019-11-05T08:15:30-08:00',
   message: 'Request queued, use token to check status'
 }
 ```
 
-Not found 404
+:question: Does Dryad need an retention expiration time for caching?
+
+__Not found 404__
 ```
 {
   status: 404,
@@ -51,7 +53,7 @@ Not found 404
 }
 ```
 
-Processing Error 500
+__Processing Error 500__
 ```
 {
   status: 500,
