@@ -38,7 +38,8 @@
 
 ## Phase 2
 
-- [ui: GET /api/assemble-obj/:object/:version?format=:format](ui/presign-obj.md)
+- [ui: GET /api/assemble-obj/:object?format=:format](ui/assemble-obj.md)
+- [ui: GET /api/assemble-version/:object/:version?format=:format](ui/assemble-obj.md)
   - replaces GET async/:object
   - replaces GET async/:object/:version
   - replaces GET asyncd/:object
