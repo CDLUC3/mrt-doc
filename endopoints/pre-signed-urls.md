@@ -38,7 +38,7 @@
 
 ## Phase 2
 
-- [ui: GET /api/presign-obj/:object/:version?format=:format](ui/presign-obj.md)
+- [ui: GET /api/assemble-obj/:object/:version?format=:format](ui/presign-obj.md)
   - replaces GET async/:object
   - replaces GET async/:object/:version
   - replaces GET asyncd/:object
@@ -48,7 +48,6 @@
   - replaces GET d/:object/:version/\*file
   - replaces GET u/:object
   - replaces GET u/:object/:version
-- [ui: GET /api/get-storage-key-obj/:object/:version](ui/storage-key-obj.md)
 - [storage: POST /assemble-obj/:node/:key?format=:format&timeout=:timeout](storage/assemble-obj.md)
 - [ui: GET /api/presign-obj-by-token/:token](ui/presign-obj-by-token.md)
 - [storage: GET /presign-obj-by-token/:token](storage/presign-obj-by-token.md)
