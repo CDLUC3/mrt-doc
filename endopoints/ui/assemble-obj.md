@@ -51,6 +51,14 @@ __Not found 404__
 }
 ```
 
+__Not supported (Glacier) 403__
+```
+{
+  status: 403,
+  message: 'Not supported'
+}
+```
+
 __Processing Error 500__
 ```
 {
