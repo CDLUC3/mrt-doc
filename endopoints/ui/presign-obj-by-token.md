@@ -46,8 +46,6 @@ __If ready (200) and no_redirect=true__
 }
 ```
 
-:question: Does Dryad need the expiration time for the presigned URL for caching purposes?
-
 __If not ready (202)__
 ```
 {
