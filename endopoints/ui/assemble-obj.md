@@ -43,8 +43,6 @@ __Success 200__
 }
 ```
 
-:question: Does Dryad need an retention expiration time for caching?
-
 __Not found 404__
 ```
 {
