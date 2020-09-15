@@ -20,6 +20,7 @@
 
 ##### Releases:
 - UI Changes: SSM, module upgrades, Atom feed, error handling
+- UI Additional Accessibility Releases
 
 ##### Secondary items:
 - Research: Pre-signed Ingest
