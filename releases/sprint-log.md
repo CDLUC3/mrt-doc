@@ -1,5 +1,25 @@
 ## Sprint Goals
 
+#### Sprint 44: 7 October - 27 October 2020
+
+##### Primary tasks:
+
+- Continue Rails 5 upgrade for UI/mrt-dashboard
+- Dockerize LDAP and introduce into EC2 dev environment
+- Work with Dave V. to see how we could get an instance of EZID running in a Docker container
+- Collection creation, initial form functionality enabled via Lambda
+- Dash > Dryad collection migration implementation
+- Inventory2
+- ETDs: MARC records for UCLA and UCSC
+- Tableau dashboard work
+  - Merritt Admin tool: moving the process of totaling up numbers to javascript
+- Open Context: Generate file list .csv's
+
+##### Releases:
+- Store2 release to production, 10/13
+  - Release ticket forthcoming; EL note deployment in #uc3-maint on 10/8, 10/12  
+
+
 #### Sprint 43: 16 September - 6 October 2020
 
 ##### Primary tasks:
