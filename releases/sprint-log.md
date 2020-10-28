@@ -1,5 +1,25 @@
 ## Sprint Goals
 
+#### Sprint 45: 28 October - 17 November 2020
+
+##### Primary tasks:
+
+- Continue Rails 5 upgrade for UI/mrt-dashboard
+- Ingest2: SSM
+- Inventory2: SSM
+- Dev server configuration
+- Collection creation, initial form functionality enabled via Lambda
+- ETDs: MARC records for UCLA and UCSC
+- Tableau dashboard work
+
+##### Secondary tasks:
+- Dash > Dryad collection migration implementation
+
+##### Releases:
+- Rails5 release to Stage and Production?
+- Ingest and/or Inventory SSM release to Stage? 
+
+
 #### Sprint 44: 7 October - 27 October 2020
 
 ##### Primary tasks:
