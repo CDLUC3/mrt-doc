@@ -1,5 +1,26 @@
 ## Sprint Goals
 
+#### Sprint 46: 17 November – 8 December 2020
+
+##### Primary tasks:
+
+- Wrap up Rails 5 upgrade
+- Ingest2: SSM
+- Dash > Dryad collection migration implementation
+- SDSC and Wasabi credential changes
+- Dev server configuration
+- API design work
+- Collection creation, initial form functionality enabled via Lambda
+- ETDs: MARC records for UCLA and UCSC
+- Tableau dashboard work
+
+##### Secondary tasks:
+- Replic2: SSM
+
+##### Releases:
+- Rails 5 release to Production
+
+
 #### Sprint 45: 28 October - 17 November 2020
 
 ##### Primary tasks:
