@@ -52,7 +52,12 @@ def download_objects():
         time.sleep(.1)
 
         try:
-            gzip.decompress(str(line) + 'zip')
+            archive_name = line.strip() + '.zip'
+            print('This is the zip name: ' + archive_name)
+
+            with gzip.open(archive_name, 'rb') as f_in:
+                with open(archive_name, 'wb') as f_out:
+                    shutil.copyfileobj(f_in, f_out)
 
         except Exception as e:
             logger.error(f'Could not decompress: {e}' + "\n")
