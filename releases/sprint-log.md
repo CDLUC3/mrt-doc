@@ -1,5 +1,25 @@
 ## Sprint Goals
 
+#### Sprint 47: 9  December - 22 December 2020
+
+##### Primary tasks:
+
+- Ingest2: SSM: Testing on Stage
+- API design work: Starting with Lambda access
+- Dash > Dryad collection migration: Testing on Stage
+- Collection admin
+- ETDs: MARC records for UCSC
+- Palestinian Museum collection
+- Replic2: SSM
+
+##### Secondary tasks:
+- Service Inventory reporting
+- SDSC and Wasabi credential changes
+
+##### Releases:
+- Rails 5 release, 12/15
+
+
 #### Sprint 46: 17 November – 8 December 2020
 
 ##### Primary tasks:
@@ -18,7 +38,8 @@
 - Replic2: SSM
 
 ##### Releases:
-- Rails 5 release to Production
+- Out-of-band: Storage release to address Minio multi-part download bug
+- Rails 5 release to Production (postponed until 12/15)
 
 
 #### Sprint 45: 28 October - 17 November 2020
