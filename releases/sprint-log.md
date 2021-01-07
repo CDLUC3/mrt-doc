@@ -1,5 +1,34 @@
 ## Sprint Goals
 
+#### Sprint 48: 6 January - 26 January 2021
+
+##### Primary tasks:
+- API design work: Starting with Lambda access and infrastructure:
+  - Using the admin tool as a trial for Lambda packaging strategy
+  - AWS Cognito: Kevin (AWS rep) is inclined to think this will work 
+  - Try adding access restrictions to Admin tool first, then see how this will work with Collection Admin
+  - Test suite account credentials: 545
+- Replic2: SSM
+  - Create a Docker definition for Replic and Audit (may wait on Audit until Audit 2 work begins)
+- Collection Admin
+  - Need to decide on implementation language: likely Ruby? 
+  - Note: Update to Python 3 by IAS is underway
+- Palestinian Museum collection
+  - Metadata gap analysis
+
+##### Secondary tasks:
+- SDSC and Wasabi credential changes: #521
+- Docker tutorial documentation
+- ETDs: MARC records for UCSC
+- Redirects for Merritt objects (discussed during planning)
+- 4-byte unicode characters: #552
+
+##### Releases:
+- Rails 5 release, 1/7
+- Dash > Dryad migration: Ongoing in two more phases
+- Ingest2: SSM, 1/19
+
+
 #### Sprint 47: 9  December - 22 December 2020
 
 ##### Primary tasks:
