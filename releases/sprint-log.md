@@ -1,5 +1,31 @@
 ## Sprint Goals
 
+#### Sprint 49: 27 January - 16 February 2021
+
+##### Primary tasks:
+- API design work: Starting with Lambda access and infrastructure:
+  - Using the admin tool as a trial for Lambda packaging strategy
+  - AWS Cognito
+- Audit2 SSM
+- Collection Admin
+  - Continue Lambda implementation 
+- Palestinian Museum collection
+  - Transfer to AWS Snowcones 
+  - Metadata gap analysis
+  
+##### Secondary tasks:
+- Docker tutorial documentation
+- SDSC and Wasabi credential changes: #521
+- ETDs: MARC records for UCSC
+- Redirects for Merritt objects?
+- 4-byte unicode characters: #552
+
+##### Releases:
+- Rails 5 release, 2/9?
+- Replic2: SSM
+- Dash > Dryad migration: Near completion
+
+
 #### Sprint 48: 6 January - 26 January 2021
 
 ##### Primary tasks:
