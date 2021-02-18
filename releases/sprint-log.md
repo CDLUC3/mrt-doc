@@ -1,5 +1,29 @@
 ## Sprint Goals
 
+#### Sprint 50: 17 February - 9 March 2021
+
+##### Primary tasks:
+- API design: Starting with Lambda access and infrastructure:
+  - AWS Cognito investigation (checking with AWS, Kevin M.)
+- Dash > Dryad migration: validation, review, remove existing content, re-run content loading
+- Audit2 SSM
+- Dryad 1116: "+" sign character in file names introducing trouble with Zenodo replication
+  - May also examine 4-byte unicode characters: #552
+- Collection Admin
+  - Ingest endpoint tasks as noted in the Coll Admin ReadME
+- Palestinian Museum collection
+  - Begin analyzing content on S3 and prototyping ingest automation
+  - Metadata gap analysis
+
+##### Secondary tasks:
+- SDSC and Wasabi credential changes: #521
+- ETDs: MARC records for UCSC
+- Nuxeo feed code and its use of SSM
+
+##### Releases:
+- Dash > Dryad migration: Add validation, review, second migration
+
+
 #### Sprint 49: 27 January - 16 February 2021
 
 ##### Primary tasks:
