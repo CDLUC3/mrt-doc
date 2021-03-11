@@ -1,5 +1,31 @@
 ## Sprint Goals
 
+#### Sprint 51: 10 March - 30 March 2021
+
+##### Primary tasks:
+- AWS Cognito investigation
+- Dash > Dryad migration: validation, review, remove existing content, re-run content loading
+- Audit: Proposed table and server changes #597
+  - Monitor performance and burst credit usage for 4 servers currently running
+- Collection Admin
+  - Ingest endpoints for submission file data and submission handling (pause/unpause/resubmit) #592
+  - Moving some current dev work onto stage; initial read-only functions
+- ETDs: Proquest .unx file processing #585
+- Investigate ISO-8859-1 character set for unpacking UCSC submission #614
+- Palestinian Museum collection
+  - Begin analyzing content on S3 and prototyping ingest automation, #558
+  - Metadata gap analysis
+
+##### Secondary tasks:
+- ETDs: MARC records for UCSC
+- Nuxeo feed code and its use of SSM
+- SDSC and Wasabi credential changes: #521
+
+##### Releases:
+- Dash > Dryad migration: Add validation, review, second migration
+- UC Davis ICE SWAP submission to Dryad 
+
+
 #### Sprint 50: 17 February - 9 March 2021
 
 ##### Primary tasks:
