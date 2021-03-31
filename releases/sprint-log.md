@@ -1,5 +1,37 @@
 ## Sprint Goals
 
+#### Sprint 52: 31 March - 20 April 2021
+
+##### Primary tasks:
+- AWS Cognito investigation
+- Collection Admin
+  - Endpoints related to pausing/unpausing submissions #592
+  - New endpoint for error notification – sending notifications not only to email but the ZK
+  - Work with Martin to on a production Lambda 
+  - LDAP client exploration #590
+- Audit: Proposed table and server changes #597
+  - Monitor performance and burst credit usage during testing
+- Delete old Dash collection content #635
+  - Schedule running this with the approval of the Dryad team
+  - Remove profiles for old Dash collections #639
+- cloudConfig.yml change for SDSC, stage only to enable eSchol harvester tests #638
+- ETDs: Proquest .unx file processing #585
+
+##### Secondary tasks:
+- File size evaluation for Audit – handling files over 5GB #640
+- Missing DataONE content from Individual collection to Dryad migration #637
+- Audit instance type evaluation with IAS
+- Palestinian Museum collection
+  - Begin analyzing content on S3 and prototyping ingest automation, #558
+  - Metadata gap analysis
+- Investigate ISO-8859-1 character set for unpacking UCSC submission #614
+
+##### Releases:
+- Goal to move Admin changes from Stage to Production
+- Possible deployment of Audit optimizations to Production
+- UC Davis ICE SWAP submission to Dryad #437
+
+
 #### Sprint 51: 10 March - 30 March 2021
 
 ##### Primary tasks:
