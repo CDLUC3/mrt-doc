@@ -1,0 +1,21 @@
+graph TD
+  RDS[(Inventory DB)]
+  UI(Merritt UI)
+  ING(Ingest)
+  ST(Storage)
+  INV(Inventory)
+  CLOUD((Cloud Storage))
+  LDAP(LDAP)
+  ZOO(Zookeeper)
+
+  RDS --> UI
+  UI --> |file or manifest| ING
+  UI --> |authorization| LDAP
+  ING --> |async deposit| ST
+  ING --> ZOO
+  ZOO --> ING
+  ZOO --> INV
+  UI ---> |download req| ST
+  INV --> RDS
+  ST --> CLOUD
+  CLOUD -.-> |presigned| UI
