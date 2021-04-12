@@ -13,7 +13,7 @@ docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview-r
 ![](overview-core.mmd.svg)
 
 ## Dryad Microservices
-- [Graph Source](overview-mmd.mmd)
+- [Graph Source](overview-dryad.mmd)
 
 ![](overview-dryad.mmd.svg)
 
