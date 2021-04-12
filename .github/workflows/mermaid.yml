@@ -9,24 +9,18 @@ on:
     #  - 'diagrams/*.md'
 
 jobs:
-  mermaid:
+  render-md-mermaid:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Render images for every Mermaid diagram in all Markdown files (*.md) in the repo
+        uses: nielsvaneck/render-md-mermaid@v1
 
-    - name: Render Mermaid diagrams to SVG
-      uses: ksclarke/mermaid-cli-action@main
-      with:
-        # These are the default values (see below for other parameters)
-        mmd-pattern: 'diagrams/*.md'
-        mmd-output: 'svg'
-
-    - name: Commit rendered SVG files
-      uses: stefanzweifel/git-auto-commit-action@be7095c202abcf573b09f20541e0ee2f6a3a9d9b # v4.9.2
-      with:
-        # Change `file_pattern` to match your `mmd-output` parameter
-        file_pattern: '*[.svg]'
-        commit_message: Add automatically rendered Mermaid diagrams
+      - name: Commit rendered png and svg files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: "*[.svg,.png]"
+          commit_message: automatically rendered mermaid diagrams
