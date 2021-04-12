@@ -1,4 +1,10 @@
 ## Test
+
+![Overview 1](overview.svg)
+<details>
+  <summary>diagram source</summary>
+  This details block is collapsed by default when viewed in GitHub. This hides the mermaid graph definition, while the rendered image
+  linked above is shown. The details tag has to follow the image tag. (newlines allowed)
 ```mermaid
 graph TD
     UI[Merritt UI] -->|File or Manifest, Async| ING(Go shopping)
@@ -18,8 +24,15 @@ graph TD
     WASABI --> AUD
     AUD --> RDS
 ```
+</details>
 
 ## Replication
+
+![Overview 1a](overview1a.svg)
+<details>
+  <summary>diagram source</summary>
+  This details block is collapsed by default when viewed in GitHub. This hides the mermaid graph definition, while the rendered image
+  linked above is shown. The details tag has to follow the image tag. (newlines allowed)
 ```mermaid
 graph TD
     RDS1[Inventory DB] --> |Work Queue| REP
@@ -32,3 +45,4 @@ graph TD
     SDSC --> REP
     WASABI --> REP
 ```
+</details>
