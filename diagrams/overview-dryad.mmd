@@ -1,16 +1,15 @@
-graph TD
-    UI(Merritt UI)
-    click UI href "http://github.com/CDLUC3/mrt-dashboard" "Code repo"
-    DRYAD(Dryad UI)
-    RDS[(Inventory DB)]
-    CLOUD((Cloud Storage))
-    click CLOUD "S3, Glacier, SDSC, Wasabi"
-    ST(Storage)
-    DRYAD --> |download req| UI
-    DRYAD --> |manifest| SWORD
-    SWORD(Sword)
-    SWORD --> |sync deposit| ST
-    RDS --> OAI
-    OAI(OAIPMH)
-    OAI --> DRYAD
-    CLOUD -.-> |presigned| DRYAD
+graph TD;
+    UI(Merritt UI);
+    DRYAD(Dryad UI);
+    RDS[(Inventory DB)];
+    CLOUD((Cloud Storage));
+    ST(Storage);
+    DRYAD --> |download req| UI;
+    DRYAD --> |manifest| SWORD;
+    SWORD(Sword);
+    SWORD --> |sync deposit| ST;
+    RDS --> OAI;
+    OAI(OAIPMH);
+    OAI --> DRYAD;
+    CLOUD -.-> |presigned| DRYAD;
+    click UI href "http://github.com/CDLUC3/mrt-dashboard" "Code repo";
