@@ -1,12 +1,27 @@
 # To build from fragments
 
 ```
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview.mmd -o overview.svg
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview2.mmd -o overview2.svg
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview-core.mmd 
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview-dryad.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview-replic.mmd
+
 ```
 
-## Overview 1
-![](overview.svg)
+## Core Microservices
+[Graph Source](overview-core.mmd)
+![](overview-core.mmd.svg)
 
-## Overview 2
-![](overview2.svg)
+## Dryad Microservices
+[Graph Source](overview-mmd.mmd)
+![](overview-dryad.mmd.svg)
+
+## Audit and Replic Microservices
+[Graph Source](overview-replic.mmd)
+![](overview-replic.mmd.svg)
+
+## Scratch Pad
+
+```mermaid
+graph LR
+  A --> B
+```

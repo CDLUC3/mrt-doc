@@ -1,0 +1,10 @@
+graph TD
+    CLOUD((Cloud Storage))
+    RDS[(Inventory DB)]
+    AUD(Audit)
+    REP(Replication)
+    RDS --> AUD
+    RDS --> REP
+    CLOUD --> AUD
+    CLOUD --> REP
+    REP --> CLOUD
