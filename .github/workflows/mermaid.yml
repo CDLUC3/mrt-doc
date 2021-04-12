@@ -1,0 +1,35 @@
+name: 'Mermaid PR Render'
+
+on: 
+  push:
+    branches:
+      - mermaid
+    paths:
+      # Limit action runs to PRs that have Mermaid files (you can change to whatever suffix you use)
+      - 'diagrams/*.md'
+
+jobs:
+  mermaid:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Check out code
+      uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # v2.3.4
+      with:
+        # Checkout the head of the pull request, rather than the merge commit
+        ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Render Mermaid diagrams to SVG
+      uses: ksclarke/mermaid-cli-action@main
+      with:
+        # These are the default values (see below for other parameters)
+        mmd-pattern: 'diagrams/*.md'
+        mmd-output: 'svg'
+
+    - name: Commit rendered SVG files
+      uses: stefanzweifel/git-auto-commit-action@be7095c202abcf573b09f20541e0ee2f6a3a9d9b # v4.9.2
+      with:
+        # Change `file_pattern` to match your `mmd-output` parameter
+        file_pattern: '*[.svg]'
+        commit_message: Add automatically rendered Mermaid diagrams
