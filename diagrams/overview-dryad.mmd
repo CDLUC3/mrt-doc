@@ -1,8 +1,10 @@
 graph TD
     UI(Merritt UI)
+    click UI http://github.com/CDLUC3/mrt-dashboard
     DRYAD(Dryad UI)
     RDS[(Inventory DB)]
     CLOUD((Cloud Storage))
+    click CLOUD "S3, Glacier, SDSC, Wasabi"
     ST(Storage)
     DRYAD --> |download req| UI
     DRYAD --> |manifest| SWORD
