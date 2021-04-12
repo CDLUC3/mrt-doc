@@ -19,16 +19,3 @@ graph TD
     AUD --> RDS
 ```
 
-## Replication
-```mermaid
-graph TD
-    RDS1[Inventory DB] --> |Work Queue| REP
-    REP[Replication] --> S3[S3]
-    REP --> SDSC[SDSC Minio]
-    REP --> GLACIER[S3 Glacier]
-    REP --> WASABI[Wasabi]
-    REP --> |Record Location| RDS2[Inventory DB]
-    S3 --> REP
-    SDSC --> REP
-    WASABI --> REP
-```
