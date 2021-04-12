@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - mermaid
-    paths:
-      # Limit action runs to PRs that have Mermaid files (you can change to whatever suffix you use)
-      - 'diagrams/*.md'
+    #paths:
+    #  # Limit action runs to PRs that have Mermaid files (you can change to whatever suffix you use)
+    #  - 'diagrams/*.md'
 
 jobs:
   mermaid:
@@ -16,7 +16,7 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v2
-      
+
     - name: Render Mermaid diagrams to SVG
       uses: ksclarke/mermaid-cli-action@main
       with:
