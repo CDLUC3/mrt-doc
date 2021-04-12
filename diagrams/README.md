@@ -8,18 +8,22 @@ docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview-r
 ```
 
 ## Core Microservices
-[Graph Source](overview-core.mmd)
+- [Graph Source](overview-core.mmd)
+
 ![](overview-core.mmd.svg)
 
 ## Dryad Microservices
-[Graph Source](overview-mmd.mmd)
+- [Graph Source](overview-mmd.mmd)
+
 ![](overview-dryad.mmd.svg)
 
 ## Audit and Replic Microservices
-[Graph Source](overview-replic.mmd)
+- [Graph Source](overview-replic.mmd)
+
 ![](overview-replic.mmd.svg)
 
 ## Scratch Pad
+_Develop the diagrams in VSCode and then move to a .mmd file_
 
 ```mermaid
 graph LR
