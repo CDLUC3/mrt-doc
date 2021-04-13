@@ -5,8 +5,8 @@ graph TD
   ST(Storage)
   INV(Inventory)
   CLOUD(("Cloud Storage"))
-  LDAP(LDAP)
-  ZOO(Zookeeper)
+  LDAP[/LDAP\]
+  ZOO>Zookeeper]
 
   RDS --> UI
   UI --> |"file or manifest"| ING
@@ -22,3 +22,5 @@ graph TD
 
   style CLOUD fill:green
   style RDS fill:orange
+  style ZOO fill:blue
+  style LDAP fill:blue
