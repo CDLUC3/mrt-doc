@@ -4,14 +4,14 @@ graph TD
   ING(Ingest)
   ST(Storage)
   INV(Inventory)
-  CLOUD((Cloud Storage))
+  CLOUD((Cloud Storage<br>S3/Glacier<br>SDSC<br>Wasabi))
   LDAP(LDAP)
   ZOO(Zookeeper)
 
   RDS --> UI
-  UI --> |file or manifest| ING
+  UI --> |file or<br>manifest| ING
   UI --> |authorization| LDAP
-  ING --> |async deposit| ST
+  ING --> |async<br>deposit| ST
   ING --> ZOO
   ZOO --> ING
   ZOO --> INV
@@ -20,9 +20,3 @@ graph TD
   ST --> CLOUD
   CLOUD -.-> |presigned| UI
 
-  %% Class Definitions
-  %% =================
-  class CLOUD cloud;
-  classDef cloud background-color:yellow;
-  class UI node;
-  classDef node padding:3px;
