@@ -1,5 +1,5 @@
 graph TD
-    CLOUD((Cloud Storage))
+    CLOUD((Cloud Storage<br>S3/Glacier<br>SDSC<br>Wasabi))
     RDS[(Inventory DB)]
     AUD(Audit)
     REP(Replication)
@@ -8,3 +8,6 @@ graph TD
     CLOUD --> AUD
     CLOUD --> REP
     REP --> CLOUD
+
+    style CLOUD fill:green
+    style RDS fill:orange
