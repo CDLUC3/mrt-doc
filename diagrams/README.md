@@ -1,9 +1,9 @@
 # To build from fragments
 
 ```
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview-core.mmd 
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview-dryad.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -i overview-replic.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i overview-core.mmd 
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i overview-dryad.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i overview-replic.mmd
 
 ```
 
