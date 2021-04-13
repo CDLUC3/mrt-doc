@@ -4,7 +4,7 @@ graph TD
   RDS[(Inventory DB)]
   CLOUD(("Cloud Storage"))
   ST(Storage)
-  LDAP(LDAP)
+  LDAP[/LDAP\]
 
   DRYAD --> |download req| UI
   DRYAD --> |manifest| SWORD
@@ -19,3 +19,5 @@ graph TD
 
   style CLOUD fill:green
   style RDS fill:orange
+  style LDAP fill:blue
+
