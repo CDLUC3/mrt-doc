@@ -2,16 +2,20 @@ graph TD
   UI(Merritt UI)
   DRYAD(Dryad UI)
   RDS[(Inventory DB)]
-  CLOUD((Cloud Storage<br>S3/Glacier<br>SDSC<br>Wasabi))
+  CLOUD(("Cloud Storage"))
   ST(Storage)
+  LDAP(LDAP)
+
   DRYAD --> |download req| UI
   DRYAD --> |manifest| SWORD
   SWORD(Sword)
   SWORD --> |sync deposit| ST
+  SWORD --> |authorization| LDAP
   RDS --> OAI
   OAI(OAIPMH)
   OAI --> DRYAD
   CLOUD -.-> |presigned| DRYAD
+  ST --> CLOUD
 
   style CLOUD fill:green
   style RDS fill:orange
