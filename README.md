@@ -7,7 +7,7 @@ For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/m
 
 ## Code Repositories
 
-### Core Microservices
+### Core Microservices (Java)
 ![](diagrams/overview-core.mmd.svg)
 
 - [UI](https://github.com/CDLUC3/mrt-dashboard)
@@ -15,40 +15,43 @@ For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/m
 - [Inventory](https://github.com/CDLUC3/mrt-inventory)
 - [Storage (ingest and delivery)](https://github.com/CDLUC3/mrt-store)
 
-### Audit and Replication Services
+### Audit and Replication Services (Java)
 ![](diagrams/overview-replic.mmd.svg)
 - [Replication](https://github.com/CDLUC3/mrt-replic)
 - [Audit (Fixity Check)](https://github.com/CDLUC3/mrt-audit)
 
-### Microservices - Auxiliary
+### Microservices - Auxiliary (Java)
 ![](diagrams/overview-dryad.mmd.svg)
 - [Sword](https://github.com/CDLUC3/mrt-sword)
 - [OAI](https://github.com/CDLUC3/mrt-oai)
 
+### Other Production Services (Python/XSLT)
+- [ETD - Electronic Theses and Dissertations](https://github.com/CDLUC3/uc3-etds)
+
 ### Libraries
-- [Zoo](https://github.com/CDLUC3/mrt-zoo)
-- [ZK Queue](https://github.com/CDLUC3/cdl-zk-queue)
-- [Core](https://github.com/CDLUC3/mrt-core2)
-- [Cloud](https://github.com/CDLUC3/mrt-cloud)
-- [Ruby Ingest](https://github.com/CDLUC3/mrt-ingest-ruby)
-- [SSM Gem](https://github.com/CDLUC3/uc3-ssm)
+- Java
+  - [Core](https://github.com/CDLUC3/mrt-core2)
+  - [Cloud](https://github.com/CDLUC3/mrt-cloud)
+  - [Zoo](https://github.com/CDLUC3/mrt-zoo)
+  - [ZK Queue](https://github.com/CDLUC3/cdl-zk-queue)
+  - [Cloud Content Tools](https://github.com/CDLUC3/mrt-cloudhost-pub)
+- Ruby
+  - [Ruby Ingest](https://github.com/CDLUC3/mrt-ingest-ruby)
+  - [SSM Gem](https://github.com/CDLUC3/uc3-ssm)
 
 ### Configuration
 - [Tomcat](https://github.com/CDLUC3/mrt-tomcat)
 - [Catalina Base](https://github.com/CDLUC3/tomcat8_catalina_base)
 
 ### Supporting Services
-- [Admin Tool](https://github.com/CDLUC3/mrt-admin-lambda)
-- [Integration Tests](https://github.com/CDLUC3/mrt-integ-tests)
-- [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
-- [ETD - Electronic Theses and Dissertations](https://github.com/CDLUC3/uc3-etds)
-- [Merritt Manifest Tools](https://github.com/CDLUC3/merritt-manifest)
-### Documentation
+- Ruby
+  - [Admin Tool](https://github.com/CDLUC3/mrt-admin-lambda)
+  - [Integration Tests](https://github.com/CDLUC3/mrt-integ-tests)
+  - [Merritt Manifest Tools](https://github.com/CDLUC3/merritt-manifest)
+- Docker
+  -[Merritt Docker](https://github.com/CDLUC3/merritt-docker)
+### Documentation Tools (Python)
 -  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
-
-### Possibly obsolete
-- admin collection
-- mrt-cloudhost-pub
 
 ## Project Overview
 - [Project Board](https://github.com/CDLUC3/mrt-doc/projects/1)
