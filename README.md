@@ -10,44 +10,41 @@ For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/m
 ### Core Microservices
 ![](diagrams/overview-core.mmd.svg)
 
-- UI
-- Ingest
-- Inventory
-- Storage (ingest and delivery)
+- [UI](https://github.com/CDLUC3/mrt-dashboard)
+- [Ingest](https://github.com/CDLUC3/mrt-ingest)
+- [Inventory](https://github.com/CDLUC3/mrt-inventory)
+- [Storage (ingest and delivery)](https://github.com/CDLUC3/mrt-store)
 
 ### Audit and Replication Services
 ![](diagrams/overview-replic.mmd.svg)
-- Replication
-- Audit
+- [Replication](https://github.com/CDLUC3/mrt-replic)
+- [Audit (Fixity Check)](https://github.com/CDLUC3/mrt-audit)
 
 ### Microservices - Auxiliary
 ![](diagrams/overview-dryad.mmd.svg)
-- Sword
-- OAI
+- [Sword](https://github.com/CDLUC3/mrt-sword)
+- [OAI](https://github.com/CDLUC3/mrt-oai)
 
 ### Libraries
-- Zoo
-- ZK Queue
-- Core
-- Cloud
-- Ruby Ingest
-- uc3-ssm
+- [Zoo](https://github.com/CDLUC3/mrt-zoo)
+- [ZK Queue](https://github.com/CDLUC3/cdl-zk-queue)
+- [Core](https://github.com/CDLUC3/mrt-core2)
+- [Cloud](https://github.com/CDLUC3/mrt-cloud)
+- [Ruby Ingest](https://github.com/CDLUC3/mrt-ingest-ruby)
+- [SSM Gem](https://github.com/CDLUC3/uc3-ssm)
 
 ### Configuration
-- Tomcat
-- Catalina Base
-
+- [Tomcat](https://github.com/CDLUC3/mrt-tomcat)
+- [Catalina Base](https://github.com/CDLUC3/tomcat8_catalina_base)
 
 ### Supporting Services
-- Supporting Services
-- Admin Tool
-- Integration Tests
-- Merritt Docker
-- ETD
-- merritt-manifest
-
+- [Admin Tool](https://github.com/CDLUC3/mrt-admin-lambda)
+- [Integration Tests](https://github.com/CDLUC3/mrt-integ-tests)
+- [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
+- [ETD - Electronic Theses and Dissertations](https://github.com/CDLUC3/uc3-etds)
+- [Merritt Manifest Tools](https://github.com/CDLUC3/merritt-manifest)
 ### Documentation
--  mrt-repo-tagger
+-  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
 
 ### Possibly obsolete
 - admin collection
@@ -55,7 +52,9 @@ For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/m
 
 ## Project Overview
 - [Project Board](https://github.com/CDLUC3/mrt-doc/projects/1)
+- [System Operations Board](https://github.com/CDLUC3/mrt-doc/projects/4)
+- [System Enhancement Ideas Grouped by Theme](https://github.com/CDLUC3/mrt-doc/milestones)
+
 ## More info
-Provide appropriate contact information
 
 
