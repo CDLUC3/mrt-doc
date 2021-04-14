@@ -1,0 +1,25 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '10px'}}}%%
+graph TD
+  UI(Merritt UI)
+  DRYAD(Dryad UI)
+  RDS[(Inventory DB)]
+  CLOUD(("Cloud Storage"))
+  ST(Storage)
+  LDAP[/LDAP\]
+
+  DRYAD --> |download req| UI
+  DRYAD --> |manifest| SWORD
+  SWORD(Sword)
+  SWORD --> |sync deposit| ST
+  SWORD --> |authorization| LDAP
+  RDS --> OAI
+  OAI(OAIPMH)
+  OAI --> DRYAD
+  CLOUD -.-> |presigned| DRYAD
+  ST --> CLOUD
+
+  style CLOUD fill:#77913C
+  style RDS fill:#F68D2F
+  style LDAP fill:cyan
+  style DRYAD fill:cyan
+

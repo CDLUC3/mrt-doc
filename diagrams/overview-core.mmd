@@ -1,0 +1,31 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '10px'}}}%%
+graph TD
+  RDS[(Inventory DB)]
+  UI(Merritt UI)
+  ING(Ingest)
+  ST(Storage)
+  INV(Inventory)
+  CLOUD(("Cloud Storage"))
+  LDAP[/LDAP\]
+  ZOO>Zookeeper]
+  EZID(EZID Service)
+
+  RDS --> UI
+  UI --> |file or manifest| ING
+  UI --> |authorization| LDAP
+  ING --> |"async deposit"| ST
+  ING --> ZOO
+  ZOO --> ING
+  ZOO --> INV
+  UI ---> |download req| ST
+  INV --> RDS
+  ST --> CLOUD
+  CLOUD -.-> |presigned| UI
+  ING --> EZID
+
+  style CLOUD fill:#77913C
+  style RDS fill:#F68D2F
+  style LDAP fill:cyan
+  style ZOO fill:cyan
+  style EZID fill:cyan
+
