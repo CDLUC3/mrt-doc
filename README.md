@@ -7,21 +7,28 @@ For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/m
 
 ## Code Repositories
 
-### Core Microservices (Java)
+### Core Microservices 
 ![](diagrams/overview-core.mmd.svg)
 
-- [UI](https://github.com/CDLUC3/mrt-dashboard)
-- [Ingest](https://github.com/CDLUC3/mrt-ingest)
-- [Inventory](https://github.com/CDLUC3/mrt-inventory)
-- [Storage (ingest and delivery)](https://github.com/CDLUC3/mrt-store)
+Code Repositories
+- Ruby
+  - [UI](https://github.com/CDLUC3/mrt-dashboard)
+- Java
+  - [Ingest](https://github.com/CDLUC3/mrt-ingest)
+  - [Inventory](https://github.com/CDLUC3/mrt-inventory)
+  - [Storage (ingest and delivery)](https://github.com/CDLUC3/mrt-store)
 
 ### Audit and Replication Services (Java)
 ![](diagrams/overview-replic.mmd.svg)
+
+Code Repositories
 - [Replication](https://github.com/CDLUC3/mrt-replic)
 - [Audit (Fixity Check)](https://github.com/CDLUC3/mrt-audit)
 
 ### Microservices - Auxiliary (Java)
 ![](diagrams/overview-dryad.mmd.svg)
+
+Code Repositories
 - [Sword](https://github.com/CDLUC3/mrt-sword)
 - [OAI](https://github.com/CDLUC3/mrt-oai)
 
