@@ -1,0 +1,14 @@
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '10px'}}}%%
+graph TD
+    CLOUD(("Cloud Storage"))
+    RDS[(Inventory DB)]
+    AUD(Audit)
+    REP(Replication)
+    RDS --> AUD
+    RDS --> REP
+    CLOUD --> AUD
+    CLOUD --> REP
+    REP --> CLOUD
+
+    style CLOUD fill:#77913C
+    style RDS fill:#F68D2F
