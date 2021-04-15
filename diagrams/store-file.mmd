@@ -1,0 +1,19 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  UI("Merritt UI")
+  ST(Storage)
+  BROWSER[[Browser]]
+  subgraph cloud_storage
+    CLOUD(("Cloud Storage - Primary Node"))
+  end
+
+  BROWSER --> |retrieval req| UI
+  UI -.-> |presigned redirect| BROWSER
+  UI --> |retrieval req| ST
+  ST --> |retrieval req| CLOUD
+  CLOUD -.-> |presigned URL| ST
+  ST -.-> |presigned URL| UI
+  CLOUD -.-> |presigned retrieval| BROWSER
+
+  style CLOUD fill:#77913C
+  style ST stroke:red,stroke-width:4px

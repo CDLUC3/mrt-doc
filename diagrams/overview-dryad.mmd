@@ -4,19 +4,21 @@ graph TD
   DRYAD(Dryad UI)
   RDS[(Inventory DB)]
   CLOUD(("Cloud Storage"))
-  ST(Storage)
   LDAP[/LDAP\]
   SWORD(Sword)
+  BROWSER[[Browser]]
+  ING(Ingest)
 
-  DRYAD --> |download req| UI
+  BROWSER --> |retrieval req| DRYAD
+  DRYAD --> |retrieval req| UI
+  UI -.-> |presigned URL| DRYAD
   DRYAD --> |manifest| SWORD
   SWORD --> |deposit| ING
   SWORD --> |authorization| LDAP
   RDS --> OAI
   OAI(OAIPMH)
   OAI --> DRYAD
-  CLOUD -.-> |presigned| DRYAD
-  ST --> CLOUD
+  CLOUD -.-> |presigned retrieval| BROWSER
 
   style CLOUD fill:#77913C
   style RDS fill:#F68D2F

@@ -9,7 +9,9 @@ graph TD
   LDAP[/LDAP\]
   ZOO>Zookeeper]
   EZID(EZID Service)
+  BROWSER[[Browser]]
 
+  BROWSER --> |ingest or retrieval| UI
   RDS --> UI
   UI --> |"file or manifest"| ING
   UI --> |authorization| LDAP
@@ -17,11 +19,16 @@ graph TD
   ING --> ZOO
   ZOO --> ING
   ZOO --> INV
-  UI ---> |download req| ST
+  UI ---> |retrieval req| ST
   INV --> RDS
-  ST --> CLOUD
-  CLOUD -.-> |presigned| UI
+  ST --> |retrieval req| CLOUD
+  CLOUD -.-> |presigned URL| ST
+  ST -.-> |presigned URL| UI
   ING --> EZID
+  CLOUD -.-> |presigned retrieval| BROWSER
+  ING -.-> |local id request| INV
+  INV -.-> |retrieve manifest| ST
+
 
   style CLOUD fill:#77913C
   style RDS fill:#F68D2F
