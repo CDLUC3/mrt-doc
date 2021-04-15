@@ -1,0 +1,17 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  ING(Ingest)
+  ST(Storage)
+  ZOOINV>Zookeeper Inventory]
+  INV(Inventory)
+  RDS[(Inventory DB)]
+
+  ING --> |Local Id Request| INV
+  ZOOINV --> |acquire task| INV
+  INV --> |retrieve manifest| ST
+  ST --> |manifest file| INV
+  INV --> RDS
+
+  style RDS fill:#F68D2F
+  style ZOOINV fill:cyan
+  style INV stroke:red,stroke-width:4px

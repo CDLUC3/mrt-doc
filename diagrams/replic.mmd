@@ -1,0 +1,29 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  RDS[(Inventory DB)]
+  REPLIC(Replication)
+
+  subgraph cloud_storage
+    CLOUD(("Cloud Storage - Primary Node"))
+    CLDS3[/S3/]
+    CLDSDSC[/SDSC Minio/]
+    CLDWAS[/Wasabi/]
+    CLDGLC[/Glacier/]
+  end
+
+  RDS --> |acquire work| REPLIC
+  CLOUD --> |retrieve files| REPLIC
+  REPLIC --> |copy files| CLDS3
+  REPLIC --> |copy files| CLDGLC
+  REPLIC --> |copy files| CLDWAS
+  REPLIC --> |copy files| CLDSDSC
+  REPLIC -.-> |record copy| RDS
+
+  style CLOUD fill:#77913C
+  style CLDS3 fill:#77913C
+  style CLDGLC fill:#77913C
+  style CLDSDSC fill:#77913C
+  style CLDWAS fill:#77913C
+  style RDS fill:#F68D2F
+
+  style REPLIC stroke:red,stroke-width:4px

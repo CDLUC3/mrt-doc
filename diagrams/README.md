@@ -7,9 +7,14 @@ docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ov
 
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ui.mmd
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ingest.mmd
+
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i store-ing.mmd
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i store-file.mmd
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i store-obj.mmd
+
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i inventory.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i replic.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i audit.mmd
 
 ```
 
@@ -52,28 +57,48 @@ graph LR
 ![](store-obj.mmd.svg)
 
 ## Inventory
-TBD
+![](inventory.mmd.svg)
 
-## Audit
-TBD
 
 ## Replic
-TBD
+![](replic.mmd.svg)
+
+## Audit
+![](audit.mmd.svg)
 
 ## OAI
 TBD
-
+```mermaid
+graph LR
+  A --> B
+```
 ## Sword
 TBD
-
+```mermaid
+graph LR
+  A --> B
+```
 ## Merritt Admin Tool
 TBD
-
+```mermaid
+graph LR
+  A --> B
+```
 ## Merritt Collection Admin Tool
 TBD
-
+```mermaid
+graph LR
+  A --> B
+```
 ## Merritt Integration Tests
 TBD
-
+```mermaid
+graph LR
+  A --> B
+```
 ## Merritt Docker
 TBD
+```mermaid
+graph LR
+  A --> B
+```

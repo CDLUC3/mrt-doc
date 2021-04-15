@@ -1,0 +1,26 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  RDS[(Inventory DB)]
+  AUDIT(AUDIT - Fixity Check)
+
+  subgraph cloud_storage
+    CLDS3[/S3/]
+    CLDSDSC[/SDSC Minio/]
+    CLDWAS[/Wasabi/]
+    CLDGLC[/Glacier/]
+  end
+
+  RDS --> |acquire work| AUDIT
+  AUDIT --> |fixity check| CLDS3
+  AUDIT --> |metadata check| CLDGLC
+  AUDIT --> |fixity check| CLDWAS
+  AUDIT --> |fixity check| CLDSDSC
+  AUDIT -.-> |record fixity| RDS
+
+  style CLDS3 fill:#77913C
+  style CLDGLC fill:#77913C
+  style CLDSDSC fill:#77913C
+  style CLDWAS fill:#77913C
+  style RDS fill:#F68D2F
+
+  style AUDIT stroke:red,stroke-width:4px
