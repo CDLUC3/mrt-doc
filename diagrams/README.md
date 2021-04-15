@@ -19,6 +19,11 @@ docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i au
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i oai.mmd
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i sword.mmd
 
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i billing.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i admin-spa.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i admin-lambda.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i colladmin.mmd
+
 ```
 
 ## Core Microservices
@@ -75,18 +80,21 @@ graph LR
 ## Sword
 ![](sword.mmd.svg)
 
-## Merritt Admin Tool
-TBD
-```mermaid
-graph LR
-  A --> B
-```
+## Merritt Billing Update (Aggregation)
+![](billing.mmd.svg)
+
+
+## Merritt Admin Tool SPA
+![](admin-spa.mmd.svg)
+
+
+## Merritt Admin Tool Lambda
+![](admin-lambda.mmd.svg)
+
+
 ## Merritt Collection Admin Tool
-TBD
-```mermaid
-graph LR
-  A --> B
-```
+![](colladmin.mmd.svg)
+
 ## Merritt Integration Tests
 TBD
 ```mermaid

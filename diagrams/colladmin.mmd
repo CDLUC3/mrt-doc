@@ -1,0 +1,33 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  RDSINV((Inventory Database))
+  COLLADMIN(Collection Admin - Lambda)
+  ADMINWEB[[Admin Tool - SPA - Browser]]
+  WAF[Web application Fiirewall]
+  ECR[ECR Hosted Lambda Image]
+  ING(Ingest)
+  ZOOING>Zookeeper Ingest]
+  LDAP[/LDAP\]
+  S3RPT[[S3 Report Bucket - TBD]]
+
+  COLLADMIN --> |"query / update"| RDSINV
+  ALB --> ADMIN
+  COLLADMIN --> |json| ALB
+  ADMINWEB --> |ajax| ALB
+  ALB --> |json| ADMINWEB
+  ALB --> |authorize| WAF
+  ECR --> COLLADMIN
+  COLLADMIN --> ING
+  COLLADMIN --> LDAP
+  COLLADMIN --> S3RPT
+  ING --> ZOOING
+
+  style RDSINV fill:#F68D2F
+  style COLLADMIN stroke:red,stroke-width:4px
+  style ADMINWEB stroke:red,stroke-width:4px
+  style ALB fill:cyan
+  style WAF fill:cyan
+  style ECR fill:cyan
+  style ZOOING fill:cyan
+  style LDAP fill:cyan
+  style S3RPT fill:#77913C
