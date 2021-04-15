@@ -7,19 +7,20 @@ graph TD
   LDAP[/LDAP\]
   NUXEO((Nuxeo DAMS))
   DRYAD(Dryad UI)
-  NFEED[[Cron: Nuxeo Feed]]
+  NFEED[[Cron: Nuxeo Harvest]]
+  BROWSER
 
   subgraph Merritt
     RDS --> UI
     UI --> |"file or manifest"| ING
     UI --> |authorization| LDAP
-    UI ---> |download req| ST
+    UI ---> |retrieval req| ST
+    NFEED --> ING
   end
   subgraph dryad_browse
     DRYAD --> |download req| UI
   end
   subgraph dams_ingest
-    NFEED --> UI
     NUXEO --> NFEED
   end
 
@@ -28,3 +29,4 @@ graph TD
   style NUXEO fill:cyan
   style DRYAD fill:cyan
   style UI stroke:red,stroke-width:4px
+  style NFEED stroke:red,stroke-width:4px

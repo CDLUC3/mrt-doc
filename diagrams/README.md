@@ -7,6 +7,9 @@ docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ov
 
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ui.mmd
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ingest.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i store-ing.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i store-file.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i store-obj.mmd
 
 ```
 
@@ -38,3 +41,12 @@ graph LR
 
 ## Merritt Ingest
 ![](ingest.mmd.svg)
+
+## Merritt Storage (Ingest)
+![](store-ing.mmd.svg)
+
+## Merritt Storage (File Retrieval)
+![](store-file.mmd.svg)
+
+## Merritt Storage (Object Retrieval)
+![](store-obj.mmd.svg)

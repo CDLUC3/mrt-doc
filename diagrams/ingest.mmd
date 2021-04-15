@@ -2,24 +2,36 @@
 graph TD
   UI("Merritt UI")
   ING(Ingest)
+  INGCON(Ingest Consumer Daemon)
   ST(Storage)
-  ZOO>Zookeeper]
+  ZOOING>Zookeeper Ingest]
+  ZOOINV>Zookeeper Inventory]
   EZID(EZID Service)
+  INV(Inventory)
   DRYAD(Dryad UI)
   SWORD(Sword)
+  EFS[/Ingest Preparation - EFS/]
+  COLLAD(Merritt Collection Admin)
 
   subgraph Merritt
     UI --> |"file or manifest"| ING
     ING --> |deposit| ST
-    ING --> ZOO
-    ZOO --> ING
+    ING --> |queue task| ZOOING
+    ING --> ZOOINV
+    ING --> EFS
+    ING --> |Local Id Request| INV
+    ZOOING --> |task acquired| INGCON
+    INGCON -.-> ING
     ING --> EZID
+    COLLAD --> ING
   end
   subgraph dryad_ingest
     DRYAD --> |manifest| SWORD
     SWORD --> |sync deposit| ING
   end
 
-  style ZOO fill:cyan
+  style ZOOING fill:cyan
+  style ZOOINV fill:cyan
   style EZID fill:cyan
   style ING stroke:red,stroke-width:4px
+  style INGCON stroke:red,stroke-width:4px
