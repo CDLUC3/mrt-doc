@@ -1,0 +1,25 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  UI("Merritt UI")
+  ING(Ingest)
+  ST(Storage)
+  ZOO>Zookeeper]
+  EZID(EZID Service)
+  DRYAD(Dryad UI)
+  SWORD(Sword)
+
+  subgraph Merritt
+    UI --> |"file or manifest"| ING
+    ING --> |deposit| ST
+    ING --> ZOO
+    ZOO --> ING
+    ING --> EZID
+  end
+  subgraph dryad_ingest
+    DRYAD --> |manifest| SWORD
+    SWORD --> |sync deposit| ING
+  end
+
+  style ZOO fill:cyan
+  style EZID fill:cyan
+  style ING stroke:red,stroke-width:4px

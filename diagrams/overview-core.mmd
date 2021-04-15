@@ -1,7 +1,7 @@
-%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '10px'}}}%%
+%%{init: {'theme': 'base'}}%%
 graph TD
   RDS[(Inventory DB)]
-  UI(Merritt UI)
+  UI("Merritt UI")
   ING(Ingest)
   ST(Storage)
   INV(Inventory)
@@ -11,7 +11,7 @@ graph TD
   EZID(EZID Service)
 
   RDS --> UI
-  UI --> |file or manifest| ING
+  UI --> |"file or manifest"| ING
   UI --> |authorization| LDAP
   ING --> |"async deposit"| ST
   ING --> ZOO
@@ -28,4 +28,4 @@ graph TD
   style LDAP fill:cyan
   style ZOO fill:cyan
   style EZID fill:cyan
-
+  
