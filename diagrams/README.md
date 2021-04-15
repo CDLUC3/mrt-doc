@@ -5,6 +5,9 @@ docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ov
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i overview-dryad.mmd
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i overview-replic.mmd
 
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ui.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ingest.mmd
+
 ```
 
 ## Core Microservices
@@ -29,3 +32,9 @@ _Develop the diagrams in VSCode and then move to a .mmd file_
 graph LR
   A --> B
 ```
+
+## Merritt UI
+![](ui.mmd.svg)
+
+## Merritt Ingest
+![](ingest.mmd.svg)

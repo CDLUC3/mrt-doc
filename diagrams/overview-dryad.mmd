@@ -1,4 +1,4 @@
-%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '10px'}}}%%
+%%{init: {'theme': 'base'}}%%
 graph TD
   UI(Merritt UI)
   DRYAD(Dryad UI)
@@ -6,11 +6,11 @@ graph TD
   CLOUD(("Cloud Storage"))
   ST(Storage)
   LDAP[/LDAP\]
+  SWORD(Sword)
 
   DRYAD --> |download req| UI
   DRYAD --> |manifest| SWORD
-  SWORD(Sword)
-  SWORD --> |sync deposit| ST
+  SWORD --> |deposit| ING
   SWORD --> |authorization| LDAP
   RDS --> OAI
   OAI(OAIPMH)

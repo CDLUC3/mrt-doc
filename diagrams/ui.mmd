@@ -1,0 +1,30 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  RDS[(Inventory DB)]
+  UI("Merritt UI")
+  ING(Ingest)
+  ST(Storage)
+  LDAP[/LDAP\]
+  NUXEO((Nuxeo DAMS))
+  DRYAD(Dryad UI)
+  NFEED[[Cron: Nuxeo Feed]]
+
+  subgraph Merritt
+    RDS --> UI
+    UI --> |"file or manifest"| ING
+    UI --> |authorization| LDAP
+    UI ---> |download req| ST
+  end
+  subgraph dryad_browse
+    DRYAD --> |download req| UI
+  end
+  subgraph dams_ingest
+    NFEED --> UI
+    NUXEO --> NFEED
+  end
+
+  style RDS fill:#F68D2F
+  style LDAP fill:cyan
+  style NUXEO fill:cyan
+  style DRYAD fill:cyan
+  style UI stroke:red,stroke-width:4px
