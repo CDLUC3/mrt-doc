@@ -1,0 +1,12 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  DRYAD(Dryad UI)
+  RDS[(Inventory DB)]
+  OAI(OAIPMH)
+
+  RDS --> OAI
+  OAI --> DRYAD
+
+  style RDS fill:#F68D2F
+  style DRYAD fill:cyan
+  style OAI stroke:red,stroke-width:4px

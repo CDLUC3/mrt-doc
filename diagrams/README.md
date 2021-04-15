@@ -16,6 +16,9 @@ docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i in
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i replic.mmd
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i audit.mmd
 
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i oai.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i sword.mmd
+
 ```
 
 ## Core Microservices
@@ -67,17 +70,11 @@ graph LR
 ![](audit.mmd.svg)
 
 ## OAI
-TBD
-```mermaid
-graph LR
-  A --> B
-```
+![](oai.mmd.svg)
+
 ## Sword
-TBD
-```mermaid
-graph LR
-  A --> B
-```
+![](sword.mmd.svg)
+
 ## Merritt Admin Tool
 TBD
 ```mermaid
