@@ -1,0 +1,88 @@
+%%{init: {'theme': 'base'}}%%
+graph LR
+  DOCKYML[[docker-compose.yml]]
+  DOCK(Docker Compose)
+  APACHE{{Apache}}
+  ING{{Ingest}}
+  STORE{{Storage}}
+  UI{{Merritt UI}}
+  INV{{Inventory}}
+  ZOO{{Zookeeper}}
+  LDAP{{LDAP}}
+  MYSQL{{MySQL}}
+  MINIO{{Minio}}
+  MINIOMC{{Mino Client}}
+  EZID{{Mock EZID}}
+  INIT{{Merritt Docker Init Tasks}}
+  COLLADMIN{{Merritt Collection Admin}}
+  ALB{{ALB Simulation}}
+  AUDIT{{Audit placeholder}}
+  REPLIC{{Replication placeholder}}
+  SMTP{{SMTP}}
+  INPROF[[Ingest Profiles for Docker]]
+
+  subgraph main
+    DOCKYML --> DOCK
+    DOCK -.-> APACHE
+    DOCK -.-> ING
+    DOCK -.-> STORE
+    DOCK -.-> UI
+    DOCK -.-> INV
+    DOCK -.-> ZOO
+    DOCK -.-> LDAP
+    DOCK -.-> MYSQL
+    DOCK -.-> MINIO
+    DOCK -.-> MINIOMC
+    DOCK -.-> EZID
+    DOCK -.-> INIT
+    DOCK -.-> COLLADMIN
+    DOCK -.-> ALB
+    DOCK -.-> AUDIT
+    DOCK -.-> REPLIC
+    DOCK -.-> SMTP
+    INPROF --> ING
+  end
+
+  DRYADYML[[dryad.yml]]
+  OAI{{OAI}}
+  SWORD{{SWORD}}
+  DRYAD{{Dryad UI}}
+  DRYADMYSQL{{Dryad MySQL}}
+  SOLR{{Dryad SOLR}}
+  DRYINIT{{Merritt Docker Init Tasks -- Overrides}}
+  DRYADYML --> DOCK
+
+  subgraph dryad
+    DRYADYML --> OAI
+    DRYADYML --> SWORD
+    DRYADYML --> DRYAD
+    DRYADYML --> DRYADMYSQL
+    DRYADYML --> SOLR
+    DRYADYML --> DRYINIT
+  end
+
+  ARYML[[audit-replic.yml]]
+  AUDIT2{{Audit override}}
+  REPLIC2{{Replication override}}
+  ARYML --> DOCK
+
+  subgraph audit_replic
+    ARYML --> AUDIT2
+    ARYML --> REPLIC2
+  end
+
+  AUDIT2 -.-> AUDIT
+  REPLIC2 -.-> REPLIC
+  DRYINIT -.-> INIT
+
+  style DOCKYML stroke:red,stroke-width:4px
+  style DOCK fill:cyan
+  style APACHE fill:cyan
+  style ZOO fill:cyan
+  style LDAP fill:cyan
+  style MINIO fill:cyan
+  style MINIOMC fill:cyan
+  style SMTP fill:cyan
+  style DRYAD fill:cyan
+  style DRYADMYSQL fill:cyan
+  style SOLR fill:cyan

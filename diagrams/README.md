@@ -24,6 +24,9 @@ docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ad
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i admin-lambda.mmd
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i colladmin.mmd
 
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i integ-tests.mmd
+docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i docker.mmd
+
 ```
 
 ## Core Microservices
@@ -83,27 +86,18 @@ graph LR
 ## Merritt Billing Update (Aggregation)
 ![](billing.mmd.svg)
 
-
 ## Merritt Admin Tool SPA
 ![](admin-spa.mmd.svg)
 
-
 ## Merritt Admin Tool Lambda
 ![](admin-lambda.mmd.svg)
-
 
 ## Merritt Collection Admin Tool
 ![](colladmin.mmd.svg)
 
 ## Merritt Integration Tests
-TBD
-```mermaid
-graph LR
-  A --> B
-```
+![](integ-tests.mmd.svg)
+
 ## Merritt Docker
-TBD
-```mermaid
-graph LR
-  A --> B
-```
+![](docker.mmd.svg)
+
