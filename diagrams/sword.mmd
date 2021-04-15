@@ -1,0 +1,14 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  DRYAD(Dryad UI)
+  LDAP[/LDAP\]
+  SWORD(Sword)
+  ING(Ingest)
+
+  DRYAD --> |manifest| SWORD
+  SWORD --> |deposit| ING
+  SWORD --> |authorization| LDAP
+
+  style LDAP fill:cyan
+  style DRYAD fill:cyan
+  style SWORD stroke:red,stroke-width:4px
