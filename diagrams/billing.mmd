@@ -1,0 +1,12 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  RDSINV((Inventory Database))
+  RDSBILL((Billing Database))
+  BILLCRON[[Cron: Billing]]
+
+  BILLCRON --> |aggregation query| RDSINV
+  BILLCRON --> |daily update| RDSBILL
+
+  style RDSINV fill:#F68D2F
+  style RDSBILL fill:#F68D2F
+  style BILLCRON stroke:red,stroke-width:4px

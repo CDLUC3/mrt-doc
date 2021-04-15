@@ -1,0 +1,22 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  ADMIN(Admin Tool - Lambda)
+  ADMINWEB[[Admin Tool - SPA - Browser]]
+  WAF[Web application Firewall]
+  CF[Cloud Front]
+  S3WEB[[S3 Hosted Website]]
+
+  ALB --> ADMIN
+  ADMIN --> |json| ALB
+  ADMINWEB --> |ajax| ALB
+  ALB --> |json| ADMINWEB
+  CF --> ADMINWEB
+  CF --> |authorize| WAF
+  S3WEB --> CF
+
+  style ADMIN stroke:red,stroke-width:4px
+  style ADMINWEB stroke:red,stroke-width:4px
+  style ALB fill:cyan
+  style WAF fill:cyan
+  style CF fill:cyan
+  style S3WEB fill:#77913C

@@ -1,0 +1,25 @@
+%%{init: {'theme': 'base'}}%%
+graph TD
+  RDSINV((Inventory Database))
+  RDSBILL((Billing Database))
+  ADMIN(Admin Tool - Lambda)
+  ADMINWEB[[Admin Tool - SPA - Browser]]
+  WAF[Web application Fiirewall]
+  ECR[ECR Hosted Lambda Image]
+
+  ADMIN --> |query| RDSBILL
+  ADMIN --> |query| RDSINV
+  ALB --> ADMIN
+  ADMIN --> |json| ALB
+  ADMINWEB --> |ajax| ALB
+  ALB --> |json| ADMINWEB
+  ALB --> |authorize| WAF
+  ECR --> ADMIN
+
+  style RDSINV fill:#F68D2F
+  style RDSBILL fill:#F68D2F
+  style ADMIN stroke:red,stroke-width:4px
+  style ADMINWEB stroke:red,stroke-width:4px
+  style ALB fill:cyan
+  style WAF fill:cyan
+  style ECR fill:cyan
