@@ -6,12 +6,14 @@ graph TD
   INV(Inventory)
   RDS[(Inventory DB)]
 
-  ING --> |Local Id Request| INV
-  ZOOINV --> |acquire task| INV
-  INV --> |retrieve manifest| ST
-  ST --> |manifest file| INV
-  INV --> RDS
-
+  subgraph flowchart
+    ING --> |Local Id Request| INV
+    ZOOINV --> |acquire task| INV
+    INV --> |retrieve manifest| ST
+    ST --> |manifest file| INV
+    INV --> RDS
+  end
+  
   style RDS fill:#F68D2F
   style ZOOINV fill:cyan
   style INV stroke:red,stroke-width:4px

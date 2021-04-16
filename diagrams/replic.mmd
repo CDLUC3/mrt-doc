@@ -3,22 +3,23 @@ graph TD
   RDS[(Inventory DB)]
   REPLIC(Replication)
 
-  subgraph cloud_storage
-    CLOUD(("Cloud Storage - Primary Node"))
-    CLDS3[/S3/]
-    CLDSDSC[/SDSC Minio/]
-    CLDWAS[/Wasabi/]
-    CLDGLC[/Glacier/]
+  subgraph flowchart
+    subgraph cloud_storage
+      CLOUD(("Cloud Storage - Primary Node"))
+      CLDS3[/S3/]
+      CLDSDSC[/SDSC Minio/]
+      CLDWAS[/Wasabi/]
+      CLDGLC[/Glacier/]
+    end
+
+    RDS --> |acquire work| REPLIC
+    CLOUD --> |retrieve files| REPLIC
+    REPLIC --> |copy files| CLDS3
+    REPLIC --> |copy files| CLDGLC
+    REPLIC --> |copy files| CLDWAS
+    REPLIC --> |copy files| CLDSDSC
+    REPLIC -.-> |record copy| RDS
   end
-
-  RDS --> |acquire work| REPLIC
-  CLOUD --> |retrieve files| REPLIC
-  REPLIC --> |copy files| CLDS3
-  REPLIC --> |copy files| CLDGLC
-  REPLIC --> |copy files| CLDWAS
-  REPLIC --> |copy files| CLDSDSC
-  REPLIC -.-> |record copy| RDS
-
   style CLOUD fill:#77913C
   style CLDS3 fill:#77913C
   style CLDGLC fill:#77913C

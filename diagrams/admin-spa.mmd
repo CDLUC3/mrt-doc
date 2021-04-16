@@ -6,14 +6,15 @@ graph TD
   CF[Cloud Front]
   S3WEB[[S3 Hosted Website]]
 
-  ALB --> ADMIN
-  ADMIN --> |json| ALB
-  ADMINWEB --> |ajax| ALB
-  ALB --> |json| ADMINWEB
-  CF --> ADMINWEB
-  CF --> |authorize| WAF
-  S3WEB --> CF
-
+  subgraph flowchart
+    ALB --> ADMIN
+    ADMIN --> |json| ALB
+    ADMINWEB --> |ajax| ALB
+    ALB --> |json| ADMINWEB
+    CF --> ADMINWEB
+    CF --> |authorize| WAF
+    S3WEB --> CF
+  end
   style ADMIN stroke:red,stroke-width:4px
   style ADMINWEB stroke:red,stroke-width:4px
   style ALB fill:cyan

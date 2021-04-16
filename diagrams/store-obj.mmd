@@ -3,22 +3,25 @@ graph TD
   UI("Merritt UI")
   ST(Storage)
   BROWSER[[Browser]]
-  subgraph cloud_storage
-    CLOUD(("Cloud Storage - Primary Node"))
-    ASSM[[Object Assembly]]
+
+  subgraph flowchart
+ 
+    subgraph cloud_storage
+      CLOUD(("Cloud Storage - Primary Node"))
+      ASSM[[Object Assembly]]
+    end
+
+    BROWSER --> |retrieval req| UI
+    UI -.-> |presigned redirect| BROWSER
+    UI --> |retrieval req| ST
+    UI --> |check assembly| ST
+    ST --> |retrieval req| CLOUD
+    ST --> |object assembly| ASSM
+    CLOUD --> |download| ST
+    ASSM -.-> |presigned URL| ST
+    ST -.-> |assembly token| UI
+    ST -.-> |presigned URL| UI
+    ASSM -.-> |presigned retrieval| BROWSER
   end
-
-  BROWSER --> |retrieval req| UI
-  UI -.-> |presigned redirect| BROWSER
-  UI --> |retrieval req| ST
-  UI --> |check assembly| ST
-  ST --> |retrieval req| CLOUD
-  ST --> |object assembly| ASSM
-  CLOUD --> |download| ST
-  ASSM -.-> |presigned URL| ST
-  ST -.-> |assembly token| UI
-  ST -.-> |presigned URL| UI
-  ASSM -.-> |presigned retrieval| BROWSER
-
   style CLOUD fill:#77913C
   style ST stroke:red,stroke-width:4px

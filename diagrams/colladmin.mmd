@@ -10,18 +10,20 @@ graph TD
   LDAP[/LDAP\]
   S3RPT[[S3 Report Bucket - TBD]]
 
-  COLLADMIN --> |"query / update"| RDSINV
-  ALB --> ADMIN
-  COLLADMIN --> |json| ALB
-  ADMINWEB --> |ajax| ALB
-  ALB --> |json| ADMINWEB
-  ALB --> |authorize| WAF
-  ECR --> COLLADMIN
-  COLLADMIN --> ING
-  COLLADMIN --> LDAP
-  COLLADMIN --> S3RPT
-  ING --> ZOOING
-
+  subgraph flowchart
+    COLLADMIN --> |"query / update"| RDSINV
+    ALB --> ADMIN
+    COLLADMIN --> |json| ALB
+    ADMINWEB --> |ajax| ALB
+    ALB --> |json| ADMINWEB
+    ALB --> |authorize| WAF
+    ECR --> COLLADMIN
+    COLLADMIN --> ING
+    COLLADMIN --> LDAP
+    COLLADMIN --> S3RPT
+    ING --> ZOOING
+  end
+  
   style RDSINV fill:#F68D2F
   style COLLADMIN stroke:red,stroke-width:4px
   style ADMINWEB stroke:red,stroke-width:4px

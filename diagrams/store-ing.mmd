@@ -5,20 +5,22 @@ graph TD
   INV(Inventory)
   ZOOINV>Zookeeper Inventory]
 
-  subgraph cloud_storage
-    CLOUD(("Cloud Storage - Primary Node"))
-    CLDS3[/S3/]
-    CLDSDSC[/SDSC Minio/]
-    CLDWAS[/Wasabi/]
+  subgraph flowchart
+
+    subgraph cloud_storage
+      CLOUD(("Cloud Storage - Primary Node"))
+      CLDS3[/S3/]
+      CLDSDSC[/SDSC Minio/]
+      CLDWAS[/Wasabi/]
+    end
+
+    ING --> |deposit| ST
+    INV --> |retrieve manifest| ST
+    ST -.-> |manifest file| INV
+    ST --> |deposit to primary node| CLOUD
+    CLOUD --> |retrieve manifest| ST
+    ZOOINV --> INV 
   end
-
-  ING --> |deposit| ST
-  INV --> |retrieve manifest| ST
-  ST -.-> |manifest file| INV
-  ST --> |deposit to primary node| CLOUD
-  CLOUD --> |retrieve manifest| ST
-  ZOOINV --> INV 
-
   style CLOUD fill:#77913C
   style CLDS3 fill:#77913C
   style CLDSDSC fill:#77913C
