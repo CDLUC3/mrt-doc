@@ -56,7 +56,7 @@ Code Repositories
   - [Integration Tests](https://github.com/CDLUC3/mrt-integ-tests)
   - [Merritt Manifest Tools](https://github.com/CDLUC3/merritt-manifest)
 - Docker
-  -[Merritt Docker](https://github.com/CDLUC3/merritt-docker)
+  - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
 ### Documentation Tools (Python)
 -  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
 
