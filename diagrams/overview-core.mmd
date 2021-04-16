@@ -4,6 +4,7 @@ graph TD
   UI("Merritt UI")
   ING(Ingest)
   ST(Storage)
+  STACC(Storage - Access)
   INV(Inventory)
   CLOUD(("Cloud Storage"))
   LDAP[/LDAP\]
@@ -20,11 +21,11 @@ graph TD
     ING --> ZOO
     ZOO --> ING
     ZOO --> INV
-    UI ---> |retrieval req| ST
+    UI ---> |retrieval req| STACC
     INV --> RDS
-    ST --> |retrieval req| CLOUD
-    CLOUD -.-> |presigned URL| ST
-    ST -.-> |presigned URL| UI
+    STACC --> |retrieval req| CLOUD
+    CLOUD -.-> |presigned URL| STACC
+    STACC -.-> |presigned URL| UI
     ING --> EZID
     CLOUD -.-> |presigned retrieval| BROWSER
     ING -.-> |local id request| INV
