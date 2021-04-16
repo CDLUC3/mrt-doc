@@ -1,9 +1,12 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   CLOUD(("Cloud Storage"))
+  click CLOUD href "https://github.com/CDLUC3/mrt-cloud" "source code"
   RDS[(Inventory DB)]
   AUD(Audit)
+  click AUD href "https://github.com/CDLUC3/mrt-audit" "source code"
   REP(Replication)
+  click REP href "https://github.com/CDLUC3/mrt-replic" "source code"
 
   subgraph flowchart
     RDS --> AUD

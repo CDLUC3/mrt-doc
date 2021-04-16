@@ -1,11 +1,14 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   CAPY{{Capybara Test Driver Container}}
   CHROME{{Headless Chrome Container}}
   UI(Merritt UI)
+  click UI href "https://github.com/CDLUC3/mrt-dashboard" "source code"
   STORE(Storage)
+  click STORE href "https://github.com/CDLUC3/mrt-store" "source code"
   CONFIG[[Test Config Yaml]]
   DOCK(Docker Compose)
+  click DOCK href "https://github.com/CDLUC3/merritt-docker" "source code"
 
   subgraph flowchart
     DOCK -.-> |docker run| CAPY

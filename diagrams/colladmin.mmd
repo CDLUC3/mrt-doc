@@ -1,4 +1,4 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   RDSINV[(Inventory Database)]
   COLLADMIN{{Collection Admin - Lambda}}
@@ -6,6 +6,7 @@ graph TD
   WAF[Web application Fiirewall]
   ECR[ECR Hosted Lambda Image]
   ING(Ingest)
+  click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
   ZOOING>Zookeeper Ingest]
   LDAP[/LDAP\]
   S3RPT[[S3 Report Bucket - TBD]]

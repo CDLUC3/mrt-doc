@@ -1,6 +1,7 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   UI("Merritt UI")
+  click UI href "https://github.com/CDLUC3/mrt-dashboard" "source code"
   BROWSER[[Browser]]
 
   subgraph flowchart
@@ -14,6 +15,7 @@ graph TD
  
     subgraph cloud_storage
       CLOUD(("Cloud Storage - Primary Node"))
+      click CLOUD href "https://github.com/CDLUC3/mrt-cloud" "source code"
       ASSM[[Object Assembly]]
       CLEAN[S3 Retention Policy]
       CLEAN --> |automatic deletion| ASSM
