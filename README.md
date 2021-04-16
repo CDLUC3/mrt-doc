@@ -16,7 +16,7 @@ Code Repositories
 - Java
   - [Ingest](https://github.com/CDLUC3/mrt-ingest)
   - [Inventory](https://github.com/CDLUC3/mrt-inventory)
-  - [Storage (ingest and delivery)](https://github.com/CDLUC3/mrt-store)
+  - [Storage (Store and Access)](https://github.com/CDLUC3/mrt-store)
 
 ### Audit and Replication Services (Java)
 ![](diagrams/overview-replic.mmd.svg)
