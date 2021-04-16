@@ -1,7 +1,9 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   ING(Ingest)
+  click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
   ST(Storage)
+  click ST href "https://github.com/CDLUC3/mrt-store" "source code"
   ZOOINV>Zookeeper Inventory]
   INV(Inventory)
   RDS[(Inventory DB)]

@@ -1,9 +1,11 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   RDS[(Inventory DB)]
   UI("Merritt UI")
   ING(Ingest)
+  click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
   ST(Storage)
+  click ST href "https://github.com/CDLUC3/mrt-store" "source code"
   LDAP[/LDAP\]
   NUXEO((Nuxeo DAMS))
   DRYAD(Dryad UI)

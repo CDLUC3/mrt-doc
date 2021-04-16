@@ -1,4 +1,4 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   RDS[(Inventory DB)]
   REPLIC(Replication)
@@ -6,6 +6,7 @@ graph TD
   subgraph flowchart
     subgraph cloud_storage
       CLOUD(("Cloud Storage - Primary Node"))
+      click CLOUD href "https://github.com/CDLUC3/mrt-cloud" "source code"
       CLDS3[/AWS S3/]
       CLDSDSC[/SDSC Minio/]
       CLDWAS[/Wasabi/]

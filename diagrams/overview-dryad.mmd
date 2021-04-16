@@ -1,13 +1,18 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   UI(Merritt UI)
+  click UI href "https://github.com/CDLUC3/mrt-dashboard" "source code"
   DRYAD(Dryad UI)
+  click DRYAD href "https://datadryad.org/" "service link"
   RDS[(Inventory DB)]
   CLOUD(("Cloud Storage"))
+  click CLOUD href "https://github.com/CDLUC3/mrt-cloud" "source code"
   LDAP[/LDAP\]
   SWORD(Sword)
+  click SWORD href "https://github.com/CDLUC3/mrt-sword" "source code"
   BROWSER[[Browser]]
   ING(Ingest)
+  click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
 
   subgraph flowchart
     BROWSER --> |retrieval req| DRYAD

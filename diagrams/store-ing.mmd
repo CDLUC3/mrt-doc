@@ -1,14 +1,17 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   ING(Ingest)
+  click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
   ST(Storage)
   INV(Inventory)
+  click INV href "https://github.com/CDLUC3/mrt-inventory" "source code"
   ZOOINV>Zookeeper Inventory]
 
   subgraph flowchart
 
     subgraph cloud_storage
       CLOUD(("Cloud Storage - Primary Node"))
+      click CLOUD href "https://github.com/CDLUC3/mrt-cloud" "source code"
     end
 
     ING --> |deposit| ST

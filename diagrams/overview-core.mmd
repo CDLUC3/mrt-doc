@@ -1,15 +1,23 @@
-%%{init: {'theme': 'neutral'}}%%
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   RDS[(Inventory DB)]
   UI("Merritt UI")
+  click UI href "https://github.com/CDLUC3/mrt-dashboard" "source code"
   ING(Ingest)
+  click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
   ST(Storage)
+  click ST href "https://github.com/CDLUC3/mrt-store" "source code"
   STACC(Storage - Access)
+  click STACC href "https://github.com/CDLUC3/mrt-store" "source code"
   INV(Inventory)
+  click INV href "https://github.com/CDLUC3/mrt-inventory" "source code"
   CLOUD(("Cloud Storage"))
+  click INV href "https://github.com/CDLUC3/mrt-cloud" "source code"
   LDAP[/LDAP\]
   ZOO>Zookeeper]
+  click ZOO href "https://github.com/CDLUC3/mrt-zoo" "source code"
   EZID(EZID Service)
+  click EZID href "https://ezid.cdlib.org/" "service link"
   BROWSER[[Browser]]
 
   subgraph flowchart
