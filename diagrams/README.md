@@ -52,6 +52,7 @@ graph TD
   B --> C
   C --> D
   A -.-> D
+  D --> E
 ```
 
 ## Merritt UI

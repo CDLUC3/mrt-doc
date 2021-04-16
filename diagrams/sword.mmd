@@ -4,12 +4,15 @@ graph TD
   LDAP[/LDAP\]
   SWORD(Sword)
   ING(Ingest)
+  RDS[(Inventory DB)]
 
   subgraph flowchart
     DRYAD --> |manifest| SWORD
     SWORD --> |deposit| ING
     SWORD --> |authorization| LDAP
+    SWORD --> |collection lookup| RDS
   end
   style LDAP fill:cyan
   style DRYAD fill:cyan
   style SWORD stroke:red,stroke-width:4px
+  style RDS fill:#F68D2F
