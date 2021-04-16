@@ -1,7 +1,7 @@
 %%{init: {'theme': 'base'}}%%
 graph TD
-  RDSINV((Inventory Database))
-  RDSBILL((Billing Database))
+  RDSINV[(Inventory Database)]
+  RDSBILL[(Billing Database)]
   BILLCRON[[Cron: Billing]]
 
   BILLCRON --> |aggregation query| RDSINV

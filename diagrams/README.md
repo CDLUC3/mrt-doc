@@ -1,33 +1,30 @@
-# To build from fragments
+# Merritt Diagrams Created with Mermaid
+[Mermaid Documentation](https://mermaid-js.github.io/mermaid/#/)
+## To build diagram images from mermaid source (*.mmd)
 
+The mermaid cli can be used to generate SVG for each mmd file.
 ```
 docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i overview-core.mmd 
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i overview-dryad.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i overview-replic.mmd
-
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ui.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ingest.mmd
-
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i store-ing.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i store-file.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i store-obj.mmd
-
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i inventory.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i replic.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i audit.mmd
-
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i oai.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i sword.mmd
-
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i billing.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i admin-spa.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i admin-lambda.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i colladmin.mmd
-
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i integ-tests.mmd
-docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i docker.mmd
-
 ```
+
+Run `diagrams/makeSvg.sh` to recreate the images that need to be regenerated.
+
+## Style conventions
+
+Colors
+- Merritt Orange: use for databases
+- Merritt Green: use for cloud storage
+- Cyan: use for non-Merritt components
+- Red border: highlight a component in focus for a diagram
+
+Shapes
+- `(round box)` - component
+- `[(database)]` - databases
+- ``((circle))`` - non database repository
+- `[[border box]]` - browser pages and other readable objects
+- `[box]` - AWS component
+- `{{angle box}}` - docker container
+- other shapes - for emphasis
 
 ## Core Microservices
 - [Graph Source](overview-core.mmd)
@@ -45,7 +42,7 @@ docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i do
 ![](overview-replic.mmd.svg)
 
 ## Scratch Pad
-_Develop the diagrams in VSCode and then move to a .mmd file_
+_Develop the diagrams in VSCode with a Mermaid extension. Move to a .mmd file for proper display on GitHub._
 
 ```mermaid
 graph LR
