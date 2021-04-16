@@ -45,8 +45,13 @@ Shapes
 _Develop the diagrams in VSCode with a Mermaid extension. Move to a .mmd file for proper display on GitHub._
 
 ```mermaid
-graph LR
-  A --> B
+%%{init: {'theme': 'neutral'}}%%
+graph TD
+  A[(Database)]
+  A --> |annotate| B
+  B --> C
+  C --> D
+  A -.-> D
 ```
 
 ## Merritt UI
