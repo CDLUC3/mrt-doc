@@ -55,13 +55,13 @@ graph LR
 ## Merritt Ingest
 ![](ingest.mmd.svg)
 
-## Merritt Storage (Ingest)
+## Merritt Store (Ingest)
 ![](store-ing.mmd.svg)
 
-## Merritt Storage (File Retrieval)
+## Merritt Access (File Access)
 ![](store-file.mmd.svg)
 
-## Merritt Storage (Object Retrieval)
+## Merritt Access (Object Access)
 ![](store-obj.mmd.svg)
 
 ## Inventory
