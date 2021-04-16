@@ -1,27 +1,38 @@
 %%{init: {'theme': 'neutral'}}%%
 graph TD
   UI("Merritt UI")
-  ST(Storage - Access)
   BROWSER[[Browser]]
 
   subgraph flowchart
  
+    subgraph Storage_Access
+      RO(Request Object)
+      AO(Assemble Object)
+      CT(Check Token)
+      RP(Return Presigned)
+    end
+ 
     subgraph cloud_storage
       CLOUD(("Cloud Storage - Primary Node"))
       ASSM[[Object Assembly]]
+      CLEAN[S3 Retention Policy]
+      CLEAN --> |automatic deletion| ASSM
     end
 
     BROWSER --> |retrieval req| UI
     UI -.-> |presigned redirect| BROWSER
-    UI --> |retrieval req| ST
-    UI --> |check assembly| ST
-    ST --> |retrieval req| CLOUD
-    ST --> |object assembly| ASSM
-    CLOUD --> |download| ST
-    ASSM -.-> |presigned URL| ST
-    ST -.-> |assembly token| UI
-    ST -.-> |presigned URL| UI
+    UI --> |retrieval req| RO
+    UI --> |check assembly| CT
+    RO --> AO
+    RO -.-> |assembly token| UI
+    CLOUD --> |retrieve file| AO
+    AO --> |object assembly| ASSM
+    CT -.-> |status check| AO
+    ASSM --> |presigned URL| RP
+    RP -.-> |presigned URL| UI
     ASSM -.-> |presigned retrieval| BROWSER
+    CT --> RP
   end
   style CLOUD fill:#77913C
-  style ST stroke:red,stroke-width:4px
+  style Storage_Access stroke:red,stroke-width:4px
+  style CLEAN fill:cyan
