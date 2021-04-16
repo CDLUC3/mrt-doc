@@ -1,14 +1,17 @@
 %%{init: {'theme': 'neutral'}}%%
 graph TD
-    CLOUD(("Cloud Storage"))
-    RDS[(Inventory DB)]
-    AUD(Audit)
-    REP(Replication)
+  CLOUD(("Cloud Storage"))
+  RDS[(Inventory DB)]
+  AUD(Audit)
+  REP(Replication)
+
+  subgraph flowchart
     RDS --> AUD
     RDS --> REP
     CLOUD --> AUD
     CLOUD --> REP
     REP --> CLOUD
+  end
 
-    style CLOUD fill:#77913C
-    style RDS fill:#F68D2F
+  style CLOUD fill:#77913C
+  style RDS fill:#F68D2F

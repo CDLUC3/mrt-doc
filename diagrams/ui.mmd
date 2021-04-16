@@ -1,4 +1,4 @@
-%%{init: {'theme': 'dark'}}%%
+%%{init: {'theme': 'neutral'}}%%
 graph TD
   RDS[(Inventory DB)]
   UI("Merritt UI")
@@ -8,9 +8,10 @@ graph TD
   NUXEO((Nuxeo DAMS))
   DRYAD(Dryad UI)
   NFEED[[Cron: Nuxeo Harvest]]
-  BROWSER
+  BROWSER[[Browser]]
 
   subgraph Merritt
+    BROWSER --> UI
     RDS --> UI
     UI --> |"file or manifest"| ING
     UI --> |authorization| LDAP

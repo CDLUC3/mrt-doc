@@ -34,7 +34,7 @@ Shapes
 ## Dryad Microservices
 - [Graph Source](overview-dryad.mmd)
 
-![](https://raw.githubusercontent.com/CDLUC3/mrt-doc/mermaid/diagrams/overview-dryad.mmd.svg)
+![](overview-dryad.mmd.svg)
 
 ## Audit and Replic Microservices
 - [Graph Source](overview-replic.mmd)

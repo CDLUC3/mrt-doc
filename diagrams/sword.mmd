@@ -5,10 +5,11 @@ graph TD
   SWORD(Sword)
   ING(Ingest)
 
-  DRYAD --> |manifest| SWORD
-  SWORD --> |deposit| ING
-  SWORD --> |authorization| LDAP
-
+  subgraph flowchart
+    DRYAD --> |manifest| SWORD
+    SWORD --> |deposit| ING
+    SWORD --> |authorization| LDAP
+  end
   style LDAP fill:cyan
   style DRYAD fill:cyan
   style SWORD stroke:red,stroke-width:4px

@@ -11,24 +11,25 @@ graph TD
   EZID(EZID Service)
   BROWSER[[Browser]]
 
-  BROWSER --> |ingest or retrieval| UI
-  RDS --> UI
-  UI --> |"file or manifest"| ING
-  UI --> |authorization| LDAP
-  ING --> |"async deposit"| ST
-  ING --> ZOO
-  ZOO --> ING
-  ZOO --> INV
-  UI ---> |retrieval req| ST
-  INV --> RDS
-  ST --> |retrieval req| CLOUD
-  CLOUD -.-> |presigned URL| ST
-  ST -.-> |presigned URL| UI
-  ING --> EZID
-  CLOUD -.-> |presigned retrieval| BROWSER
-  ING -.-> |local id request| INV
-  INV -.-> |retrieve manifest| ST
-
+  subgraph flowchart
+    BROWSER --> |ingest or retrieval| UI
+    RDS --> UI
+    UI --> |"file or manifest"| ING
+    UI --> |authorization| LDAP
+    ING --> |"async deposit"| ST
+    ING --> ZOO
+    ZOO --> ING
+    ZOO --> INV
+    UI ---> |retrieval req| ST
+    INV --> RDS
+    ST --> |retrieval req| CLOUD
+    CLOUD -.-> |presigned URL| ST
+    ST -.-> |presigned URL| UI
+    ING --> EZID
+    CLOUD -.-> |presigned retrieval| BROWSER
+    ING -.-> |local id request| INV
+    INV -.-> |retrieve manifest| ST
+  end
 
   style CLOUD fill:#77913C
   style RDS fill:#F68D2F

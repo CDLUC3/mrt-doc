@@ -4,8 +4,10 @@ graph TD
   RDSBILL[(Billing Database)]
   BILLCRON[[Cron: Billing]]
 
-  BILLCRON --> |aggregation query| RDSINV
-  BILLCRON --> |daily update| RDSBILL
+  subgraph flowchart
+    BILLCRON --> |aggregation query| RDSINV
+    BILLCRON --> |daily update| RDSBILL
+  end
 
   style RDSINV fill:#F68D2F
   style RDSBILL fill:#F68D2F

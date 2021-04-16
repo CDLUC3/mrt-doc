@@ -7,14 +7,16 @@ graph TD
   WAF[Web application Fiirewall]
   ECR[ECR Hosted Lambda Image]
 
-  ADMIN --> |query| RDSBILL
-  ADMIN --> |query| RDSINV
-  ALB --> ADMIN
-  ADMIN --> |json| ALB
-  ADMINWEB --> |ajax| ALB
-  ALB --> |json| ADMINWEB
-  ALB --> |authorize| WAF
-  ECR --> ADMIN
+  subgraph flowchart
+    ADMIN --> |query| RDSBILL
+    ADMIN --> |query| RDSINV
+    ALB --> ADMIN
+    ADMIN --> |json| ALB
+    ADMINWEB --> |ajax| ALB
+    ALB --> |json| ADMINWEB
+    ALB --> |authorize| WAF
+    ECR --> ADMIN
+  end
 
   style RDSINV fill:#F68D2F
   style RDSBILL fill:#F68D2F

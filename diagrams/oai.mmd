@@ -4,8 +4,10 @@ graph TD
   RDS[(Inventory DB)]
   OAI(OAIPMH)
 
-  RDS --> OAI
-  OAI --> DRYAD
+  subgraph flowchart
+    RDS --> OAI
+    OAI --> DRYAD
+  end
 
   style RDS fill:#F68D2F
   style DRYAD fill:cyan

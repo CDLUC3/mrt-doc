@@ -7,13 +7,15 @@ graph TD
   CONFIG[[Test Config Yaml]]
   DOCK(Docker Compose)
 
-  DOCK -.-> |docker run| CAPY
-  DOCK -.-> |docker run| CHROME
-  CONFIG --> CAPY
-  CAPY --> CHROME
-  CHROME --> |http| UI
-  CHROME --> |http| STORE
-
+  subgraph flowchart
+    DOCK -.-> |docker run| CAPY
+    DOCK -.-> |docker run| CHROME
+    CONFIG --> CAPY
+    CAPY --> CHROME
+    CHROME --> |http| UI
+    CHROME --> |http| STORE
+  end
+  
   style DOCK fill:cyan
   style CHROME fill:cyan
   style CAPY stroke:red,stroke-width:4px
