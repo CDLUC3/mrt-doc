@@ -1,0 +1,44 @@
+%%{init: {'theme': 'neutral'}}%%
+graph TD
+  subgraph flowchart
+    subgraph inputs
+      PQZIP[[Proquest Zip Files]]
+      PQMARC[[Proquest Marc Files]]
+      MARCIN[[Campus Provided Marc Files]]
+      DIGIN[[Campus Initiated Digital File Update]]
+      METAIN[[Campus Initiated Metadata Update]]
+    end
+    subgraph outputs
+      MARC[[Generated Marc Files]]
+    end
+
+    CONVPQ(Convert ProQuest Zip Files)
+    CONVM(Convert Marc)
+    DB[(SQL Lite DB)]
+    MI(Merritt Ingest)
+    M((Merritt))
+    EH(EScholarship Harvest)
+    E((EScholarship))
+    PQG((Proquest Gateway))
+    PQGH(Proquest Gateway Harvest)
+    M2E(Merrit to Escholarship Harvest)
+
+    PQZIP --> CONVPQ
+    CONVPQ --> DB
+    CONVPQ --> MI
+    PQMARC --> CONVM
+    DB --> CONVM
+    CONVM --> MARC
+    MARC --> MI
+    MI --> M
+
+    M --> M2E
+    M2E --> E
+    E --> EH
+    DB -.-> EH
+    EH --> MI
+
+    PQG --> PQGH
+    DB --> PQGH
+    PQGH --> MARC
+  end
