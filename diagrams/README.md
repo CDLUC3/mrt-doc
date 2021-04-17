@@ -104,3 +104,6 @@ graph TD
 ## Merritt Docker
 ![](docker.mmd.svg)
 
+## ETD Service (Diagram In Progress)
+
+![](etd.mmd.svg)
