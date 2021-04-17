@@ -16,7 +16,7 @@ Code Repositories
 - Java
   - [Ingest](https://github.com/CDLUC3/mrt-ingest)
   - [Inventory](https://github.com/CDLUC3/mrt-inventory)
-  - [Storage (ingest and delivery)](https://github.com/CDLUC3/mrt-store)
+  - [Storage (Store and Access)](https://github.com/CDLUC3/mrt-store)
 
 ### Audit and Replication Services (Java)
 ![](diagrams/overview-replic.mmd.svg)
@@ -56,7 +56,7 @@ Code Repositories
   - [Integration Tests](https://github.com/CDLUC3/mrt-integ-tests)
   - [Merritt Manifest Tools](https://github.com/CDLUC3/merritt-manifest)
 - Docker
-  -[Merritt Docker](https://github.com/CDLUC3/merritt-docker)
+  - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
 ### Documentation Tools (Python)
 -  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
 
