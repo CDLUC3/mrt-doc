@@ -1,6 +1,8 @@
 #!/bin/sh
 
 # Run this script from the repository root
+# The following issue has been reported to mermaid
+#   https://github.com/mermaid-js/mermaid-cli/issues/114
 
 for file in diagrams/*.mmd
 do
