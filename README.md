@@ -41,7 +41,6 @@ Code Repositories
   - [Cloud](https://github.com/CDLUC3/mrt-cloud)
   - [Zoo](https://github.com/CDLUC3/mrt-zoo)
   - [ZK Queue](https://github.com/CDLUC3/cdl-zk-queue)
-  - [Cloud Content Tools](https://github.com/CDLUC3/mrt-cloudhost-pub)
 - Ruby
   - [Ruby Ingest](https://github.com/CDLUC3/mrt-ingest-ruby)
   - [SSM Gem](https://github.com/CDLUC3/uc3-ssm)
