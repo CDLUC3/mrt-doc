@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
-        "vstirbu.vscode-mermaid-preview"
+        "vstirbu.vscode-mermaid-preview",
+        "bierner.markdown-mermaid"
     ]
 }
