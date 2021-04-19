@@ -56,54 +56,87 @@ graph TD
 ```
 
 ## Merritt UI
+- [Graph Source](ui.mmd)
+
 ![](ui.mmd.svg)
 
 ## Merritt Ingest
+- [Graph Source](ingest.mmd)
+
 ![](ingest.mmd.svg)
 
 ## Merritt Store (Ingest)
+- [Graph Source](store-ing.mmd)
+
 ![](store-ing.mmd.svg)
 
 ## Merritt Access (File Access)
+- [Graph Source](store-fle.mmd)
+
 ![](store-file.mmd.svg)
 
 ## Merritt Access (Object Access)
+- [Graph Source](store-obj.mmd)
+
 ![](store-obj.mmd.svg)
 
 ## Inventory
+- [Graph Source](inventory.mmd)
+
 ![](inventory.mmd.svg)
 
 
 ## Replic
+- [Graph Source](replic.mmd)
+
 ![](replic.mmd.svg)
 
 ## Audit
+- [Graph Source](audit.mmd)
+
 ![](audit.mmd.svg)
 
 ## OAI
+- [Graph Source](oai.mmd)
+
 ![](oai.mmd.svg)
 
 ## Sword
+- [Graph Source](sword.mmd)
+
 ![](sword.mmd.svg)
 
 ## Merritt Billing Update (Aggregation)
+- [Graph Source](billing.mmd)
+
 ![](billing.mmd.svg)
 
 ## Merritt Admin Tool SPA
+- [Graph Source](admin-spa.mmd)
+
 ![](admin-spa.mmd.svg)
 
 ## Merritt Admin Tool Lambda
+- [Graph Source](admin-lambda.mmd)
+
 ![](admin-lambda.mmd.svg)
 
 ## Merritt Collection Admin Tool
+- [Graph Source](colladmin.mmd)
+
 ![](colladmin.mmd.svg)
 
 ## Merritt Integration Tests
+- [Graph Source](integ-tests.mmd)
+
 ![](integ-tests.mmd.svg)
 
 ## Merritt Docker
+- [Graph Source](docker.mmd)
+
 ![](docker.mmd.svg)
 
 ## ETD Service (Diagram In Progress)
+- [Graph Source](etd.mmd)
 
 ![](etd.mmd.svg)
