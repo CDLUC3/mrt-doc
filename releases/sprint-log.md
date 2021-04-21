@@ -1,5 +1,35 @@
 ## Sprint Goals
 
+#### Sprint 52: 21 April 2021 - May 11 2021
+
+##### Primary tasks:
+- Collection Admin
+  - Collection profile creation API in ingest
+  - Cognito ALB integration (would keep our application from needing to handle OATH tasks)
+- Investigate problematic history of some Dash objects migrated to Dryad #649
+  - Inventory failures #650 (three objects will need to be cleaned-up post migration)
+- Missing DataONE Dash content from Individual collection to Dryad migration #637
+  - On hold per #649
+- Continued VTD testing for eScholarship
+  - Includes XSL updates (conditional logic) for external ID field
+- ETDs: Proquest .unx file processing #585
+- Frontera collection gap analysis, continued
+  - Requires new spreadsheet from Arhoolie Foundation
+
+##### Secondary tasks:
+- New Ingest endpoint for error notification – sending notifications not only to email but the ZK
+- Create internal documentation assets to be integrated with READMEs and System inventory (work with Ashley on this)
+- Audit instance type evaluation with IAS (prod)
+- Palestinian Museum collection
+  - Begin analyzing content on S3 and prototyping ingest automation, #558
+  - Metadata gap analysis
+- Investigate ISO-8859-1 character set for unpacking UCSC submission #614
+
+##### Releases:
+- Deployment of Audit optimizations to Production (remaining hosts, 4/22)
+- Deploy XSL changes to ETD service
+
+
 #### Sprint 52: 31 March - 20 April 2021
 
 ##### Primary tasks:
