@@ -38,17 +38,17 @@ def download_objects():
     for line in input_file:
         try:
             object_url = 'https://merritt.cdlib.org/d/ark%253A%252F13030%252F' + str(line)
-            object_request = requests.get(object_url)
+            object_request = requests.get(object_url, auth=('name', 'pass'))
             object_request.raise_for_status()
             object_filename = line.strip()
             logger.info('Requesting object ' + object_filename + ' at ' + object_url)
             open('ark_13030_' + object_filename + '.zip', 'wb').write(object_request.content)
             logger.info('Object ' + object_filename + ' downloaded' + '\n')
         except HTTPError as http_err:
-            logger.error('HTTP error occurred: {http_err}' + '\n')
+            logger.error('HTTP error occurred: ' + str(http_err) + '\n')
 
         except Exception as err:
-            logger.error('Other error occurred: {err}' + '\n')
+            logger.error('Other error occurred: ' + str(err) + '\n')
 
         time.sleep(.1)
 

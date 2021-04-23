@@ -4,6 +4,10 @@
 This script utilizes legacy download links to download objects in public Merritt collections.
 As of November 2020, said links are still active. Note that these will be deprecated in the
 near future.
+
+Specific actions: When given a list of ARKs, downloads each object, unzips the object container,
+locates the Producer directory in the resulting files, zips the Producer file directory contents
+up into a new container named after the ARK, e.g. ark_m5qc02mk.zip
 '''
 
 import gzip
@@ -32,7 +36,7 @@ def create_log():
 
 def download_objects():
     logger = create_log()
-    input_file = open('one_test_object.txt')
+    input_file = open('ice_arks_1_3.csv')
 
     for line in input_file:
         try:
@@ -41,7 +45,7 @@ def download_objects():
             object_request.raise_for_status()
             object_filename = line.strip()
             logger.info('Requesting object ' + object_filename + ' at ' + object_url)
-            open(object_filename + '.zip', 'wb').write(object_request.content)
+            open('ark_13030_'+ object_filename + '.zip', 'wb').write(object_request.content)
             logger.info('Object ' + object_filename + ' downloaded' + '\n')
         except HTTPError as http_err:
             logger.error(f'HTTP error occurred: {http_err}' + '\n')
@@ -53,11 +57,11 @@ def download_objects():
 
         try:
             archive_name = line.strip() + '.zip'
-            print('This is the zip name: ' + archive_name)
+            print('Zip name: ' + archive_name)
 
-            with gzip.open(archive_name, 'rb') as f_in:
-                with open(archive_name, 'wb') as f_out:
-                    shutil.copyfileobj(f_in, f_out)
+            # with gzip.open(archive_name, 'rb') as f_in:
+            #     with open(archive_name, 'wb') as f_out:
+            #         shutil.copyfileobj(f_in, f_out)
 
         except Exception as e:
             logger.error(f'Could not decompress: {e}' + "\n")
