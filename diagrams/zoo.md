@@ -2,7 +2,7 @@
 title: "Zookeeper Queue"
 description: "The Merritt Ingest Microservice Queues a Task in Zookeeper to process the new deposit"
 nextpage: zoo2
-chart: diagrams/overview-core.mmd
+chart: overview-core.mmd
 ---
 {% include mermaid.html %}
 {% include start.html %}
