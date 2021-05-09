@@ -1,7 +1,5 @@
-# GitHub Pages for mrt-doc
-
-This site houses an interactive walk-through of Merritt system diagrams
+## This site houses an interactive walk-through of Merritt system diagrams
 
 Mermaid diagrams will be rendered with javascript allowing individual components to be clickable.
 
-[Core services walkthrough](diagrams/index)
+- [Core services walkthrough](diagrams/index)
