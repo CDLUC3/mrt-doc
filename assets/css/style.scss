@@ -1,5 +1,11 @@
+---
+---
 
 @import "{{ site.theme }}";
+
+#container {
+  background-color: pink;
+}
 
 #container .inner {
     width: 1000px !important;
