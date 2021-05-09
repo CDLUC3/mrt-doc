@@ -36,3 +36,7 @@ div.next {
   div.next a:before {
     content: '---> Next Page: ';
   }
+
+  div.mermaid {
+    display: none;
+  }
