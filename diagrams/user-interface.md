@@ -2,7 +2,7 @@
 title: "Merritt User Interface"
 description: "The Merritt User Interface allows a user to browse collections and deposit new objects"
 nextpage: ui-auth
-chart: diagrams/overview-core.mmd
+chart: overview-core.mmd
 ---
 {% include mermaid.html %}
 {% include start.html %}
