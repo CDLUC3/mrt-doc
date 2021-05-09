@@ -8,7 +8,7 @@ For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/m
 ## Code Repositories
 
 ### Core Microservices 
-![](diagrams/overview-core.mmd.svg)
+[![](diagrams/overview-core.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/index)
 
 Code Repositories
 - Ruby
