@@ -21,7 +21,7 @@ Code Repositories
   - [Storage (Store and Access)](https://github.com/CDLUC3/mrt-store)
 
 ### Audit and Replication Services (Java)
-[![](diagrams/overview-replic.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/audit-replic)
+[![](diagrams/overview-replic.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/auditreplic)
 
 Code Repositories
 - [Replication](https://github.com/CDLUC3/mrt-replic)
