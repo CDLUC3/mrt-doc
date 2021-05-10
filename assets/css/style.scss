@@ -7,8 +7,16 @@
     width: 1000px !important;
 }
 
-#downloads {
+#downloads, .inner hr {
     display: none;
+}
+
+header {
+  margin-top: none;
+  margin-bottom: none;
+  height: 300px;
+  min-height: 300px;
+  max-height: 300px;
 }
 
 div.next {
