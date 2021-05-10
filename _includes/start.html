@@ -1,0 +1,10 @@
+  <div class="next">
+    {% if page.nextpage %}
+      <span class="next">
+        <a href='{{page.nextpage}}'>{{page.nextpage}}</a>
+      </span>
+    {% endif %}    
+  </div>
+  <hr/>
+  <div class="mermaid">
+    {% include_relative {{page.chart}} %}
