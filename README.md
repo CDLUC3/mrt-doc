@@ -21,14 +21,14 @@ Code Repositories
   - [Storage (Store and Access)](https://github.com/CDLUC3/mrt-store)
 
 ### Audit and Replication Services (Java)
-![](diagrams/overview-replic.mmd.svg)
+[![](diagrams/overview-replic.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/audit-replic)
 
 Code Repositories
 - [Replication](https://github.com/CDLUC3/mrt-replic)
 - [Audit (Fixity Check)](https://github.com/CDLUC3/mrt-audit)
 
 ### Microservices - Auxiliary (Java)
-![](diagrams/overview-dryad.mmd.svg)
+[![](diagrams/overview-dryad.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/dryad)
 
 Code Repositories
 - [Sword](https://github.com/CDLUC3/mrt-sword)
