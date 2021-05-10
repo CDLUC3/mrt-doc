@@ -1,6 +1,3 @@
----
----
-
 @import "{{ site.theme }}";
 
 #container .inner {
@@ -15,25 +12,24 @@ div.next {
     font-size: 14px;
 }
 
-  div.next {
+div.next {
     border-top: solid double gray;
     border-bottom: solid double gray;
     text-align: right;
     width: 100%;
-  }
+}
   
-  div.next span.next {
+div.next span.next {
     border: thin solid #147080;
     background-color: #15836E;
     color: white;
     padding: 3px;
-  }
+}
   
-  div.next a {
+div.next a {
     color: white;
-  }
+}
   
-  div.next a:before {
+div.next a:before {
     content: '---> Next Page: ';
-  }
-
+}
