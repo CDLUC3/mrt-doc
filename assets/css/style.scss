@@ -16,11 +16,8 @@ div.next {
 }
 
 div.next {
-    border-top: solid double gray;
-    border-bottom: solid double gray;
     text-align: right;
     width: 100%;
-    padding: 15px;
 }
   
 div.next span.next {
@@ -32,6 +29,8 @@ div.next span.next {
 div.next a {
     color: white;
     padding: 15px;
+    display: inline-block;
+    border: solid double navy;
 }
   
 div.next a:before {
