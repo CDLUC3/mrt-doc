@@ -31,8 +31,8 @@ graph TD
     ING --> EZID
     ING --> |"async deposit"| ST
     ST --> CLOUD
-    INV -.-> |retrieve manifest| ST
     ZOO --> INV
+    INV -.-> |retrieve manifest| ST
     INV --> RDS
     UI ---> |retrieval req| STACC
     STACC --> |retrieval req| CLOUD
