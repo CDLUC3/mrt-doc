@@ -1,6 +1,6 @@
 ---
-title: "UI sends redirect response"
-description: "UI sends presigned URL redirect back to the browser"
+title: "UI responds with redirect"
+description: "UI responds with a presigned URL redirect"
 nextpage: redirect2
 chart: overview-core.mmd
 ---
