@@ -13,6 +13,8 @@ graph TD
   BROWSER[[Browser]]
   ING(Ingest)
   click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
+  OAI(OAI-PMH)
+  click OAI href "https://github.com/CDLUC3/mrt-oai" "source code"
 
   subgraph flowchart
     BROWSER --> |retrieval req| DRYAD
@@ -22,7 +24,6 @@ graph TD
     SWORD --> |deposit| ING
     SWORD --> |authorization| LDAP
     RDS --> OAI
-    OAI(OAIPMH)
     OAI --> DRYAD
     CLOUD -.-> |presigned retrieval| BROWSER
     SWORD -.-> |collection lookup| RDS
