@@ -33,8 +33,8 @@ graph TD
     ST --> CLOUD
     INV -.-> |retrieve manifest| ST
     ZOO --> INV
-    INV --> RDS
     UI ---> |retrieval req| STACC
+    INV --> RDS
     STACC --> |retrieval req| CLOUD
     CLOUD -.-> |presigned URL| STACC
     STACC -.-> |presigned URL| UI

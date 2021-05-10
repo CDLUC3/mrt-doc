@@ -1,5 +1,5 @@
 ---
-title: "A Tour of the Merritt Microservices"
+title: "User Scenario 1: User deposits content into Merritt"
 description: "A user visits the Merritt website"
 nextpage: user-interface
 chart: overview-core.mmd
