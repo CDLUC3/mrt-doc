@@ -19,18 +19,13 @@ div.next {
     text-align: right;
     width: 100%;
 }
-  
-div.next span.next {
-    border: thin solid #147080;
-    background-color: #15836E;
-    color: white;
-}
-  
+   
 div.next a {
     color: white;
     padding: 15px;
     display: inline-block;
-    border: solid double navy;
+    border: 4px double #147080;
+    background-color: #15836E;
 }
   
 div.next a:before {
