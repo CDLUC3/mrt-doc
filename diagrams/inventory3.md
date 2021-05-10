@@ -7,5 +7,5 @@ chart: overview-core.mmd
 {% include mermaid.html %}
 {% include start.html %}
   class RDS FOCUS
-  linkStyle 12 stroke:red,stroke-width:3px,stroke-dasharray: 5, 5
+  linkStyle 12 stroke:red,stroke-width:3px
 {% include end.html %}

@@ -7,5 +7,5 @@ chart: overview-core.mmd
 {% include mermaid.html %}
 {% include start.html %}
   class INV FOCUS
-  linkStyle 11 stroke:red,stroke-width:3px
+  linkStyle 11 stroke:red,stroke-width:3px,stroke-dasharray: 5, 5
 {% include end.html %}
