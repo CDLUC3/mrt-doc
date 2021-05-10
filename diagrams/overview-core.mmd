@@ -12,7 +12,7 @@ graph TD
   INV(Inventory)
   click INV href "https://github.com/CDLUC3/mrt-inventory" "source code"
   CLOUD(("Cloud Storage"))
-  click INV href "https://github.com/CDLUC3/mrt-cloud" "source code"
+  click CLOUD href "https://github.com/CDLUC3/mrt-cloud" "source code"
   LDAP[/LDAP\]
   ZOO>Zookeeper]
   click ZOO href "https://github.com/CDLUC3/mrt-zoo" "source code"
@@ -22,22 +22,23 @@ graph TD
 
   subgraph flowchart
     BROWSER --> |ingest or retrieval| UI
+    UI --> |authorization| LDAP
     RDS --> UI
     UI --> |"file or manifest"| ING
-    UI --> |authorization| LDAP
-    ING --> |"async deposit"| ST
     ING --> ZOO
     ZOO --> ING
+    ING -.-> |local id request| INV
+    ING --> EZID
+    ING --> |"async deposit"| ST
+    ST --> CLOUD
+    INV -.-> |retrieve manifest| ST
     ZOO --> INV
-    UI ---> |retrieval req| STACC
     INV --> RDS
+    UI ---> |retrieval req| STACC
     STACC --> |retrieval req| CLOUD
     CLOUD -.-> |presigned URL| STACC
     STACC -.-> |presigned URL| UI
-    ING --> EZID
     CLOUD -.-> |presigned retrieval| BROWSER
-    ING -.-> |local id request| INV
-    INV -.-> |retrieve manifest| ST
   end
 
   style CLOUD fill:#77913C
@@ -46,3 +47,4 @@ graph TD
   style ZOO fill:cyan
   style EZID fill:cyan
   
+  classDef FOCUS stroke:red,stroke-width:5px,fill:yellow
