@@ -12,5 +12,6 @@ chart: overview-core.mmd
 - [Merritt Admin Tool](admin-spa)
 - [Merritt Integration Tests](integ-tests)
 - [Merritt Docker](docker)
-- Merritt Microservice Focus Pages
+- [Merritt Microservice Focus Pages](ui)
+- [ETD Service](etd)
 
