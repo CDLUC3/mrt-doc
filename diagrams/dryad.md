@@ -1,7 +1,7 @@
 ---
 title: "Merritt-Dryad Microservices"
 description: "Dryad deposits to Merritt via Sword; ingests are confirmed via OAI"
-nextpage: index
+nextpage: admin-spa
 chart: overview-dryad.mmd
 ---
 

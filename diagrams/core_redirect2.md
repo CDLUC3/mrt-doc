@@ -1,7 +1,7 @@
 ---
 title: "Download content from the cloud provider"
 description: "The user's browser downloads the digital file directly from the cloud service"
-nextpage: core_auditreplic
+nextpage: auditreplic
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}
