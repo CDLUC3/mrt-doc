@@ -1,7 +1,7 @@
 ---
 title: "Merritt Docker Development Stack"
 description: "Merritt Dockerfile and Docker Compose files"
-nextpage: index
+nextpage: ui
 chart: docker.mmd
 ---
 
