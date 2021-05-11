@@ -1,7 +1,7 @@
 ---
 title: "EZID service (external to Merritt)"
 description: "Obtain an ARK (archival resource key) for a new Merritt object from the EZID service"
-nextpage: storage
+nextpage: core_storage
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

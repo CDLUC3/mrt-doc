@@ -1,7 +1,7 @@
 ---
 title: "Zookeeper Queue (Inventory)"
 description: "The ingest services places a task on the Inventory Zookeeper Queue to indicate that an ingest is complete"
-nextpage: inventory
+nextpage: core_inventory
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

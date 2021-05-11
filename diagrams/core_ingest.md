@@ -1,7 +1,7 @@
 ---
 title: "Merritt Ingest Microservice"
 description: "The Merritt UI deposits new objects into Merritt via the Ingest Microservice"
-nextpage: zoo
+nextpage: core_zoo
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

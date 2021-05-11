@@ -1,7 +1,7 @@
 ---
 title: "Local ID Service (Inventory)"
 description: "The ingest service checks the local id service to determine if a new version of an object has been retrieved"
-nextpage: ez-id
+nextpage: core_ez-id
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

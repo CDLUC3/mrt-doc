@@ -1,7 +1,7 @@
 ---
 title: "Request Presign Url"
 description: "The Storage (Access) Service requests a presigned URL from the Storage provider"
-nextpage: presign2
+nextpage: core_presign2
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}
