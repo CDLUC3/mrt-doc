@@ -1,7 +1,7 @@
 ---
 title: "Inventory Microservice - Save to Inventory Database"
 description: "The Inventory Microservice records the new object in the Inventory Database"
-nextpage: index2
+nextpage: core_index2
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

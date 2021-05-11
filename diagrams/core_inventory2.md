@@ -1,7 +1,7 @@
 ---
 title: "Inventory Microservice - Read Object Manifest"
 description: "The Inventory Microservice retrieves an object manifest from the storage service"
-nextpage: inventory3
+nextpage: core_inventory3
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

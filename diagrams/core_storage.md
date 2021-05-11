@@ -1,7 +1,7 @@
 ---
 title: "Storage Microservice"
 description: "The ingest service calls the the storage service to save content to the Cloud"
-nextpage: storage-cloud
+nextpage: core_storage-cloud
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

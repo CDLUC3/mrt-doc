@@ -1,7 +1,7 @@
 ---
 title: "Zookeeper Queue"
 description: "The Ingest Services acquires a task from the Zookeeper Queue"
-nextpage: local-id
+nextpage: core_local-id
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

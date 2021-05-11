@@ -1,7 +1,7 @@
 ---
 title: "Inventory Microservice"
 description: "The Inventory Microservice acquires a task from the Zookeeper Queue"
-nextpage: inventory2
+nextpage: core_inventory2
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

@@ -1,7 +1,7 @@
 ---
 title: "UI Authorization"
 description: "User authorizes against LDAP"
-nextpage: inventory-db
+nextpage: core_inventory-db
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

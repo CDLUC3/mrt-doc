@@ -1,7 +1,7 @@
 ---
 title: "UI responds with redirect"
 description: "UI responds with a presigned URL redirect"
-nextpage: redirect2
+nextpage: core_redirect2
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}
