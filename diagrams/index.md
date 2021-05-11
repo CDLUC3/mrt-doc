@@ -1,12 +1,13 @@
 ---
-title: "User Scenario 1: User deposits content into Merritt"
-description: "A user visits the Merritt website"
-nextpage: core_user-interface
+title: "Merritt Flowcharts"
+description: "Walk-throughs of Merritt Flowcharts"
+nextpage: core_index
 chart: overview-core.mmd
 ---
 
-{% include mermaid.html %}
-{% include start.html %}
-  class BROWSER FOCUS
-{% include end.html %}
+## Workflows
+- [Merritt Core Microservices](core_index)
+- [Merritt Audit and Replication Microservices](auditreplic)
+- [Merritt + Dryad Microservices](dryad)
+- [Merritt Admin Tool](admin-lambda)
 

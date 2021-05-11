@@ -9,8 +9,8 @@ For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/m
 
 ### Core Microservices 
 
-_Click the following diagram for a walk-through of the service_
-[![](diagrams/overview-core.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/index)
+_Click the following diagram for a walk-through of the service._
+[![](diagrams/overview-core.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/core_index)
 
 Code Repositories
 - Ruby
@@ -21,6 +21,8 @@ Code Repositories
   - [Storage (Store and Access)](https://github.com/CDLUC3/mrt-store)
 
 ### Audit and Replication Services (Java)
+
+_Click the following diagram for a walk-through of the service._
 [![](diagrams/overview-replic.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/auditreplic)
 
 Code Repositories
@@ -28,6 +30,8 @@ Code Repositories
 - [Audit (Fixity Check)](https://github.com/CDLUC3/mrt-audit)
 
 ### Microservices - Auxiliary (Java)
+
+_Click the following diagram for a walk-through of the service._
 [![](diagrams/overview-dryad.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/dryad)
 
 Code Repositories
