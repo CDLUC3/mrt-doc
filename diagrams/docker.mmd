@@ -2,23 +2,23 @@
 graph LR
   DOCKYML[[docker-compose.yml]]
   DOCK(Docker Compose)
-  APACHE{{Apache}}
-  ING{{Ingest}}
-  STORE{{Storage}}
-  UI{{Merritt UI}}
-  INV{{Inventory}}
-  ZOO{{Zookeeper}}
-  LDAP{{LDAP}}
-  MYSQL{{MySQL}}
-  MINIO{{Minio}}
-  MINIOMC{{Mino Client}}
-  EZID{{Mock EZID}}
-  INIT{{Merritt Docker Init Tasks}}
-  COLLADMIN{{Merritt Collection Admin}}
-  ALB{{ALB Simulation}}
-  AUDIT{{Audit placeholder}}
-  REPLIC{{Replication placeholder}}
-  SMTP{{SMTP}}
+  APACHE([Apache])
+  ING([Ingest])
+  STORE([Storage])
+  UI([Merritt UI])
+  INV([Inventory])
+  ZOO([Zookeeper])
+  LDAP([LDAP])
+  MYSQL([MySQL])
+  MINIO([Minio])
+  MINIOMC([Mino Client])
+  EZID([Mock EZID])
+  INIT([Merritt Docker Init Tasks])
+  COLLADMIN([Merritt Collection Admin])
+  ALB([ALB Simulation])
+  AUDIT([Audit placeholder])
+  REPLIC([Replication placeholder])
+  SMTP([SMTP])
   INPROF[[Ingest Profiles for Docker]]
 
   subgraph main
@@ -44,12 +44,12 @@ graph LR
   end
 
   DRYADYML[[dryad.yml]]
-  OAI{{OAI}}
-  SWORD{{SWORD}}
-  DRYAD{{Dryad UI}}
-  DRYADMYSQL{{Dryad MySQL}}
-  SOLR{{Dryad SOLR}}
-  DRYINIT{{Merritt Docker Init Tasks -- Overrides}}
+  OAI([OAI])
+  SWORD([SWORD])
+  DRYAD([Dryad UI])
+  DRYADMYSQL([Dryad MySQL])
+  SOLR([Dryad SOLR])
+  DRYINIT([Merritt Docker Init Tasks -- Overrides])
   DRYADYML --> DOCK
 
   subgraph dryad
@@ -62,8 +62,8 @@ graph LR
   end
 
   ARYML[[audit-replic.yml]]
-  AUDIT2{{Audit override}}
-  REPLIC2{{Replication override}}
+  AUDIT2([Audit override])
+  REPLIC2([Replication override])
   ARYML --> DOCK
 
   subgraph audit_replic
