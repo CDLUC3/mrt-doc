@@ -10,7 +10,7 @@ chart: overview-core.mmd
 - [Merritt Audit and Replication Microservices](auditreplic)
 - [Merritt + Dryad Microservices](dryad)
 - [Merritt Admin Tool](admin-spa)
-- Merritt Integration Tests
-- Merritt Docker
+- [Merritt Integration Tests](integ-tests)
+- [Merritt Docker](docker)
 - Merritt Microservice Focus Pages
 
