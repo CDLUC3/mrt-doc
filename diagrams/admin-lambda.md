@@ -2,7 +2,7 @@
 title: "Merritt Admin Tool (Query)"
 description: "Administrative Query Tool for the Merritt Team"
 nextpage: colladmin
-chart: admin-lambda.mmd
+chart: admin-billing.mmd
 ---
 
 {% include mermaid.html %}
