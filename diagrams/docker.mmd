@@ -1,25 +1,42 @@
 %%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph LR
   DOCKYML[[docker-compose.yml]]
+  click DOCKYML href "https://github.com/CDLUC3/merritt-docker/blob/main/mrt-services/docker-compose.yml" "source code"
   DOCK(Docker Compose)
-  APACHE{{Apache}}
-  ING{{Ingest}}
-  STORE{{Storage}}
-  UI{{Merritt UI}}
-  INV{{Inventory}}
-  ZOO{{Zookeeper}}
-  LDAP{{LDAP}}
-  MYSQL{{MySQL}}
-  MINIO{{Minio}}
-  MINIOMC{{Mino Client}}
-  EZID{{Mock EZID}}
-  INIT{{Merritt Docker Init Tasks}}
-  COLLADMIN{{Merritt Collection Admin}}
-  ALB{{ALB Simulation}}
-  AUDIT{{Audit placeholder}}
-  REPLIC{{Replication placeholder}}
-  SMTP{{SMTP}}
+  APACHE([Apache])
+  click APACHE href "https://github.com/CDLUC3/merritt-docker/tree/main/mrt-services/apache" "source code"
+  ING([Ingest])
+  click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
+  STORE([Storage])
+  click STORE href "https://github.com/CDLUC3/mrt-store" "source code"
+  UI([Merritt UI])
+  click UI href "https://github.com/CDLUC3/mrt-dashboard" "source code"
+  INV([Inventory])
+  click INV href "https://github.com/CDLUC3/mrt-inventory" "source code"
+  ZOO([Zookeeper])
+  click ZOO href "https://github.com/CDLUC3/mrt-zoo" "source code"
+  LDAP([LDAP])
+  click LDAP href "https://github.com/CDLUC3/merritt-docker/tree/main/mrt-services/ldap" "source code"
+  MYSQL([MySQL])
+  click MYSQL href "https://github.com/CDLUC3/merritt-docker/tree/main/mrt-services/mysql" "source code"
+  MINIO([Minio])
+  click MINIO href "https://github.com/CDLUC3/merritt-docker/blob/main/mrt-services/docker-compose.yml#L193-L204" "source code"
+  MINIOMC([Mino Client])
+  click MINIOMC href "https://github.com/CDLUC3/merritt-docker/blob/main/mrt-services/docker-compose.yml#L206-L217" "source code"
+  EZID([Mock EZID])
+  click EZID href "https://github.com/CDLUC3/merritt-docker/blob/main/mrt-services/docker-compose.yml#L218-L229" "source code"
+  INIT([Merritt Docker Init Tasks])
+  click INIT href "https://github.com/CDLUC3/merritt-docker/blob/main/mrt-services/docker-compose.yml#L230-L249" "source code"
+  COLLADMIN([Merritt Collection Admin])
+  click COLLADMIN href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
+  ALB([ALB Simulation])
+  click ALB href "https://github.com/CDLUC3/mrt-admin-lambda/tree/main/simulate-lambda-alb" "source code"
+  AUDIT([Audit placeholder])
+  REPLIC([Replication placeholder])
+  SMTP([SMTP])
+  click SMTP href "https://github.com/CDLUC3/merritt-docker/blob/main/mrt-services/docker-compose.yml#L165-L170" "source code"
   INPROF[[Ingest Profiles for Docker]]
+  click INPROF href "https://github.com/CDLUC3/merritt-docker/tree/main/mrt-services/ingest/profiles" "source code"
 
   subgraph main
     DOCKYML --> DOCK
@@ -44,12 +61,15 @@ graph LR
   end
 
   DRYADYML[[dryad.yml]]
-  OAI{{OAI}}
-  SWORD{{SWORD}}
-  DRYAD{{Dryad UI}}
-  DRYADMYSQL{{Dryad MySQL}}
-  SOLR{{Dryad SOLR}}
-  DRYINIT{{Merritt Docker Init Tasks -- Overrides}}
+  OAI([OAI])
+  click OAI href "https://github.com/CDLUC3/mrt-oai" "source code"
+  SWORD([SWORD])
+  click SWORD href "https://github.com/CDLUC3/mrt-sword" "source code"
+  DRYAD([Dryad UI])
+  click DRYAD href "https://datadryad.org/" "service link"
+  DRYADMYSQL([Dryad MySQL])
+  SOLR([Dryad SOLR])
+  DRYINIT([Merritt Docker Init Tasks -- Overrides])
   DRYADYML --> DOCK
 
   subgraph dryad
@@ -62,8 +82,8 @@ graph LR
   end
 
   ARYML[[audit-replic.yml]]
-  AUDIT2{{Audit override}}
-  REPLIC2{{Replication override}}
+  AUDIT2([Audit override])
+  REPLIC2([Replication override])
   ARYML --> DOCK
 
   subgraph audit_replic
