@@ -1,17 +1,26 @@
 %%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   UI("Merritt UI")
+  click UI href "https://github.com/CDLUC3/mrt-dashboard" "source code"
   ING(Ingest)
+  click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
   INGCON(Ingest Consumer Daemon)
+  click INGCON href "https://github.com/CDLUC3/mrt-ingest" "source code"
   ST(Storage)
+  click ST href "https://github.com/CDLUC3/mrt-store" "source code"
   ZOOING>Zookeeper Ingest]
+  click ZOOING href "https://github.com/CDLUC3/mrt-zoo" "source code"
   ZOOINV>Zookeeper Inventory]
+  click ZOOINV href "https://github.com/CDLUC3/mrt-zoo" "source code"
   EZID(EZID Service)
   INV(Inventory)
+  click INV href "https://github.com/CDLUC3/mrt-inventory" "source code"
   DRYAD(Dryad UI)
+  click DRYAD href "https://datadryad.org/" "service link"
   SWORD(Sword)
+  click SWORD href "https://github.com/CDLUC3/mrt-sword" "source code"
   EFS[/Ingest Preparation - EFS/]
-  COLLAD{{Merritt Collection Admin}}
+  COLLAD([Merritt Collection Admin])
 
   subgraph Merritt
     UI --> |"file or manifest"| ING

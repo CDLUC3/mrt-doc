@@ -5,12 +5,13 @@ nextpage: core_index
 chart: overview-core.mmd
 ---
 
-## Workflows
+## Flowchart Walkthroughs
 - [Merritt Core Microservices](core_index)
 - [Merritt Audit and Replication Microservices](auditreplic)
 - [Merritt + Dryad Microservices](dryad)
-- [Merritt Admin Tool](admin-lambda)
-- Merritt Integration Tests
-- Merritt Docker
-- Merritt Microservice Focus Pages
+- [Merritt Admin Tool](admin-spa)
+- [Merritt Integration Tests](integ-tests)
+- [Merritt Docker](docker)
+- [Merritt Microservice Focus Pages](ui)
+- [ETD Service](etd)
 

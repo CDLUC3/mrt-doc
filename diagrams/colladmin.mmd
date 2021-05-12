@@ -1,7 +1,7 @@
 %%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   RDSINV[(Inventory Database)]
-  COLLADMIN{{Collection Admin - Lambda}}
+  COLLADMIN([Collection Admin - Lambda])
   click COLLADMIN href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
   ADMINWEB[[Admin Tool - SPA - Browser]]
   click ADMINWEB href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
@@ -10,6 +10,7 @@ graph TD
   ING(Ingest)
   click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
   ZOOING>Zookeeper Ingest]
+  click ZOOING href "https://github.com/CDLUC3/mrt-zoo" "source code"
   LDAP[/LDAP\]
   S3RPT[[S3 Report Bucket - TBD]]
 

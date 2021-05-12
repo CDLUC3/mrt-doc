@@ -23,7 +23,7 @@ Shapes
 - ``((circle))`` - non database repository
 - `[[border box]]` - browser pages and other readable objects
 - `[box]` - AWS component
-- `{{angle box}}` - docker container
+- `([extra rounded box])` - docker container
 - other shapes - for emphasis
 
 ## Core Microservices
