@@ -1,6 +1,37 @@
 ## Sprint Goals
 
-#### Sprint 52: 21 April 2021 - May 11 2021
+#### Sprint 54: 12 May - 01 June 2021
+
+##### Primary tasks:
+- Collection Admin
+  - Wiring up profile API to Coll Admin UI
+- Investigate problematic history of some Dash objects migrated to Dryad #649
+  - Missing DataONE Dash content from Individual collection to Dryad migration #637 (on hold; EL to check in with DL)
+- ETDs: Convert createmarc.py to Python 3
+  - Establish development environment with minimized dependencies
+  - ezid.py : Python 3 version available?
+- New UCSF Collections and Nuxeo feeds
+  - Consider moving contents of old private repository into a new repo, or combine into UI repo
+- Continued VTD testing for eScholarship
+  - Test XSL updates for typical UMI external ID field
+
+##### Secondary tasks:
+- Cognito ALB integration for Coll Admin
+- System consistency reports: determine which objects/issues need to be addressed and which are expected
+- Shared EFS research on David's part for Storage
+- New Ingest endpoint for error notification – sending notifications not only to email but the ZK
+- Create internal documentation assets to be integrated with READMEs and System inventory (work with Ashley on this)
+- Audit instance type evaluation with IAS (prod) – consider sitting down to review stats at end of sprint (number of bytes vs. files)
+- Palestinian Museum collection
+  - Begin analyzing content on S3 and prototyping ingest automation, #558
+  - Metadata gap analysis
+
+##### Releases:
+- Ingest changes for serialization of pending content
+- Dash > Dryad migration: delete.txt related object revisions 
+
+
+#### Sprint 53: 21 April - 11 May 2021
 
 ##### Primary tasks:
 - Collection Admin
