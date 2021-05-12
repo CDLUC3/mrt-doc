@@ -5,7 +5,7 @@
 #   https://github.com/mermaid-js/mermaid-cli/issues/114
 
 MERCLIVER=8.9.2
-#MERCLIVER=8.9.4-beta.3
+MERCLIVER=8.9.3-1
 
 for file in diagrams/*.mmd
 do
