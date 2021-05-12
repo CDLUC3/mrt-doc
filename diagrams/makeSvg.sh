@@ -4,12 +4,15 @@
 # The following issue has been reported to mermaid
 #   https://github.com/mermaid-js/mermaid-cli/issues/114
 
+MERCLIVER=8.9.2
+#MERCLIVER=8.9.4-beta.3
+
 for file in diagrams/*.mmd
 do
   if [ "$file" -nt "${file}.svg" ]
   then
     echo "${file} changed"
     # docker run --rm -v "$(pwd)/diagrams:/data" minlag/mermaid-cli mmdc -w 1200 -i ${file/diagrams\//}
-    docker run --rm -v "$(pwd)/diagrams:/data" -w /data minlag/mermaid-cli:8.9.2 mmdc -i ${file/diagrams\//}
+    docker run --rm -v "$(pwd)/diagrams:/data" -w /data minlag/mermaid-cli:${MERCLIVER} mmdc -i ${file/diagrams\//}
   fi
 done
