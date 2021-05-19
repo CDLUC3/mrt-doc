@@ -29,17 +29,17 @@ Shapes
 ## Core Microservices
 - [Graph Source](overview-core.mmd)
 
-![](overview-core.mmd.svg)
+[![](overview-core.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/core-index)
 
 ## Dryad Microservices
 - [Graph Source](overview-dryad.mmd)
 
-![](overview-dryad.mmd.svg)
+[![](overview-dryad.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/dryad)
 
 ## Audit and Replic Microservices
 - [Graph Source](overview-replic.mmd)
 
-![](overview-replic.mmd.svg)
+[![](overview-replic.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/auditreplic)
 
 ## Scratch Pad
 _Develop the diagrams in VSCode with a Mermaid extension. Move to a .mmd file for proper display on GitHub._
@@ -58,85 +58,85 @@ graph TD
 ## Merritt UI
 - [Graph Source](ui.mmd)
 
-![](ui.mmd.svg)
+[![](ui.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/ui)
 
 ## Merritt Ingest
 - [Graph Source](ingest.mmd)
 
-![](ingest.mmd.svg)
+[![](ingest.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/ingest)
 
 ## Merritt Store (Ingest)
 - [Graph Source](store-ing.mmd)
 
-![](store-ing.mmd.svg)
+[![](store-ing.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-ing)
 
 ## Merritt Access (File Access)
 - [Graph Source](store-fle.mmd)
 
-![](store-file.mmd.svg)
+[![](store-file.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-file)
 
 ## Merritt Access (Object Access)
 - [Graph Source](store-obj.mmd)
 
-![](store-obj.mmd.svg)
+[![](store-obj.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-obj)
 
 ## Inventory
 - [Graph Source](inventory.mmd)
 
-![](inventory.mmd.svg)
+[![](inventory.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/inventory)
 
 
 ## Replic
 - [Graph Source](replic.mmd)
 
-![](replic.mmd.svg)
+[![](replic.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/replic)
 
 ## Audit
 - [Graph Source](audit.mmd)
 
-![](audit.mmd.svg)
+[![](audit.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/audit)
 
 ## OAI
 - [Graph Source](oai.mmd)
 
-![](oai.mmd.svg)
+[![](oai.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/oai)
 
 ## Sword
 - [Graph Source](sword.mmd)
 
-![](sword.mmd.svg)
+[![](sword.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/sword)
 
 ## Merritt Billing Update (Aggregation)
 - [Graph Source](billing.mmd)
 
-![](billing.mmd.svg)
+[![](billing.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/admin-billing)
 
 ## Merritt Admin Tool SPA
 - [Graph Source](admin-spa.mmd)
 
-![](admin-spa.mmd.svg)
+[![](admin-spa.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/admin-spa)
 
 ## Merritt Admin Tool Lambda
 - [Graph Source](admin-lambda.mmd)
 
-![](admin-lambda.mmd.svg)
+[![](admin-lambda.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/admin-lambda)
 
 ## Merritt Collection Admin Tool
 - [Graph Source](colladmin.mmd)
 
-![](colladmin.mmd.svg)
+[![](colladmin.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/colladmin)
 
 ## Merritt Integration Tests
 - [Graph Source](integ-tests.mmd)
 
-![](integ-tests.mmd.svg)
+[![](integ-tests.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/integ-tests)
 
 ## Merritt Docker
 - [Graph Source](docker.mmd)
 
-![](docker.mmd.svg)
+[![](docker.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/docker)
 
 ## ETD Service (Diagram In Progress)
 - [Graph Source](etd.mmd)
 
-![](etd.mmd.svg)
+[![](etd.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/etd)
