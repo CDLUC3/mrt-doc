@@ -29,7 +29,7 @@ Shapes
 ## Core Microservices
 - [Graph Source](overview-core.mmd)
 
-[![](overview-core.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/core-index)
+[![](overview-core.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/core_index)
 
 ## Dryad Microservices
 - [Graph Source](overview-dryad.mmd)
