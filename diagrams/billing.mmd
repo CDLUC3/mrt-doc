@@ -1,8 +1,11 @@
 %%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
   RDSINV[(Inventory Database)]
+  click RDSINV href "https://github.com/CDLUC3/merritt-docker/blob/main/mrt-services/mysql/init.sql" "source code"
   RDSBILL[(Billing Database)]
+  click RDSBILL href "https://github.com/CDLUC3/mrt-admin-lambda/blob/main/merrit-billing/schema.sql" "source code"
   BILLCRON[[Cron: Billing]]
+  click BILLCRON href "https://github.com/CDLUC3/mrt-admin-lambda/blob/main/merrit-billing/migrate.sql" "source code"
 
   subgraph flowchart
     BILLCRON --> |aggregation query| RDSINV
