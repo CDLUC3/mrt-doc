@@ -1,0 +1,37 @@
+erDiagram
+        Collection ||..|{ CollectionObject: ""
+        Collection {
+          string ark
+        }
+        CollectionObject ||..|| Object: "Contains"
+        Owner ||..|{ Object: "Owns"
+        Owner {
+          string ark
+        }
+        Object ||..|{ Version : "consists of"
+        Object {
+          string ark
+        }
+        Version {
+          int number
+        }
+        Object ||..|{ File : "consists of"
+        Version ||..|{ File : "consists of"
+        File {
+          string filename
+          string checksum
+          long size
+        }
+        Node {
+          int node_number
+          enum node_type
+        }
+        Object ||..|{ Audit : ""
+        Version ||..|{ Audit : ""
+        File ||..|{ Audit : ""
+        Node ||..|{ Audit : ""
+        Audit {
+          string checksum
+          enum status 
+        }
+
