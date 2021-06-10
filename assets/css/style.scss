@@ -40,5 +40,8 @@ div.next a.next:before {
     content: '---> Next Page: ';
 }
 div.next a.prev:before {
-    content: '<--- Prev Page: ';
+    content: 'Prev Page: ';
+}
+div.next a.prev:after {
+    content: ' <--- ';
 }
