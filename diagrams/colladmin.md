@@ -1,7 +1,7 @@
 ---
 title: "Merritt Collection Admin Tool"
 description: "Administrative Collection Management Tool for the Merritt Team"
-nextpage: integ-tests
+nextpage: admin-seq
 chart: colladmin.mmd
 ---
 

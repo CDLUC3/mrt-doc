@@ -1,7 +1,7 @@
 ---
 title: "Coll Admin Tool Sequence Diagram"
 description: "Coll Admin Tool with User Authentication"
-nextpage: colladmin-seq
+nextpage: integ-tests
 chart: colladmin-seq.mmd
 ---
 

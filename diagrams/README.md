@@ -126,6 +126,17 @@ graph TD
 
 [![](colladmin.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/colladmin)
 
+## Admin Tool Sequence Diagram
+- [Graph Source](admin-seq.mmd)
+
+[![](admin-seq.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/admin-seq)
+
+## Admin Tool Sequence Diagram
+- [Graph Source](colladmin-seq.mmd)
+
+[![](colladmin-seq.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/colladmin-seq)
+
+
 ## Merritt Integration Tests
 - [Graph Source](integ-tests.mmd)
 
