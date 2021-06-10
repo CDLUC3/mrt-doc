@@ -39,3 +39,6 @@ div.next a {
 div.next a.next:before {
     content: '---> Next Page: ';
 }
+div.next a.prev:before {
+    content: '<--- Prev Page: ';
+}
