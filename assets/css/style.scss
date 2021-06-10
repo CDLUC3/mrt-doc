@@ -36,6 +36,6 @@ div.next a {
     background-color: #15836E;
 }
   
-div.next a:before {
+div.next a.next:before {
     content: '---> Next Page: ';
 }
