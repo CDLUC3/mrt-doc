@@ -1,9 +1,10 @@
   <div class="next">
     {% if page.nextpage %}
       <span class="next">
+        <a href='{{page.chart}}.svg'>Zoom</a>
         <a href='{{page.nextpage}}'>{{page.nextpage}}</a>
       </span>
     {% endif %}    
   </div>
-  <div class="mermaid" onclick="javascript:document.location='https://github.com/CDLUC3/mrt-doc/raw/main/diagrams/{{page.chart}}.svg')">
+  <div class="mermaid">
     {% include_relative {{page.chart}} %}
