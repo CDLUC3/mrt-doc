@@ -1,5 +1,39 @@
 ## Sprint Goals
 
+#### Sprint 55: 02 June - 22 June 2021
+
+##### Primary tasks:
+- Complete Dryad object updates to correct history
+  - Manifest changes complete
+  - Monitoring replication
+- Collection Admin
+  - Wiring up profile API to Coll Admin UI
+- Begin work on Storage optimizations
+  - Shared EFS
+  - Logging w/environment variables
+  - Confirmation re-read optimizations (akin to Audit)
+- System Consistency reports
+  - Automation and identification of data clean-up needs
+  - (Effectively done, needs cron automation)
+  - Review outcomes of reports and address any anomalies
+  - Define requirements for a centralized cron server (temporarily run on ops server)
+- New billing database tables for history report
+- ETDs: Identify remaining PQ link issue
+- New UCSF Collections and Nuxeo feeds
+- CoreTrustSeal work
+
+##### Secondary tasks:
+- Cognito ALB integration for Coll Admin
+- New Ingest endpoint for error notification – sending notifications not only to email but the ZK
+- Palestinian Museum collection
+  - Begin analyzing content on S3 and prototyping ingest automation, #558
+  - Metadata gap analysis
+
+##### Releases:
+- ALB deployment to production: 6/9 (for cutover)
+  - Pair UI and SWORD deployment ahead of cutover 
+
+
 #### Sprint 54: 12 May - 01 June 2021
 
 ##### Primary tasks:
