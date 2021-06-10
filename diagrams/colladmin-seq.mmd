@@ -1,0 +1,35 @@
+sequenceDiagram
+    Browser->>+CloudFront: colladmin tool url: request collIndex.html
+    CloudFront->>WAF: Check Access
+    Note right of WAF: Access restricted to CDL
+    WAF->>CloudFront: Access Granted
+    CloudFront->>CognitoHostedUI: Evaluate user authentication/authorization
+    Browser-->>CognitoHostedUI: Forward cookies
+    CognitoHostedUI-->>Browser: Present login page (if needed)
+    Browser-->>CognitoHostedUI: Enter user credentials
+    CognitoHostedUI-->>CognitoUserPool: Authenticate User
+    CognitoUserPool-->>CognitoUserPool: Authorize Authenticated User
+    Note right of CognitoUserPool: Identify UserPool Group for authenticated user
+    CognitoUserPool-->>CognitoHostedUI: Return AWS Role for user group
+    Note right of CognitoHostedUI: Convert AWS Role into cookies
+    Note right of CognitoHostedUI: What component does this?
+    Note right of CloudFront: Is the Role Validation enforced from CloudFront?
+    CognitoHostedUI-->>Browser: Return cookies
+    CloudFront->>S3: Retrieve Assets (html, js, css)
+    S3->>CloudFront: Return Web Assets
+    Note right of CloudFront: Cache time is set to zero for the admin tool
+    CloudFront->>Browser: Return Web Assets
+    Note right of Browser: html/css: page display
+    Note right of Browser: js: page logic to create ajax requests
+    Browser->>ALB: ajax call (HttpRequest) to invoke lambda
+    ALB->>WAF: Check Access
+    Note right of WAF: Access restricted to CDL
+    WAF->>ALB: Access Granted
+    ALB->>CognitoHostedUI: Evaluate user authentication/authorization
+    Note right of ALB: Does the ALB or CloudFront trigger the auth check?
+    Browser-->>CognitoHostedUI: Forward cookies
+    ALB->>Lambda: Send GET/POST params as JSON payload
+    Lambda->>ALB: Return JSON payload
+    ALB->>Browser: Return HttpResponse
+    Note right of Browser: js: render response payload as admin report
+
