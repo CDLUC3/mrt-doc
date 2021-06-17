@@ -6,11 +6,11 @@ graph TD
   SABUCK[/"Storage Admin Bucket"/]
   CLOUD(("Cloud Storage"))
 
-  subgraph "use case: delete keys from cloud storage"
+  subgraph "Use Case: Delete Keys from Cloud Storage"
     SAUI-->SA
-    SABUCK-->|"Read list of keys to be deleted"|SA
-    SA-->|"Delete keys from cloud Storage"|CLOUD
-    SA-->|"Save report of deleted items"|SABUCK
+    SABUCK-->|"Read Delete List"|SA
+    SA-->|"Delete Cloud Objects(keys)"|CLOUD
+    SA-->|"Delete Report"|SABUCK
   end
 
   style RDS fill:#F68D2F

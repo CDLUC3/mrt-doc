@@ -5,11 +5,11 @@ graph TD
   RDS[(Inventory DB)]
   SABUCK[/"Storage Admin Bucket"/]
 
-  subgraph "use case: remove replication node for collection"
+  subgraph "Use Case: Remove Replication Node for Collection"
     SAUI-->SA
-    SA-->|"delete replication node for collection"|RDS
-    SA-->|"create replication key delete list"|SABUCK
-    SA-->|"delete node/keys for collection"|RDS
+    SA-->|"del coll/node"|RDS
+    SA--->|"delete list for node/key"|SABUCK
+    SA-->|"del node/keys for coll"|RDS
   end
 
   style RDS fill:#F68D2F
