@@ -6,11 +6,11 @@ graph TD
   SABUCK[/"Storage Admin Bucket"/]
   CLOUD(("Cloud Storage"))
 
-  subgraph "use case: scan storage node for untracked files"
+  subgraph "Use Case: Crawl Storage Node for Untracked Files"
     SAUI-->SA
-    CLOUD-->|"Crawl storage node generating a lis of keys"|SA
-    SA-->|"lookup node key to see if it is tracked (work in batches)"|RDS
-    SA-->|"create replication key delete list"|SABUCK
+    CLOUD-->|"node/key list"|SA
+    SA-->|"lookup node/key(batch)"|RDS
+    SA--->|"node/key delete list"|SABUCK
   end
 
   style RDS fill:#F68D2F

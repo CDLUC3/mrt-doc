@@ -4,9 +4,9 @@ graph TD
   SA("Storage Admin Lambda")
   RDS[(Inventory DB)]
 
-  subgraph "use case: add replication node for collection"
+  subgraph "Use Case: Add Replication Node for Collection"
     SAUI-->SA
-    SA-->|"delete replication node for collection"|RDS
+    SA-->|"add node for coll"|RDS
   end
 
   style RDS fill:#F68D2F
