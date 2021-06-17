@@ -137,6 +137,31 @@ graph TD
 [![](colladmin-seq.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/colladmin-seq)
 
 
+## Storage Admin Tool: Add Replication Node for Collection
+- [Graph Source](store-admin-add-node.mmd)
+
+[![](store-admin-add-node.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-admin-add-node)
+
+## Storage Admin Tool: Delete Replication Node for Collection
+- [Graph Source](store-admin-del-node.mmd)
+
+[![](store-admin-del-node.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-admin-del-node)
+
+## Storage Admin Tool: Scan Storage Nodes for Untracked Keys
+- [Graph Source](store-admin-scan-node.mmd)
+
+[![](store-admin-scan-node.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-admin-scan-node)
+
+## Storage Admin Tool: Delete Keys from Cloud Storage
+- [Graph Source](store-admin-del-node-keys.mmd)
+
+[![](store-admin-del-node-keys.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-admin-del-node-keys)
+
+## Storage Admin Tool: Remove Object from Inventory, Generate Delete Lists for All Copies
+- [Graph Source](store-admin-del-node-obj.mmd)
+
+[![](store-admin-del-node-obj.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-admin-del-node-obj)
+
 ## Merritt Integration Tests
 - [Graph Source](integ-tests.mmd)
 
