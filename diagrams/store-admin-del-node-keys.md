@@ -9,3 +9,7 @@ chart: store-admin-del-node-keys.mmd
 {% include mermaid.html %}
 {% include start.html %}
 {% include end.html %}
+
+## Questions
+- Should the Storage Admin Tool perform a deletion, or should it send a request to the Storage service?
+- It might be safer to only grant storage admin with list key rights

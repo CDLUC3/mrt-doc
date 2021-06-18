@@ -2,7 +2,6 @@
 graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
-  RDS[(Inventory DB)]
   SABUCK[/"Storage Admin Bucket"/]
   CLOUD(("Cloud Storage"))
 
@@ -13,7 +12,6 @@ graph TD
     SA-->|"Delete Report"|SABUCK
   end
 
-  style RDS fill:#F68D2F
   style SABUCK fill:#77913C
   style CLOUD fill:#77913C
   
