@@ -8,13 +8,16 @@ nextpage: store-admin-add-node
 
 # Storage Admin Navigation
 
-<fieldset>
-<legend>Manage Collection Nodes</legend>
+## Manage Collection Nodes
+
+### Selector
 
 <select>
   <option>Choose Collection</option>
 </select>
 <button>GO</button>
+
+### Action Table
 
 | Role | Node | Node Desc | Actions |
 |---------|-----|----------|---------|
@@ -23,7 +26,7 @@ nextpage: store-admin-add-node
 | secondary | 3333 | Wasabi | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> |
 
 <button>Add Node</button>
-</fieldset>
+
 
 ---
 
