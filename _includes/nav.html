@@ -1,0 +1,15 @@
+  <div class="next">
+    {% if page.prevpage %}
+      <span class="next">
+        <a class='prev' href='{{page.prevpage}}'>{{page.prevpage}}</a>
+      </span>
+    {% endif %}    
+    <span class="next">
+      <a href='{{page.chart}}.svg'>Zoom This Chart</a>
+    </span>
+    {% if page.nextpage %}
+      <span class="next">
+        <a class='next' href='{{page.nextpage}}'>{{page.nextpage}}</a>
+      </span>
+    {% endif %}    
+  </div>
