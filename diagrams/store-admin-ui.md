@@ -4,10 +4,6 @@ description: "Storage Admin UI Mockup"
 nextpage: store-admin-add-node
 chart: store-admin-ui.mmd
 ---
-
-{% include mermaid.html %}
-{% include start.html %}
-{% include end.html %}
 ## Storage Admin Navigation
 
 # Manage Collection Nodes
@@ -21,7 +17,7 @@ chart: store-admin-ui.mmd
 
 ## Action Table
 
-|Role| Node | Node Desc | Actions |
+| Role | Node | Node Desc | Actions |
 |---------|-----|----------|---------|
 | primary | 1111 | S3 | `[Re-audit]` |
 | secondary | 2222 | SDSC | `[Delete Coll from Node]` `[Make Primary]` `[Re-audit]` |
@@ -46,7 +42,7 @@ chart: store-admin-ui.mmd
 # Manage Object Storage
 
 ## Selector
-```
+
 <select>
   <option>Search by ark</option>
   <option>Search by localid</option>
@@ -54,7 +50,7 @@ chart: store-admin-ui.mmd
 </select>
 <input type="text" value="ark:13030/m5mmmm"/>
 <button>Search</button>
-```
+
 ## Action Tables
 
 |Collection|Object Id| Ark | Local Id | Title | Actions |
@@ -68,5 +64,9 @@ chart: store-admin-ui.mmd
 | secondary | 2222 | SDSC | `[Delete Object from Node]`|
 | secondary | 3333 | Wasabi | `[Delete Object from Node]`|
 `[Add Node]`
+
+{% include mermaid.html %}
+{% include start.html %}
+{% include end.html %}
 
 
