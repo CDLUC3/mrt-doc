@@ -12,12 +12,15 @@ chart: store-admin-ui.mmd
 
 # Manage Collection Nodes
 
+## Selector
+<form>
 <select>
   <option>Choose Collection</option>
 </select>
 <button>GO</button>
-<br/>
+</form>
 
+## Action Table
 
 |Role| Node | Node Desc | Actions |
 |---------|-----|----------|---------|
@@ -31,6 +34,7 @@ chart: store-admin-ui.mmd
 
 # Manage Storage Nodes
 
+## Action Table
 |Node | Node Desc |Scan %|Last Scan |Num Delete TBD| Actions |
 |---------|-----|---|----------|---------|-------|
 | 1111 | S3 | 100%| 2021-05-01 | 0 | <button>Queue Scan</button>|
@@ -41,6 +45,9 @@ chart: store-admin-ui.mmd
 
 # Manage Object Storage
 
+## Selector
+
+<form>
 <select>
   <option>Search by ark</option>
   <option>Search by localid</option>
@@ -48,8 +55,9 @@ chart: store-admin-ui.mmd
 </select>
 <input>
 <button>Search</button>
-<br/>
+</form>
 
+## Action Tables
 
 |Collection|Object Id| Ark | Local Id | Title | Actions |
 |---|---------|-----|----------|-------|---------|
