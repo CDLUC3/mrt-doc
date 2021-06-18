@@ -1,0 +1,12 @@
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
+graph TD
+  SAUI("Storage Admin UI")
+  SA("Storage Admin Lambda")
+  RDS[(Inventory DB)]
+
+  subgraph "Use Case: Force Audit for Obj or Collection"
+    SAUI-->SA
+    SA-->|"clear audit status"|RDS
+  end
+
+  style RDS fill:#F68D2F
