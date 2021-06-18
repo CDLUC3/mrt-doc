@@ -11,11 +11,13 @@ chart: store-admin-ui.mmd
 ## Storage Admin Navigation
 
 # Manage Collection Nodes
+
 <select>
   <option>Choose Collection</option>
 </select>
 <button>GO</button>
 <br/>
+
 
 |Role| Node | Node Desc | Actions |
 |---------|-----|----------|---------|
@@ -38,6 +40,7 @@ chart: store-admin-ui.mmd
 <hr/>
 
 # Manage Object Storage
+
 <select>
   <option>Search by ark</option>
   <option>Search by localid</option>
@@ -47,9 +50,11 @@ chart: store-admin-ui.mmd
 <button>Search</button>
 <br/>
 
+
 |Collection|Object Id| Ark | Local Id | Title | Actions |
 |---|---------|-----|----------|-------|---------|
 |My Coll| 111| ark:/13030/m5mmmmm | doi:1111| My Title | <button>Delete Obj</button><button>Trigger Replic</button>|
+
 
 |Role| Node | Node Desc | Actions |
 |---------|-----|----------|---------|
