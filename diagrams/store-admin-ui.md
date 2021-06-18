@@ -2,7 +2,7 @@
 title: "Storage Admin UI Mockup"
 description: "Storage Admin UI Mockup"
 nextpage: store-admin-add-node
-chart: 
+chart: store-admin-ui
 ---
 
 {% include mermaid.html %}
