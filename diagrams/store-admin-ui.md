@@ -8,25 +8,22 @@ nextpage: store-admin-add-node
 
 # Storage Admin Navigation
 
-## Manage Collection Nodes
-
-### Selector
+<fieldset>
+<legend>Manage Collection Nodes</legend>
 
 <select>
   <option>Choose Collection</option>
 </select>
 <button>GO</button>
 
-### Action Table
-
 | Role | Node | Node Desc | Actions |
 |---------|-----|----------|---------|
 | primary | 1111 | S3 | <button>Re-audit</button> |
-| secondary | 2222 | SDSC | <button>Delete Coll from Node]` <button>Make Primary</button> <button>Re-audit</button> |
+| secondary | 2222 | SDSC | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> |
 | secondary | 3333 | Wasabi | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> |
 
 <button>Add Node</button>
-
+</fieldset>
 
 ---
 
