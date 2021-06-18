@@ -10,8 +10,7 @@ chart: store-admin-ui.mmd
 {% include end.html %}
 ## Storage Admin Navigation
 
-<fieldset>
-  <legend>Manage Collection Nodes</legend>
+# Manage Collection Nodes
 <select>
   <option>Choose Collection</option>
 </select>
@@ -25,12 +24,10 @@ chart: store-admin-ui.mmd
 | secondary | 3333 | Wasabi | <button>Delete Coll from Node</button><button>Make Primary</button><button>Re-audit</button>|
 <button>Add Node</button>
 
-</fieldset>
 
-<br/>
+<hr/>
 
-<fieldset>
-  <legend>Manage Storage Nodes</legend>
+# Manage Storage Nodes
 
 |Node | Node Desc |Scan %|Last Scan |Num Delete TBD| Actions |
 |---------|-----|---|----------|---------|-------|
@@ -38,12 +35,9 @@ chart: store-admin-ui.mmd
 | 2222 | SDSC | 100%|2021-05-10 | 10 | <button>Queue Scan</button><button>Review Deletes</button> |
 | 3333 | Wasabi | 44%| 2021-06-01 | 0 | <button>Queue Scan</button>|
 
-</fieldset>
+<hr/>
 
-<br/>
-
-<fieldset>
-  <legend>Manage Object Storage</legend>
+# Manage Object Storage
 <select>
   <option>Search by ark</option>
   <option>Search by localid</option>
@@ -64,5 +58,4 @@ chart: store-admin-ui.mmd
 | secondary | 3333 | Wasabi | <button>Delete Object from Node</button>|
 <button>Add Node</button>
 
-</fieldset>
 
