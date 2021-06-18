@@ -2,7 +2,6 @@
 title: "Storage Admin UI Mockup"
 description: "Storage Admin UI Mockup"
 nextpage: store-admin-add-node
-chart: store-admin-ui.mmd
 ---
 
 {% include nav.html %}
@@ -22,11 +21,11 @@ chart: store-admin-ui.mmd
 
 | Role | Node | Node Desc | Actions |
 |---------|-----|----------|---------|
-| primary | 1111 | S3 | `[Re-audit]` |
-| secondary | 2222 | SDSC | `[Delete Coll from Node]` `[Make Primary]` `[Re-audit]` |
-| secondary | 3333 | Wasabi | `[Delete Coll from Node]` `[Make Primary]` `[Re-audit]` |
+| primary | 1111 | S3 | <button>Re-audit</button> |
+| secondary | 2222 | SDSC | <button>Delete Coll from Node]` <button>Make Primary</button> <button>Re-audit</button> |
+| secondary | 3333 | Wasabi | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> |
 
-`[Add Node]`
+<button>Add Node</button>
 
 
 ---
@@ -37,9 +36,9 @@ chart: store-admin-ui.mmd
 
 |Node | Node Desc |Scan %|Last Scan |Num Delete TBD| Actions |
 |---------|-----|---|----------|---------|-------|
-| 1111 | S3 | 100%| 2021-05-01 | 0 | `[Queue Scan]`|
-| 2222 | SDSC | 100%|2021-05-10 | 10 | `[Queue Scan]` `[Review Deletes]` |
-| 3333 | Wasabi | 44%| 2021-06-01 | 0 | `[Queue Scan]`|
+| 1111 | S3 | 100%| 2021-05-01 | 0 | <button>Queue Scan</button>|
+| 2222 | SDSC | 100%|2021-05-10 | 10 | <button>Queue Scan</button> <button>Review Deletes</button> |
+| 3333 | Wasabi | 44%| 2021-06-01 | 0 | <button>Queue Scan</button>|
 
 ---
 
@@ -59,13 +58,13 @@ chart: store-admin-ui.mmd
 
 |Collection|Object Id| Ark | Local Id | Title | Actions |
 |---|---------|-----|----------|-------|---------|
-|My Coll| 111| ark:/13030/m5mmmmm | doi:1111| My Title | `[Delete Obj]` `[Trigger Replic]`|
+|My Coll| 111| ark:/13030/m5mmmmm | doi:1111| My Title | <button>Delete Obj</button> <button>Trigger Replic</button>|
 
 
 |Role| Node | Node Desc | Actions |
 |---------|-----|----------|---------|
-| primary | 1111 | S3 | `[Re-audit]`|
-| secondary | 2222 | SDSC | `[Delete Object from Node]`|
-| secondary | 3333 | Wasabi | `[Delete Object from Node]`|
+| primary | 1111 | S3 | <button>Re-audit</button>|
+| secondary | 2222 | SDSC | <button>Delete Object from Node</button>|
+| secondary | 3333 | Wasabi | <button>Delete Object from Node</button>|
 
-`[Add Node]`
+<button>Add Node</button>
