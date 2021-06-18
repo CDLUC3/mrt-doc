@@ -23,6 +23,8 @@ inner join
   inv_files f
   on 
     f.id = a.inv_file_id
+  and 
+    f.inv_version_id = a.inv_version_id
 inner join
   inv_versions v
   on
