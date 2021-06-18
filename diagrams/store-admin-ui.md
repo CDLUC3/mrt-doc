@@ -25,6 +25,7 @@ chart: store-admin-ui.mmd
 | primary | 1111 | S3 | `[Re-audit]` |
 | secondary | 2222 | SDSC | `[Delete Coll from Node]` `[Make Primary]` `[Re-audit]` |
 | secondary | 3333 | Wasabi | `[Delete Coll from Node]` `[Make Primary]` `[Re-audit]` |
+
 `[Add Node]`
 
 
@@ -66,4 +67,5 @@ chart: store-admin-ui.mmd
 | primary | 1111 | S3 | `[Re-audit]`|
 | secondary | 2222 | SDSC | `[Delete Object from Node]`|
 | secondary | 3333 | Wasabi | `[Delete Object from Node]`|
+
 `[Add Node]`
