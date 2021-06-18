@@ -32,13 +32,24 @@ nextpage: store-admin-add-node
 
 ## Manage Storage Nodes
 
-### Action Table
+### Action Table (Nodes)
 
 |Node | Node Desc |Scan %|Last Scan |Num Delete TBD| Actions |
 |---------|-----|---|----------|---------|-------|
 | 1111 | S3 | 100%| 2021-05-01 | 0 | <button>Queue Scan</button>|
 | 2222 | SDSC | 100%|2021-05-10 | 10 | <button>Queue Scan</button> <button>Review Deletes</button> |
 | 3333 | Wasabi | 44%| 2021-06-01 | 0 | <button>Queue Scan</button>|
+
+### Action Table (Review Deletes)
+
+|Node | Node Desc | Ark | Version | File | Size | Date |
+|------|------|-----|---|----------|---------|-------|
+| 1111 | S3 | ark://13030/mmmm | 1| system/xyz.xml | 1,044 | 2021-05-01 |
+| 2222 | SDSC | ark://13030/m2qq | 1| producer/zzz.jpg | 42,044 | 2021-05-01 |
+
+Type `2 Deletes` to procede.
+
+<input/><button>Confirm Delete</button>
 
 ---
 
@@ -54,12 +65,13 @@ nextpage: store-admin-add-node
 <input type="text" value="ark:13030/m5mmmm"/>
 <button>Search</button>
 
-### Action Tables
+### Action Table - Object
 
 |Collection|Object Id| Ark | Local Id | Title | Actions |
 |---|---------|-----|----------|-------|---------|
 |My Coll| 111| ark:/13030/m5mmmmm | doi:1111| My Title | <button>Delete Obj</button> <button>Trigger Replic</button>|
 
+### Action Table - Object/Node
 
 |Role| Node | Node Desc | Actions |
 |---------|-----|----------|---------|
