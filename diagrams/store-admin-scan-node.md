@@ -9,3 +9,38 @@ chart: store-admin-scan-node.mmd
 {% include mermaid.html %}
 {% include start.html %}
 {% include end.html %}
+
+## Crawl by keys
+
+Iterate over ark shoulders
+```
+aws s3 ls s3://{bucket}/ark:/
+```
+
+Iterate through object keys
+```
+aws s3 ls s3://{bucket}/ark:/{shoulder}/
+```
+
+Gather file keys for an object
+```
+aws s3 ls "s3://{bucket}/ark:/{shoulder}/{ark}|{ver}|producer"
+aws s3 ls "s3://{bucket}/ark:/{shoulder}/{ark}|{ver}|system"
+```
+
+## Compare crawled keys to keys in inventory
+```
+select 
+  o.ark,
+  v.number,
+  f.pathname
+from
+  inv.inv_objects o
+left join inv.inv_versions v
+  on o.id = v.inv_object_id
+left join inv.inv_files f
+  on o.id = f.inv_object_id
+  and v.id = f.inv_version_id
+where 
+  o.ark = ?
+```
