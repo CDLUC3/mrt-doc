@@ -162,6 +162,16 @@ graph TD
 
 [![](store-admin-del-node-obj.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-admin-del-node-obj)
 
+## Storage Admin Tool: Force Audit for Collection/Object
+- [Graph Source](store-admin-force-audit.mmd)
+
+[![](store-admin-force-audit.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-admin-force-audit)
+
+## Storage Admin Tool: Change Primary Node
+- [Graph Source](store-admin-change-primary-node.mmd)
+
+[![](store-admin-change-primary-node.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/store-admin-change-primary-node)
+
 ## Merritt Integration Tests
 - [Graph Source](integ-tests.mmd)
 
