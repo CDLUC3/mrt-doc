@@ -23,9 +23,9 @@ chart: store-admin-ui.mmd
 
 |Role| Node | Node Desc | Actions |
 |---------|-----|----------|---------|
-| primary | 1111 | S3 | `[Re-audit]`|
-| secondary | 2222 | SDSC | `[Delete Coll from Node]` `[Make Primary]` `[Re-audit]`|
-| secondary | 3333 | Wasabi | `[Delete Coll from Node]` `[Make Primary]` `[Re-audit]`|
+| primary | 1111 | S3 | `[Re-audit]` |
+| secondary | 2222 | SDSC | `[Delete Coll from Node]` `[Make Primary]` `[Re-audit]` |
+| secondary | 3333 | Wasabi | `[Delete Coll from Node]` `[Make Primary]` `[Re-audit]` |
 `[Add Node]`
 
 
@@ -46,7 +46,7 @@ chart: store-admin-ui.mmd
 # Manage Object Storage
 
 ## Selector
-
+```
 <select>
   <option>Search by ark</option>
   <option>Search by localid</option>
@@ -54,7 +54,7 @@ chart: store-admin-ui.mmd
 </select>
 <input type="text" value="ark:13030/m5mmmm"/>
 <button>Search</button>
-
+```
 ## Action Tables
 
 |Collection|Object Id| Ark | Local Id | Title | Actions |
