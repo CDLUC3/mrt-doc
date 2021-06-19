@@ -12,10 +12,13 @@ nextpage: store-admin-add-node
 
 ### Selector
 
+<fieldset>
+<legend>Manage Collection Nodes</legend>
 <select>
   <option>Choose Collection</option>
 </select>
 <button>GO</button>
+</fieldset>
 
 ### Action Table
 
@@ -47,16 +50,21 @@ nextpage: store-admin-add-node
 | 1111 | S3 | ark://13030/mmmm | 1| system/xyz.xml | 1,044 | 2021-05-01 |
 | 2222 | SDSC | ark://13030/m2qq | 1| producer/zzz.jpg | 42,044 | 2021-05-01 |
 
+<fieldset>
+<legend>Confirm Deletes</legend>
+
 Type `2 Deletes` to procede.
 
 <input/><button>Confirm Delete</button>
-
+</fieldset>
 ---
 
 ## Manage Object Storage
 
 ### Selector
 
+<fieldset>
+<legend>Manage Object Storage</legend>
 <select>
   <option>Search by ark</option>
   <option>Search by localid</option>
@@ -64,6 +72,7 @@ Type `2 Deletes` to procede.
 </select>
 <input type="text" value="ark:13030/m5mmmm"/>
 <button>Search</button>
+</fieldset>
 
 ### Action Table - Object
 
