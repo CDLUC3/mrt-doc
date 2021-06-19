@@ -52,8 +52,13 @@ table {
     margin: 3px;
 }
 
+th, td {
+    border: 1px solid gray;
+    padding: 2px;
+}
+
 th {
-    background-color: yellow;
+    background-color:wheat;
 }
 
 td {
