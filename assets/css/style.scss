@@ -45,3 +45,17 @@ div.next a.prev:before {
 div.next a.prev:after {
     content: ' <--- ';
 }
+
+table {
+    background-color: white;
+    border: solid gray 2px;
+    margin: 3px;
+}
+
+th {
+    background-color: yellow;
+}
+
+td {
+    text-align: left;
+}
