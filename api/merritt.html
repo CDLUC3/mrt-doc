@@ -36,10 +36,25 @@
     <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js" charset="UTF-8"></script>
     <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js" charset="UTF-8"></script>
     <script>
+    function getParams(){
+      var queries = {};
+      if (document.location.search == "") {
+        return queries;
+      }
+      $.each(document.location.search.substr(1).split('&'),function(c,q){
+        var i = q.split('=');
+        queries[i[0].toString()] = i[1].toString();
+      });
+      return queries;
+    }
+
     window.onload = function() {
       // Begin Swagger UI call region
+      var params = getParams();
+      var yaml = (yaml in params) ? params['yaml']: "merritt.yaml";
+
       const ui = SwaggerUIBundle({
-        url: "merritt.yaml",
+        url: yaml,
         dom_id: '#swagger-ui',
         deepLinking: true,
         presets: [
