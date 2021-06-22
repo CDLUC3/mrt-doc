@@ -52,7 +52,7 @@
     window.onload = function() {
       // Begin Swagger UI call region
       var params = getParams();
-      var yaml = ('yaml' in params) ? params['yaml']: "merritt.yaml";
+      var yaml = ('yaml' in params) ? params['yaml']: "ui.yaml";
 
       const ui = SwaggerUIBundle({
         url: yaml,
