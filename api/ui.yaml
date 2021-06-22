@@ -1,142 +1,275 @@
 ---
 swagger: "2.0"
 info:
-  description: Merritt Microservice Documentation
+  description: Merritt User Interface API
   version: 1.0.0
-  title: Merritt Microservices (Swagger Experimentation)!!
-  contact:
-    email: you@your-company.com
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
-host: virtserver.swaggerhub.com
+  title: Merritt User Interface API
+host: merritt.cdlib.org
 basePath: /terrywbrady/Merritt/1.0.0
 tags:
 - name: ui
   description: Merritt UI
-- name: ingest
-  description: Merritt Ingest
-- name: admins
-  description: Secured Admin-only calls
-- name: depositors
-  description: Operations available to Merritt depositors
+- name: api
+  description: Merritt API
+- name: deprecated
+  description: Deprecated API calls
 schemes:
 - https
 paths:
-  /ui/status:
+  /login:
     get:
       tags:
       - ui
-      parameters: []
-      responses:
-        "200":
-          description: search results matching criteria
-  /ingest/status:
-    get:
-      tags:
-      - ingest
-      parameters: []
-      responses:
-        "200":
-          description: search results matching criteria
-  /inventory:
-    get:
-      tags:
-      - depositors
-      summary: searches inventory
-      description: |
-        By passing in the appropriate options, you can search for
-        available inventory in the system
-      operationId: searchInventory
-      produces:
-      - application/json
-      parameters:
-      - name: searchString
-        in: query
-        description: pass an optional search string for looking up inventory
-        required: false
-        type: string
-      - name: skip
-        in: query
-        description: number of records to skip for pagination
-        required: false
-        type: integer
-        minimum: 0
-        format: int32
-      - name: limit
-        in: query
-        description: maximum number of records to return
-        required: false
-        type: integer
-        maximum: 50
-        minimum: 0
-        format: int32
-      responses:
-        "200":
-          description: search results matching criteria
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/InventoryItem'
-        "400":
-          description: bad input parameter
     post:
       tags:
-      - admins
-      summary: adds an inventory item
-      description: Adds an item to the system
-      operationId: addInventory
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: inventoryItem
-        description: Inventory item to add
-        required: false
-        schema:
-          $ref: '#/definitions/InventoryItem'
-      responses:
-        "201":
-          description: item created
-        "400":
-          description: invalid input, object invalid
-        "409":
-          description: an existing item already exists
-definitions:
-  InventoryItem:
-    type: object
-    required:
-    - id
-    - manufacturer
-    - name
-    - releaseDate
-    properties:
-      id:
+      - ui
+  /guest_login:
+    get:
+      tags:
+      - ui
+    post:
+      tags:
+      - ui
+  /logout:
+    get:
+      tags:
+      - ui
+  /m/{ark}:
+    get:
+      tags:
+      - ui
+      parameters: 
+      - in: path
+        name: ark
         type: string
-        format: uuid
-        example: d290f1ee-6c54-4b01-90e6-d701748f0851
-      name:
+        required: true
+  /m/{ark}/{version}:
+    get:
+      tags:
+      - ui
+      parameters: 
+      - in: path
+        name: ark
         type: string
-        example: Widget Adapter
-      releaseDate:
+        required: true
+      - in: path
+        name: version
+        type: integer
+        required: true
+  /home/choose_collection:
+    get:
+      tags:
+      - ui
+  /user/update:
+    get:
+      tags:
+      - ui
+  /collection/search_results:
+    get:
+      tags:
+      - ui
+  /version/index:
+    get:
+      tags:
+      - ui
+  /a/{ark}:
+    get:
+      tags:
+      - ui
+      parameters: 
+      - in: path
+        name: ark
         type: string
-        format: date-time
-        example: 2016-08-29T09:12:33.001+0000
-      manufacturer:
-        $ref: '#/definitions/Manufacturer'
-  Manufacturer:
-    required:
-    - name
-    properties:
-      name:
+        required: true
+  /collection/object_count:
+    get:
+      tags:
+      - ui
+  /collection/version_count:
+    get:
+      tags:
+      - ui
+  /collection/file_count:
+    get:
+      tags:
+      - ui
+  /collection/total_size:
+    get:
+      tags:
+      - ui
+  /collection/billable_size:
+    get:
+      tags:
+      - ui
+  /d/{ark}/{version}/{file}:
+    get:
+      tags:
+      - deprecated
+      parameters: 
+      - in: path
+        name: ark
         type: string
-        example: ACME Corporation
-      homePage:
+        required: true
+      - in: path
+        name: version
+        type: integer
+        required: true
+      - in: path
+        name: file
         type: string
-        format: url
-        example: https://www.acme-corp.com
-      phone:
+        required: true
+  /d/{ark}/{version}:
+    get:
+      tags:
+      - deprecated
+      parameters: 
+      - in: path
+        name: ark
         type: string
-        example: 408-867-5309
+        required: true
+      - in: path
+        name: version
+        type: integer
+        required: true
+  /d/{ark}:
+    get:
+      tags:
+      - deprecated
+      parameters: 
+      - in: path
+        name: ark
+        type: string
+        required: true
+  /u/{ark}/{version}:
+    get:
+      tags:
+      - deprecated
+      parameters: 
+      - in: path
+        name: ark
+        type: string
+        required: true
+      - in: path
+        name: version
+        type: integer
+        required: true
+  /u/{ark}:
+    get:
+      tags:
+      - deprecated
+      parameters: 
+      - in: path
+        name: ark
+        type: string
+        required: true
+  /dm/{ark}:
+    get:
+      tags:
+      - deprecated
+      parameters: 
+      - in: path
+        name: ark
+        type: string
+        required: true
+  /feeds/recent:
+    get:
+      tags:
+      - deprecated
+  /object/recent.{feedtype}:
+    get:
+      tags:
+      - ui
+      parameters: 
+      - in: path
+        name: feedtype
+        type: string
+        required: true
+  /api/presign-file/{ark}/{version}/{file}:
+    get:
+      tags:
+      - api
+      parameters: 
+      - in: path
+        name: ark
+        type: string
+        required: true
+      - in: path
+        name: version
+        type: integer
+        required: true
+      - in: path
+        name: file
+        type: string
+        required: true
+  /api/get-storage-key-file/{ark}/{version}/{file}:
+    get:
+      tags:
+      - deprecated
+      parameters: 
+      - in: path
+        name: ark
+        type: string
+        required: true
+      - in: path
+        name: version
+        type: integer
+        required: true
+      - in: path
+        name: file
+        type: string
+        required: true
+  /api/assemble-version/{ark}/{version}:
+    get:
+      tags:
+      - api
+      parameters: 
+      - in: path
+        name: ark
+        type: string
+        required: true
+      - in: path
+        name: version
+        type: integer
+        required: true
+  /api/assemble-obj/{ark}:
+    get:
+      tags:
+      - api
+      parameters: 
+      - in: path
+        name: ark
+        type: string
+        required: true
+  /api/presign-obj-by-token/{token}:
+    get:
+      tags:
+      - api
+      parameters: 
+      - in: path
+        name: token
+        type: string
+        required: true
+  /object/ingest:
+    post:
+      tags:
+      - ui
+      - api
+  /object/update:
+    post:
+      tags:
+      - ui
+      - api
+  /object/mint:
+    post:
+      tags:
+      - ui
+      - api
+  /object/upload:
+    post:
+      tags:
+      - ui
+      - api
+  /user/update:
+    post:
+      tags:
+      - ui
