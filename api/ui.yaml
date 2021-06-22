@@ -269,7 +269,3 @@ paths:
       tags:
       - ui
       - api
-  /user/update:
-    post:
-      tags:
-      - ui
