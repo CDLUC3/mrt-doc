@@ -11,29 +11,37 @@ tags:
   description: Merritt UI
 - name: api
   description: Merritt API
+- name: internal-use
+  description: Internal use within the UI app
 schemes:
 - https
 paths:
   /login:
     get:
+      description: Display login page
       tags:
       - ui
     post:
+      description: Send user login credentials
       tags:
       - ui
   /guest_login:
     get:
+      description: Redirect to guest login
       tags:
       - ui
     post:
+      description: Send guest login credentials
       tags:
       - ui
   /logout:
     get:
+      description: User logout
       tags:
       - ui
   /m/{ark}:
     get:
+      description: Display collection or object page
       tags:
       - ui
       parameters: 
@@ -43,6 +51,7 @@ paths:
         required: true
   /m/{ark}/{version}:
     get:
+      description: Display object version page
       tags:
       - ui
       parameters: 
@@ -56,22 +65,27 @@ paths:
         required: true
   /home/choose_collection:
     get:
+      description: Select collection for user session
       tags:
       - ui
   /user/update:
     get:
+      description: Update user profile
       tags:
       - ui
   /collection/search_results:
     get:
+      description: Display collection search results
       tags:
       - ui
   /version/index:
     get:
+      description: Access version page
       tags:
-      - ui
+      - internal-use
   /a/{ark}:
     get:
+      description: Add object to collection
       tags:
       - ui
       parameters: 
@@ -81,26 +95,32 @@ paths:
         required: true
   /collection/object_count:
     get:
+      description: Get object count for collection
       tags:
       - ui
   /collection/version_count:
     get:
+      description: Get version count for collection
       tags:
       - ui
   /collection/file_count:
     get:
+      description: Get file count for collection
       tags:
       - ui
   /collection/total_size:
     get:
+      description: Get total byte size for collection (all versions)
       tags:
       - ui
   /collection/billable_size:
     get:
+      description: Get total billable byte size for collection
       tags:
       - ui
   /d/{ark}/{version}/{file}:
     get:
+      description: Download file (stream bytes)
       deprecated: true
       tags:
       - api
@@ -119,6 +139,7 @@ paths:
         required: true
   /d/{ark}/{version}:
     get:
+      description: Download assembled object version (stream bytes)
       deprecated: true
       tags:
       - api
@@ -133,6 +154,7 @@ paths:
         required: true
   /d/{ark}:
     get:
+      description: Download assembled object (stream bytes)
       deprecated: true
       tags:
       - api
@@ -143,6 +165,7 @@ paths:
         required: true
   /u/{ark}/{version}:
     get:
+      description: Download assembled object version (stream bytes) including only producer files
       deprecated: true
       tags:
       - api
@@ -157,6 +180,7 @@ paths:
         required: true
   /u/{ark}:
     get:
+      description: Download assembled object (stream bytes) including only producer files
       deprecated: true
       tags:
       - api
@@ -167,6 +191,7 @@ paths:
         required: true
   /dm/{ark}:
     get:
+      description: Download object manifest (stream bytes)
       deprecated: true
       tags:
       - api
@@ -177,11 +202,13 @@ paths:
         required: true
   /feeds/recent:
     get:
+      description: ???
       deprecated: true
       tags:
       - ui
   /object/recent.{feedtype}:
     get:
+      description: Generate atom feed - what other formats do we support?
       tags:
       - ui
       parameters: 
@@ -191,6 +218,7 @@ paths:
         required: true
   /api/presign-file/{ark}/{version}/{file}:
     get:
+      description: Retrieve file by presigned url
       tags:
       - api
       parameters: 
@@ -208,9 +236,9 @@ paths:
         required: true
   /api/get-storage-key-file/{ark}/{version}/{file}:
     get:
-      deprecated: true
+      description: Create key to send to storage service
       tags:
-      - api
+      - internal-use
       parameters: 
       - in: path
         name: ark
@@ -226,6 +254,7 @@ paths:
         required: true
   /api/assemble-version/{ark}/{version}:
     get:
+      description: Start async assembly of object version
       tags:
       - api
       parameters: 
@@ -239,6 +268,7 @@ paths:
         required: true
   /api/assemble-obj/{ark}:
     get:
+      description: Start async assembly of object 
       tags:
       - api
       parameters: 
@@ -248,6 +278,7 @@ paths:
         required: true
   /api/presign-obj-by-token/{token}:
     get:
+      description: Retrive assembled object/version by presigned url
       tags:
       - api
       parameters: 
@@ -257,21 +288,25 @@ paths:
         required: true
   /object/ingest:
     post:
+      description: Start object ingest (tbd differentiate ingest vs upload)
       tags:
       - ui
       - api
   /object/update:
     post:
+      description: Start new version ingest for an object
       tags:
       - ui
       - api
   /object/mint:
     post:
+      description: Mint an id for a new object
       tags:
       - ui
-      - api
+      - internal-use
   /object/upload:
     post:
+      description: Start object ingest (tbd differentiate ingest vs upload)
       tags:
       - ui
       - api
