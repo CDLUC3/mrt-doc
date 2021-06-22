@@ -1,3 +1,3 @@
 # Documented APIs
 
-- [merritt](merritt)
+- [merritt](merritt.html)
