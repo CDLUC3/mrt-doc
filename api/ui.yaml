@@ -11,8 +11,6 @@ tags:
   description: Merritt UI
 - name: api
   description: Merritt API
-- name: deprecated
-  description: Deprecated API calls
 schemes:
 - https
 paths:
@@ -103,8 +101,9 @@ paths:
       - ui
   /d/{ark}/{version}/{file}:
     get:
+      deprecated: true
       tags:
-      - deprecated
+      - api
       parameters: 
       - in: path
         name: ark
@@ -120,8 +119,9 @@ paths:
         required: true
   /d/{ark}/{version}:
     get:
+      deprecated: true
       tags:
-      - deprecated
+      - api
       parameters: 
       - in: path
         name: ark
@@ -133,8 +133,9 @@ paths:
         required: true
   /d/{ark}:
     get:
+      deprecated: true
       tags:
-      - deprecated
+      - api
       parameters: 
       - in: path
         name: ark
@@ -142,8 +143,9 @@ paths:
         required: true
   /u/{ark}/{version}:
     get:
+      deprecated: true
       tags:
-      - deprecated
+      - api
       parameters: 
       - in: path
         name: ark
@@ -155,8 +157,9 @@ paths:
         required: true
   /u/{ark}:
     get:
+      deprecated: true
       tags:
-      - deprecated
+      - api
       parameters: 
       - in: path
         name: ark
@@ -164,8 +167,9 @@ paths:
         required: true
   /dm/{ark}:
     get:
+      deprecated: true
       tags:
-      - deprecated
+      - api
       parameters: 
       - in: path
         name: ark
@@ -173,8 +177,9 @@ paths:
         required: true
   /feeds/recent:
     get:
+      deprecated: true
       tags:
-      - deprecated
+      - ui
   /object/recent.{feedtype}:
     get:
       tags:
@@ -203,8 +208,9 @@ paths:
         required: true
   /api/get-storage-key-file/{ark}/{version}/{file}:
     get:
+      deprecated: true
       tags:
-      - deprecated
+      - api
       parameters: 
       - in: path
         name: ark
