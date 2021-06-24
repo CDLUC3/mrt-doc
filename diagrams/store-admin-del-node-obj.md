@@ -1,6 +1,6 @@
 ---
 title: "Storage Admin: Remove Object from Inventory"
-description: "Storage Admin: Remove Object from Inventory, generate delete lists for all copies"
+description: "Storage Admin: Remove Object from Storage and Inventory"
 prevpage: store-admin-del-node-keys
 nextpage: store-admin-force-audit
 chart: store-admin-del-node-obj.mmd

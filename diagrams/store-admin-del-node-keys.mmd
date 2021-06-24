@@ -7,9 +7,9 @@ graph TD
 
   subgraph "Use Case: Delete Keys from Cloud Storage"
     SAUI-->SA
-    SABUCK-->|"Read Delete List"|SA
-    SA-->|"Delete Cloud Objects(keys)"|CLOUD
-    SA-->|"Delete Report"|SABUCK
+    SABUCK-->|"1. Read Delete List"|SA
+    SA-->|"2. Delete Cloud Objects(keys)"|CLOUD
+    SA-->|"3. Delete Report"|SABUCK
   end
 
   style SABUCK fill:#77913C
