@@ -1,5 +1,42 @@
 ## Sprint Goals
 
+#### Sprint 56: 23 June - 13 July 2021
+
+##### Primary tasks:
+- Replic optimizations
+  - Address Replic cloud timeout
+  - Environment variable log direction
+  - Fixity check optimization, akin to Audit and Storage
+  - Review content copy operation, to determine if an optimized mechanism exists
+- Collection Admin
+  - Wiring up profile API to Coll Admin UI
+- Cognito Exploration
+  - SAML integration
+- API Gateway Exploration
+  - Understand what our authentication options are, in the context of the Merritt API
+- Admin tool updates
+  - Pagination of report output
+- Storage Admin
+  - Collaborate on initial lambda setup and UI
+- Collections and Nuxeo feeds
+  - Establish Nuxeo feed into existing Merritt collection for UCI
+  - New UCSF and UCM collections and feeds
+- CoreTrustSeal application submission
+  - Finalize submission and supporting documentation
+
+##### Secondary tasks:
+- Swagger exploration to document microservice endpoints
+- Palestinian Museum collection
+  - Begin analyzing content on S3 and prototyping ingest automation, #558
+  - Metadata gap analysis
+
+##### Releases:
+- Replic optimizations to Stage
+- Inventory '\u' fix deployment
+- Storage which incorporates VersionLink: release to Stage
+- Ruby security patch deployment for UI
+
+
 #### Sprint 55: 02 June - 22 June 2021
 
 ##### Primary tasks:
