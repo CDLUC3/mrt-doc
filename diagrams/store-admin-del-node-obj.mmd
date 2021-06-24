@@ -2,7 +2,6 @@
 graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
-  RDS[(Inventory DB)]
   REPLIC(Replication)
   ST(Storage)
   INV(Inventory)
@@ -13,8 +12,4 @@ graph TD
     SA-->|"2. del prim copy"|ST
     SA-->|"3. del from inventory"|INV
     SA-->|"4. del localid"|INV
-  end
-
-  style RDS fill:#F68D2F
-  style SABUCK fill:#77913C
-  
+  end  
