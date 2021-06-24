@@ -6,7 +6,7 @@ graph TD
   ST(Storage)
   INV(Inventory)
 
-  subgraph "Use Case: Remove Object from Inventory, Generate Delete Lists for all copies"
+  subgraph "Use Case: Remove Object from Storage and Inventory"
     SAUI-->SA
     SA-->|"1. del sec copy"|REPLIC
     SA-->|"2. del prim copy"|ST
