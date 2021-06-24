@@ -3,10 +3,14 @@ graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
   RDS[(Inventory DB)]
+  REPLIC(Replication)
+
 
   subgraph "Use Case: Add Replication Node for Collection"
     SAUI-->SA
     SA-->|"add node for coll"|RDS
+    SA-->|"mark obj unreplicated"|RDS
+    RDS-.->|"find unreplicated"|REPLIC
   end
 
   style RDS fill:#F68D2F

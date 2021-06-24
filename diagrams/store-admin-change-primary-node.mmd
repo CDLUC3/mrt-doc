@@ -3,10 +3,12 @@ graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
   RDS[(Inventory DB)]
+  INV(Inventory)
 
   subgraph "Use Case: Change Primary Node for Collection"
     SAUI-->SA
-    SA-->|"reset primary"|RDS
+    RDS-->|"get obj list"|SA
+    SA-->|"change primary"|INV
   end
 
   style RDS fill:#F68D2F

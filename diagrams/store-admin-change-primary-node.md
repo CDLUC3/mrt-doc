@@ -10,49 +10,14 @@ chart: store-admin-change-primary-node.mmd
 {% include start.html %}
 {% include end.html %}
 
-## Question
+## TODO
 
-- Can this be done in the database without disruption?
-  - What is the right sequence to apply the changes?
-- Has this been done historically?
+- Create new inventory method to alter the primary node for an object
 
-## Query
+## Actions
 
 ```
-
-begin transaction
-
-update 
-  inv_nodes_inv_objects inio
-set
-  role='secondary'
-where exists (
-    select 1
-    from 
-      inv_collections_inv_objects icio
-    where
-      inio.inv_object_id = icio.inv_object_id
-    and 
-      icio.inv_collection_id = ?
-)
-
-update 
-  inv_nodes_inv_objects
-set
-  role='primary'
-where 
-  inv_node_id = ?
-and exists (
-    select 1
-    from 
-      inv_collections_inv_objects icio
-    where
-      inio.inv_object_id = icio.inv_object_id
-    and 
-      icio.inv_collection_id = ?
-)
-;
-
-commit transaction
-
+For OBJ in Collection
+  Call Inventory::changePrimaryNode(object, node)
 ```
+
