@@ -23,8 +23,21 @@ values (
 ```
 
 ## Trigger the replication of objects in the collection
-_Will the replication service determine this automatically, or does it need an api event to trigger this?_
+_Mark all objects in the collection as unreplicated.  This will notify the replication service to perform replication._
 
 ```
-insert into inv_nodes_inv_objects...
+update 
+  inv_nodes_inv_objects inio
+set
+  replicated = null
+where exists (
+    select 
+      1
+    from 
+      inv_collections_inv_objects icio
+    where
+      icio.inv_collection_id = ?
+    and
+      inio.inv_object_id = icio.inv_object_id
+)
 ```

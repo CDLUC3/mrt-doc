@@ -3,13 +3,16 @@ graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
   RDS[(Inventory DB)]
-  SABUCK[/"Storage Admin Bucket"/]
+  REPLIC(Replication)
+  ST(Storage)
+  INV(Inventory)
 
   subgraph "Use Case: Remove Object from Inventory, Generate Delete Lists for all copies"
     SAUI-->SA
-    SA--->|"repl key delete list"|SABUCK
-    SA-->|"del repnode/key for obj"|RDS
-    SA-->|"del primary node/key for obj"|RDS
+    SA-->|"1. del sec copy"|REPLIC
+    SA-->|"2. del prim copy"|ST
+    SA-->|"3. del from inventory"|INV
+    SA-->|"4. del localid"|INV
   end
 
   style RDS fill:#F68D2F

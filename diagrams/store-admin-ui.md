@@ -20,13 +20,16 @@ nextpage: store-admin-add-node
 <button>GO</button>
 </fieldset>
 
+### Collection Status
+**Status**: Ingest Paused <button title="Make primary is only permitted if ingest is paused for a collection">Unpause</button>
+
 ### Action Table
 
-| Role | Node | Node Desc | Actions |
-|---------|-----|----------|---------|
-| primary | 1111 | S3 | <button>Re-audit</button> |
-| secondary | 2222 | SDSC | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> |
-| secondary | 3333 | Wasabi | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> |
+| Role | Node | Node Desc | Repl Status | Actions |
+|---------|-----|----------|------|---------|
+| primary | 1111 | S3 | n/a | <button>Re-audit</button> |
+| secondary | 2222 | SDSC | 100% | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> |
+| secondary | 3333 | Wasabi | 92% | <button>Delete Coll from Node</button> <button disabled='Y'>Make Primary</button> <button>Re-audit</button> |
 
 <button>Add Node</button>
 
@@ -71,21 +74,20 @@ Type `2 Deletes` to procede.
   <option>Search by object_id</option>
 </select>
 <input type="text" value="ark:13030/m5mmmm"/>
+<button title="enter a list of arks to process">...</button>
 <button>Search</button>
 </fieldset>
 
 ### Action Table - Object
 
-|Collection|Object Id| Ark | Local Id | Title | Actions |
+|Collection|Object Id| Ark | Local Id | Title |Created| Actions |
 |---|---------|-----|----------|-------|---------|
-|My Coll| 111| ark:/13030/m5mmmmm | doi:1111| My Title | <button>Delete Obj</button> <button>Trigger Replic</button>|
+|My Coll| 111| ark:/13030/m5mmmmm | doi:1111| My Title |2021-04-04| <button>Delete Obj</button> <button>Trigger Replic</button> <button>Re-audit</button> <button>Nodes</button>|
 
 ### Action Table - Object/Node
 
 |Role| Node | Node Desc | Actions |
 |---------|-----|----------|---------|
-| primary | 1111 | S3 | <button>Re-audit</button>|
+| primary | 1111 | S3 | |
 | secondary | 2222 | SDSC | <button>Delete Object from Node</button>|
 | secondary | 3333 | Wasabi | <button>Delete Object from Node</button>|
-
-<button>Add Node</button>

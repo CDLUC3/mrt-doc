@@ -16,7 +16,7 @@ chart: store-admin-force-audit.mmd
 update 
   inv_audits
 set 
-  status = 'unknown'
+  verified = null
 where
   inv_object_id = (
     select
@@ -34,7 +34,7 @@ where
 update 
   inv_audits a
 set 
-  status = 'unknown'
+  verified = null
 where exists (
   select 1
   from 
