@@ -7,6 +7,7 @@ chart: overview-core.mmd
 
 ## Flowchart Walkthroughs
 - [Merritt Core Microservices](core_index)
+- [Merritt Cloud Library](mrt-cloud)
 - [Merritt Audit and Replication Microservices](auditreplic)
 - [Merritt + Dryad Microservices](dryad)
 - [Merritt Admin/Colladmin Tool](admin-spa)

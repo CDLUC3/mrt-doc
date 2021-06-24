@@ -106,6 +106,11 @@ graph TD
 
 [![](sword.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/sword)
 
+## Cloud Library
+- [Graph Source](mrt-cloud.mmd)
+
+[![](mrt-cloud.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/mrt-cloud)
+
 ## Merritt Billing Update (Aggregation)
 - [Graph Source](billing.mmd)
 
