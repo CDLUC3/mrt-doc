@@ -4,6 +4,7 @@
 
 ## Original System Specifications
 - [Merritt Object Model](https://github.com/CDLUC3/mrt-doc/blob/main/doc/Merritt-object-modeling-latest.pdf)
+- [Technical Specifications](https://github.com/CDLUC3/mrt-doc/wiki/Technical-Documentation)
 
 ## User Documentation
 For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/mrt-doc/wiki).
