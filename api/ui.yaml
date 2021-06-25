@@ -417,6 +417,7 @@ paths:
       tags:
       - ui
       - api
+      parameters:
       - in: query
         name: file
         type: file
