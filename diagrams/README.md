@@ -111,6 +111,11 @@ graph TD
 
 [![](mrt-cloud.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/mrt-cloud)
 
+## LDAP
+- [Graph Source](ldap.mmd)
+
+[![](ldap.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/ldap)
+
 ## Merritt Billing Update (Aggregation)
 - [Graph Source](billing.mmd)
 
