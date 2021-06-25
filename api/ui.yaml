@@ -25,6 +25,15 @@ paths:
       summary: Send user login credentials
       tags:
       - ui
+      parameters: 
+      - in: query
+        name: login
+        type: string
+        required: true
+      - in: query
+        name: password
+        type: string
+        required: true
   /guest_login:
     get:
       summary: Redirect to guest login
@@ -69,10 +78,32 @@ paths:
       tags:
       - ui
   /user/update:
-    get:
+    post:
       summary: Update user profile
       tags:
       - ui
+      parameters: 
+      - in: query
+        name: givenname
+        type: string
+        required: true
+      - in: query
+        name: sn
+        type: string
+        required: true
+        description: lastname
+      - in: query
+        name: userpassword
+        type: string
+        required: true
+      - in: query
+        name: repeatuserpassword
+        type: string
+        required: true
+      - in: query
+        name: mail
+        type: string
+        required: true
   /collection/search_results:
     get:
       summary: Display collection search results
@@ -98,26 +129,76 @@ paths:
       summary: Get object count for collection
       tags:
       - ui
+      parameters: 
+      - in: query
+        name: group
+        type: string
+        required: false
+        description: required unless in session
+      - in: cookie
+        name: group_id
+        type: string
+        required: false
   /collection/version_count:
     get:
       summary: Get version count for collection
       tags:
       - ui
+      parameters: 
+      - in: query
+        name: group
+        type: string
+        required: false
+        description: required unless in session
+      - in: cookie
+        name: group_id
+        type: string
+        required: false
   /collection/file_count:
     get:
       summary: Get file count for collection
       tags:
       - ui
+      parameters: 
+      - in: query
+        name: group
+        type: string
+        required: false
+        description: required unless in session
+      - in: cookie
+        name: group_id
+        type: string
+        required: false
   /collection/total_size:
     get:
       summary: Get total byte size for collection (all versions)
       tags:
       - ui
+      parameters: 
+      - in: query
+        name: group
+        type: string
+        required: false
+        description: required unless in session
+      - in: cookie
+        name: group_id
+        type: string
+        required: false
   /collection/billable_size:
     get:
       summary: Get total billable byte size for collection
       tags:
       - ui
+      parameters: 
+      - in: query
+        name: group
+        type: string
+        required: false
+        description: required unless in session
+      - in: cookie
+        name: group_id
+        type: string
+        required: false
   /d/{ark}/{version}/{file}:
     get:
       summary: Download file (stream bytes)
