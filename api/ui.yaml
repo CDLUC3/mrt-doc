@@ -283,10 +283,14 @@ paths:
         required: true
   /feeds/recent:
     get:
-      summary: ???
-      deprecated: true
+      summary: get recent items
       tags:
       - ui
+      parameters: 
+      - in: query
+        name: collection
+        type: string
+        required: true
   /object/recent.{feedtype}:
     get:
       summary: Generate atom feed - what other formats do we support?
@@ -297,6 +301,7 @@ paths:
         name: feedtype
         type: string
         required: true
+        description: feed type should be atom
   /api/presign-file/{ark}/{version}/{file}:
     get:
       summary: Retrieve file by presigned url
@@ -307,6 +312,7 @@ paths:
         name: ark
         type: string
         required: true
+        description: ark should be url-encoded
       - in: path
         name: version
         type: integer
@@ -315,6 +321,12 @@ paths:
         name: file
         type: string
         required: true
+        description: path should be url-encoded
+      - in: query
+        name: no_redirect
+        type: boolean
+        required: false
+        description: if set, presigned url will be sent in payload
   /api/get-storage-key-file/{ark}/{version}/{file}:
     get:
       summary: Create key to send to storage service
@@ -343,10 +355,21 @@ paths:
         name: ark
         type: string
         required: true
+        description: ark should be url-encoded
       - in: path
         name: version
         type: integer
         required: true
+      - in: query
+        name: content
+        type: string
+        required: false
+        description: producer|full
+      - in: query
+        name: format
+        type: string
+        required: false
+        description: zip|tar|targz
   /api/assemble-obj/{ark}:
     get:
       summary: Start async assembly of object 
@@ -357,6 +380,17 @@ paths:
         name: ark
         type: string
         required: true
+        description: ark should be url-encoded
+      - in: query
+        name: content
+        type: string
+        required: false
+        description: producer|full
+      - in: query
+        name: format
+        type: string
+        required: false
+        description: zip|tar|targz
   /api/presign-obj-by-token/{token}:
     get:
       summary: Retrive assembled object/version by presigned url
@@ -367,12 +401,187 @@ paths:
         name: token
         type: string
         required: true
+      - in: query
+        name: no_redirect
+        type: boolean
+        required: false
+        description: if set, presigned url will be sent in payload
+      - in: query
+        name: filename
+        type: string
+        required: false
+        description: name to assign to download file, defaults to object.zip
   /object/ingest:
     post:
       summary: Start object ingest (tbd differentiate ingest vs upload)
       tags:
       - ui
       - api
+      - in: query
+        name: file
+        type: file
+        required: true
+        description: file upload
+      - in: query
+        name: creator
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: date
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: digestType
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: digestValue
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: filename
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: localIdentifier
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: notification
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: notificationFormat
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: primaryIdentifier
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: profile
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: note
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: responseForm
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DataCite.resourceType
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.contributor
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.coverage
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.reator
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.date
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.description
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.format
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: 'DC.identifier'
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.language
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.publisher
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.relation
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.rights
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.source
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.subject
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: DC.title
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: submitter
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: title
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: synchronousMode
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: retainTargetURL
+        type: string
+        required: false
+        description: 
+      - in: query
+        name: type
+        type: string
+        required: false
+        description: 
   /object/update:
     post:
       summary: Start new version ingest for an object
