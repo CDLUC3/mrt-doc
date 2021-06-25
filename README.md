@@ -3,7 +3,7 @@
 [Merritt](https://merritt.cdlib.org) is the digital preservation repository for the University of California, available to libraries, academic departments, laboratories and other organizational units within UC.
 
 ## Original System Specifications
-[Merritt Object Model](https://merritt.cdlib.org/d/ark%3A%2F13030%2Fm5867c6t/0/producer%2FMerritt-object-modeling-latest.pdf)
+- [Merritt Object Model](https://github.com/CDLUC3/mrt-doc/blob/main/doc/Merritt-object-modeling-latest.pdf)
 
 ## User Documentation
 For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/mrt-doc/wiki).
