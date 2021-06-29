@@ -1,5 +1,7 @@
 # Merritt Diagrams Created with Mermaid
-[Mermaid Documentation](https://mermaid-js.github.io/mermaid/#/)
+- [Merritt Flowchart and Sequence Chart Index](https://cdluc3.github.io/mrt-doc/diagrams/)
+- [Mermaid Documentation](https://mermaid-js.github.io/mermaid/#/)
+
 ## To build diagram images from mermaid source (*.mmd)
 
 The mermaid cli can be used to generate SVG for each mmd file.
