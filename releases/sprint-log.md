@@ -1,5 +1,43 @@
 ## Sprint Goals
 
+#### Sprint 57: 14 July - 03 August 2021
+
+##### Primary tasks:
+- Replic optimizations
+  - Address Replic cloud timeout
+  - Environment variable log direction
+  - Fixity check optimization, akin to Audit and Storage
+- Collection Admin
+  - Wiring up profile API to Coll Admin UI
+- Admin tool updates
+  - Decouple from CloudFront
+  - SAML integration
+  - Pagination of report output
+- API Planning and prototyping
+  - Understand what our authentication options are, in the context of the Merritt API 
+- Collections and Nuxeo feeds
+  - Establish Nuxeo feeds for new UCM and UCSF collections (Stage & Prod)
+  - Finish LDAP entries for UCM and UCSF collections, including new acct setup
+- CoreTrustSeal application submission
+  - Work on requested revisions to application as they arise
+
+##### Secondary tasks:
+- Storage Admin
+  - Collaborate on initial lambda setup and UI
+- Backslash ('\') or '\u' handling for Ingest
+- Collection Admin
+  - Explore querying the Inventory queue for display of queue status
+- Palestinian Museum collection
+  - Begin analyzing content on S3 and prototyping ingest automation, #558
+  - Metadata gap analysis
+
+##### Releases:
+- Replic optimizations to Stage
+- Storage which incorporates VersionLink: release to Stage
+- Admin tool releases
+- Cron host release
+
+
 #### Sprint 56: 23 June - 13 July 2021
 
 ##### Primary tasks:
