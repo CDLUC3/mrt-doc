@@ -28,8 +28,8 @@ nextpage: store-admin-add-node
 | Role | Node | Node Desc | Repl Status | Actions |
 |---------|-----|----------|------|---------|
 | primary | 1111 | S3 | n/a | <button>Re-audit</button> |
-| secondary | 2222 | SDSC | 100% | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> <button>Make UI Primary</button>|
-| secondary | 3333 | Wasabi | 92% | <button>Delete Coll from Node</button> <button disabled='Y'>Make Primary</button> <button>Re-audit</button> <button>Make UI Primary</button>|
+| secondary | 2222 | SDSC | 100% | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> |
+| secondary | 3333 | Wasabi | 92% | <button>Delete Coll from Node</button> <button disabled='Y'>Make Primary</button> <button>Re-audit</button> |
 
 <button>Add Node</button>
 
@@ -43,9 +43,8 @@ nextpage: store-admin-add-node
 |Node | Node Desc |Scan %|Last Scan |Num Delete TBD| Actions |
 |---------|-----|---|----------|---------|-------|
 | 1111 | S3 | 100%| 2021-05-01 | 0 | <button>Queue Scan</button>|
-| 2222 | SDSC | 100%|2021-05-10 | 10 | <button>Queue Scan</button> <button>Review Deletes</button>|
-| 3333 | Wasabi | 44%| 2021-06-01 | 0 | <button>Queue Scan</button> |
-| 4444 | Glacier | 100%| 2021-07-01 | 0 | <button>Queue Scan</button>|
+| 2222 | SDSC | 100%|2021-05-10 | 10 | <button>Queue Scan</button> <button>Review Deletes</button> |
+| 3333 | Wasabi | 44%| 2021-06-01 | 0 | <button>Queue Scan</button>|
 
 ### Action Table (Review Deletes)
 
