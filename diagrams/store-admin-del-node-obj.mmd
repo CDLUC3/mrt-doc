@@ -5,6 +5,7 @@ graph TD
   REPLIC(Replication)
   ST(Storage)
   INV(Inventory)
+  EZID
 
   subgraph "Use Case: Remove Object from Storage and Inventory"
     SAUI-->SA
@@ -12,4 +13,7 @@ graph TD
     SA-->|"2. del prim copy"|ST
     SA-->|"3. del from inventory"|INV
     SA-->|"4. del localid"|INV
+    SA-->|"5. update EZID?"|EZID
   end  
+
+  style EZID fill:cyan
