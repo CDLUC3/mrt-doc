@@ -2,15 +2,17 @@
 graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
+  REPLIC("Replication")
   RDS[(Inventory DB)]
   SABUCK[/"Storage Admin Bucket"/]
   CLOUD(("Cloud Storage"))
 
   subgraph "Use Case: Crawl Storage Node for Untracked Files"
     SAUI-->SA
-    CLOUD-->|"node/key list"|SA
-    SA-->|"lookup node/key(batch)"|RDS
-    SA--->|"node/key delete list"|SABUCK
+    SA-->|"Start Scan"|REPLIC
+    CLOUD-->|"node/key list"|REPLIC
+    REPLIC-->|"lookup node/key(batch)"|RDS
+    REPLIC--->|"node/key delete list"|SABUCK
   end
 
   style RDS fill:#F68D2F

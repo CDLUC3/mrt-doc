@@ -1,7 +1,7 @@
 ---
 title: "Storage Admin: Add Replication Node for Collection"
 description: "Storage Admin: Add Replication Node for Collection"
-prevpage: store-admin-ui
+prevpage: store-admin-pause-ing-for-coll
 nextpage: store-admin-del-node
 chart: store-admin-add-node.mmd
 ---
