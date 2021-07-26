@@ -1,0 +1,16 @@
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
+graph TD
+  SAUI("Storage Admin UI")
+  SA("Storage Admin Lambda")
+  RDS[(Inventory DB)]
+  UI(Merritt UI)
+  ST(Storage - Access)
+
+  subgraph "Use Case: Pause Ingest for Collection"
+    SAUI-->SA
+    SA-->|"set/clear ui primary for coll"|RDS
+    RDS-->|"read ui primary overrides"|UI
+    UI-->|"access request (to alt node)"|ST
+  end
+
+  style RDS fill:#F68D2F
