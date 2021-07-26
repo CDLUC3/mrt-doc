@@ -4,13 +4,11 @@ graph TD
   SA("Storage Admin Lambda")
   RDS[(Inventory DB)]
   INV(Inventory)
-  ING(Ingest)
 
   subgraph "Use Case: Change Primary Node for Collection"
     SAUI-->SA
     RDS-->|"get obj list"|SA
-    SA-->|"update primary"|INV
-    ING-->|"Get Primary Node"|SA
+    SA-->|"change primary"|INV
   end
 
   style RDS fill:#F68D2F
