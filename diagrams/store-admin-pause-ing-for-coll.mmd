@@ -6,11 +6,11 @@ graph TD
   INV(Inventory)
   ING(Ingest)
 
-  subgraph "Use Case: Change Primary Node for Collection"
+  subgraph "Use Case: Pause Ingest for Collection"
     SAUI-->SA
-    RDS-->|"get obj list"|SA
-    SA-->|"update primary"|INV
-    ING-->|"Get Primary Node"|SA
+    SA-->|"set paused for coll"|RDS
+    INV-->|"read paused flag for collections"|RDS
+    ING-->|"check for paused collections"|INV
   end
 
   style RDS fill:#F68D2F
