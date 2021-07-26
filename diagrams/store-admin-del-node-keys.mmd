@@ -3,13 +3,16 @@ graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
   SABUCK[/"Storage Admin Bucket"/]
+  REPLIC("Replication")
   CLOUD(("Cloud Storage"))
 
   subgraph "Use Case: Delete Keys from Cloud Storage"
     SAUI-->SA
-    SABUCK-->|"1. Read Delete List"|SA
-    SA-->|"2. Delete Cloud Objects(keys)"|CLOUD
-    SA-->|"3. Delete Report"|SABUCK
+    SABUCK-->|"Read Delete List"|SA
+    SA-->|"Initiate deletes"|REPLIC
+    SABUCK-->|"1. Read Delete List"|REPLIC
+    REPLIC-->|"2. Delete Cloud Objects(keys)"|CLOUD
+    REPLIC-->|"3. Delete Report"|SABUCK
   end
 
   style SABUCK fill:#77913C
