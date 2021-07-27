@@ -2,7 +2,7 @@
 title: "Storage Admin: Change Primary Node"
 description: "Storage Admin: Change Primary Node for Collection"
 prevpage: store-admin-force-audit
-nextpage: integ-tests
+nextpage: store-admin-reroute-ui
 chart: store-admin-change-primary-node.mmd
 ---
 
