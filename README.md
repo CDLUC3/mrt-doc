@@ -79,5 +79,5 @@ Code Repositories
 - [System Enhancement Ideas Grouped by Theme](https://github.com/CDLUC3/mrt-doc/milestones)
 
 ## More info
-- [[Deprecated Functionality]](deprecated_functionality.md)
+- [Deprecated Functionality](deprecated_functionality.md)
 
