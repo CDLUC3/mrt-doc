@@ -1,7 +1,7 @@
 ---
 title: "Storage Admin UI Mockup"
 description: "Storage Admin UI Mockup"
-nextpage: store-admin-add-node
+nextpage: store-admin-pause-ing-for-coll
 ---
 
 {% include nav.html %}
