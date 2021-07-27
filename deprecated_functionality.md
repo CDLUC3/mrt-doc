@@ -5,8 +5,6 @@
 ### inv_nodes
 - media_type
 - media_connectivity
-- access_mode (some values obsolete)
-- access_protocol (other than s3)
 - node_form?
 - node_protocol?
 - external_provider?
@@ -31,6 +29,23 @@
 - inv_dublinekernels
 - inv_metadatas
 
+### Database Fields, Limited use
+- inv_objects.role
+- inv_objects.aggregate_role
+
+### Database Enums, Limited use
+- inv_files.source (consumer)
+- inv_nodes.access_mode (some values)
+- inv_nodes.access_protocol (some values)
+
+## Merritt Admin Objects
+- Collection: only used to partially populate inv_collections
+- Owner: only used to minimally populate inv_owners
+- SLA: not used
+
+## Merritt System Files
+- mrt-object-map.ttl	
+- mrt-mom.txt
 
 ## Microservices
 - [Merritt Express](https://github.com/CDLUC3/mrt-doc/wiki/Merritt-Express-(Archived))
