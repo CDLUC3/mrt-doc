@@ -57,3 +57,8 @@
   - File download (now presigned retrieval)
   - Object download (now presigned retrieval)
   - Large object (email) delivery (now presigned retrieval)
+- Ingest
+  - HandlerDataupHack (Used to support DataUP)
+  - HandlerFixity (Deprecated by Audit service)
+  - HandlerCharacterize (Currently not used.  Initially, JHOVE2 was used)
+  - HandlerCallback (Currently, not used)
