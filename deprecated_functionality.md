@@ -53,6 +53,8 @@
     - Not actively used, but it can be useful
   - DFLAT storage no longer used (UNM) 
   - Virtual Node Support
+  - Support for non-S3 remote storage (open stack at SDSC)
+  - Remote storage servers (not under CDL control)
 - UI 
   - File download (now presigned retrieval) 
   - Object download (now presigned retrieval)
