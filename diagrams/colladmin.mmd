@@ -3,7 +3,7 @@ graph TD
   RDSINV[(Inventory Database)]
   COLLADMIN([Collection Admin - Lambda])
   click COLLADMIN href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
-  ADMINWEB[[Admin Tool - SPA - Browser]]
+  ADMINWEB[[Admin Tool - Browser]]
   click ADMINWEB href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
   WAF[Web application Fiirewall]
   ECR[ECR Hosted Lambda Image]
@@ -16,7 +16,6 @@ graph TD
 
   subgraph flowchart
     COLLADMIN --> |"query / update"| RDSINV
-    ALB --> ADMIN
     COLLADMIN --> |json| ALB
     ADMINWEB --> |ajax| ALB
     ALB --> |json| ADMINWEB
