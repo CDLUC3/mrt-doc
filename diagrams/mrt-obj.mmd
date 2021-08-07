@@ -1,0 +1,36 @@
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
+graph TD
+  subgraph process
+    SLAEX[\SLA Profile Exists?/]
+    SLAEX --> |no| CSLA
+    CSLA(Create SLA)
+    CSLA --> |checkin| GHSLA 
+    GHSLA[GitHub] -.-> |Replicate to Ingest| SUBSLA
+    SUBSLA(Submit Dummy Object using SLA Profile) --> DBSLA
+    DBSLA(INV: Create Record in inv_collection and inv_object) --> SLAEX
+    SLAEX --> |yes| OWNEX
+    OWNEX[\Owner Profile Exists/]
+    OWNEX --> |no| COWN
+    COWN(Create Owner)
+    COWN --> |checkin| GHOWN
+    GHOWN[GitHub] -.-> |Replicate to Ingest| SUBOWN
+    SUBOWN(Submit Dummy Object using Owner Profile) --> DBOWN
+    DBOWN(INV: Create ?? inv_owner and inv_object) --> OWNEX
+    OWNEX --> |yes| PROFEX
+    PROFEX[\Ingest Profile Exists/]
+    PROFEX --> |no| CPROF
+    CPROF(Create Profile)
+    CPROF --> |mint ark| EZID
+    CPROF --> |checkin| GHPROF
+    GHPROF[GitHub] -.-> |Replicate to Ingest| PROFEX
+    PROFEX --> |yes| COLLEX
+    COLLEX[\Collection Admin Profile Exists/]
+    COLLEX --> |no| CCOLL
+    CCOLL(Create Collection Admin Profile)
+    CCOLL --> |checkin| GHCOLL
+    GHCOLL[GitHub] -.-> |Replicate to Ingest| SUBCOLL
+    SUBCOLL(Submit Dummy Object using Coll Ad Profile) --> DBCOLL
+    DBCOLL(INV: Create record inv_collection and inv_object) --> COLLEX
+    COLLEX --> |yes| DONE
+    DONE((Done!))
+  end
