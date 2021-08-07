@@ -16,4 +16,4 @@ chart: overview-core.mmd
 - [Merritt Docker](docker)
 - [Merritt Microservice Focus Pages](ui)
 - [ETD Service](etd)
-
+- [Merritt Profiles and Admin Objects](mrt-obj)
