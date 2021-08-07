@@ -1,5 +1,42 @@
 ## Sprint Goals
 
+#### Sprint 58: 04 August - 24 August 2021
+
+##### Primary tasks:
+- Storage Admin
+  - Replic: Scan objects for deletion
+- Collection Admin
+  - Admin object handling
+  - Ingest should mint an ARK for profile creation
+  - Collection properties updates in Inv database
+- API Planning and prototyping
+  - Understand what our authentication options are
+- Collections and Nuxeo feeds
+  - Complete harvest for UCSF WAN Records in production
+  - When approved, complete harvest for UCM Library UCCE Santa Barbara
+and San Luis Obispo Counties in production
+  - Set up Stage collections for testing OAI and SWORD
+- CoreTrustSeal application submission
+  - Respond to application change requests (none yet)
+
+##### Secondary tasks:
+- Storage Admin:
+  - UI components (see mockups)
+- System Introspection page
+- Storage Access Queuing
+- Admin Tool: Cognito
+  - SAML Ingegration
+- Collection Admin
+  - Explore querying the Inventory queue for display of queue status
+- Palestinian Museum collection
+  - Begin analyzing content on S3 and prototyping ingest automation, #558
+  - Metadata gap analysis
+
+##### Releases:
+- Replic: Scan to Stage
+- Admin tool releases
+
+
 #### Sprint 57: 14 July - 03 August 2021
 
 ##### Primary tasks:
