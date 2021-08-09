@@ -15,7 +15,7 @@ graph TD
     COWN --> |checkin| GHOWN
     GHOWN[GitHub] -.-> |Replicate to Ingest| SUBOWN
     SUBOWN(Submit Dummy Object using Owner Profile) --> DBOWN
-    DBOWN(INV: Create ?? inv_owner and inv_object) --> OWNEX
+    DBOWN(INV: Create ??? unclear what happens here) --> OWNEX
     OWNEX --> |yes| PROFEX
     PROFEX[\Ingest Profile Exists/]
     PROFEX --> |no| CPROF
@@ -31,6 +31,8 @@ graph TD
     GHCOLL[GitHub] -.-> |Replicate to Ingest| SUBCOLL
     SUBCOLL(Submit Dummy Object using Coll Ad Profile) --> DBCOLL
     DBCOLL(INV: Create record inv_collection and inv_object) --> COLLEX
-    COLLEX --> |yes| DONE
-    DONE((Done!))
+    COLLEX --> |yes| SUBITEM
+    SUBITEM(Submit content to Merritt using Ingest Profile)
+    SUBITEM --> DBITEM
+    DBITEM(INV: load object to inventory database, create inv_owners record if it is missing)
   end
