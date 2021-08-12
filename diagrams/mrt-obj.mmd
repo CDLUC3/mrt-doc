@@ -1,13 +1,13 @@
 %%{init: {'theme': 'neutral', 'securityLevel': 'loose'}}%%
 graph TD
-  subgraph process
+  subgraph admin
     SLAEX[\SLA Profile Exists?/]
     SLAEX --> |no| CSLA
     CSLA(Create SLA)
     CSLA --> |checkin| GHSLA 
     GHSLA[GitHub] -.-> |Replicate to Ingest| SUBSLA
     SUBSLA(Submit Dummy Object using SLA Profile) --> DBSLA
-    DBSLA(INV: Create Record in inv_collection and inv_object) --> SLAEX
+    DBSLA(INV: Create SLA Record in inv_objects) --> SLAEX
     SLAEX --> |yes| OWNEX
     OWNEX[\Owner Profile Exists/]
     OWNEX --> |no| COWN
@@ -15,24 +15,24 @@ graph TD
     COWN --> |checkin| GHOWN
     GHOWN[GitHub] -.-> |Replicate to Ingest| SUBOWN
     SUBOWN(Submit Dummy Object using Owner Profile) --> DBOWN
-    DBOWN(INV: Create ??? unclear what happens here) --> OWNEX
-    OWNEX --> |yes| PROFEX
-    PROFEX[\Ingest Profile Exists/]
-    PROFEX --> |no| CPROF
-    CPROF(Create Profile)
-    CPROF --> |mint ark| EZID
-    CPROF --> |checkin| GHPROF
-    GHPROF[GitHub] -.-> |Replicate to Ingest| PROFEX
-    PROFEX --> |yes| COLLEX
+    DBOWN(INV: Create owner in inv_objects, Add SLA to inv_collections) --> OWNEX
+    OWNEX --> |yes| COLLEX
     COLLEX[\Collection Admin Profile Exists/]
     COLLEX --> |no| CCOLL
     CCOLL(Create Collection Admin Profile)
     CCOLL --> |checkin| GHCOLL
     GHCOLL[GitHub] -.-> |Replicate to Ingest| SUBCOLL
     SUBCOLL(Submit Dummy Object using Coll Ad Profile) --> DBCOLL
-    DBCOLL(INV: Create record inv_collection and inv_object) --> COLLEX
-    COLLEX --> |yes| SUBITEM
+    DBCOLL(INV: Create collection record in inv_objects, Create inv_object record) --> COLLEX
+    COLLEX --> |yes| PROFEX
+    PROFEX[\Ingest Profile Exists/]
+    PROFEX --> |no| CPROF
+    CPROF(Create Profile)
+    CPROF --> |mint ark| EZID
+    CPROF --> |checkin| GHPROF
+    GHPROF[GitHub] -.-> |Replicate to Ingest| PROFEX
+    PROFEX --> |yes| SUBITEM
     SUBITEM(Submit content to Merritt using Ingest Profile)
     SUBITEM --> DBITEM
-    DBITEM(INV: load object to inventory database, create inv_owners record if it is missing)
+    DBITEM(INV: load object to inventory database, create collection in inv_collections)
   end
