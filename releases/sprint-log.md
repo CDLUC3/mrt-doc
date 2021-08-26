@@ -1,6 +1,6 @@
 ## Sprint Goals
 
-#### Sprint 58: 25 August - 14 September 2021
+#### Sprint 59: 25 August - 14 September 2021
 
 ##### Primary tasks:
 - Storage Access
