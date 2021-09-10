@@ -8,6 +8,7 @@ graph TD
   click ADMINWEB href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
   WAF[Web application Fiirewall]
   ECR[ECR Hosted Lambda Image]
+  COG[AWS Cognito User Auth]
 
   subgraph flowchart
     ADMIN --> |query| RDSBILL
@@ -17,6 +18,7 @@ graph TD
     ADMINWEB --> |ajax| ALB
     ALB --> |json| ADMINWEB
     ALB --> |authorize| WAF
+    ALB --> |authorize| COG
     ECR --> ADMIN
   end
 
@@ -27,3 +29,4 @@ graph TD
   style ALB fill:cyan
   style WAF fill:cyan
   style ECR fill:cyan
+  style COG fill:cyan

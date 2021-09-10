@@ -6,6 +6,7 @@ graph TD
   ADMINWEB[[Admin Tool - Browser]]
   click ADMINWEB href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
   WAF[Web application Fiirewall]
+  COG[AWS Cognito User Auth]
   ECR[ECR Hosted Lambda Image]
   ING(Ingest)
   click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
@@ -20,10 +21,12 @@ graph TD
     ADMINWEB --> |ajax| ALB
     ALB --> |json| ADMINWEB
     ALB --> |authorize| WAF
+    ALB --> |authorize| COG
     ECR --> COLLADMIN
     COLLADMIN --> ING
     COLLADMIN --> LDAP
     COLLADMIN --> S3RPT
+    COLLADMIN --> |user management| COG
     ING --> ZOOING
   end
   
@@ -32,6 +35,7 @@ graph TD
   style ADMINWEB stroke:red,stroke-width:4px
   style ALB fill:cyan
   style WAF fill:cyan
+  style COG fill:cyan
   style ECR fill:cyan
   style ZOOING fill:cyan
   style LDAP fill:cyan
