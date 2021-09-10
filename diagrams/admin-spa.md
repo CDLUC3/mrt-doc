@@ -1,5 +1,5 @@
 ---
-title: "Merritt Admin Tool SPA (Single Page App)"
+title: "Merritt Admin Tool"
 description: "User Interface for the Merritt Admin Tool"
 nextpage: admin-lambda
 chart: admin-spa.mmd
