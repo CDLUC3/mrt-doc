@@ -5,6 +5,8 @@ graph TD
   click COLLADMIN href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
   ADMINWEB[[Admin Tool - Browser]]
   click ADMINWEB href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
+  COGLAMB([Cognito API Lambda])
+  click COGLAMB href "https://github.com/CDLUC3/mrt-admin-lambda/cognito-lambda-nonvpc" "source code"
   WAF[Web application Fiirewall]
   COG[AWS Cognito User Auth]
   ECR[ECR Hosted Lambda Image]
@@ -26,7 +28,8 @@ graph TD
     COLLADMIN --> ING
     COLLADMIN --> LDAP
     COLLADMIN --> S3RPT
-    COLLADMIN --> |user management| COG
+    COLLADMIN --> COGLAMB
+    COGLAMB --> |user management| COG
     ING --> ZOOING
   end
   
