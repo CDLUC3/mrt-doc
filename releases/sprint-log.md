@@ -1,5 +1,37 @@
 ## Sprint Goals
 
+#### Sprint 59: 25 August - 14 September 2021
+
+##### Primary tasks:
+- Storage Access
+  - Analyze the number and type of requests coming in since 8/20, #774
+  - Investigate side effects we're seeing on UI servers
+  - Start work on Access queuing 
+- Storage Admin
+  - Replic: Object scan
+  - UI components
+- Collection Admin
+  - Admin object submission
+  - Ability to disable the above feature when appropriate
+- New Collections and Nuxeo feeds
+- UC Davis ETDs process
+
+##### Secondary tasks:
+- Ingest collection-level pause (using and SSM parameter)
+- SQL injection prevention for the Admin tool
+- Build system analysis for Java builds 
+- API planning and prototyping
+  - Understand what our authentication options are
+- System Introspection page
+- Admin tool: Cognito SAML integration
+- Collection Admin
+  - Explore querying the Inventory queue for display of queue status
+- Palestinian Museum collection: Waiting for update from UCLA
+
+##### Releases:
+- Admin tool releases
+
+
 #### Sprint 58: 04 August - 24 August 2021
 
 ##### Primary tasks:
