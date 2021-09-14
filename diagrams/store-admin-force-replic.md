@@ -1,6 +1,6 @@
 ---
 title: "Storage Admin: Force Replic"
-description: "Storage Admin: Force Audit of Object or Collection"
+description: "Storage Admin: Force Replic of Object or Collection"
 prevpage: store-admin-force-audit
 nextpage: store-admin-change-primary-node
 chart: store-admin-force-replic.mmd
