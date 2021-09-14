@@ -30,3 +30,9 @@ For OBJ in Collection
   Call Replication::delete(node, object)
     https://github.com/CDLUC3/mrt-replic/blob/master/replication-src/src/main/java/org/cdlib/mrt/replic/basic/app/jersey/replic/JerseyReplication.java#L186-L197
 ```
+
+## Design Questions
+
+- How does storage admin queue up a large number of replication delete requests?
+  - use a queue?
+  - track in the database?

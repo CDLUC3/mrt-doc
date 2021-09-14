@@ -12,8 +12,32 @@ chart: store-admin-force-replic.mmd
 
 ## Force replic reset for object
 
-TBD
+```
+update 
+  inv_nodes_inv_objects inio
+set
+  replicated = null
+where 
+  inv_object_id = ?
+```
 
 ## Force replic reset for collection
 
-TBD
+_Mark all objects in the collection as unreplicated.  This will notify the replication service to perform replication._
+
+```
+update 
+  inv_nodes_inv_objects inio
+set
+  replicated = null
+where exists (
+    select 
+      1
+    from 
+      inv_collections_inv_objects icio
+    where
+      icio.inv_collection_id = ?
+    and
+      inio.inv_object_id = icio.inv_object_id
+)
+```
