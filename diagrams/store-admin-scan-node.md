@@ -10,7 +10,8 @@ chart: store-admin-scan-node.mmd
 {% include start.html %}
 {% include end.html %}
 
-## Crawl by keys
+## Crawl by keys (future)
+_This is considered the optimal approach, but our content as SDSC cannot efficiently invoke these API calls_
 
 Iterate over ark shoulders
 ```
@@ -27,6 +28,10 @@ Gather file keys for an object
 aws s3 ls "s3://{bucket}/ark:/{shoulder}/{ark}|{ver}|producer"
 aws s3 ls "s3://{bucket}/ark:/{shoulder}/{ark}|{ver}|system"
 ```
+
+## Generate a sorted inventory list for a storage node bucket
+
+Iterate over the generated inventory
 
 ## Compare crawled keys to keys in inventory
 ```

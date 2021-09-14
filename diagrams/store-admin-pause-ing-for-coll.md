@@ -10,13 +10,10 @@ chart: store-admin-pause-ing-for-coll.mmd
 {% include start.html %}
 {% include end.html %}
 
-## Puase Ingests for Collection
-```
-update 
-  inv_collections 
-set 
-  paused = ?
-where
-  id = ?
-```
+## Pause Ingests for Collection
+
+The mechanism for capturing the paused state is TBD.
+- Ingest does not access the database
+- Should this be set in SSM (as an operational control)?
+- Should the state be managed in ZK?
 

@@ -41,3 +41,7 @@ where exists (
       inio.inv_object_id = icio.inv_object_id
 )
 ```
+
+## Design Questions
+
+- Do any special provisions need to be made for collections with a very large number of objects (in order to complete within the lambda time limit)?
