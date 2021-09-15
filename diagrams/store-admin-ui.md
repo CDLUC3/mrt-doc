@@ -6,11 +6,96 @@ nextpage: store-admin-pause-ing-for-coll
 
 {% include nav.html %}
 
-# Storage Admin Navigation
+# Proposed Database Changes
 
-## Manage Collection Nodes
+## Manage node level replication for a collection
 
-### Selector
+```
+ALTER TABLE inv_collections 
+  add replication_paused boolean
+```
+
+```
+ALTER TABLE inv_collections_inv_nodes 
+  add decommissioned boolean
+```
+
+## Track deletions and scanning process
+
+```
+CREATE TABLE inv_storage_maints (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	inv_node_id SMALLINT(5) UNSIGNED NOT NULL,
+	keymd5 CHAR(32) NOT NULL COLLATE 'utf8_general_ci',
+	size BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
+	file_created TIMESTAMP NULL DEFAULT NULL,
+	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	file_removed TIMESTAMP NULL DEFAULT NULL,
+	maint_status ENUM(
+      'review',
+      'hold',
+      'delete',
+      'removed',
+      'objremoved',
+      'admin',
+      'note',
+      'error',
+      'unknown'
+    ) NOT NULL DEFAULT 'unknown' COLLATE 'utf8_general_ci',
+	maint_type ENUM(
+      'non-ark',
+      'missing-ark',
+      'missing-file',
+      'admin',
+      'unknown'
+    ) NOT NULL DEFAULT 'unknown' COLLATE 'utf8_general_ci',
+	maint_admin ENUM(
+      'none',
+      'run',
+      'stop',
+      'eof'
+    ) NOT NULL DEFAULT 'none' COLLATE 'utf8_general_ci',
+	s3key TEXT(65535) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	note MEDIUMTEXT NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+
+	PRIMARY KEY (`id`) USING BTREE,
+	UNIQUE INDEX `keymd5_idx` (`inv_node_id`, `keymd5`) USING BTREE,
+	INDEX `type_idx` (`maint_type`) USING BTREE,
+	INDEX `status_idx` (`maint_status`) USING BTREE,
+	CONSTRAINT `inv_scans_ibfk_1` FOREIGN KEY (`inv_node_id`) 
+    REFERENCES `inv`.`inv_nodes` (`id`) 
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB
+ROW_FORMAT=DYNAMIC
+;
+```
+
+## Track scanning jobs
+
+This is TBD
+```
+CREATE TABLE inv_storage_scans (
+
+)
+```
+
+## UI Storage Re-routing
+
+This is TBD
+```
+CREATE TABLE inv_ui_reroute (
+
+)
+```
+
+
+# Storage Admin Use Cases
+
+## Use Cases: Manage Collection Nodes
+
+---
 
 <fieldset>
 <legend>Manage Collection Nodes</legend>
@@ -33,11 +118,56 @@ nextpage: store-admin-pause-ing-for-coll
 
 <button>Add Node</button>
 
+---
+### Use Case: Add Secondary Storage Node for a Collection
+- Verify that node is not already in use for the collection
+- Add node to inv_collections_inv_nodes
+- Batch database update for all objects in the collection:
+  - Force re-replication of primary node copy
+
+### Use Case: Remove Secondary Storage Node for a Collection
+- Prerequistes
+  - Pause ingest for the collection (use filesystem)
+  - Pause replication for the collection node 
+    - set inv_collections.replication_paused = true
+- Mark the storage node as decommissioned
+  - set inv_collections_inv_nodes.decommissioned = true
+- Peform Action:
+  - Admin Queue Lambda:
+    - Batch invocation of REPLIC endpoint for every object in the collection
+      - Replication::delete(node, object)
+  - Delete node from inv_collections_inv_nodes
+- After completion
+  - Manually unpause replication
+  - Manually unpause ingest
+
+### Use Case: Change the Primary Node for a Collection
+- Prerequistes Step 1
+  - Pause ingest for the collection (use filesystem)
+  - Target node must be 100% replicated
+  - Pause replication for all nodes in the collection 
+    - set inv_collections.replciation_paused = true
+- Prerequisites Step 2    
+  - Manually Change the primary node for the collection in the ingest profile
+- Perform Action
+  - Admin Queue Lambda:
+    - Batch invocation of INV endpoint for every object in the collection
+      - Inventory::changePrimaryNode(node, object)
+- After completion
+  - Manually unpause replication
+  - Manually unpause ingest
+
+### Use Case: Change the Primary UI Node for a Collection
+
+- This feature is speculative and will not yet be designed
+
+### Use Case: Re-audit the content for a collection
+- Batch database update for all objects in the collection:
+  - Force re-audit of node copy
+
+## Use Cases: Scan Storage Nodes
 
 ---
-
-## Manage Storage Nodes
-
 ### Action Table (Nodes)
 
 |Node | Node Desc |Scan %|Last Scan |Num Delete TBD| Actions |
@@ -61,11 +191,37 @@ Type `2 Deletes` to procede.
 
 <input/><button>Confirm Delete</button>
 </fieldset>
+
 ---
+### Use Case: Initiate the Scan of a Storage Node for Untracked files/keys
+- Prerequistes
+  - Can a new scan be initiated if there are action items from the prior scan?
+- Create scan job (database details tbd)
+  - set scan position to 0
+- As Replic has spare processing cycles
+  - perform scan of block of keys
+  - update scan position
+  - add deletes as they are found
 
-## Manage Object Storage
+### Use Case: Review Untracked files/keys
+- Display untracked files/keys to user
+- Allow removal of keys
+- Allow notes to be added for a key
+- Update status to reflect the keys that can be deleted
 
-### Selector
+### Use Case: Record user note about an untracked file/key
+
+- This is TBD
+
+### Use Case: Delete Untracked files/keys
+
+- Prerequistes
+  - Scan has completed
+- Notify replic to iterate through the list of keys to be deleted and peform delete
+
+## Use Cases: Manage Object Storage
+
+---
 
 <fieldset>
 <legend>Manage Object Storage</legend>
@@ -92,3 +248,40 @@ Type `2 Deletes` to procede.
 | primary | 1111 | S3 | |
 | secondary | 2222 | SDSC | <button>Delete Object from Node</button>|
 | secondary | 3333 | Wasabi | <button>Delete Object from Node</button>|
+
+---
+
+### Use Case: Delete Object
+
+- TBD enumerate the steps from the existing perl script
+- Record the action in the inv_storage_maints table
+
+### Use Case: Delete Object from a Storage Node
+
+- TBD
+### Use Case: Trigger re-audit of an object
+- Force re-audit of node copy of an object
+
+### Use Case Trigger re-replication of an object
+- Force re-replication of primary node copy for the object
+
+# Admin Queue Lambda:
+
+Purpose: Cycle through database to perform specific actions that require endpoint invocations.  Iteratively perform work until it is complete.
+
+## Design options
+  - Capture work in a queue or in the database?
+
+## Tasks
+- Queue node delete tasks
+- Queue change primary node tasks
+- Could this drive storage scan tasks?
+
+# Documentation TODOs
+- Add online/nearline to node listings
+- Distinguish untracked count from delete count
+- Document that the filesystem will be used pause ingest at a collection level
+- Incorporate warning messages into UI screens
+- For audit/replic database queries, note the nde being updated
+- Change ui primary details
+- Object listing - include the owner (esp for localid query)
