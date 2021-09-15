@@ -4,7 +4,6 @@ graph TD
   SA("Storage Admin Lambda")
   REPLIC("Replication")
   RDS[(Inventory DB)]
-  SABUCK[/"Storage Admin Bucket"/]
   CLOUD(("Cloud Storage"))
 
   subgraph "Use Case: Crawl Storage Node for Untracked Files"
@@ -12,10 +11,9 @@ graph TD
     SA-->|"Start Scan"|REPLIC
     CLOUD-->|"node/key list"|REPLIC
     REPLIC-->|"lookup node/key(batch)"|RDS
-    REPLIC--->|"node/key delete list"|SABUCK
+    REPLIC--->|"generate node/key review list"|RDS
   end
 
   style RDS fill:#F68D2F
-  style SABUCK fill:#77913C
   style CLOUD fill:#77913C
   

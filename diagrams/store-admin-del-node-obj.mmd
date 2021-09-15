@@ -6,6 +6,8 @@ graph TD
   ST(Storage)
   INV(Inventory)
   EZID
+  RDS[(Inventory DB)]
+
 
   subgraph "Use Case: Remove Object from Storage and Inventory"
     SAUI-->SA
@@ -14,6 +16,8 @@ graph TD
     SA-->|"3. del from inventory"|INV
     SA-->|"4. del localid"|INV
     SA-->|"5. update EZID?"|EZID
+    SA-->|"6. record delete in inv_storage_maints"|RDS
   end  
 
   style EZID fill:cyan
+  style RDS fill:#F68D2F

@@ -26,6 +26,8 @@ where
     where
       ark = ?
   ) 
+and
+  inv_node_id = ?
 ```
 
 ## Force audit reset for collection
@@ -44,4 +46,6 @@ where exists (
   and
     icio.inv_collection_id = ?
 )
+and
+  inv_node_id = ?
 ```

@@ -344,3 +344,4 @@ limit
 - For audit/replic database queries, note the nde being updated
 - Change ui primary details
 - Object listing - include the owner (esp for localid query)
+- Add note exception button to ui

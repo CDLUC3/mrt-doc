@@ -2,6 +2,7 @@
 graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
+  AQL("Admin Queue Lambda")
   RDS[(Inventory DB)]
   REPLIC(Replication)
 
@@ -9,8 +10,10 @@ graph TD
     SAUI-->SA
     SA-->|"del coll/node"|RDS
     RDS-->|"obj list to delete"|SA
-    SA-->|"del secondary copy"|REPLIC
+    SA-->|"del secondary copy"|AQL
+    AQL-->|"del secondary copy"|REPLIC
   end
 
   style RDS fill:#F68D2F
-  
+  style AQL fill:yellow
+
