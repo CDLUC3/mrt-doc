@@ -6,6 +6,10 @@ nextpage: store-admin-del-node-obj
 chart: store-admin-del-node-keys.mmd
 ---
 
+{% include mermaid.html %}
+{% include start.html %}
+{% include end.html %}
+
 ## Review List from scan results
 
 ```
@@ -65,7 +69,3 @@ where
 and
   s3key = ?
 ```
-
-{% include mermaid.html %}
-{% include start.html %}
-{% include end.html %}
