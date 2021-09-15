@@ -129,6 +129,7 @@ CREATE TABLE inv_ui_reroute (
 - Add node to inv_collections_inv_nodes
 - Batch database update for all objects in the collection:
   - Force re-replication of primary node copy
+- Components: Admin
 
 ### Use Case: Remove Secondary Storage Node for a Collection
 - Prerequistes
@@ -145,6 +146,7 @@ CREATE TABLE inv_ui_reroute (
 - After completion
   - Manually unpause replication
   - Manually unpause ingest
+- Components: Database, Ingest, Replic, Admin, Admin Queue Lambda
 
 ### Use Case: Change the Primary Node for a Collection
 - Prerequistes Step 1
@@ -161,14 +163,17 @@ CREATE TABLE inv_ui_reroute (
 - After completion
   - Manually unpause replication
   - Manually unpause ingest
+- Components: Databse, Inventory, Admin, Admin Queue Lambda
 
 ### Use Case: Change the Primary UI Node for a Collection
 
 - This feature is speculative and will not yet be designed
+- Components: Databse, UI, Admin
 
 ### Use Case: Re-audit the content for a collection
 - Batch database update for all objects in the collection:
   - Force re-audit of node copy
+- Components: Admin
 
 ## Use Cases: Scan Storage Nodes
 
@@ -207,22 +212,29 @@ Type `2 Deletes` to procede.
   - perform scan of block of keys
   - update scan position
   - add deletes as they are found
+- Components: Database, Replic, Admin
 
-### Use Case: Review Untracked files/keys
+### Use Case: Review Untracked files/keys for deletion
+- Display untracked files/keys to user
+- Allow removal of keys from the list
+- Allow notes to be added for a key
+- Update status to reflect the keys that can be deleted
+- Components: Database, Admin
+
+### Use Case: Record user note about an untracked file/key
 - Display untracked files/keys to user
 - Allow removal of keys
 - Allow notes to be added for a key
-- Update status to reflect the keys that can be deleted
+- Update status to reflect the keys that should have an exception note
+- Components: Database, Admin
 
-### Use Case: Record user note about an untracked file/key
-
-- This is TBD
 
 ### Use Case: Delete Untracked files/keys
 
 - Prerequistes
   - Scan has completed
 - Notify replic to iterate through the list of keys to be deleted and peform delete
+- Components: Database, Replic, Admin
 
 ## Use Cases: Manage Object Storage
 
@@ -258,17 +270,27 @@ Type `2 Deletes` to procede.
 
 ### Use Case: Delete Object
 
-- TBD enumerate the steps from the existing perl script
+- Admin notifies the following components about the delete
+  - Replic
+  - Store
+  - Inventory
+  - EZID?
 - Record the action in the inv_storage_maints table
+- Components: Database, Admin
 
 ### Use Case: Delete Object from a Storage Node
 
-- TBD
+- Admin notifies replic to remove an object from a node
+- Record the action in the inv_storage_maints table
+- Components: Database, Admin
+
 ### Use Case: Trigger re-audit of an object
 - Force re-audit of node copy of an object
+- Components: Admin
 
 ### Use Case Trigger re-replication of an object
 - Force re-replication of primary node copy for the object
+- Components: Admin
 
 # Admin Queue Lambda:
 
@@ -339,9 +361,6 @@ limit
 # Documentation TODOs
 - Add online/nearline to node listings
 - Distinguish untracked count from delete count
-- Document that the filesystem will be used pause ingest at a collection level
 - Incorporate warning messages into UI screens
-- For audit/replic database queries, note the nde being updated
-- Change ui primary details
 - Object listing - include the owner (esp for localid query)
 - Add note exception button to ui
