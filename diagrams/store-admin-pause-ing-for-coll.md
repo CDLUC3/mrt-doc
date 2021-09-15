@@ -1,6 +1,6 @@
 ---
-title: "Storage Admin: Pause Ingest for Collection"
-description: "Storage Admin: Pause Ingest for Collection"
+title: "Storage Admin: Pause Ingest and Replication for Collection"
+description: "Storage Admin: Pause Ingest and Replication for Collection"
 prevpage: store-admin-ui
 nextpage: store-admin-add-node
 chart: store-admin-pause-ing-for-coll.mmd
@@ -10,10 +10,28 @@ chart: store-admin-pause-ing-for-coll.mmd
 {% include start.html %}
 {% include end.html %}
 
-## Pause Ingests for Collection
+## Pause Ingest for a Collection
 
-The mechanism for capturing the paused state is TBD.
-- Ingest does not access the database
-- Should this be set in SSM (as an operational control)?
-- Should the state be managed in ZK?
+The following file pauses all ingest
+
+```
+.../ingest_home/queue/HOLD
+```
+
+The following file should be used to pause ingest for a collection
+
+```
+.../ingest_home/queue/HOLD.{mnemonic}_content
+```
+
+## Pause Replication for a Collection
+
+```
+update 
+  collection 
+set 
+  paused = ? 
+where 
+  ark = ?
+```
 
