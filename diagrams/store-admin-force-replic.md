@@ -19,6 +19,8 @@ set
   replicated = null
 where 
   inv_object_id = ?
+and
+  role = 'primary'
 ```
 
 ## Force replic reset for collection
@@ -40,4 +42,6 @@ where exists (
     and
       inio.inv_object_id = icio.inv_object_id
 )
+and 
+  role = 'primary'
 ```

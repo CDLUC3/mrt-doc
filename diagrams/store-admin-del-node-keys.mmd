@@ -2,19 +2,21 @@
 graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
-  SABUCK[/"Storage Admin Bucket"/]
+  RDS[(Inventory DB)]
   REPLIC("Replication")
   CLOUD(("Cloud Storage"))
 
   subgraph "Use Case: Delete Keys from Cloud Storage"
     SAUI-->SA
-    SABUCK-->|"Read Delete List"|SA
-    SA-->|"Initiate deletes"|REPLIC
-    SABUCK-->|"1. Read Delete List"|REPLIC
-    REPLIC-->|"2. Delete Cloud Objects(keys)"|CLOUD
-    REPLIC-->|"3. Delete Report"|SABUCK
+    RDS-->|"1. Read Review List"|SA
+    SA-->|"2. Approve Deletes"|RDS
+    SA-->|"3. Document exceptions from review list"|RDS
+    SA-->|"4. Initiate deletes"|REPLIC
+    RDS-->|"5. Read Delete List"|REPLIC
+    REPLIC-->|"6. Delete Cloud Objects(keys)"|CLOUD
+    REPLIC-->|"7. Record Deletes"|RDS
   end
 
-  style SABUCK fill:#77913C
+  style RDS fill:#F68D2F
   style CLOUD fill:#77913C
   

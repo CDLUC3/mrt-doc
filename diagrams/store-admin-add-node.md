@@ -39,9 +39,11 @@ where exists (
       icio.inv_collection_id = ?
     and
       inio.inv_object_id = icio.inv_object_id
-)
+) 
+and
+  role = 'primary'
 ```
 
 ## Design Questions
 
-- Do any special provisions need to be made for collections with a very large number of objects (in order to complete within the lambda time limit)?
+- Consider ramping up the lambda timeout to ensure that this operation can complete in time.
