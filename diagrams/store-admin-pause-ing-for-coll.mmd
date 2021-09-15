@@ -2,13 +2,14 @@
 graph TD
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
-  TBD[(SSM? / ZK?)]
+  RDS[(Inventory DB)]
   ING(Ingest)
 
-  subgraph "Use Case: Pause Ingest for Collection"
+  subgraph "Use Case: Pause/Unpause Ingest and Replic for Collection"
     SAUI-->SA
-    SA-->|"set paused for coll"|TBD
-    ING-->|"check for paused collections"|TBD
+    SA-->|"set paused for coll"|ING
+    ING-->|"create HOLD file for coll"|HOLD[Hold File]
+    SA-->|"set replication hold for coll"|RDS
   end
 
-  style TBD fill:#F68D2F
+  style RDS fill:#F68D2F
