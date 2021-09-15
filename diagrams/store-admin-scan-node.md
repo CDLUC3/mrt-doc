@@ -47,7 +47,7 @@ select
   ) as delete_count
 from
   inv_nodes n
-inner join inv_storage_scans iss
+left join inv_storage_scans iss
   on n.id = iss.inv_node_id
 where
   exists (
