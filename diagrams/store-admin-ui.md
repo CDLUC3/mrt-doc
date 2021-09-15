@@ -46,15 +46,8 @@ CREATE TABLE inv_storage_maints (
       'non-ark',
       'missing-ark',
       'missing-file',
-      'admin',
       'unknown'
     ) NOT NULL DEFAULT 'unknown' COLLATE 'utf8_general_ci',
-	maint_admin ENUM(
-      'none',
-      'run',
-      'stop',
-      'eof'
-    ) NOT NULL DEFAULT 'none' COLLATE 'utf8_general_ci',
 	s3key TEXT(65535) NOT NULL COLLATE 'utf8mb4_unicode_ci',
 	note MEDIUMTEXT NULL DEFAULT NULL COLLATE 'utf8_general_ci',
 
@@ -77,7 +70,19 @@ ROW_FORMAT=DYNAMIC
 This is TBD
 ```
 CREATE TABLE inv_storage_scans (
-
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	inv_node_id SMALLINT(5) UNSIGNED NOT NULL,
+	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  status ENUM(
+      'started',
+      'completed',
+      'cancelled',
+      'failed'
+    ) NOT NULL DEFAULT 'unknown',
+  key_count bigint,
+  keys_processed bigint,
+  last_s3_key TEXT(65535) NOT NULL COLLATE 'utf8mb4_unicode_ci'
 )
 ```
 
@@ -273,9 +278,63 @@ Purpose: Cycle through database to perform specific actions that require endpoin
   - Capture work in a queue or in the database?
 
 ## Tasks
-- Queue node delete tasks
-- Queue change primary node tasks
-- Could this drive storage scan tasks?
+
+### node_delete_for_collection(node, collection)
+
+Iterate over the following query until no results are found
+```
+select
+  inio.inv_object_is
+from
+  inv_nodes_inv_objects inio
+inner join
+  inv_collections_inv_object icio
+on
+  inio.inv_object_id = icio.inv_object_id
+where
+  icio.inv_collection_id = ?
+and 
+  inio.inv_node_id = ?
+order by 
+  inio.inv_object_id
+limit ?
+```
+### change_primary_node_for_collection(node, collection)
+
+Iterate over the following query until no results are found
+```
+select
+  inio.inv_object_is
+from
+  inv_nodes_inv_objects inio
+inner join
+  inv_collections_inv_object icio
+on
+  inio.inv_object_id = icio.inv_object_id
+where
+  icio.inv_collection_id = ?
+and 
+  inio.inv_node_id = ?
+and 
+  inio.role = 'secondary'
+order by 
+  inio.inv_object_id
+limit ?
+```
+## Potential Tasks
+### storage_scan(node)
+```
+select
+  inv_node_id
+from 
+  inv_storage_scans
+where
+  status = 'started'
+order by
+  modified
+limit
+  1
+```
 
 # Documentation TODOs
 - Add online/nearline to node listings
