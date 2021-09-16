@@ -1,7 +1,7 @@
 ---
-title: "Storage Admin: Remove Object from Storage and Inventory"
-description: "Storage Admin: Remove Object from Storage and Inventory"
-prevpage: store-admin-del-node-keys
+title: "Storage Admin: Remove Secondary Object Copy"
+description: "Storage Admin: Remove Secondary Object Copy"
+prevpage: store-admin-del-obj
 nextpage: store-admin-force-audit
 chart: store-admin-del-node-obj.mmd
 ---
