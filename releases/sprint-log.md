@@ -1,5 +1,34 @@
 ## Sprint Goals
 
+#### Sprint 60: 15 September - 5 October 2021
+
+##### Primary tasks:
+- Storage Access
+  - Access queuing 
+- Storage Admin
+  - Replic: Object scan
+  - UI components
+  - Admin queue lambda
+- Collection Admin
+  - Cognito, SAML integration
+- Admin objects: clean-up of irregularities
+- Ingest collection-level pause
+  - Use of file system (instead of SSM) 
+- New Collections and Nuxeo feeds
+- UC Davis ETDs process
+
+##### Secondary tasks:
+- Collection Admin
+  - Explore querying the Inventory queue for display of queue status
+- SQL injection prevention for the Admin tool
+- API planning and prototyping
+  - Understand what our authentication options are
+- System Introspection page
+- Palestinian Museum collection: Waiting for update from UCLA
+
+##### Releases:
+- Stage: Access queueing
+
 #### Sprint 59: 25 August - 14 September 2021
 
 ##### Primary tasks:
