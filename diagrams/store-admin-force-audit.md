@@ -1,6 +1,6 @@
 ---
 title: "Storage Admin: Force Audit"
-description: "Storage Admin: Force Audit of Object or Collection"
+description: "Storage Admin: Force Audit of Object Node"
 prevpage: store-admin-del-node-obj
 nextpage: store-admin-force-replic
 chart: store-admin-force-audit.mmd
@@ -26,26 +26,6 @@ where
     where
       ark = ?
   ) 
-and
-  inv_node_id = ?
-```
-
-## Force audit reset for collection
-
-```
-update 
-  inv_audits a
-set 
-  verified = null
-where exists (
-  select 1
-  from 
-    inv_collections_inv_objects icio
-  where
-    icio.inv_object_id = a.inv_object_id
-  and
-    icio.inv_collection_id = ?
-)
 and
   inv_node_id = ?
 ```
