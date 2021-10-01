@@ -6,24 +6,27 @@ graph TD
     CSLA(Create SLA)
     CSLA --> |checkin| GHSLA 
     GHSLA[GitHub] -.-> |Replicate to Ingest| SUBSLA
-    SUBSLA(Submit Dummy Object using SLA Profile) --> DBSLA
-    DBSLA(INV: Create SLA Record in inv_objects) --> SLAEX
+    SUBSLA(CollAd:Submit Dummy Object using SLA Profile) --> DBSLA
+    DBSLA(INV: Create SLA Record in inv_objects) --> DB2SLA
+    DB2SLA(CollAd: Insert SLA ark/inv_object_id into collections table, Set Name) --> SLAEX
     SLAEX --> |yes| OWNEX
     OWNEX[\Owner Profile Exists/]
     OWNEX --> |no| COWN
     COWN(Create Owner)
     COWN --> |checkin| GHOWN
     GHOWN[GitHub] -.-> |Replicate to Ingest| SUBOWN
-    SUBOWN(Submit Dummy Object using Owner Profile) --> DBOWN
-    DBOWN(INV: Create owner in inv_objects, Add SLA to inv_collections) --> OWNEX
+    SUBOWN(CollAd: Submit Dummy Object using Owner Profile) --> DBOWN
+    DBOWN(INV: Create owner in inv_objects) --> DB2OWN
+    DB2OWN(CollAd: Insert Owner ark/inv_object_id into owners table, Set Name) --> OWNEX
     OWNEX --> |yes| COLLEX
     COLLEX[\Collection Admin Profile Exists/]
     COLLEX --> |no| CCOLL
     CCOLL(Create Collection Admin Profile)
     CCOLL --> |checkin| GHCOLL
     GHCOLL[GitHub] -.-> |Replicate to Ingest| SUBCOLL
-    SUBCOLL(Submit Dummy Object using Coll Ad Profile) --> DBCOLL
-    DBCOLL(INV: Create collection record in inv_objects, Create inv_object record) --> COLLEX
+    SUBCOLL(CollAd: Submit Dummy Object using Coll Ad Profile) --> DBCOLL
+    DBCOLL(INV: Create collection record in inv_objects, Create inv_collection record) --> DB2COLL
+    DB2COLL(CollAd: Set Name, Nmenonic, Harvest in inv_collections table) --> COLLEX
     COLLEX --> |yes| PROFEX
     PROFEX[\Ingest Profile Exists/]
     PROFEX --> |no| CPROF
@@ -34,5 +37,5 @@ graph TD
     PROFEX --> |yes| SUBITEM
     SUBITEM(Submit content to Merritt using Ingest Profile)
     SUBITEM --> DBITEM
-    DBITEM(INV: load object to inventory database, create collection in inv_collections)
+    DBITEM(INV: load object to inventory database)
   end
