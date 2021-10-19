@@ -8,7 +8,7 @@ nextpage: store-admin-pause-ing-for-coll
 
 # Proposed Database Changes
 
-https://github.com/CDLUC3/mrt-doc/issues/827
+[https://github.com/CDLUC3/mrt-doc/issues/827](https://github.com/CDLUC3/mrt-doc/issues/827)
 
 ## Task Status
 
@@ -64,9 +64,9 @@ https://github.com/CDLUC3/mrt-doc/issues/827
 
 | Role | Node | Node Desc | Repl Status | Actions |
 |---------|-----|----------|------|---------|
-| primary | 1111 | S3 | n/a | <button>Re-audit</button> |
-| secondary | 2222 | SDSC | 100% | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Re-audit</button> <button>Make UI Primary</button>|
-| secondary | 3333 | Wasabi | 92% | <button>Delete Coll from Node</button> <button disabled='Y'>Make Primary</button> <button>Re-audit</button> <button>Make UI Primary</button>|
+| primary | 1111 | S3 | n/a |  |
+| secondary | 2222 | SDSC | 100% | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Make UI Primary</button>|
+| secondary | 3333 | Wasabi | 92% | <button>Delete Coll from Node</button> <button disabled='Y'>Make Primary</button> <button>Make UI Primary</button>|
 
 <button>Add Node</button>
 
@@ -198,15 +198,15 @@ Type `2 Deletes` to procede.
 
 |Collection|Object Id| Ark | Local Id | Title |Created| Actions |
 |---|---------|-----|----------|-------|---------|
-|My Coll| 111| ark:/13030/m5mmmmm | doi:1111| My Title |2021-04-04| <button>Delete Obj</button> <button>Trigger Replic</button> <button>Re-audit</button> <button>Nodes</button>|
+|My Coll| 111| ark:/13030/m5mmmmm | doi:1111| My Title |2021-04-04| <button>Delete Obj</button> <button>Trigger Replic</button> <button>Nodes</button>|
 
 ### Action Table - Object/Node
 
 |Role| Node | Node Desc | Actions |
 |---------|-----|----------|---------|
 | primary | 1111 | S3 | |
-| secondary | 2222 | SDSC | <button>Delete Object from Node</button>|
-| secondary | 3333 | Wasabi | <button>Delete Object from Node</button>|
+| secondary | 2222 | SDSC | <button>Delete Object from Node</button> <button>Re-audit</button>|
+| secondary | 3333 | Wasabi | <button>Delete Object from Node</button> <button>Re-audit</button>|
 
 ---
 
