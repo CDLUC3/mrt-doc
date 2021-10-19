@@ -8,93 +8,40 @@ nextpage: store-admin-pause-ing-for-coll
 
 # Proposed Database Changes
 
-## Manage node level replication for a collection
+https://github.com/CDLUC3/mrt-doc/issues/827
 
-```
-ALTER TABLE inv_collections 
-  add replication_paused boolean
-```
+## Task Status
 
-```
-ALTER TABLE inv_collections_inv_nodes 
-  add decommissioned boolean
-```
+### Completed
+- Requeue audit for an object/node
+- Requeue replic for an object
+- Requeue audit batches in progress (not described below)
 
-## Track deletions and scanning process
+### In Progress
+- Start Scan
+- Show Scan progress
+- Cancel Scan
+- Review Scan Results
+- Scan results: change to Delete, Hold, Note
 
-```
-CREATE TABLE inv_storage_maints (
-	id INT(11) NOT NULL AUTO_INCREMENT,
-	inv_node_id SMALLINT(5) UNSIGNED NOT NULL,
-	keymd5 CHAR(32) NOT NULL COLLATE 'utf8_general_ci',
-	size BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
-	file_created TIMESTAMP NULL DEFAULT NULL,
-	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	file_removed TIMESTAMP NULL DEFAULT NULL,
-	maint_status ENUM(
-      'review',
-      'hold',
-      'delete',
-      'removed',
-      'objremoved',
-      'admin',
-      'note',
-      'error',
-      'unknown'
-    ) NOT NULL DEFAULT 'unknown' COLLATE 'utf8_general_ci',
-	maint_type ENUM(
-      'non-ark',
-      'missing-ark',
-      'missing-file',
-      'unknown'
-    ) NOT NULL DEFAULT 'unknown' COLLATE 'utf8_general_ci',
-	s3key TEXT(65535) NOT NULL COLLATE 'utf8mb4_unicode_ci',
-	note MEDIUMTEXT NULL DEFAULT NULL COLLATE 'utf8_general_ci',
+### Next Steps
+- Initiate Deletes (iterate from store admin)
+  - Batch Invocation of Node/Key Delete in Replic
 
-	PRIMARY KEY (`id`) USING BTREE,
-	UNIQUE INDEX `keymd5_idx` (`inv_node_id`, `keymd5`) USING BTREE,
-	INDEX `type_idx` (`maint_type`) USING BTREE,
-	INDEX `status_idx` (`maint_status`) USING BTREE,
-	CONSTRAINT `inv_scans_ibfk_1` FOREIGN KEY (`inv_node_id`) 
-    REFERENCES `inv`.`inv_nodes` (`id`) 
-    ON UPDATE NO ACTION ON DELETE NO ACTION
-)
-COLLATE='utf8mb4_general_ci'
-ENGINE=InnoDB
-ROW_FORMAT=DYNAMIC
-;
-```
+### TODO
+- Add Secondary Storage Node for a Collection
+- Remove Secondary Storage Node for a Collection
+  - Batch Invocation of Replication::delete(node, object)
+- Pause Ingest for a Collection
+- Pause Replication for a Collection
+- Change the Primary Node for a Collection
+  - Batch Invocation of Inventory::changePrimaryNode(node, object)
+- Delete Object
+- Delete Object from a Storage Node
+- Record Maintenance Node about an Object
 
-## Track scanning jobs
-
-This is TBD
-```
-CREATE TABLE inv_storage_scans (
-	id INT(11) NOT NULL AUTO_INCREMENT,
-	inv_node_id SMALLINT(5) UNSIGNED NOT NULL,
-	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  status ENUM(
-      'started',
-      'completed',
-      'cancelled',
-      'failed'
-    ) NOT NULL DEFAULT 'unknown',
-  key_count bigint,
-  keys_processed bigint,
-  last_s3_key TEXT(65535) NOT NULL COLLATE 'utf8mb4_unicode_ci'
-)
-```
-
-## UI Storage Re-routing
-
-This is TBD
-```
-CREATE TABLE inv_ui_reroute (
-
-)
-```
-
+### Undetermined
+- Change the Primary UI Node for a Collection
 
 # Storage Admin Use Cases
 
@@ -169,11 +116,6 @@ CREATE TABLE inv_ui_reroute (
 
 - This feature is speculative and will not yet be designed
 - Components: Databse, UI, Admin
-
-### Use Case: Re-audit the content for a collection
-- Batch database update for all objects in the collection:
-  - Force re-audit of node copy
-- Components: Admin
 
 ## Use Cases: Scan Storage Nodes
 
@@ -284,11 +226,11 @@ Type `2 Deletes` to procede.
 - Record the action in the inv_storage_maints table
 - Components: Database, Admin
 
-### Use Case: Trigger re-audit of an object
+### Use Case: Trigger re-audit of an object (Done)
 - Force re-audit of node copy of an object
 - Components: Admin
 
-### Use Case Trigger re-replication of an object
+### Use Case Trigger re-replication of an object (Done)
 - Force re-replication of primary node copy for the object
 - Components: Admin
 
