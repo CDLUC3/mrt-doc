@@ -1,5 +1,78 @@
 ## Sprint Goals
 
+#### Sprint 62: 27 October - 16 November 2021
+
+##### Primary tasks:
+- Re-queueing for ingest and inventory:
+  - Complete enabling use of new endpoints in Coll Admin
+- UC Berkeley LIT:
+  - Implement retries in Ingest for EZID 502s
+  - Introduce 500 entry pagination for atom feeds
+  - Investigate load testing for atom feeds  
+  - Error-specific message attachments for batch notifications
+  - Batch object failure feedback in Coll Admin
+  - Callback handler: prototype posting object status to endpoint
+  - LocalID lookup endpoint
+- Storage Admin
+  - Replic: Object Scan
+  - Prep for Replic deployment and Inv db update in production
+  - Store Admin UI components
+  - Replication enhancements: #820
+  - Billing database calculations: #839
+- New collections, feeds
+  - UCLA and UCB College of Env Design collections
+  - UCI feed request (1)
+- UC Davis ETDs: Merritt ingest workflow issue
+- Still expecting CoreTrustSeal feedback
+
+##### Secondary tasks:
+- None for this sprint, considering focus on UCB work
+
+##### Releases:
+- Stage: Ingest release; separate releases for UCB features
+- Prod: Re-queueing endpoint release; UI release with atom feed; possibly separate UI release for Local ID lookup
+- Prod: Replication release for Scan
+- Production: ETD Service additional MARC record changes for UCSD; correction for UCD issue
+
+
+#### Sprint 61: 6 October - 26 October 2021
+
+##### Primary tasks:
+- Queueing:
+  - Storage server.xml config parity across stage/prod
+  - Single instance of consumer daemon
+  - Ingest API endoints for re-queueing failed inventory and ingest entries
+- Storage Admin
+  - Replic: Object Scan to Stage
+  - UI components
+- Collection Admin
+  - Cognito, SAML integration in Production
+- Admin object clean-up irregularities
+  - Re-confirm collection admin profiles do/don't need to be rebuilt
+- New Collections and Nuxeo feeds
+- UC Davis ETDs process
+- Expecting CoreTrustSeal feedback week of 10/11
+
+##### Secondary tasks:
+- Admin queue lambda for Storage Admin
+- Ingest collection-level pause
+  - use of file system (instead of SSM)
+- SSM parameter documentation 
+- Collection Admin
+  - Resubmission capability
+- SQL injection prevention for the Admin tool
+- API planning and prototyping
+  - Understand what our authentication options are
+- System Introspection page (pause/unpause keep for next sprint)
+- Palestinian Museum collection
+  - Waiting for update from UCLA
+
+##### Releases:
+- Stage: Object Scan (first iteration done, more to do during the sprint)
+- Ingest: for re-queueing API endpoints
+- Production: ETD Service MARC record changes for UCSD
+
+
 #### Sprint 60: 15 September - 5 October 2021
 
 ##### Primary tasks:
