@@ -1,6 +1,7 @@
 ---
 title: "Merritt User Interface"
 description: "The Merritt User Interface allows a user to browse collections and deposit new objects"
+prevpage: core_index
 nextpage: core_ui-auth
 chart: overview-core.mmd
 ---

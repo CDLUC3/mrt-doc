@@ -1,6 +1,7 @@
 ---
 title: "Download content from the cloud provider"
 description: "The user's browser downloads the digital file directly from the cloud service"
+prevpage: core_redirect
 nextpage: core_user-interface4
 chart: overview-core.mmd
 ---

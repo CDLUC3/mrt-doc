@@ -1,7 +1,8 @@
 ---
 title: "Request object assembly"
 description: "The Merritt UI initiates an object/version assembly (for download)"
-nextpage: store-obj2
+prevpage: core_redirect2
+nextpage: core_store-obj
 chart: overview-core.mmd
 ---
 {% include mermaid.html %}

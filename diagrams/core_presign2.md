@@ -1,6 +1,7 @@
 ---
 title: "Return Presign Url"
 description: "The cloud service returns a presigned URL to teh Storage (Access) Service"
+prevpage: core_presign1
 nextpage: core_user-interface3
 chart: overview-core.mmd
 ---

@@ -1,6 +1,7 @@
 ---
 title: "UI Authorization"
 description: "User authorizes against LDAP"
+prevpage: core_user-interface
 nextpage: core_inventory-db
 chart: overview-core.mmd
 ---
