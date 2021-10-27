@@ -1,6 +1,7 @@
 ---
 title: "Zookeeper Queue (Ingest)"
 description: "The Merritt Ingest Microservice Queues a Task in Zookeeper to process the new deposit"
+prevpage: core_ingest
 nextpage: core_zoo2
 chart: overview-core.mmd
 ---

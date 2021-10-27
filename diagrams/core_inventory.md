@@ -1,7 +1,7 @@
 ---
 title: "Inventory Microservice"
 description: "The Inventory Microservice acquires a task from the Zookeeper Queue"
-prevpage: core_ui-auth
+prevpage: core_zoo3
 nextpage: core_inventory2
 chart: overview-core.mmd
 ---

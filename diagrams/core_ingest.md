@@ -1,6 +1,7 @@
 ---
 title: "Merritt Ingest Microservice"
 description: "The Merritt UI deposits new objects into Merritt via the Ingest Microservice"
+prevpage: core_inventory-db
 nextpage: core_zoo
 chart: overview-core.mmd
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Focus: Merritt LDAP"
 description: "Merritt Authorization with LDAP"
+prevpage: mrt-cloud
 nextpage: auditreplic
 chart: ldap.mmd
 ---
