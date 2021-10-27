@@ -1,7 +1,7 @@
 ---
 title: "Coll Admin Tool Sequence Diagram"
 description: "Coll Admin Tool with User Authentication"
-nextpage: store-admin-add-node
+nextpage: index
 prevpage: admin-seq
 chart: colladmin-seq.mmd
 ---
