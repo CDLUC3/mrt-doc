@@ -1,6 +1,7 @@
 ---
 title: "Request file download"
 description: "The Merritt UI initiates a file retrieval request through the Storage (Access) Service"
+prevpage: core_index2
 nextpage: core_presign1
 chart: overview-core.mmd
 ---
