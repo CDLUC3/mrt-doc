@@ -10,6 +10,9 @@
 ## User Documentation
 For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/mrt-doc/wiki).
 
+
+## Flowchart Index
+- [Flowchart Index](https://cdluc3.github.io/mrt-doc/diagrams/)
 ## Code Repositories
 
 ### Core Microservices 

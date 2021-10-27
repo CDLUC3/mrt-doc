@@ -9,6 +9,9 @@ graph TD
     subgraph Storage_Access
       RO(Request Object)
       AO(Assemble Object)
+      ZOOACC>Zookeeper Access Assembly]
+      click ZOOACC href "https://github.com/CDLUC3/mrt-zoo" "source code"
+      ASSDAEMON[[Object Assembly Daemon]]
       CT(Check Token)
       RP(Return Presigned)
     end
@@ -28,7 +31,9 @@ graph TD
     RO --> AO
     RO -.-> |assembly token| UI
     CLOUD --> |retrieve file| AO
-    AO --> |object assembly| ASSM
+    AO --> |queue assembly| ZOOACC
+    ZOOACC --> ASSDAEMON
+    ASSDAEMON --> |object assembly| ASSM
     CT -.-> |status check| AO
     ASSM --> |presigned URL| RP
     RP -.-> |presigned URL| UI
@@ -38,3 +43,4 @@ graph TD
   style CLOUD fill:#77913C
   style Storage_Access stroke:red,stroke-width:4px
   style CLEAN fill:cyan
+  style ZOOACC fill:cyan
