@@ -8,5 +8,5 @@ chart: overview-core.mmd
 {% include start.html %}
   UI ---> |assembly req| STACC
   class STACC FOCUS
-  linkStyle 13 stroke:red,stroke-width:3px
+  linkStyle 18 stroke:red,stroke-width:3px
 {% include end.html %}
