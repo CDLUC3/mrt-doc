@@ -1,6 +1,7 @@
 ---
 title: "Merritt Inventory Database"
 description: "The inventory database is a MySQL RDS Database that tracks the objects and files in the Merritt Repository"
+prevpage: core_ui-auth
 nextpage: core_ingest
 chart: overview-core.mmd
 ---

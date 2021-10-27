@@ -1,6 +1,7 @@
 ---
 title: "Zookeeper Queue (Inventory)"
 description: "The ingest services places a task on the Inventory Zookeeper Queue to indicate that an ingest is complete"
+prevpage: core_storage-cloud
 nextpage: core_inventory
 chart: overview-core.mmd
 ---

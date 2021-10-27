@@ -1,6 +1,7 @@
 ---
 title: "Zookeeper Queue"
 description: "The Ingest Services acquires a task from the Zookeeper Queue"
+prevpage: core_zoo
 nextpage: core_local-id
 chart: overview-core.mmd
 ---
