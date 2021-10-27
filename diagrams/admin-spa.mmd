@@ -6,6 +6,7 @@ graph TD
   click ADMINWEB href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
   WAF[Web application Firewall]
   COG[AWS Cognito User Auth]
+  SAML[SAML Authentication]
 
   subgraph flowchart
     ALB --> ADMIN
@@ -15,9 +16,11 @@ graph TD
     ALB --> |1. retrieve web assets|ADMINWEB
     ALB --> |authorize| WAF
     ALB --> |authorize| COG
+    COG --> SAML
   end
   style ADMIN stroke:red,stroke-width:4px
   style ADMINWEB stroke:red,stroke-width:4px
   style ALB fill:cyan
   style WAF fill:cyan
   style COG fill:cyan
+  style SAML fill:cyan

@@ -9,6 +9,7 @@ graph TD
   click COGLAMB href "https://github.com/CDLUC3/mrt-admin-lambda/cognito-lambda-nonvpc" "source code"
   WAF[Web application Fiirewall]
   COG[AWS Cognito User Auth]
+  SAML[SAML Authentication]
   ECR[ECR Hosted Lambda Image]
   ING(Ingest)
   click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
@@ -30,6 +31,7 @@ graph TD
     COLLADMIN --> S3RPT
     COLLADMIN --> COGLAMB
     COGLAMB --> |user management| COG
+    COG --> SAML
     ING --> ZOOING
   end
   
@@ -43,3 +45,4 @@ graph TD
   style ZOOING fill:cyan
   style LDAP fill:cyan
   style S3RPT fill:#77913C
+  style SAML fill:cyan

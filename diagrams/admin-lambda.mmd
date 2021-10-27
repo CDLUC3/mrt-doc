@@ -9,6 +9,7 @@ graph TD
   WAF[Web application Fiirewall]
   ECR[ECR Hosted Lambda Image]
   COG[AWS Cognito User Auth]
+  SAML[SAML Authentication]
 
   subgraph flowchart
     ADMIN --> |query| RDSBILL
@@ -19,6 +20,7 @@ graph TD
     ALB --> |json| ADMINWEB
     ALB --> |authorize| WAF
     ALB --> |authorize| COG
+    COG --> SAML
     ECR --> ADMIN
   end
 
@@ -30,3 +32,4 @@ graph TD
   style WAF fill:cyan
   style ECR fill:cyan
   style COG fill:cyan
+  style SAML fill:cyan
