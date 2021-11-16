@@ -7,15 +7,20 @@ graph TD
   click ADMINWEB href "https://github.com/CDLUC3/mrt-admin-lambda" "source code"
   COGLAMB([Cognito API Lambda])
   click COGLAMB href "https://github.com/CDLUC3/mrt-admin-lambda/cognito-lambda-nonvpc" "source code"
-  WAF[Web application Fiirewall]
+  WAF[Web application Firewall]
   COG[AWS Cognito User Auth]
   SAML[SAML Authentication]
   ECR[ECR Hosted Lambda Image]
   ING(Ingest)
+  INV(Inventory)
+  STORE(Storage)
+  REP(Replication)
   click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
   ZOOING>Zookeeper Ingest]
   click ZOOING href "https://github.com/CDLUC3/mrt-zoo" "source code"
   LDAP[/LDAP\]
+  ZOOINV>Zookeeper Inventory]
+  ZOOACC>Zookeeper Access]
   S3RPT[[S3 Report Bucket - TBD]]
 
   subgraph flowchart
@@ -27,12 +32,17 @@ graph TD
     ALB --> |authorize| COG
     ECR --> COLLADMIN
     COLLADMIN --> ING
+    COLLADMIN --> REP
+    COLLADMIN --> STORE
+    COLLADMIN --> INV
     COLLADMIN --> LDAP
     COLLADMIN --> S3RPT
     COLLADMIN --> COGLAMB
     COGLAMB --> |user management| COG
     COG --> SAML
     ING --> ZOOING
+    ING --> ZOOINV
+    ING --> ZOOACC
   end
   
   style RDSINV fill:#F68D2F
@@ -43,6 +53,9 @@ graph TD
   style COG fill:cyan
   style ECR fill:cyan
   style ZOOING fill:cyan
+  style ZOOINV fill:cyan
+  style ZOOACC fill:cyan
   style LDAP fill:cyan
   style S3RPT fill:#77913C
   style SAML fill:cyan
+  style COG fill:yellow
