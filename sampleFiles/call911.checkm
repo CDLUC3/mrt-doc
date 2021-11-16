@@ -3,6 +3,6 @@
 #%prefix | mrt: | http://merritt.cdlib.org/terms#
 #%prefix | nfo: | http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#
 #%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:mimeType
-https://raw.githubusercontent.com/CDLUC3/mrt-doc/master/sampleFiles/call911.jpg | md5 | 47d321056e60944a06973793c7b5841e | 87112 |  | call911.jpg
-https://raw.githubusercontent.com/CDLUC3/mrt-doc/master/sampleFiles/call911.txt | md5 | 77fe42b1055bbabe5164822823218f0a | 46 |  | call911.txt
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/call911.jpg | md5 | 47d321056e60944a06973793c7b5841e | 87112 |  | call911.jpg
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/call911.txt | md5 | 77fe42b1055bbabe5164822823218f0a | 46 |  | call911.txt
 #%eof
