@@ -25,8 +25,8 @@ graph TD
 
   subgraph flowchart
     COLLADMIN --> |"query / update"| RDSINV
-    COLLADMIN --> |json| ALB
-    ADMINWEB --> |ajax| ALB
+    COLLADMIN --> |html/json| ALB
+    ADMINWEB --> |page requests/ajax| ALB
     ALB --> |json| ADMINWEB
     ALB --> |authorize| WAF
     ALB --> |authorize| COG
@@ -58,4 +58,4 @@ graph TD
   style LDAP fill:cyan
   style S3RPT fill:#77913C
   style SAML fill:cyan
-  style COG fill:yellow
+  style COGLAMB fill:yellow
