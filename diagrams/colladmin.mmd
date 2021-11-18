@@ -27,7 +27,7 @@ graph TD
     COLLADMIN --> |"query / update"| RDSINV
     COLLADMIN --> |html/json| ALB
     ADMINWEB --> |page requests/ajax| ALB
-    ALB --> |json| ADMINWEB
+    ALB --> |html/json| ADMINWEB
     ALB --> |authorize| WAF
     ALB --> |authorize| COG
     ECR --> COLLADMIN
