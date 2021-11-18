@@ -1,5 +1,43 @@
 ## Sprint Goals
 
+
+#### Sprint 63: 17 November - 7 December 2021
+
+##### Primary tasks:
+- UC Berkeley LIT:
+  - Ingest: Functionality and endpoint for detecting object failure in a batch
+   - Scan original BID payload for failures
+    - Input will be a batch ID, and output will be a manifest
+   - Generate new manifest with failed objects for submission
+  - See also: Discussion summary
+- UI Investigation
+  - Load testing with Siege
+  - Deploying cluster mode changes to production when ready
+  - ALB logs (working with Ashley)
+- Storage Admin
+  - Scans in production
+   - Deploy mrt-delete file fix to production
+  - Production state file deletions
+  - Batch handling in Storage Admin UI
+  - Enhancement to Replication:
+   - Expansion on error detection, as well as timing and size
+  - Increasing the number of scan deletes in a single request
+- New collections, feeds:
+  - Frontera Collection: batch ingests 
+  - UCB College of Env Design collections
+  - UCI feed request
+- UC Davis ETDs: Merritt ingest workflow issue
+  - ETD database updates
+- Respond to CoreTrustSeal feedback
+
+##### Releases:
+- Stage: Replic enhancements
+- Prod: 
+  - Scan fix for mrt-delete files
+  - Ingest: manifest restart
+  - UI clustered mode 
+
+
 #### Sprint 62: 27 October - 16 November 2021
 
 ##### Primary tasks:
