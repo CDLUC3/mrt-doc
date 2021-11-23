@@ -16,27 +16,32 @@ nextpage: store-admin-pause-ing-for-coll
 - Requeue audit for an object/node
 - Requeue replic for an object
 - Requeue audit batches in progress (not described below)
-
-### In Progress
 - Start Scan
 - Show Scan progress
 - Cancel Scan
 - Review Scan Results
-- Scan results: change to Delete, Hold, Note
+
+### Review needed
+- CSV update of review status
+  - Evaluate tools in stage
+  - Evaluate actions to perform in prod
+  - Enable delete in prod
+
+### In Progress
+- Bulk delete endpoint in replic
 
 ### Next Steps
-- Initiate Deletes (iterate from store admin)
-  - Batch Invocation of Node/Key Delete in Replic
+- Add Secondary Storage Node for a Collection
 
 ### TODO
-- Add Secondary Storage Node for a Collection
 - Remove Secondary Storage Node for a Collection
-  - Batch Invocation of Replication::delete(node, object)
+  - Auto insert into inv_storage_maints as delete?
 - Pause Ingest for a Collection
 - Pause Replication for a Collection
 - Change the Primary Node for a Collection
   - Batch Invocation of Inventory::changePrimaryNode(node, object)
 - Delete Object
+  - Create new table to record the reason for a delete
 - Delete Object from a Storage Node
 - Record Maintenance Node about an Object
 
