@@ -27,8 +27,7 @@ nextpage: store-admin-pause-ing-for-coll
   - Evaluate actions to perform in prod
   - Enable delete in prod
 - Add Secondary Storage Node for a Collection
-
-### In Progress
+  - [ ] reset replication for all objects in the collection 
 - Bulk delete endpoint in replic
 
 ### Next Steps
@@ -110,12 +109,6 @@ nextpage: store-admin-pause-ing-for-coll
   - Store
   - Inventory
   - EZID?
-- Record the action in the inv_storage_maints table
-- Components: Database, Admin
-
-### Use Case: Delete Object from a Storage Node
-
-- Admin notifies replic to remove an object from a node
 - Record the action in the inv_storage_maints table
 - Components: Database, Admin
 
