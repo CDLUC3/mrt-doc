@@ -26,12 +26,12 @@ nextpage: store-admin-pause-ing-for-coll
   - Evaluate tools in stage
   - Evaluate actions to perform in prod
   - Enable delete in prod
+- Add Secondary Storage Node for a Collection
 
 ### In Progress
 - Bulk delete endpoint in replic
 
 ### Next Steps
-- Add Secondary Storage Node for a Collection
 
 ### TODO
 - Remove Secondary Storage Node for a Collection
@@ -48,34 +48,16 @@ nextpage: store-admin-pause-ing-for-coll
 ### Undetermined
 - Change the Primary UI Node for a Collection
 
-# Storage Admin Use Cases
-
-## Use Cases: Manage Collection Nodes
-
 ---
+# In Process Use Cases
 
-<fieldset>
-<legend>Manage Collection Nodes</legend>
-<select>
-  <option>Choose Collection</option>
-</select>
-<button>GO</button>
-</fieldset>
+### Use Case: Delete Untracked files/keys
 
-### Collection Status
-**Status**: Ingest Paused <button title="Make primary is only permitted if ingest is paused for a collection">Unpause</button>
+- Prerequistes
+  - Scan has completed
+- Notify replic to iterate through the list of keys to be deleted and peform delete
+- Components: Database, Replic, Admin
 
-### Action Table
-
-| Role | Node | Node Desc | Repl Status | Actions |
-|---------|-----|----------|------|---------|
-| primary | 1111 | S3 | n/a |  |
-| secondary | 2222 | SDSC | 100% | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Make UI Primary</button>|
-| secondary | 3333 | Wasabi | 92% | <button>Delete Coll from Node</button> <button disabled='Y'>Make Primary</button> <button>Make UI Primary</button>|
-
-<button>Add Node</button>
-
----
 ### Use Case: Add Secondary Storage Node for a Collection
 - Verify that node is not already in use for the collection
 - Add node to inv_collections_inv_nodes
@@ -83,6 +65,10 @@ nextpage: store-admin-pause-ing-for-coll
   - Force re-replication of primary node copy
 - Components: Admin
 
+---
+# TODO Use Cases
+
+---
 ### Use Case: Remove Secondary Storage Node for a Collection
 - Prerequistes
   - Pause ingest for the collection (use filesystem)
@@ -117,10 +103,59 @@ nextpage: store-admin-pause-ing-for-coll
   - Manually unpause ingest
 - Components: Databse, Inventory, Admin, Admin Queue Lambda
 
+### Use Case: Delete Object
+
+- Admin notifies the following components about the delete
+  - Replic
+  - Store
+  - Inventory
+  - EZID?
+- Record the action in the inv_storage_maints table
+- Components: Database, Admin
+
+### Use Case: Delete Object from a Storage Node
+
+- Admin notifies replic to remove an object from a node
+- Record the action in the inv_storage_maints table
+- Components: Database, Admin
+
+---
+# Future Use Cases
+
 ### Use Case: Change the Primary UI Node for a Collection
 
 - This feature is speculative and will not yet be designed
 - Components: Databse, UI, Admin
+
+---
+# Completed Use Cases
+
+## Use Cases: Manage Collection Nodes
+
+---
+
+<fieldset>
+<legend>Manage Collection Nodes</legend>
+<select>
+  <option>Choose Collection</option>
+</select>
+<button>GO</button>
+</fieldset>
+
+### Collection Status
+**Status**: Ingest Paused <button title="Make primary is only permitted if ingest is paused for a collection">Unpause</button>
+
+### Action Table
+
+| Role | Node | Node Desc | Repl Status | Actions |
+|---------|-----|----------|------|---------|
+| primary | 1111 | S3 | n/a |  |
+| secondary | 2222 | SDSC | 100% | <button>Delete Coll from Node</button> <button>Make Primary</button> <button>Make UI Primary</button>|
+| secondary | 3333 | Wasabi | 92% | <button>Delete Coll from Node</button> <button disabled='Y'>Make Primary</button> <button>Make UI Primary</button>|
+
+<button>Add Node</button>
+
+---
 
 ## Use Cases: Scan Storage Nodes
 
@@ -176,12 +211,6 @@ Type `2 Deletes` to procede.
 - Components: Database, Admin
 
 
-### Use Case: Delete Untracked files/keys
-
-- Prerequistes
-  - Scan has completed
-- Notify replic to iterate through the list of keys to be deleted and peform delete
-- Components: Database, Replic, Admin
 
 ## Use Cases: Manage Object Storage
 
@@ -214,22 +243,6 @@ Type `2 Deletes` to procede.
 | secondary | 3333 | Wasabi | <button>Delete Object from Node</button> <button>Re-audit</button>|
 
 ---
-
-### Use Case: Delete Object
-
-- Admin notifies the following components about the delete
-  - Replic
-  - Store
-  - Inventory
-  - EZID?
-- Record the action in the inv_storage_maints table
-- Components: Database, Admin
-
-### Use Case: Delete Object from a Storage Node
-
-- Admin notifies replic to remove an object from a node
-- Record the action in the inv_storage_maints table
-- Components: Database, Admin
 
 ### Use Case: Trigger re-audit of an object (Done)
 - Force re-audit of node copy of an object
