@@ -27,20 +27,53 @@ nextpage: store-admin-pause-ing-for-coll
   - Evaluate actions to perform in prod
   - Enable delete in prod
 - Add Secondary Storage Node for a Collection
-  - [ ] reset replication for all objects in the collection 
+  - Reset replication for all objects in the collection 
 - Bulk delete endpoint in replic
 
 ### Next Steps
+
+- Enhance replication status reporting
+
+Verify table chnages with David
+```
+ALTER TABLE inv_nodes_inv_objects 
+  add replication_initiated datetime
+```
 
 ### TODO
 - Remove Secondary Storage Node for a Collection
   - Auto insert into inv_storage_maints as delete?
 - Pause Ingest for a Collection
 - Pause Replication for a Collection
+```
+ALTER TABLE inv_collections 
+  add replication_paused boolean
+```
 - Change the Primary Node for a Collection
   - Batch Invocation of Inventory::changePrimaryNode(node, object)
 - Delete Object
   - Create new table to record the reason for a delete
+  - Create a placeholder to track other exceptional system interventions
+```
+create table inv_object_maints(
+  id int,
+  inv_object_id int,
+  ark varchar(255),
+  object_type enum('MRT-curatorial','MRT-system'),
+  role enum('MRT-class','MRT-content'),
+  aggregate_role enum('MRT-collection','MRT-owner','MRT-service-level-agreement','MRT-submission-agreement','MRT-none')
+  version_number smallint,
+  erc_who mediumtext,
+  erc_what mediumtext,
+  erc_when mediumtext,
+  erc_where mediumtext,
+  created timestamp,
+  action enum('removed', 'recreated', 'modified-by-merritt', 'maintenance-note')
+  modified timestamp,
+  removed timestamp,
+  note mediumtext
+)
+```
 - Delete Object from a Storage Node
 - Record Maintenance Node about an Object
 
