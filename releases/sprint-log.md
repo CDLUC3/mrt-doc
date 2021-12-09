@@ -1,5 +1,39 @@
 ## Sprint Goals
 
+#### Sprint 64: 8 December 2021 - 5 January 2022
+- UC Berkeley LIT:
+  - Ingest: Functionality and endpoint for detecting object failure in a batch
+   - Use Zookeeper queue entries to enable resubmissions
+   - Enable all handlers to bubble up ingest queue-related errors 
+   - Scan original BID payload for failures (optional)
+- Repair objects that were subjected to concurrent updates
+  - 118 objects: 
+   - 3 objects missing files, each with different repair aspects
+   - 115 may be addressable by regenerating inventory records  
+  - Many thousands more to review as a group to continue categorizing scan results
+- Storage Admin
+  - Continue scan results review
+  - Implement get-manifest functionality
+  - Add a rebuild inventory feature
+  - Enhancement to Replication:
+   - Expansion on error detection, as well as timing and size
+- Documentation of SSM variables for four microservices
+- Admin tools
+  - Add descriptive information to each report 
+  - Refactor using bootstrap tables
+- New collections, feeds:
+  - Frontera Collection: batch ingests 
+  - UCI Nuxeo feed requests
+- UC Davis ETDs: Merritt ingest workflow issue
+  - MARC record-related code changes
+  - ETD database updates
+- Respond to CoreTrustSeal feedback
+
+##### Releases:
+- Stage: 
+  - Change to Ingest to support requeueing
+  - Replication enhancements
+
 
 #### Sprint 63: 17 November - 7 December 2021
 
