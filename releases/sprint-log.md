@@ -1,5 +1,41 @@
 ## Sprint Goals
 
+#### Sprint 65: 6 January - 25 January 2022
+- Preventing concurrent updates – locking mechanism:
+  - Handler implementation for use with new ZK functionality
+  - Follow on Collection Admin work
+- UC Berkeley Library IT request:
+  - Introduce Local ID into ATOM feeds
+- Java Builds
+  - Complete service build development in Docker (OAI, SWORD) 
+  - Test built services in Docker
+  - Determine if we should move/recreate the process in Jenkins
+- Inventory and Replic
+  - Enhance inv_nodes_inv_objects to track replication timings and bytes
+  - Follow on Storage Admin work
+- Admin, Coll Admin
+  - Document all Admin tool reports in yaml, along with all Coll Admin actions
+- Storage Admin
+  - Continue scan results review
+- New collections, feeds:
+  - Frontera Collection: batch ingests 
+  - UCM UCCE ANR Collection: batch ingests
+  - UCB Maps collection: batch ingests 
+  - UCI Nuxeo feed requests
+- UC Davis ETDs:
+  - Regenerate remaining MARC records
+- Respond to CoreTrustSeal feedback
+
+##### Releases:
+- Stage: 
+  - inv_nodes_inv_objects table changes
+  - Concurrent update locking mechanism
+  - UI release for local ID field in ATOM feeds
+  - log4j 2.17.1 for Replic
+- Production:
+  - UI release for local ID field in ATOM feeds
+  - log4j 2.17.1 for Replic
+
 #### Sprint 64: 8 December 2021 - 5 January 2022
 - UC Berkeley LIT:
   - Ingest: Functionality and endpoint for detecting object failure in a batch
