@@ -126,6 +126,8 @@ AND exists (
       inio.inv_node_id= ?
     and
       inio.inv_object_id = icio.inv_object_id
+    and
+      inio.role = 'secondary'
 )
 limit 50
 ;
