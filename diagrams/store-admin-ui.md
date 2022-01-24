@@ -37,7 +37,36 @@ nextpage: store-admin-pause-ing-for-coll
 
 ### TODO: Support Dryad Wasabi Migration
 - [ ] Remove Secondary Storage Node for a Collection
-  - Auto insert into inv_storage_maints as delete?
+
+#### Obtain a batch of ids to process
+```
+SELECT
+  icio.inv_object_id
+from 
+  inv_collections_inv_objects icio
+WHERE
+  icio.inv_collection_id = ?
+AND exists (
+    select
+      1
+    from
+      inv_nodes_inv_objects inio 
+    WHERE
+      inio.inv_node_id= ?
+    and
+      inio.inv_object_id = icio.inv_object_id
+)
+limit 50
+;
+```
+
+#### Invoke Object/Node delete on objid/nodeid
+
+#### If the id list is not empty, re-invoke lambda
+- Have the lambda re-invoke itself... Implement a method to allow this to be throttled via SSM
+- Add a push button to invoke on a page
+- Or, invoke the operation via cron on the batch server...
+- Save a worklist to S3.  Delete worklist when done.
 
 ### TODO: Public Collection Migration
 - Pause Ingest for a Collection
