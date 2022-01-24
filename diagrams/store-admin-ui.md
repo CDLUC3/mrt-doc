@@ -37,30 +37,8 @@ nextpage: store-admin-pause-ing-for-coll
 
 ### TODO: Support Dryad Wasabi Migration
 - [ ] Remove Secondary Storage Node for a Collection
-
-#### Obtain a batch of ids to process
-```
-SELECT
-  icio.inv_object_id
-from 
-  inv_collections_inv_objects icio
-WHERE
-  icio.inv_collection_id = ?
-AND exists (
-    select
-      1
-    from
-      inv_nodes_inv_objects inio 
-    WHERE
-      inio.inv_node_id= ?
-    and
-      inio.inv_object_id = icio.inv_object_id
-)
-limit 50
-;
-```
-
-#### Invoke Object/Node delete on objid/nodeid
+- [ ] Obtain a batch of ids to process
+- [ ] Invoke Replic.delete(node, obj)
 
 #### If the id list is not empty, re-invoke lambda
 - Have the lambda re-invoke itself... Implement a method to allow this to be throttled via SSM
@@ -129,12 +107,29 @@ create table inv_object_maints(
 
 ---
 ### Use Case: Remove Secondary Storage Node for a Collection
-- Prerequistes
-  - Pause ingest for the collection (use filesystem)
-  - Pause replication for the collection node 
-    - set inv_collections.replication_paused = true
-- Mark the storage node as decommissioned
-  - set inv_collections_inv_nodes.decommissioned = true
+- Remove node from inv_collections_inv_nodes
+- Determine if any work is needed
+```
+```
+SELECT
+  icio.inv_object_id
+from 
+  inv_collections_inv_objects icio
+WHERE
+  icio.inv_collection_id = ?
+AND exists (
+    select
+      1
+    from
+      inv_nodes_inv_objects inio 
+    WHERE
+      inio.inv_node_id= ?
+    and
+      inio.inv_object_id = icio.inv_object_id
+)
+limit 50
+;
+``` 
 - Peform Action:
   - Admin Queue Lambda:
     - Batch invocation of REPLIC endpoint for every object in the collection
