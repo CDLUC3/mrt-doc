@@ -20,23 +20,23 @@ nextpage: store-admin-pause-ing-for-coll
 - Show Scan progress
 - Cancel Scan
 - Review Scan Results
-
-### Under Active Review - Then Activate in Production
 - CSV update of review status
   - Evaluate tools in stage
   - Evaluate actions to perform in prod
   - Enable delete in prod
 - Add Secondary Storage Node for a Collection
   - Reset replication for all objects in the collection 
-- Bulk delete endpoint in replic
+
+### Under Active Review - Then Activate in Production
+- [ ] Bulk delete endpoint in replic
 
 ### In Progress
 
-- Enhance replication status reporting
-- https://github.com/CDLUC3/mrt-doc/issues/865
+- [ ] Enhance replication status reporting
+  - https://github.com/CDLUC3/mrt-doc/issues/865
 
 ### TODO: Support Dryad Wasabi Migration
-- Remove Secondary Storage Node for a Collection
+- [ ] Remove Secondary Storage Node for a Collection
   - Auto insert into inv_storage_maints as delete?
 
 ### TODO: Public Collection Migration
@@ -50,7 +50,7 @@ ALTER TABLE inv_collections
   - Batch Invocation of Inventory::changePrimaryNode(node, object)
 
 ### TODO: Delete Object Support in Admin Tool / Tombstone in database
-- Delete Object
+- [ ] Delete Object
   - Create new table to record the reason for a delete
   - Create a placeholder to track other exceptional system interventions
 ```
@@ -73,7 +73,6 @@ create table inv_object_maints(
   note mediumtext
 )
 ```
-- Delete Object from a Storage Node
 - Record Maintenance Node about an Object
 
 ### TODO: Is this a priority?
