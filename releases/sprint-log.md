@@ -1,5 +1,33 @@
 ## Sprint Goals
 
+#### Sprint 66: 26 January - 15 February 2022
+- Preventing concurrent updates – locking mechanism:
+  - API implementation for surfacing and removing locks
+  - Follow on Collection Admin UI work
+- Java builds:
+  - Migrate Audit to new build pipeline
+  - Migrate Ingest to new build pipeline
+- Replic:
+  - Deploy inv_nodes_inv_objects enhancements to production
+  - Follow on Storage Admin work
+- Admin, Coll Admin:
+  - Admin tool reports doc edits in yaml
+- Storage Admin:
+  - Continue scan results review
+  - Version cleanup for six objects
+- New collections, feeds:
+  - Frontera Collection: batch ingests
+  - UCM UCCE ANR Collection: batch ingests 
+  - New UCI feed request 
+- Respond to CoreTrustSeal feedback
+  - Parity between new policy guide and policies on cdlib.org
+
+##### Releases:
+- Prod:
+  - Replic changes
+  - Ingest lock and API
+  - Admin changes for removing content from a node
+
 #### Sprint 65: 6 January - 25 January 2022
 - Preventing concurrent updates – locking mechanism:
   - Handler implementation for use with new ZK functionality
