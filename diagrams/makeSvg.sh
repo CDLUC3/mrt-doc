@@ -6,6 +6,7 @@
 
 MERCLIVER=8.9.2
 MERCLIVER=8.13.3
+MERCLIVER=latest
 
 for file in diagrams/*.mmd
 do
