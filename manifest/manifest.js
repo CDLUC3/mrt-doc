@@ -105,7 +105,7 @@ class Checkm {
       }
     } else {
       t.error();
-      t.message("Profile declaration not found")
+      t.setMessage("Profile declaration not found")
     }
     this.validation_checks.push(t);
   }
