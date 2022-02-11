@@ -4,7 +4,31 @@ table td, table th {
 }
 table {
     border-collapse: collapse;
+    border: solid gray 8px;
 }
 tr.header td, tr.header th {
     background-color: yellow;
+}
+
+#analysis td, #analysis th {
+    max-width: 500px;
+    word-wrap: break-word;
+}
+
+#data {
+    overflow-x: scroll;
+    width: 90%;
+    margin: 10px auto;
+}
+
+tr.Pass td, tr.Pass th {
+    background-color: #b7f48b;
+}
+
+tr.Warn td, tr.Warn th {
+    background-color: rgb(245, 245, 151);
+}
+
+tr.Error td, tr.Error th {
+    background-color: rgb(238, 131, 131);
 }

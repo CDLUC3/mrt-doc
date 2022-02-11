@@ -1,29 +1,57 @@
+$(document).ready(function(){
+  $("#testfiles").on("change", function(){
+    var fname = $("#testfiles option:selected").val();
+    $.ajax({
+      url: fname,
+      success: function(data){
+       $("#checkm").val(data);
+      }
+    });
+  });
+});
+
 function parse() {
   var cv = new CheckmValidator();
   cv.parse();
 }
 
+async function runit(){
+  var [fileHandle] = await window.showOpenFilePicker();
+  const file = await fileHandle.getFile();
+  const contents = await file.text();
+  $("#checkm").val(contents);
+}
+
 class CheckmValidator {
 
   getCheckmArray() {
-    return $("#checkm")
-      .val()
-      .replaceAll(/^\s*/g, '')
-      .replaceAll(/\s*$/g, '')
-      .split("\n");
-  
+    var t = $("#checkm").val() + " ";
+    return t.replaceAll(/^\s*/g, '')
+      .split("\n");  
   }
   
-  parse() {
+  createAnalysisTable() {
     $("#analysis").empty();
-    var checkmLines = this.getCheckmArray();
     var table = $("<table/>").appendTo("#analysis");
-    var thead = $("<thead/>").appendTo(table);
+    var thead = $("<thead/>").appendTo(table); 
     CheckmTest.tr_head().appendTo(thead).addClass("header");
-    var tbody = $("<tbody/>").appendTo(table);
-  
-    var checkmFile = new Checkm(checkmLines);
+    return $("<tbody/>").appendTo(table);
+  }
+
+  createDataTable(checkmFile) {
+    $("#data").empty();
+    var table = $("<table/>").appendTo("#data");
+    var thead = $("<thead/>").appendTo(table); 
+    checkmFile.data_tr_head().appendTo(thead).addClass("header");
+    return $("<tbody/>").appendTo(table);
+  }
+
+  parse() {
+    var tbody = this.createAnalysisTable();
+    var checkmFile = new Checkm(this.getCheckmArray());
     checkmFile.validation_checks.forEach(test => test.tr().appendTo(tbody));
+    tbody = this.createDataTable(checkmFile);
+    checkmFile.data_tr(tbody);
   }  
 }
 
@@ -42,6 +70,7 @@ class Checkm {
     this.data = [];
     this.checkData();
     this.checkEof();
+    this.checkTerminalNewline();
   }
 
   getLine(regex) {
@@ -73,11 +102,22 @@ class Checkm {
 
   checkEof() {
     var t = new CheckmTest("Look for eof");
-    if (this.getLine(/^#%eof$/g)) {
+    if (this.getLine(/^#%eof\s*$/g)) {
       t.pass();
     } else {
       t.error();
       t.setMessage("#%eof not found at end of file");
+    }
+    this.validation_checks.push(t);
+  }
+
+  checkTerminalNewline() {
+    var t = new CheckmTest("Look for terminal newline");
+    if (this.getLine(/^\s*$/g)) {
+      t.pass();
+    } else {
+      t.error();
+      t.setMessage("terminal newline not found at end of file");
     }
     this.validation_checks.push(t);
   }
@@ -220,6 +260,24 @@ class Checkm {
       this.validation_checks.push(t);  
     }
   }
+
+  data_tr(tbody) {
+    for(const r of this.data) {
+      var tr = $("<tr/>").appendTo(tbody);
+      for(const c of r) {
+        $("<td/>").text(c).appendTo(tr);
+      }
+    }
+  }
+
+  data_tr_head() {
+    var tr = $("<tr/>");
+    for(const f of this.fields) {
+      $("<th/>").text(f).appendTo(tr);
+    }
+    return tr;        
+  }
+
 }
 
 class Field {
@@ -229,7 +287,9 @@ class Field {
   static FILESIZE = new Field("nfo:filesize");
   static FILEMOD = new Field("nfo:filelastmodified");
   static FILENAME = new Field("nfo:filename");
-  static MIMETYPE = new Field("nie:mimetype");
+  //this field is referenced in some Merritt code, but it is not actively used
+  //static NIE_MIMETYPE = new Field("nie:mimetype");
+  static MIMETYPE = new Field("mrt:mimetype");
   static PRIMID = new Field("mrt:primaryidentifier");
   static LOCID = new Field("mrt:localidentifier");
   static CREATOR = new Field("mrt:creator");
@@ -256,6 +316,7 @@ class Field {
       Field.FILESIZE,
       Field.FILEMOD,
       Field.FILENAME,
+      //Field.NIE_MIMETYPE,
       Field.MIMETYPE,
       Field.PRIMID,
       Field.LOCID,
@@ -265,14 +326,13 @@ class Field {
     ];
   }
 
-  //mrt-ingest-manifest
-  //  #%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:mimeType
-  //single-file-batch-manifest
-  //  #%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:primaryIdentifier | mrt:localIdentifier | mrt:creator | mrt:title | mrt:date
-  //mrt-container-batch-manifest
-  //  #%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:primaryIdentifier | mrt:localIdentifier | mrt:creator | mrt:title | mrt:date
-  //mrt-batch-manifest
-  //  #%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:primaryIdentifier | mrt:localIdentifier | mrt:creator | mrt:title | mrt:date
+  static required_fields() {
+    return [
+      Field.FILEURL,
+      Field.FILENAME
+    ];
+  }
+
   known() {
     for(const f of Field.known_fields()) {
       if (f.namespace == this.namespace.toLowerCase() && f.name == this.name.toLowerCase()) {
@@ -304,17 +364,20 @@ class Prefix {
 class ProfileType {
   // Create new instances of the same class as static attributes
   static INGEST = new ProfileType("mrt-ingest-manifest");
-  static OBJECT = new ProfileType("mrt-object-manifest");
-  static ADD = new ProfileType("mrt-add-manifest");
+  //the following 2 types are referenced in some Merritt code, but they do not seem to be actively used
+  //static OBJECT = new ProfileType("mrt-object-manifest");
+  //static ADD = new ProfileType("mrt-add-manifest");
   static BATCH = new ProfileType("mrt-batch-manifest");
+  static SFBATCH = new ProfileType("single-file-batch-manifest");
   static CONTAINER_BATCH = new ProfileType("mrt-container-batch-manifest");
 
   static vals() {
     return [
       ProfileType.INGEST, 
-      ProfileType.OBJECT, 
-      ProfileType.ADD, 
+      //ProfileType.OBJECT, 
+      //ProfileType.ADD, 
       ProfileType.BATCH, 
+      ProfileType.SFBATCH, 
       ProfileType.CONTAINER_BATCH
     ];
   }
@@ -399,7 +462,7 @@ class CheckmTest {
     }
     tr() {
         var name = this.status.name;
-        var tr = $("<tr/>");
+        var tr = $("<tr/>").addClass(name);
         $("<th/>").text(this.label).appendTo(tr);
         $("<td/>").text(name).appendTo(tr);
         $("<td/>").text(this.message).appendTo(tr);
