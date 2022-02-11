@@ -368,7 +368,7 @@ class ProfileType {
   //static OBJECT = new ProfileType("mrt-object-manifest");
   //static ADD = new ProfileType("mrt-add-manifest");
   static BATCH = new ProfileType("mrt-batch-manifest");
-  static SFBATCH = new ProfileType("single-file-batch-manifest");
+  static SFBATCH = new ProfileType("mrt-single-file-batch-manifest");
   static CONTAINER_BATCH = new ProfileType("mrt-container-batch-manifest");
 
   static vals() {
