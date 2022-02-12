@@ -198,7 +198,17 @@ class Checkm {
       var m = line.match(re);
       if (m) {
         this.fields = m[1].split(/\s*\|\s*/);
-        if (this.fields.length > 6) {
+        var fmap = {};
+        for(const f of this.fields) {
+          fmap[f.toLowerCase()] = true;
+        }
+        var fail = [];
+        for(const f of Field.required_fields()) {
+          if (!fmap[f.fname.toLowerCase()]) {
+            fail.push(f.fname.toLowerCase());
+          }
+        }
+        if (fail.length == 0) {
           t.pass();
           t.setMessage(this.fields.length + " found");
           for(const f of this.fields) {
@@ -206,7 +216,7 @@ class Checkm {
           }
         } else {
           t.error();
-          t.setMessage("11 fields should be defined: " + this.fields.length + " found");
+          t.setMessage("Required fields not found: " + fail);
         }
       }
     } else {
@@ -299,6 +309,7 @@ class Field {
   constructor(fname) {
     var m = fname.match(/^(\w+):(\w+)$/);
     if (m) {
+      this.fname = fname;
       this.namespace = m[1];
       this.name = m[2];  
     }
