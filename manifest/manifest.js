@@ -73,6 +73,15 @@ class Checkm {
     this.checkTerminalNewline();
   }
 
+  getIndex(key) {
+    for(var i=0; i<this.fields.length; i++) {
+      if (this.fields[i].toLowerCase() == key.toLowerCase()) {
+        return i;
+      }
+    }
+    return 0;
+  }
+
   getLine(regex) {
     if (this.lines.length > 0) {
       if (this.lines[0].match(regex)) {
@@ -254,7 +263,8 @@ class Checkm {
       if (line.match(/^#%.*/)) continue;
       if (line.match(/^\s*$/)) continue;
       var row = line.split(/\s*\|\s*/);
-      var t = new CheckmTest(row[0]);
+      var fname = row[this.getIndex(Field.FILENAME.fname)];
+      var t = new CheckmTest(fname + " - structure");
       if (row.length == this.fields.length) {
         this.data.push(row);
         t.pass();
@@ -268,6 +278,30 @@ class Checkm {
         t.setMessage("Bad field count: " + row.length);
       }
       this.validation_checks.push(t);  
+
+      if (this.profileType == ProfileType.CONTAINER_BATCH) {
+        t = new CheckmTest(fname + " - content");
+        var m = fname.match(/.*\.(tar|zip|tar\.gz|bz2)$/i); 
+        if (m) {
+          t.pass();
+          t.setMessage(m[1] + ": Filename is a zip, tar, tar.gz or bz2");
+        } else {
+          t.error();
+          t.setMessage("Filename must be a zip, tar, tar.gz or bz2");
+        }
+        this.validation_checks.push(t);  
+      } else if (this.profileType == ProfileType.BATCH) {
+        t = new CheckmTest(fname + " - content");
+        var m = fname.match(/.*\.(checkm)$/i);
+        if (m) {
+          t.pass();
+          t.setMessage(m[1] + ": Filename is a checkm");
+        } else {
+          t.error();
+          t.setMessage("Filename must be a checkm");
+        }
+        this.validation_checks.push(t);  
+      } 
     }
   }
 
