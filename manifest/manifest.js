@@ -1,10 +1,11 @@
 $(document).ready(function(){
   $("#testfiles").on("change", function(){
-    var fname = $("#testfiles option:selected").val();
+    var sel = $("#testfiles option:selected");
+    var fname = sel.val();
     $.ajax({
       url: fname,
       success: function(data){
-       $("#checkm").val(data);
+        $("#checkm").val(data);
       }
     });
   });
@@ -23,13 +24,9 @@ async function runit(){
 }
 
 class CheckmValidator {
-
-  getCheckmArray() {
-    var t = $("#checkm").val() + " ";
-    return t.replaceAll(/^\s*/g, '')
-      .split("\n");  
+  getData() {
+    return $("#checkm").val();
   }
-  
   createAnalysisTable() {
     $("#analysis").empty();
     var table = $("<table/>").appendTo("#analysis");
@@ -48,7 +45,7 @@ class CheckmValidator {
 
   parse() {
     var tbody = this.createAnalysisTable();
-    var checkmFile = new Checkm(this.getCheckmArray());
+    var checkmFile = new Checkm(this.getData());
     checkmFile.validation_checks.forEach(test => test.tr().appendTo(tbody));
     tbody = this.createDataTable(checkmFile);
     checkmFile.data_tr(tbody);
@@ -56,9 +53,11 @@ class CheckmValidator {
 }
 
 class Checkm {
-  constructor(lines) {
-    this.lines = lines;
+  constructor(rawdata) {
     this.validation_checks = [];
+    this.rawdata = rawdata;
+    this.checkEncoding();
+    this.lines = this.getLines();
     this.checkHeader();
     this.profileName = "";
     this.profileType = null;
@@ -71,6 +70,24 @@ class Checkm {
     this.checkData();
     this.checkEof();
     this.checkTerminalNewline();
+  }
+
+  checkEncoding() {
+    var t = new CheckmTest("Check file encoding");
+    t.pass();
+    for(var i=0; i<this.rawdata.length; i++) {
+      if (this.rawdata.codePointAt(i) == 65533) {
+        t.error();
+        t.setMessage("Replacement character fount at position " + i);
+      }
+    }
+    this.validation_checks.push(t);
+  }
+
+  getLines() {
+    var d = this.rawdata + " ";
+    return d.replaceAll(/^\s*/g, '')
+      .split("\n"); 
   }
 
   getIndex(key) {
@@ -320,7 +337,9 @@ class Checkm {
 
   checkData() {
     var re = /^#%eof$/g;
+    var dr = 0;
     for(var line = this.getNotLine(re); line != null; line = this.getNotLine(re)) {
+      dr++;
       if (line.match(/^#%.*/)) continue;
       if (line.match(/^\s*$/)) continue;
       var row = line.split(/\s*\|\s*/);
