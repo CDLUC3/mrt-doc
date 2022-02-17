@@ -11,11 +11,23 @@
   <div>
       <select id="testfiles">
         <option>Choose a Sample Merritt Manifest...</option>
-        <option value="../sampleFiles/4blocks.checkm">Ingest Manifest, 4 blocks</option>
-        <option value="../sampleFiles/bigHunt.checkm">Ingest Manifest, Big Hunt</option>
-        <option value="../sampleFiles/sampleBatchOfContainers.checkm">Batch of Containers</option>
-        <option value="../sampleFiles/sampleBatchOfFiles.checkm">Batch of Files</option>
-        <option value="../sampleFiles/sampleBatchOfManifests.checkm">Batch of Manifests</option>
+        <optgroup label="Merritt published sample files">
+          <option value="../sampleFiles/4blocks.checkm">Ingest Manifest, 4 blocks</option>
+          <option value="../sampleFiles/bigHunt.checkm">Ingest Manifest, Big Hunt</option>
+          <option value="../sampleFiles/sampleBatchOfContainers.checkm">Batch of Containers</option>
+          <option value="../sampleFiles/sampleBatchOfFiles.checkm">Batch of Files</option>
+          <option value="../sampleFiles/sampleBatchOfManifests.checkm">Batch of Manifests</option>
+        </optgroup>
+        <optgroup label="Negative Cases">
+          <option value="test-cases/4blocks_prefixes.checkm">Ingest Manifest, Non-standard Prefix</option>
+          <option value="test-cases/4blocks_uri.checkm">Ingest Manifest, Non-standard URI</option>  
+          <option value="test-cases/4blocks_nodecl.checkm">Ingest Manifest, No Declaration</option>  
+          <option value="test-cases/4blocks_noprofile.checkm">Ingest Manifest, No Profile</option>  
+          <option value="test-cases/4blocks_noprefix.checkm">Ingest Manifest, No Prefix</option>  
+          <option value="test-cases/4blocks_nofields.checkm">Ingest Manifest, No Fields</option>  
+          <option value="test-cases/4blocks_noeof.checkm">Ingest Manifest, No EOF</option>  
+          <option value="test-cases/4blocks_noterm_nl.checkm">Ingest Manifest, No terminal newline</option>  
+        </optgroup>
       </select>
       <button onclick="javascript:runit()" title="May only work in Chrome or Edge...">Load Your Own File</button>
       <fieldset>
