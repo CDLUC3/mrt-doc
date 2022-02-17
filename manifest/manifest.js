@@ -257,6 +257,67 @@ class Checkm {
     this.validation_checks.push(t);
   }
 
+  checkDataRowStructure(row, fname) {
+    var t = new CheckmTest(fname + " - structure");
+    if (row.length == this.fields.length) {
+      this.data.push(row);
+      t.pass();
+    } else if (row.length == this.fields.length - 1) {
+      t.warn();
+      t.setMessage("Blank field added to end of record");
+      row.push("");
+      this.data.push(row);
+    } else {
+      t.error();
+      t.setMessage("Bad field count: " + row.length);
+    }
+    this.validation_checks.push(t);  
+  }
+
+  checkDataRowContent(row, fname) {
+    var t = new CheckmTest(fname + " - content");
+    var failed_checks = [];
+    var checks = [];
+    for(const f of Field.required_fields()) {
+      checks.push(f.fname);
+      var v = row[this.getIndex(f.fname)]; 
+      if (v == null || v == "") {
+        failed_checks.push(f.fname);
+      }
+    }
+    if (failed_checks.length == 0) {
+      t.pass();
+      t.setMessage("Data found: " + checks.join(", "));
+    } else {
+      t.error();
+      t.setMessage("Required fields not set: " + failed_checks.join(", "));
+    }
+    this.validation_checks.push(t);  
+    if (this.profileType == ProfileType.CONTAINER_BATCH) {
+      var t = new CheckmTest(fname + " - profile checks");
+      var m = fname.match(/.*\.(tar|zip|tar\.gz|bz2)$/i); 
+      if (m) {
+        t.pass();
+        t.setMessage(m[1] + ": Filename is a zip, tar, tar.gz or bz2");
+      } else {
+        t.error();
+        t.setMessage("Filename must be a zip, tar, tar.gz or bz2");
+      }
+      this.validation_checks.push(t);  
+    } else if (this.profileType == ProfileType.BATCH) {
+      t = new CheckmTest(fname + " - content");
+      var m = fname.match(/.*\.(checkm)$/i);
+      if (m) {
+        t.pass();
+        t.setMessage(m[1] + ": Filename is a checkm");
+      } else {
+        t.error();
+        t.setMessage("Filename must be a checkm");
+      }
+      this.validation_checks.push(t);  
+    } 
+  }
+
   checkData() {
     var re = /^#%eof$/g;
     for(var line = this.getNotLine(re); line != null; line = this.getNotLine(re)) {
@@ -264,44 +325,8 @@ class Checkm {
       if (line.match(/^\s*$/)) continue;
       var row = line.split(/\s*\|\s*/);
       var fname = row[this.getIndex(Field.FILENAME.fname)];
-      var t = new CheckmTest(fname + " - structure");
-      if (row.length == this.fields.length) {
-        this.data.push(row);
-        t.pass();
-      } else if (row.length == this.fields.length - 1) {
-        t.warn();
-        t.setMessage("Blank field added to end of record");
-        row.push("");
-        this.data.push(row);
-      } else {
-        t.error();
-        t.setMessage("Bad field count: " + row.length);
-      }
-      this.validation_checks.push(t);  
-
-      if (this.profileType == ProfileType.CONTAINER_BATCH) {
-        t = new CheckmTest(fname + " - content");
-        var m = fname.match(/.*\.(tar|zip|tar\.gz|bz2)$/i); 
-        if (m) {
-          t.pass();
-          t.setMessage(m[1] + ": Filename is a zip, tar, tar.gz or bz2");
-        } else {
-          t.error();
-          t.setMessage("Filename must be a zip, tar, tar.gz or bz2");
-        }
-        this.validation_checks.push(t);  
-      } else if (this.profileType == ProfileType.BATCH) {
-        t = new CheckmTest(fname + " - content");
-        var m = fname.match(/.*\.(checkm)$/i);
-        if (m) {
-          t.pass();
-          t.setMessage(m[1] + ": Filename is a checkm");
-        } else {
-          t.error();
-          t.setMessage("Filename must be a checkm");
-        }
-        this.validation_checks.push(t);  
-      } 
+      this.checkDataRowStructure(row, fname);
+      this.checkDataRowContent(row, fname);
     }
   }
 
