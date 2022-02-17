@@ -1,5 +1,30 @@
 ## Sprint Goals
 
+#### Sprint 67: 16 February - 8 March 2022
+- Preventing concurrent updates:
+  - Inventory locking mechanism
+  - Follow on Collection Admin UI work
+- Java builds:
+  - Migrate Audit to new build pipeline
+  - Migrate Ingest to new build pipeline
+- Storage Admin:
+  - Continue scan results review
+  - Version cleanup for any outstanding objects
+- Manifest creation tool:
+  - Manifest validation with mrt-core2
+  - CSV to checkm converter
+- New collections, feeds:
+  - Frontera Collection: batch ingests
+  - Establish two new UCI collections
+- Respond to CoreTrustSeal feedback
+  - Resubmit application
+
+##### Releases:
+- Stage:
+  - Inventory lock
+- Prod:
+  - Replic changes
+
 #### Sprint 66: 26 January - 15 February 2022
 - Preventing concurrent updates – locking mechanism:
   - API implementation for surfacing and removing locks
