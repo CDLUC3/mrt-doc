@@ -1,0 +1,8 @@
+#%checkm_0.7
+#%profile | http://uc3.cdlib.org/registry/ingest/manifest/mrt-ingest-manifest
+#%prefix | mrt: | http://merritt.cdlib.org/terms#
+#%prefix | nfo: | http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#
+#%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:mimeType
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/4blocks.jpg | md5 | 0b21c6d48e815dd537d42dc1cfac0111 |  |  | 
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/4blocks.txt | md5 | 4dbac258aa1aab9fea0f57712385283d |  |  | 4blocks.txt
+#%eof
