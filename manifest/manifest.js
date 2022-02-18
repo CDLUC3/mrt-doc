@@ -92,7 +92,7 @@ class Checkm {
 
   getIndex(key) {
     for(var i=0; i<this.fields.length; i++) {
-      if (this.fields[i].toLowerCase() == key.toLowerCase()) {
+      if (this.fields[i].fname.toLowerCase() == key.toLowerCase()) {
         return i;
       }
     }
@@ -223,11 +223,12 @@ class Checkm {
     if (line) {
       var m = line.match(re);
       if (m) {
-        this.fields = m[1].split(/\s*\|\s*/);
         var fmap = {};
-        for(const f of this.fields) {
-          fmap[f.toLowerCase()] = true;
+        for(const fname of m[1].split(/\s*\|\s*/)) {
+          this.fields.push(Field.instance(fname));
+          fmap[fname.toLowerCase()] = true;
         }
+
         var fail = [];
         for(const f of Field.required_fields()) {
           if (!fmap[f.fname.toLowerCase()]) {
@@ -252,9 +253,8 @@ class Checkm {
     this.validation_checks.push(t);
   }
 
-  checkField(f) {
-    var t = new CheckmTest("Check field name format: " + f);
-    var field = new Field(f);
+  checkField(field) {
+    var t = new CheckmTest("Check field name format: " + field.fname);
     if (field.valid()) {
       if (this.prefixes[field.namespace]) {
         if (field.known()) {
@@ -294,20 +294,17 @@ class Checkm {
   checkDataRowContent(row, fname) {
     var t = new CheckmTest(fname + " - content");
     var failed_checks = [];
-    var checks = [];
-    for(const f of Field.required_fields()) {
-      checks.push(f.fname);
-      var v = row[this.getIndex(f.fname)]; 
-      if (v == null || v == "") {
-        failed_checks.push(f.fname);
+    for(var i=0; i < this.fields.length; i++) {
+      var f = this.fields[i];
+      if (!f.validate_data(row[i])) {
+        failed_checks.push(f.fname);       
       }
     }
     if (failed_checks.length == 0) {
       t.pass();
-      t.setMessage("Data found: " + checks.join(", "));
     } else {
       t.error();
-      t.setMessage("Required fields not set: " + failed_checks.join(", "));
+      t.setMessage("Invalid fields: " + failed_checks.join(", "));
     }
     this.validation_checks.push(t);  
     if (this.profileType == ProfileType.CONTAINER_BATCH) {
@@ -361,7 +358,7 @@ class Checkm {
   data_tr_head() {
     var tr = $("<tr/>");
     for(const f of this.fields) {
-      $("<th/>").text(f).appendTo(tr);
+      $("<th/>").text(f.fname).appendTo(tr);
     }
     return tr;        
   }
@@ -369,22 +366,25 @@ class Checkm {
 }
 
 class Field {
-  static FILEURL = new Field("nfo:fileurl");
-  static HASHALG = new Field("nfo:hashalgorithm");
-  static HASHVAL = new Field("nfo:hashvalue");
-  static FILESIZE = new Field("nfo:filesize");
-  static FILEMOD = new Field("nfo:filelastmodified");
-  static FILENAME = new Field("nfo:filename");
+  static FILEURL = new Field("nfo:fileurl", true, null);
+  static HASHALG = new Field("nfo:hashalgorithm", false, /^(md5|sha256)$/);
+  static HASHVAL = new Field("nfo:hashvalue", false, /^[a-z0-9]{32,32}([a-z0-9]{32,32})?$/);
+  static FILESIZE = new Field("nfo:filesize", false, /^\d+$/);
+  static FILEMOD = new Field("nfo:filelastmodified", false, null);
+  static FILENAME = new Field("nfo:filename", true, null);
   //this field is referenced in some Merritt code, but it is not actively used
   //static NIE_MIMETYPE = new Field("nie:mimetype");
-  static MIMETYPE = new Field("mrt:mimetype");
-  static PRIMID = new Field("mrt:primaryidentifier");
-  static LOCID = new Field("mrt:localidentifier");
-  static CREATOR = new Field("mrt:creator");
-  static TITLE = new Field("mrt:title");
-  static DATE = new Field("mrt:date");
+  static MIMETYPE = new Field("mrt:mimetype", false, null);
+  static PRIMID = new Field("mrt:primaryidentifier", false, null);
+  static LOCID = new Field("mrt:localidentifier", false, null);
+  static CREATOR = new Field("mrt:creator", false, null);
+  static TITLE = new Field("mrt:title", false, null);
+  static DATE = new Field("mrt:date", false, null);
+  static NA = new Field("na:na", false, null);
 
-  constructor(fname) {
+  constructor(fname, required, regex) {
+    this.required = required;
+    this.regex = regex;
     var m = fname.match(/^(\w+):(\w+)$/);
     if (m) {
       this.fname = fname;
@@ -393,8 +393,32 @@ class Field {
     }
   }
 
+  validate_data(data) {
+    if (data == null || data == "") {
+      if (this.required) {
+        return false;
+      }
+    } else if (this.regex) {
+      return (data.match(this.regex));
+    }
+    return true;
+  }
+
+  required() {
+    return this.required;
+  }
+
   valid() {
     return this.namespace != null && this.name != null;
+  }
+
+  static instance(name) {
+    for(const f of Field.known_fields()) {
+      if (name.toLowerCase() == f.fname.toLowerCase()) {
+        return f;
+      }
+    }
+    return Field.NA;
   }
 
   static known_fields() {
