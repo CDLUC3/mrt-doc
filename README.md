@@ -72,6 +72,8 @@ Code Repositories
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
 - Cron Driver
   - [Merritt Crons](https://github.com/CDLUC3/mrt-cron)
+- Build Support
+  - [Jenkins Functions](https://github.com/CDLUC3/mrt-jenkins)
 
 ### Documentation Tools (Python)
 -  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
