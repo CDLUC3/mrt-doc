@@ -409,7 +409,7 @@ class Field {
           t.setMessage("hashval must be 32 alphanumeric values");
           return false;
         }
-      } else {
+      } else if (alg == "sha256") {
         if (v.match(/^[a-z0-9]{64,64}$/)) {
           return true;
         } else {
@@ -418,6 +418,7 @@ class Field {
           return false;
         }
       }
+      return true;
     }
   )
   static FILESIZE = new Field("nfo:filesize").setRegex(/^\d+$/, "must be a number");
