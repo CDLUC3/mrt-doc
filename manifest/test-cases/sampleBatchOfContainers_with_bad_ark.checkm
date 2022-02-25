@@ -1,0 +1,9 @@
+#%checkm_0.7
+#%profile | http://uc3.cdlib.org/registry/ingest/manifest/mrt-container-batch-manifest
+#%prefix | mrt: | http://merritt.cdlib.org/terms#
+#%prefix | nfo: | http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#
+#%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:primaryIdentifier | mrt:localIdentifier | mrt:creator | mrt:title | mrt:date
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/huskyChicken.zip |  |  |  |  | huskyChicken.zip | ark:/foo |  | Tracy Seneca | Husky Chicken | 2009-09-01
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/outdoorStore.zip |  |  |  |  | outdoorStore.zip | ark:/99999/fk4903mg7h |  |  | The Outdoor Store, Portland OR
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/souvenirs.zip |  |  |  |  | souvenirs.zip |  |  | Tracy Seneca | SouvenirsLast Summer
+#%eof

@@ -144,11 +144,9 @@ class Checkm {
     var line = this.getLine(/^#%profile \| (.*)$/g);
     if (line) {
       var m = line.match(/^#%profile \| http:\/\/uc3\.cdlib\.org\/registry\/ingest\/manifest\/(.*)$/);
-      console.log(m);
       if (m) {
         this.profileName = m[1];
         this.profileType = ProfileType.instance(this.profileName);
-        console.log(this.profileType);
         if (this.profileType) {
           t.pass();
           t.setMessage(this.profileName);
@@ -196,7 +194,6 @@ class Checkm {
     if (m) {
       var pre = new Prefix(m[1], m[2]);
       this.prefixes[pre.prefix] = pre.uri;
-      console.log(this.prefixes);
       t.setLabel("Validate prefix line: " + pre.prefix);
       t.pass();
       t.setMessage(pre.uri);
@@ -263,47 +260,6 @@ class Checkm {
       t.setMessage("Improper field name")
     }
     this.validation_checks.push(t);
-  }
-
-  checkDataRowContent(row, fname) {
-    var t = new CheckmTest(fname + " - content");
-    var failed_checks = [];
-    for(var i=0; i < this.fields.length; i++) {
-      var f = this.fields[i];
-      if (!f.validate_data(row[i])) {
-        failed_checks.push(f.fname);       
-      }
-    }
-    if (failed_checks.length == 0) {
-      t.pass();
-    } else {
-      t.error();
-      t.setMessage("Invalid fields: " + failed_checks.join(", "));
-    }
-    this.validation_checks.push(t);  
-    if (this.profileType == ProfileType.CONTAINER_BATCH) {
-      var t = new CheckmTest(fname + " - profile checks");
-      var m = fname.match(/.*\.(tar|zip|tar\.gz|bz2)$/i); 
-      if (m) {
-        t.pass();
-        t.setMessage(m[1] + ": Filename is a zip, tar, tar.gz or bz2");
-      } else {
-        t.error();
-        t.setMessage("Filename must be a zip, tar, tar.gz or bz2");
-      }
-      this.validation_checks.push(t);  
-    } else if (this.profileType == ProfileType.BATCH) {
-      t = new CheckmTest(fname + " - content");
-      var m = fname.match(/.*\.(checkm)$/i);
-      if (m) {
-        t.pass();
-        t.setMessage(m[1] + ": Filename is a checkm");
-      } else {
-        t.error();
-        t.setMessage("Filename must be a checkm");
-      }
-      this.validation_checks.push(t);  
-    } 
   }
 
   checkData() {
@@ -396,7 +352,30 @@ class DataRowContent {
 }
 
 class Field {
-  static FILEURL = new Field("nfo:fileurl").setRequired(true);
+  static FILEURL = new Field("nfo:fileurl").setRequired(true).setValidateFxn(
+    function(cdr, v, t) {
+      try {
+        var url = new URL(v);
+        if (!url.protocol.match(/^(http|https):$/)) {
+          t.error();
+          t.setMessage("Invalid protocol " + url.protocol);
+          return false;  
+        }
+        //https://stackoverflow.com/a/49849482/3846548
+        var res = v.match(/^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$/g);
+        if (res == null) {
+          t.error();
+          t.setMessage("Bad url ");
+          return false;  
+        }
+      } catch(e) {
+        t.error();
+        t.setMessage("Invalid URL " + e.toString());
+        return false;
+      }
+      return true;
+    }
+  );
   static HASHALG = new Field("nfo:hashalgorithm").setRegex(/^(md5|sha256)$/, "allowed values: md5 or sha256");
   static HASHVAL = new Field("nfo:hashvalue").setValidateFxn(
     function(cdr, v, t) {
@@ -420,7 +399,7 @@ class Field {
       }
       return true;
     }
-  )
+  );
   static FILESIZE = new Field("nfo:filesize").setRegex(/^\d+$/, "must be a number");
   static FILEMOD = new Field("nfo:filelastmodified");
   static FILENAME = new Field("nfo:filename").setRequired(true).setValidateFxn(
@@ -450,11 +429,10 @@ class Field {
     }
   )
 
-
   //this field is referenced in some Merritt code, but it is not actively used
   //static NIE_MIMETYPE = new Field("nie:mimetype");
   static MIMETYPE = new Field("mrt:mimetype");
-  static PRIMID = new Field("mrt:primaryidentifier");
+  static PRIMID = new Field("mrt:primaryidentifier").setRegex(/^ark:\/\d+\/[a-z][a-z0-9]+$/, 'Must be a valid ark');
   static LOCID = new Field("mrt:localidentifier");
   static CREATOR = new Field("mrt:creator");
   static TITLE = new Field("mrt:title");

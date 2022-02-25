@@ -1,0 +1,9 @@
+#%checkm_0.7
+#%profile | http://uc3.cdlib.org/registry/ingest/manifest/mrt-batch-manifest
+#%prefix | mrt: | http://merritt.cdlib.org/terms#
+#%prefix | nfo: | http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#
+#%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:primaryIdentifier | mrt:localIdentifier | mrt:creator | mrt:title | mrt:date
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/bigHunt.checkm |  |  |  |  | bigHunt.checkm |  |  | Tracy Seneca |  | 2009-09-01
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/4blocks.checkm |  |  |  |  | 4blocks.checkm.txt |  |  | Tracy Seneca | Motel Capri - manifest style | 2009-09-01T00:00:00
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/call911.checkm |  |  |  |  | call911.checkm |  |  | Tracy Seneca | If This Bell Rings Call 911 - manifest style | 2009-09-01T00:00:00
+#%eof
