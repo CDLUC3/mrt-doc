@@ -18,7 +18,7 @@
           <option value="../sampleFiles/sampleBatchOfFiles.checkm">Batch of Files</option>
           <option value="../sampleFiles/sampleBatchOfManifests.checkm">Batch of Manifests</option>
         </optgroup>
-        <optgroup label="Negative Cases">
+        <optgroup label="Negative Cases - Headers and Structure">
           <option value="test-cases/4blocks_prefixes.checkm">Ingest Manifest, Non-standard Prefix</option>
           <option value="test-cases/4blocks_uri.checkm">Ingest Manifest, Non-standard URI</option>  
           <option value="test-cases/4blocks_nodecl.checkm">Ingest Manifest, No Declaration</option>  
@@ -27,10 +27,16 @@
           <option value="test-cases/4blocks_nofields.checkm">Ingest Manifest, No Fields</option>  
           <option value="test-cases/4blocks_noeof.checkm">Ingest Manifest, No EOF</option>  
           <option value="test-cases/4blocks_noterm_nl.checkm">Ingest Manifest, No terminal newline</option>  
-          <option value="test-cases/4blocks_missing_fname.checkm">Ingest Manifest, Missing filename field</option>  
-          <option value="test-cases/4blocks_missing_url.checkm">Ingest Manifest, Missing URL field</option>  
           <option value="test-cases/4blocks_extra_pipe.checkm">Ingest Manifest, Extra Pipe Character</option>  
           <option value="test-cases/4blocks_encoding.checkm">Ingest Manifest, Non utf-8 encoding</option>  
+        </optgroup>
+        <optgroup label="Negative Cases - fieldset">
+          <option value="test-cases/4blocks_missing_fname.checkm">Ingest Manifest, Missing filename field</option>  
+          <option value="test-cases/4blocks_missing_url.checkm">Ingest Manifest, Missing URL field</option>  
+          <option value="test-cases/4blocks_incorrect_algorithm.checkm">Ingest Manifest, Bad Algorithm</option>
+          <option value="test-cases/4blocks_incorrect_sha256.checkm">Ingest Manifest, Improper SHA256 (64 alphanum)</option>  
+          <option value="test-cases/4blocks_incorrect_md5_format.checkm">Ingest Manifest, Improper MD5 (32 alphanum)</option>  
+          <option value="test-cases/4blocks_incorrect_filesize.checkm">Ingest Manifest, Improper File Size</option>  
         </optgroup>
       </select>
       <button onclick="javascript:runit()" title="May only work in Chrome or Edge...">Load Your Own File</button>
