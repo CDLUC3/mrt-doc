@@ -90,15 +90,6 @@ class Checkm {
       .split("\n"); 
   }
 
-  getIndex(key) {
-    for(var i=0; i<this.fields.length; i++) {
-      if (this.fields[i].fname.toLowerCase() == key.toLowerCase()) {
-        return i;
-      }
-    }
-    return 0;
-  }
-
   getLine(regex) {
     if (this.lines.length > 0) {
       if (this.lines[0].match(regex)) {
@@ -274,23 +265,6 @@ class Checkm {
     this.validation_checks.push(t);
   }
 
-  checkDataRowStructure(row, fname) {
-    var t = new CheckmTest(fname + " - structure");
-    if (row.length == this.fields.length) {
-      this.data.push(row);
-      t.pass();
-    } else if (row.length == this.fields.length - 1) {
-      t.warn();
-      t.setMessage("Blank field added to end of record");
-      row.push("");
-      this.data.push(row);
-    } else {
-      t.error();
-      t.setMessage("Bad field count: " + row.length);
-    }
-    this.validation_checks.push(t);  
-  }
-
   checkDataRowContent(row, fname) {
     var t = new CheckmTest(fname + " - content");
     var failed_checks = [];
@@ -340,9 +314,9 @@ class Checkm {
       if (line.match(/^#%.*/)) continue;
       if (line.match(/^\s*$/)) continue;
       var row = line.split(/\s*\|\s*/);
-      var fname = row[this.getIndex(Field.FILENAME.fname)];
-      this.checkDataRowStructure(row, fname);
-      this.checkDataRowContent(row, fname);
+      this.data.push(row);
+      var drc = new DataRowContent(this, row, dr);
+      drc.checkContent();
     }
   }
 
@@ -365,26 +339,131 @@ class Checkm {
 
 }
 
+class DataRowContent {
+  constructor(checkm, row, num) {
+    this.checkm = checkm;
+    this.fields = checkm.fields;
+    this.row = row;
+    this.num = num;
+
+    var t = new CheckmTest("Check structure for data row: " + this.rowLabel());
+    if (row.length > this.fields.length) {
+      t.error();
+      t.setMessage("Too many fields found: "+ row.length);
+    } else if (row.length < this.fields.length) {
+      t.warn();
+      t.setMessage("Record padded, too few fields found: "+ row.length);
+      for(var i=row.length; i<this.checkm.fields.length; i++) {
+        row.push("");
+      } 
+    } else {
+      t.pass();
+    }
+    this.checkm.validation_checks.push(t);
+  }
+
+  rowLabel() {
+    return "Row "+ this.num + ": " + this.getValue(Field.FILENAME);
+  }
+
+  checkContent() {
+    for(var i=0; i < this.row.length; i++) {
+      var field = this.fields[i];
+      var t = new CheckmTest("Check " + field.fname + " for data row: " + this.rowLabel());
+      if (!this.fields[i].validate_data(this, this.row[i], t)) {
+        this.checkm.validation_checks.push(t);
+      }
+    } 
+  }
+
+  getIndex(key) {
+    for(var i=0; i<this.fields.length; i++) {
+      if (this.fields[i].fname.toLowerCase() == key.fname.toLowerCase()) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  getValue(key, defVal) {
+    var i = this.getIndex(key);
+    if (i == -1 || i >= this.row.length) {
+      return defVal;
+    }
+    return this.row[i];
+  }
+
+}
+
 class Field {
-  static FILEURL = new Field("nfo:fileurl", true, null);
-  static HASHALG = new Field("nfo:hashalgorithm", false, /^(md5|sha256)$/);
-  static HASHVAL = new Field("nfo:hashvalue", false, /^[a-z0-9]{32,32}([a-z0-9]{32,32})?$/);
-  static FILESIZE = new Field("nfo:filesize", false, /^\d+$/);
-  static FILEMOD = new Field("nfo:filelastmodified", false, null);
-  static FILENAME = new Field("nfo:filename", true, null);
+  static FILEURL = new Field("nfo:fileurl").setRequired(true);
+  static HASHALG = new Field("nfo:hashalgorithm").setRegex(/^(md5|sha256)$/, "allowed values: md5 or sha256");
+  static HASHVAL = new Field("nfo:hashvalue").setValidateFxn(
+    function(cdr, v, t) {
+      var alg = cdr.getValue(Field.HASHALG);
+      if (alg == "md5") {
+        if (v.match(/^[a-z0-9]{32,32}$/)) {
+          return true;
+        } else {
+          t.error();
+          t.setMessage("hashval must be 32 alphanumeric values");
+          return false;
+        }
+      } else {
+        if (v.match(/^[a-z0-9]{64,64}$/)) {
+          return true;
+        } else {
+          t.error();
+          t.setMessage("hashval must be 64 alphanumeric values");
+          return false;
+        }
+      }
+    }
+  )
+  static FILESIZE = new Field("nfo:filesize").setRegex(/^\d+$/, "must be a number");
+  static FILEMOD = new Field("nfo:filelastmodified");
+  static FILENAME = new Field("nfo:filename").setRequired(true).setValidateFxn(
+    function(cdr, v, t) {
+      if (cdr.checkm.profileType == ProfileType.CONTAINER_BATCH) {
+        var m = v.match(/.*\.(tar|zip|tar\.gz|bz2)$/i); 
+        if (m) {
+          t.pass();
+          t.setMessage(m[1] + ": Filename is a zip, tar, tar.gz or bz2");
+        } else {
+          t.error();
+          t.setMessage("Filename must be a zip, tar, tar.gz or bz2");
+          return false;
+        }
+      } else if (cdr.checkm.profileType == ProfileType.BATCH) {
+        var m = v.match(/.*\.(checkm)$/i);
+        if (m) {
+          t.pass();
+          t.setMessage(m[1] + ": Filename is a checkm");
+        } else {
+          t.error();
+          t.setMessage("Filename must be a checkm");
+          return false;
+        }
+      }
+      return true; 
+    }
+  )
+
+
   //this field is referenced in some Merritt code, but it is not actively used
   //static NIE_MIMETYPE = new Field("nie:mimetype");
-  static MIMETYPE = new Field("mrt:mimetype", false, null);
-  static PRIMID = new Field("mrt:primaryidentifier", false, null);
-  static LOCID = new Field("mrt:localidentifier", false, null);
-  static CREATOR = new Field("mrt:creator", false, null);
-  static TITLE = new Field("mrt:title", false, null);
-  static DATE = new Field("mrt:date", false, null);
-  static NA = new Field("na:na", false, null);
+  static MIMETYPE = new Field("mrt:mimetype");
+  static PRIMID = new Field("mrt:primaryidentifier");
+  static LOCID = new Field("mrt:localidentifier");
+  static CREATOR = new Field("mrt:creator");
+  static TITLE = new Field("mrt:title");
+  static DATE = new Field("mrt:date");
+  static NA = new Field("na:na");
 
-  constructor(fname, required, regex) {
-    this.required = required;
-    this.regex = regex;
+  constructor(fname) {
+    this.required = false;
+    this.regex = null;
+    this.usage = "";
     var m = fname.match(/^(\w+):(\w+)$/);
     if (m) {
       this.fname = fname;
@@ -393,13 +472,37 @@ class Field {
     }
   }
 
-  validate_data(data) {
-    if (data == null || data == "") {
+  setRequired(b) {
+    this.required = b;
+    return this;
+  }
+
+  setRegex(regex, usage) {
+    this.regex = regex;
+    this.usage = usage;
+    return this;
+  }
+
+  setValidateFxn(f) {
+    this.validate_fxn = f;
+    return this;
+  }
+
+  validate_data = function(cdr, data, t) {
+    if (this.validate_fxn) {
+      return this.validate_fxn(cdr, data, t);
+    } else if (data == null || data == "") {
       if (this.required) {
+        t.error();
+        t.setMessage("Field is required");
         return false;
       }
     } else if (this.regex) {
-      return (data.match(this.regex));
+      if (!data.match(this.regex)) {
+        t.error();
+        t.setMessage(this.usage);
+        return false;
+      }
     }
     return true;
   }
