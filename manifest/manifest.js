@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $("#accordion").accordion({heightStyle: "content", active: 2});
   $("#testfiles").on("change", function(){
     var sel = $("#testfiles option:selected");
     var fname = sel.val();
@@ -6,6 +7,7 @@ $(document).ready(function(){
       url: fname,
       success: function(data){
         $("#checkm").val(data);
+        $("#accordion").accordion("option", "active", 2);
       }
     });
   });
@@ -14,13 +16,145 @@ $(document).ready(function(){
 function parse() {
   var cv = new CheckmValidator();
   cv.parse();
+  $("#accordion").accordion("option", "active", 3);
 }
 
-async function runit(){
+async function runLoadCheck(){
   var [fileHandle] = await window.showOpenFilePicker();
   const file = await fileHandle.getFile();
   const contents = await file.text();
   $("#checkm").val(contents);
+}
+
+class CsvToCheckm {
+  constructor(contents) {
+    this.arr = parseCSV(contents);
+    this.fields = this.arr.length > 0 ? this.arr[0] : [];
+    this.checkm = false;
+    this.container = false;
+    this.single_file = false;
+    this.buf = "";
+    this.filecol = this.file_col();
+    this.batch = this.is_batch();
+    this.analyzeRows();
+    var profile = this.get_profile();
+    if (profile == "") {
+      this.append("Profile Type Could Not be Determined\n\n" + contents);
+      this.append(this.checkm + " " + this.container + " " + this.single_file + "\n");
+      this.append(contents);
+    } else {
+      this.appendHeaders(profile);
+      this.processRows();
+      this.appendFooters();  
+    }
+  }
+
+  file_col() {
+    for(var i=0; i < this.fields.length; i++) {
+      if (this.fields[i].toLowerCase() == Field.FILENAME.fname.toLowerCase()) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  is_batch() {
+    for(var fname of this.fields){
+      if (fname == Field.PRIMID.fname) {
+        return true;
+      }
+      if (fname == Field.LOCID.fname) {
+        return true;
+      }
+      if (fname == Field.TITLE.fname) {
+        return true;
+      }
+      if (fname == Field.CREATOR.fname) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  get_filename(r) {
+    if (this.filecol >= 0) {
+      if (this.filecol < r.length) {
+        return r[this.filecol];
+      }
+    }
+    return "";
+  }
+
+  test_filename(s) {
+    if (s.match(/\.checkm$/i)) {
+      this.checkm = true;
+    } else if (s.match(/\.(zip|tar|tar\.gz|bz2)$/i)) {
+      this.container = true;
+    } else if (s.match(/./)) {
+      this.single_file = true;
+    }
+  }
+
+  append(s) {
+    this.buf = this.buf + s;
+  }
+
+  analyzeRows() {
+    for(var i=1; i < this.arr.length; i++) {
+      this.test_filename(this.get_filename(this.arr[i]));
+    }  
+  }
+  appendHeaders(p) {
+    this.append("#%checkm_0.7\n");
+    this.append("#%profile | http://uc3.cdlib.org/registry/ingest/manifest/" + p + "\n");
+    this.append("#%prefix | mrt: | http://merritt.cdlib.org/terms#\n");
+    this.append("#%prefix | nfo: | http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#\n");
+    this.append("#%fields | " + this.fields.join(" | ") + "\n");
+  }
+
+  appendFooters() {
+    this.append("#%eof\n");
+  }
+  get_profile() {
+    var types = 0;
+    if (this.single_file) types++;
+    if (this.container) types++;
+    if (this.checkm) types++;
+
+    if (types != 1) {
+      return "";
+    }
+
+    if (this.batch) {
+      if (this.single_file) {
+        return "mrt-single-file-batch-manifest";
+      } 
+      if (this.checkm) {
+        return "mrt-batch-manifest";
+      } 
+      if (this.container) {
+        return "mrt-container-batch-manifest";
+      } 
+    }
+    return "mrt-ingest-manifest";
+  }
+  processRows() {
+    for(var i=1; i < this.arr.length; i++) {
+      this.append(this.arr[i].join(" | ") + "\n");
+    }  
+  }
+}
+async function runCsv(){
+  var [fileHandle] = await window.showOpenFilePicker();
+  const file = await fileHandle.getFile();
+  const contents = await file.text();
+  var csv2checkm = new CsvToCheckm(contents);
+  $("#checkm").val(csv2checkm.buf);
+  $("#accordion").accordion("option", "active", 2);
+}
+
+function prefix(buf) {
+
 }
 
 class CheckmValidator {
@@ -298,7 +432,7 @@ class Checkm {
 class DataRowContent {
   constructor(checkm, row, num) {
     this.checkm = checkm;
-    this.fields = checkm.fields;
+    this.fields = checkm.fields ? checkm.fields : [];
     this.row = row;
     this.num = num;
 
@@ -324,10 +458,12 @@ class DataRowContent {
 
   checkContent() {
     for(var i=0; i < this.row.length; i++) {
-      var field = this.fields[i];
-      var t = new CheckmTest("Check " + field.fname + " for data row: " + this.rowLabel());
-      if (!this.fields[i].validate_data(this, this.row[i], t)) {
-        this.checkm.validation_checks.push(t);
+      if (i < this.fields.length) {
+        var field = this.fields[i];
+        var t = new CheckmTest("Check data for row: " + this.rowLabel());
+        if (!field.validate_data(this, this.row[i], t)) {
+          this.checkm.validation_checks.push(t);
+        }  
       }
     } 
   }
@@ -468,14 +604,14 @@ class Field {
   }
 
   validate_data = function(cdr, data, t) {
-    if (this.validate_fxn) {
-      return this.validate_fxn(cdr, data, t);
-    } else if (data == null || data == "") {
+    if (data == null || data == "") {
       if (this.required) {
         t.error();
         t.setMessage("Field is required");
         return false;
       }
+    } else if (this.validate_fxn) {
+      return this.validate_fxn(cdr, data, t);
     } else if (this.regex) {
       if (!data.match(this.regex)) {
         t.error();

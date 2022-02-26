@@ -4,11 +4,28 @@
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"></link>   
 <link rel="stylesheet" type="text/css" href="manifest.css"></link>   
+<script src="parse_csv.js"></script>
 <script src="manifest.js"></script>
 </head>
 <body>
-  <h1>CheckM Validator</h1>
-  <div>
+  <h1>Merritt Checkm Creator and Validator</h1>
+  <div id="accordion">
+    <h2>Choose CSV Template to Generate Manifest</h2>
+    <div>
+      <ul>
+        <li><a href="csv-templates/mrt-ingest-template.csv">mrt-ingest-template: ingest multiple files into one object</a></li>
+        <li><a href="csv-templates/mrt-single-file-batch-manifest.csv">mrt-single-file-batch-manifest: ingest multiple files into one object per file</a></li>
+        <li><a href="csv-templates/mrt-container-batch-manifest.csv">mrt-container-batch-manifest: ingest the contents of one or more container file into one object per container file</a></li>
+        <li><a href="csv-templates/mrt-batch-manifest.csv">mrt-batch-manifest: ingest the contents of one or more checkm files into one object per checkm file</a></li>
+      </ul>
+    </div>
+    <h2>Import CSV (to convert to Checkm)</h2>
+    <div>
+      <button onclick="javascript:runCsv()" title="May only work in Chrome or Edge...">Load CSV File</button>
+    </div>
+
+    <h2>Checkm File Text Entry</h2>
+    <div>
       <select id="testfiles">
         <option>Choose a Sample Merritt Manifest...</option>
         <optgroup label="Merritt published sample files">
@@ -49,21 +66,25 @@
           <option value="test-cases/4blocks_with_moddate.checkm">Ingest Manifest, With mod date</option>  
           <option value="test-cases/4blocks_with_bad_moddate.checkm">Ingest Manifest, With bad mod date</option>  
         </optgroup>
-        </select>
-    </select>
-    <button onclick="javascript:runit()" title="May only work in Chrome or Edge...">Load Your Own File</button>
+      </select>
+      <button onclick="javascript:runLoadCheck()" title="May only work in Chrome or Edge...">Load Your Own File</button>
       <fieldset>
           <legend>Checkm file</legend>
           <textarea rows="15" cols="120" id="checkm">
           </textarea>
       </fieldset>
+      <div>
+        <button onclick="javascript:parse()">Parse Manifest</button>
+      </div>
+    </div>
+    <h2>Checkm Analysis</h2>
+    <div id="analysis">
+      tbd
+    </div>
+    <h2>Checkm Data</h2>
+    <div id="data">
+      tbd
+    </div>  
   </div>
-  <div>
-  <button onclick="javascript:parse()">Parse Manifest</button>
-  </div>
-  <h2>Analysis</h2>
-  <div id="analysis"></div>
-  <h2>Data</h2>
-  <div id="data"></div>
 </body>
 </html>
