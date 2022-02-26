@@ -15,8 +15,8 @@ $(document).ready(function(){
 
 function parse() {
   var cv = new CheckmValidator();
-  cv.parse();
-  $("#accordion").accordion("option", "active", 3);
+  var datav = cv.parse();
+  $("#accordion").accordion("option", "active", datav ? 4 : 3);
 }
 
 async function runLoadCheck(){
@@ -152,11 +152,6 @@ async function runCsv(){
   $("#checkm").val(csv2checkm.buf);
   $("#accordion").accordion("option", "active", 2);
 }
-
-function prefix(buf) {
-
-}
-
 class CheckmValidator {
   getData() {
     return $("#checkm").val();
@@ -183,6 +178,7 @@ class CheckmValidator {
     checkmFile.validation_checks.forEach(test => test.tr().appendTo(tbody));
     tbody = this.createDataTable(checkmFile);
     checkmFile.data_tr(tbody);
+    return checkmFile.showDataTableView;
   }  
 }
 
@@ -195,12 +191,14 @@ class Checkm {
     this.checkHeader();
     this.profileName = "";
     this.profileType = null;
+    this.showDataTableView = true;
     this.checkProfile();
     this.prefixes = {};
     this.checkPrefixes();
     this.fields = [];
     this.checkFields();
     this.data = [];
+    this.data_css = [];
     this.checkData();
     this.checkEof();
     this.checkTerminalNewline();
@@ -213,6 +211,7 @@ class Checkm {
       if (this.rawdata.codePointAt(i) == 65533) {
         t.error();
         t.setMessage("Replacement character fount at position " + i);
+        this.showDataTableView = false;
       }
     }
     this.validation_checks.push(t);
@@ -247,6 +246,7 @@ class Checkm {
     } else {
       t.error();
       t.setMessage("#%checkm_0.7 not found at top of file");
+      this.showDataTableView = false;
     }
     this.validation_checks.push(t);
   }
@@ -258,6 +258,7 @@ class Checkm {
     } else {
       t.error();
       t.setMessage("#%eof not found at end of file");
+      this.showDataTableView = false;
     }
     this.validation_checks.push(t);
   }
@@ -269,6 +270,7 @@ class Checkm {
     } else {
       t.error();
       t.setMessage("terminal newline not found at end of file");
+      this.showDataTableView = false;
     }
     this.validation_checks.push(t);
   }
@@ -287,14 +289,17 @@ class Checkm {
         } else {
           t.error();
           t.setMessage("Invalid profile name: [" + this.profileName + "]");  
+          this.showDataTableView = false;
         }
       } else {
         t.error();
-        t.setMessage("Invalid url for profile")
+        t.setMessage("Invalid url for profile");
+        this.showDataTableView = false;
       }
     } else {
       t.error();
-      t.setMessage("Profile declaration not found")
+      t.setMessage("Profile declaration not found");
+      this.showDataTableView = false;
     }
     this.validation_checks.push(t);
   }
@@ -311,11 +316,13 @@ class Checkm {
           t.pass();
         } else {
           t.error();
-          t.setMessage("Expected uri: " + p.uri)
+          t.setMessage("Expected uri: " + p.uri);
+          this.showDataTableView = false;
         }
       } else {
         t.error();
         t.setMessage("Prefix not found in manifest");
+        this.showDataTableView = false;
       }
       this.validation_checks.push(t);  
     }
@@ -334,6 +341,7 @@ class Checkm {
     } else {
       t.error();
       t.setMessage("Improperly formatted prefix line: " + line);
+      this.showDataTableView = false;
     }
     this.validation_checks.push(t);
   }
@@ -366,11 +374,13 @@ class Checkm {
         } else {
           t.error();
           t.setMessage("Required fields not found: " + fail);
+          this.showDataTableView = false;
         }
       }
     } else {
       t.error();
       t.setMessage("Fields header not found: " + line);
+      this.showDataTableView = false;
     }
     this.validation_checks.push(t);
   }
@@ -384,10 +394,12 @@ class Checkm {
         } else {
           t.error();
           t.setMessage("Field not known");
+          this.showDataTableView = false;
         }
       } else {
         t.error();
         t.setMessage("Field prefix not defined");
+        this.showDataTableView = false;
       }
     } else {
       t.error();
@@ -411,10 +423,10 @@ class Checkm {
   }
 
   data_tr(tbody) {
-    for(const r of this.data) {
+    for(var r = 0; r < this.data.length; r++) {
       var tr = $("<tr/>").appendTo(tbody);
-      for(const c of r) {
-        $("<td/>").text(c).appendTo(tr);
+      for(var c = 0; c < this.data[r].length; c++) {
+        $("<td/>").addClass(this.data_css[r][c]).text(this.data[r][c]).appendTo(tr);
       }
     }
   }
@@ -457,15 +469,20 @@ class DataRowContent {
   }
 
   checkContent() {
+    var css_row = [];
     for(var i=0; i < this.row.length; i++) {
       if (i < this.fields.length) {
         var field = this.fields[i];
         var t = new CheckmTest("Check data for row: " + this.rowLabel());
         if (!field.validate_data(this, this.row[i], t)) {
           this.checkm.validation_checks.push(t);
-        }  
+          css_row.push(t.status.name);
+        } else {
+          css_row.push("Pass");
+        }
       }
     } 
+    this.checkm.data_css.push(css_row);
   }
 
   getIndex(key) {
