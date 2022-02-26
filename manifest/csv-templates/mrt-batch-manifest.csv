@@ -1,0 +1,2 @@
+nfo:fileUrl,nfo:hashAlgorithm,nfo:hashValue,nfo:fileSize,nfo:fileLastModified,nfo:fileName,mrt:primaryIdentifier,mrt:localIdentifier,mrt:creator,mrt:title,mrt:date
+REQUIRED: must be a url,OPTIONAL: md5 OR sha256,OPTIONAL,OPTIONAL,OPTIONAL,REQUIRED: must be a checkm file,OPTIONAL,OPTIONAL,OPTIONAL,OPTIONAL,OPTIONAL
