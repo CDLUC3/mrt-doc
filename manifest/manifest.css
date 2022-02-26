@@ -7,7 +7,7 @@ table {
     border: solid gray 8px;
 }
 tr.header td, tr.header th {
-    background-color: yellow;
+    background-color: #EEEEEE;
 }
 
 #analysis td, #analysis th {
@@ -21,14 +21,14 @@ tr.header td, tr.header th {
     margin: 10px auto;
 }
 
-tr.Pass td, tr.Pass th {
+tr.Pass td, tr.Pass th, td.Pass {
     background-color: #b7f48b;
 }
 
-tr.Warn td, tr.Warn th {
+tr.Warn td, tr.Warn th, td.Warn {
     background-color: rgb(245, 245, 151);
 }
 
-tr.Error td, tr.Error th {
+tr.Error td, tr.Error th, td.Error {
     background-color: rgb(238, 131, 131);
 }
