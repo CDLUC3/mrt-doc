@@ -3,6 +3,7 @@ $(document).ready(function(){
   $("#testfiles").on("change", function(){
     var sel = $("#testfiles option:selected");
     var fname = sel.val();
+    setDownloadName(fname);
     $.ajax({
       url: fname,
       success: function(data){
@@ -14,6 +15,7 @@ $(document).ready(function(){
   $("#testcsvs").on("change", function(){
     var sel = $("#testcsvs option:selected");
     var fname = sel.val();
+    setDownloadName(fname);
     $.ajax({
       url: fname,
       success: function(data){
@@ -22,6 +24,13 @@ $(document).ready(function(){
     });
   });
 });
+
+function setDownloadName(fname) {
+  var m = fname.match(/\/([^\/]+)\.[^\/\.]+$/)
+  if (m) {
+    $("#download-data").attr("download", m[1] + ".checkm");
+  }
+}
 
 function parse() {
   var cv = new CheckmValidator();
@@ -202,6 +211,9 @@ class CheckmValidator {
     checkmFile.validation_checks.forEach(test => test.tr().appendTo(tbody));
     tbody = this.createDataTable(checkmFile);
     checkmFile.data_tr(tbody);
+    var ddata = "data:text;charset=utf-8," + $("#checkm").val();
+    var encodedUri = encodeURI(ddata);  
+    $("#download-data").attr("href", encodedUri).text("Download " + $("#download-data").attr("download"));
     return checkmFile.showDataTableView;
   }  
 }
