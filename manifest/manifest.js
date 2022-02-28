@@ -26,9 +26,9 @@ $(document).ready(function(){
 });
 
 function setDownloadName(fname) {
-  var m = fname.match(/\/([^\/]+)\.[^\/\.]+$/)
+  var m = fname.match(/(\/|^)([^\/]+)\.[^\/\.]+$/)
   if (m) {
-    $("#download-data").attr("download", m[1] + ".checkm");
+    $("#download-data").attr("download", m[2] + ".checkm");
   }
 }
 
@@ -40,6 +40,7 @@ function parse() {
 
 async function runLoadCheck(){
   var [fileHandle] = await window.showOpenFilePicker();
+  setDownloadName(fileHandle.name);
   const file = await fileHandle.getFile();
   const contents = await file.text();
   $("#checkm").val(contents);
@@ -174,6 +175,7 @@ class CsvToCheckm {
 }
 async function loadCsv(){
   var [fileHandle] = await window.showOpenFilePicker();
+  setDownloadName(fileHandle.name);
   const file = await fileHandle.getFile();
   const contents = await file.text();
   $("#csv").val(contents);
@@ -220,6 +222,7 @@ class CheckmValidator {
 
 class Checkm {
   constructor(rawdata) {
+    this.warnPad = 0;
     this.validation_checks = [];
     this.rawdata = rawdata;
     this.checkEncoding();
@@ -238,6 +241,11 @@ class Checkm {
     this.checkData();
     this.checkEof();
     this.checkTerminalNewline();
+  }
+
+  warnPadding() {
+    this.warnPad++;
+    return this.warnPad < 5;
   }
 
   checkEncoding() {
@@ -460,9 +468,16 @@ class Checkm {
 
   data_tr(tbody) {
     for(var r = 0; r < this.data.length; r++) {
-      var tr = $("<tr/>").appendTo(tbody);
+      var tr = $("<tr/>");
+      var showRow = (r < 20);
       for(var c = 0; c < this.data[r].length; c++) {
         $("<td/>").addClass(this.data_css[r][c]).text(this.data[r][c]).appendTo(tr);
+        if (this.data_css[r][c] != 'Pass') {
+          showRow = true;
+        }
+      }
+      if (showRow) {
+        tr.appendTo(tbody);
       }
     }
   }
@@ -488,16 +503,19 @@ class DataRowContent {
     if (row.length > this.fields.length) {
       t.error();
       t.setMessage("Too many fields found: "+ row.length);
+      this.checkm.validation_checks.push(t);
     } else if (row.length < this.fields.length) {
-      t.warn();
-      t.setMessage("Record padded, too few fields found: "+ row.length);
-      for(var i=row.length; i<this.checkm.fields.length; i++) {
-        row.push("");
-      } 
+      if (this.checkm.warnPadding()){
+        t.warn();
+        t.setMessage("Record padded, too few fields found: "+ row.length);
+        for(var i=row.length; i<this.checkm.fields.length; i++) {
+          row.push("");
+        } 
+        this.checkm.validation_checks.push(t);  
+      }
     } else {
       t.pass();
     }
-    this.checkm.validation_checks.push(t);
   }
 
   rowLabel() {
