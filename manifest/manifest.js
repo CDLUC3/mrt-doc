@@ -7,7 +7,17 @@ $(document).ready(function(){
       url: fname,
       success: function(data){
         $("#checkm").val(data);
-        $("#accordion").accordion("option", "active", 2);
+      }
+    });
+  });
+
+  $("#testcsvs").on("change", function(){
+    var sel = $("#testcsvs option:selected");
+    var fname = sel.val();
+    $.ajax({
+      url: fname,
+      success: function(data){
+        $("#csv").val(data);
       }
     });
   });
@@ -121,20 +131,29 @@ class CsvToCheckm {
     if (this.container) types++;
     if (this.checkm) types++;
 
-    if (types != 1) {
-      return "";
-    }
-
     if (this.batch) {
-      if (this.single_file) {
+      if (types == 1) {
+        if (this.single_file) {
+          return "mrt-single-file-batch-manifest";
+        } 
+        if (this.checkm) {
+          return "mrt-batch-manifest";
+        } 
+        if (this.container) {
+          return "mrt-container-batch-manifest";
+        }   
+      } else if (this.checkm) {
+        alert("A checkm file was found in CSV file list.  \n\nIf a single checkm file is found, all files should be checkm files.")
+        return "";
+      } else {
+        alert(
+          "Container files and non-container files were found in the CSV file list. \n"+
+          "If you proceed with the generated manifest, the container files will be deposited as content.  "+
+          "The containers will not be expanded before ingest.\n\n"+
+          "If you wish to unpack containers prior to ingest, the manifest must contain ONLY container files."
+        )
         return "mrt-single-file-batch-manifest";
-      } 
-      if (this.checkm) {
-        return "mrt-batch-manifest";
-      } 
-      if (this.container) {
-        return "mrt-container-batch-manifest";
-      } 
+      }
     }
     return "mrt-ingest-manifest";
   }
@@ -144,14 +163,19 @@ class CsvToCheckm {
     }  
   }
 }
-async function runCsv(){
+async function loadCsv(){
   var [fileHandle] = await window.showOpenFilePicker();
   const file = await fileHandle.getFile();
   const contents = await file.text();
-  var csv2checkm = new CsvToCheckm(contents);
+  $("#csv").val(contents);
+}
+
+function parseCsv(){
+  var csv2checkm = new CsvToCheckm($("#csv").val());
   $("#checkm").val(csv2checkm.buf);
   $("#accordion").accordion("option", "active", 2);
 }
+
 class CheckmValidator {
   getData() {
     return $("#checkm").val();
@@ -576,6 +600,18 @@ class Field {
           t.error();
           t.setMessage("Filename must be a checkm");
           return false;
+        }
+      } else if (cdr.checkm.profileType == ProfileType.SFBATCH) {
+        if (v.match(/.*\.(tar|zip|tar\.gz|bz2)$/i)) {
+          t.warn();
+          t.setMessage("Filename is a container.  It will be deposited as a single file");
+          return false;
+        } else if (v.match(/.*\.(checkm)$/i)) {
+          t.error();
+          t.setMessage("Filename is a checkm.  It will be deposited as a single file");
+          return false;
+        } else {
+          t.pass();
         }
       }
       return true; 

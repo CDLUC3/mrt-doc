@@ -1,0 +1,4 @@
+nfo:fileUrl,nfo:hashAlgorithm,nfo:hashValue,nfo:fileSize,nfo:fileLastModified,nfo:fileName,mrt:primaryIdentifier,mrt:localIdentifier,mrt:creator,mrt:title,mrt:date
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/bigHunt.checkm,,,,,bigHunt.checkm,,,Tracy Seneca,,2009-09-01
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/4blocks.checkm,,,,,4blocks.checkm,,,Tracy Seneca,Motel Capri - manifest style,2009-09-01T00:00:00
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/call911.checkm,,,,,call911.checkm,,,Tracy Seneca,If This Bell Rings Call 911 - manifest style,2009-09-01T00:00:00
