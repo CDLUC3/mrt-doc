@@ -1,0 +1,9 @@
+#%checkm_0.7
+#%profile | http://uc3.cdlib.org/registry/ingest/manifest/mrt-single-file-batch-manifest
+#%prefix | mrt: | http://merritt.cdlib.org/terms#
+#%prefix | nfo: | http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#
+#%fields | nfo:fileUrl | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | mrt:primaryIdentifier | mrt:localIdentifier | mrt:creator | mrt:title | mrt:date
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/goldenDragon.checmk | md5 | aa59e145dfb2237ecd8cb5ce4f4953ea |  |  | goldenDragon.checkm |  |  | Tracy Seneca | Golden Dragon Restaurant Sign | 2009-09-01
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/tumbleBug.jpg | md5 | 61224ef4f2a8dad552ff57980ed0bf49 |  |  | tumbleBug.jpg |  |  | Tracy Seneca | Tumble Bug, Luna Park.  Sydney
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/generalDrapery.jpg |  |  |  |  | generalDrapery.jpg |  |  |  | General Drapery
+#%eof

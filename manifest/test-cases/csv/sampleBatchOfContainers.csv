@@ -1,0 +1,4 @@
+nfo:fileUrl,nfo:hashAlgorithm,nfo:hashValue,nfo:fileSize,nfo:fileLastModified,nfo:fileName,mrt:primaryIdentifier,mrt:localIdentifier,mrt:creator,mrt:title,mrt:date
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/huskyChicken.zip,,,,,huskyChicken.zip,,,Tracy Seneca,Husky Chicken,2009-09-01
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/outdoorStore.zip,,,,,outdoorStore.zip,,,,The Outdoor Store, Portland OR
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/souvenirs.zip,,,,,souvenirs.zip,,,Tracy Seneca,SouvenirsLast Summer

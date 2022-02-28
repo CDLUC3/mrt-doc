@@ -21,9 +21,31 @@
     </div>
     <h2>Import CSV (to convert to Checkm)</h2>
     <div>
-      <button onclick="javascript:runCsv()" title="May only work in Chrome or Edge...">Load CSV File</button>
+      <div>
+        <select id="testcsvs">
+          <option>Choose a Sample CSV File...</option>
+          <optgroup label="Sample CSV files">
+            <option value="test-cases/csv/4blocks.csv">4 blocks</option>
+            <option value="test-cases/csv/sampleBatchOfContainers.csv">Batch of Containers</option>
+            <option value="test-cases/csv/sampleBatchOfFiles.csv">Batch of Files</option>
+            <option value="test-cases/csv/sampleBatchOfManifests.csv">Batch of Manifests</option>
+          </optgroup>
+          <optgroup label="Special Case CSV Files">
+            <option value="test-cases/csv/sampleBatchOfFiles_with_checkm.csv">Batch of Files, Including a CheckM</option>
+            <option value="test-cases/csv/sampleBatchOfFiles_with_container.csv">Batch of Files, Including a Container</option>
+          </optgroup>
+        </select>
+        <button onclick="javascript:loadCsv()" title="May only work in Chrome or Edge...">Load Your Own CSV File</button>
+      </div>
+      <fieldset>
+        <legend>Checkm file</legend>
+        <textarea rows="15" cols="120" id="csv">
+        </textarea>
+      </fieldset>
+      <div>
+        <button onclick="javascript:parseCsv()">Parse CSV</button>
+      </div>
     </div>
-
     <h2>Checkm File Text Entry</h2>
     <div>
       <select id="testfiles">
@@ -57,6 +79,8 @@
           <option value="test-cases/sampleBatchOfContainers_incorrect_filename.checkm">Batch of Containers, Improper Filename</option>  
           <option value="test-cases/sampleBatchOfManifests_incorrect_filename.checkm">Batch of Manifests, Improper Filename</option>  
           <option value="test-cases/sampleBatchOfContainers_with_bad_ark.checkm">Batch of Containers, Bad Ark</option>  
+          <option value="test-cases/sampleBatchOfFiles_mixedTypes.checkm">Batch of Files, Includes a Container</option>  
+          <option value="test-cases/sampleBatchOfFiles_mixedTypes_checkm.checkm">Batch of Files, Includes a Checkm</option>  
           <option value="test-cases/4blocks_incorrect_url_protocol.checkm">Ingest Manifest, Improper URL protocol</option>  
           <option value="test-cases/4blocks_incorrect_url_hostname.checkm">Ingest Manifest, Improper URL hostname</option>  
         </optgroup>
@@ -67,7 +91,7 @@
           <option value="test-cases/4blocks_with_bad_moddate.checkm">Ingest Manifest, With bad mod date</option>  
         </optgroup>
       </select>
-      <button onclick="javascript:runLoadCheck()" title="May only work in Chrome or Edge...">Load Your Own File</button>
+      <button onclick="javascript:runLoadCheck()" title="May only work in Chrome or Edge...">Load Your Own CheckM File</button>
       <fieldset>
           <legend>Checkm file</legend>
           <textarea rows="15" cols="120" id="checkm">

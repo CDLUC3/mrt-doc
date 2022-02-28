@@ -1,0 +1,4 @@
+nfo:fileUrl,nfo:hashAlgorithm,nfo:hashValue,nfo:fileSize,nfo:fileLastModified,nfo:fileName,mrt:primaryIdentifier,mrt:localIdentifier,mrt:creator,mrt:title,mrt:date
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/goldenDragon.jpg,md5,aa59e145dfb2237ecd8cb5ce4f4953ea,,,goldenDragon.jpg,,,Tracy Seneca,Golden Dragon Restaurant Sign,2009-09-01
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/tumbleBug.jpg,md5,61224ef4f2a8dad552ff57980ed0bf49,,,tumbleBug.jpg,,,Tracy Seneca,Tumble Bug, Luna Park.  Sydney
+https://raw.githubusercontent.com/CDLUC3/mrt-doc/main/sampleFiles/generalDrapery.checkm,,,,,generalDrapery.checkm,,,,General Drapery
