@@ -480,6 +480,7 @@ class Checkm {
         tr.appendTo(tbody);
       }
     }
+    $("output.rowcount").val(this.data.length);
   }
 
   data_tr_head() {
