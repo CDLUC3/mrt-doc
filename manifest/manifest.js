@@ -1,5 +1,16 @@
+const TAB_WIZARD = 0;
+const TAB_TEMPLATE = 1;
+const TAB_CSV = 2;
+const TAB_CHECKM = 3;
+const TAB_STRUCT = 4;
+const TAB_DATA = 5;
+const TAB_DOWNLOAD = 6;
 $(document).ready(function(){
-  $("#accordion").accordion({heightStyle: "content", active: 2});
+  $("#accordion").accordion({heightStyle: "content", active: TAB_WIZARD, collapsible: true});
+  wizard_set();
+  $("input.wizopt").on("click", function(){
+    wizard_set();
+  });
   $("#testfiles").on("change", function(){
     var sel = $("#testfiles option:selected");
     var fname = sel.val();
@@ -25,6 +36,31 @@ $(document).ready(function(){
   });
 });
 
+function wizard_set() {
+  $("div.tab, h2.tab, select.unittest, div.checkm_results").hide();
+  $("div.checkm_def").show();
+  var v = $("input.wizopt:checked").val();
+  var tab = TAB_WIZARD;
+  if (v == null) {
+    return; 
+  } else if (v == "rad_unittest") {
+    $("div.tab, h2.tab, select.unittest").show();
+    tab = TAB_CHECKM;
+  } else {
+    $("div.tab_checkm, h2.tab_checkm").show();
+    tab = TAB_CHECKM;
+    if (v != 'rad_checkm') {
+      $("div.tab_csv, h2.tab_csv").show();
+      tab = TAB_CSV;
+    }
+    if (v == 'rad_csv_teplate') {
+      $("div.tab_csv_template, h2.tab_csv_template").show();
+      tab = TAB_TEMPLATE;
+    }
+  }
+  $("#accordion").accordion("destroy").accordion({heightStyle: "content", active: tab, collapsible: true});
+}
+
 function setDownloadName(fname) {
   var m = fname.match(/(\/|^)([^\/]+)\.[^\/\.]+$/)
   if (m) {
@@ -35,7 +71,9 @@ function setDownloadName(fname) {
 function parse() {
   var cv = new CheckmValidator();
   var datav = cv.parse();
-  $("#accordion").accordion("option", "active", datav ? 4 : 3);
+  $("div.checkm_results").show();
+  $("div.checkm_def").hide();
+  $("#accordion").accordion("option", "active", datav ? TAB_DATA : TAB_STRUCT);
 }
 
 async function runLoadCheck(){
@@ -184,7 +222,7 @@ async function loadCsv(){
 function parseCsv(){
   var csv2checkm = new CsvToCheckm($("#csv").val());
   $("#checkm").val(csv2checkm.buf);
-  $("#accordion").accordion("option", "active", 2);
+  $("#accordion").accordion("option", "active", TAB_CHECKM);
 }
 
 class CheckmValidator {
