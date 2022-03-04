@@ -10,8 +10,15 @@
 <body>
   <h1>Merritt Checkm Creator and Validator</h1>
   <div id="accordion">
-    <h2>Choose CSV Template to Generate Manifest</h2>
-    <div>
+    <h2 class="tab_wiz">What would you like to do?</h2>
+    <div class="tab_wiz">
+      <p><input type="radio" class="wizopt" name="wizopt" value="rad_checkm"/><label for="rad_checkm">Validate Checkm Manifest</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" value="rad_csv_import"/><label for="rad_checkm">Import Manifest CSV and Generate CheckM Manifest</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" value="rad_csv_teplate"/><label for="rad_checkm">Create Manifest CSV from template</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" value="rad_unittest"/><label for="rad_checkm">Unit Test Validator</label></p>
+    </div>
+    <h2 class="tab tab_csv_template">Choose CSV Template to Generate Manifest</h2>
+    <div class="tab tab_csv_template">
       <ul>
         <li><a href="csv-templates/mrt-ingest-template.csv">mrt-ingest-template: ingest multiple files into one object</a></li>
         <li><a href="csv-templates/mrt-single-file-batch-manifest.csv">mrt-single-file-batch-manifest: ingest multiple files into one object per file</a></li>
@@ -19,10 +26,10 @@
         <li><a href="csv-templates/mrt-batch-manifest.csv">mrt-batch-manifest: ingest the contents of one or more checkm files into one object per checkm file</a></li>
       </ul>
     </div>
-    <h2>Import CSV (to convert to Checkm)</h2>
-    <div>
+    <h2 class="tab tab_csv">Import CSV (to convert to Checkm)</h2>
+    <div class="tab tab_csv">
       <div>
-        <select id="testcsvs">
+        <select id="testcsvs" class="unittest">
           <option>Choose a Sample CSV File...</option>
           <optgroup label="Sample CSV files">
             <option value="test-cases/csv/4blocks.csv">4 blocks</option>
@@ -46,9 +53,9 @@
         <button onclick="javascript:parseCsv()">Parse CSV</button>
       </div>
     </div>
-    <h2>Checkm File Text Entry</h2>
-    <div>
-      <select id="testfiles">
+    <h2 class="tab tab_checkm">Checkm File Text Entry</h2>
+    <div class="tab tab_checkm">
+      <select id="testfiles" class="unittest">
         <option>Choose a Sample Merritt Manifest...</option>
         <optgroup label="Merritt published sample files">
           <option value="../sampleFiles/4blocks.checkm">Ingest Manifest, 4 blocks</option>
@@ -101,26 +108,35 @@
         <button onclick="javascript:parse()">Parse Manifest</button>
       </div>
     </div>
-    <h2>Checkm Analysis</h2>
-    <div>
-      <h3>Row Count</h3>
-      <p><output class="rowcount"></output> Rows</p>
-      <div id="analysis">
-        tbd
+    <h2 class="tab tab_checkm">Checkm Analysis</h2>
+    <div class="tab tab_checkm">
+      <div class="checkm_def">Load and parse a checkm file to view results.</div>
+      <div class="checkm_results">
+        <h3>Row Count</h3>
+        <p><output class="rowcount"></output> Rows</p>
+        <div id="analysis">
+          tbd
+        </div>  
       </div>
     </div>
-    <h2>Checkm Data</h2>
-    <div>
-      <h3>Row Count</h3>
-      <p><output class="rowcount"></output> Rows</p>
-      <h3>Only 20 rows will be shown unless there are warnings...</h3>
-      <div id="data">
-        tbd
-      </div>    
+    <h2 class="tab tab_checkm">Checkm Data</h2>
+    <div class="tab tab_checkm">
+      <div class="checkm_def">Load and parse a checkm file to view results.</div>
+      <div class="checkm_results">
+        <h3>Row Count</h3>
+        <p><output class="rowcount"></output> Rows</p>
+        <h3>Only 20 rows will be shown unless there are warnings...</h3>
+        <div id="data">
+          tbd
+        </div>      
+      </div>
     </div>
-    <h2>Download CheckM</h2>
-    <div>
-      <a id="download-data" download="merritt.checkm">TBD</a>
+    <h2 class="tab tab_csv">Download CheckM</h2>
+    <div class="tab tab_csv">
+      <div class="checkm_def">Load and parse a checkm file to view results.</div>
+      <div class="checkm_results">
+        <a id="download-data" download="merritt.checkm">TBD</a>
+      </div>
     </div>  
   </div>
 </body>

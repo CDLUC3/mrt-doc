@@ -32,3 +32,7 @@ tr.Warn td, tr.Warn th, td.Warn {
 tr.Error td, tr.Error th, td.Error {
     background-color: rgb(238, 131, 131);
 }
+
+div.checkm_def {
+    font-style: italic;
+}
