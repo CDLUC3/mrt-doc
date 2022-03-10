@@ -1,5 +1,37 @@
 ## Sprint Goals
 
+#### Sprint 68: 9 March – 29 March 2022
+- Preventing concurrent updates:
+  - Inventory locking: Follow on Collection Admin UI work
+- Java builds:
+  - Finish migration of Audit to new build pipeline
+  - Finish migration of Ingest to new build pipeline 
+  - Migrate Replic to new build pipeline
+  - Migrate Inventory to new build pipeline
+  - Migrate Storage  to new build pipeline
+- Storage Admin:
+  - Version cleanup for any outstanding objects from Dryad node scan results
+  - Discuss approach to orphaned content on secondary nodes 
+- Manifest creation tool:
+  - Manifest validation with mrt-core2
+- ETDs:
+  - File Analyzer routine for MARC records
+  - Investigate boilerplate content of UCM, UCSC, UCI record templates
+  - Establish workflow for UC Berkeley
+- New collections, feeds:
+  - Frontera Collection: batch ingests
+  - Establish six new UCI Nuxeo feeds
+- Respond to CoreTrustSeal feedback
+  - Resubmit application
+
+##### Releases:
+- Stage:
+  - Audit build migration 
+  - Replic or Inventory build migration
+- Prod:
+  - Ingest build migration
+  - Audit build migration
+
 #### Sprint 67: 16 February - 8 March 2022
 - Preventing concurrent updates:
   - Inventory locking mechanism
