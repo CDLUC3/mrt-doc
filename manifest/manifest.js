@@ -109,7 +109,7 @@ class CsvToCheckm {
 
   file_col() {
     for(var i=0; i < this.fields.length; i++) {
-      if (this.fields[i].toLowerCase() == Field.FILENAME.fname.toLowerCase()) {
+      if (Field.FILENAME.matches(this.fields[i])) {
         return i;
       }
     }
@@ -437,14 +437,15 @@ class Checkm {
       if (m) {
         var fmap = {};
         for(const fname of m[1].split(/\s*\|\s*/)) {
-          this.fields.push(Field.instance(fname));
-          fmap[fname.toLowerCase()] = true;
+          var f = Field.instance(fname);
+          this.fields.push(f);
+          fmap[f.fname_norm()] = true;
         }
 
         var fail = [];
         for(const f of Field.required_fields()) {
-          if (!fmap[f.fname.toLowerCase()]) {
-            fail.push(f.fname.toLowerCase());
+          if (!fmap[f.fname_norm()]) {
+            fail.push(f.fname_norm());
           }
         }
         if (fail.length == 0) {
@@ -580,7 +581,7 @@ class DataRowContent {
 
   getIndex(key) {
     for(var i=0; i<this.fields.length; i++) {
-      if (this.fields[i].fname.toLowerCase() == key.fname.toLowerCase()) {
+      if (key.matches(this.fields[i].fname_norm())) {
         return i;
       }
     }
@@ -709,6 +710,17 @@ class Field {
     }
   }
 
+  matches(s) {
+    if (!s) {
+      return false;
+    }
+    return s.toLowerCase() == this.fname.toLowerCase() || s.toLowerCase() == this.name.toLowerCase();
+  }
+
+  fname_norm() {
+    this.fname.toLowerCase();
+  }
+
   setRequired(b) {
     this.required = b;
     return this;
@@ -754,7 +766,7 @@ class Field {
 
   static instance(name) {
     for(const f of Field.known_fields()) {
-      if (name.toLowerCase() == f.fname.toLowerCase()) {
+      if (f.matches(name)) {
         return f;
       }
     }
@@ -788,7 +800,7 @@ class Field {
 
   known() {
     for(const f of Field.known_fields()) {
-      if (f.namespace == this.namespace.toLowerCase() && f.name == this.name.toLowerCase()) {
+      if (f.matches(this.fname)) {
         return true;
       }
     }
