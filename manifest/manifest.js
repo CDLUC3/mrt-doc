@@ -20,7 +20,7 @@ $(document).ready(function(){
     } else if (result == "" || result == null) {
       result = "N/A"
     }
-    $("#result").val(result);
+    $("#result").val(fname+": "+result);
     setDownloadName(fname);
     $.ajax({
       url: fname,
