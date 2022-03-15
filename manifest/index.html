@@ -15,7 +15,8 @@
       <p><input type="radio" class="wizopt" name="wizopt" value="rad_checkm"/><label for="rad_checkm">Validate Checkm Manifest</label></p>
       <p><input type="radio" class="wizopt" name="wizopt" value="rad_csv_import"/><label for="rad_checkm">Import Manifest CSV and Generate CheckM Manifest</label></p>
       <p><input type="radio" class="wizopt" name="wizopt" value="rad_csv_teplate"/><label for="rad_checkm">Create Manifest CSV from template</label></p>
-      <p><input type="radio" class="wizopt" name="wizopt" value="rad_unittest"/><label for="rad_checkm">Unit Test Validator</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" value="rad_unittest"/><label for="rad_checkm">Unit Test CheckM Validator</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" value="rad_unittest_csv"/><label for="rad_checkm">Unit Test CSV+Checkm Validator</label></p>
     </div>
     <h2 class="tab tab_csv_template">Choose CSV Template to Generate Manifest</h2>
     <div class="tab tab_csv_template">
@@ -58,48 +59,40 @@
       <select id="testfiles" class="unittest">
         <option>Choose a Sample Merritt Manifest...</option>
         <optgroup label="Merritt published sample files">
-          <option value="../sampleFiles/4blocks.checkm">Ingest Manifest, 4 blocks</option>
-          <option value="../sampleFiles/bigHunt.checkm">Ingest Manifest, Big Hunt</option>
-          <option value="../sampleFiles/sampleBatchOfContainers.checkm">Batch of Containers</option>
-          <option value="../sampleFiles/sampleBatchOfFiles.checkm">Batch of Files</option>
-          <option value="../sampleFiles/sampleBatchOfManifests.checkm">Batch of Manifests</option>
-        </optgroup>
-        <optgroup label="Negative Cases - Fails in Java Parser contradicting the specification">
-          <option value="test-cases/4blocks_field_reorder.checkm">Ingest Manifest, 4 blocks, Fields Reordered</option>
-        </optgroup>
-        <optgroup label="Negative Cases - Ignored by Java Parser AND this validator">
-          <option value="test-cases/4blocks_nodecl.checkm">Ingest Manifest, No Declaration</option>  
-        </optgroup>
-        <optgroup label="Negative Cases - Ignored by Java Parser">
-          <option value="test-cases/4blocks_prefixes.checkm">Ingest Manifest, Non-standard Prefix</option>
-          <option value="test-cases/4blocks_uri.checkm">Ingest Manifest, Non-standard URI</option>  
-          <option value="test-cases/4blocks_noprefix.checkm">Ingest Manifest, No Prefix</option>  
-          <option value="test-cases/4blocks_nofields.checkm">Ingest Manifest, No Fields</option>  
-          <option value="test-cases/4blocks_noterm_nl.checkm">Ingest Manifest, No terminal newline</option>  
-          <option value="test-cases/4blocks_extra_pipe.checkm">Ingest Manifest, Extra Pipe Character</option>  
+          <option value="../sampleFiles/4blocks.checkm" result="pass">Ingest Manifest, 4 blocks</option>
+          <option value="../sampleFiles/bigHunt.checkm" result="pass">Ingest Manifest, Big Hunt</option>
+          <option value="../sampleFiles/sampleBatchOfContainers.checkm" result="pass">Batch of Containers</option>
+          <option value="../sampleFiles/sampleBatchOfFiles.checkm" result="pass">Batch of Files</option>
+          <option value="../sampleFiles/sampleBatchOfManifests.checkm" result="pass">Batch of Manifests</option>
         </optgroup>
         <optgroup label="Negative Cases - Headers and Structure">
-          <option value="test-cases/4blocks_noprofile.checkm">Ingest Manifest, No Profile</option>  
-          <option value="test-cases/4blocks_noeof.checkm">Ingest Manifest, No EOF</option>  
-          <option value="test-cases/4blocks_encoding.checkm">Ingest Manifest, Non utf-8 encoding</option>  
-        </optgroup>
-        <optgroup label="Negative Cases - field test - ignored by java parser">
-          <option value="test-cases/4blocks_missing_fname.checkm">Ingest Manifest, Missing filename field</option>  
-          <option value="test-cases/4blocks_missing_url.checkm">Ingest Manifest, Missing URL field</option>  
-          <option value="test-cases/4blocks_incorrect_sha256.checkm">Ingest Manifest, Improper SHA256 (64 alphanum)</option>  
-          <option value="test-cases/4blocks_incorrect_md5_format.checkm">Ingest Manifest, Improper MD5 (32 alphanum)</option>  
-          <option value="test-cases/sampleBatchOfContainers_incorrect_filename.checkm">Batch of Containers, Improper Filename</option>  
-          <option value="test-cases/sampleBatchOfManifests_incorrect_filename.checkm">Batch of Manifests, Improper Filename</option>  
-          <option value="test-cases/sampleBatchOfContainers_with_bad_ark.checkm">Batch of Containers, Bad Ark</option>  
-          <option value="test-cases/sampleBatchOfFiles_mixedTypes.checkm">Batch of Files, Includes a Container</option>  
-          <option value="test-cases/sampleBatchOfFiles_mixedTypes_checkm.checkm">Batch of Files, Includes a Checkm</option>  
-          <option value="test-cases/4blocks_incorrect_url_hostname.checkm">Ingest Manifest, Improper URL hostname</option>  
+          <option value="test-cases/4blocks_field_reorder.checkm" result="Discuss: Merritt seems to ignore the change in the field order.">Ingest Manifest, 4 blocks, Fields Reordered</option>
+          <option value="test-cases/4blocks_nodecl.checkm" result="The checkm declaration is optional to the Merritt parser">Ingest Manifest, No Declaration</option>  
+          <option value="test-cases/4blocks_noprofile.checkm" result="Parsing will fail without a profile defined">Ingest Manifest, No Profile</option>  
+          <option value="test-cases/4blocks_noeof.checkm" result="Parsing will fail without the EOF record">Ingest Manifest, No EOF</option>  
+          <option value="test-cases/4blocks_noterm_nl.checkm" result="Discuss: Eric recommended this test, but the parser may allow this case">Ingest Manifest, No terminal newline</option>  
+          <option value="test-cases/4blocks_encoding.checkm" result="Encoding issues will fail in the Merritt Checkm parser">Ingest Manifest, Non utf-8 encoding</option>  
+          <option value="test-cases/4blocks_prefixes.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, Non-standard Prefix</option>
+          <option value="test-cases/4blocks_uri.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, Non-standard Prefix URI</option>  
+          <option value="test-cases/4blocks_noprefix.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, No Prefix</option>  
+          <option value="test-cases/4blocks_nofields.checkm" result="Fieldlist ignored by Merritt parser">Ingest Manifest, No Fields</option>  
+          <option value="test-cases/4blocks_extra_pipe.checkm" result="Extra columns ignored by Merritt parser">Ingest Manifest, Extra Pipe Character</option>  
         </optgroup>
         <optgroup label="Negative Cases - field test">
-          <option value="test-cases/4blocks_incorrect_algorithm.checkm">Ingest Manifest, Bad Algorithm</option>
-          <option value="test-cases/4blocks_incorrect_filesize.checkm">Ingest Manifest, Improper File Size</option>  
-          <option value="test-cases/4blocks_incorrect_url_protocol.checkm">Ingest Manifest, Improper URL protocol</option>  
-        </optgroup>
+          <option value="test-cases/4blocks_incorrect_algorithm.checkm" result="Field test will fail in Merritt checkm parser">Ingest Manifest, Bad Algorithm</option>
+          <option value="test-cases/4blocks_incorrect_filesize.checkm" result="Field test will fail in Merritt checkm parser">Ingest Manifest, Improper File Size</option>  
+          <option value="test-cases/4blocks_incorrect_url_protocol.checkm" result="Field test will fail in Merritt checkm parser">Ingest Manifest, Improper URL protocol</option>  
+          <option value="test-cases/4blocks_missing_fname.checkm" result="Field test ignored">Ingest Manifest, Missing filename field</option>  
+          <option value="test-cases/4blocks_missing_url.checkm" result="Field test ignored">Ingest Manifest, Missing URL field</option>  
+          <option value="test-cases/4blocks_incorrect_sha256.checkm" result="Field test ignored">Ingest Manifest, Improper SHA256 (64 alphanum)</option>  
+          <option value="test-cases/4blocks_incorrect_md5_format.checkm" result="Field test ignored">Ingest Manifest, Improper MD5 (32 alphanum)</option>  
+          <option value="test-cases/sampleBatchOfContainers_incorrect_filename.checkm" result="Field test ignored">Batch of Containers, Improper Filename</option>  
+          <option value="test-cases/sampleBatchOfManifests_incorrect_filename.checkm" result="Field test ignored">Batch of Manifests, Improper Filename</option>  
+          <option value="test-cases/sampleBatchOfContainers_with_bad_ark.checkm" result="Field test ignored">Batch of Containers, Bad Ark</option>  
+          <option value="test-cases/sampleBatchOfFiles_mixedTypes.checkm" result="Field test ignored">Batch of Files, Includes a Container</option>  
+          <option value="test-cases/sampleBatchOfFiles_mixedTypes_checkm.checkm" result="Field test ignored">Batch of Files, Includes a Checkm</option>  
+          <option value="test-cases/4blocks_incorrect_url_hostname.checkm" result="Field test ignored">Ingest Manifest, Improper URL hostname</option>  
+          </optgroup>
         <optgroup label="Other Cases - field test">
           <option value="test-cases/4blocks_with_date.checkm">Ingest Manifest, With date</option>  
           <option value="test-cases/4blocks_with_bad_date.checkm">Ingest Manifest, With bad date</option>  
@@ -113,7 +106,13 @@
           <textarea rows="15" cols="120" id="checkm">
           </textarea>
       </fieldset>
-      <div>
+      <fieldset class="result">
+        <legend>Merritt Behavior</legend>
+        <div>
+          <output id="result">N/A</output>
+        </div>
+      </fieldset>
+    <div>
         <button onclick="javascript:parse()">Parse Manifest</button>
       </div>
     </div>

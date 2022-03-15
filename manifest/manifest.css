@@ -36,3 +36,7 @@ tr.Error td, tr.Error th, td.Error {
 div.checkm_def {
     font-style: italic;
 }
+
+output#result {
+    font-style: italic;
+}

@@ -14,6 +14,13 @@ $(document).ready(function(){
   $("#testfiles").on("change", function(){
     var sel = $("#testfiles option:selected");
     var fname = sel.val();
+    var result = sel.attr("result");
+    if (result == "pass") {
+      result = "This checkm file will be parsed successfully."
+    } else if (result == "" || result == null) {
+      result = "N/A"
+    }
+    $("#result").val(result);
     setDownloadName(fname);
     $.ajax({
       url: fname,
@@ -37,14 +44,19 @@ $(document).ready(function(){
 });
 
 function wizard_set() {
-  $("div.tab, h2.tab, select.unittest, div.checkm_results").hide();
+  $("div.tab, h2.tab, select.unittest, div.checkm_results, fieldset.result").hide();
   $("div.checkm_def").show();
   var v = $("input.wizopt:checked").val();
   var tab = TAB_WIZARD;
   if (v == null) {
     return; 
-  } else if (v == "rad_unittest") {
-    $("div.tab, h2.tab, select.unittest").show();
+  }  
+  
+  if (v == "rad_unittest" ) {
+    $("select.unittest, div.tab_checkm, h2.tab_checkm, fieldset.result").show();
+    tab = TAB_CHECKM;
+  } else if (v == "rad_unittest_csv") {
+    $("div.tab, h2.tab, select.unittest, fieldset.result").show();
     tab = TAB_CHECKM;
   } else {
     $("div.tab_checkm, h2.tab_checkm").show();
@@ -73,7 +85,6 @@ function parse() {
   var datav = cv.parse();
   var tab = ($("#analysis tr.Error").is("*")) ? TAB_STRUCT : TAB_DATA;
   $("div.checkm_results").show();
-  $("div.checkm_def").hide();
   $("#accordion").accordion("option", "active", tab);
 }
 
