@@ -26,25 +26,13 @@ nextpage: store-admin-pause-ing-for-coll
   - Enable delete in prod
 - Add Secondary Storage Node for a Collection
   - Reset replication for all objects in the collection 
-
-### Under Active Review - Then Activate in Production
-- [ ] Bulk delete endpoint in replic
-
-### In Progress
-
-- [ ] Enhance replication status reporting
+- Enhance replication status reporting
   - https://github.com/CDLUC3/mrt-doc/issues/865
 
-### TODO: Support Dryad Wasabi Migration
+### In Progress
 - [ ] Remove Secondary Storage Node for a Collection
 - [ ] Obtain a batch of ids to process
 - [ ] Invoke Replic.delete(node, obj)
-
-#### If the id list is not empty, re-invoke lambda
-- Have the lambda re-invoke itself... Implement a method to allow this to be throttled via SSM
-- Add a push button to invoke on a page
-- Or, invoke the operation via cron on the batch server...
-- Save a worklist to S3.  Delete worklist when done.
 
 ### TODO: Public Collection Migration
 - Pause Ingest for a Collection
@@ -82,65 +70,15 @@ create table inv_object_maints(
 ```
 - Record Maintenance Node about an Object
 
-### TODO: Is this a priority?
+### Future: Not in scope
 - Change the Primary UI Node for a Collection
 
 ---
 # In Process Use Cases
 
-### Use Case: Delete Untracked files/keys
-
-- Prerequistes
-  - Scan has completed
-- Notify replic to iterate through the list of keys to be deleted and peform delete
-- Components: Database, Replic, Admin
-
-### Use Case: Add Secondary Storage Node for a Collection
-- Verify that node is not already in use for the collection
-- Add node to inv_collections_inv_nodes
-- Batch database update for all objects in the collection:
-  - Force re-replication of primary node copy
-- Components: Admin
 
 ---
 # TODO Use Cases
-
----
-### Use Case: Remove Secondary Storage Node for a Collection
-- Remove node from inv_collections_inv_nodes
-- Determine if any work is needed
-```
-```
-SELECT
-  icio.inv_object_id
-from 
-  inv_collections_inv_objects icio
-WHERE
-  icio.inv_collection_id = ?
-AND exists (
-    select
-      1
-    from
-      inv_nodes_inv_objects inio 
-    WHERE
-      inio.inv_node_id= ?
-    and
-      inio.inv_object_id = icio.inv_object_id
-    and
-      inio.role = 'secondary'
-)
-limit 50
-;
-``` 
-- Peform Action:
-  - Admin Queue Lambda:
-    - Batch invocation of REPLIC endpoint for every object in the collection
-      - Replication::delete(node, object)
-  - Delete node from inv_collections_inv_nodes
-- After completion
-  - Manually unpause replication
-  - Manually unpause ingest
-- Components: Database, Ingest, Replic, Admin, Admin Queue Lambda
 
 ### Use Case: Change the Primary Node for a Collection
 - Prerequistes Step 1
@@ -179,6 +117,55 @@ limit 50
 
 ---
 # Completed Use Cases
+
+### Use Case: Delete Untracked files/keys
+
+- Prerequistes
+  - Scan has completed
+- Notify replic to iterate through the list of keys to be deleted and peform delete
+- Components: Database, Replic, Admin
+
+### Use Case: Add Secondary Storage Node for a Collection
+- Verify that node is not already in use for the collection
+- Add node to inv_collections_inv_nodes
+- Batch database update for all objects in the collection:
+  - Force re-replication of primary node copy
+- Components: Admin
+
+### Use Case: Remove Secondary Storage Node for a Collection
+- Remove node from inv_collections_inv_nodes
+- Determine if any work is needed
+```
+SELECT
+  icio.inv_object_id
+from 
+  inv_collections_inv_objects icio
+WHERE
+  icio.inv_collection_id = ?
+AND exists (
+    select
+      1
+    from
+      inv_nodes_inv_objects inio 
+    WHERE
+      inio.inv_node_id= ?
+    and
+      inio.inv_object_id = icio.inv_object_id
+    and
+      inio.role = 'secondary'
+)
+limit 50
+;
+``` 
+- Peform Action:
+  - Admin Queue Lambda:
+    - Batch invocation of REPLIC endpoint for every object in the collection
+      - Replication::delete(node, object)
+  - Delete node from inv_collections_inv_nodes
+- After completion
+  - Manually unpause replication
+  - Manually unpause ingest
+- Components: Database, Ingest, Replic, Admin, Admin Queue Lambda
 
 ## Use Cases: Manage Collection Nodes
 
