@@ -64,32 +64,41 @@
           <option value="../sampleFiles/sampleBatchOfFiles.checkm">Batch of Files</option>
           <option value="../sampleFiles/sampleBatchOfManifests.checkm">Batch of Manifests</option>
         </optgroup>
-        <optgroup label="Negative Cases - Headers and Structure">
+        <optgroup label="Negative Cases - Fails in Java Parser contradicting the specification">
+          <option value="test-cases/4blocks_field_reorder.checkm">Ingest Manifest, 4 blocks, Fields Reordered</option>
+        </optgroup>
+        <optgroup label="Negative Cases - Ignored by Java Parser AND this validator">
+          <option value="test-cases/4blocks_nodecl.checkm">Ingest Manifest, No Declaration</option>  
+        </optgroup>
+        <optgroup label="Negative Cases - Ignored by Java Parser">
           <option value="test-cases/4blocks_prefixes.checkm">Ingest Manifest, Non-standard Prefix</option>
           <option value="test-cases/4blocks_uri.checkm">Ingest Manifest, Non-standard URI</option>  
-          <option value="test-cases/4blocks_nodecl.checkm">Ingest Manifest, No Declaration</option>  
-          <option value="test-cases/4blocks_noprofile.checkm">Ingest Manifest, No Profile</option>  
           <option value="test-cases/4blocks_noprefix.checkm">Ingest Manifest, No Prefix</option>  
           <option value="test-cases/4blocks_nofields.checkm">Ingest Manifest, No Fields</option>  
-          <option value="test-cases/4blocks_noeof.checkm">Ingest Manifest, No EOF</option>  
           <option value="test-cases/4blocks_noterm_nl.checkm">Ingest Manifest, No terminal newline</option>  
           <option value="test-cases/4blocks_extra_pipe.checkm">Ingest Manifest, Extra Pipe Character</option>  
+        </optgroup>
+        <optgroup label="Negative Cases - Headers and Structure">
+          <option value="test-cases/4blocks_noprofile.checkm">Ingest Manifest, No Profile</option>  
+          <option value="test-cases/4blocks_noeof.checkm">Ingest Manifest, No EOF</option>  
           <option value="test-cases/4blocks_encoding.checkm">Ingest Manifest, Non utf-8 encoding</option>  
         </optgroup>
-        <optgroup label="Negative Cases - field test">
+        <optgroup label="Negative Cases - field test - ignored by java parser">
           <option value="test-cases/4blocks_missing_fname.checkm">Ingest Manifest, Missing filename field</option>  
           <option value="test-cases/4blocks_missing_url.checkm">Ingest Manifest, Missing URL field</option>  
-          <option value="test-cases/4blocks_incorrect_algorithm.checkm">Ingest Manifest, Bad Algorithm</option>
           <option value="test-cases/4blocks_incorrect_sha256.checkm">Ingest Manifest, Improper SHA256 (64 alphanum)</option>  
           <option value="test-cases/4blocks_incorrect_md5_format.checkm">Ingest Manifest, Improper MD5 (32 alphanum)</option>  
-          <option value="test-cases/4blocks_incorrect_filesize.checkm">Ingest Manifest, Improper File Size</option>  
           <option value="test-cases/sampleBatchOfContainers_incorrect_filename.checkm">Batch of Containers, Improper Filename</option>  
           <option value="test-cases/sampleBatchOfManifests_incorrect_filename.checkm">Batch of Manifests, Improper Filename</option>  
           <option value="test-cases/sampleBatchOfContainers_with_bad_ark.checkm">Batch of Containers, Bad Ark</option>  
           <option value="test-cases/sampleBatchOfFiles_mixedTypes.checkm">Batch of Files, Includes a Container</option>  
           <option value="test-cases/sampleBatchOfFiles_mixedTypes_checkm.checkm">Batch of Files, Includes a Checkm</option>  
-          <option value="test-cases/4blocks_incorrect_url_protocol.checkm">Ingest Manifest, Improper URL protocol</option>  
           <option value="test-cases/4blocks_incorrect_url_hostname.checkm">Ingest Manifest, Improper URL hostname</option>  
+        </optgroup>
+        <optgroup label="Negative Cases - field test">
+          <option value="test-cases/4blocks_incorrect_algorithm.checkm">Ingest Manifest, Bad Algorithm</option>
+          <option value="test-cases/4blocks_incorrect_filesize.checkm">Ingest Manifest, Improper File Size</option>  
+          <option value="test-cases/4blocks_incorrect_url_protocol.checkm">Ingest Manifest, Improper URL protocol</option>  
         </optgroup>
         <optgroup label="Other Cases - field test">
           <option value="test-cases/4blocks_with_date.checkm">Ingest Manifest, With date</option>  

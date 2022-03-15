@@ -71,9 +71,10 @@ function setDownloadName(fname) {
 function parse() {
   var cv = new CheckmValidator();
   var datav = cv.parse();
+  var tab = ($("#analysis tr.Error").is("*")) ? TAB_STRUCT : TAB_DATA;
   $("div.checkm_results").show();
   $("div.checkm_def").hide();
-  $("#accordion").accordion("option", "active", datav ? TAB_DATA : TAB_STRUCT);
+  $("#accordion").accordion("option", "active", tab);
 }
 
 async function runLoadCheck(){
@@ -559,7 +560,7 @@ class DataRowContent {
   }
 
   rowLabel() {
-    return "Row "+ this.num + ": " + this.getValue(Field.FILENAME);
+    return "Row "+ this.num + ": " + this.getValue(Field.FILENAME, "");
   }
 
   checkContent() {
@@ -626,7 +627,7 @@ class Field {
   static HASHALG = new Field("nfo:hashalgorithm").setRegex(/^(md5|sha256)$/, "allowed values: md5 or sha256");
   static HASHVAL = new Field("nfo:hashvalue").setValidateFxn(
     function(cdr, v, t) {
-      var alg = cdr.getValue(Field.HASHALG);
+      var alg = cdr.getValue(Field.HASHALG, "");
       if (alg == "md5") {
         if (v.match(/^[a-z0-9]{32,32}$/)) {
           return true;
@@ -702,9 +703,9 @@ class Field {
     this.required = false;
     this.regex = null;
     this.usage = "";
+    this.fname = fname;
     var m = fname.match(/^(\w+):(\w+)$/);
     if (m) {
-      this.fname = fname;
       this.namespace = m[1];
       this.name = m[2];  
     }
@@ -718,7 +719,7 @@ class Field {
   }
 
   fname_norm() {
-    this.fname.toLowerCase();
+    return this.fname ? this.fname.toLowerCase() : "";
   }
 
   setRequired(b) {
