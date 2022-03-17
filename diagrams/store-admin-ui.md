@@ -71,6 +71,11 @@ create table inv_object_maints(
 ```
 - Record Maintenance Node about an Object
 
+### TODO: Stage Environment Collection Management Tools
+- Purge unneeded objects
+- Reduce storage costs
+- Make database and storage consistent
+
 ### Future: Not in scope
 - Change the Primary UI Node for a Collection
 
