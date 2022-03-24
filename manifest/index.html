@@ -5,6 +5,11 @@
 <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"></link>   
 <link rel="stylesheet" type="text/css" href="manifest.css"></link>   
 <script src="parse_csv.js"></script>
+<script src="checkm.js"></script>
+<script src="fields.js"></script>
+<script src="checkmtest.js"></script>
+<script src="profile.js"></script>
+<script src="csv.js"></script>
 <script src="manifest.js"></script>
 </head>
 <body>
@@ -12,11 +17,12 @@
   <div id="accordion">
     <h2 class="tab_wiz">What would you like to do?</h2>
     <div class="tab_wiz">
-      <p><input type="radio" class="wizopt" name="wizopt" value="rad_checkm"/><label for="rad_checkm">Validate Checkm Manifest</label></p>
-      <p><input type="radio" class="wizopt" name="wizopt" value="rad_csv_import"/><label for="rad_checkm">Import Manifest CSV and Generate CheckM Manifest</label></p>
-      <p><input type="radio" class="wizopt" name="wizopt" value="rad_csv_teplate"/><label for="rad_checkm">Create Manifest CSV from template</label></p>
-      <p><input type="radio" class="wizopt" name="wizopt" value="rad_unittest"/><label for="rad_checkm">Unit Test CheckM Validator</label></p>
-      <p><input type="radio" class="wizopt" name="wizopt" value="rad_unittest_csv"/><label for="rad_checkm">Unit Test CSV+Checkm Validator</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" id="rad_checkm" value="rad_checkm"/><label for="rad_checkm">Validate Checkm Manifest</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" id="rad_csv_import" value="rad_csv_import"/><label for="rad_csv_import">Import Manifest CSV and Generate CheckM Manifest</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" id="rad_csv_teplate" value="rad_csv_teplate"/><label for="rad_csv_teplate">Create Manifest CSV from template</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" id="rad_url_list" value="rad_url_list"/><label for="rad_url_list">Create Manifest CSV from a List of URLs</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" id="rad_unittest" value="rad_unittest"/><label for="rad_unittest">Unit Test CheckM Validator</label></p>
+      <p><input type="radio" class="wizopt" name="wizopt" id="rad_unittest_csv" value="rad_unittest_csv"/><label for="rad_unittest_csv">Unit Test CSV+CheckM Validator</label></p>
     </div>
     <h2 class="tab tab_csv_template">Choose CSV Template to Generate Manifest</h2>
     <div class="tab tab_csv_template">
@@ -26,6 +32,24 @@
         <li><a href="csv-templates/mrt-container-batch-manifest.csv">mrt-container-batch-manifest: ingest the contents of one or more container file into one object per container file</a></li>
         <li><a href="csv-templates/mrt-batch-manifest.csv">mrt-batch-manifest: ingest the contents of one or more checkm files into one object per checkm file</a></li>
       </ul>
+    </div>
+    <h2 class="tab tab_url">Generate CSV from URL List</h2>
+    <div class="tab tab_url">
+      <fieldset>
+        <legend>Manifest Profile Type</legend>
+        <input type="radio" name="profile" value="mrt-ingest-manifest">mrt-ingest-manifest</input>
+        <input type="radio" name="profile" value="mrt-single-file-batch-manifest">mrt-single-file-batch-manifest</input>
+        <input type="radio" name="profile" value="mrt-batch-manifest">mrt-batch-manifest</input>
+        <input type="radio" name="profile" value="mrt-container-batch-manifest">mrt-container-batch-manifest</input>
+      </fieldset>
+      <fieldset>
+        <legend>URL file</legend>
+        <textarea rows="15" cols="120" id="urls">
+        </textarea>
+      </fieldset>
+      <div>
+        <button onclick="javascript:parseUrls()">Generate CSV for URLs</button>
+      </div>
     </div>
     <h2 class="tab tab_csv">Import CSV (to convert to Checkm)</h2>
     <div class="tab tab_csv">
