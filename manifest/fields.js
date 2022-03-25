@@ -49,7 +49,7 @@ class Field {
     );
     static FILESIZE = new Field("nfo:filesize").setRegex(/^\d+$/, "must be a number");
     static FILEMOD = new Field("nfo:filelastmodified");
-    static FILENAME = new Field("nfo:filename").setRequired(true).setValidateFxn(
+    static FILENAME = new Field("nfo:filename").setValidateFxn(
       function(cdr, v, t) {
         if (cdr.checkm.profileType == ProfileType.CONTAINER_BATCH) {
           var m = v.match(/.*\.(tar|zip|tar\.gz|bz2)$/i); 
@@ -161,7 +161,8 @@ class Field {
     }
   
     valid() {
-      return this.namespace != null && this.name != null;
+        //return this.namespace != null && this.name != null;
+        return this.name != null;
     }
   
     static instance(name) {
@@ -193,8 +194,7 @@ class Field {
   
     static required_fields() {
       return [
-        Field.FILEURL,
-        Field.FILENAME
+        Field.FILEURL
       ];
     }
   

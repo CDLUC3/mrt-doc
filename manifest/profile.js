@@ -49,12 +49,12 @@ class ProfileType {
         ];
     }
   
-    standard_field_list() {
+    standard_field_list(sep) {
         var arr = [];
         for(const f of this.standard_fields()) {
             arr.push(f.fname);
         }
-        return arr.join(", ");
+        return arr.join(sep);
     }
 
     static instance(key) {

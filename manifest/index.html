@@ -37,15 +37,12 @@
     <div class="tab tab_url">
       <fieldset>
         <legend>Manifest Profile Type</legend>
-        <input type="radio" name="profile" value="mrt-ingest-manifest">mrt-ingest-manifest</input>
-        <input type="radio" name="profile" value="mrt-single-file-batch-manifest">mrt-single-file-batch-manifest</input>
-        <input type="radio" name="profile" value="mrt-batch-manifest">mrt-batch-manifest</input>
-        <input type="radio" name="profile" value="mrt-container-batch-manifest">mrt-container-batch-manifest</input>
+        <input type="radio" class="profile" name="profile" checked="Y" value="mrt-ingest-manifest">Ingest Manifest (single object)</input>
+        <input type="radio" class="profile" name="profile" value="mrt-batch-manifest">Batch Manifest</input>
       </fieldset>
       <fieldset>
         <legend>URL file</legend>
-        <textarea rows="15" cols="120" id="urls">
-        </textarea>
+        <textarea rows="15" cols="120" id="urls"></textarea>
       </fieldset>
       <div>
         <button onclick="javascript:parseUrls()">Generate CSV for URLs</button>
@@ -71,8 +68,7 @@
       </div>
       <fieldset>
         <legend>Checkm file</legend>
-        <textarea rows="15" cols="120" id="csv">
-        </textarea>
+        <textarea rows="15" cols="120" id="csv"></textarea>
       </fieldset>
       <div>
         <button onclick="javascript:parseCsv()">Parse CSV</button>
@@ -127,8 +123,7 @@
       <button onclick="javascript:runLoadCheck()" title="May only work in Chrome or Edge...">Load Your Own CheckM File</button>
       <fieldset>
           <legend>Checkm file</legend>
-          <textarea rows="15" cols="120" id="checkm">
-          </textarea>
+          <textarea rows="15" cols="120" id="checkm"></textarea>
       </fieldset>
       <fieldset class="result">
         <legend>Merritt Behavior</legend>
