@@ -202,7 +202,7 @@ class Checkm {
           }
           if (this.fields.length > this.profileType.standard_fields().length) {
             t.error();
-            t.setMessage("Incorrect number of fields defined for profileType - expected fields: " + this.profileType.standard_field_list());
+            t.setMessage("Incorrect number of fields defined for profileType - expected fields: " + this.profileType.standard_field_list(", "));
             this.showDataTableView = false;
             return;
           }
@@ -212,7 +212,7 @@ class Checkm {
           }
           if (!inorder) {
             t.error();
-            t.setMessage("Fields in incorrect oreder for profileType - expected order: " + this.profileType.standard_field_list());
+            t.setMessage("Fields in incorrect oreder for profileType - expected order: " + this.profileType.standard_field_list(", "));
           } else {
             t.pass();
             t.setMessage(this.fields.length + " found");
@@ -233,19 +233,21 @@ class Checkm {
     checkField(field) {
       var t = new CheckmTest("Check field name format: " + field.fname);
       if (field.valid()) {
-        if (this.prefixes[field.namespace]) {
-          if (field.known()) {
+        if (field.known()) {
             t.pass()
-          } else {
+        } else {
             t.error();
             t.setMessage("Field not known");
             this.showDataTableView = false;
-          }
+        }
+        /*
+        if (this.prefixes[field.namespace]) {
         } else {
           t.error();
           t.setMessage("Field prefix not defined");
           this.showDataTableView = false;
         }
+        */
       } else {
         t.error();
         t.setMessage("Improper field name")

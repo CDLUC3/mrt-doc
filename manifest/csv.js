@@ -2,6 +2,11 @@ class CsvToCheckm {
     constructor(contents) {
       this.arr = parseCSV(contents);
       this.fields = this.arr.length > 0 ? this.arr[0] : [];
+      this.input_cols = {};
+      for(var i=0; i<this.fields.length; i++) {
+          var f = Field.instance(this.fields[i]);
+          this.input_cols[f.fname_norm()] = i;
+      }
       this.checkm = false;
       this.container = false;
       this.single_file = false;
@@ -9,13 +14,13 @@ class CsvToCheckm {
       this.filecol = this.file_col();
       this.batch = this.is_batch();
       this.analyzeRows();
-      var profile = this.get_profile();
-      if (profile == "") {
+      this.profile = this.get_profile();
+      if (this.profile == null) {
         this.append("Profile Type Could Not be Determined\n\n" + contents);
         this.append(this.checkm + " " + this.container + " " + this.single_file + "\n");
         this.append(contents);
       } else {
-        this.appendHeaders(profile);
+        this.appendHeaders();
         this.processRows();
         this.appendFooters();  
       }
@@ -76,12 +81,12 @@ class CsvToCheckm {
         this.test_filename(this.get_filename(this.arr[i]));
       }  
     }
-    appendHeaders(p) {
+    appendHeaders() {
       this.append("#%checkm_0.7\n");
-      this.append("#%profile | http://uc3.cdlib.org/registry/ingest/manifest/" + p + "\n");
+      this.append("#%profile | http://uc3.cdlib.org/registry/ingest/manifest/" + this.profile.name + "\n");
       this.append("#%prefix | mrt: | http://merritt.cdlib.org/terms#\n");
       this.append("#%prefix | nfo: | http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#\n");
-      this.append("#%fields | " + this.fields.join(" | ") + "\n");
+      this.append("#%fields | " + this.profile.standard_field_list(" | ") + "\n");
     }
   
     appendFooters() {
@@ -96,18 +101,17 @@ class CsvToCheckm {
       return types;
     }
   
-    get_profile() {
-  
+    get_profile() {  
       if (this.batch) {
         if (this.get_file_type_count() == 1) {
           if (this.single_file) {
-            return ProfileType.SFBATCH.name;
+            return ProfileType.SFBATCH;
           } 
           if (this.checkm) {
-            return ProfileType.BATCH.name;
+            return ProfileType.BATCH;
           } 
           if (this.container) {
-            return ProfileType.CONTAINER_BATCH.name;
+            return ProfileType.CONTAINER_BATCH;
           }   
         } else if (this.checkm) {
           alert("A checkm file was found in CSV file list.  \n\nIf a single checkm file is found, all files should be checkm files.")
@@ -119,14 +123,26 @@ class CsvToCheckm {
             "The containers will not be expanded before ingest.\n\n"+
             "If you wish to unpack containers prior to ingest, the manifest must contain ONLY container files."
           )
-          return ProfileType.SFBATCH.name;
+          return ProfileType.SFBATCH;
         }
       }
-      return ProfileType.INGEST.name;
+      return ProfileType.INGEST;
     }
+
     processRows() {
       for(var i=1; i < this.arr.length; i++) {
-        this.append(this.arr[i].join(" | ") + "\n");
+        var row =[];
+        for(const f of this.profile.standard_fields()) {
+            var index = this.input_cols[f.fname_norm()];
+            var val = "";
+            if (index != null) {
+                if (index < this.arr[i].length) {
+                    val = this.arr[i][index];
+                }
+            }
+            row.push(val);
+        }
+        this.append(row.join(" | ") + "\n");
       }  
     }
   }

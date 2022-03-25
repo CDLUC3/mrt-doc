@@ -58,7 +58,7 @@ function wizard_set() {
     tab = TAB_CHECKM;
   } else if (v == "rad_unittest_csv") {
     $("div.tab, h2.tab, select.unittest, fieldset.result").show();
-    tab = TAB_CHECKM;
+    tab = TAB_CSV;
   } else {
     $("div.tab_checkm, h2.tab_checkm").show();
     tab = TAB_CHECKM;
@@ -66,7 +66,11 @@ function wizard_set() {
       $("div.tab_csv, h2.tab_csv").show();
       tab = TAB_CSV;
     }
-    if (v == 'rad_csv_teplate') {
+    if (v == 'rad_url_list') {
+      $("div.tab_url, h2.tab_url").show();
+      tab = TAB_URL;
+    }
+     if (v == 'rad_csv_teplate') {
       $("div.tab_csv_template, h2.tab_csv_template").show();
       tab = TAB_TEMPLATE;
     }
@@ -109,6 +113,27 @@ function parseCsv(){
   var csv2checkm = new CsvToCheckm($("#csv").val());
   $("#checkm").val(csv2checkm.buf);
   $("#accordion").accordion("option", "active", TAB_CHECKM);
+}
+
+function parseUrls(){
+  var sel = $("input.profile:checked").val();
+  var cols = [Field.FILEURL.fname,Field.FILENAME.fname];
+  var buf = Field.FILEURL.fname;
+  if (sel != ProfileType.INGEST.name) {
+    cols.append(Field.TITLE.fname);
+  }
+  buf = cols.join(",");
+  for(const line of $("#urls").val().split("\n")) {
+    buf = buf + "\n" + line;
+    try {
+      var url = new URL(line);
+      buf = buf + "," + url.pathname.replaceAll(/^.*\//g, '');  
+    } catch(e) {
+      console.log(e);
+    }
+  }
+  $("#csv").val(buf);
+  $("#accordion").accordion("option", "active", TAB_CSV);
 }
 
 class CheckmValidator {
