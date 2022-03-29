@@ -120,6 +120,10 @@ class Field {
     fname_norm() {
       return this.fname ? this.fname.toLowerCase() : "";
     }
+
+    name_norm() {
+        return this.name ? this.name.toLowerCase() : "";
+    }
   
     setRequired(b) {
       this.required = b;

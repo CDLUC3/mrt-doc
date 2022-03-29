@@ -162,10 +162,26 @@ class CheckmValidator {
     checkmFile.validation_checks.forEach(test => test.tr().appendTo(tbody));
     tbody = this.createDataTable(checkmFile);
     checkmFile.data_tr(tbody);
+    this.show_counts(checkmFile);
     var ddata = "data:text;charset=utf-8," + $("#checkm").val();
     var encodedUri = encodeURI(ddata);  
     $("#download-data").attr("href", encodedUri).text("Download " + $("#download-data").attr("download"));
     return checkmFile.showDataTableView;
-  }  
+  }
+  
+  show_counts(checkmFile) {
+    $("output.objcount,output.filecount").val("");
+    for(const t of checkmFile.validation_checks) {
+      if (t.status == TestStatus.ERROR) {
+        $("output.objcount").val("NO OBJECTS will be created");    
+        return;
+      }
+    }
+    $("output.objcount").val(checkmFile.count_obj + " object to be created");    
+    if (checkmFile.count_file > 0) {
+      $("output.filecount").show().val("; " + checkmFile.count_file + " files");
+    }
+
+  }
 }
 
