@@ -16,6 +16,8 @@ class Checkm {
       this.checkFields();
       this.data = [];
       this.data_css = [];
+      this.count_obj = 0;
+      this.count_file = 0;
       this.checkData();
       this.checkEof();
       this.checkTerminalNewline();
@@ -50,6 +52,12 @@ class Checkm {
         if (this.lines[0].match(regex)) {
           return this.lines.shift();
         }
+      }
+    }
+
+    getNextLine() {
+      if (this.lines.length > 0) {
+        return this.lines.shift();
       }
     }
   
@@ -87,10 +95,10 @@ class Checkm {
   
     checkTerminalNewline() {
       var t = new CheckmTest("Look for terminal newline");
-      if (this.getLine(/^\s*$/g)) {
+      if (this.getNextLine()) {
         t.pass();
       } else {
-        t.error();
+        t.warn();
         t.setMessage("terminal newline not found at end of file");
         this.showDataTableView = false;
       }
@@ -167,7 +175,49 @@ class Checkm {
       }
       this.validation_checks.push(t);
     }
-  
+
+    checkFieldsArr(t, arr) {
+        var fmap = {};
+        for(const fname of arr) {
+          var f = Field.instance(fname);
+          this.fields.push(f);
+          fmap[f.name_norm()] = true;
+        }
+
+        var fail = [];
+        for(const f of this.profileType.standard_fields()) {
+          if (!fmap[f.name_norm()]) {
+            fail.push(f.name_norm());
+          }
+        }    
+        if (fail.length > 0) {
+          t.error();
+          t.setMessage("Required fields not found: " + fail);
+          this.showDataTableView = false;
+          return;
+        }
+        if (this.fields.length > this.profileType.standard_fields().length) {
+          t.error();
+          t.setMessage("Incorrect number of fields defined for profileType - expected fields: " + this.profileType.standard_field_list(", "));
+          this.showDataTableView = false;
+          return;
+        }
+        var inorder = true;
+        for (var i=0; i<this.fields.length; i++) {
+          inorder = inorder && (this.fields[i].matches(this.profileType.standard_fields()[i].fname_norm())); 
+        }
+        if (!inorder) {
+          t.error();
+          t.setMessage("Fields in incorrect oreder for profileType - expected order: " + this.profileType.standard_field_list(", "));
+        } else {
+          t.pass();
+          t.setMessage(this.fields.length + " found");
+          for(const f of this.fields) {
+            this.checkField(f);
+          }
+        }
+    }
+
     checkFields() {
       var t = new CheckmTest("Look for fields declaration");
       var re = /^#%fields \| (.*)$/;
@@ -181,50 +231,11 @@ class Checkm {
             this.showDataTableView = false;
             return;
           }
-          var fmap = {};
-          for(const fname of m[1].split(/\s*\|\s*/)) {
-            var f = Field.instance(fname);
-            this.fields.push(f);
-            fmap[f.fname_norm()] = true;
-          }
-  
-          var fail = [];
-          for(const f of this.profileType.standard_fields()) {
-            if (!fmap[f.fname_norm()]) {
-              fail.push(f.fname_norm());
-            }
-          }    
-          if (fail.length > 0) {
-            t.error();
-            t.setMessage("Required fields not found: " + fail);
-            this.showDataTableView = false;
-            return;
-          }
-          if (this.fields.length > this.profileType.standard_fields().length) {
-            t.error();
-            t.setMessage("Incorrect number of fields defined for profileType - expected fields: " + this.profileType.standard_field_list(", "));
-            this.showDataTableView = false;
-            return;
-          }
-          var inorder = true;
-          for (var i=0; i<this.fields.length; i++) {
-            inorder = inorder && (this.fields[i].matches(this.profileType.standard_fields()[i].fname_norm())); 
-          }
-          if (!inorder) {
-            t.error();
-            t.setMessage("Fields in incorrect oreder for profileType - expected order: " + this.profileType.standard_field_list(", "));
-          } else {
-            t.pass();
-            t.setMessage(this.fields.length + " found");
-            for(const f of this.fields) {
-              this.checkField(f);
-            }
-          }
+          this.checkFieldsArr(t, m[1].split(/\s*\|\s*/));
         }
       } else {
         t.warn();
         t.setMessage("Fields header not found: " + line);
-        //this.showDataTableView = false;
         this.fields = this.profileType.standard_fields();
       }
       this.validation_checks.push(t);
@@ -234,20 +245,13 @@ class Checkm {
       var t = new CheckmTest("Check field name format: " + field.fname);
       if (field.valid()) {
         if (field.known()) {
-            t.pass()
+            t.pass();
+            return;
         } else {
             t.error();
             t.setMessage("Field not known");
             this.showDataTableView = false;
         }
-        /*
-        if (this.prefixes[field.namespace]) {
-        } else {
-          t.error();
-          t.setMessage("Field prefix not defined");
-          this.showDataTableView = false;
-        }
-        */
       } else {
         t.error();
         t.setMessage("Improper field name")
@@ -256,7 +260,7 @@ class Checkm {
     }
   
     checkData() {
-      var re = /^#%eof$/g;
+      var re = /^#%eof/g;
       var dr = 0;
       for(var line = this.getNotLine(re); line != null; line = this.getNotLine(re)) {
         dr++;
@@ -283,7 +287,6 @@ class Checkm {
           tr.appendTo(tbody);
         }
       }
-      $("output.rowcount").val(this.data.length);
     }
   
     data_tr_head() {
@@ -292,6 +295,15 @@ class Checkm {
         $("<th/>").text(f.fname).appendTo(tr);
       }
       return tr;        
+    }
+
+    count_row() {
+        if (this.profileType == ProfileType.INGEST) {
+            this.count_obj = 1;
+            this.count_file++;
+        } else {
+            this.count_obj++;
+        }
     }
   
   }
@@ -340,6 +352,7 @@ class Checkm {
           }
         }
       } 
+      this.checkm.count_row();
       this.checkm.data_css.push(css_row);
     }
   

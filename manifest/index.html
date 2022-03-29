@@ -85,18 +85,24 @@
           <option value="../sampleFiles/sampleBatchOfFiles.checkm" result="pass">Batch of Files</option>
           <option value="../sampleFiles/sampleBatchOfManifests.checkm" result="pass">Batch of Manifests</option>
         </optgroup>
-        <optgroup label="Negative Cases - Headers and Structure">
-          <option value="test-cases/4blocks_field_reorder.checkm" result="Discuss: Merritt seems to ignore the change in the field order.">Ingest Manifest, 4 blocks, Fields Reordered</option>
+        <optgroup label="Warn Cases - Headers and Structure">
           <option value="test-cases/4blocks_nodecl.checkm" result="The checkm declaration is optional to the Merritt parser">Ingest Manifest, No Declaration</option>  
-          <option value="test-cases/4blocks_noprofile.checkm" result="Parsing will fail without a profile defined">Ingest Manifest, No Profile</option>  
-          <option value="test-cases/4blocks_noeof.checkm" result="Parsing will fail without the EOF record">Ingest Manifest, No EOF</option>  
           <option value="test-cases/4blocks_noterm_nl.checkm" result="Discuss: Eric recommended this test, but the parser may allow this case">Ingest Manifest, No terminal newline</option>  
-          <option value="test-cases/4blocks_encoding.checkm" result="Encoding issues will fail in the Merritt Checkm parser">Ingest Manifest, Non utf-8 encoding</option>  
           <option value="test-cases/4blocks_prefixes.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, Non-standard Prefix</option>
           <option value="test-cases/4blocks_uri.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, Non-standard Prefix URI</option>  
           <option value="test-cases/4blocks_noprefix.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, No Prefix</option>  
           <option value="test-cases/4blocks_nofields.checkm" result="Fieldlist ignored by Merritt parser">Ingest Manifest, No Fields</option>  
+        </optgroup>
+        <optgroup label="Negative Cases - Headers and Structure">
+          <option value="test-cases/4blocks_field_reorder.checkm" result="Discuss: Merritt seems to ignore the change in the field order.">Ingest Manifest, 4 blocks, Fields Reordered</option>
+          <option value="test-cases/4blocks_noprofile.checkm" result="Parsing will fail without a profile defined">Ingest Manifest, No Profile</option>  
+          <option value="test-cases/4blocks_noeof.checkm" result="Parsing will fail without the EOF record">Ingest Manifest, No EOF</option>  
+          <option value="test-cases/4blocks_encoding.checkm" result="Encoding issues will fail in the Merritt Checkm parser">Ingest Manifest, Non utf-8 encoding</option>  
+          <option value="test-cases/4blocks_uri.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, Non-standard Prefix URI</option>  
           <option value="test-cases/4blocks_extra_pipe.checkm" result="Extra columns ignored by Merritt parser">Ingest Manifest, Extra Pipe Character</option>  
+          <option value="test-cases/4blocks_nl_before_data.checkm" result="Parsing will fail">Ingest Manifest, Newline before data</option>  
+          <option value="test-cases/4blocks_nl_within_data.checkm" result="Parsing will fail">Ingest Manifest, Newline in between data</option>  
+          <option value="test-cases/4blocks_nl_after_data.checkm" result="Parsing will fail">Ingest Manifest, Newline before EOF</option>  
         </optgroup>
         <optgroup label="Negative Cases - field test">
           <option value="test-cases/4blocks_incorrect_algorithm.checkm" result="Field test will fail in Merritt checkm parser">Ingest Manifest, Bad Algorithm</option>
@@ -140,18 +146,18 @@
       <div class="checkm_def">Load and parse a checkm file to view results.</div>
       <div class="checkm_results">
         <h3>Row Count</h3>
-        <p><output class="rowcount"></output> Rows</p>
+        <p><output class="objcount"></output> <output class="filecount"></output></p>
         <div id="analysis">
           tbd
         </div>  
       </div>
     </div>
-    <h2 class="tab tab_checkm">Checkm Data</h2>
-    <div class="tab tab_checkm">
+    <h2 class="tab tab_checkm tab_checkm_data">Checkm Data</h2>
+    <div class="tab tab_checkm tab_checkm_data">
       <div class="checkm_def">Load and parse a checkm file to view results.</div>
       <div class="checkm_results">
         <h3>Row Count</h3>
-        <p><output class="rowcount"></output> Rows</p>
+        <p><output class="objcount"></output> <output class="filecount"></output></p>
         <h3>Only 20 rows will be shown unless there are warnings...</h3>
         <div id="data">
           tbd

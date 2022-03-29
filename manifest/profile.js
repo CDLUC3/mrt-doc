@@ -44,8 +44,7 @@ class ProfileType {
             Field.LOCID,
             Field.CREATOR,
             Field.TITLE,
-            Field.DATE,
-            Field.MIMETYPE
+            Field.DATE
         ];
     }
   
