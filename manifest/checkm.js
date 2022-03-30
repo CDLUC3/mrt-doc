@@ -1,5 +1,6 @@
 class Checkm {
     constructor(rawdata) {
+      this.linenum = 0;
       this.warnPad = 0;
       this.validation_checks = [];
       this.rawdata = rawdata;
@@ -51,6 +52,7 @@ class Checkm {
     getLine(regex) {
       if (this.lines.length > 0) {
         if (this.lines[0].match(regex)) {
+          this.linenum++;
           return this.lines.shift();
         }
       }
@@ -58,6 +60,7 @@ class Checkm {
 
     getNextLine() {
       if (this.lines.length > 0) {
+        this.linenum++;
         return this.lines.shift();
       }
     }
@@ -65,6 +68,7 @@ class Checkm {
     getNotLine(regex) {
       if (this.lines.length > 0) {
         if (!this.lines[0].match(regex)) {
+          this.linenum++;
           return this.lines.shift();
         }
       }
@@ -349,7 +353,7 @@ class Checkm {
     }
   
     rowLabel() {
-      return "Row "+ this.num + ": " + this.getValue(Field.FILENAME, "");
+      return "Data Row "+ this.num +  " (line: " + this.checkm.linenum + "): " + this.getValue(Field.FILENAME, "");
     }
   
     checkContent() {
