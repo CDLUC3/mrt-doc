@@ -177,9 +177,9 @@ class CheckmValidator {
         return;
       }
     }
-    $("output.objcount").val(checkmFile.count_obj + " object to be created");    
+    $("output.objcount").val(checkmFile.count_obj + " object(s) to be created");    
     if (checkmFile.count_file > 0) {
-      $("output.filecount").show().val("; " + checkmFile.count_file + " files");
+      $("output.filecount").show().val("; " + checkmFile.count_file + " file(s)");
     }
 
   }
