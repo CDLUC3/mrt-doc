@@ -21,6 +21,7 @@ class Checkm {
       this.checkData();
       this.checkEof();
       this.checkTerminalNewline();
+      this.checkExtraNewline();
     }
   
     warnPadding() {
@@ -103,6 +104,19 @@ class Checkm {
         this.showDataTableView = false;
       }
       this.validation_checks.push(t);
+    }
+
+    checkExtraNewline() {
+        var t = new CheckmTest("Look for terminal newline");
+        if (this.getNextLine()) {
+          t.error();
+          t.setMessage("Extra terminal newline found at end of file");
+          this.showDataTableView = false;
+        } else {
+          t.pass();
+          return;
+        }
+        this.validation_checks.push(t);
     }
   
     checkProfile() {
