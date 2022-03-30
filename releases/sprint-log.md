@@ -1,5 +1,34 @@
 ## Sprint Goals
 
+#### Sprint 69: 30 March – 19 April 2022
+- Java builds:
+  - Finish migration of Audit to new build pipeline (Done)
+  - Migrate mrt-cloud to new build pipeline, #967
+  - New views in Jenkins for legacy builds
+- Collection management:
+  - Collection prioritization, #973 (Done)
+  - Collection locking, #972
+- Storage Admin:
+  - Version cleanup for any outstanding objects from Dryad node scan results
+- Admin tool:
+  - Copy/paste link for state and build.content.txt endpoints in the admin tool, #992 (Done)
+- Replication:
+  - Replication for 1.8TB object (ark:/13030/m5q029nw), #990, 991
+- Unit tests:
+  - Investigate approach for and begin implementation of microservice unit tests, #985
+- ETDs:
+  - Establish workflow for UC Berkeley
+  - Process .unx files
+- New collections, feeds:
+  - Frontera Collection: batch ingests
+
+##### Releases:
+- Stage:
+  - mrt-cloud build migration (as used with Audit or Replic)
+- Prod:
+  - Audit build migration (deployed 2022-03-30)
+  - Collection prioritization (week of April 11)
+
 #### Sprint 68: 9 March – 29 March 2022
 - Preventing concurrent updates:
   - Inventory locking: Follow on Collection Admin UI work
@@ -27,10 +56,10 @@
 ##### Releases:
 - Stage:
   - Audit build migration 
-  - Replic or Inventory build migration
+  - Collection prioritization
 - Prod:
   - Ingest build migration
-  - Audit build migration
+  - Manifest creation tool
 
 #### Sprint 67: 16 February - 8 March 2022
 - Preventing concurrent updates:
