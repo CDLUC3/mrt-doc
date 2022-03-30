@@ -114,7 +114,14 @@ class Field {
       if (!s) {
         return false;
       }
-      return s.toLowerCase() == this.fname.toLowerCase() || s.toLowerCase() == this.name.toLowerCase();
+      if (s.toLowerCase() == this.fname.toLowerCase() || s.toLowerCase() == this.name.toLowerCase()) {
+        return true;
+      }
+      var arr = s.split(":");
+      if (arr.length == 2) {
+        return (arr[1].toLowerCase() == this.fname.toLowerCase() || arr[1].toLowerCase() == this.name.toLowerCase());
+      }
+      return false;
     }
   
     fname_norm() {
