@@ -33,10 +33,16 @@ class Checkm {
     checkEncoding() {
       var t = new CheckmTest("Check file encoding");
       t.pass();
+      var row = 1;
+      var col = 1;
       for(var i=0; i<this.rawdata.length; i++) {
-        if (this.rawdata.codePointAt(i) == 65533) {
+        col++;
+        if (this.rawdata.codePointAt(i) == 10) {
+          row++;
+          col = 0;
+        } else if (this.rawdata.codePointAt(i) == 65533) {
           t.error();
-          t.setMessage("Replacement character fount at position " + i);
+          t.setMessage("Replacement character found at row " + row + "/col " + col + " (position " + i + ")");
           this.showDataTableView = false;
         }
       }
