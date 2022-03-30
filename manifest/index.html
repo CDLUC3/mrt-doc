@@ -88,13 +88,13 @@
         <optgroup label="Warn Cases - Headers and Structure">
           <option value="test-cases/4blocks_nodecl.checkm" result="The checkm declaration is optional to the Merritt parser">Ingest Manifest, No Declaration</option>  
           <option value="test-cases/4blocks_noterm_nl.checkm" result="Discuss: Eric recommended this test, but the parser may allow this case">Ingest Manifest, No terminal newline</option>  
-          <option value="test-cases/4blocks_2term_nl.checkm" result="Ingest fails if multiple terminal newline">Ingest Manifest, 2 terminal newlines</option>  
           <option value="test-cases/4blocks_prefixes.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, Non-standard Prefix</option>
           <option value="test-cases/4blocks_uri.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, Non-standard Prefix URI</option>  
           <option value="test-cases/4blocks_noprefix.checkm" result="Prefix ignored by Merritt parser">Ingest Manifest, No Prefix</option>  
           <option value="test-cases/4blocks_nofields.checkm" result="Fieldlist ignored by Merritt parser">Ingest Manifest, No Fields</option>  
         </optgroup>
         <optgroup label="Negative Cases - Headers and Structure">
+          <option value="test-cases/4blocks_2term_nl.checkm" result="Ingest fails if multiple terminal newline">Ingest Manifest, 2 terminal newlines</option>  
           <option value="test-cases/4blocks_field_reorder.checkm" result="Discuss: Merritt seems to ignore the change in the field order.">Ingest Manifest, 4 blocks, Fields Reordered</option>
           <option value="test-cases/4blocks_noprofile.checkm" result="Parsing will fail without a profile defined">Ingest Manifest, No Profile</option>  
           <option value="test-cases/4blocks_noeof.checkm" result="Parsing will fail without the EOF record">Ingest Manifest, No EOF</option>  
