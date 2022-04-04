@@ -1,2 +1,2 @@
 nfo:fileUrl,nfo:hashAlgorithm,nfo:hashValue,nfo:fileSize,nfo:fileLastModified,nfo:fileName,mrt:mimeType
-REQUIRED: must be a url,OPTIONAL: md5 OR sha256,OPTIONAL,OPTIONAL,OPTIONAL,REQUIRED,OPTIONAL
+REQUIRED: must be a url,OPTIONAL: md5 OR sha-256,OPTIONAL,OPTIONAL,OPTIONAL,REQUIRED,OPTIONAL
