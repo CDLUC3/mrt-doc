@@ -23,10 +23,10 @@ class Field {
         return true;
       }
     );
-    static HASHALG = new Field("nfo:hashalgorithm").setRegex(/^(md5|sha256)$/, "allowed values: md5 or sha256");
+    static HASHALG = new Field("nfo:hashalgorithm").setRegex(/^(md5|sha-256)$/i, "allowed values: md5 or sha-256");
     static HASHVAL = new Field("nfo:hashvalue").setValidateFxn(
       function(cdr, v, t) {
-        var alg = cdr.getValue(Field.HASHALG, "");
+        var alg = cdr.getValue(Field.HASHALG, "").toLowerCase();
         if (alg == "md5") {
           if (v.match(/^[a-z0-9]{32,32}$/)) {
             return true;
@@ -35,7 +35,7 @@ class Field {
             t.setMessage("hashval must be 32 alphanumeric values");
             return false;
           }
-        } else if (alg == "sha256") {
+        } else if (alg == "sha-256") {
           if (v.match(/^[a-z0-9]{64,64}$/)) {
             return true;
           } else {
