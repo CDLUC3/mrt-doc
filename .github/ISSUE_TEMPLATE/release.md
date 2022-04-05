@@ -3,7 +3,6 @@ name: Release
 about: Capturing details of a deployment
 title: "[RELEASE]"
 labels: release
-project: "CDLUC3/5"
 assignees: ''
 
 ---
