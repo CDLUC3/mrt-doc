@@ -5,22 +5,18 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  issue:
+  issues:
     types: [opened]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  set_project:
-    # The type of runner that the job will run on
+  add-to-project:
+    name: Add issue to project
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
+      - uses: actions/add-to-project@main
+        with:
+          project-url: https://github.com/orgs/cdluc3/projects/5
+          #github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
