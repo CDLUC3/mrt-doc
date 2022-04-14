@@ -82,6 +82,8 @@ function setDownloadName(fname) {
   var m = fname.match(/(\/|^)([^\/]+)\.[^\/\.]+$/)
   if (m) {
     $("#download-data").attr("download", m[2] + ".checkm");
+  } else {
+    $("#download-data").attr("download", "merritt.checkm");
   }
 }
 
@@ -120,7 +122,7 @@ function parseUrls(){
   var cols = [Field.FILEURL.fname,Field.FILENAME.fname];
   var buf = Field.FILEURL.fname;
   if (sel != ProfileType.INGEST.name) {
-    cols.append(Field.TITLE.fname);
+    cols.push(Field.TITLE.fname);
   }
   buf = cols.join(",");
   for(const line of $("#urls").val().split("\n")) {
@@ -133,6 +135,7 @@ function parseUrls(){
     }
   }
   $("#csv").val(buf);
+  setDownloadName("merritt.checkm");
   $("#accordion").accordion("option", "active", TAB_CSV);
 }
 
