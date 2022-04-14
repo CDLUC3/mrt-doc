@@ -232,7 +232,7 @@ class Checkm {
         }
         if (!inorder) {
           t.error();
-          t.setMessage("Fields in incorrect oreder for profileType - expected order: " + this.profileType.standard_field_list(", "));
+          t.setMessage("Fields in incorrect order for profileType - expected order: " + this.profileType.standard_field_list(", "));
         } else {
           t.pass();
           t.setMessage(this.fields.length + " found");
@@ -260,7 +260,7 @@ class Checkm {
       } else {
         t.warn();
         t.setMessage("Fields header not found: " + line);
-        this.fields = this.profileType.standard_fields();
+        this.fields = this.profileType ? this.profileType.standard_fields() : [];
       }
       this.validation_checks.push(t);
     }

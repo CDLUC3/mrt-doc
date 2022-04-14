@@ -163,8 +163,8 @@ class CheckmValidator {
     tbody = this.createDataTable(checkmFile);
     checkmFile.data_tr(tbody);
     this.show_counts(checkmFile);
-    var ddata = "data:text;charset=utf-8," + $("#checkm").val();
-    var encodedUri = encodeURI(ddata);  
+    //https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
+    var encodedUri = "data:text/plain," + encodeURIComponent($("#checkm").val());  
     $("#download-data").attr("href", encodedUri).text("Download " + $("#download-data").attr("download"));
     return checkmFile.showDataTableView;
   }
