@@ -6,8 +6,24 @@ const TAB_CHECKM = 4;
 const TAB_STRUCT = 5;
 const TAB_DATA = 6;
 const TAB_DOWNLOAD = 7;
+
+function getParams(){
+  var queries = {};
+  if (document.location.search == "") {
+    return queries;
+  }
+  $.each(document.location.search.substr(1).split('&'),function(c,q){
+    var i = q.split('=');
+    queries[i[0].toString()] = i[1].toString();
+  });
+  return queries;
+}
+
 $(document).ready(function(){
   $("#accordion").accordion({heightStyle: "content", active: TAB_WIZARD, collapsible: true});
+  if ("unittest" in getParams()) {
+    $("p.unittest").show();
+  }
   wizard_set();
   $("input.wizopt").on("click", function(){
     wizard_set();
@@ -30,6 +46,7 @@ $(document).ready(function(){
       }
     });
   });
+
 
   $("#testcsvs").on("change", function(){
     var sel = $("#testcsvs option:selected");
