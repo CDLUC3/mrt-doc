@@ -1,6 +1,38 @@
 ## Sprint Goals
 
-#### Sprint 69: 20 April - May 10 2022
+#### Sprint 71: 11 May 2022 - June 1 2022
+- Java builds:
+  - Migrating Store to new build pipeline, #1040
+- Queueing:
+  - Nuxeo admin design and discussion
+   - Initial step is to separate it from the UI; make the process independent
+   - Think about queuing up feeds and using collection pause/unpause to trigger harvests 
+- Unit and Integration Tests
+  - Create unit and integration tests for Storage, #1041, #1019
+  - POM files will become more complex
+   - Ashley's ideas about streamlining via inheritance should help with this
+- Storage Admin:
+  - Review recent SDSC scan
+  - Version cleanup for any outstanding objects from Dryad node scan results
+- Replication:
+  - Dryad Glacier bucket setup, #918
+   - Bucket name (David); Consult with Ryan on location and bucket setup
+   - IAS: bucket access rights setup
+  - Modify yaml file to configure for replication
+- ETDs:
+  - Complete workflow change for UC Berkeley, #947
+  - Process .unx files
+- New collections, feeds:
+  - Frontera Collection: batch ingests (waiting on UCLA)
+  - New UCSF Nuxeo feed for video content
+
+##### Releases:
+- Stage:
+  - Store/Store Access refactor
+- Prod:
+  - Prod: Possible deployment of Store refactor
+
+#### Sprint 70: 20 April - May 10 2022
 - Java builds:
   - New views in Jenkins for legacy builds
   - Finish migrating Inventory to new build pipeline w/mrt-zoo, #1017
@@ -34,8 +66,9 @@
   - Replic refactor to Stage
 - Prod:
   - Inventory refactor
-  - Possibly Replic
+  - Replic refactor
   - Ingest collection locking
+  - UI gem updates and state page
 
 #### Sprint 69: 30 March – 19 April 2022
 - Java builds:
