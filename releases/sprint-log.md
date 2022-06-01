@@ -1,6 +1,41 @@
 ## Sprint Goals
 
-#### Sprint 71: 11 May 2022 - June 1 2022
+#### Sprint 72: June 1 - June 21 2022
+- Java builds:
+  - Deploy Store/Store Access refactor to production, #1040, #1068
+- Replication:
+  - Dryad Glacier bucket setup, #918
+   - Database entries (done)
+   - SSM parameters
+   - Modify yaml file to configure for replication (all microservices will need to be redeployed)
+  - Updates for handling aliased node during scans, #987
+- Queueing:
+  - Nuxeo queueing
+   - Deprecate hosting ERC data in favor of adding it to the submission manifest instead, #1053
+   - Separate Nuxeo rake tasks from UI, #1052 (re-evaluate after 1053) 
+- Network I/O and EFS performance investigation, #1064
+- Unit and Integration Tests
+  - Create unit and integration tests for Storage, #1019
+   - Start work on mrt-store integration tests, #1041
+  - Mechanism in place to run tests from Jenkins (upcoming meeting with Ashley)
+- Stage cleanup and cloud scans:
+  - Resolve issue with specific objects not being present in  inv_nodes_inv_objects (stage), #1050
+   - Review meetings; stage inv database cleanup
+  - Stage consistency reports, #1066
+- Production cloud scans: 
+ - Scan issue cleanup for Dryad, #946
+- New collections, feeds:
+  - New UCI Nuxeo feeds: Decide on an initial batch to work on (19 total)
+  - Frontera Collection: batch ingests (waiting on UCLA)
+- ETDs:
+  - Complete workflow change for UC Berkeley, #947
+  - Process .unx files
+
+##### Releases:
+- Prod:
+  - Store/Store Access refactor
+
+#### Sprint 71: 11 May 2022 - May 31 2022
 - Java builds:
   - Migrating Store to new build pipeline, #1040
 - Queueing:
@@ -29,8 +64,6 @@
 ##### Releases:
 - Stage:
   - Store/Store Access refactor
-- Prod:
-  - Prod: Possible deployment of Store refactor
 
 #### Sprint 70: 20 April - May 10 2022
 - Java builds:
