@@ -23,7 +23,7 @@
    - Review meetings; stage inv database cleanup
   - Stage consistency reports, #1066
 - Production cloud scans: 
- - Scan issue cleanup for Dryad, #946
+  - Scan issue cleanup for Dryad, #946
 - New collections, feeds:
   - New UCI Nuxeo feeds: Decide on an initial batch to work on (19 total)
   - Frontera Collection: batch ingests (waiting on UCLA)
