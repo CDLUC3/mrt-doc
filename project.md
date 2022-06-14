@@ -60,6 +60,14 @@
 - Improve Ingest Callback to notify clients that inventory work is complete
   - UCB will likely like this as well   
 - Eliminate OAI and Sword! 
+- Replicate Dryad
+  - Redploy services with new node
+    - [ ] Replication: 6/14
+    - [ ] Storage and Access:
+    - [ ] Audit
+    - [ ] Inventory
+  - Start replication to Glacier   
+  - Delete content from Wasabi
 
 ## Modernizing Deployments
 
