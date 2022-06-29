@@ -1,20 +1,17 @@
 ## Shared next steps for the team
 
 - Dryad Node Migration
-- Define Stage Cleanup Goals
+- Define Stage Environment Data Goals
 - Credential encryption
-- Cleanup Stage
 - Plan mysql upgrade
 
 ## Next Steps by Team Member
 
 
 - David
-  - Build Refactor, Core Services
-  - Scan Alias
-  - Eliminate Apache Load Balancer
   - SSM Migration, OAI + Sword
   - Build Refactor, OAI + Sword
+  - Eliminate Apache Load Balancer
   - Iterative refactor of library dependencies
   - Resume Storage Admin Work
 - Mark
