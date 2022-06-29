@@ -29,7 +29,7 @@
   - Write all logs to a common location (for queries)
   - Need to structure log entries with key data fields (collection, ark, storage node)
   - Enable searches across services and service instances
-- Refine build process to match devops best practices
+- ### Refine build process to match devops best practices
   - Ashley has lots of ideas, need time to define the future build
     - Consider Build on AWS rather than on Jenkins
     - Need to replace/rebuild our build server -- build to our current specifications
