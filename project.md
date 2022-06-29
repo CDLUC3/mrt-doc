@@ -24,6 +24,7 @@
   - Finally phase out old mechanism for managing credentials
 - Cycle through mrt-core library eliminating out of date dependencies
   - Requires another pass at all services -- hopefully faster
+- Eliminate unnecessary aws API's (core, ingest, cloud pull in ALL API's)
 - Upgrade logging libraries for all java services --> Ashley's Open Search work
   - Write all logs to a common location (for queries)
   - Need to structure log entries with key data fields (collection, ark, storage node)
