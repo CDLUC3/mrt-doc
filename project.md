@@ -31,7 +31,11 @@
   - Enable searches across services and service instances
 - Refine build process to match devops best practices
   - Ashley has lots of ideas, need time to define the future build
-  - Build on AWS rather than on Jenkins
+    - Consider Build on AWS rather than on Jenkins
+    - Need to replace/rebuild our build server -- build to our current specifications
+    - Utilize a published artifact repository
+  - Automate the build of docker images as well as java artifacts
+  - Refactor/simplify our maven build definitions to utilize these new workflows
   - Automatically build and test on a daily basis
 - MySql version update - 2023 deadline
 - Java 11 upgrade (and tomcat)
