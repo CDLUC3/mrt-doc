@@ -1,6 +1,38 @@
 ## Sprint Goals
 
-#### Sprint 72: June 1 - June 21 2022
+#### Sprint 73: June 29 - July 19 2022
+- Java builds:
+  - Sword build refactor (on Stage)
+  - OAI build refactor 
+- Replication:
+  - Dryad Glacier bucket setup, #918
+   - Trigger replication to production Glacier bucket
+   - Stop replication to Wasabi
+- Queueing:
+  - Nuxeo queueing
+   - Deprecate hosting ERC data in favor of adding it to the submission manifest instead, #1053
+   - Separate Nuxeo rake tasks from UI, #1052 (re-evaluate after 1053) 
+- Network I/O and EFS performance investigation, #1064
+  - Next steps: waiting for another large submission from UCB to test with instance types
+- Integration Tests
+  - Continue work on mrt-store integration tests, #1041
+  - If Storage tested completed, start work on infrastructure for Replic integ tests, #1044
+- Production cloud scans: 
+  - Scan issue cleanup for Dryad, #946
+- New collections, feeds:
+  - New UCI and UCM Nuxeo feeds
+  - Two new UC Berkeley collections, one each for UCSF and UCI
+  - Frontera Collection: batch ingests (continue to wait on UCLA)
+- Palestinian Museum project support:
+  - Initial Merritt orientation, supplying copies of MODS and sample images
+  - EC2 dev instance and laptop
+
+##### Releases:
+- Stage:
+  - Sword update on Stage
+  - OAI initial Stage release
+
+#### Sprint 72: June 1 - June 28 2022 (extended one week)
 - Java builds:
   - Deploy Store/Store Access refactor to production, #1040, #1068
 - Replication:
@@ -33,6 +65,10 @@
 
 ##### Releases:
 - Prod:
+  - UC Berkeley ETD workflow change
+  - Replic Scan alias feature
+  - Audit deploy for Dryad Glacier node support
+  - Ingest thread pool size change
   - Store/Store Access refactor
 
 #### Sprint 71: 11 May 2022 - May 31 2022
