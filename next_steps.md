@@ -1,15 +1,16 @@
 ## Shared next steps for the team
 
-- Dryad Node Migration
+- Dryad Node Migration (in progress - 1%)
+- Determine instance type needed for large ingests (with IAS)
+- Tuning Audit - determining right instance types
+- Plan mysql upgrade
 - Define Stage Environment Data Goals
 - Credential encryption
-- Plan mysql upgrade
 
 ## Next Steps by Team Member
 
-
 - David
-  - SSM Migration, OAI + Sword
+  - SSM Migration, OAI + Sword (almost ready)
   - Build Refactor, OAI + Sword
   - Eliminate Apache Load Balancer
   - Iterative refactor of library dependencies
