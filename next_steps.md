@@ -1,6 +1,6 @@
 ## Shared next steps for the team
 
-- Dryad Node Migration (in progress - 1%)
+- Dryad Node Migration (in progress - 8.5%)
 - Determine instance type needed for large ingests (with IAS)
 - Tuning Audit - determining right instance types
 - Plan mysql upgrade
@@ -29,3 +29,4 @@
   - Recreate build server - suggest an improved process
   - Credential encryption
 - Eric
+  - Content projects, ETDs
