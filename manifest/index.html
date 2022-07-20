@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <script	src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -109,6 +110,7 @@
         </optgroup>
         <optgroup label="Field Specific Issues - Manifest Will Pass">
           <option value="test-cases/4blocks_missing_fname.checkm" result="Field test ignored">Ingest Manifest, Missing filename field</option>  
+          <option value="test-cases/4blocks_dup_filename_diff_folders.checkm" result="Test will pass">Ingest Manifest, Duplicate Filename in different folders</option>  
         </optgroup>
         <optgroup label="Negative Cases - Field Tests">
           <option value="test-cases/4blocks_incorrect_algorithm.checkm" result="Field test would fail in Merritt checkm parser">Ingest Manifest, Bad Algorithm</option>
@@ -123,6 +125,8 @@
           <option value="test-cases/sampleBatchOfFiles_mixedTypes.checkm" result="Container would not be expanded by Merritt, it will be loaded as a curatorial file">Batch of Files, Includes a Container</option>  
           <option value="test-cases/sampleBatchOfFiles_mixedTypes_checkm.checkm" result="Manifest would not be expanded by Merritt, it will be loaded as a curatorial file">Batch of Files, Includes a Checkm</option>  
           <option value="test-cases/4blocks_incorrect_url_hostname.checkm" result="Ingest would likely fail">Ingest Manifest, Improper URL hostname</option>  
+          <option value="test-cases/4blocks_dup_filename.checkm" result="Ingest would fail">Ingest Manifest, Duplicate Filename</option>  
+          <option value="test-cases/4blocks_dup_filename_upcase.checkm" result="Ingest would fail">Ingest Manifest, Duplicate Filename with different case</option>  
         </optgroup>
         <optgroup label="Other Cases - field test">
           <option value="test-cases/4blocks_with_date.checkm">Ingest Manifest, With date</option>  

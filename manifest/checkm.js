@@ -2,6 +2,7 @@ class Checkm {
     constructor(rawdata) {
       this.linenum = 0;
       this.warnPad = 0;
+      this.filenames = {};
       this.validation_checks = [];
       this.rawdata = rawdata;
       this.checkEncoding();
@@ -23,6 +24,15 @@ class Checkm {
       this.checkEof();
       this.checkTerminalNewline();
       this.checkExtraNewline();
+    }
+
+    checkFilename(fname) {
+      var fn = (fname == null) ? "" : fname.toLowerCase();
+      if (fn in this.filenames) {
+        return false; 
+      }
+      this.filenames[fn] = true;
+      return true;
     }
   
     warnPadding() {

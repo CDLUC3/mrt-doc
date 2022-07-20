@@ -51,6 +51,11 @@ class Field {
     static FILEMOD = new Field("nfo:filelastmodified");
     static FILENAME = new Field("nfo:filename").setValidateFxn(
       function(cdr, v, t) {
+        if (!cdr.checkm.checkFilename(v)) {
+          t.error();
+          t.setMessage("Filename must be unique (case insensitive) within a manifest");
+          return false;
+        }
         if (cdr.checkm.profileType == ProfileType.CONTAINER_BATCH) {
           var m = v.match(/.*\.(tar|zip|tar\.gz|bz2)$/i); 
           if (m) {
