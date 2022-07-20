@@ -1,5 +1,144 @@
 ## Sprint Goals
 
+#### Sprint 73: June 29 - July 19 2022
+- Java builds:
+  - Sword build refactor (on Stage)
+  - OAI build refactor 
+- Replication:
+  - Dryad Glacier bucket setup, #918
+   - Trigger replication to production Glacier bucket
+   - Stop replication to Wasabi
+- Queueing:
+  - Nuxeo queueing
+   - Deprecate hosting ERC data in favor of adding it to the submission manifest instead, #1053
+   - Separate Nuxeo rake tasks from UI, #1052 (re-evaluate after 1053) 
+- Network I/O and EFS performance investigation, #1064
+  - Next steps: waiting for another large submission from UCB to test with instance types
+- Integration Tests
+  - Continue work on mrt-store integration tests, #1041
+  - If Storage tested completed, start work on infrastructure for Replic integ tests, #1044
+- Production cloud scans: 
+  - Scan issue cleanup for Dryad, #946
+- New collections, feeds:
+  - New UCI and UCM Nuxeo feeds
+  - Two new UC Berkeley collections, one each for UCSF and UCI
+  - Frontera Collection: batch ingests (continue to wait on UCLA)
+- Palestinian Museum project support:
+  - Initial Merritt orientation, supplying copies of MODS and sample images
+  - EC2 dev instance and laptop
+
+##### Releases:
+- Stage:
+  - Sword update on Stage
+  - OAI initial Stage release
+
+#### Sprint 72: June 1 - June 28 2022 (extended one week)
+- Java builds:
+  - Deploy Store/Store Access refactor to production, #1040, #1068
+- Replication:
+  - Dryad Glacier bucket setup, #918
+   - Database entries (done)
+   - SSM parameters
+   - Modify yaml file to configure for replication (all microservices will need to be redeployed)
+  - Updates for handling aliased node during scans, #987
+- Queueing:
+  - Nuxeo queueing
+   - Deprecate hosting ERC data in favor of adding it to the submission manifest instead, #1053
+   - Separate Nuxeo rake tasks from UI, #1052 (re-evaluate after 1053) 
+- Network I/O and EFS performance investigation, #1064
+- Unit and Integration Tests
+  - Create unit and integration tests for Storage, #1019
+   - Start work on mrt-store integration tests, #1041
+  - Mechanism in place to run tests from Jenkins (upcoming meeting with Ashley)
+- Stage cleanup and cloud scans:
+  - Resolve issue with specific objects not being present in  inv_nodes_inv_objects (stage), #1050
+   - Review meetings; stage inv database cleanup
+  - Stage consistency reports, #1066
+- Production cloud scans: 
+  - Scan issue cleanup for Dryad, #946
+- New collections, feeds:
+  - New UCI Nuxeo feeds: Decide on an initial batch to work on (19 total)
+  - Frontera Collection: batch ingests (waiting on UCLA)
+- ETDs:
+  - Complete workflow change for UC Berkeley, #947
+  - Process .unx files
+
+##### Releases:
+- Prod:
+  - UC Berkeley ETD workflow change
+  - Replic Scan alias feature
+  - Audit deploy for Dryad Glacier node support
+  - Ingest thread pool size change
+  - Store/Store Access refactor
+
+#### Sprint 71: 11 May 2022 - May 31 2022
+- Java builds:
+  - Migrating Store to new build pipeline, #1040
+- Queueing:
+  - Nuxeo admin design and discussion
+   - Initial step is to separate it from the UI; make the process independent
+   - Think about queuing up feeds and using collection pause/unpause to trigger harvests 
+- Unit and Integration Tests
+  - Create unit and integration tests for Storage, #1041, #1019
+  - POM files will become more complex
+   - Ashley's ideas about streamlining via inheritance should help with this
+- Storage Admin:
+  - Review recent SDSC scan
+  - Version cleanup for any outstanding objects from Dryad node scan results
+- Replication:
+  - Dryad Glacier bucket setup, #918
+   - Bucket name (David); Consult with Ryan on location and bucket setup
+   - IAS: bucket access rights setup
+  - Modify yaml file to configure for replication
+- ETDs:
+  - Complete workflow change for UC Berkeley, #947
+  - Process .unx files
+- New collections, feeds:
+  - Frontera Collection: batch ingests (waiting on UCLA)
+  - New UCSF Nuxeo feed for video content
+
+##### Releases:
+- Stage:
+  - Store/Store Access refactor
+
+#### Sprint 70: 20 April - May 10 2022
+- Java builds:
+  - New views in Jenkins for legacy builds
+  - Finish migrating Inventory to new build pipeline w/mrt-zoo, #1017
+  - Migrate Replic to new build pipeline w/mrt-zoo and mrt-cloud, #1009
+- Collection management:
+  - Collection locking, on Stage
+  - Collection locking controls in Coll Admin
+- Queueing:
+  - In ZK enable the movement of queue entry to new a ingest worker, #997
+  - Look into pros/cons of moving all entries in a batch vs. moving individual job entries
+  - Discuss Nuxeo admin and decide which to prioritize 
+- Storage Admin:
+  - Version cleanup for any outstanding objects from Dryad node scan results
+- Replication:
+  - Dryad Glacier bucket setup, #918
+  - IAS: bucket setup – could get started on this
+  - Modify yaml file to configure for replication
+- Integration tests:
+  - Discuss with David re: which microservice is next for implementing int test
+  - Allow Merritt Docker images to reside in ECR (ECR is IAS pref), #1020
+- ETDs:
+  - Establish workflow for UC Berkeley, #947 (waiting on PQ)
+  - Process .unx files
+- New collections, feeds:
+  - Frontera Collection: batch ingests (waiting on UCLA)
+  - New UCSF Nuxeo feed for video content
+
+##### Releases:
+- Stage:
+  - Inventory refactor to Stage
+  - Replic refactor to Stage
+- Prod:
+  - Inventory refactor
+  - Replic refactor
+  - Ingest collection locking
+  - UI gem updates and state page
+
 #### Sprint 69: 30 March – 19 April 2022
 - Java builds:
   - Finish migration of Audit to new build pipeline (Done)

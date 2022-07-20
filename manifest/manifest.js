@@ -6,8 +6,24 @@ const TAB_CHECKM = 4;
 const TAB_STRUCT = 5;
 const TAB_DATA = 6;
 const TAB_DOWNLOAD = 7;
+
+function getParams(){
+  var queries = {};
+  if (document.location.search == "") {
+    return queries;
+  }
+  $.each(document.location.search.substr(1).split('&'),function(c,q){
+    var i = q.split('=');
+    queries[i[0].toString()] = i[1].toString();
+  });
+  return queries;
+}
+
 $(document).ready(function(){
   $("#accordion").accordion({heightStyle: "content", active: TAB_WIZARD, collapsible: true});
+  if ("unittest" in getParams()) {
+    $("p.unittest").show();
+  }
   wizard_set();
   $("input.wizopt").on("click", function(){
     wizard_set();
@@ -30,6 +46,7 @@ $(document).ready(function(){
       }
     });
   });
+
 
   $("#testcsvs").on("change", function(){
     var sel = $("#testcsvs option:selected");
@@ -82,6 +99,8 @@ function setDownloadName(fname) {
   var m = fname.match(/(\/|^)([^\/]+)\.[^\/\.]+$/)
   if (m) {
     $("#download-data").attr("download", m[2] + ".checkm");
+  } else {
+    $("#download-data").attr("download", "merritt.checkm");
   }
 }
 
@@ -120,7 +139,7 @@ function parseUrls(){
   var cols = [Field.FILEURL.fname,Field.FILENAME.fname];
   var buf = Field.FILEURL.fname;
   if (sel != ProfileType.INGEST.name) {
-    cols.append(Field.TITLE.fname);
+    cols.push(Field.TITLE.fname);
   }
   buf = cols.join(",");
   for(const line of $("#urls").val().split("\n")) {
@@ -133,6 +152,7 @@ function parseUrls(){
     }
   }
   $("#csv").val(buf);
+  setDownloadName("merritt.checkm");
   $("#accordion").accordion("option", "active", TAB_CSV);
 }
 
@@ -163,8 +183,8 @@ class CheckmValidator {
     tbody = this.createDataTable(checkmFile);
     checkmFile.data_tr(tbody);
     this.show_counts(checkmFile);
-    var ddata = "data:text;charset=utf-8," + $("#checkm").val();
-    var encodedUri = encodeURI(ddata);  
+    //https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
+    var encodedUri = "data:text/plain," + encodeURIComponent($("#checkm").val());  
     $("#download-data").attr("href", encodedUri).text("Download " + $("#download-data").attr("download"));
     return checkmFile.showDataTableView;
   }
