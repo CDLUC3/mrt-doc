@@ -41,3 +41,28 @@ output#result {
     font-style: italic;
 }
 
+img.merritt-logo {
+  height: 30px;
+  vertical-align: bottom;
+}
+  
+img.ucop-logo {
+  height: 60px;
+}
+  
+img.ucop-logo-divider {
+  height: 60px;
+}
+
+header div.masthead {
+    align-items: center;
+    display: flex;
+}
+
+header {
+    background: linear-gradient(#d8d8d9, #e4e4e4);
+}
+  
+p.unittest {
+    display: none;
+}
