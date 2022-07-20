@@ -27,7 +27,8 @@ class Checkm {
     }
 
     checkFilename(fname) {
-      var fn = (fname == null) ? "" : fname.toLowerCase();
+      //var fn = (fname == null) ? "" : fname.toLowerCase();
+      var fn = (fname == null) ? "" : fname;
       if (fn in this.filenames) {
         return false; 
       }

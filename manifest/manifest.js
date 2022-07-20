@@ -136,6 +136,7 @@ function parseCsv(){
 
 function parseUrls(){
   var sel = $("input.profile:checked").val();
+  var levels = $("#pathlevels").val();
   var cols = [Field.FILEURL.fname,Field.FILENAME.fname];
   var buf = Field.FILEURL.fname;
   if (sel != ProfileType.INGEST.name) {
@@ -146,7 +147,9 @@ function parseUrls(){
     buf = buf + "\n" + line;
     try {
       var url = new URL(line);
-      buf = buf + "," + url.pathname.replaceAll(/^.*\//g, '');  
+      var arr = url.pathname.substring(1).split("/");
+      var start = arr.length - 1 - levels >= 0 ? arr.length - 1 - levels : 0;
+      buf = buf + "," + arr.splice(start).join("/");
     } catch(e) {
       console.log(e);
     }
