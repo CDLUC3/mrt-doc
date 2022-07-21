@@ -1,5 +1,46 @@
 ## Sprint Goals
 
+#### Sprint 74: July 20 - August 9 2022
+- Java builds:
+  - OAI build refactor w/dspace-xoai jar
+  - Sword build refactor (release to Prod)
+  - Core libraries refactor if time allows
+- Replication:
+  - Dryad Glacier bucket setup, #918
+   - Complete final replicating final batches to Glacier bucket
+   - Delete redundant replicas from Wasabi
+- Queueing:
+  - Nuxeo queueing
+   - Deprecate hosting ERC data in favor of adding it to the submission manifest instead, #1053
+   - Separate Nuxeo rake tasks from UI, #1052 (re-evaluate after 1053) 
+- Audit:
+  - Instance type experiments
+- Phase out Apache LB
+  - Continue testing on Stage
+  - Work to bring new ALB online
+- Integration Tests
+  - Continue work on creating baseline content for integ tests, #1109
+  - Work on Inventory integ tests, #1044
+- Production cloud scans: 
+  - Scan issue cleanup for Dryad, #946
+- New collections, feeds:
+  - New UCI and UCM Collections
+  - New UCI and UCM Nuxeo feeds
+  - Frontera Collection: batch ingests (continue to wait on UCLA)
+- ETDs:
+  - Backfill missing MARC records
+  - Process .unx files
+- Palestinian Museum project support:
+  - Make additional sample images available
+  - Testing FSx file system
+
+##### Releases:
+- Stage:
+  - OAI initial Stage release
+- Production:
+  - Sword refactor release
+  - UI release (Nuxeo, Dependabot)
+
 #### Sprint 73: June 29 - July 19 2022
 - Java builds:
   - Sword build refactor (on Stage)
