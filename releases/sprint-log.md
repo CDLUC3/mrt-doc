@@ -1,5 +1,40 @@
 ## Sprint Goals
 
+#### Sprint 75: August 10 - August 30 2022
+- Core libraries refactor:
+  - Remove unused jars from mrt-core-2 and mrt-cloud, #1102
+  - Core libraries: eliminate dependencies and jar updates #914
+  - Delete mrt-conf.prv
+- Deprecate CDL Maven repo
+- Testing ZFS file system (Ashley, David, Mark)
+- Queueing:
+  - Nuxeo queueing: Separate Nuxeo rake tasks from UI, #1052
+- Audit:
+  - Wrap up instance type experiments
+  - Likely outcome may be to add a server (prioritize if solution becomes available)
+- Phase out Ingest Apache LB, #977
+  - Continue testing on Stage; run end-to-end tests
+  - Will review Admin code
+  - Plan deployment to production
+- Storage RLB elimination, #
+  - Stage only this sprint
+  - Storage methods
+  - New endpoints for storage and Ingest client calling above methods
+- Integration tests:
+  - Return to Ingest integration tests
+- Nuxeo feeds:
+  - UCI and UCM feeds (three pending)
+  - Frontera Collection: batch ingests (waiting on UCLA)
+- ETDs:
+  - Fix UCLA records
+  - Process .unx files
+- Palestinian Museum project support
+  - Make additional sample images available
+
+##### Releases:
+- Stage: TBD
+- Production: TBD
+
 #### Sprint 74: July 20 - August 9 2022
 - Java builds:
   - OAI build refactor w/dspace-xoai jar
@@ -39,7 +74,9 @@
   - OAI initial Stage release
 - Production:
   - Sword refactor release
+  - OAI refactor release
   - UI release (Nuxeo, Dependabot)
+  - Replic hotfix
 
 #### Sprint 73: June 29 - July 19 2022
 - Java builds:
