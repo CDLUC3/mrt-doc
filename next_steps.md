@@ -11,14 +11,14 @@
   - Iterative refactor of library dependencies
   - Resume Storage Admin Work
 - Mark
-  - Nuxeo Refactor
-    - disassociate from UI
-    - create yaml driven management system 
   - Eliminate Apache Load Balancer
+  - Allow ingest jobs to run on any server
   - Use S3 rather than a shared file system (unless ZFS is viable) 
     - IAS and AWS rep seemed to suggest S3 as the recommended direction
-  - Allow ingest jobs to run on any server
   - Ingest Priority - Size Based Prioritization
+  - Nuxeo Refactor
+    - disassociate from UI
+    - create yaml driven management system --> queuing system
 - Terry
   - Java Integration Tests
   - Java Integration Tests - return to ingest
