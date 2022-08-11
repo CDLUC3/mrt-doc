@@ -18,10 +18,6 @@
 
 ## Build Refactor
 
-- Migrate all core services to use streamlined build process
-  - Old process relied on code that could not be re-created
-- Migrate Sword/OAI to use streamlined build process and to utilize systems management variables
-  - Finally phase out old mechanism for managing credentials
 - Cycle through mrt-core library eliminating out of date dependencies
   - Requires another pass at all services -- hopefully faster
 - Eliminate unnecessary aws API's (core, ingest, cloud pull in ALL API's)
@@ -54,6 +50,8 @@
 - Migrate Nuxeo from a brittle setup to a configuration that Eric can manage
 - Allow ingest jobs to move from server to server
   - Large UCB ingests overwhelm and block jobs on a single server
+- Use S3 rather than a shared file system (unless ZFS is viable) 
+  - IAS and AWS rep seemed to suggest S3 as the recommended direction
 - Size-based ingest queue prioritization 
 
 ## Dryad - Normal Depositor
