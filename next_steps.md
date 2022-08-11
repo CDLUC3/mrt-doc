@@ -15,7 +15,8 @@
     - disassociate from UI
     - create yaml driven management system 
   - Eliminate Apache Load Balancer
-  - Shared file server enhancements (if ZFS is not viable)
+  - Use S3 rather than a shared file system (unless ZFS is viable) 
+    - IAS and AWS rep seemed to suggest S3 as the recommended direction
   - Allow ingest jobs to run on any server
   - Ingest Priority - Size Based Prioritization
 - Terry
