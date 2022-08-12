@@ -19,6 +19,7 @@
   - Nuxeo Refactor
     - disassociate from UI
     - create yaml driven management system --> queuing system
+  - Improve Notification System - after interrupt
 - Terry
   - Java Integration Tests
   - Java Integration Tests - return to ingest
