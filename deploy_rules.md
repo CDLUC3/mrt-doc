@@ -14,13 +14,14 @@ _This is still a draft document.  The team has not yet reviewed this._
 | Ingest     | Pause optional     | 9-5, M-W   | 4-6p, M-W      |              |
 | Store      | Pause optional?    | 9-5, M-W   | 4-6p, M-W      |              |
 | Access     | Generally no       | 9-5, M-W   | 4-6p, M-W      |              |
-| Inventory  | Pause required     | 4-6p, M-W  | 4-6p, M-W      | Would it help to implement inv hold file? |
+| Inventory  | Pause required     | 4-6p, M-W  | 4-6p, M-W      | Local ID service |
 | Replic     | No                 | 9-5, M-W   |                |              |          
 | Audit      | No                 | 9-5, M-F   |                | Low risk     |          
 | OAI        | Send an Fyi        | 9-5, M-W   |                | No high avail option |          
 | Sword      | Pause requried     | 4-6p, M-W  | 4-6p, M-W      | No high avail option |          
-| UI         | Generally no       | 9-5, M-W   | 4-6p, M-W      |              |          
+| UI         | Generally no       | 9-5, M-W   | 4-6p, M-W      | Beware of Nuxeo dep  |          
 | Admin      | No                 | 9-5, M-F   |                | Low risk     |
+| mrt-cron   | No                 | 9-5, M-F   |                |              |
 
 ## Supported Services
 
@@ -90,14 +91,31 @@ _This is still a draft document.  The team has not yet reviewed this._
   - Release hold on queues 
 
 ### Inventory
+- Load balancer exists for localid processing
+- Endpoint exists to pause processing before deployment
+- Must remove instances from the load balancer before deployment unless Ingest Queue and Dryad ingests are held
 
 ### Replication
+- No load balancer exists
+  - The admin tool could make use of this if it existed 
+- Endpoint exists to pause processing before deployment
+
+### Audit
+- No load balancer exists
+  - The admin tool could make use of this if it existed 
+- Endpoint exists to pause processing before deployment
 
 ### UI
+- ALB exists
+- The puppet deploy process makes an instance unavailable for 2-3 sec during deployment, so an ALB rotation is not done
+  - The ALB removal could be implemented in the future
+- Note that for now the Nuxeo processing depends on a UI instance 
 
 ### Admin Tool
 
 ### Database Schema Changes
+
+### Mrt Cron
 
 ## Deprecated Services
 - OAI
