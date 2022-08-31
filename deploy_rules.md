@@ -5,11 +5,12 @@ _This is still a draft document.  The team has not yet reviewed this._
 ## General Guidelines
 - Avoid releases on Thursday or Friday
   - Be especially careful before a holiday weekened or curtailment
+- Post a note in #uc3-maint one day prior to the release
 - Avoid releases before the responsible developer goes on vacation
 - Activity that impacts Dryad should be scheduled between 4p - 6p
 - We need to avoid being overly scrupulous about this window since it impacts our release velocity
 
-| Service    | Dryad Coord?       | Window     | Window if Coord| Notes        |
+| Service    | Coordinate with Dryad?       | Window     | Window if Coord| Notes        |
 | -----------| ------------------ | ---------- |----------------| ------------ |
 | Ingest     | Pause optional     | 9-5, M-W   | 4-6p, M-W      |              |
 | Store      | Pause optional?    | 9-5, M-W   | 4-6p, M-W      |              |
