@@ -9,6 +9,19 @@ _This is still a draft document.  The team has not yet reviewed this._
 - Activity that impacts Dryad should be scheduled between 4p - 6p
 - We need to avoid being overly scrupulous about this window since it impacts our release velocity
 
+| Service    | Dryad Coord?       | Window     | Window if Coord| Notes        |
+| -----------| ------------------ | ---------- |----------------| ------------ |
+| Ingest     | Pause optional     | 9-5, M-W   | 4-6p, M-W      |              |
+| Store      | Pause optional?    | 9-5, M-W   | 4-6p, M-W      |              |
+| Access     | Generally no       | 9-5, M-W   | 4-6p, M-W      |              |
+| Inventory  | Pause required     | 4-6p, M-W  | 4-6p, M-W      | Would it help to implement inv hold file? |
+| Replic     | No                 | 9-5, M-W   |                |              |          
+| Audit      | No                 | 9-5, M-F   |                | Low risk     |          
+| OAI        | Send an Fyi        | 9-5, M-W   |                | No high avail option |          
+| Sword      | Pause requried     | 4-6p, M-W  | 4-6p, M-W      | No high avail option |          
+| UI         | Generally no       | 9-5, M-W   | 4-6p, M-W      |              |          
+| Admin      | No                 | 9-5, M-F   |                | Low risk     |
+
 ## Supported Services
 
 ### Ingest 
