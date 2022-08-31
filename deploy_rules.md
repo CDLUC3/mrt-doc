@@ -15,7 +15,7 @@ _This is still a draft document.  The team has not yet reviewed this._
 - Called from Sword and from Merritt UI 
 - Current: uses Apache load balancer
 - Soon: uses ALB
-- Deployment process
+##### Deployment process
  - Check current ingest queue activity to make sure that a release is OK
     - Schedule an early pause of ingest if needed to ensure availability 
   - Pause ingest processing (queue)
@@ -49,14 +49,14 @@ _This is still a draft document.  The team has not yet reviewed this._
   - Stop instance
   - Deploy code
   - Restart instance
-  - Re-add to laod balancer if needed
+  - Re-add to load balancer if needed
   - Release hold on ingest queue / dryad 
 
 ### Access
 - Note: code changes deployed for Access or Storage should be kept in sync as quickly as possible since the code base is identical
 - Regular instances are called from Merritt UI
 - Regular instances Use ALB
-- Deployment process
+##### Deployment process
   - Timing: is there any reason to restrict timing to 4p - 6p window? 
   - Pause processing queue with a hold file
     - Currently, this must be done manually from the server.  No endpoint exists to control this from the admin tool.
@@ -68,7 +68,7 @@ _This is still a draft document.  The team has not yet reviewed this._
     - Stop instance
     - Deploy code
     - Restart instance
-    - Re-add to laod balancer
+    - Re-add to load balancer
   - Large instance
     - Confirm that most process is complete for instance within reason.  It may be impossible to complete all tasks.
     - Stop instance
