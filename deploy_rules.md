@@ -27,7 +27,7 @@ _This is still a draft document.  The team has not yet reviewed this._
   - Stop instance
   - Deploy code
   - Restart instance
-  - Re-add to laod balancer if needed
+  - Re-add to load balancer if needed
   - Release hold on ingest queue / dryad 
 
 ### Storage
@@ -35,7 +35,7 @@ _This is still a draft document.  The team has not yet reviewed this._
 - Called from Ingest 
 - Current: uses Apache "RLB"
 - Soon: uses ALB
-- Deployment process
+##### Deployment process
  - Check current ingest queue activity to make sure that a release is OK
     - Schedule an early pause of ingest if needed to ensure availability 
   - Optionally pause ingest processing (queue)
