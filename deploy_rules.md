@@ -1,5 +1,7 @@
 # Deployment Rules
 
+_This is still a draft document.  The team has not yet reviewed this._
+
 ## General Guidelines
 - Avoid releases on Thursday or Friday
   - Be especially careful before a holiday weekened or curtailment
