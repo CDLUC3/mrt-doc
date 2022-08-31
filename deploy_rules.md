@@ -94,4 +94,15 @@ _This is still a draft document.  The team has not yet reviewed this._
   - Not highly available
   - Requires Dryad to pause ingests
   - Beware of issues with the cert store 
- 
+
+---
+
+## Enhancements to improve these processes
+- Eliminate Apache RLB
+- Automate load balancer removal with deployment process (maybe)?
+- Control Access Server hold file via admin tool
+- Introspect storage instances to detect work in progress
+- Size-based controls of ingest processing
+- Separate hold file for large access instance
+- Disassociate Nuxeo processing from the Merritt UI
+- Migrate local id processing from inventory to a lambda
