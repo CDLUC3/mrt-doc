@@ -1,5 +1,45 @@
 ## Sprint Goals
 
+#### Sprint 76: August 31 - September 20 2022
+- Core libraries refactor:
+  - Redploys of: Inventory, Audit, Replic, Ingest 
+  - Dependabot alert strategy, #994
+  - Case-by-case basis
+  - Document decisions if decide not to update a dependency 
+  - Delete mrt-conf.prv (waiting until end of Sept.)
+- Queueing:
+  - Nuxeo queueing: Separate Nuxeo rake tasks from UI, #1052
+- Audit:
+  - Deploy new Audit server
+  - David will work with Ashley; monitor inv db credits
+- Phase out Ingest Apache LB, #977
+  - IAS has set up the Ingest ALB
+  - Plan for cutover and DNS changes
+  - SWORD
+- Storage RLB elimination, #1202
+  - Ingest client calling hostname method
+  - Retirement of Merritt web host
+- Integration tests:
+  - Ingest integration tests
+  - Addition of tests related to admin methods
+  - Options for keeping Docker images up-to-date (possibly involving AWS Codebuild)
+- Look into next steps on logging
+  - (may depend on priority of Rails or MySQL)
+- ETDs:
+  - Finish fixing UCLA MARC records
+  - Process .unx files
+- CoreTrustSeal
+  - Complete GDO document and ready resubmission
+- Palestinian Museum project support
+  - TBD
+
+##### Releases:
+- Stage: 
+  - Ingest use of new Storage method (RLB elim.)
+- Production:
+  - Ingest ALB deprecation/cutover
+  - Ingest use of Storage method (RLB elim.)
+
 #### Sprint 75: August 10 - August 30 2022
 - Core libraries refactor:
   - Remove unused jars from mrt-core-2 and mrt-cloud, #1102
@@ -32,8 +72,11 @@
   - Make additional sample images available
 
 ##### Releases:
-- Stage: TBD
-- Production: TBD
+- Stage: 
+  - Shared ZFS volume 
+- Production:
+  - Shared ZFS volume 
+  - Trimmed Storage/Access service w/hostname method (Store05, 06)
 
 #### Sprint 74: July 20 - August 9 2022
 - Java builds:
