@@ -77,6 +77,7 @@ _This is still a draft document.  The team has not yet reviewed this._
     - Currently, this must be done manually from the server.  No endpoint exists to control this from the admin tool.
     - The hold file only applies to assembly requests.  Pre-signed requests are processed immediately. 
     - For large requests, it is challenging to schedule this far in advance.  A separate hold file could be useful.
+      - Hold file is applied host by host.  There is no shared disk.
   - Check current  queue activity to make sure that a release is OK
   - Remove regular instances from laod balancer before deployment
     - Confirm that processing is complete for instance
