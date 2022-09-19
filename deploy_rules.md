@@ -139,3 +139,6 @@ _This is still a draft document.  The team has not yet reviewed this._
 - Separate hold file for large access instance
 - Disassociate Nuxeo processing from the Merritt UI
 - Migrate local id processing from inventory to a lambda
+
+## Related
+- https://confluence.ucop.edu/pages/viewpage.action?spaceKey=UC3&title=Scheduled+Maintenance
