@@ -1,5 +1,37 @@
 ## Sprint Goals
 
+#### Sprint 77: September 21 - October 11 2022
+- Core libraries refactor:
+  - Redploys: Audit, on stage; Ingest should be next 
+  - Document plan for dependabot alerts, #994
+  - snakeyaml: introduced in mrt-core2 for reading yaml files
+  - Delete mrt-conf.prv (scheduled)
+- Storage:
+  - New locking mechanism for large access queue: #1229
+- Queueing:
+  - Nuxeo queueing: Separate Nuxeo rake tasks from UI, #1052
+- New Ingest Application LB:
+  - SWORD: Update response code for when Ingest ALB times out
+- Integration tests:
+  - Options for keeping Docker images up-to-date
+  - Use of AWS Codebuild (Done: builds Docker images in UC3 account)
+  - Jenkins: using Docker Compose (Ashley to install on Jenkins box)
+- ETDs:
+  - Process .unx files for UCSC
+- CoreTrustSeal
+  - Application resubmission
+- Palestinian Museum project support
+  - Database snapshot setup
+
+##### Releases:
+- Stage: 
+  - Separation of Nuxeo rake tasks from UI
+  - SWORD status code changes
+- Production:
+  - Storage/Access for zip and temp file updates
+  - SWORD status code changes
+  - Audit (trimmed libraries)
+
 #### Sprint 76: August 31 - September 20 2022
 - Core libraries refactor:
   - Redploys of: Inventory, Audit, Replic, Ingest 
