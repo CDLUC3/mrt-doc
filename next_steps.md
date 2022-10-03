@@ -7,27 +7,22 @@
 ## Next Steps by Team Member
 
 - David
-  - Eliminate Apache Load Balancer
   - Iterative refactor of library dependencies
+  - API control of Access Request Queues
   - Resume Storage Admin Work
 - Mark
-  - Eliminate Apache Load Balancer
-  - Allow ingest jobs to run on any server
-  - Use S3 rather than a shared file system (unless ZFS is viable) 
-    - IAS and AWS rep seemed to suggest S3 as the recommended direction
-  - Ingest Priority - Size Based Prioritization
   - Nuxeo Refactor
     - disassociate from UI
     - create yaml driven management system --> queuing system
+  - Allow ingest jobs to run on any server
+  - Ingest Priority - Size Based Prioritization
   - Improve Notification System - after interrupt
 - Terry
-  - Java Integration Tests
-  - Java Integration Tests - return to ingest
+  - Pal Museum support
   - Rails 6 upgrade
   - Java Logging Infrastructure
 - Ashley 
-  - Tuning Audit - determining right instance types
-  - ZFS experimentation
+  - Deployment process refactor
   - Maven exploration (artifact repository)
   - Recreate build server - suggest an improved process
   - Credential encryption
