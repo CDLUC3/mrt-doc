@@ -26,6 +26,11 @@ _This is still a draft document.  The team has not yet reviewed this._
 
 ## Supported Services
 
+### Tomcat
+- stop tomcat
+- peform deploy of war (and current) in tomcat
+- restart tomcat
+
 ### Ingest 
 - Called from Sword and from Merritt UI 
 - Current: uses Apache load balancer
@@ -95,17 +100,31 @@ _This is still a draft document.  The team has not yet reviewed this._
 ### Inventory
 - Load balancer exists for localid processing
 - Endpoint exists to pause processing before deployment
+- Must remove instances from zookeeper before deployment
 - Must remove instances from the load balancer before deployment unless Ingest Queue and Dryad ingests are held
+##### Deployment process
+- stop zookeeper handling for server to be deployed
+~~~
+curl -X POST http://uc3-mrtsandbox2-stg:36121/mrtinv/service/stopzoo?t=xml
+~~~
+- deregister server in ALB
+- confirm no activity using catalina.out/inv log
+- stop and deploy and restart
+- register server in ALB
 
 ### Replication
 - No load balancer exists
   - The admin tool could make use of this if it existed 
 - Endpoint exists to pause processing before deployment
+##### Deployment process
+- See Ashley Puppet deploy
 
 ### Audit
 - No load balancer exists
   - The admin tool could make use of this if it existed 
 - Endpoint exists to pause processing before deployment
+##### Deployment process
+- See Ashley Puppet deploy
 
 ### UI
 - ALB exists
