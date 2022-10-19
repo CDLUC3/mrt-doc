@@ -20,10 +20,12 @@ _This is still a draft document.  The team has not yet reviewed this._
 | Replic     | No                 | 9-5p, M-Th AM   |              |          
 | Audit      | No                 | 9-5p, M-Th AM   | Low risk     |          
 | OAI        | Post FYI to #uc3-maint   | 9-5p, M-W   | No high avail option |          
-| Sword      | Pause required     | 3-5p, M-W   | No high avail option |          
+| Sword      | Dryad Pause required     | 3-5p, M-W   | No high avail option |          
 | UI         | Generally no       | 9-5p, M-W   |              |          
 | Admin      | No                 | 9-5p, M-F   | Low risk     |
 | mrt-cron   | No                 | 9-5p, M-F   |              | 
+| EZID downtime |                 | 5-6a, Th    | Used when needed, Merritt Ingest is Paused |
+| ZFS downtime |                  | 5-6a, Th.   | Used when needed, Merritt Ingest is Paused | 
 
 ## Supported Services
 
