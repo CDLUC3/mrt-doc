@@ -17,8 +17,8 @@ _This is still a draft document.  The team has not yet reviewed this._
 | Access     | Post FYI to #uc3-maint   | 9-5, M-W   | 3-5p, M-W      |              |
 | Access Large     | TBD        | 9-5, M-W   | 3-5p, M-W      |              |
 | Inventory  | Pause required     | 3-5p, M-W  | 3-5p, M-W      | Local ID service |
-| Replic     | No                 | 9-5, M-W   |                |              |          
-| Audit      | No                 | 9-5, M-F   |                | Low risk     |          
+| Replic     | No                 | 9-5, M-Th AM   |                |              |          
+| Audit      | No                 | 9-5, M-Th AM   |                | Low risk     |          
 | OAI        | Post FYI to #uc3-maint   | 9-5, M-W   |                | No high avail option |          
 | Sword      | Pause required     | 3-5p, M-W  | 3-5p, M-W      | No high avail option |          
 | UI         | Generally no       | 9-5, M-W   | 3-5p, M-W      | Beware of Nuxeo dep  |          
