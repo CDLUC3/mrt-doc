@@ -12,15 +12,16 @@ _This is still a draft document.  The team has not yet reviewed this._
 
 | Service    | Coordinate with Dryad?       | Window     | Window if Coord| Notes        |
 | -----------| ------------------ | ---------- |----------------| ------------ |
-| Ingest     | Pause optional     | 9-5, M-W   | 4-6p, M-W      |              |
-| Store      | Pause optional?    | 9-5, M-W   | 4-6p, M-W      |              |
-| Access     | Generally no       | 9-5, M-W   | 4-6p, M-W      |              |
-| Inventory  | Pause required     | 4-6p, M-W  | 4-6p, M-W      | Local ID service |
+| Ingest     | No Pause (per ALB) | 9-5, M-W   | 3-5p, M-W      |              |
+| Store      | No Pause (per ALB) | 9-5, M-W   | 3-5p, M-W      |              |
+| Access     | Post FYI to #uc3-maint   | 9-5, M-W   | 3-5p, M-W      |              |
+| Access Large     | TBD        | 9-5, M-W   | 3-5p, M-W      |              |
+| Inventory  | Pause required     | 4-6p, M-W  | 3-5p, M-W      | Local ID service |
 | Replic     | No                 | 9-5, M-W   |                |              |          
 | Audit      | No                 | 9-5, M-F   |                | Low risk     |          
-| OAI        | Send an Fyi        | 9-5, M-W   |                | No high avail option |          
-| Sword      | Pause requried     | 4-6p, M-W  | 4-6p, M-W      | No high avail option |          
-| UI         | Generally no       | 9-5, M-W   | 4-6p, M-W      | Beware of Nuxeo dep  |          
+| OAI        | Post FYI to #uc3-maint   | 9-5, M-W   |                | No high avail option |          
+| Sword      | Pause required     | 4-6p, M-W  | 3-5p, M-W      | No high avail option |          
+| UI         | Generally no       | 9-5, M-W   | 3-5p, M-W      | Beware of Nuxeo dep  |          
 | Admin      | No                 | 9-5, M-F   |                | Low risk     |
 | mrt-cron   | No                 | 9-5, M-F   |                |              |
 
