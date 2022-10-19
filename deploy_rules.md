@@ -21,7 +21,7 @@ _This is still a draft document.  The team has not yet reviewed this._
 | Audit      | No                 | 9-5p, M-Th AM   | Low risk     |          
 | OAI        | Post FYI to #uc3-maint   | 9-5p, M-W   | No high avail option |          
 | Sword      | Pause required     | 3-5p, M-W   | No high avail option |          
-| UI         | Generally no       | 9-5p, M-W   | Beware of Nuxeo dep  |          
+| UI         | Generally no       | 9-5p, M-W   |              |          
 | Admin      | No                 | 9-5p, M-F   | Low risk     |
 | mrt-cron   | No                 | 9-5p, M-F   |              | 
 
@@ -63,7 +63,7 @@ _This is still a draft document.  The team has not yet reviewed this._
     - Timing - should be permissible anytime
     - Is it feasible to do a high availability release with only 2 storage instances?
   - Optionally ask Dryad to pause ingests
-    - If yes, perform release between 4pm - 6pm weekdays
+    - If yes, perform release between 3pm - 5pm weekdays
   - Remove instances from laod balancer unless both Ingest and Dryad are paused
   - Confirm that processing is complete for instance
     - New ticket to be created to establish a mechanism for this
@@ -78,7 +78,7 @@ _This is still a draft document.  The team has not yet reviewed this._
 - Regular instances are called from Merritt UI
 - Regular instances Use ALB
 ##### Deployment process
-  - Timing: is there any reason to restrict timing to 4p - 6p window? 
+  - Timing: is there any reason to restrict timing to 3p - 5p window? 
   - Pause processing queue with a hold file
     - Currently, this must be done manually from the server.  No endpoint exists to control this from the admin tool.
     - The hold file only applies to assembly requests.  Pre-signed requests are processed immediately. 
