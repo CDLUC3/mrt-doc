@@ -10,20 +10,20 @@ _This is still a draft document.  The team has not yet reviewed this._
 - Activity that impacts Dryad should be scheduled between 4p - 6p
 - We need to avoid being overly scrupulous about this window since it impacts our release velocity
 
-| Service    | Coordinate with Dryad?       | Window     | Window if Coord| Notes        |
+| Service    | Coordinate with Dryad to Pause?       | Window     | Window if Coord| Notes        |
 | -----------| ------------------ | ---------- |----------------| ------------ |
-| Ingest     | No Pause (per ALB) | 9-5, M-W   | 3-5p, M-W      |              |
-| Store      | No Pause (per ALB) | 9-5, M-W   | 3-5p, M-W      |              |
-| Access     | Post FYI to #uc3-maint   | 9-5, M-W   | 3-5p, M-W      |              |
-| Access Large     | TBD        | 9-5, M-W   | 3-5p, M-W      |              |
-| Inventory  | Pause required     | 3-5p, M-W  | 3-5p, M-W      | Local ID service |
-| Replic     | No                 | 9-5, M-Th AM   |                |              |          
-| Audit      | No                 | 9-5, M-Th AM   |                | Low risk     |          
-| OAI        | Post FYI to #uc3-maint   | 9-5, M-W   |                | No high avail option |          
-| Sword      | Pause required     | 3-5p, M-W  | 3-5p, M-W      | No high avail option |          
-| UI         | Generally no       | 9-5, M-W   | 3-5p, M-W      | Beware of Nuxeo dep  |          
-| Admin      | No                 | 9-5, M-F   |                | Low risk     |
-| mrt-cron   | No                 | 9-5, M-F   |                |              |
+| Ingest     | No Pause           | 9-5p, M-W   | 3-5p, M-W      |              |
+| Store      | No Pause           | 9-5p, M-W   | 3-5p, M-W      |              |
+| Access     | Post FYI to #uc3-maint   | 9-5p, M-W   | 3-5p, M-W      |              |
+| Access Large     | TBD          | 9-5p, M-W   | 3-5p, M-W      |              |
+| Inventory  | No Pause           | 9-5p, M-W   | 3-5p, M-W      | Local ID service |
+| Replic     | No                 | 9-5p, M-Th AM   |                |              |          
+| Audit      | No                 | 9-5p, M-Th AM   |                | Low risk     |          
+| OAI        | Post FYI to #uc3-maint   | 9-5p, M-W   |                | No high avail option |          
+| Sword      | Pause required     | 3-5p, M-W   | 3-5p, M-W      | No high avail option |          
+| UI         | Generally no       | 9-5p, M-W   | 3-5p, M-W      | Beware of Nuxeo dep  |          
+| Admin      | No                 | 9-5p, M-F   |                | Low risk     |
+| mrt-cron   | No                 | 9-5p, M-F   |                |              |
 
 ## Supported Services
 
@@ -42,7 +42,7 @@ _This is still a draft document.  The team has not yet reviewed this._
   - Pause ingest processing (queue)
     - Timing - should be permissible anytime
   - Optionally ask Dryad to pause ingests
-    - If yes, perform release between 4pm - 6pm weekdays
+    - If yes, perform release between 3pm - 5pm weekdays
   - Remove instances from laod balancer unless both Ingest and Dryad are paused
   - Confirm that processing is complete for instance
   - Stop instance
