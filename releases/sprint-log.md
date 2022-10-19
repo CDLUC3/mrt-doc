@@ -1,5 +1,41 @@
 ## Sprint Goals
 
+#### Sprint 78: October 12 - November 1, 2022
+- Core (trimmed) libraries refactor:
+  - Redploys: Ingest should be next 
+  - Document plan for Dependabot alerts (introduce trivy into the conversation)
+- Storage:
+  - On dev: New locking mechanism for large access queue: #1229
+  - Evaluate introduction of a property
+- Queueing:
+  - Nuxeo queueing: Separate Nuxeo rake tasks from UI, #1052
+  - Move to Stage 
+- MySQL 8.x:
+  - UI and end-to-end tests looking good
+  - Discuss a potential plan for production; schedule a separate meeting, 10/24
+- Rails 6/Ruby 3.1 for UI
+  - Work with Ashley to move Ruby updates onto dev, then stage and eventually production
+- New Ingest Application LB
+  - SWORD: Update response code for when Ingest ALB times out
+- Docker Jenkins builds:
+  - Exploring Trivy
+  - Refactor Docker file locations: move Docker file to individual microservice repo
+  - Leveraging this relocation to enable use of microservice-specific changes
+- ETDs:
+  - Continue investigation of .unx files for UCSC
+- Berkeley Public Library object download
+- Palestinian Museum project support
+  - Review UCLA scripts when access granted
+
+##### Releases:
+- Stage: 
+  - Store access (large) locking mechanism
+  - Rails 6 and Ruby 3.1
+- Production:
+  - Storage/Access for zip and temp file updates
+  - Separation of Nuxeo rake tasks from UI
+  - SWORD status code changes
+
 #### Sprint 77: September 21 - October 11 2022
 - Core libraries refactor:
   - Redploys: Audit, on stage; Ingest should be next 
