@@ -11,7 +11,7 @@ _This is still a draft document.  The team has not yet reviewed this._
 - We need to avoid being overly scrupulous about this window since it impacts our release velocity
 
 | Service    | Coordinate with Dryad to Pause?       | Window     | Notes        |
-| -----------| ------------------ | ---------- |----------------| ------------ |
+| -----------| ------------------ | ---------- |----------------|
 | Ingest     | No Pause           | 9-5p, M-W   |              |
 | Store      | No Pause           | 9-5p, M-W   |              |
 | Access     | Post FYI to #uc3-maint   | 9-5p, M-W   |              |
@@ -23,7 +23,7 @@ _This is still a draft document.  The team has not yet reviewed this._
 | Sword      | Pause required     | 3-5p, M-W   | No high avail option |          
 | UI         | Generally no       | 9-5p, M-W   | Beware of Nuxeo dep  |          
 | Admin      | No                 | 9-5p, M-F   | Low risk     |
-| mrt-cron   | No                 | 9-5p, M-F   |              |
+| mrt-cron   | No                 | 9-5p, M-F   |              | 
 
 ## Supported Services
 
