@@ -15,7 +15,7 @@ _This is still a draft document.  The team has not yet reviewed this._
 | Ingest     | No Pause           | 9-5p, M-W   |              |
 | Store      | No Pause           | 9-5p, M-W   |              |
 | Access     | Post FYI to #uc3-maint   | 9-5p, M-W   |              |
-| Access Large     | TBD          | 9-5p, M-W   |              |
+| Access Large     | N/A          | 9-5p, M-W   | Large Access Pause to be Introduced |
 | Inventory  | No Pause           | 9-5p, M-W   | Local ID service |
 | Replic     | No Pause           | 9-5p, M-Th AM   |              |          
 | Audit      | No Pause           | 9-5p, M-Th AM   | Low risk     |          
