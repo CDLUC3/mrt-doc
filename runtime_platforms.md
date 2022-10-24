@@ -15,6 +15,21 @@
   - EC2 Misc
     - LDAP
     - Zookeeper
+    - Batch Server
+- RDS
+  - MySQL      
+- Lambda
+  -  Admin Tool
+  -  Collection Tool
+
+### Future Mechansims
+- Auto Scaling Groups
+- ECS
+- EC2
+  - EC2 Misc
+    - LDAP
+    - Zookeeper
+    - Batch Server
 - RDS
   - MySQL      
 - Lambda
