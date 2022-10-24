@@ -1,11 +1,11 @@
 # Deployment Rules
 
-_This is still a draft document.  The team has not yet reviewed this._
+_This is still a draft document.  The team continues to review and make adjustments._
 
 ## General Guidelines
 - Avoid releases on Thursday or Friday
   - Be especially careful before a holiday weekened or curtailment
-- Post a note in #uc3-maint one day prior to the release
+- For ALL deployments: Post a note in #uc3-maint one day prior to the release
 - Avoid releases before the responsible developer goes on vacation
 - Activity that impacts Dryad should be scheduled between 4p - 6p
 - We need to avoid being overly scrupulous about this window since it impacts our release velocity
@@ -14,14 +14,14 @@ _This is still a draft document.  The team has not yet reviewed this._
 | -----------| ------------------ | ---------- | ---- |----------------|
 | Ingest     | No Pause           | 9-5p, M-W   |  |            |
 | Store      | No Pause           | 9-5p, M-W   | 30 min aft removal from ALB | Look at tomcat tmp to see if ingests are active |
-| Access     | Post FYI to #uc3-maint | 9-5p, M-W | 2 min | Look at tomcat tmp to see if assemblies are active |              |
-| Access Large | N/A              | 9-5p, M-W   | 1 hour | Large Access Pause to be Introduced.  Look at tomcat tmp to see if assemblies are active. |
+| Access     | No Pause | 9-5p, M-W | 2 min | Look at tomcat tmp to see if assemblies are active |              |
+| Access Large | No Pause         | 9-5p, M-W   | 1 hour | Large Access Pause to be Introduced.  Look at tomcat tmp to see if assemblies are active. |
 | Inventory  | No Pause           | 9-5p, M-W   | 60 sec | Local ID service |
 | Replic     | No Pause           | 9-5p, M-Th AM   |  |              |          
 | Audit      | No Pause           | 9-5p, M-Th AM   |  | Low risk     |          
-| OAI        | Post FYI to #uc3-maint   | 9-5p, M-W   |  | No high avail option |          
+| OAI        | No Pause   | 9-5p, M-W   |  | No high avail option |          
 | Sword      | Dryad Pause required     | 3-5p, M-W   |  | No high avail option |          
-| UI         | Generally no       | 9-5p, M-W   |  |            |          
+| UI         | No Pause     | 9-5p, M-W   |  |            |          
 | Admin      | No Pause           | 9-5p, M-F   |  | Low risk     |
 | mrt-cron   | No Pause           | 9-5p, M-F   |  |             | 
 | EZID downtime |                 | 5-6a, Th    |  | Used when needed, Merritt Ingest is Paused |
