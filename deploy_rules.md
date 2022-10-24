@@ -13,7 +13,7 @@ _This is still a draft document.  The team has not yet reviewed this._
 | Service    | Coordinate with Dryad to Pause?  | Window    | Pause to Shutdown Duration | Notes        |
 | -----------| ------------------ | ---------- | ---- |----------------|
 | Ingest     | No Pause           | 9-5p, M-W   |  |            |
-| Store      | No Pause           | 9-5p, M-W   | 30 min | Look at tomcat tmp to see if ingests are active |
+| Store      | No Pause           | 9-5p, M-W   | 30 min aft removal from ALB | Look at tomcat tmp to see if ingests are active |
 | Access     | Post FYI to #uc3-maint | 9-5p, M-W   | |              |
 | Access Large | N/A              | 9-5p, M-W   | ? hours | Large Access Pause to be Introduced |
 | Inventory  | No Pause           | 9-5p, M-W   | 60 sec | Local ID service |
