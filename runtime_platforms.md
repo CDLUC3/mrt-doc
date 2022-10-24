@@ -1,17 +1,18 @@
 ## Merritt Runtime Platforms
 
-### Current Mechanisms
+### Current Platforms
 - EC2
   - EC2 Tomcat
     - General Purpose EC2 
       - Inventory
-      - OAI
-      - Sword
+      - OAI (to be deprecated)
+      - Sword (to be deprecated)
     - Nework Optimized EC2 
       - Ingest
       - Audit
     - IO Optimized EC2
       - Storage
+        - Would this beneift from the Network optimized instead? 
       - Access
       - Replication
   - EC2 Puma
@@ -20,22 +21,37 @@
     - LDAP
     - Zookeeper
     - Batch Server
+      - Nuxeo Process (formerly part of UI) 
 - RDS
   - MySQL      
 - Lambda
   -  Admin Tool
   -  Collection Tool
 
-### Future Mechansims
+### Future Platforms
 - Auto Scaling Groups
+  - Auto Scaling Group - Network Optmized 
+    - Ingest (ZFS needed)
+    - Audit
+  - Auto Scaling Group - IO optimized 
+    - Sorage (ZFS needed)
+    - Access Assembly
+    - Replication
 - ECS
+  - Zookeeper
+  - LDAP
+  - UI - Rails
+  - Inventory Tomcat
 - EC2
   - EC2 Misc
-    - LDAP
-    - Zookeeper
     - Batch Server
 - RDS
   - MySQL      
 - Lambda
   -  Admin Tool
   -  Collection Tool
+- Lambda + API Gateway
+  - Merritt API (currently part of UI)   
+  - Access File Requests and Assembly Queuing
+  - Queue Management (currently part of Ingest Admin API)
+  - Inventory - Local ID Service
