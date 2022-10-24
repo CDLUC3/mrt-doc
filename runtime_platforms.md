@@ -28,6 +28,7 @@
   -  Collection Tool
 
 ### Future Platforms
+*This presumes that our general purpose EC2 apps can go to ECS and that our Instance Type optimized platforms will need to go to a specialized Auto Scaling Group.  Perhaps we can have a consult with Kevin at some time.*
 - Auto Scaling Groups
   - Auto Scaling Group - Network Optmized 
     - Ingest (ZFS needed)
