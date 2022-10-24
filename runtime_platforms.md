@@ -1,4 +1,4 @@
-## Merritt Deployment Mechanisms
+## Merritt Runtime Platforms
 
 ### Current Mechanisms
 - EC2
@@ -15,5 +15,8 @@
   - EC2 Misc
     - LDAP
     - Zookeeper
-  - RDS
-    - MySQL      
+- RDS
+  - MySQL      
+- Lambda
+  -  Admin Tool
+  -  Collection Tool
