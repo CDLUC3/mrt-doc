@@ -14,7 +14,7 @@ _This is still a draft document.  The team has not yet reviewed this._
 | -----------| ------------------ | ---------- | ---- |----------------|
 | Ingest     | No Pause           | 9-5p, M-W   |  |            |
 | Store      | No Pause           | 9-5p, M-W   | 30 min aft removal from ALB | Look at tomcat tmp to see if ingests are active |
-| Access     | Post FYI to #uc3-maint | 9-5p, M-W 2 min | Look at tomcat tmp to see if assemblies are active |              |
+| Access     | Post FYI to #uc3-maint | 9-5p, M-W | 2 min | Look at tomcat tmp to see if assemblies are active |              |
 | Access Large | N/A              | 9-5p, M-W   | 1 hour | Large Access Pause to be Introduced.  Look at tomcat tmp to see if assemblies are active. |
 | Inventory  | No Pause           | 9-5p, M-W   | 60 sec | Local ID service |
 | Replic     | No Pause           | 9-5p, M-Th AM   |  |              |          
