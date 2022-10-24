@@ -2,21 +2,20 @@
 
 ### Current Platforms
 - EC2
-  - EC2 Tomcat
+  - EC2 
     - General Purpose EC2 
-      - Inventory
-      - OAI (to be deprecated)
-      - Sword (to be deprecated)
+      - Inventory (Tomcat)
+      - OAI (Tomcat, to be deprecated)
+      - Sword (Tomcat, to be deprecated)
+      - UI (Puma)
     - Nework Optimized EC2 
-      - Ingest
-      - Audit
+      - Ingest (Tomcat)
+      - Audit (Tomcat)
     - IO Optimized EC2
-      - Storage
+      - Storage (Tomcat)
         - Would this beneift from the Network optimized instead? 
-      - Access
-      - Replication
-  - EC2 Puma
-    - UI
+      - Access (Tomcat)
+      - Replication (Tomcat)
   - EC2 Misc
     - LDAP
     - Zookeeper
