@@ -9,6 +9,7 @@
 - David
   - MySql8 testing*
   - API control of Access Request Queues*
+  - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
   - Iterative refactor of library dependencies
   - Resume Storage Admin Work
 - Mark
