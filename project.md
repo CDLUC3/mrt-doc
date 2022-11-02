@@ -27,8 +27,6 @@
   - Enable searches across services and service instances
 - ### Refine build process to match devops best practices
   - Ashley has lots of ideas, need time to define the future build
-    - Consider Build on AWS rather than on Jenkins
-    - Need to replace/rebuild our build server -- build to our current specifications
     - Utilize a published artifact repository
   - Automate the build of docker images as well as java artifacts
   - Refactor/simplify our maven build definitions to utilize these new workflows
@@ -48,6 +46,7 @@
 ## Ingest Priority and Nuxeo
 
 - Migrate Nuxeo from a brittle setup to a configuration that Eric can manage
+- Create high-priority dedicated consumer daemon to ensure that Dryad content will always have priority
 - Allow ingest jobs to move from server to server
   - Large UCB ingests overwhelm and block jobs on a single server
 - Use S3 rather than a shared file system (unless ZFS is viable) 
@@ -63,17 +62,10 @@
 - Improve Ingest Callback to notify clients that inventory work is complete
   - UCB will likely like this as well   
 - Eliminate OAI and Sword! 
-- Replicate Dryad
-  - Redploy services with new node
-    - [ ] Replication: 6/14
-    - [ ] Storage and Access:
-    - [ ] Audit
-    - [ ] Inventory
-  - Start replication to Glacier   
-  - Delete content from Wasabi
 
 ## Modernizing Deployments
 
+- See [runtime_platforms.md](runtime_platforms.md)
 - Replace Merritt services with AWS Lambda/Serverless where possible 
   - Pull some functions from Merritt UI, Merritt Inventory, Merritt Access
 - Replace Merritt Servers with Merritt Docker containers where applicable (ingest, UI, storage)
