@@ -1,5 +1,42 @@
 ## Sprint Goals
 
+#### Sprint 79: November 9 - November 29, 2022
+- Core (trimmed) libraries refactor:
+  - Redploys: Ingest should be next 
+  - Document plan for Dependabot alerts (introduce trivy into the conversation)
+  - core2 dependabot fixes: #1266
+- Storage:
+  - Heading to stage: New locking mechanism for large access queue: #1229
+- Ingest:
+  - Timeout requesting storage hostname; implement retries, release 11/9
+  - New consumer daemon for high-priority jobs (Dryad)
+- MySQL 8.x:
+  - Planning to migrate Inv to 8.x in production on 11/15/22
+- Rails 6/Ruby 3.1 for UI:
+  - Work with Ashley to move Ruby updates into production if time allows (after MySQL)
+- Docker Jenkins builds:
+  - Exploring Trivy
+  - Refactor Docker file locations: move Docker file to individual microservice repo
+  - Leveraging this relocation to enable use of microservice-specific changes
+- ETDs:
+  - UNX files for UCI: per root cause determined, manually update db entries and process UNX files
+- Palestinian Museum project support:
+  - Publishing program updates
+  - Complete setup of PM collections on stage and production
+  - Review UCLA MODS creation scripts when access granted
+- Dryad:
+  - Scott will be working on callback implementation this sprint (ends 11/29) and may reach out for guidance
+  - Configure stage Dryad collection with endpoint
+
+##### Releases:
+- Stage: 
+  - New locking mechanism for large access queue, #1229 (possibly prod as well, #1265)
+  - Rails 6 and Ruby 3.1 (possibly prod as well, after MySQL)
+- Production:
+  - Timeout requesting hostname, #1267
+  - Ruby 3 for batch service
+  - MySQL 8 for Inv
+
 #### Sprint 78: October 12 - November 1, 2022
 - Core (trimmed) libraries refactor:
   - Redploys: Ingest should be next 
