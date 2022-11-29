@@ -8,11 +8,12 @@
 ## Crons
 _This page does not include sysadmin crons that perform tasks such as log rotation._
 
-- Pause Queues: Thursday 5am
-- Unpause Queues: Thursday 6am
-- Overnight Daily: Merritt Billing Database Update and Consistency Reports
-- Thursday AM: Nuxeo Feed Processing
-- Daily, AM & PM: ETD Processing
-  - Mon-Sat: 7:30AM Retrieve new ETDs
-  - Mon-Sat: 1:30PM Generate MARC records
-  - Mon/Thu: 9:00AM Query ProQuest Gateway
+| Category | Purpose | Time | 
+| -------- | ------- | ---- |
+| Downtime | Pause Queues | Thursday 5am |
+| Downtime | Unpause Queues | Thursday 6am |
+| Billing  | Merritt Billing DB Update and Consistency Reports | Overnight |
+| Nuxeo | Nuxeo Feed Crawl and Ingest | Thursday AM |
+| ETD | Retrieve new ETD's | Mon-Sat 7:30 AM |
+| ETD | Generate Marc Records | Mon-Sat 1:30 PM |
+| ETD | Query ProQuest Gateway | Mon/Thu 9am|
