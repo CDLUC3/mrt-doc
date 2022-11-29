@@ -6,6 +6,8 @@
 - RDS: Thurs 5-6am PT (verify)
 
 ## Crons
+_This page does not include sysadmin crons that perform tasks such as log rotation._
+
 - Pause Queues: Thursday 5am
 - Unpause Queues: Thursday 6am
 - Overnight Daily: Merritt Billing Database Update and Consistency Reports
