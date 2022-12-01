@@ -7,14 +7,13 @@
 ## Next Steps by Team Member
 
 - David
-  - MySql8 testing*
   - API control of Access Request Queues*
+  - Maven BOM work
   - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
   - Iterative refactor of library dependencies
   - Resume Storage Admin Work
 - Mark
   - Nuxeo Refactor*
-    - disassociate from UI
     - create yaml driven management system --> queuing system
   - Consumer daemon work to support Dryad*
   - Allow ingest jobs to run on any server
@@ -24,7 +23,6 @@
 - Terry
   - Pal Museum support*
   - Rails 6 upgrade*
-  - MySql8 testing*
   - Master pom work
   - Integrating security scans into docker builds - trivy
   - Java Logging Infrastructure
