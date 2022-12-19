@@ -1,5 +1,40 @@
 ## Sprint Goals
 
+#### Sprint 80: November 9 - November 29, 2022
+- Core (trimmed) libraries refactor:
+  - Continue work on BOM implementation for core2 and cloud, #1286 
+  - core2 dependabot fixes: #1266
+- Storage:
+  - New locking mechanism on Stage, to be deployed to production on 1/11/23
+- Ingest:
+  - New consumer daemon for high-priority jobs (Dryad)
+  - Planning to release to Production in early January
+- Documentation:
+  - Troubleshooting guide and mrt-doc-private documentation updates
+- Docker Jenkins builds:
+  - Exploring Trivy
+  - Refactor Docker file locations: move Docker file to individual microservice repo
+  - Leveraging this relocation to enable use of microservice-specific changes
+- ETDs:
+  - UNX files for UCI, #1250
+  - manually update db entries and process UNX files
+  - manually update a subset of records with correct degree information
+  - refine associated documentation
+  - Populate missing Merritt ingest data in ETDs database, #1308 
+- Palestinian Museum project support:
+  - Possible publishing program update to incorporate revised metadata
+  - Complete collection setup
+  - Begin ingests of content
+- Dryad:
+  - Determine OAI deprecation date
+
+##### Releases:
+- Stage: 
+  - Inv and billing annual credential rotation (12/8)
+- Production:
+  - Inv and billing annual credential rotation (12/14)
+
+
 #### Sprint 79: November 9 - November 29, 2022
 - Core (trimmed) libraries refactor:
   - Redploys: Ingest should be next 
@@ -12,6 +47,7 @@
   - New consumer daemon for high-priority jobs (Dryad)
 - MySQL 8.x:
   - Planning to migrate Inv to 8.x in production on 11/15/22
+  - Incident 11/23-25: Documentation updates and new troubleshooting guide in-progress
 - Rails 6/Ruby 3.1 for UI:
   - Work with Ashley to move Ruby updates into production if time allows (after MySQL)
 - Docker Jenkins builds:
@@ -30,12 +66,13 @@
 
 ##### Releases:
 - Stage: 
-  - New locking mechanism for large access queue, #1229 (possibly prod as well, #1265)
-  - Rails 6 and Ruby 3.1 (possibly prod as well, after MySQL)
+  - New locking mechanism for large access queue, #1229 
+  - Rails 6 and Ruby 3.1 for UI
 - Production:
   - Timeout requesting hostname, #1267
   - Ruby 3 for batch service
-  - MySQL 8 for Inv
+  - MySQL 8 for Inv and Billing databases
+  - Rails 6 and Ruby 3.1 for UI
 
 #### Sprint 78: October 12 - November 1, 2022
 - Core (trimmed) libraries refactor:
