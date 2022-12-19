@@ -3,8 +3,6 @@ graph LR
   DOCKYML[[docker-compose.yml]]
   click DOCKYML href "https://github.com/CDLUC3/merritt-docker/blob/main/mrt-services/docker-compose.yml" "source code"
   DOCK(Docker Compose)
-  APACHE([Apache])
-  click APACHE href "https://github.com/CDLUC3/merritt-docker/tree/main/mrt-services/apache" "source code"
   ING([Ingest])
   click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
   STORE([Storage])
@@ -40,7 +38,6 @@ graph LR
 
   subgraph main
     DOCKYML --> DOCK
-    DOCK -.-> APACHE
     DOCK -.-> ING
     DOCK -.-> STORE
     DOCK -.-> UI
@@ -60,27 +57,6 @@ graph LR
     INPROF --> ING
   end
 
-  DRYADYML[[dryad.yml]]
-  OAI([OAI])
-  click OAI href "https://github.com/CDLUC3/mrt-oai" "source code"
-  SWORD([SWORD])
-  click SWORD href "https://github.com/CDLUC3/mrt-sword" "source code"
-  DRYAD([Dryad UI])
-  click DRYAD href "https://datadryad.org/" "service link"
-  DRYADMYSQL([Dryad MySQL])
-  SOLR([Dryad SOLR])
-  DRYINIT([Merritt Docker Init Tasks -- Overrides])
-  DRYADYML --> DOCK
-
-  subgraph dryad
-    DRYADYML --> OAI
-    DRYADYML --> SWORD
-    DRYADYML --> DRYAD
-    DRYADYML --> DRYADMYSQL
-    DRYADYML --> SOLR
-    DRYADYML --> DRYINIT
-  end
-
   ARYML[[audit-replic.yml]]
   AUDIT2([Audit override])
   REPLIC2([Replication override])
@@ -95,16 +71,11 @@ graph LR
   REPLIC2 -.-> REPLIC
   DRYINIT -.-> INIT
 
-  style DOCKYML stroke:red,stroke-width:4px
   style DOCK fill:cyan
-  style APACHE fill:cyan
   style ZOO fill:cyan
   style LDAP fill:cyan
   style MINIO fill:cyan
   style MINIOMC fill:cyan
   style SMTP fill:cyan
-  style DRYAD fill:cyan
-  style DRYADMYSQL fill:cyan
-  style SOLR fill:cyan
   style MINIO fill:#77913C
   style MYSQL fill:#F68D2F
