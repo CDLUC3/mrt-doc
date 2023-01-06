@@ -1,5 +1,46 @@
 ## Sprint Goals
 
+#### Sprint 81:  January 4 - January 24, 2023
+- Core (trimmed) libraries refactor:
+  - BOM implementation for core2 and cloud – merged to main: #1286
+  - core2 dependabot fixes - merged to main: #1266
+  - Still additional Dependabot changes to occur later
+  - Associated Inventory and Replic updates: #1316
+- Storage:
+  - New locking mechanism on Stage, to be deployed to production on 1/11/23
+  - #'s 1229, 1233
+- Admin tool:
+  - Pause Access queue (after deployment of locking mechanism)
+- Ingest:
+  - Consumer daemon for high-priority jobs (Dryad): #1289
+  - State command update: #1304
+  - Storage hostname error 502: #1315
+- Docker Jenkins builds:
+  - TBD
+- UI:
+  - UI State command: Add service start time to the state command output: #1306
+- ETDs:
+  - UNX files for UCI, #1250
+  - manually update db entries and process UNX files
+  - manually update a subset of records with correct degree information
+  - refine associated documentation
+  - Populate missing Merritt ingest data in ETDs database, #1308 
+- Palestinian Museum project support:
+  - Continue ingests of content: #1326
+- Dryad:
+  - Deprecate OAI: #9
+
+##### Releases:
+- Stage: 
+  - Inventory and Replic changes
+- Production:
+  - Storage queue locking 
+  - Inventory retries (trimmed wars, state command)
+  - Replic (trimmed wars, state command)
+  - Consumer daemon
+  - UI: state command and reading load balancer paths from SSM
+
+
 #### Sprint 80: November 9 - November 29, 2022
 - Core (trimmed) libraries refactor:
   - Continue work on BOM implementation for core2 and cloud, #1286 
