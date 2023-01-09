@@ -45,7 +45,6 @@ _Click the following diagram for a walk-through of the service._
 
 Code Repositories
 - [Sword](https://github.com/CDLUC3/mrt-sword)
-- [OAI](https://github.com/CDLUC3/mrt-oai)
 
 ### Other Production Services (Python/XSLT)
 - [ETD - Electronic Theses and Dissertations](https://github.com/CDLUC3/uc3-etds)
