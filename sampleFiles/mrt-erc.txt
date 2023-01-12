@@ -1,5 +1,5 @@
 erc: 
-who: Lopatin, Eric
+who: 
 what: Test metadata update REVISED
 when: (:unas)
 where: ark:/99999/fk48k8wm55
