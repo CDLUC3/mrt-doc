@@ -1,6 +1,6 @@
 erc: 
 who: 
-what: Test metadata update REVISED
+what: Test metadata update REVISED twice
 when: (:unas)
 where: ark:/99999/fk48k8wm55
 where: (:unas)
