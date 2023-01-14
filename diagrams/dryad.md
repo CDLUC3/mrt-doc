@@ -1,6 +1,6 @@
 ---
 title: "Merritt-Dryad Microservices"
-description: "Dryad deposits to Merritt via Sword; ingests are confirmed via OAI"
+description: "Dryad deposits to Merritt via Sword"
 prevpage: auditreplic
 nextpage: admin-spa
 chart: overview-dryad.mmd

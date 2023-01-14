@@ -46,6 +46,7 @@
 
 ## Microservices
 - [Merritt Express](https://github.com/CDLUC3/mrt-doc/wiki/Merritt-Express-(Archived))
+- [OAI](https://github.com/CDLUC3/mrt-oai)
 
 ## Microservice Functionality
 - Storage
