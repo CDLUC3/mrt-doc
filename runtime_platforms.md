@@ -5,7 +5,6 @@
   - EC2 
     - General Purpose EC2 
       - Inventory (Tomcat)
-      - OAI (Tomcat, to be deprecated)
       - Sword (Tomcat, to be deprecated)
       - UI (Puma)
     - Nework Optimized EC2 

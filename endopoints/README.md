@@ -176,27 +176,12 @@
 - /edit/*
 - /statement/*
 
-## [mrt-oai](https://github.com/CDLUC3/mrt-oai/blob/master/oai-src/src/main/java/org/cdlib/mrt/oai/app/jersey/oai/JerseyOAIMrt.java)
-
-- GET /oai/v2?verb={verb}
-  - Identify, ListIdentifiers, ListSets, ListRecords, ListMetadataFormats
-- GET state
-
-## mrt-express
-
-- dl/{ark}/{file}
-- dv/{ver}/{ark}/{file}
-
 #### Signed URL proof of concept
 - pdl/{ark}/{file}
 - pdv/{ver}/{ark}/{file}
 
 ## Dryad Use of Merritt API's
 - sword
-- oai
-- express
-  - /dl/{ark}/{file}
-  - /dv/{ver}/{ark}/{file}
 - dashboard
   - /d/{object}
   - /d/{object}/{version}

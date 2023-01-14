@@ -8,7 +8,7 @@
 | Build Refactor | Iterative improvement of Java services, patch dependencies, Java version upgrades |
 | Storage Admin | Storage node management and automation |
 | Ingest Priority and Nuxeo | Improve ingest queue priortization and management of unpredictable workload sizes |
-| Dryad - Normal Depositor | Enable Dryad to migrate from Sword deposit and OAI feed |
+| Dryad - Normal Depositor | Enable Dryad to migrate from Sword deposit |
 | Modernizing Deployments | Embrace devops practices to auto scale services - migrate from "running servers" to more modern concepts|
 | Merritt API and Depositor Tools | Improve use of Merritt by depositors|
 | Devops, Security, System Management | Adopt systems best practices|
@@ -31,7 +31,6 @@
   - Automate the build of docker images as well as java artifacts
   - Refactor/simplify our maven build definitions to utilize these new workflows
   - Automatically build and test on a daily basis
-- MySql version update - 2023 deadline
 - Java 11 upgrade (and tomcat)
 - Fast forward to Java 17
 
@@ -55,13 +54,11 @@
 
 ## Dryad - Normal Depositor
 
-- OAI functionality should be obsolete already -- Object Information Page
-  - Waiting for confirmation from UCB that they have migrated to new mechanism 
 - Migrate from Sword - make sure that Dryad deposits will not get starved in the Merritt Queue
   - Some work from "Ingest Priority and Nuxeo"
 - Improve Ingest Callback to notify clients that inventory work is complete
   - UCB will likely like this as well   
-- Eliminate OAI and Sword! 
+- Eliminate Sword! 
 
 ## Modernizing Deployments
 

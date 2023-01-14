@@ -19,7 +19,6 @@ _This is still a draft document.  The team continues to review and make adjustme
 | Inventory  | No Pause           | 9-5p, M-W   | 60 sec | Local ID service |
 | Replic     | No Pause           | 9-5p, M-Th AM   |  |              |          
 | Audit      | No Pause           | 9-5p, M-Th AM   |  | Low risk     |          
-| OAI        | No Pause   | 9-5p, M-W   |  | No high avail option |          
 | Sword      | Dryad Pause required     | 3-5p, M-W   |  | No high avail option |          
 | UI         | No Pause     | 9-5p, M-W   |  |            |          
 | Admin      | No Pause           | 9-5p, M-F   |  | Low risk     |
@@ -142,9 +141,6 @@ curl -X POST http://uc3-mrtsandbox2-stg:36121/mrtinv/service/stopzoo?t=xml
 ### Mrt Cron
 
 ## Deprecated Services
-- OAI
-  - Not highly available
-  - Impacts Dryad verification of deposit
 - Sword
   - Not highly available
   - Requires Dryad to pause ingests

@@ -1,7 +1,7 @@
 ---
 title: "Focus: Merritt Sword Microservice"
 description: "Merritt Sword Deposit (Used by Dryad)"
-nextpage: oai
+nextpage: etd
 chart: sword.mmd
 ---
 

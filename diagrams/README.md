@@ -98,11 +98,6 @@ graph TD
 
 [![](audit.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/audit)
 
-## OAI
-- [Graph Source](oai.mmd)
-
-[![](oai.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/oai)
-
 ## Sword
 - [Graph Source](sword.mmd)
 
