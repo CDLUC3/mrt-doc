@@ -1,5 +1,86 @@
 ## Sprint Goals
 
+#### Sprint 82: January 25 - February, 14 2023
+- Build refactoring
+  - Cross-microservice jar version consistency: #1286
+  - Java dependency issue summary spreadsheet: #10
+  - Storage: Groundwork for BOM
+- Admin tool
+  - Invoke queue cleanup via new API: #1350, 1351
+  - Ingest stack trace resolution: #1342
+  - Load balancer public/private: #9 and #13
+  - Coordination needed with Dryad, for a SWORD restart
+  - Possibly make some SSM changes
+- Ingest
+  - New API for ZK queue cleanup: #1339
+  - Ingest stack trace resolution: #1342
+  - Collection profile variable for toggling queue notification, plus associated state change: #1352
+- Audit
+  - Resolve failures associated with 13030//m59g71tt: #1345
+- ETDs
+  - UNX files for UCI, #1250 – pending response from UCI
+  - manually update db entries and process UNX files
+  - manually update a subset of records with correct degree information
+  - Populate missing Merritt ingest data in ETDs database, #1308
+- Palestinian Museum project support
+  - Continue ingests: #1326
+- UCJEPS
+  - New stage and production collections: #1309
+  - Snowcone job submission and on-site work
+- Dryad
+  - Discuss high-priority consumer daemon during on-site (week of 1/30/23)
+  - Potential for 1TB dataset
+- UCB meeting
+  - Discuss all of the queueing work we've completed
+  - File name search questions
+  - New JSON-based manifest type
+  - Pending deposits for 2023
+##### Releases:
+- Stage: 
+  - Storage BOM implementation
+  - Ingest API
+  - Ingest queue notifications (TBD)
+- Production: 
+  - ...
+#### Sprint 81: January 4 - January 24, 2023
+- Libraries refactor
+  - BOM implementation for core2 and cloud, #1286
+  - Merged to main
+  - core2 Dependabot fixes: #1266
+  - Merged to main
+  - Still additional Dependabot changes to occur later
+  - Associated Inventory and Replic updates: #1316
+- Storage
+  - Locking mechanism on Stage, to be deployed to production on 1/11/23
+  - #'s 1229, 1233
+- Admin tool
+  - Pause Access queue (after deployment of locking mechanism)
+- Ingest
+  - Consumer daemon for high-priority jobs (Dryad): #1289
+  - State command update: #1304
+  - Storage hostname error 502: #1315
+- UI
+  - UI State command: Add service start time to the state command output: #1306
+- ETDs
+  - UNX files for UCI, #1250
+  - manually update db entries and process UNX files
+  - manually update a subset of records with correct degree information
+  - refine associated documentation
+  - Populate missing Merritt ingest data in ETDs database, #1308
+- Palestinian Museum project support
+  - Continue ingests of content: #1326
+- Dryad
+  - Deprecate OAI: #9
+##### Releases:
+- Stage: 
+  - Inventory and Replic changes
+- Production: 
+  - Storage queue locking
+  - Inventory retries (trimmed jars, state command)
+  - Replic (trimmed jars, state command)
+  - Consumer daemon
+  - UI: state command and reading load balancer paths from SSM
+
 #### Sprint 80: November 9 - November 29, 2022
 - Core (trimmed) libraries refactor:
   - Continue work on BOM implementation for core2 and cloud, #1286 
