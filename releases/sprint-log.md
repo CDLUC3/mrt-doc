@@ -1,5 +1,35 @@
 ## Sprint Goals
 
+#### Sprint 83: February 15 - March, 7 2023
+- Build refactoring
+  - Cross-microservice jar version consistency: #1286
+  - Java dependency issue summary spreadsheet: #10
+  - Eliminate jena from mrt-core as a part of the pom normalization work: #1368
+- Ingest
+  - Clean up Callback response logic: #1377
+- UI
+  - UCB search by file name request: #1349
+  - Routine Gem Updates: #1383
+- Application logging
+  - Cross microservice logging: #971
+- ETDs
+  - Populate missing Merritt ingest data in ETDs database, #1308
+  - UNX files for UCI, #1250 – waiting on UCI
+- Palestinian Museum project support
+  - Continue ingests: #1326
+- UCJEPS
+  - Refine snowcone app for Jepson use: #1382
+  - New Production collection: #1309
+- Dryad
+  - Assist with transition to normal depositor workflow
+
+##### Releases:
+- Stage: 
+  - Stage: Potentially deploy all BOM updates to Stage across all microservices
+- Production:
+  - UI release: Dependabot updates, search by file name (inv_files table)
+
+
 #### Sprint 82: January 25 - February, 14 2023
 - Build refactoring
   - Cross-microservice jar version consistency: #1286
