@@ -19,7 +19,7 @@
   - Continue ingests: #1326
 - UCJEPS
   - Refine snowcone app for Jepson use: #1382
-  - New Production collection: #1309
+  - New Production collection: #1379
 - Dryad
   - Assist with transition to normal depositor workflow
 
