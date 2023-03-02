@@ -2,7 +2,7 @@
 title: "Merritt Audit and Replication Services"
 description: "Ensuring the integrity of 3 copies of each object"
 prevpage: ldap
-nextpage: dryad
+nextpage: admin-spa
 chart: overview-replic.mmd
 ---
 
