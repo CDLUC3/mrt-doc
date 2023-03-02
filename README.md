@@ -38,13 +38,7 @@ Code Repositories
 - [Replication](https://github.com/CDLUC3/mrt-replic)
 - [Audit (Fixity Check)](https://github.com/CDLUC3/mrt-audit)
 
-### Microservices - Auxiliary (Java)
-
-_Click the following diagram for a walk-through of the service._
-[![](diagrams/overview-dryad.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/dryad)
-
 Code Repositories
-- [Sword](https://github.com/CDLUC3/mrt-sword)
 
 ### Other Production Services (Python/XSLT)
 - [ETD - Electronic Theses and Dissertations](https://github.com/CDLUC3/uc3-etds)

@@ -33,11 +33,6 @@ Shapes
 
 [![](overview-core.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/core_index)
 
-## Dryad Microservices
-- [Graph Source](overview-dryad.mmd)
-
-[![](overview-dryad.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/dryad)
-
 ## Audit and Replic Microservices
 - [Graph Source](overview-replic.mmd)
 
@@ -97,11 +92,6 @@ graph TD
 - [Graph Source](audit.mmd)
 
 [![](audit.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/audit)
-
-## Sword
-- [Graph Source](sword.mmd)
-
-[![](sword.mmd.svg)](https://cdluc3.github.io/mrt-doc/diagrams/sword)
 
 ## Cloud Library
 - [Graph Source](mrt-cloud.mmd)
