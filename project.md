@@ -8,7 +8,6 @@
 | Build Refactor | Iterative improvement of Java services, patch dependencies, Java version upgrades |
 | Storage Admin | Storage node management and automation |
 | Ingest Priority and Nuxeo | Improve ingest queue priortization and management of unpredictable workload sizes |
-| Dryad - Normal Depositor | Enable Dryad to migrate from Sword deposit |
 | Modernizing Deployments | Embrace devops practices to auto scale services - migrate from "running servers" to more modern concepts|
 | Merritt API and Depositor Tools | Improve use of Merritt by depositors|
 | Devops, Security, System Management | Adopt systems best practices|
@@ -51,14 +50,6 @@
 - Use S3 rather than a shared file system (unless ZFS is viable) 
   - IAS and AWS rep seemed to suggest S3 as the recommended direction
 - Size-based ingest queue prioritization 
-
-## Dryad - Normal Depositor
-
-- Migrate from Sword - make sure that Dryad deposits will not get starved in the Merritt Queue
-  - Some work from "Ingest Priority and Nuxeo"
-- Improve Ingest Callback to notify clients that inventory work is complete
-  - UCB will likely like this as well   
-- Eliminate Sword! 
 
 ## Modernizing Deployments
 

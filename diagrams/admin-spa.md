@@ -1,7 +1,7 @@
 ---
 title: "Merritt Admin Tool"
 description: "User Interface for the Merritt Admin Tool"
-prevpage: dryad
+prevpage: auditreplic
 nextpage: admin-lambda
 chart: admin-spa.mmd
 ---
