@@ -19,7 +19,6 @@ _This is still a draft document.  The team continues to review and make adjustme
 | Inventory  | No Pause           | 9-5p, M-W   | 60 sec | Local ID service |
 | Replic     | No Pause           | 9-5p, M-Th AM   |  |              |          
 | Audit      | No Pause           | 9-5p, M-Th AM   |  | Low risk     |          
-| Sword      | Dryad Pause required     | 3-5p, M-W   |  | No high avail option |          
 | UI         | No Pause     | 9-5p, M-W   |  |            |          
 | Admin      | No Pause           | 9-5p, M-F   |  | Low risk     |
 | mrt-cron   | No Pause           | 9-5p, M-F   |  |             | 
@@ -34,8 +33,7 @@ _This is still a draft document.  The team continues to review and make adjustme
 - restart tomcat
 
 ### Ingest 
-- Called from Sword and from Merritt UI 
-- Current: uses Apache load balancer
+- Called from from Merritt UI 
 - Soon: uses ALB
 ##### Deployment process
  - Check current ingest queue activity to make sure that a release is OK
@@ -139,12 +137,6 @@ curl -X POST http://uc3-mrtsandbox2-stg:36121/mrtinv/service/stopzoo?t=xml
 ### Database Schema Changes
 
 ### Mrt Cron
-
-## Deprecated Services
-- Sword
-  - Not highly available
-  - Requires Dryad to pause ingests
-  - Beware of issues with the cert store 
 
 ---
 
