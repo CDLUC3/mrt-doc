@@ -1,5 +1,42 @@
 ## Sprint Goals
 
+#### Sprint 84: March 8 - March, 28 2023
+- Build refactoring
+  - mrt-core2 Dependabot updates (document current high-severity updates): #1266
+  - Establish a regular 1/2 hour to discuss recommended updates every 3 weeks (EL)
+  - Java dependency issue summary spreadsheet: #10
+  - Eliminate mrt-jena from mrt-core2 as a part of the pom normalization work: #s 1346, 1368\
+  - (Two step process: address mrt-jena removal, then work on RDF file changes to no longer generate them)
+- Ingest
+  - Clean up Callback response logic: #1377
+  - Potential memory leak: #1390
+- BOX
+  - Investigate approach for generating Merritt manifests with BOX file URLs
+  - Discuss and refine requirements
+- UI
+  - UCB search by file name request: #1349 (on Stage)
+  - Routine Gem Updates: #1383 (on Stage)
+  - Limit large uploads: #1400 (on Stage)
+  - Associated documentation: #1396
+- LDAP
+  - Annual LDAP cert request: #1311
+- ETDs
+  - Populate missing Merritt ingest data in ETDs database, #1308
+  - UNX files for UCI, #1250 – waiting on UCI
+- Palestinian Museum project support
+  - Continue ingests: #1326
+- UCJEPS
+  - Refine snowcone app for Jepson use: #1382
+  - New Production collection: #1379
+
+##### Releases:
+- Stage: 
+  - Ingest: Callback response logic update
+  - mrt-core2 Dependabot updates
+- Production:
+  - Ingest: Callback response logic update
+  - UI release: Dependabot updates, search by file name (inv_files table)
+
 #### Sprint 83: February 15 - March, 7 2023
 - Build refactoring
   - Cross-microservice jar version consistency: #1286
