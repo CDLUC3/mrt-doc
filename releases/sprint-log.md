@@ -1,5 +1,38 @@
 ## Sprint Goals
 
+#### Sprint 85: March 29 - April, 18 2023
+- Build refactoring
+  - mrt-core2 Dependabot updates: #1413
+  - Eliminate mrt-jena from mrt-core2 as a part of the pom normalization work: #s 1346, 1368\
+  - (Two step process: address jena removal, then work on RDF file changes to no longer generate them)
+- Ingest
+  - Jersey update: #1370 (on Stage)
+- BOX
+  - Investigate approach for generating Merritt manifests with BOX file URLs: #1409
+- UI
+  - UCB search by file name request: #1349 (on Stage)
+  - Routine Gem Updates: #1383 (on Stage)
+  - Limit large uploads: #1400 (on Stage)
+  - Prevent slow queries accessible to Guest user: #22
+  - Associated documentation: #1396
+- LDAP
+  - Annual LDAP cert request: #1311
+- ETDs
+  - Populate missing Merritt ingest data in ETDs database, #1308
+  - UNX files for UCI – Now have updated list of degree names and classifications from UCI: #1414
+- Palestinian Museum project support
+  - Continue ingests: #1326
+  - Fix outstanding submission manifests with Arabic characters
+- UCJEPS
+  - Assist as needed; monitor possible production collection ingests
+  - 102 objects as of 3/28
+
+##### Releases:
+- Stage: 
+  - mrt-core2 Dependabot updates
+- Production:
+  - UI release: Dependabot updates, search by file name (inv_files table), global search
+
 #### Sprint 84: March 8 - March, 28 2023
 - Build refactoring
   - mrt-core2 Dependabot updates (document current high-severity updates): #1266
