@@ -1,5 +1,33 @@
 ## Sprint Goals
 
+#### Sprint 86: April 19 - May, 9 2023
+- Build refactoring
+  - mrt-core2 Dependabot updates: #1428
+  - Eliminate mrt-jena from mrt-core2 as a part of the pom normalization work: #1368
+  - Attempt Migration to log4j-2.17.1 or 2.20.0 after eliminating Jena: #1433
+- Ingest
+  - Ingest queue redesign: Mark and Terry to discuss and document according to broad tasks:
+  - https://github.com/orgs/CDLUC3/projects/5/views/18
+- Cross-microservice logging
+  - Proof of concept in Docker (Terry)
+  - Mapping log4j into the tlogger (David)
+- ETDs
+  - Populate missing Merritt ingest data in ETDs database, #1308
+  - UNX files for UCI – Now have updated list of degree names and classifications from UCI: #1414
+- Palestinian Museum project support
+  - Continue ingests: #1326
+  - Fix outstanding with Arabic characters: Manifests created, need to confirm encoding: #1434
+  - Fix forward slash in title of 122 objects (#1432, later sprint)
+- UCJEPS
+  - Assist as needed; monitor possible production collection ingests
+  - Image orientation issues under investigation by RTL
+
+##### Releases:
+- Stage: 
+  - ...
+- Production:
+  - mrt-core2 Dependabot updates
+
 #### Sprint 85: March 29 - April, 18 2023
 - Build refactoring
   - mrt-core2 Dependabot updates: #1413
@@ -32,6 +60,7 @@
   - mrt-core2 Dependabot updates
 - Production:
   - UI release: Dependabot updates, search by file name (inv_files table), global search
+  - Jersey update for Ingest
 
 #### Sprint 84: March 8 - March, 28 2023
 - Build refactoring
