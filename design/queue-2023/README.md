@@ -1,6 +1,12 @@
 # Merritt Queue Redesign 2023
 
 ## Objectives
+- Match ingest workload to available resources (compute, memory, working storage)
+  - dynamically provision resources to match demand
+- Hold jobs based on temporary holds (collection lock, storage node lock, queue hold)
+- Graceful resumption of processing in progress
+- Accurate notification of ingest completion (including inventory recording)
+  - send accurate summary email on completion of a batch regardless of any interruption that occurred while processing
 
 ## Design Details
 - [Queue State Transitions](states.md)
