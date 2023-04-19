@@ -4,7 +4,7 @@
 
 ## Batch Queue
 - pending
-- consumed
+- held?
 - processing
 - reporting
 - completed
@@ -12,7 +12,7 @@
 
 ## Job Queue
 - pending
-- consumed
+- held
 - estimating
 - provisioning
 - downloading
@@ -20,3 +20,8 @@
 - recording
 - completed
 - failed
+  - resume estimating
+  - resume downloading
+  - resume processing
+  - resume recording
+  
