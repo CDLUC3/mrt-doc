@@ -21,9 +21,10 @@
   - These will be enabled only in the most extraordinary situations
   - These will not be saved to open search  
 
-## Step 1: Handle Existing Messages
+## Migration Guidance Step 1: Handle Existing Messages
 
 ### Deprecate Use of LoggerInf - use org.apache.logging.log4j.Logger directory
+_777 instances of `org.cdlib.mrt.utility.LoggerInf.log(Error|Message)` in our *.java files_
 
 - LoggerInf.logError --> Logger.error, Logger.warn or Logger.fatal
 - if DEBUG LoggerInf.logMessage --> Logger.debug or Logger.trace
@@ -33,14 +34,20 @@
 - eliminate the parameter or replace with with a MerrittKeyEventLoggable (see below)
 
 ### Deprecate `if DEBUG` checks
+
+_1265 instances of `if (DEBUG)` in the code base_
+
 - Unless it is computationally expensive...
   - Call `Logger.debug` and allow the logger to determine the action
 
 ### Deprecate System.out.print(ln)
+
+_5298 instances of `System.out.print` in the code base_
+
 - In general, replace these with Logger.debug or Logger.trace
 - If the message is more critical, use Logger.info, Logger.warn, Logger.error
 
-## Step 2: Log Key Events 
+## Migration Guidance Step 2: Log Key Events 
 - Details for logging key events are TBD
 - Each service will have a custom MerrittKeyEventLoggable object to log with each message
 - As key events are introduced, phase out old info/debug messages
