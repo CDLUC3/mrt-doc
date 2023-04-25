@@ -21,9 +21,10 @@ Here are links to Ashley's tomcat logging demos:
 - Application logs
   - Modify code to use log4j2 instead of current methods
   - Add key events to log4j
-- Tomcat access logs -> pull and convert to json
-  - or direct to standard out
-- catalina.out  
+- Tomcat access logs 
+  - https://tomcat.apache.org/tomcat-8.5-doc/config/valve.html#JSON_Access_Log_Valve
+- catalina.out
+  - Jersey messages - change logging class: https://stackoverflow.com/a/38024230/3846548 
 
 ## Log Level Guidance
 - Fatal 
