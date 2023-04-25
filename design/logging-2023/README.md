@@ -251,3 +251,46 @@ _This describes an information object to be populated and submitted with each js
 
 ## References
 - https://github.com/CDLUC3/mrt-doc/issues/971
+
+## Log4j2 Config File
+
+- TODO: prefer yaml over log4j2.xml... Note the precedence for finding the configuration
+- https://logging.apache.org/log4j/2.x/manual/configuration.html#automatic-configuration
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="ECS-Console" target="SYSTEM_OUT">
+      <EcsLayout serviceName="store" serviceNodeName="${env:HOSTNAME}"/>
+    </Console>
+    <RollingFile
+        name="ECS-File"
+        fileName="logs/log4j-ecs-json.log"
+        filePattern="logs/log4j-ecs-json-%d{yyyy-MM-dd}-%i.log">
+      <EcsLayout
+          serviceName="store"
+          serviceNodeName="${env:HOSTNAME}"
+          eventDataset="tomcat.store"
+          includeMarkers="true"
+          stackTraceAsArray="true"
+          includeOrigin="true"/>
+      <Policies>
+        <SizeBasedTriggeringPolicy size="19500KB" />
+      </Policies>
+      <DefaultRolloverStrategy max="10"/>
+    </RollingFile>
+  </Appenders>
+
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="ECS-Console"/>
+      <AppenderRef ref="ECS-File"/>
+    </Root>
+  </Loggers>
+</Configuration>
+```
+
+Questions:
+- Add to code base (needed for classpath)
+- Insert by puppet after deployment
