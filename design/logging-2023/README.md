@@ -17,6 +17,14 @@ Here are links to Ashley's tomcat logging demos:
 - https://github.com/CDLUC3/mrt-doc-private/blob/main/docs/poc/logback-ecs-encoder_setup.md
 - https://github.com/CDLUC3/mrt-store/compare/main...log4j-ecs-layout
 
+## Migration Plans
+- Application logs
+  - Modify code to use log4j2 instead of current methods
+  - Add key events to log4j
+- Tomcat access logs -> pull and convert to json
+  - or direct to standard out
+- catalina.out  
+
 ## Log Level Guidance
 - Fatal 
   - unrecoverable error has occurred (do not use this if a retry will happen)
