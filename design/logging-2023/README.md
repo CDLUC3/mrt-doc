@@ -17,6 +17,9 @@ Here are links to Ashley's tomcat logging demos:
 - https://github.com/CDLUC3/mrt-doc-private/blob/main/docs/poc/logback-ecs-encoder_setup.md
 - https://github.com/CDLUC3/mrt-store/compare/main...log4j-ecs-layout
 
+## Documenation
+- [Log4j2 Manual](https://logging.apache.org/log4j/2.x/manual/index.html)
+
 ## Migration Plans
 - Application logs
   - Modify code to use log4j2 instead of current methods
@@ -65,6 +68,7 @@ _1265 instances of `if (DEBUG)` in the code base_
 
 - Unless it is computationally expensive...
   - Call `Logger.debug` and allow the logger to determine the action
+  - For expensive operations use [Java Lambda for Lazy Logging](https://logging.apache.org/log4j/2.x/manual/api.html#java-8-lambda-support-for-lazy-logging)
 
 ### Deprecate System.out.print(ln)
 
