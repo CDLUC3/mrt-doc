@@ -14,7 +14,9 @@ Explain our rationale.
   - [Rabbit MQ](https://www.rabbitmq.com/) 
 - [Apache Kafka](https://kafka.apache.org/intro) (more like Amazon SNS) 
 
-## Distribute Locking
+## Distributed Locking
+- [Redis](https://redis.io/)
+- [DynamoDB](https://aws.amazon.com/dynamodb)
 
 ## State Transition (for Queue Items)
 - [Amazon Eventbridge](https://aws.amazon.com/eventbridge/)
