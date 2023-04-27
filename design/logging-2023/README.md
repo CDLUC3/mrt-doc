@@ -78,6 +78,7 @@ _5298 instances of `System.out.print` in the code base_
 - If the message is more critical, use Logger.info, Logger.warn, Logger.error
 
 ## Migration Guidance Step 2: Log Key Events 
+- Assemble relevant details in a [ThreadContext](https://logging.apache.org/log4j/2.x/manual/thread-context.html)?
 - Details for logging key events are TBD
 - Each service will have a custom MerrittKeyEventLoggable object to log with each message
 - As key events are introduced, phase out old info/debug messages
