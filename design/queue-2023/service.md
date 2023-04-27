@@ -2,14 +2,19 @@
 
 - [Design](README.md)
 
-## Why Zookeeper?
+## Why [Zookeeper](https://zookeeper.apache.org/)?
 
 Explain our rationale.
 
-## Alternatives
+## Queueing Alternatives
 
-- Amazon SQS - no priority, messages have a shorter duration than we need
-- Amazon MQ (deploys to managed EC2 instances)
-  - Apache MQ (uses Zookeeper!)
-  - Rabbit MQ 
-- Apache Kafka (more like Amazon SNS) 
+- [Amazon SQS](https://aws.amazon.com/pm/sqs/) - no priority, messages have a shorter duration than we need
+- [Amazon MQ](https://aws.amazon.com/amazon-mq/) (deploys to managed EC2 instances)
+  - [Apache MQ](https://activemq.apache.org/) (uses Zookeeper!)
+  - [Rabbit MQ](https://www.rabbitmq.com/) 
+- [Apache Kafka](https://kafka.apache.org/intro) (more like Amazon SNS) 
+
+## Distribute Locking
+
+## State Transition (for Queue Items)
+- [Amazon Eventbridge](https://aws.amazon.com/eventbridge/)
