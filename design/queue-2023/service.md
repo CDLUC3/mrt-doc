@@ -20,3 +20,4 @@ Explain our rationale.
 
 ## State Transition (for Queue Items)
 - [Amazon Eventbridge](https://aws.amazon.com/eventbridge/)
+- [Amazon Step Functions](https://docs.aws.amazon.com/step-functions/index.html)
