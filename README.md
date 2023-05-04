@@ -52,7 +52,7 @@ Code Repositories
 - Ruby
   - [Ruby Ingest](https://github.com/CDLUC3/mrt-ingest-ruby)
   - [SSM Gem](https://github.com/CDLUC3/uc3-ssm)
-  - [Merritt Atom](https://github.com/cdluc3/mrt-atom)
+  - [Merritt Atom](https://github.com/cdluc3/mrt-atom) - Nuxeo processing for ingest
 
 ### Configuration
 - [Tomcat](https://github.com/CDLUC3/mrt-tomcat)
