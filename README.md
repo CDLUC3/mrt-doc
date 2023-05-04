@@ -52,6 +52,7 @@ Code Repositories
 - Ruby
   - [Ruby Ingest](https://github.com/CDLUC3/mrt-ingest-ruby)
   - [SSM Gem](https://github.com/CDLUC3/uc3-ssm)
+  - [Merritt Atom](https://github.com/cdluc3/mrt-atom)
 
 ### Configuration
 - [Tomcat](https://github.com/CDLUC3/mrt-tomcat)
