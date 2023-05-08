@@ -62,6 +62,7 @@
   - Virtual Node Support
   - Support for non-S3 remote storage (open stack at SDSC)
   - Remote storage servers (not under CDL control)
+  - RDF/turtle file support in Merritt System files
 - UI 
   - File download (now presigned retrieval) 
   - Object download (now presigned retrieval)
@@ -71,3 +72,4 @@
   - HandlerFixity (Deprecated by Audit service)
   - HandlerCharacterize (Currently not used.  Initially, JHOVE2 was used)
   - HandlerCallback (Currently, not used)
+  - RDF/turtle file support in Merritt System files
