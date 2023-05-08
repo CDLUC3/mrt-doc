@@ -56,7 +56,6 @@ Code Repositories
 
 ### Configuration
 - [Tomcat](https://github.com/CDLUC3/mrt-tomcat)
-- [Catalina Base](https://github.com/CDLUC3/tomcat8_catalina_base)
 
 ### Supporting Services
 - Ruby
