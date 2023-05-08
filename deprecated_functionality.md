@@ -49,6 +49,11 @@
 - [OAI](https://github.com/CDLUC3/mrt-oai)
 - [Sword](https://github.com/CDLUC3/mrt-sword)
 
+## Other retired repositories
+- [tomcat8_catalina_base](https://github.com/CDLUC3/tomcat8_catalina_base)
+- [mrt-store-admin](https://github.com/CDLUC3/mrt-store-admin)
+- [merritt-manifest](https://github.com/CDLUC3/merritt-manifest)
+
 ## Microservice Functionality
 - Storage
   - Cloudhost Remote Storage (Pairtree)
