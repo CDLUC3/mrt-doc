@@ -33,7 +33,7 @@
 - Stage: 
   - UI release for harvester 401
 - Production:
-  - BOM 1.2.* releases store, inventory, audit, access and replic: #1450
+  - BOM 1.2. releases store, inventory, audit, access and replic: #1450
 
 #### Sprint 86: April 19 - May, 9 2023
 - Build refactoring
