@@ -1,5 +1,40 @@
 ## Sprint Goals
 
+#### Sprint 87: May 10 - May, 30 2023
+- Build refactoring
+  - Attempt Migration to log4j-2.17.1 or 2.20.0 after eliminating Jena: #1433
+  - To release as part of the BOM 1.2 update
+- Ingest
+  - Ingest queue redesign, Part 2: #1440
+  - Ingest stack trace when updating a new object: #1458
+  - ARK shoulder change for objects in Stage collections: #1465
+- Cross-microservice logging
+  - Proof of concept in Docker (Terry)
+- BOX download tool
+  - Build job: #1453
+  - Documentation: 1451, 1452, 1454-56
+- ETDs
+  - Populate missing Merritt ingest data in ETDs database, #1308
+  - UNX files for UCI – Now have updated list of degree names and classifications from UCI: #1414
+- UC Merced
+  - Facilitate DPX file ingest: #1460
+- UCSF
+  - CTP archive screenshots ingest: #1438
+  - Oral Histories Nuxeo feed: #1464
+- Palestinian Museum project support
+  - Continue ingests: #1326
+  - Fix outstanding with Arabic characters: Manifests created, need to confirm encoding: #1434
+  - Fix forward slash in title of 122 objects (#1432, later sprint)
+- UCJEPS
+  - Assist as needed; monitor possible production collection ingests
+  - Image orientation issues under investigation by RTL
+
+##### Releases:
+- Stage: 
+  - UI release for harvester 401
+- Production:
+  - BOM 1.2.* releases store, inventory, audit, access and replic: #1450
+
 #### Sprint 86: April 19 - May, 9 2023
 - Build refactoring
   - mrt-core2 Dependabot updates: #1428
@@ -26,7 +61,8 @@
 - Stage: 
   - ...
 - Production:
-  - mrt-core2 Dependabot updates
+  - mrt-core2 Dependabot updates, BOM 1.1.0
+  - Ingest: Jena HP Library removal
 
 #### Sprint 85: March 29 - April, 18 2023
 - Build refactoring
