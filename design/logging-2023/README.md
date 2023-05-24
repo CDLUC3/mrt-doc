@@ -71,8 +71,13 @@ Formatting catalina.out
 _777 instances of `org.cdlib.mrt.utility.LoggerInf.log(Error|Message)` in our *.java files_
 
 - LoggerInf.logError --> Logger.error, Logger.warn or Logger.fatal
-- if DEBUG LoggerInf.logMessage --> Logger.debug or Logger.trace
-- LoggerInf.logMessage --> Logger.info or Logger.debug based on importance of the message
+  - org.apache.logging.log4j.LogManager.getLogger().warn()
+  - org.apache.logging.log4j.LogManager.getLogger().error()
+- if DEBUG LoggerInf.logMessage 
+  - org.apache.logging.log4j.LogManager.getLogger().debug()
+  - org.apache.logging.log4j.LogManager.getLogger().trace()
+- LoggerInf.logMessage 
+  - org.apache.logging.log4j.LogManager.getLogger().info()
 
 ### Deprecate passing a Logger as a method parameter
 - replace with calls to 
@@ -100,42 +105,22 @@ _5298 instances of `System.out.print` in the code base_
 
 ## Migration Guidance Step 2: Log Key Events 
 - Assemble relevant details in a [ThreadContext](https://logging.apache.org/log4j/2.x/manual/thread-context.html)?
-- Details for logging key events are TBD
-- Each service will have a custom MerrittKeyEventLoggable object to log with each message
+  - Should we create an Enum for all common key names??
 - As key events are introduced, phase out old info/debug messages
-- Where applicable, add the MerrittKeyEventLoggable to warn/error/fatal messages
-
-- mrt-core
-  - interface MerrittKeyEventLoggable
-  - class DefaultMerrittKeyEvent implements MerrittKeyEventLoggable
-- mrt-cloud
-  - class MerrittCloudKeyEvent extends DefaultMerrittKeyEvent
-- cld-zk-zoo
-  - class MerrittQueueKeyEvent extends DefaultMerrittKeyEvent
-- mrt-ingest
-  - class IngestKeyEvent extends MerrittQueueKeyEvent 
-- mrt-store
-  - class StorageKeyEvent extends MerrittCloudKeyEvent
-  - class AccessQueueKeyEvent extends MerrittQueueKeyEvent
-- mrt-inventory
-  - class InventoryDBEvent extends DefaultMerrittKeyEvent
-  - class InventoryQueueKeyEvent extends MerrittQueueKeyEvent
-- mrt-audit
-  - class AuditKeyEvent extends MerrittCloudKeyEvent
-  - class AuditDBKeyEvent extends DefaultMerrittKeyEvent 
-- mrt-replic
-  - class ReplicKeyEvent extends MerrittCloudKeyEvent
-  - class ReplicDBKeyEvent extends DefaultMerrittKeyEvent 
 
 ## Generic Log Record Properties
 - date
+  - framework will insert this 
 - time
+  - framework will insert this 
 - hostname
+ - filebeat will insert this using infrastructure Ashley configures
 - fqsn (microservice name)
+ - filebeat will insert this using infrastructure Ashley configures
 - log level (key-event, severe, error, warn, info, debug)
-- file
-- line
-- function
+  - developer will control this 
+- file, line, function
+  - framework will insert this 
 
 ## Generic Log Record Properties - User Requests
 - thread id
@@ -144,18 +129,19 @@ _5298 instances of `System.out.print` in the code base_
 - request IP (check with Marisa on the implications of storing this)
 
 ## Generic Log Record Properties - Key Events
-- status-code for the request
 - duration
-- bytes
-- bytes_read?
-- bytes_written?
-- retry attempts required
-  - really valuable if/when we are evaluating new storage providers 
+  - we should find a class to help us compute duration
+- create a utility class to log the following for key events 
+  - bytes_read
+  - bytes_written
+  - retry attempts required
+    - really valuable if/when we are evaluating new storage providers 
 
 ## Key attributes by service
 _This describes an information object to be populated and submitted with each json log entry.  The object should be as fully populated as possible.  This would likely appear as a "custom" entry in the log json._
 
 - UI
+  - TBD: learn how to log a key event using the lograge framework 
   - all requests
     - user  (check with Marisa on the implications of storing this)
   - collection-level requests
@@ -230,7 +216,6 @@ _This describes an information object to be populated and submitted with each js
 - UI ALB
   - Is any ALB log info interesting to track and funnel to Open Search, or is this best to not clutter our logs
 - UI
-  - Every request/api call is a key event
   - What would this enable?
     - Count logins
     - Count collection browse
@@ -244,21 +229,20 @@ _This describes an information object to be populated and submitted with each js
     - Count atom feed traversal
 - Store
   - Every request/api call is a key event
+    - some storage requests will not be handled by the ALB and should be logged explicitly 
   - Every file not saved is a key event 
   - Every file saved is a key event
   - Every checksum not verified is a key event 
   - Every checksum verified is a key event (debug mode)
 - Ingest
-  - Every request/api call is a key event
+  - Every request/api call is a key event (ALB can count)
   - Every queue task handled is a key event
   - Every manifest line item processed is a key event
-  - Callback requests made?
-  - Notifications made?
 - Inventory
-  - Every request/api call is a key event (local id service)  
+  - Every request/api call is a key event (local id service)  (ALB can count) 
   - Every queue task handled is a key event
 - Access    
-  - Every request/api call is a key event
+  - Every request/api call is a key event (ALB can count)
   - Every queue task handled is a key event
 - Audit
   - Every file not verified is a key event
@@ -268,7 +252,7 @@ _This describes an information object to be populated and submitted with each js
   - Every batch (inv_audits table) initiated is a key event 
   - Every batch (inv_audits table) updated is a key event 
 - Replication
-  - Every request/api call is a key event (admin tool calls directly)
+  - Every request/api call is a key event (admin tool calls directly) - no ALB
   - Every object replicated is a key event 
   - Every file not saved is a key event 
   - Every file saved is a key event (debug mode)
@@ -289,7 +273,7 @@ _This describes an information object to be populated and submitted with each js
 
 ## Log4j2 Config File
 
-- TODO: prefer yaml over log4j2.xml... Note the precedence for finding the configuration
+- most online documentation seems to reference log4j2.xml - prefer this over yaml
 - https://logging.apache.org/log4j/2.x/manual/configuration.html#automatic-configuration
 
 ```
@@ -326,6 +310,3 @@ _This describes an information object to be populated and submitted with each js
 </Configuration>
 ```
 
-Questions:
-- Add to code base (needed for classpath)
-- Insert by puppet after deployment
