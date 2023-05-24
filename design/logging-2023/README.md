@@ -17,22 +17,32 @@ Based on Ashley's prior experimentation with Open Search, here is our approach
   - For the UI, it is important to capture request and response details in a single message 
   - [UI Changes to Enable Logging](https://github.com/CDLUC3/mrt-dashboard/pull/146)
 
-Here are links to Ashley's tomcat logging demos:
+## What will we capture in OpenSearch?
+- WAF Logs
+- ALB Logs
+  - If available, there may be little need for tomcat access logs
+- Application logs from Merritt java services (json format)
+- Application logs from Merritt UI (json format)
+- Cloudwatch logs for Lambda functions
+
+## Documenation
+- [Log4j2 Manual](https://logging.apache.org/log4j/2.x/manual/index.html)
+
+### Other Documentation used in preparing this recommendation
+Ashley's notes
 - https://github.com/CDLUC3/mrt-doc-private/blob/main/docs/poc/log4j-ecs-layout_setup.md
 - https://github.com/CDLUC3/mrt-doc-private/blob/main/docs/poc/logback-ecs-encoder_setup.md
 - https://github.com/CDLUC3/mrt-store/compare/main...log4j-ecs-layout
 
-## Documenation
-- [Log4j2 Manual](https://logging.apache.org/log4j/2.x/manual/index.html)
+Formatting Tomcat access logs 
+- https://tomcat.apache.org/tomcat-8.5-doc/config/valve.html#JSON_Access_Log_Valve
+Formatting catalina.out
+- Jersey messages - change logging class: https://stackoverflow.com/a/38024230/3846548 
 
 ## Migration Plans
 - Application logs
   - Modify code to use log4j2 instead of current methods
   - Add key events to log4j
-- Tomcat access logs 
-  - https://tomcat.apache.org/tomcat-8.5-doc/config/valve.html#JSON_Access_Log_Valve
-- catalina.out
-  - Jersey messages - change logging class: https://stackoverflow.com/a/38024230/3846548 
 
 ## Log Level Guidance
 - Fatal 
@@ -65,22 +75,28 @@ _777 instances of `org.cdlib.mrt.utility.LoggerInf.log(Error|Message)` in our *.
 - LoggerInf.logMessage --> Logger.info or Logger.debug based on importance of the message
 
 ### Deprecate passing a Logger as a method parameter
-- eliminate the parameter or replace with with a MerrittKeyEventLoggable (see below)
+- replace with calls to 
+  - org.apache.logging.log4j.ThreadContext.put(key, value);
+  - org.apache.logging.log4j.LogManager.getLogger().info()
+  - org.apache.logging.log4j.LogManager.getLogger().warn()
+  - org.apache.logging.log4j.LogManager.getLogger().error()
+  - org.apache.logging.log4j.LogManager.getLogger().debug()
 
 ### Deprecate `if DEBUG` checks
 
 _1265 instances of `if (DEBUG)` in the code base_
 
+- Use org.apache.logging.log4j.LogManager.getLogger().debug()
 - Unless it is computationally expensive...
-  - Call `Logger.debug` and allow the logger to determine the action
   - For expensive operations use [Java Lambda for Lazy Logging](https://logging.apache.org/log4j/2.x/manual/api.html#java-8-lambda-support-for-lazy-logging)
 
 ### Deprecate System.out.print(ln)
 
 _5298 instances of `System.out.print` in the code base_
 
-- In general, replace these with Logger.debug or Logger.trace
-- If the message is more critical, use Logger.info, Logger.warn, Logger.error
+- In general, replace these with 
+  - org.apache.logging.log4j.LogManager.getLogger().debug()
+  - org.apache.logging.log4j.LogManager.getLogger().info()
 
 ## Migration Guidance Step 2: Log Key Events 
 - Assemble relevant details in a [ThreadContext](https://logging.apache.org/log4j/2.x/manual/thread-context.html)?
