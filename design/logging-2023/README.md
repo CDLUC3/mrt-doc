@@ -3,14 +3,19 @@
 ## Assumptions
 
 Based on Ashley's prior experimentation with Open Search, here is our approach
+- Java Services will use Log4j2 for logging.  Log files will be written as Json with an ECSLayout format.
+  - [BOM Changes to enable logging](https://github.com/CDLUC3/mrt-core2/pull/31) 
 - All java services will add a new library that will generate logs in json format.  These json records will be consumed by Open Search.
   - The older, unstructured log messages do not need to be eliminated immediately BUT these older log messages should not constrain us from modernizing our logging approach.
   - As our services migrate to serverless and container architectures, it will become increasingly difficult to tail log files.
   - The future way to view logs will be to query open search.
   - We will wean ourselves off of the narrative log files as we are able to rely more and more on the Open Search logs.
+  - Sample PR's to enable logging
+    - [Ingest](https://github.com/CDLUC3/mrt-ingest/pull/80)
+    - [Storage](https://github.com/CDLUC3/mrt-store/pull/37) 
 - Ruby services will be modified to generate json logs
-  - Ideally, when logging detains about a Rails request, it will be possible to log the request URL, the return status and the duration in a single log entry.
-  - It is currently difficult to obtain this information at one time
+  - For the UI, it is important to capture request and response details in a single message 
+  - [UI Changes to Enable Logging](https://github.com/CDLUC3/mrt-dashboard/pull/146)
 
 Here are links to Ashley's tomcat logging demos:
 - https://github.com/CDLUC3/mrt-doc-private/blob/main/docs/poc/log4j-ecs-layout_setup.md
