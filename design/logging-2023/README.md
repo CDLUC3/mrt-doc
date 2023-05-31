@@ -13,6 +13,7 @@ Based on Ashley's prior experimentation with Open Search, here is our approach
   - Sample PR's to enable logging
     - [Ingest](https://github.com/CDLUC3/mrt-ingest/pull/80)
     - [Storage](https://github.com/CDLUC3/mrt-store/pull/37) 
+    - [Inventory](https://github.com/CDLUC3/mrt-inventory/pull/25)
 - Ruby services will be modified to generate json logs
   - For the UI, it is important to capture request and response details in a single message 
   - [UI Changes to Enable Logging](https://github.com/CDLUC3/mrt-dashboard/pull/146)
