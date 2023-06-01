@@ -281,19 +281,20 @@ _This describes an information object to be populated and submitted with each js
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration status="INFO">
   <Appenders>
-    <Console name="ECS-Console" target="SYSTEM_OUT">
-      <EcsLayout serviceName="store" serviceNodeName="${env:HOSTNAME}"/>
+    <Console name="Text-Console" target="SYSTEM_OUT">
+        <PatternLayout pattern="%d{dd-MMM-yyyy HH:mm:ss.SSS} %-5level [%t] %c{1} - %msg%n"/>
     </Console>
     <RollingFile
         name="ECS-File"
         fileName="logs/log4j-ecs-json.log"
         filePattern="logs/log4j-ecs-json-%d{yyyy-MM-dd}-%i.log">
+      <!-- https://logging.apache.org/log4j/2.x/manual/lookups.html -->
       <EcsLayout
-          serviceName="store"
-          serviceNodeName="${env:HOSTNAME}"
-          eventDataset="tomcat.store"
+          serviceName="${env:SERVICE:-service}"
+          serviceNodeName="${env:HOSTNAME:-${env:SERVICE:-service}}"
+          eventDataset="tomcat"
           includeMarkers="true"
           stackTraceAsArray="true"
           includeOrigin="true"/>
@@ -302,12 +303,23 @@ _This describes an information object to be populated and submitted with each js
       </Policies>
       <DefaultRolloverStrategy max="10"/>
     </RollingFile>
+    <RollingFile
+        name="Text-File"
+        fileName="logs/log4j-text.log"
+        filePattern="logs/log4j-text-json-%d{yyyy-MM-dd}-%i.log">
+      <Policies>
+        <SizeBasedTriggeringPolicy size="19500KB" />
+      </Policies>
+      <DefaultRolloverStrategy max="10"/>
+      <PatternLayout pattern="%d{dd-MMM-yyyy HH:mm:ss.SSS} %-5level [%t] %c{1} - %msg%n"/>
+    </RollingFile>
   </Appenders>
 
   <Loggers>
-    <Root level="info">
-      <AppenderRef ref="ECS-Console"/>
+    <Root level="${env:LOGLEVEL:-info}">
+      <AppenderRef ref="Text-Console"/>
       <AppenderRef ref="ECS-File"/>
+      <AppenderRef ref="Text-File"/>
     </Root>
   </Loggers>
 </Configuration>
