@@ -1,5 +1,46 @@
 ## Sprint Goals
 
+#### Sprint 88: May 31 - June, 27 2023
+- Ingest
+  - Ingest queue redesign, Part 2: #1440
+  - Ingest stack trace when updating a new object: #1458
+- UI
+  - Stage release: #1479
+- Cross-microservice logging
+  - Proof of concept in Docker
+  - Tutorial examples
+  - New tickets forthcoming for microservices
+- Admin tool
+  - Updates to annual Billing report to support more granular reporting based on ownership: #1314
+  - Update lambda to newly available Ruby 3: #1466
+  - Added tickets: #1006, #1166, #1471, #1472
+  - New page for helper SQL
+- BOX download tool
+  - Wiki documentation: #1452
+- Documentation
+  - End user guidance for submissions: #1280 (move to Sprint 89)
+  - e.g. 5MB manifest size limit (currently not enforced? investigating)
+- ETDs
+  - Populate missing Merritt ingest data in ETDs database, #1308
+  - UNX files for UCI – Now have updated list of degree names and classifications from UCI: #1414
+- UC Merced
+  - Facilitate DPX file ingest: #1460
+- UCSF
+  - CTP archive screenshots ingest: #1438
+  - Oral Histories Nuxeo feed: #1464
+- Palestinian Museum project support
+  - Continue ingests: #1326
+  - Fix outstanding with Arabic characters: Manifests created, need to confirm encoding: #1434
+  - Fix forward slash in title of 122 objects (#1432, later sprint)
+- UCJEPS
+  - Assist with Snowcone process for Snowcone 2
+  - Migrate Snowcone 1 content from UC3 bucket to RTL bucket
+  - Monitor forthcoming production collection ingests
+
+##### Releases:
+- Stage: UI release for permalink URL
+- Production: UI release for permalink URL
+
 #### Sprint 87: May 10 - May, 30 2023
 - Build refactoring
   - Attempt Migration to log4j-2.17.1 or 2.20.0 after eliminating Jena: #1433
