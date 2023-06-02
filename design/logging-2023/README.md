@@ -16,6 +16,10 @@ Based on Ashley's prior experimentation with Open Search, here is our approach
     - [Inventory](https://github.com/CDLUC3/mrt-inventory/pull/25)
     - [Audit](https://github.com/CDLUC3/mrt-audit/pull/20)
     - [Replic](https://github.com/CDLUC3/mrt-replic/pull/23)
+  - Associated PR's to eliminate docker image vulnerabilities from old maven builds
+    - [mrt-cloud](https://github.com/CDLUC3/mrt-cloud/pull/29)
+    - [cdl-zk-queue](https://github.com/CDLUC3/cdl-zk-queue/pull/19)
+    - [mrt-zoo](https://github.com/CDLUC3/mrt-zoo/pull/5) 
 - Ruby services will be modified to generate json logs
   - For the UI, it is important to capture request and response details in a single message 
   - [UI Changes to Enable Logging](https://github.com/CDLUC3/mrt-dashboard/pull/146)
