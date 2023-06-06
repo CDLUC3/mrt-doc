@@ -17,6 +17,7 @@ Based on Ashley's prior experimentation with Open Search, here is our approach
     - [Audit](https://github.com/CDLUC3/mrt-audit/pull/20)
     - [Replic](https://github.com/CDLUC3/mrt-replic/pull/23)
   - Associated PR's to eliminate docker image vulnerabilities from old maven builds
+    - [mrt-core2](https://github.com/CDLUC3/mrt-core2/pull/31)
     - [mrt-cloud](https://github.com/CDLUC3/mrt-cloud/pull/29)
     - [cdl-zk-queue](https://github.com/CDLUC3/cdl-zk-queue/pull/19)
     - [mrt-zoo](https://github.com/CDLUC3/mrt-zoo/pull/5) 
