@@ -21,3 +21,10 @@ Explain our rationale.
 ## State Transition (for Queue Items)
 - [Amazon Eventbridge](https://aws.amazon.com/eventbridge/)
 - [Amazon Step Functions](https://docs.aws.amazon.com/step-functions/index.html)
+
+## AWS Consultation with Kevin and Maria
+- Consider EMR for running ZK, may be a costly option: https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-zookeeper.html
+- Consider AWS Step Functions instead of queueing with ZK
+  - Kevin will brainstorm and estimate if this could be more affordable than our 5 t3.small instances
+- Consider fargate + event stream to configure hosts: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch_event_stream.html
+  - Kevin will send Ashley code samples 
