@@ -4,19 +4,20 @@
 ## Next Steps by Team Member
 
 - David
-  - Maven BOM work
-  - Iterative refactor of library dependencies
+  - Add custom logging to Store, Inv, Audit, Replic
+  - Java upgrade
   - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
   - Resume Storage Admin Work
 - Mark
+  - Add custom logging to Ingest
   - Allow ingest jobs to run on any server
   - Ingest Priority - Size Based Prioritization
   - Make callback aware of inventory
   - Improve Notification System - after interrupt
 - Terry
-  - UI Search
-  - Integrating security scans into docker builds - trivy
-  - Java Logging Infrastructure
+  - Refine admin tool
+  - Integrating security scans into docker builds - trivy / daily build
+  - Collection Health Reports
 - Ashley 
   - Maven exploration (artifact repository)
   - Credential encryption
