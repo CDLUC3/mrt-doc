@@ -1,6 +1,6 @@
 ## Sprint Goals
 
-#### Sprint 88: May 31 - June, 27 2023
+#### Sprint 89: May 31 - June, 27 2023
 - Ingest
   - Ingest queue redesign, Part 2: #1440
   - Ingest OpenSearch initial logging
