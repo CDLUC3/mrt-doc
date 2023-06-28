@@ -23,7 +23,7 @@
 - Documentation
   - End user guidance for submissions: #1280 (move to Sprint 89)
 - ETDs
-  - Service credentials update: #1493
+  - Service credentials in SSM update: #1493
   - Populate missing Merritt ingest data in ETDs database, #1308
   - UNX files for UCI – Now have updated list of degree names and classifications from UCI: #1414
 - New Nuxeo deposits and Collections
@@ -42,7 +42,7 @@
 
 ##### Releases:
 - Stage: UI release, Ingest release consolidated queue
-- Production: Ingest release consolidated queue, ETDs service credentials
+- Production: Ingest release consolidated queue, ETDs service credentials in SSM
 
 #### Sprint 88: May 31 - June, 27 2023
 - Ingest
