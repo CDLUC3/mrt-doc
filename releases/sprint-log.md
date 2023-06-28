@@ -3,6 +3,50 @@
 #### Sprint 88: May 31 - June, 27 2023
 - Ingest
   - Ingest queue redesign, Part 2: #1440
+  - Ingest OpenSearch initial logging
+- Access
+  - Redeploy to take advantage of queue library changes made as part of the redesign
+- UI
+  - Initial OpenSearch logging
+  - Re-evaluate "total size, all versions" metric: #1503
+  - JQuery version update
+- Cross-microservice logging
+  - Pull Tomcat access logs: #1494
+  - Storage: log4j2 + extend logging for OpenSearch 
+- Admin tool
+  - Consolidated Ingest queue support: #1487
+  - Update behavior of re-audit unverified button: #1471
+  - Alarm for storage node threshold: #1006
+  - Brainstorm: Collection health report: #1425
+  - Improve efficiency of calls to SSM: #1504
+  - Create purge policy for saved consistency reports: #866
+- Documentation
+  - End user guidance for submissions: #1280 (move to Sprint 89)
+- ETDs
+  - Service credentials update: #1493
+  - Populate missing Merritt ingest data in ETDs database, #1308
+  - UNX files for UCI – Now have updated list of degree names and classifications from UCI: #1414
+- New Nuxeo deposits and Collections
+  - UCI Community Photographs harvest: #1496
+  - UCR Eaton Fanzine Collection harvest: #1497
+  - Establish UCR Eaton Fanzine Collection: #1498
+- UCSF
+  - CTP archive screenshots ingest: #1438
+  - Oral Histories Nuxeo feed: #1464
+- Palestinian Museum project support
+  - Finish ingests: #1326
+  - Fix outstanding with Arabic characters: Manifests created, need to confirm encoding: #1434
+  - Fix forward slash in title of 122 objects (#1432, later sprint)
+- UCJEPS
+  - Monitor and support forthcoming production collection ingests
+
+##### Releases:
+- Stage: UI release, Ingest release consolidated queue
+- Production: Ingest release consolidated queue, ETDs service credentials
+
+#### Sprint 88: May 31 - June, 27 2023
+- Ingest
+  - Ingest queue redesign, Part 2: #1440
   - Ingest stack trace when updating a new object: #1458
 - UI
   - Stage release: #1479
