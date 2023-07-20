@@ -1,5 +1,44 @@
 ## Sprint Goals
 
+#### Sprint 90:  July 19 - August 8, 2023
+- Access
+  - Redeploy to make use of the new consolidated queue implementation
+- ALB investigation w/EZID regarding minting errors
+  - EZID #161
+  - Inventory - ALB bad gateway errors: #1537
+- Ingest
+  - Extend logging for OpenSearch
+  - Redesign Part 3: Support additional zookeeper states: #1441 (stretch goal)
+- Dev-ops
+  - Nightly build automation: #1488
+- Storage
+  - Upgrade logging to log4j2: #1526
+- UI
+  - Extend logging for OpenSearch (observe output for a while first)
+- OpenSearch
+  - Lambda logs into OpenSearch, see how we can make these easier to navigate
+  - Load billing JSON data
+  - Dashboard for Storage logging
+  - Access: Find a way to visualize how many TBs of data we assemble daily
+- ETDs
+  - Populate missing Merritt ingest data in ETDs database, #1308
+  - UNX files for UCI – Now have updated list of degree names and classifications from UCI: #1414
+- New Nuxeo deposits and Collections
+  - UCI Community Photographs harvest: #1496
+  - UCR Eaton Fanzine Collection harvest: #1497
+  - Establish UCR Eaton Fanzine Collection: #1498
+- UCSF
+  - CTP archive screenshots to GitHub:#1523
+  - Oral Histories Nuxeo feed: #1464
+- Palestinian Museum project support
+  - Delete content from Stage S3 bucket
+- UCJEPS
+  - Monitor and support forthcoming production collection ingests
+
+##### Releases:
+- Stage: TBD
+- Production: TBD
+
 #### Sprint 89: May 31 - June, 27 2023
 - Ingest
   - Ingest queue redesign, Part 2: #1440
