@@ -22,9 +22,10 @@
   - Maven exploration (artifact repository)
   - Credential encryption
 - Eric
+  - Collection Health Reports
   - ETDs
-  - Pal Museum
-  - Jepson
+  - Robbins Collection
+  - UCSF Glantz videos
 - Team
   - Define Stage Environment Data Goals
   - Credential encryption
