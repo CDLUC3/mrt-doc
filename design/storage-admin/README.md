@@ -38,6 +38,29 @@ Steps to perform
 - Create Tombstone entry for object
 - Reflect deletion in daily billing stats
 
+#### Tombstone Objects
+
+```sql
+create table inv_object_maints(
+  id int,
+  inv_object_id int,
+  ark varchar(255),
+  object_type enum('MRT-curatorial','MRT-system'),
+  role enum('MRT-class','MRT-content'),
+  aggregate_role enum('MRT-collection','MRT-owner','MRT-service-level-agreement','MRT-submission-agreement','MRT-none')
+  version_number smallint,
+  erc_who mediumtext,
+  erc_what mediumtext,
+  erc_when mediumtext,
+  erc_where mediumtext,
+  created timestamp,
+  action enum('removed', 'recreated', 'modified-by-merritt', 'maintenance-note')
+  modified timestamp,
+  removed timestamp,
+  note mediumtext
+)
+```
+
 ### Change Primary Storage Node
 
 ```mermaid
