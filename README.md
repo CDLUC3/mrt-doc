@@ -132,7 +132,7 @@ Code Repositories
   - [Merritt Box Tools](https://github.com/CDLUC3/mrt-box) 
 - Ruby
   - [Admin Tool](https://github.com/CDLUC3/mrt-admin-lambda)
-  - [Integration Tests](https://github.com/CDLUC3/mrt-integ-tests)
+  - [Merritt End to End Tests](https://github.com/CDLUC3/mrt-integ-tests)
   - [Merritt Manifest Tools](https://github.com/CDLUC3/merritt-manifest)
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
