@@ -12,8 +12,6 @@
 - [Manifest Validation Tool](https://cdluc3.github.io/mrt-doc/manifest/index.html)
 - [Manifest Validation Tool with Unit Tests](https://cdluc3.github.io/mrt-doc/manifest/index.html?unittest=1)
 
-## Flowchart Index
-- [Flowchart Index](https://cdluc3.github.io/mrt-doc/diagrams/)
 ## Code Repositories
 
 ### Core Microservices 
