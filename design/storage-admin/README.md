@@ -86,6 +86,17 @@ graph TD
 
 ```
 
+### Update Manifest Option
+
+This is a speculative feature.  This would allow the Merritt System to provide a mechanism to generate a new manifest file for an object that works around system limitations.
+
+This could also be used to clean up issues with obsolete system files.
+
+Allow the upload of a repaired manifest for an object.
+
+Correspondingly, a "get-augmented-manifest" option would exist to generate a repaired manifest with Merritt software.
+
+
 ## Completed Storage Admin Efforts
 
 ### Add Storage Node
