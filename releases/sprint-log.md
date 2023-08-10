@@ -1,5 +1,38 @@
 ## Sprint Goals
 
+#### Sprint 91: August 9 - August 29, 2023
+- Storage
+  - Upgrade logging to log4j2: #1526
+- Ingest
+  - Trap 502 Bad Gateway response from EZID: #1551
+  - ZK: Enable delete of held queue items from the admin tool: #1085
+- Dev-ops
+  - Build script testing
+- UI:
+  - End-to-end test failure: permalink: #1555
+- Collection Health Prototype: #1544
+  - Experiment with object data
+  - Update the billing and file data feeds daily
+- OpenSearch:
+  - Lambda logs into OpenSearch (in progress per Ashley)
+  - Refine initial dashboard for Storage logging
+  - Access: Find a way to visualize how many TBs of data we assemble daily
+- Dryad:
+  - Consider tooling needed for content transition (set up a meeting)
+- ETDs
+  - UNX files for UCI – apply updated list of degree names and classifications: #1310, 1414
+- UCB Law
+  - Establish Robbins Collection: #1542 
+- PAD
+  - Establish preprints collections: #1543
+- UCSF
+  - CTP archive screenshots to GitHub: #1523
+  - Glantz hard drive content ingest: #1510
+
+#### Releases:
+- Stage: Ingest 502 client changes
+- Production: Storage log4j2 and OS logging
+
 #### Sprint 90:  July 19 - August 8, 2023
 - Access
   - Redeploy to make use of the new consolidated queue implementation
@@ -36,7 +69,7 @@
   - Monitor and support forthcoming production collection ingests
 
 ##### Releases:
-- Stage: TBD
+- Stage: Storage log4j2 and OS logging
 - Production: TBD
 
 #### Sprint 89: May 31 - June, 27 2023
