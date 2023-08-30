@@ -1,5 +1,43 @@
 ## Sprint Goals
 
+#### Sprint 92: August 20 - September 19, 2023
+- Storage
+  - Upgrade logging to log4j2: #1526
+- Ingest
+  - Validate manifest for errors ahead of content download: #1558
+  - Queue redesign (Part 3) - Support additional zookeeper states: #1441
+- UI:
+  - Dependabot gem update and GH actions changes: #148
+- Collection Health Prototype: #1544
+  - Experiment with object data
+- Credential rotation pre-work
+  - Storage state check: #1470
+  - Audit and Replic state check: #1548
+  - Inventory state check: ticket forthcoming
+  - Wasabi, SDSC, EZID, LDAP docs: #1549, 1550 
+- OpenSearch:
+  - Lambda logs into OpenSearch (check in with Ashley)
+  - Refine Storage Stats dashboard using the latest fields that David has published: #1581
+  - Access: Find a way to visualize how many TBs of data we assemble daily
+- Dryad:
+  - Consider tooling needed for content transition
+- ETDs
+  - UNX files for UCI – regenerate records with new degree data: #1310
+- UCR
+  - Nuxeo feeds: #1575, 1576, 1577
+- UCB Law
+  - Establish Robbins Collection: #1542
+  - Begin ingest of content from HDDs
+- UCSF
+  - CTP archive screenshots to GitHub: #1523
+  - Glantz hard drive content ingest: #1510
+
+#### Releases:
+- Stage and Production
+  - Storage log4j2 and OS logging
+  - Ingest manifest validation
+  - UI gem update and GH actions fix
+
 #### Sprint 91: August 9 - August 29, 2023
 - Storage
   - Upgrade logging to log4j2: #1526
@@ -30,8 +68,8 @@
   - Glantz hard drive content ingest: #1510
 
 #### Releases:
-- Stage: Ingest 502 client changes
-- Production: Storage log4j2 and OS logging
+- Stage: Ingest 502 client changes, Storage log4j2 and OS logging
+- Production: Ingest 502 client changes, ETDs degree data update
 
 #### Sprint 90:  July 19 - August 8, 2023
 - Access
