@@ -1,5 +1,38 @@
 ## Sprint Goals
 
+#### Sprint 93: September 20 - October 10, 2023
+- Inventory
+  - Inventory - add State json log4j2: #1582
+- Audit
+  - Audit - add State json log4j2: #1598
+- Ingest
+  - eSchol minting investigation: #1610
+  - OpenSearch json, log4j2: #1609
+- UI:
+  - Explore 500 errors in Merritt UI from ELB logs: #43
+- Collection Health Prototype: #1544
+  - Experiment with object data
+- Credential rotation pre-work
+  - Storage state check: #1470
+  - Audit and Replic state check: #1548
+  - Inventory state check: #1582
+- OpenSearch:
+  - Lambda logs into OpenSearch (check in with Ashley): #1511
+  - ARK normalization: #1591
+- ETDs
+  - UNX files for UCI – regenerate records with new degree data: #1310
+- UCR
+  - Nuxeo feeds: #1601, 1602, 1603, 1607
+- UCB Law
+  - Begin ingest of content from HDDs: #1608
+- UCSF
+  - CTP archive screenshots to GitHub: #1523
+  - Glantz hard drive content ingest: #1510
+
+#### Releases:
+- Stage: Inventory, Audit, Replic; UI release for 500 errors
+- Production: TBD
+
 #### Sprint 92: August 20 - September 19, 2023
 - Storage
   - Upgrade logging to log4j2: #1526
