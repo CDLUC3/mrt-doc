@@ -1,5 +1,36 @@
 ## Sprint Goals
 
+#### Sprint 94: October 11 - October 31, 2023
+- Credential Rotation
+- Replic
+  - Create node-specific state check for Replic #1548
+- Ingest
+  - OpenSearch json, log4j2: #1609
+  - [Ingest/IAS] Eliminate unauthentic email sender #1633
+- Storage
+  - Presign object retrieval 500 errors - is retry logic needed? #1611
+  - Storage state check - add timeout to node state check and report error #1470
+- Collection Health Prototype: #1544
+  - Experiment with object data
+- OpenSearch:
+  - Lambda logs into OpenSearch (check in with Ashley): #1511
+  - Prototype - Updating a doc in opensearch #1618
+- Dependency updates:
+  - BOM 1.4 #1605
+- ETDs
+  - UNX files for UCI – regenerate records with new degree data: #1310
+- UCR
+  - Nuxeo feeds: #1634-1639
+- UCB Law
+  - Return batch 1 HDDs
+- UCSF
+  - CTP archive screenshots to GitHub: #1523
+  - Glantz hard drive content ingest: #1510
+
+#### Releases:
+- Stage: BOM 1.4
+- Production: Ingest OpenSearch logging, BOM 1.4
+
 #### Sprint 93: September 20 - October 10, 2023
 - Inventory
   - Inventory - add State json log4j2: #1582
@@ -31,7 +62,7 @@
 
 #### Releases:
 - Stage: Inventory, Audit, Replic; UI release for 500 errors
-- Production: TBD
+- Production: Audit
 
 #### Sprint 92: August 20 - September 19, 2023
 - Storage
