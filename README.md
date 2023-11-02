@@ -33,6 +33,7 @@ graph TD
   CLOUD(("Cloud Storage"))
   click CLOUD href "https://github.com/CDLUC3/mrt-cloud" "source code"
   LDAP[/LDAP\]
+  ZFS[/ZFS Working Storage/]
   ZOO>Zookeeper]
   click ZOO href "https://github.com/CDLUC3/mrt-zoo" "source code"
   EZID(EZID Service)
@@ -43,15 +44,18 @@ graph TD
     BROWSER --> |ingest or retrieval| UI
     UI --> |authorization| LDAP
     RDS --> UI
-    UI --> |"file or manifest"| ING
-    ING --> ZOO
-    ZOO --> ING
+    UI --> |"file or ingest manifest"| ING
+    ING --> |queue job| ZOO
+    ING --> |check obj lock| ZOO
+    ZOO --> |start job| ING
     ING -.-> |local id request| INV
     ING --> EZID
-    ING --> |"async deposit"| ST
+    ING --> |download content| ZFS
+    ING --> |"sync deposit"| ST
     ST --> CLOUD
+    ZFS --> ST
     ZOO --> INV
-    INV -.-> |retrieve manifest| ST
+    INV -.-> |retrieve storage manifest| ST
     INV --> RDS
     UI ---> |retrieval req| STACC
     STACC --> |retrieval req| CLOUD
