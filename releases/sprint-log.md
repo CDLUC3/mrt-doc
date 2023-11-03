@@ -1,5 +1,40 @@
 ## Sprint Goals
 
+#### Sprint 95: November 1 - November 21, 2023
+- Replic
+  - Create node-specific state check for Replic #1548
+- Ingest
+  - [Ingest/IAS] Eliminate unauthentic email sender #1633
+  - Enable Ingest to make use of JSON (vs. XML) for logging in OpenSearch:
+- Inventory
+  - Update log4j2.xml: #1663
+- mrt-cloud, SDSC
+  - TransferManager fix: #1661
+- Dependency updates:
+  - BOM 1.5 #1662
+- Collection Health Prototype: #1544
+  - Experiment with object data
+- OpenSearch:
+  - Lambda logs into OpenSearch (check in with Ashley): #1511
+- DevOps
+  - WAF rule change for eSchol submissions: #1660
+  - Upgrade ZK server: #60
+  - Storage: hitting the kms:Decrypt API thousands of times an hour: #1650
+- UCR
+  - Nuxeo feeds: tickets forthcoming
+- UCB Law
+  - Batch 2 ingest
+- UCSF
+  - CTP archive screenshots to GitHub: #1523
+  - Glantz hard drive content ingest: #1510
+
+#### Releases:
+- Stage:
+- Production:
+  - Replic jsonstate, pathtrace json logs, stacktrace
+  - Audit jsonstate, pathtrace json logs
+  - BOM 1.4
+
 #### Sprint 94: October 11 - October 31, 2023
 - Credential Rotation
 - Replic
@@ -28,8 +63,8 @@
   - Glantz hard drive content ingest: #1510
 
 #### Releases:
-- Stage: BOM 1.4
-- Production: Ingest OpenSearch logging, BOM 1.4
+- Stage: Audit and Replic jsonstate, Ingest opensearch support, Store/Access mrt-cloud fix and BOM 1.4
+- Production:  Credential encryption and rotation, Ingest opensearch support, Store/Access mrt-cloud fix and BOM 1.4
 
 #### Sprint 93: September 20 - October 10, 2023
 - Inventory
