@@ -1,5 +1,30 @@
 ## Sprint Goals
 
+#### Sprint 96:  November 29 - December 19, 2023
+- Ingest
+  - [Ingest/IAS] Eliminate unauthentic email sender: #1633
+  - Enable Ingest to make use of JSON (vs. XML) for logging in OpenSearch: 
+- State and status checks
+  - Timeout logic needed for state and jsonstatus endpoints: #1685, #1686
+- Collection Health Prototype:
+  - Experiment with object data: #1544
+- OpenSearch:
+  - Lambda logs into OpenSearch: #1511
+- UCR
+  - Nuxeo feeds: #1688-#1693
+- UCB Law Robbins Collection
+  - Batch 2 ingest
+- UCSF
+  - New NHPRC collections: #1694
+  - CTP archive screenshots to GitHub: #1523
+  - Glantz hard drive content ingest: #1510
+- UCSC
+  - Two new AV collections: #1670
+
+#### Releases:
+Stage: TBD
+Production: TBD
+
 #### Sprint 95: November 1 - November 21, 2023
 - Replic
   - Create node-specific state check for Replic #1548
