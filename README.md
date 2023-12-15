@@ -136,10 +136,9 @@ Code Repositories
   - [Admin Tool](https://github.com/CDLUC3/mrt-admin-lambda)
   - [Merritt End to End Tests](https://github.com/CDLUC3/mrt-integ-tests)
   - [Merritt Manifest Tools](https://github.com/CDLUC3/merritt-manifest)
+  - [Merritt Crons Jobs](https://github.com/CDLUC3/mrt-cron)
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
-- Cron Driver
-  - [Merritt Crons](https://github.com/CDLUC3/mrt-cron)
 - Build Support
   - [Jenkins Functions](https://github.com/CDLUC3/mrt-jenkins)
 
