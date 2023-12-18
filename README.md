@@ -135,8 +135,11 @@ Code Repositories
 - Ruby
   - [Admin Tool](https://github.com/CDLUC3/mrt-admin-lambda)
   - [Merritt End to End Tests](https://github.com/CDLUC3/mrt-integ-tests)
-  - [Merritt Manifest Tools](https://github.com/CDLUC3/merritt-manifest)
+  - [Merritt Integration Test Images](https://github.com/CDLUC3/merritt-docker/tree/main/mrt-inttest-services)
   - [Merritt Crons Jobs](https://github.com/CDLUC3/mrt-cron)
+    - Merritt Consistency reports
+    - Merritt OpenSearch Visualizations
+    - Merritt Object Health analysis
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
 - Build Support
