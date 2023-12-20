@@ -1,5 +1,43 @@
 ## Sprint Goals
 
+#### Sprint 97:  December 20, 2023 - January 16, 2024
+- Ingest
+  - User data escapes "producer" directory: #1687
+  - Investigate approaches to supporting additional ZK states: #1441
+  - https://github.com/CDLUC3/mrt-doc/tree/main/design/queue-2023
+  - Ability to move Ingest queue entries to new worker #997
+- Store/Access
+  - New 500 status errors (Access): #1716
+- Audit, Replic
+  - Removal SSM email properties from audit and replic: #1715
+- UI
+  - January UI fixes: #1604, #1697, #1683, #1698, #1718, #1719
+  - Local ID format issue: #24
+- State and status checks
+  - Timeout logic needed for state and jsonstatus endpoints: #1685, #1686
+- Admin
+  - jsonstatus follow up tasks: #1665
+- Collection Health Prototype
+  - Experiment with object data: #1544
+- OpenSearch
+  - Lambda logs into OpenSearch: #1511
+  - Logstash categorization missed the owner/search requests: #1721
+- UCR
+  - Nuxeo feeds: #1691, #1692
+- UCI
+  - Nuxeo feed: #1702
+- UCB Law Robbins Collection
+  - Batch 2 ingest
+- UCSF
+  - CTP archive screenshots to GitHub: #1523
+  - Glantz hard drive content ingest: #1510
+
+#### Releases:
+Stage:
+- UI updates
+Production:
+- Store, Access, Replic, Audit: Timeout for jsonstatus
+
 #### Sprint 96:  November 29 - December 19, 2023
 - Ingest
   - [Ingest/IAS] Eliminate unauthentic email sender: #1633
@@ -22,8 +60,11 @@
   - Two new AV collections: #1670
 
 #### Releases:
-Stage: TBD
-Production: TBD
+Stage:
+- Store, Access, Replic, Audit: Timeout for jsonstatus
+- Ingest: XML removal and SSM email contact, Support usage of SES email authentication
+Production:
+- Ingest: XML removal and SSM email contact, Support usage of SES email authentication
 
 #### Sprint 95: November 1 - November 21, 2023
 - Replic
