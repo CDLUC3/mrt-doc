@@ -122,9 +122,9 @@ Code Repositories
   - [Zoo](https://github.com/CDLUC3/mrt-zoo)
   - [ZK Queue](https://github.com/CDLUC3/cdl-zk-queue)
 - Ruby
-  - [Ruby Ingest](https://github.com/CDLUC3/mrt-ingest-ruby)
-  - [SSM Gem](https://github.com/CDLUC3/uc3-ssm)
+  - [SSM Gem](https://github.com/CDLUC3/uc3-ssm) - Shared with other UC3 services
   - [Merritt Atom](https://github.com/cdluc3/mrt-atom) - Nuxeo processing for ingest
+    - Uses [Ruby Ingest](https://github.com/CDLUC3/mrt-ingest-ruby)
 
 ### Configuration
 - [Tomcat](https://github.com/CDLUC3/mrt-tomcat)
