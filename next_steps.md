@@ -9,6 +9,9 @@
   - Normalize JSON handling across services
   - Dryad content cleanup
   - SDSC storage migration
+  - Alter/repair owner, collection for object
+  - Alter/repair mime type for object
+  - Augment mime type with more specific information
 - Mark
   - Add custom logging to Ingest
   - Allow ingest jobs to run on any server
