@@ -21,6 +21,20 @@
 - submitter 
 - manifest type
 - filename (ie checkm file)
+- last successful state (for restart)
+
+### State Transitions
+- (None) --> Pending
+- Pending --> Held
+- Pending --> Processing
+- Held --> Processing (admin function)
+- Processing --> Failed
+- Processing --> Reporting
+- Reporting --> Failed (Reporting)
+- Reporting --> Completed
+- Failed --> Processing
+- Failed --> Deleted (admin function)
+- Held --> Deleted (admin function) 
 
 ## Job Queue
 
@@ -58,4 +72,27 @@
   - digest type
   - digest value
 - space needed (estimating)
-- resource needed (once we introduce dynamic provisioning) 
+- resource needed (once we introduce dynamic provisioning)
+- last successful state (for restart)
+
+### State Transitions
+- (None) --> Pending
+- Pending --> Held
+- Pending --> Estimating
+- Held --> Estimating (admin function)
+- Estimating --> Provisioning
+- Estimating --> Failed (estimating)
+- Provisioning --> Downloading
+- Provisioning --> Failed (provisioning)
+- Downloading --> Processing
+- Downloading --> Failed (downloading)
+- Processing --> Recording
+- Processing --> Failed (processing)
+- Recording  --> Completed
+- Recording --> Failed (recording)
+- Failed --> Estimating
+- Failed --> Provisioning
+- Failed --> Downloading
+- Failed --> Processing
+- Failed --> Recording
+- Failed --> Deleted (admin function)
