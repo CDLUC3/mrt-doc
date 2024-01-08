@@ -71,8 +71,8 @@
 - evaluate the following
   - digest type
   - digest value
-- space needed (estimating)
-- resource needed (once we introduce dynamic provisioning)
+- long space_needed
+- String resource_to_provision (null allowed)
 - last successful state (for restart)
 
 ### State Transitions
@@ -81,6 +81,7 @@
 - Pending --> Estimating
 - Held --> Estimating (admin function)
 - Estimating --> Provisioning
+  - Update space_needed 
 - Estimating --> Failed (estimating)
 - Provisioning --> Downloading
 - Provisioning --> Failed (provisioning)
