@@ -96,6 +96,13 @@ Allow the upload of a repaired manifest for an object.
 
 Correspondingly, a "get-augmented-manifest" option would exist to generate a repaired manifest with Merritt software.
 
+### Ideas regarding Nodes and Ownership
+- In order to facilitate management of content within a given time frame (e.g. 5 years), it may be beneficial to establish new buckets that are owner-specific.
+- Potential content retention periods would establish a time frame for a collection.
+- Prepayment for collection storage is a motivating factor. 
+- The concept of ownership for new collections could be baked into object keys, where an owner name would appear as part of the key.
+- Additional nodes add complexity, but could also allow for further flexibility in terms of primary/secondary node specification and reassignment.
+
 ---
 
 [Completed Storage Admin Features](completed.md)
