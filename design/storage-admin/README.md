@@ -102,6 +102,12 @@ Correspondingly, a "get-augmented-manifest" option would exist to generate a rep
 - Prepayment for collection storage is a motivating factor. 
 - The concept of ownership for new collections could be baked into object keys, where an owner name would appear as part of the key.
 - Additional nodes add complexity, but could also allow for further flexibility in terms of primary/secondary node specification and reassignment.
+- Additional thoughts/questions
+  - Features are needed to allow for the update of an object owner and and object collection
+  - If we introduce new bucket types, how can we facilitate the transfer of content from a default bucket to a specialized bucket
+  - How can we register new "buckets" dynamically without re-deploying code?
+  - Think about Dryad deletion, how can we deactive fixity checks and object updates for a subset of content.
+
 
 ---
 
