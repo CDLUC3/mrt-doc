@@ -22,6 +22,7 @@
 - manifest type
 - filename (ie checkm file)
 - last successful state (for restart)
+- response_type?
 
 ### State Transitions
 - (None) --> Pending
@@ -46,46 +47,81 @@
   - if working storage is more than 80% full, then wait 
   - otherwise, use default working storage 
 - downloading - one or more downloads is in progress
-- processing - all downloads complete, notify storage
+- processing - all downloads complete, checksum check, mint identifiers, notify storage
 - recording - storage is complete, notify inventory
-- completed - storage and inventory are complete
+- completed - storage and inventory are complete, cleanup job folder
 - failed
-  - resume estimating
   - resume downloading
   - resume processing
   - resume recording
 
 ### Data Elements
-- Profile name
-- Status
-- Batch id
-- Job id
-- workding directory
-- retry count (maybe)
-- ark
-- priority
-- manifest type
-- filename (ie checkm file)
-- submitter
-- update status (boolean)
-- evaluate the following
-  - digest type
-  - digest value
-- long space_needed
+- String payload_version
+- String profile_name
+- int status
+- int last_successful_state (for restart from failed state)
+- date status_updated - time of last status change
+- String batch_id
+- String job_id
+- String workding_directory - full path to content
+  - this could allow us to temporarily provision file systems (zfs) for exceptionally large ingest projects
+  - if space is tight, a null value indicates using the default working file system
+- int retry_count
+  - meaning of retry varies based on state - this values implies a deliberate requeue (not retry logic in code)
+- String ark
+- int priority
+- int payload_type (object_manifest, file)
+- String filename (payload)
+- String submitter
+- boolean update_status (false - add, true - updated)
+- String digest_type
+- String digest_value
+- long space_needed (for a single object)
 - String resource_to_provision (null allowed)
-- last successful state (for restart)
+- ? response_type? - only if needed for callback operation
 
 ### State Transitions
 - (None) --> Pending
+  - payload_version (hard coded)
+  - profile_name - constructor
+  - status = Pending
+  - batch_id - constructor
+  - job_id - generated
+  - workding_directory - derived from batch & job (evenually more flexible options)
+  - retry_count = 0
+  - priority - derived from
+    - profile
+    - size of the batch (constructor)
+  - payload_type - constructor
+  - filename - constructor
+  - submitter - constructor
+  - update_status - constructor
+  - digest_type - constructor (optional)
+  - digest_value - constructor (optional)
+  - space_needed = 0
+  - resource_to_provision - constructor
 - Pending --> Held
+  - evaluate if a collection hold is in place 
+  - status = Held 
 - Pending --> Estimating
-- Held --> Estimating (admin function)
+  - status = Estimating 
+- Held --> Estimating (admin function) 
+  - evaluate if collection hold has been removed
+  - status Estimating   
 - Estimating --> Provisioning
-  - Update space_needed 
-- Estimating --> Failed (estimating)
+  - HEAD request on every download that is needed (multi-thread)
+  - sum value into space_needed
+  - last_successful_state = Estimating
+  - status = Provisioning
 - Provisioning --> Downloading
-- Provisioning --> Failed (provisioning)
+  - if last_successful_state is not Estimating, total may be inaccurate
+  - determine if file system is available
+  - determine if there is adequate storage to proceed (throttle at 70% full disk)
+  - if space is sufficent state=Downloading  
 - Downloading --> Processing
+  - GET request on every download (multi-threaded)
+  - save files to working folder
+  - recalculate space_needed (in case estimate was inaccurate)
 - Downloading --> Failed (downloading)
 - Processing --> Recording
 - Processing --> Failed (processing)
