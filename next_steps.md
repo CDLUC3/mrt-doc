@@ -4,20 +4,35 @@
 ## Next Steps by Team Member
 
 - David
-  - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
   - Resume Storage Admin Work
-  - Normalize JSON handling across services
-  - Dryad content cleanup
-  - SDSC storage migration
-  - Alter/repair owner, collection for object
-  - Alter/repair mime type for object
-  - Augment mime type with more specific information
+    - Delete object via admin tool
+    - Create object tombstone
+      - Create tombstone for prior deletes 
+    - Change primary node for a collection
+    - Transfer object to different primary node
+    - Create augmented manifest
+    - Reload object using augemented manifest 
+  - Major Migrations
+    - Dryad content cleanup
+    - SDSC storage migration
+  - Augment Object Representation
+    - Alter/repair owner, collection for object
+    - Alter/repair mime type for object
+    - Augment mime type with more specific information
+    - Pointer re-use for files with identical digest values
+    - Nuxeo object version repair
+  - Later/Misc
+    - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
+    - Normalize JSON handling across services
 - Mark
-  - Add custom logging to Ingest
-  - Allow ingest jobs to run on any server
-  - Ingest Priority - Size Based Prioritization
-  - Make callback aware of inventory
-  - Improve Notification System - after interrupt
+  - Queue redesign
+    - Allow ingest jobs to run on any server
+      - Store job details in Zookeeper rather than in memory 
+    - Allow ingest jobs to wait for resource provisioning
+    - Trigger inventory processing from the job queue
+    - Make callback aware of inventory
+    - Improve Notification System - after interrupt
+    - Separate Job and Batch Queue - Batch Queue is responsible for notification
 - Terry
   - Refine admin tool with usability suggestions
   - Deploy FITS as lambda in UC3 account
@@ -32,7 +47,12 @@
   - Robbins Collection
   - UCSF Glantz videos
 - Team
+  - Depositor services
+    - Introduce new manifest type (JSON)
+      - Allow multiple files and metadata to be specified for a set of objects
+    - Presigned file upload solution (large single file)
+    - Presigned fiel upload solution (directory of files)
+    - Build a solution that can deprecate the need for hard drive processing   
   - Re-provision resources after Dryad (Access servers, UI servers)
-  - JSON manifest handling
   - Explore new storage classes and potential benefits to Merritt processing
   - Define Stage Environment Data Goals
