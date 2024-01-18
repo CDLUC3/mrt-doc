@@ -1,5 +1,39 @@
 ## Sprint Goals
 
+#### Sprint 98:  January 17, 2023 - February 6, 2024
+- Ingest
+  - Investigate approaches to supporting additional ZK states: #1441
+  - https://github.com/CDLUC3/mrt-doc/blob/main/design/queue-2023/states.md
+- Audit, Replic
+  - Removal SSM email properties from audit and replic: #1715
+- UI
+  - January UI fixes: #1604, #1683, #1698, #1718, #1719, #1730, #1733
+  - Local ID format issue: #24
+- Nuxeo Harvester and Object update strategy
+  - File names generated via Nuxeo harvest include unneeded characters: #1655
+  - Feature to update object/file information in Merritt: #1720
+  - Alternate s3 key Merritt: #1734
+- Storage
+  - Node table flip: #1742
+  - Update to Tika 2: #1727
+- Collection Health Prototype
+  - Experiment with object data: #1544
+  - FITS output reviews
+- OpenSearch
+  - Lambda logs into OpenSearch: #1511
+- UCR
+  - Nuxeo feeds: #1736-#1741
+- UCB Law Robbins Collection
+  - Batch 2 ingest: HD202 and RBN-04
+- UCSF
+  - CTP archive screenshots to GitHub: #1523
+
+#### Releases:
+Stage:
+- ...
+Production:
+- January UI Fixes
+
 #### Sprint 97:  December 20, 2023 - January 16, 2024
 - Ingest
   - User data escapes "producer" directory: #1687
