@@ -17,4 +17,5 @@
 - [Queue Manager](manager.md)
 
 ## Links
-- https://github.com/CDLUC3/mrt-doc/issues/1062
+- https://github.com/CDLUC3/mrt-doc/issues/1062 - Background issue that led tot hsi design
+- https://github.com/CDLUC3/mrt-doc/issues/1753 - Admin Manager
