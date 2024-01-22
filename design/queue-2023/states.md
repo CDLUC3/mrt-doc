@@ -68,6 +68,7 @@
   - if space is tight, a null value indicates using the default working file system
 - int retry_count
   - meaning of retry varies based on state - this values implies a deliberate requeue (not retry logic in code)
+- String local_id
 - String ark
 - int priority
 - int payload_type (object_manifest, file)
@@ -79,9 +80,11 @@
 - long space_needed (for a single object)
 - String resource_to_provision (null allowed)
 - ? response_type? - only if needed for callback operation
+- String error_message
 
 ### State Transitions
 - (None) --> Pending
+  - if payload is a single file and the depositor supplied a digest, perform checksum validation 
   - payload_version (hard coded)
   - profile_name - constructor
   - status = Pending
@@ -100,6 +103,12 @@
   - digest_value - constructor (optional)
   - space_needed = 0
   - resource_to_provision - constructor
+  - local_id - constructor (read from ERC, from form parameter, or from manifest)
+  - ark - constructor (if supplied at ingest time, otherwise it will be minted)
+- (None) --> Failed
+  - if payload digest does not match depositor digest
+  - if manifest is corrupt
+  - status = Failed (no recovery is possible)
 - Pending --> Held
   - evaluate if a collection hold is in place 
   - status = Held 
@@ -119,11 +128,28 @@
   - determine if there is adequate storage to proceed (throttle at 70% full disk)
   - if space is sufficent state=Downloading  
 - Downloading --> Processing
-  - GET request on every download (multi-threaded)
+  - GET request on every download (multi-threaded), with a finite number of retries
   - save files to working folder
   - recalculate space_needed (in case estimate was inaccurate)
+  - perform digest validation (if user-supplied in manifest)
+  - last_successful_state = Downloading
+  - status = Processing
 - Downloading --> Failed (downloading)
+  - status = Failed
+  - last_successful_state remains Estimating
+  - error_message = details the file that could not be downloaded 
 - Processing --> Recording
+  - Local_id lookup
+  - Mint ark using EZID if needed
+  - if local_id does not match user-supplied ark, fail
+  - Set ark
+  - Write ERC file
+  - Write dublin_core file
+  - Check digest for each file if needed (HandlerDigest)
+  - Create storage manifest (HandlerDigest)
+  - Request storage worker for handling request
+  - Call storage enpoint to pass storage manifest
+  - Check return status from storage
 - Processing --> Failed (processing)
 - Recording  --> Completed
 - Recording --> Failed (recording)
