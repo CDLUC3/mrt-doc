@@ -14,7 +14,7 @@
 - failed
 
 ### Data Elements
-- Array of job ids + Status (pending, running, complete, failed)
+- Array<Hash<String,int>> jobs_status - of job ids + Status (pending, running, complete, failed)
 - String profile_name
   - Notification behavior is detailed in profile
 - String submitter 
@@ -30,7 +30,7 @@
   - generate batch_id
     - create batch folder
     - write payload to batch folder
-    - TODO: we should re-evaluate the maximum payload size without a manifest
+    - TODO: we should re-evaluate the maximum payload size without a manifest (currently 30G)
   - set profile_name
   - set submitter
   - determine manifest_type
@@ -51,7 +51,13 @@
     - single - we start a 1 job batch
     - object manifest - we start a 1 job batch
     - manifest of manifest - create N job entries and create the array in the batch object
-  -  
+    - QUESTION: if manifest of zips - defer zip download to job OR catch potential errors here
+    - RESUME here
+  - construct JOB object
+  - construct job folder
+  - retreive manifest payload and save to job folder
+  - create jobs in job queue
+  - we create status array
 - Held --> Processing (admin function)
 - Processing --> Failed
 - Processing --> Reporting
