@@ -8,26 +8,50 @@
 - pending
 - held - if hold is in place jobs will not be created until it is released
 - processing - at least one job is still running
-- reporting - all jobs complete, notification in process
-  - callback calls (possible retry)
+- notify - all jobs complete, notification in process
   - email (probably no retry)
 - completed
 - failed
 
 ### Data Elements
 - Array of job ids + Status (pending, running, complete, failed)
-- Profile name
+- String profile_name
   - Notification behavior is detailed in profile
-- submitter 
-- manifest type
-- filename (ie checkm file)
-- last successful state (for restart)
-- response_type?
+- String submitter 
+- int manifest_type
+- String filename (ie checkm file)
+- String last_successful_state (for restart)
+- String error_message
+- String response_type (xml, json, turtle) - response will contain the state of the batch
+- String batch_id
 
 ### State Transitions
 - (None) --> Pending
+  - generate batch_id
+    - create batch folder
+    - write payload to batch folder
+    - TODO: we should re-evaluate the maximum payload size without a manifest
+  - set profile_name
+  - set submitter
+  - determine manifest_type
+  - set file_name 
+  - examine the payload
+    - single - 1 job batch
+    - object manifest - 1 job batch
+    - manifest of manifest - N jobs
+    - manifest of zips - N jobs
+    - manifest of jobs - N jobs
+    - future json manifest (inline manifest of detailed object manifests)
+  - status = Pending 
 - Pending --> Held
+  - check if collection is held
+  - status = Held 
 - Pending --> Processing
+  - based on the payload
+    - single - we start a 1 job batch
+    - object manifest - we start a 1 job batch
+    - manifest of manifest - create N job entries and create the array in the batch object
+  -  
 - Held --> Processing (admin function)
 - Processing --> Failed
 - Processing --> Reporting
@@ -73,7 +97,7 @@
 - String local_id
 - String ark
 - int priority
-- int payload_type (object_manifest, file)
+- int payload_type? (object_manifest, file)
 - String filename (payload)
 - String submitter
 - boolean update_status (false - add, true - updated)
