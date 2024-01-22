@@ -49,11 +49,13 @@
 - downloading - one or more downloads is in progress
 - processing - all downloads complete, checksum check, mint identifiers, notify storage
 - recording - storage is complete, notify inventory
+- notify - invoke callback if needed, notify batch handler
 - completed - storage and inventory are complete, cleanup job folder
 - failed
   - resume downloading
   - resume processing
   - resume recording
+  - resume notify
 
 ### Data Elements
 - String payload_version
@@ -143,19 +145,42 @@
   - Mint ark using EZID if needed
   - if local_id does not match user-supplied ark, fail
   - Set ark
+  - Question: should we break Minting into a separate state
+    - small risk of wasting an ark if the minting process is rerun (only applicable if no localid is provided) 
   - Write ERC file
   - Write dublin_core file
   - Check digest for each file if needed (HandlerDigest)
   - Create storage manifest (HandlerDigest)
-  - Request storage worker for handling request
+  - Request storage worker for handling request (very low risk of failure)
   - Call storage enpoint to pass storage manifest
   - Check return status from storage
+  - last_sucessful_state = Processing
+  - status = Recording
 - Processing --> Failed (processing)
-- Recording  --> Completed
+  - due to minting failure or storage failure
+  - update error_message 
+  - status = Failed   
+- Recording  --> Notify
+  - Inventory will read and update THIS queue
+  - Save data to INV database
+  - status = Notify
+  - last_sucessful_state = Recording
 - Recording --> Failed (recording)
-- Failed --> Estimating
-- Failed --> Provisioning
+  - update error_message 
+  - status = Failed
+- Notify --> Completed
+  - Invoke callback (if defined)
+  - Notify batch queue that job is complete
+  - Status = Completed  
+  - last_sucessful_state = Notify
+- Notify --> Failed 
+  - status = Failed
 - Failed --> Downloading
+  - reset status 
 - Failed --> Processing
+  - reset status 
 - Failed --> Recording
+  - reset status 
+- Failed --> Notify
+  - reset status 
 - Failed --> Deleted (admin function)
