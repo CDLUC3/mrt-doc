@@ -53,6 +53,13 @@
     - manifest of manifest - create N job entries and create the array in the batch object
     - QUESTION: if manifest of zips - defer zip download to job OR catch potential errors here
     - RESUME here
+      - QUESTION: could we always create a job using a URL?
+        - url to a pre-signed file upload (single file)
+          - we could force the Merritt UI to ALWAYS create a presigned file upload
+        - url to a pre-signed file upload (manifest)
+          - we could force the Merritt UI to ALWAYS create a presigned file upload
+        - url to an entry in manifest of manifests
+        - url to a zip entry in a manifest of manifests
   - construct JOB object
   - construct job folder
   - retreive manifest payload and save to job folder
