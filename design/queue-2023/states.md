@@ -14,7 +14,10 @@
 - failed
 
 ### Data Elements
-- Array<Hash<String,int>> jobs_status - of job ids + Status (pending, running, complete, failed)
+- Hash<String,JobStatus> jobs_status - of job ids + Status (pending, running, complete, failed)
+  - JobStatus
+    - int job_states
+    - Date last_update  
 - String profile_name
   - Notification behavior is detailed in profile
 - String submitter 
@@ -70,10 +73,15 @@
   - status = Completed
 - Reporting --> Failed
   - this occurs when at least one job has occurred
-  - status =  Failed  
-- Failed --> Processing_Resumed
-  - status = Processing_Resumed 
-- Processing_Resumed --> Completed
+  - status =  Failed
+  - or is a batch done after it reports
+    - if jobs are re-run do they report on their own?
+    - do we create a "re-run batch"?
+    - or is this a question for the end users? 
+- Failed --> UpdateReporting
+  - manually triggered if some or all of the jobs have been re-run 
+  - status = UpdateReporting 
+- UpdateReporting --> Completed
   - detect any updated statuses and report them
   - status = Completed
 - Processing_Resumed --> Failed
@@ -231,3 +239,7 @@
 - Failed --> Notify
   - reset status 
 - Failed --> Deleted (admin function)
+
+## TODO
+- document key use cases
+- esp retry logic
