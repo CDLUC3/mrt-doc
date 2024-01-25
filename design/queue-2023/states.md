@@ -47,32 +47,42 @@
   - check if collection is held
   - status = Held 
 - Pending --> Processing
+  - status = Processing 
+- Held --> Processing (admin function)
+  - status = Processing 
+- Processing --> Failed
+  - status = Failed
+  - set error_message 
+- Processing --> Reporting
   - based on the payload
     - single - we start a 1 job batch
     - object manifest - we start a 1 job batch
-    - manifest of manifest - create N job entries and create the array in the batch object
-    - QUESTION: if manifest of zips - defer zip download to job OR catch potential errors here
-    - RESUME here
-      - QUESTION: could we always create a job using a URL?
-        - url to a pre-signed file upload (single file)
-          - we could force the Merritt UI to ALWAYS create a presigned file upload
-        - url to a pre-signed file upload (manifest)
-          - we could force the Merritt UI to ALWAYS create a presigned file upload
-        - url to an entry in manifest of manifests
-        - url to a zip entry in a manifest of manifests
-  - construct JOB object
-  - construct job folder
-  - retreive manifest payload and save to job folder
+    - manifest of manifest - create N job entries and create the array of jobids in the batch object
+    - manifest of zips - create N job entries and create the array of jobids in the batch object
+  - construct JOB object(s)
+  - construct job folder(s)
+    - folder creation could be defererred to the job step 
   - create jobs in job queue
   - we create status array
-- Held --> Processing (admin function)
-- Processing --> Failed
-- Processing --> Reporting
-- Reporting --> Failed (Reporting)
+  - status = Reporting
 - Reporting --> Completed
-- Failed --> Processing
+  - send summary email
+  - status = Completed
+- Reporting --> Failed
+  - this occurs when at least one job has occurred
+  - status =  Failed  
+- Failed --> Processing_Resumed
+  - status = Processing_Resumed 
+- Processing_Resumed --> Completed
+  - detect any updated statuses and report them
+  - status = Completed
+- Processing_Resumed --> Failed
+  - detect any updated statuses and report them
+  - status = Completed
 - Failed --> Deleted (admin function)
+  - status = Deleted 
 - Held --> Deleted (admin function) 
+  - status = Deleted 
 
 ## Job Queue
 
@@ -95,6 +105,8 @@
   - resume notify
 
 ### Data Elements
+- String payload_url (http: or file:)
+- int payload_type (file, manifest, container - zip)
 - String payload_version
 - String profile_name
 - int status
@@ -110,8 +122,6 @@
 - String local_id
 - String ark
 - int priority
-- int payload_type? (object_manifest, file)
-- String filename (payload)
 - String submitter
 - boolean update_status (false - add, true - updated)
 - String digest_type
@@ -135,7 +145,7 @@
     - profile
     - size of the batch (constructor)
   - payload_type - constructor
-  - filename - constructor
+  - payload_url - constructor
   - submitter - constructor
   - update_status - constructor
   - digest_type - constructor (optional)
