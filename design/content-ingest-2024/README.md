@@ -47,6 +47,12 @@ Tools should be written to be modified by multiple team members.
 
 Following conventions, tools should be written in Ruby
 
+## Depositor Guidelines
+
+Guidelines should be written for depositors to encourage common file and folder hierarchies that in turn dovetail with Ingest Tool expectations.
+
+These should also document recommended practices for naming conventions and use of Local IDs.
+
 ## Reporting
 
 Reporting tools should be written to estimate the costs of content waiting to be ingested 
