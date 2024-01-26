@@ -27,20 +27,21 @@ graph LR
 ## Batch Queue States
 _A dashed line indicates and administrative action initiated by the Merritt Team_
 
-- Pending
-  - Batch is ready to be processed
-- Held
-  - Collection is HELD.  The hold must be released before the batch can proceed.
-- Processing
-  - Payload is analyzed.  If the payload is a manifest, it will be downloaded. Jobs are created in the job queue.
-- Reporting
-  - All jobs have COMPLETED or FAILED, a summary e-mail is sent to the depositor.
-- COMPLETED
-  - All jobs COMPLETED
-- Failed
-  - At least one job FAILED
-- UpdateReporting
-  - Determine if any previously FAILED jobs are not complete.  If so, notify the depositor by email.
+### Pending
+Batch is ready to be processed
+### Held
+Collection is HELD.  The hold must be released before the batch can proceed.
+### Processing
+Payload is analyzed.  If the payload is a manifest, it will be downloaded. Jobs are created in the job queue.
+### Reporting
+All jobs have COMPLETED or FAILED, a summary e-mail is sent to the depositor.
+### COMPLETED
+All jobs COMPLETED
+### Failed
+At least one job FAILED
+### UpdateReporting
+Determine if any previously FAILED jobs are not complete.  If so, notify the depositor by email.
+
 ---
 
 ### Batch Object Data Elements
@@ -178,22 +179,37 @@ graph TD
 
 ---
 ## Job Queue States
-- pending
-- held - can jobs and batches be HELD? Yes
-- estimating - HEAD requests to calculate size
-- provisioning - once dynamic provisioning is implemented (ie zfs provisioning)
-  - if working storage is more than 80% full, then wait 
-  - otherwise, use default working storage 
-- downloading - one or more downloads is in progress
-- processing - all downloads complete, checksum check, mint identifiers, notify storage
-- recording - storage is complete, notify inventory
-- notify - invoke callback if needed, notify batch handler
-- completed - storage and inventory are complete, cleanup job folder
-- failed
-  - resume downloading
-  - resume processing
-  - resume recording
-  - resume notify
+### Pending
+Job is waiting to be acquired by the queue
+### Held
+Since Job was queued, the collection has been put into a HELD state.  The job will require an administrateive action to release it after the hold is released.
+### Estimating
+Perform HEAD requests for all content to estimate the size of the ingest.  If HEAD requests are not supported, no value is updated and the job should proceed with limited information.  This could potentially affect priority for the job
+### Provisioning
+Once dynamic provisioning is implemented (ie zfs provisioning), wait for dedicated file system to be provisioned.
+
+If not dedicated file system is specified, use default working storage.
+- if working storage is more than 80% full, then wait 
+- otherwise, use default working storage 
+### Downloading
+One or more downloads is in progress.  This can be a multi-threaded step.  Threads are not managed in the queue.
+### Processing
+All downloads complete; perform Merritt Ingest
+- validiate checksum check
+- mint identifiers
+- create system files
+- notify storage
+### Recording
+Storage is complete; ready for Inventory.
+The Inventory service will operate on this step.
+### Notify
+Invoke callback if needed
+Notify batch handler that the job is complete
+### COMPLETED
+Storage and inventory are complete, cleanup job folder
+### Failed
+The queue will track the last successful step so that the job can be resumed at the appropriate step.
+
 ---
 
 ### Job Queue Data Elements
