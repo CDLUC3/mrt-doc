@@ -23,19 +23,27 @@ graph LR
   Held -.-> DELETED
 ```
 
-> [!NOTE]
-> _A dashed line indicates and administrative action initiated by the Merritt Team_
-> ```
-> Pending: Batch is ready to be processed
-> Held: Collection is HELD.  The hold must be released before the batch can proceed.
-> Processing: Payload is analyzed.  If the payload is a manifest, it will be downloaded. Jobs are created in the job queue.
-> Reporting: All jobs have COMPLETED or FAILED, a summary e-mail is sent to the depositor.
-> COMPLETED: All jobs COMPLETED
-> Failed: At least one job FAILED
-> UpdateReporting: Determine if any previously FAILED jobs are not complete.  If so, notify the depositor by email.
-> ```
+---
+## Batch States
+_A dashed line indicates and administrative action initiated by the Merritt Team_
 
-### Data Elements
+- Pending
+  - Batch is ready to be processed
+- Held
+  - Collection is HELD.  The hold must be released before the batch can proceed.
+- Processing
+  - Payload is analyzed.  If the payload is a manifest, it will be downloaded. Jobs are created in the job queue.
+- Reporting
+  - All jobs have COMPLETED or FAILED, a summary e-mail is sent to the depositor.
+- COMPLETED
+  - All jobs COMPLETED
+- Failed
+  - At least one job FAILED
+- UpdateReporting
+  - Determine if any previously FAILED jobs are not complete.  If so, notify the depositor by email.
+---
+
+### Batch Object Data Elements
 
 ```mermaid
 classDiagram
@@ -75,68 +83,69 @@ classDiagram
   }
 ```
 
-### State Transitions
-- (None) --> Pending
-  - generate batch_id
-    - create batch folder
-    - write payload to batch folder
-    - TODO: we should re-evaluate the maximum payload size without a manifest (currently 30G)
-  - set profile_name
-  - set submitter
-  - determine manifest_type
-  - set file_name 
-  - examine the payload
-    - single - 1 job batch
-    - object manifest - 1 job batch
-    - manifest of manifest - N jobs
-    - manifest of zips - N jobs
-    - manifest of jobs - N jobs
-    - future json manifest (inline manifest of detailed object manifests)
-  - status = Pending 
-- Pending --> Held
-  - check if collection is held
-  - status = Held 
-- Pending --> Processing
-  - status = Processing 
-- Held --> Processing (admin function)
-  - status = Processing 
-- Processing --> Failed
-  - status = Failed
-  - set error_message 
-- Processing --> Reporting
-  - based on the payload
-    - single - we start a 1 job batch
-    - object manifest - we start a 1 job batch
-    - manifest of manifest - create N job entries and create the array of jobids in the batch object
-    - manifest of zips - create N job entries and create the array of jobids in the batch object
-  - construct JOB object(s)
-  - construct job folder(s)
-    - folder creation could be defererred to the job step 
-  - create jobs in job queue
-  - we create status array
-  - status = Reporting
-- Reporting --> Completed
+## State Transitions
+
+### Start --> Pending
+- generate batch_id
+  - create batch folder
+  - write payload to batch folder
+  - TODO: we should re-evaluate the maximum payload size without a manifest (currently 30G)
+- set profile_name
+- set submitter
+- determine manifest_type
+- set file_name 
+- examine the payload
+  - single - 1 job batch
+  - object manifest - 1 job batch
+  - manifest of manifest - N jobs
+  - manifest of zips - N jobs
+  - manifest of jobs - N jobs
+  - future json manifest (inline manifest of detailed object manifests)
+- status = Pending 
+### Pending --> Held
+- check if collection is held
+- status = Held 
+### Pending --> Processing
+- status = Processing 
+### Held --> Processing (admin function)
+- status = Processing 
+### Processing --> Failed
+- status = Failed
+- set error_message 
+### Processing --> Reporting
+- based on the payload
+  - single - we start a 1 job batch
+  - object manifest - we start a 1 job batch
+  - manifest of manifest - create N job entries and create the array of jobids in the batch object
+  - manifest of zips - create N job entries and create the array of jobids in the batch object
+- construct JOB object(s)
+- construct job folder(s)
+  - folder creation could be defererred to the job step 
+- create jobs in job queue
+- we create status array
+- status = Reporting
+### Reporting --> Completed
   - send summary email
   - status = Completed
-- Reporting --> Failed
+### Reporting --> Failed
   - this occurs when at least one job has occurred
   - status =  Failed
   - or is a batch done after it reports
     - if jobs are re-run do they report on their own?
     - do we create a "re-run batch"?
     - or is this a question for the end users? 
-- Failed --> UpdateReporting
+### Failed --> UpdateReporting
   - manually triggered if some or all of the jobs have been re-run 
   - status = UpdateReporting 
-- UpdateReporting --> Completed
+### UpdateReporting --> Completed
   - detect any updated statuses and report them
   - status = Completed
-- UpdateReporting --> Failed
+### UpdateReporting --> Failed
   - detect any updated statuses and report them
   - status = Completed
-- Failed --> Deleted (admin function)
+### Failed --> Deleted (admin function)
   - status = Deleted 
-- Held --> Deleted (admin function) 
+### Held --> Deleted (admin function) 
   - status = Deleted 
 
 ## Job Queue
