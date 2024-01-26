@@ -38,7 +38,7 @@ classDiagram
     ResponseType response_type
   }
   class JobStatus {
-    int status
+    JobState status
     Date last_update
   }
   class BatchState{
