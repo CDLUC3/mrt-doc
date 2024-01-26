@@ -213,31 +213,35 @@ The queue will track the last successful step so that the job can be resumed at 
 ---
 
 ### Job Queue Data Elements
-- String payload_url (http: or file:)
-- int payload_type (file, manifest, container - zip)
-- String payload_version
-- String profile_name
-- int status
-- int last_successful_state (for restart from failed state)
-- date status_updated - time of last status change
-- String batch_id
-- String job_id
-- String workding_directory - full path to content
-  - this could allow us to temporarily provision file systems (zfs) for exceptionally large ingest projects
-  - if space is tight, a null value indicates using the default working file system
-- int retry_count
-  - meaning of retry varies based on state - this values implies a deliberate requeue (not retry logic in code)
-- String local_id
-- String ark
-- int priority
-- String submitter
-- boolean update_status (false - add, true - updated)
-- String digest_type
-- String digest_value
-- long space_needed (for a single object)
-- String resource_to_provision (null allowed)
-- ? response_type? - only if needed for callback operation
-- String error_message
+```mermaid
+classDiagram
+  class Job {
+    String job_id
+    String batch_id
+    String payload_url
+    PayloadType payload_type
+    String payload_version what is this?
+    JobState status
+    JobState last_successful_state
+    Time status_updated
+    String working_directory
+    int retry_count
+    String local_id
+    String ark
+    int priority
+    String submitter
+    boolean is_update_submission
+    long space_needed
+    ResponseType callback_response_type
+    String error_message
+  }
+  class PayloadType{
+    <<enumeration>>
+    File,
+    Manifest,
+    Container
+  }
+```
 
 ## Job Queue State Transitions
 
