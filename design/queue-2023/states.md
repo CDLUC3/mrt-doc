@@ -5,6 +5,14 @@
 ## Batch Queue
 
 ### States
+
+```mermaid
+graph TD
+  START
+  Pending
+end
+```
+
 - pending
 - held - if hold is in place jobs will not be created until it is released
 - processing - at least one job is still running
