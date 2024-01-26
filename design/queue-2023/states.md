@@ -129,6 +129,31 @@ classDiagram
 ## Job Queue
 
 ### States
+```mermaid
+graph TD
+  START --> Pending
+  Pending --> Held
+  Pending --> Estimating
+  Held -.-> Estimating
+  Estimating --> Provisioning
+  Provisioning --> Downloading
+  Downloading --> Processing
+  Downloading --> Failed
+  Failed -.-> Downloadin
+  Processing --> Recording
+  Processing --> Failed
+  Failed -.-> Processing
+  Recording --> Notify
+  Recording --> Failed
+  Failed -.-> Recording
+  Notify --> COMPLETED
+  Notify --> Failed
+  Failed -.-> Notify
+  Notify --> COMPLETED
+  Failed -.-> DELETED
+  Held -.-> DELETED
+```
+
 - pending
 - held - can jobs and batches be HELD? Yes
 - estimating - HEAD requests to calculate size
