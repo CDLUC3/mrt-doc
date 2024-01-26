@@ -139,7 +139,7 @@ graph TD
   Provisioning --> Downloading
   Downloading --> Processing
   Downloading --> Failed
-  Failed -.-> Downloadin
+  Failed -.-> Downloading
   Processing --> Recording
   Processing --> Failed
   Failed -.-> Processing
@@ -149,7 +149,6 @@ graph TD
   Notify --> COMPLETED
   Notify --> Failed
   Failed -.-> Notify
-  Notify --> COMPLETED
   Failed -.-> DELETED
   Held -.-> DELETED
 ```
