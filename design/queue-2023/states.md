@@ -12,7 +12,6 @@ graph LR
   Pending --> Held
   Pending --> Processing
   Held -.-> Processing
-  Processing --> Failed
   Processing --> Reporting
   Reporting --> COMPLETED
   Reporting --> Failed
@@ -21,6 +20,8 @@ graph LR
   UpdateReporting --> COMPLETED
   Failed -.-> DELETED
   Held -.-> DELETED
+
+  click Held unDefinedCallback "tooltip for Held"
 ```
 
 - pending
