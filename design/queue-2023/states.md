@@ -7,10 +7,20 @@
 ### States
 
 ```mermaid
-graph TD
-  START
-  Pending
-end
+graph LR
+  START --> Pending
+  Pending --> Held
+  Pending --> Processing
+  Held -.-> Processing
+  Processing --> Failed
+  Processing --> Reporting
+  Reporting --> COMPLETED
+  Reporting --> Failed
+  Failed -.-> UpdateReporting
+  UpdateReporting --> Failed
+  UpdateReporting --> COMPLETED
+  Failed -.-> DELETED
+  Held -.-> DELETED
 ```
 
 - pending
