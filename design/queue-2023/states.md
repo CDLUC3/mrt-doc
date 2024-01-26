@@ -20,32 +20,47 @@ graph LR
   UpdateReporting --> COMPLETED
   Failed -.-> DELETED
   Held -.-> DELETED
-
-  click Held unDefinedCallback "tooltip for Held"
 ```
 
-- pending
-- held - if hold is in place jobs will not be created until it is released
-- processing - at least one job is still running
-- notify - all jobs complete, notification in process
-  - email (probably no retry)
-- completed
-- failed
-
 ### Data Elements
-- Hash<String,JobStatus> jobs_status - of job ids + Status (pending, running, complete, failed)
-  - JobStatus
-    - int job_states
-    - Date last_update  
-- String profile_name
-  - Notification behavior is detailed in profile
-- String submitter 
-- int manifest_type
-- String filename (ie checkm file)
-- String last_successful_state (for restart)
-- String error_message
-- String response_type (xml, json, turtle) - response will contain the state of the batch
-- String batch_id
+
+```mermaid
+classDiagram
+  class Batch {
+    String batch_id
+    BatchState state
+    Hash~String_JobStatus~ jobs_status
+    String profile_name
+    String submitter
+    ManifestType manifest_type
+    String payload_filename
+    String error_message
+    ResponseType response_type
+  }
+  class JobStatus {
+    int status
+    Date last_update
+  }
+  class BatchState{
+    <<enumeration>>
+  }
+  class JobState{
+    <<enumeration>>
+  }
+  class ManifestType{
+    <<enumeration>>
+    SingleFile,
+    ObjectManfiest,
+    ManifestOfContainers,
+    ManifestOfManifests
+  }
+  class ResponseType{
+    <<enumeration>>
+    XML,
+    JSON,
+    turtle
+  }
+```
 
 ### State Transitions
 - (None) --> Pending
