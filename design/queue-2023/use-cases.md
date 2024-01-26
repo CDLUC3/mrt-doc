@@ -216,6 +216,7 @@ graph TD
   Batch --- Job1
   Batch --- Job2
   Batch --- Job3
+  StatusReport[/StatusReport/]
   Batch --- StatusReport
 ```
 
@@ -336,6 +337,7 @@ graph TD
   Batch --- Job1
   Batch --- Job2
   Batch --- Job3
+  StatusReport[/StatusReport/]
   Batch --- StatusReport
 ```
 
@@ -349,6 +351,7 @@ graph TD
   Batch --- Job1
   Batch --- Job2
   Batch --- Job3
+  StatusReport[/StatusReport/]
   Batch --- StatusReport
 ```
 
@@ -362,6 +365,7 @@ graph TD
   Batch --- Job1
   Batch --- Job2
   Batch --- |notify| Job3
+  StatusReport[/StatusReport/]
   Batch --- StatusReport
 ```
 
@@ -375,6 +379,7 @@ graph TD
   Batch --- Job1
   Batch --- Job2
   Batch --- Job3
+  StatusReport[/StatusReport/]
   Batch --- StatusReport
 ```
 
@@ -388,7 +393,9 @@ graph TD
   Batch --- Job1
   Batch --- Job2
   Batch --- Job3
-  Batch <--> StatusReport
+  StatusReport[/StatusReport/]
+  Batch --> StatusReport
+  StatusReport -.-> Batch
   Email(Email Status to Depositor)
   StatusReport --> Email
 ```
