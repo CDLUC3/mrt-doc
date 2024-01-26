@@ -9,6 +9,7 @@
 ```mermaid
 graph LR
   START --> Pending
+  click START "javascript:alert(222)" "Tip"
   Pending --> Held
   Pending --> Processing
   Held -.-> Processing
@@ -21,6 +22,18 @@ graph LR
   Failed -.-> DELETED
   Held -.-> DELETED
 ```
+
+> [!NOTE]
+> _A dashed line indicates and administrative action initiated by the Merritt Team_
+> ```
+> Pending: Batch is ready to be processed
+> Held: Collection is HELD.  The hold must be released before the batch can proceed.
+> Processing: Payload is analyzed.  If the payload is a manifest, it will be downloaded. Jobs are created in the job queue.
+> Reporting: All jobs have COMPLETED or FAILED, a summary e-mail is sent to the depositor.
+> COMPLETED: All jobs COMPLETED
+> Failed: At least one job FAILED
+> UpdateReporting: Determine if any previously FAILED jobs are not complete.  If so, notify the depositor by email.
+> ```
 
 ### Data Elements
 
