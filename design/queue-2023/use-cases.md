@@ -1,4 +1,4 @@
-# Queue States
+# Batch Queue Use Cases
 
 - [Design](README.md)
 
