@@ -61,6 +61,7 @@ classDiagram
   }
   class JobStatus {
     JobState status
+    JobState last_reported_status
     Date last_update
   }
   class BatchState{
