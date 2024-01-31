@@ -342,6 +342,14 @@ classDiagram
 ### Failed --> Processing
 - reset status 
 ### Failed --> Recording
+
+---
+
+## Design Questions
+
+- Should we have separate states for "Active Provisioning" vs "Capacity Checks"?
+- Should each job know about its list of downloads so that the download step could be resumed at a specific point?
+- 
 - reset status 
 ### Failed --> Notify
 - reset status 
