@@ -2,11 +2,9 @@
 
 - [Design](README.md)
 
-## Use Cases
+## Use Case: Successful Batch
 
-### Successful Batch
-
-#### User submits manifest with 3 items
+### User submits manifest with 3 items
 
 ```mermaid
 graph TD
@@ -17,14 +15,14 @@ graph TD
   Ingest --> Batch
 ```
 
-#### Batch Queue starts Batch
+### Batch Queue starts Batch
 
 ```mermaid
 graph TD
   Batch[Batch: Processing]
 ```
 
-#### Batch downloads manifest and creates 3 jobs
+### Batch downloads manifest and creates 3 jobs
 
 ```mermaid
 graph TD
@@ -37,7 +35,7 @@ graph TD
   Batch --> |job3_payload_url| Job3
 ```
 
-#### Jobs Begin
+### Jobs Begin
   
 ```mermaid
 graph TD
@@ -50,7 +48,7 @@ graph TD
   Batch --- Job3
 ```
 
-#### Job 2 Completes
+### Job 2 Completes
   
 ```mermaid
 graph TD
@@ -62,7 +60,7 @@ graph TD
   Batch --- |notify| Job2
   Batch --- Job3
 ```
-#### Job 3 completes  
+### Job 3 completes  
 ```mermaid
 graph TD
   Batch[Batch: Processing]
@@ -74,7 +72,7 @@ graph TD
   Batch --- |notify| Job3
 ```
 
-#### Job 1 completes  
+### Job 1 completes  
 ```mermaid
 graph TD
   Batch[Batch: Reporting]
@@ -86,7 +84,7 @@ graph TD
   Batch --- Job3
 ```
 
-#### Batch Reports Job Status to Depositor 
+### Batch Reports Job Status to Depositor 
 ```mermaid
 graph TD
   Batch[Batch: Reporting]
@@ -102,15 +100,15 @@ graph TD
   StatusReport --> Email
 ```
 
-#### Batch Completes
+### Batch Completes
 ```mermaid
 graph TD
   Batch[Batch: COMPLETED]
 ```
 
-### Failed Batch
+##  Use Case: Failed Batch
 
-#### User submits manifest with 3 items
+### User submits manifest with 3 items
 
 ```mermaid
 graph TD
@@ -121,14 +119,14 @@ graph TD
   Ingest --> Batch
 ```
 
-#### Batch Queue starts Batch
+### Batch Queue starts Batch
 
 ```mermaid
 graph TD
   Batch[Batch: Processing]
 ```
 
-#### Batch downloads manifest and creates 3 jobs
+### Batch downloads manifest and creates 3 jobs
 
 ```mermaid
 graph TD
@@ -141,7 +139,7 @@ graph TD
   Batch --> |job3_payload_url| Job3
 ```
 
-#### Jobs Begin
+### Jobs Begin
   
 ```mermaid
 graph TD
@@ -154,7 +152,7 @@ graph TD
   Batch --- Job3
 ```
 
-#### Job 2 Completes
+### Job 2 Completes
   
 ```mermaid
 graph TD
@@ -166,7 +164,7 @@ graph TD
   Batch --- |notify| Job2
   Batch --- Job3
 ```
-#### Job 3 fails  
+### Job 3 fails  
 ```mermaid
 graph TD
   Batch[Batch: Processing]
@@ -178,7 +176,7 @@ graph TD
   Batch --- |notify| Job3
 ```
 
-#### Job 1 completes  
+### Job 1 completes  
 ```mermaid
 graph TD
   Batch[Batch: Reporting]
@@ -190,7 +188,7 @@ graph TD
   Batch --- Job3
 ```
 
-#### Batch Reports Job Status to Depositor 
+### Batch Reports Job Status to Depositor 
 ```mermaid
 graph TD
   Batch[Batch: Reporting]
@@ -206,7 +204,7 @@ graph TD
   StatusReport --> Email
 ```
 
-#### Batch Goes to Failed state
+### Batch Goes to Failed state
 ```mermaid
 graph TD
   Batch[Batch: Failed]
@@ -221,17 +219,17 @@ graph TD
 ```
 
 
-#### Admin Deletes Batch after determining that resubmission of failed job is not possible
+### Admin Deletes Batch after determining that resubmission of failed job is not possible
 ```mermaid
 graph TD
   Batch[Batch: DELETED]
 ```
 
 
-### Failed Batch with Successful Retry
+## Use Case: Failed Batch with Successful Retry
 
 
-#### User submits manifest with 3 items
+### User submits manifest with 3 items
 
 ```mermaid
 graph TD
@@ -242,14 +240,14 @@ graph TD
   Ingest --> Batch
 ```
 
-#### Batch Queue starts Batch
+### Batch Queue starts Batch
 
 ```mermaid
 graph TD
   Batch[Batch: Processing]
 ```
 
-#### Batch downloads manifest and creates 3 jobs
+### Batch downloads manifest and creates 3 jobs
 
 ```mermaid
 graph TD
@@ -262,7 +260,7 @@ graph TD
   Batch --> |job3_payload_url| Job3
 ```
 
-#### Jobs Begin
+### Jobs Begin
   
 ```mermaid
 graph TD
@@ -275,7 +273,7 @@ graph TD
   Batch --- Job3
 ```
 
-#### Job 2 Completes
+### Job 2 Completes
   
 ```mermaid
 graph TD
@@ -287,7 +285,7 @@ graph TD
   Batch --- |notify| Job2
   Batch --- Job3
 ```
-#### Job 3 fails  
+### Job 3 fails  
 ```mermaid
 graph TD
   Batch[Batch: Processing]
@@ -299,7 +297,7 @@ graph TD
   Batch --- |notify| Job3
 ```
 
-#### Job 1 completes  
+### Job 1 completes  
 ```mermaid
 graph TD
   Batch[Batch: Reporting]
@@ -311,7 +309,7 @@ graph TD
   Batch --- Job3
 ```
 
-#### Batch Reports Job Status to Depositor 
+### Batch Reports Job Status to Depositor 
 ```mermaid
 graph TD
   Batch[Batch: Reporting]
@@ -327,7 +325,7 @@ graph TD
   StatusReport --> Email
 ```
 
-#### Batch Goes to Failed state
+### Batch Goes to Failed state
 ```mermaid
 graph TD
   Batch[Batch: Failed]
@@ -341,7 +339,7 @@ graph TD
   Batch --- StatusReport
 ```
 
-#### Job 3 is restarted
+### Job 3 is restarted
 ```mermaid
 graph TD
   Batch[Batch: Failed]
@@ -355,7 +353,7 @@ graph TD
   Batch --- StatusReport
 ```
 
-#### Job 3 completes
+### Job 3 completes
 ```mermaid
 graph TD
   Batch[Batch: Failed]
@@ -369,7 +367,7 @@ graph TD
   Batch --- StatusReport
 ```
 
-#### Admin changes batch state to UpdateReporting
+### Admin changes batch state to UpdateReporting
 ```mermaid
 graph TD
   Batch[Batch: UpdateReporting]
@@ -383,7 +381,7 @@ graph TD
   Batch --- StatusReport
 ```
 
-#### Email is sent to depositor showing the status change for Job 3
+### Email is sent to depositor showing the status change for Job 3
 ```mermaid
 graph TD
   Batch[Batch: UpdateReporting]
@@ -400,16 +398,16 @@ graph TD
   StatusReport --> Email
 ```
 
-#### Batch Status is COMPLETE
+### Batch Status is COMPLETE
 ```mermaid
 graph TD
   Batch[Batch: COMPLETE]
 ```
 
-### Failed Batch with Unsuccessful Retry
+## Use Case: Failed Batch with Unsuccessful Retry
 
 
-#### User submits manifest with 3 items
+### User submits manifest with 3 items
 
 ```mermaid
 graph TD
@@ -420,14 +418,14 @@ graph TD
   Ingest --> Batch
 ```
 
-#### Batch Queue starts Batch
+### Batch Queue starts Batch
 
 ```mermaid
 graph TD
   Batch[Batch: Processing]
 ```
 
-#### Batch downloads manifest and creates 3 jobs
+### Batch downloads manifest and creates 3 jobs
 
 ```mermaid
 graph TD
@@ -440,7 +438,7 @@ graph TD
   Batch --> |job3_payload_url| Job3
 ```
 
-#### Jobs Begin
+### Jobs Begin
   
 ```mermaid
 graph TD
@@ -453,7 +451,7 @@ graph TD
   Batch --- Job3
 ```
 
-#### Job 2 Completes
+### Job 2 Completes
   
 ```mermaid
 graph TD
@@ -465,7 +463,7 @@ graph TD
   Batch --- |notify| Job2
   Batch --- Job3
 ```
-#### Job 3 fails  
+### Job 3 fails  
 ```mermaid
 graph TD
   Batch[Batch: Processing]
@@ -477,7 +475,7 @@ graph TD
   Batch --- |notify| Job3
 ```
 
-#### Job 1 completes  
+### Job 1 completes  
 ```mermaid
 graph TD
   Batch[Batch: Reporting]
@@ -489,7 +487,7 @@ graph TD
   Batch --- Job3
 ```
 
-#### Batch Reports Job Status to Depositor 
+### Batch Reports Job Status to Depositor 
 ```mermaid
 graph TD
   Batch[Batch: Reporting]
@@ -505,7 +503,7 @@ graph TD
   StatusReport --> Email
 ```
 
-#### Batch Goes to Failed state
+### Batch Goes to Failed state
 ```mermaid
 graph TD
   Batch[Batch: Failed]
@@ -519,7 +517,7 @@ graph TD
   Batch --- StatusReport
 ```
 
-#### Job 3 is restarted
+### Job 3 is restarted
 ```mermaid
 graph TD
   Batch[Batch: Failed]
@@ -533,7 +531,7 @@ graph TD
   Batch --- StatusReport
 ```
 
-#### Job 3 fails again
+### Job 3 fails again
 ```mermaid
 graph TD
   Batch[Batch: Failed]
@@ -547,7 +545,7 @@ graph TD
   Batch --- StatusReport
 ```
 
-#### Admin changes batch state to UpdateReporting
+### Admin changes batch state to UpdateReporting
 ```mermaid
 graph TD
   Batch[Batch: UpdateReporting]
@@ -561,7 +559,7 @@ graph TD
   Batch --- StatusReport
 ```
 
-#### Since there is no job state change since last report, no email is sent
+### Since there is no job state change since last report, no email is sent
 ```mermaid
 graph TD
   Batch[Batch: UpdateReporting]
@@ -576,7 +574,7 @@ graph TD
   StatusReport -.-> Batch
 ```
 
-#### Batch Status is Failed
+### Batch Status is Failed
 ```mermaid
 graph TD
   Batch[Batch: Failed]
@@ -588,10 +586,9 @@ graph TD
   Batch --- Job3
   StatusReport[/StatusReport/]
   Batch --> StatusReport
-  StatusReport -.-> Batch
 ```
 
-#### Admin Deletes Batch after determining that resubmission of failed job is not possible
+### Admin Deletes Batch after determining that resubmission of failed job is not possible
 ```mermaid
 graph TD
   Batch[Batch: DELETED]
