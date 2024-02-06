@@ -150,10 +150,14 @@ classDiagram
 ### UpdateReporting --> Failed
 - detect any updated statuses and report them
 - status = Completed
-### Failed --> Deleted (admin function)
- - status = Deleted 
+### Failed --> DELETED (admin function)
+- delete any running jobs (and folders)
+- delete batch folder
+- status = Deleted 
 ### Held --> Deleted (admin function) 
- - status = Deleted 
+- delete any running jobs (and folders)
+- delete batch folder
+- status = DELETED
 
 ---
 ## Job Queue
@@ -344,6 +348,7 @@ classDiagram
 - Notify batch queue that job is complete
 - Status = Completed  
 - last_sucessful_state = Notify
+- delete job folder
 ### Notify --> Failed 
 - status = Failed
 ### Failed --> Downloading
@@ -351,6 +356,11 @@ classDiagram
 ### Failed --> Processing
 - reset status 
 ### Failed --> Recording
+- reset status
+### Failed --> DELETED
+- delete job folder
+### Held --> DELETED
+- delete job folder
 
 ---
 
