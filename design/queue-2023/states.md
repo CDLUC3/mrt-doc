@@ -84,6 +84,11 @@ classDiagram
     turtle
   }
 ```
+### Enum
+- [BatchState.java](https://github.com/CDLUC3/merritt-tinker/blob/main/state-transition/src/main/java/org/cdlib/mrt/BatchState.java)
+
+### Questions
+- store timing info?
 
 ## Batch Queue State Transitions
 
@@ -243,12 +248,16 @@ classDiagram
     Container
   }
 ```
+### Enum
+- [JobState.java](https://github.com/CDLUC3/merritt-tinker/blob/main/state-transition/src/main/java/org/cdlib/mrt/JobState.java)
+
+### Questions
+- Store timing info
 
 ## Job Queue State Transitions
 
 ### START --> Pending
 - if payload is a single file and the depositor supplied a digest, perform checksum validation 
-- payload_version (hard coded)
 - profile_name - constructor
 - status = Pending
 - batch_id - constructor
