@@ -15,6 +15,9 @@
 - [Queue Entry Data Storage](data.md)
 - [Underlying Queue Service](service.md)
 - [Queue Manager](manager.md)
+- [Batch and Queue State Enums](https://github.com/CDLUC3/merritt-tinker/tree/main/state-transition)
+  - How is the queue item id number conveyed?
+  - How does priority work int the queue item sort? 
 
 ## Links
 - https://github.com/CDLUC3/mrt-doc/issues/1062 - Background issue that led tot hsi design
