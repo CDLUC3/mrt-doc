@@ -218,6 +218,30 @@ size: 90
 
 ### Option: Modify Merritt file paths to use content hash
 
+```yaml
+ark: ark:/111/222
+versions:
+- num: 1
+  files:
+    producer/foo: { size: 10, digest: 'AAA', path: "AAA/10" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "AAB/20" } 
+    producer/cat: { size: 30, digest: 'AAC', path: "AAC/30" }
+  size: 60
+- num: 2
+  files:
+    producer/foo: { size: 40, digest: 'FFF', path: "FFF/40" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "AAB/20" } 
+    producer/dog: { size: 30, digest: 'AAC', path: "AAC/30" }
+  size: 40
+- num: 3
+  files:
+    producer/foo: { size: 40, digest: 'EEE', path: "EEE/40" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "AAB/20" } 
+    producer/dog: { size: 30, digest: 'AAC', path: "AAC/30" }
+  size: 40
+size: 140
+```
+
 #### Process
 - Storage key should be `ark | hash | length` regardless of pathname/version
 
