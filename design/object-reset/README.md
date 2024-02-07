@@ -16,6 +16,8 @@
 show query here
 ```
 
+---
+
 ### Use Case: Depositor acceidentally uploads unwanted file
 
 #### Examples
@@ -25,20 +27,32 @@ show query here
 
 #### Scope: Case by Case
 
+
+---
+
 ### Use Case: Excessive Object Versioning
 
 #### Example
 - escholarship metadata changes
 - very granular metadata changes may not be meaningful to future users accessing preservation content
 
+
+---
+
 ### Use Case: Incomplete Processing of Version addition
 
 #### Scope: Rare, driven by system outage
+
+
+---
 
 ### Use Case: Pathname Normalization
 
 #### Issue
 During the scope of a large ingest effort, a desire arises to normalize pathnames for a large batch of files that have already been ingested
+
+
+---
 
 ### Use Case: Bulk delete files unsuitable for preservation
 
@@ -48,9 +62,15 @@ During the scope of a large ingest effort, a desire arises to normalize pathname
 - __MACOSX files
 - .git or .svn repository ingested with content
 
+
+---
+
 ### Use Case: Storage Savings
 
 #### Issue: Purge unwanted files from old object versions
+
+
+---
 
 ## Implmentation Options
 
@@ -77,6 +97,9 @@ During the scope of a large ingest effort, a desire arises to normalize pathname
 - No mechanism exists to normalize or correct pathnames
 - No evidence is left to indicate that this process took place
 
+
+---
+
 ### Option: Pull forward desired files using an ingest manifest exported from storage
 
 #### Process
@@ -99,10 +122,29 @@ During the scope of a large ingest effort, a desire arises to normalize pathname
 - Duplication could persist if the user does not enable / approve the running of the purge process
 - Replication logic will need to change to not assume that versioning starts at 1
 
+
+---
+
 ### Option: Modify Merritt file paths to use content hash
+
+#### Process
+- Storage key should be `ark | hash | length` regardless of pathname/version
 
 #### Pros
 - Storage optimized solution - duplicate files are only stored once per object
 
 #### Cons
 - Loss of semantically meaningful key names
+
+
+---
+
+### Option: Reset Version should always become version 1
+
+- _We discussed this in the meeting, but I do not really understand how this would work._
+
+#### Process
+
+####  Pros
+
+#### Cons
