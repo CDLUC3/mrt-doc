@@ -51,3 +51,58 @@ During the scope of a large ingest effort, a desire arises to normalize pathname
 ### Use Case: Storage Savings
 
 #### Issue: Purge unwanted files from old object versions
+
+## Implmentation Options
+
+### Option: Mark Current Version as the Reset Version
+
+#### Process
+- User must fix the current version of the object using existing tools (ingest updates & mrt-delete)
+- New transaction is run to mark the state of the current object as definitive
+  - Is this sent through ingest?
+  - Is this an administrative action sent to inventory?
+- Any files not found in the current version object will be removed from the storage manifest
+- Inventory will remove these files
+- These files will be eligible for deletion from cloud storage
+  - Using the storage scan process?
+  - Using new file delete operations
+
+#### Pros
+- No files are cloned/copied
+- Version number stays intact
+- Minimizes processing
+
+#### Cons
+- Relies heavily on the existing mrt-delete process to reconcile the current version
+- No mechanism exists to normalize or correct pathnames
+- No evidence is left to indicate that this process took place
+
+### Option: Pull forward desired files using an ingest manifest exported from storage
+
+#### Process
+- Ingest manifest is generated from Merritt Storage
+- Desired files are selected and renamed as needed
+- Manifest is sent to Ingest as a new request type of `replace`
+- A new version is generated containing a copy of all desired content
+- Storage manifest should reflect that the replacement took place at a specific version
+- Files from prior versions should be treated as if they no longer exist
+- Older version files will be purge-able by inventory
+- Older version files will be purge-able from cloud storage
+- A purge process should exist to purge the older version content
+
+#### Pros
+- Use can review the new state of the object before electing to purge the old versions
+- The storage manifest and the version numbering will convey that this maintenance activity took place
+
+#### Cons
+- Temporary duplication of object content
+- Duplication could persist if the user does not enable / approve the running of the purge process
+- Replication logic will need to change to not assume that versioning starts at 1
+
+### Option: Modify Merritt file paths to use content hash
+
+#### Pros
+- Storage optimized solution - duplicate files are only stored once per object
+
+#### Cons
+- Loss of semantically meaningful key names
