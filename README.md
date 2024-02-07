@@ -73,6 +73,20 @@ graph TD
   classDef FOCUS stroke:red,stroke-width:5px,fill:yellow
 ```
 
+#### Merritt UI Permalink Resolution
+```mermaid
+graph TD
+  N2T[N2T Service]
+  click N2T href "https://n2t.net/" "service link"
+  UI[Merritt UI]
+  Permalink[/Merrit UI Permalink/]
+
+  UI --> |contains| Permalink
+  Permalink --> N2T
+  N2T -.-> |resolves to| EZID
+  EZID -.-> |resolves to| UI
+```
+
 Code Repositories
 - Ruby
   - [UI](https://github.com/CDLUC3/mrt-dashboard)
