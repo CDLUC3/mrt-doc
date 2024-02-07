@@ -244,22 +244,71 @@ size: 140
 
 #### Process
 - Storage key should be `ark | hash | length` regardless of pathname/version
+- Comment dloy - this only becomes needed if we allow a reset to preserve more than one version - preserving only current not needed
 
 #### Pros
 - Storage optimized solution - duplicate files are only stored once per object
 
 #### Cons
-- Loss of semantically meaningful key names
-
+- Loss of semantically meaningful key names (dloy-serious problem)
 
 ---
 
 ### Option: Reset Version should always become version 1
 
-- _We discussed this in the meeting, but I do not really understand how this would work._
+- _dloy : see below._
 
 #### Process
 
 ####  Pros
 
 #### Cons
+
+
+---
+
+### Option: Reset object using a new add version
+
+#### Process
+- a version add with reset request is received by ingest
+- storage deletes the content for the specific ark
+- all add version content is treated as new using the original ark
+- inventory receives reset request
+- inventory deletes all existing content on the ark
+- inventory treats the added content as new
+
+####  Pros
+- same key architecture
+- delete and add functions do not change for storage and inventory
+- resulting storage sets all content as 1 so specific match of content to saved keys
+- all changes in new add populate merritt inv without requesting hybrid processing
+- preserving the ark alloww outside references to continue working
+
+#### Cons
+- all content will be written as version 1 so no earlier content is saved - redundant processing
+- recovery of failed process may be issue
+
+---
+
+### Option: Reset object using existing current version
+- Note this is similar to _Option: Reset Version should always become version 1_ above
+
+#### Process
+- a reset request is received by ingest - without action
+- storage passed reset
+- storage uses content S3 keys to copy (or leave alone) to a version 1 key. If current file uses previous version 10 then version 10 copied to version 1. Current architecture will not have collisions if only current is preserved
+- storage delete all unused content for specific ark (key version > 1)
+- inventory deletes all existing content on the ark
+- inventory treats the added content as new
+
+####  Pros
+- same key architecture
+- resulting storage sets all content as 1 so specific match of content to saved keys
+- all changes in new add populate merritt inv without requesting hybrid processing
+- preserving the ark alloww outside references to continue working
+ 
+#### Cons
+- new build copy logic required in storage
+- new delete logic required for this special case
+- Much content will be rewritten except for matching
+- recovery of failed process may be issue
