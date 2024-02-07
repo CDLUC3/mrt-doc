@@ -74,7 +74,52 @@ During the scope of a large ingest effort, a desire arises to normalize pathname
 
 ## Implmentation Options
 
+### Scenario
+```yaml
+ark: ark:/111/222
+versions:
+- num: 1
+  files:
+    producer/foo: { size: 10, digest: 'AAA', path: "1/producer/foo" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "1/producer/bar" } 
+    producer/cat: { size: 30, digest: 'AAC', path: "1/producer/cat" }
+  size: 60
+- num: 2
+  files:
+    producer/foo: { size: 40, digest: 'FFF', path: "2/producer/foo" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "1/producer/bar" } 
+    producer/dog: { size: 30, digest: 'AAC', path: "2/producer/dog" }
+  size: 70
+- num: 3
+  files:
+    producer/foo: { size: 40, digest: 'EEE', path: "3/producer/foo" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "1/producer/bar" } 
+    producer/dog: { size: 30, digest: 'AAC', path: "2/producer/dog" }
+  size: 40
+size: 170
+```
+
 ### Option: Mark Current Version as the Reset Version
+
+```yaml
+ark: ark:/111/222
+versions:
+- num: 1
+  files:
+    producer/bar: { size: 20, digest: 'AAB', path: "1/producer/bar" }
+  size: 20
+- num: 2
+  files:
+    producer/dog: { size: 30, digest: 'AAC', path: "2/producer/dog" }
+  size: 30
+- num: 3
+  files:
+    producer/foo: { size: 40, digest: 'EEE', path: "3/producer/foo" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "1/producer/bar" } 
+    producer/dog: { size: 30, digest: 'AAC', path: "2/producer/dog" }
+  size: 40
+size: 90
+```
 
 #### Process
 - User must fix the current version of the object using existing tools (ingest updates & mrt-delete)
@@ -86,7 +131,7 @@ During the scope of a large ingest effort, a desire arises to normalize pathname
 - These files will be eligible for deletion from cloud storage
   - Using the storage scan process?
   - Using new file delete operations
-
+ 
 #### Pros
 - No files are cloned/copied
 - Version number stays intact
@@ -101,6 +146,52 @@ During the scope of a large ingest effort, a desire arises to normalize pathname
 ---
 
 ### Option: Pull forward desired files using an ingest manifest exported from storage
+
+#### Step 1: Pull Forward
+```yaml
+ark: ark:/111/222
+versions:
+- num: 1
+  files:
+    producer/foo: { size: 10, digest: 'AAA', path: "1/producer/foo" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "1/producer/bar" } 
+    producer/cat: { size: 30, digest: 'AAC', path: "1/producer/cat" }
+  size: 60
+- num: 2
+  files:
+    producer/foo: { size: 40, digest: 'FFF', path: "2/producer/foo" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "1/producer/bar" } 
+    producer/dog: { size: 30, digest: 'AAC', path: "2/producer/dog" }
+  size: 70
+- num: 3
+  files:
+    producer/foo: { size: 40, digest: 'EEE', path: "3/producer/foo" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "1/producer/bar" } 
+    producer/dog: { size: 30, digest: 'AAC', path: "2/producer/dog" }
+  size: 40
+- num: 4
+  files:
+    producer/foo: { size: 40, digest: 'EEE', path: "4/producer/foo" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "4/producer/bar" } 
+    producer/dog: { size: 30, digest: 'AAC', path: "4/producer/dog" }
+  size: 90
+  reload: true
+size: 260
+```
+
+#### Step 2: Purge Old Versions
+```yaml
+ark: ark:/111/222
+versions:
+- num: 4
+  files:
+    producer/foo: { size: 40, digest: 'EEE', path: "4/producer/foo" } 
+    producer/bar: { size: 20, digest: 'AAB', path: "4/producer/bar" } 
+    producer/dog: { size: 30, digest: 'AAC', path: "4/producer/dog" }
+  size: 90
+  reload: true
+size: 90
+```
 
 #### Process
 - Ingest manifest is generated from Merritt Storage
