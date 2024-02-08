@@ -1,5 +1,45 @@
 ## Sprint Goals
 
+#### Sprint 99:  February 7, 2023 - February 27, 2024
+- Ingest
+  - Investigate approaches to supporting additional ZK states: #1441
+  - https://github.com/CDLUC3/mrt-doc/blob/main/design/queue-2023/states.md
+  - Queue redesign documentation
+  - Explore/evaluate ZK access from Ruby code: #1780
+- Audit, Replic
+  - Removal SSM email properties from audit and replic: #1715
+- Nuxeo Harvester and Object update strategy
+  - File names generated via Nuxeo harvest include unneeded characters: #1655
+  - Feature to update object/file information in Merritt: #1720
+  - Alternate s3 key Merritt: #1734
+  - Store object “reset”: #1774
+  - String together object modification features: #1775
+- Ingest
+  - Consumer daemon control: #1773
+- Devops
+  - Nagios: Switch checks from state to jsonstatus: #1768
+  - Ruby 3.x (Amazon Linux 2023): #1770
+  - Ansible documentation: #1778, #1779
+- Storage
+  - Node table flip: #1742
+- Collection Health Prototype
+  - Awaiting feedback from campus meetings
+- OpenSearch
+  - Lambda logs into OpenSearch: #1511
+- UCB Law Robbins Collection
+  - Batch 3 ingest: RBN-04
+- UCSF
+  - CTP archive screenshots to GitHub: #1523
+
+#### Releases:
+Stage:
+- Ingest: Consumer Daemon control
+- Switch checks from state to jsonstatus
+- UI: Fix Stage n2t resolver URL
+Production:
+- Ingest: Consumer Daemon control
+- Switch checks from state to jsonstatus
+
 #### Sprint 98:  January 17, 2023 - February 6, 2024
 - Ingest
   - Investigate approaches to supporting additional ZK states: #1441
@@ -33,6 +73,8 @@ Stage:
 - ...
 Production:
 - January UI Fixes
+- BOM 1.6
+- Ingest upgrade to new ZK library
 
 #### Sprint 97:  December 20, 2023 - January 16, 2024
 - Ingest
