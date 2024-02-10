@@ -4,6 +4,14 @@
 
 ## Queue Data
 
+### Record Keys
+The ingest service currently packs a priority value into the path name for the zookeeper record.
+- /ingest/mrtQ-02100000000003
+- (document the component parts here)
+- Question: priority may become a more dynamic property in the future
+  - We could have a baseline priority in the pathname (for sorting) and an actual priority in the payload
+  - We could also explore renaming a path dynamically when a priority change is appropriate
+
 ### Record Sorting
 
 #### Current Implementation
