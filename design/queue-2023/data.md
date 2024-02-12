@@ -37,3 +37,6 @@ A fixed header may continue to be utilized for sorting records.  This headers sh
 - Use a standard JSON library (not the Merritt Core library)
 - A JSON schema should exist to validate the payload
 - Schema validation should only be applied during system testing
+
+#### Final vs Volatile data fields
+- As we write to zookeeper, should be distinguish our static fields (submitter, file name) from the volatile fields (status, space_needed, last update)?
