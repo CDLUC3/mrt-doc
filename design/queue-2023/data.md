@@ -38,5 +38,9 @@ A fixed header may continue to be utilized for sorting records.  This headers sh
 - A JSON schema should exist to validate the payload
 - Schema validation should only be applied during system testing
 
+#### Space Considerations
+> ZooKeeper was not designed to be a general database or large object store. Instead, it manages coordination data. This data can come in the form of configuration, status information, rendezvous, etc. A common property of the various forms of coordination data is that they are relatively small: measured in kilobytes. The ZooKeeper client and the server implementations have sanity checks to ensure that znodes have less than 1M of data, but the data should be much less than that on average. [^1]
+[^1]: https://zookeeper.apache.org/doc/r3.3.3/zookeeperProgrammers.html#Data+Access
+
 #### Final vs Volatile data fields
 - As we write to zookeeper, should be distinguish our static fields (submitter, file name) from the volatile fields (status, space_needed, last update)?
