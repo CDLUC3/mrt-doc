@@ -94,6 +94,18 @@ classDiagram
     Reset
   }
 ```
+
+```
+- /batch
+  - /BID
+    - /submission-info
+  - /completed
+    - JID
+  - /failed
+  - /processing
+```
+
+
 ### Enum
 - [BatchState.java](https://github.com/CDLUC3/merritt-tinker/blob/main/state-transition/src/main/java/org/cdlib/mrt/BatchState.java)
 
