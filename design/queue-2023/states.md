@@ -49,15 +49,19 @@ Determine if any previously FAILED jobs are not complete.  If so, notify the dep
 ```mermaid
 classDiagram
   class Batch {
-    String batch_id
+    final String batch_id
+    final BatchSubmissionInfo
     BatchState state
     Hash~String_JobStatus~ jobs_status
-    String profile_name
-    String submitter
-    ManifestType manifest_type
-    String payload_filename
     String error_message
-    ResponseType response_type
+  }
+  class BatchSubmissionInfo {
+    final String profile_name
+    final String submitter
+    final ManifestType manifest_type
+    final String payload_filename
+    final ResponseType response_type
+    final SubmissionMode submission_mode
   }
   class JobStatus {
     JobState status
@@ -82,6 +86,12 @@ classDiagram
     XML,
     JSON,
     turtle
+  }
+  class SubmissionMode{
+    <<enumeration>>
+    Add,
+    Update,
+    Reset
   }
 ```
 ### Enum
@@ -226,24 +236,25 @@ The queue will track the last successful step so that the job can be resumed at 
 ```mermaid
 classDiagram
   class Job {
-    String job_id
-    String batch_id
-    String payload_url
-    PayloadType payload_type
-    String payload_version what is this?
+    final String job_id
+    final String batch_id
+    final BatchSubmissionInfo
+    final String payload_url
+    final PayloadType payload_type
+    final ResponseType callback_response_type
+
+    String working_directory
+
     JobState status
     JobState last_successful_state
     Time status_updated
-    String working_directory
+    String error_message
+
     int retry_count
     String local_id
     String ark
     int priority
-    String submitter
-    boolean is_update_submission
     long space_needed
-    ResponseType callback_response_type
-    String error_message
   }
   class PayloadType{
     <<enumeration>>
