@@ -19,6 +19,9 @@
   - How is the queue item id number conveyed?
   - How does priority work int the queue item sort? 
 
+## Zookeeper provides a "Watcher" object.  Could this be helpful for the Batch Queue?
+- https://zookeeper.apache.org/doc/r3.3.3/zookeeperProgrammers.html#ch_zkWatches
+
 ## Links
 - https://github.com/CDLUC3/mrt-doc/issues/1062 - Background issue that led tot hsi design
 - https://github.com/CDLUC3/mrt-doc/issues/1753 - Admin Manager
