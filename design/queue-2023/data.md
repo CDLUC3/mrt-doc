@@ -44,3 +44,18 @@ A fixed header may continue to be utilized for sorting records.  This headers sh
 
 #### Final vs Volatile data fields
 - As we write to zookeeper, should be distinguish our static fields (submitter, file name) from the volatile fields (status, space_needed, last update)?
+
+## Design Ideas
+
+| Path | Data Type | Fields | Created By | Modified By | Comment |
+| - | - | - | - | - | - |
+| /batches/BID/submission | json | profile_name<br/>submitter<br/>manifest_type<br/>payload_filename<br/>response_type<br/>submission_mode | creation | none | |
+| /batches/BID/status | json | status<br/>last_modified | creation | all jobs done | | 
+| /batches/BID/status-report | json | failed_jobs | failure | failure | last status report sent to user | 
+| /batches/BID/states/STATE/JID | none | - | | | STATE = pending / held / processing / failed / completed| 
+| /jobs/JID/configuration | json | batch_id<br/>profile_name<br/>submitter<br/>payload_url<br/>payload_type<br/>response_type<br/>working_dir<br/>local_id | creation | none | |
+| /jobs/JID/status | json | status<br/>last_successful_status<br/>last_modification_date<br/>retry_count | creation | none | |
+| /jobs/JID/priority | int | - | creation | estimating | |
+| /jobs/JID/space_needed | long | - | creation | estimating | |
+| /jobs/JID/ark | string | - | creation | processing | |
+| /jobs/states/STATE/PP-JID | none | - | | | PP = priority <br/>STATE = pending / held / estimating / provisioning / downloading / processing / recording / notify / failed / completed |
