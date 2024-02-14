@@ -44,73 +44,7 @@ Determine if any previously FAILED jobs are not complete.  If so, notify the dep
 
 ---
 
-### Batch Object Data Elements
 
-```mermaid
-classDiagram
-  class Batch {
-    final String batch_id
-    final BatchSubmissionInfo
-    BatchState state
-    Hash~String_JobStatus~ jobs_status
-    String error_message
-  }
-  class BatchSubmissionInfo {
-    final String profile_name
-    final String submitter
-    final ManifestType manifest_type
-    final String payload_filename
-    final ResponseType response_type
-    final SubmissionMode submission_mode
-  }
-  class JobStatus {
-    JobState status
-    JobState last_reported_status
-    Date last_update
-  }
-  class BatchState{
-    <<enumeration>>
-  }
-  class JobState{
-    <<enumeration>>
-  }
-  class ManifestType{
-    <<enumeration>>
-    SingleFile,
-    ObjectManfiest,
-    ManifestOfContainers,
-    ManifestOfManifests
-  }
-  class ResponseType{
-    <<enumeration>>
-    XML,
-    JSON,
-    turtle
-  }
-  class SubmissionMode{
-    <<enumeration>>
-    Add,
-    Update,
-    Reset
-  }
-```
-
-```
-- /batch
-  - /BID
-    - /submission-info
-  - /completed
-    - JID
-  - /failed
-  - /processing
-```
-
-
-### Enum
-- [BatchState.java](https://github.com/CDLUC3/merritt-tinker/blob/main/state-transition/src/main/java/org/cdlib/mrt/BatchState.java)
-
-### Questions
-- store timing info?
 
 ## Batch Queue State Transitions
 
@@ -244,42 +178,6 @@ The queue will track the last successful step so that the job can be resumed at 
 
 ---
 
-### Job Queue Data Elements
-```mermaid
-classDiagram
-  class Job {
-    final String job_id
-    final String batch_id
-    final BatchSubmissionInfo
-    final String payload_url
-    final PayloadType payload_type
-    final ResponseType callback_response_type
-
-    String working_directory
-
-    JobState status
-    JobState last_successful_state
-    Time status_updated
-    String error_message
-
-    int retry_count
-    String local_id
-    String ark
-    int priority
-    long space_needed
-  }
-  class PayloadType{
-    <<enumeration>>
-    File,
-    Manifest,
-    Container
-  }
-```
-### Enum
-- [JobState.java](https://github.com/CDLUC3/merritt-tinker/blob/main/state-transition/src/main/java/org/cdlib/mrt/JobState.java)
-
-### Questions
-- Store timing info
 
 ## Job Queue State Transitions
 
