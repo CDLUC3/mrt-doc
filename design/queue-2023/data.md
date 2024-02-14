@@ -70,6 +70,7 @@ A fixed header may continue to be utilized for sorting records.  This headers sh
   - last_modification_date = now
 - Delete /jobs/states/StateX/PP-JID
 - Create /jobs/states/StateY/PP-JID
+  - Note: The prior state might have altered the priority
 - If StateY == Completed
   - Delete /batches/BID/states/processing/JID
   - Create /batches/BID/states/completed/JID
