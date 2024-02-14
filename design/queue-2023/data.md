@@ -15,7 +15,7 @@
 
 ## Design Ideas
 
-| Path | Data Type | Fields | Created By | Modified By | Comment |
+| Zookeeper Node Path | Node Data Type | Fields | Created By | Modified By | Comment |
 | - | - | - | - | - | - |
 | /batches/BID/submission | json | profile_name<br/>submitter<br/>manifest_type<br/>payload_filename<br/>response_type<br/>submission_mode | creation | none | |
 | /batches/BID/status | json | status<br/>last_modified | creation | all jobs done | | 
