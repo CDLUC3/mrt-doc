@@ -68,6 +68,15 @@ If the collection is in a held state, the batch should move to held.
   last_modified: now
 ```
 
+> [!NOTE]
+> A new job id will be written in 3 places
+> - To the list of jobs `/jobs/JID`
+> - To the batch's job queue `/batches/bid0001/states/pending/JID:`
+>   - this queue is used to determine when a batch is complete
+> - To the actual job queue `/jobs/states/pending/XX-JID:`
+>   - XX is the job's initial priority
+
+
 Create Jobs
 ```yml
 /jobs/jid0001/configuration:
@@ -112,15 +121,21 @@ Create Jobs
 /jobs/jid0003/priority: 5
 ```
 
-Place jobs in job queue
+Place jobs references in batch queue
 ```yml
-/batches/bid0001/states/processing/jid0001:
-/batches/bid0001/states/processing/jid0002:
-/batches/bid0001/states/processing/jid0003:
-/jobs/states/processing/05-jid0001:
-/jobs/states/processing/05-jid0002:
-/jobs/states/processing/05-jid0003:
+/batches/bid0001/states/pending/jid0001:
+/batches/bid0001/states/pending/jid0002:
+/batches/bid0001/states/pending/jid0003:
 ```
+
+Place jobs in job queue, allowing sorting by priority
+```yml
+/jobs/states/pending/05-jid0001:
+/jobs/states/pending/05-jid0002:
+/jobs/states/pending/05-jid0003:
+```
+
+
 
 ## Job Queue State Transitions
 
