@@ -39,15 +39,8 @@ If the collection is in a held state, the batch should move to held.
 #### ZK Nodes
 
 ```yml
-/batches/bid0001/submission:
-  profile_name: profile_name
-  submitter: submitter
-  payload_url: payload_url
-  manifest_type: manifest_of_manifests 
-  response_type: tbd
-  submission_mode: add
 /batches/bid0001/status:
-  status: held # <-----------------------------------------------
+  status: held 
   last_modified: now
 ```
 
@@ -56,13 +49,6 @@ If the collection is in a held state, the batch should move to held.
 #### ZK Nodes
 
 ```yml
-/batches/bid0001/submission:
-  profile_name: profile_name
-  submitter: submitter
-  payload_url: payload_url
-  manifest_type: manifest_of_manifests 
-  response_type: tbd 
-  submission_mode: add
 /batches/bid0001/status:
   status: processing
   last_modified: now
@@ -83,7 +69,7 @@ If the collection is in a held state, the batch should move to held.
 > - Create new job queue entry `/jobs/states/NEW_STATE/XX-JID`
 > - Update the batch queue state (if applicable)
 >   - Delete old batch queue state `/batches/BID/states/OLD_STATE/JID`
->   - Create new batch queue state `/batches/BOD/states/NEW_STATE/JID`
+>   - Create new batch queue state `/batches/BID/states/NEW_STATE/JID`
 
 
 Create Jobs
@@ -99,7 +85,11 @@ Create Jobs
   submission_mode: add
   working_dir: /zfs/queue/bid0001/jid0001
   local_id: loc001
-/jobs/jid0001/status: pending
+/jobs/jid0001/status: 
+  status: pending
+  last_successful_status: #nil
+  last_modification_date: now
+  retry_count: 0
 /jobs/jid0001/priority: 5
 /jobs/jid0002/configuration:
   batch_id: bid0001
@@ -112,7 +102,11 @@ Create Jobs
   submission_mode: add
   working_dir: /zfs/queue/bid0001/jid0002
   local_id: loc002
-/jobs/jid0002/status: pending
+/jobs/jid0002/status: status: 
+  status: pending
+  last_successful_status: #nil
+  last_modification_date: now
+  retry_count: 0
 /jobs/jid0002/priority: 5
 /jobs/jid0003/configuration:
   batch_id: bid0001
@@ -126,7 +120,11 @@ Create Jobs
   working_dir: /zfs/queue/bid0001/jid0003
   local_id: loc003
 /jobs/jid0003/ark: ark123
-/jobs/jid0003/status: pending
+/jobs/jid0003/status: status: 
+  status: pending
+  last_successful_status: #nil
+  last_modification_date: now
+  retry_count: 0
 /jobs/jid0003/priority: 5
 ```
 
@@ -152,7 +150,11 @@ Place jobs references in batch queue
 - status = Failed (no recovery is possible)
 
 ```yml
-/jobs/jid0002/status: failed
+/jobs/jid0002/status: 
+  status: failed
+  last_successful_status: #nil
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/failed/05-jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
@@ -162,7 +164,11 @@ Place jobs references in batch queue
 - status = Held 
 
 ```yml
-/jobs/jid0002/status: held
+/jobs/jid0002/status: 
+  status: held
+  last_successful_status: #nil
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/held/05-jid0001:
 ```
 
@@ -170,7 +176,11 @@ Place jobs references in batch queue
 - status = Estimating 
 
 ```yml
-/jobs/jid0002/status: estimating
+/jobs/jid0002/status: 
+  status: estimating
+  last_successful_status: #nil
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/estimating/05-jid0001:
 ```
 
@@ -183,7 +193,11 @@ Place jobs references in batch queue
 ```yml
 /jobs/jid0002/space_needed: 1000000000
 /jobs/jid0002/priority: 10
-/jobs/jid0002/status: provisioning
+/jobs/jid0002/status: 
+  status: provisioning
+  last_successful_status: estimating
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/provisioning/10-jid0001:
 ```
 
@@ -194,7 +208,11 @@ Place jobs references in batch queue
 - if space is sufficent state=Downloading  
 
 ```yml
-/jobs/jid0002/status: downloading
+/jobs/jid0002/status: 
+  status: downloading
+  last_successful_status: provisioning
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/downloading/10-jid0001:
 ```
 
@@ -207,7 +225,11 @@ Place jobs references in batch queue
 - status = Processing
 
 ```yml
-/jobs/jid0002/status: processing
+/jobs/jid0002/status: 
+  status: processing
+  last_successful_status: downloading
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/processing/10-jid0001:
 ```
 
@@ -217,7 +239,11 @@ Place jobs references in batch queue
 - error_message = details the file that could not be downloaded 
 
 ```yml
-/jobs/jid0002/status: failed
+/jobs/jid0002/status: 
+  status: failed
+  last_successful_status: provisioning # retain_prior_value
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/failed/10-jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
@@ -241,7 +267,11 @@ Place jobs references in batch queue
 
 ```yml
 /jobs/jid0002/ark: 555
-/jobs/jid0002/status: recording
+/jobs/jid0002/status: 
+  status: recording
+  last_successful_status: processing
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/recording/10-jid0001:
 ```
 
@@ -251,7 +281,11 @@ Place jobs references in batch queue
 - status = Failed   
 
 ```yml
-/jobs/jid0002/status: failed
+/jobs/jid0002/status: 
+  status: failed
+  last_successful_status: downloading # retain_prior_value
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/failed/10-jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
@@ -263,7 +297,11 @@ Place jobs references in batch queue
 - last_sucessful_state = Recording
 
 ```yml
-/jobs/jid0002/status: notify
+/jobs/jid0002/status: 
+  status: notify
+  last_successful_status: recording
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/notify/10-jid0001:
 ```
 
@@ -272,7 +310,11 @@ Place jobs references in batch queue
 - status = Failed
 
 ```yml
-/jobs/jid0002/status: failed
+/jobs/jid0002/status: 
+  status: failed
+  last_successful_status: processing # retain_prior_value
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/failed/10-jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
@@ -285,7 +327,11 @@ Place jobs references in batch queue
 - delete job folder
 
 ```yml
-/jobs/jid0002/status: completed
+/jobs/jid0002/status: 
+  status: completed
+  last_successful_status: notify
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/completed/10-jid0001:
 /batches/bid0001/states/completed/jid0001:
 ```
@@ -294,7 +340,11 @@ Place jobs references in batch queue
 - status = Failed
 
 ```yml
-/jobs/jid0002/status: failed
+/jobs/jid0002/status: 
+  status: failed
+  last_successful_status: recording # retain_prior_value
+  last_modification_date: now
+  retry_count: 0 # no change
 /jobs/states/failed/10-jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
@@ -303,7 +353,11 @@ Place jobs references in batch queue
 - reset status 
 
 ```yml
-/jobs/jid0002/status: downloading
+/jobs/jid0002/status: 
+  status: downloading
+  last_successful_status: provisioning # no change
+  last_modification_date: now
+  retry_count: 1 # increment by 1
 /jobs/states/downloading/10-jid0001:
 /batches/bid0001/states/processing/jid0001:
 ```
@@ -312,7 +366,11 @@ Place jobs references in batch queue
 - reset status 
 
 ```yml
-/jobs/jid0002/status: processing
+/jobs/jid0002/status: 
+  status: processing
+  last_successful_status: downloading # no change
+  last_modification_date: now
+  retry_count: 1 # increment by 1
 /jobs/states/processing/10-jid0001:
 /batches/bid0001/states/processing/jid0001:
 ```
@@ -321,7 +379,11 @@ Place jobs references in batch queue
 - reset status
 
 ```yml
-/jobs/jid0002/status: recording
+/jobs/jid0002/status: 
+  status: recording
+  last_successful_status: processing # no change
+  last_modification_date: now
+  retry_count: 1 # increment by 1
 /jobs/states/recording/10-jid0001:
 /batches/bid0001/states/processing/jid0001:
 ```
