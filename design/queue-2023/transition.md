@@ -155,7 +155,9 @@ Place jobs references in batch queue
   last_successful_status: #nil
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/pending/05-jid0001:
 /jobs/states/failed/05-jid0001:
+# DELETE /batches/bid0001/states/pending/jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
 
@@ -169,6 +171,7 @@ Place jobs references in batch queue
   last_successful_status: #nil
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/pending/05-jid0001:
 /jobs/states/held/05-jid0001:
 ```
 
@@ -181,6 +184,7 @@ Place jobs references in batch queue
   last_successful_status: #nil
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/pending/05-jid0001:
 /jobs/states/estimating/05-jid0001:
 ```
 
@@ -198,6 +202,7 @@ Place jobs references in batch queue
   last_successful_status: estimating
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/estimating/05-jid0001:
 /jobs/states/provisioning/10-jid0001:
 ```
 
@@ -213,6 +218,7 @@ Place jobs references in batch queue
   last_successful_status: provisioning
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/provisioning/10-jid0001:
 /jobs/states/downloading/10-jid0001:
 ```
 
@@ -230,6 +236,7 @@ Place jobs references in batch queue
   last_successful_status: downloading
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/downloading/10-jid0001:
 /jobs/states/processing/10-jid0001:
 ```
 
@@ -244,7 +251,9 @@ Place jobs references in batch queue
   last_successful_status: provisioning # retain_prior_value
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/provisioning/10-jid0001:
 /jobs/states/failed/10-jid0001:
+# DELETE /batches/bid0001/states/processing/jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
 
@@ -272,6 +281,7 @@ Place jobs references in batch queue
   last_successful_status: processing
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/processing/10-jid0001:
 /jobs/states/recording/10-jid0001:
 ```
 
@@ -286,7 +296,9 @@ Place jobs references in batch queue
   last_successful_status: downloading # retain_prior_value
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/processing/10-jid0001:
 /jobs/states/failed/10-jid0001:
+# DELETE /batches/bid0001/states/processing/jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
 
@@ -302,6 +314,7 @@ Place jobs references in batch queue
   last_successful_status: recording
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/recording/10-jid0001:
 /jobs/states/notify/10-jid0001:
 ```
 
@@ -315,7 +328,9 @@ Place jobs references in batch queue
   last_successful_status: processing # retain_prior_value
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/recording/10-jid0001:
 /jobs/states/failed/10-jid0001:
+# DELETE /batches/bid0001/states/processing/jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
 
@@ -332,7 +347,9 @@ Place jobs references in batch queue
   last_successful_status: notify
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/notify/10-jid0001:
 /jobs/states/completed/10-jid0001:
+# DELETE /batches/bid0001/states/processing/jid0001:
 /batches/bid0001/states/completed/jid0001:
 ```
 
@@ -345,7 +362,9 @@ Place jobs references in batch queue
   last_successful_status: recording # retain_prior_value
   last_modification_date: now
   retry_count: 0 # no change
+# DELETE /jobs/states/notify/10-jid0001:
 /jobs/states/failed/10-jid0001:
+# DELETE /batches/bid0001/states/processing/jid0001:
 /batches/bid0001/states/failed/jid0001:
 ```
 
@@ -358,7 +377,9 @@ Place jobs references in batch queue
   last_successful_status: provisioning # no change
   last_modification_date: now
   retry_count: 1 # increment by 1
+# DELETE /jobs/states/failed/10-jid0001:
 /jobs/states/downloading/10-jid0001:
+# DELETE /batches/bid0001/states/failed/jid0001:
 /batches/bid0001/states/processing/jid0001:
 ```
 
@@ -371,7 +392,9 @@ Place jobs references in batch queue
   last_successful_status: downloading # no change
   last_modification_date: now
   retry_count: 1 # increment by 1
+# DELETE /jobs/states/failed/10-jid0001:
 /jobs/states/processing/10-jid0001:
+# DELETE /batches/bid0001/states/failed/jid0001:
 /batches/bid0001/states/processing/jid0001:
 ```
 
@@ -384,32 +407,47 @@ Place jobs references in batch queue
   last_successful_status: processing # no change
   last_modification_date: now
   retry_count: 1 # increment by 1
+# DELETE /jobs/states/failed/10-jid0001:
 /jobs/states/recording/10-jid0001:
+# DELETE /batches/bid0001/states/failed/jid0001:
 /batches/bid0001/states/processing/jid0001:
 ```
+
+### Job: Completed --> DELETED
+- delete job folder
+
+```yml
+# DELETE /jobs/jid0001/configuration:
+# DELETE /jobs/jid0001/status: 
+# DELETE /jobs/jid0001/priority: 
+# DELETE /jobs/jid0001/ark: 
+# DELETE /jobs/states/completed/10-jid0001:
+# DELETE /batches/bid0001/states/completed/jid0001:
+```
+
 
 ### Job: Failed --> DELETED
 - delete job folder
 
 ```yml
-TBD
+# DELETE /jobs/jid0001/configuration:
+# DELETE /jobs/jid0001/status: 
+# DELETE /jobs/jid0001/priority: 
+# DELETE /jobs/jid0001/ark: 
+# DELETE /jobs/states/failed/10-jid0001:
+# DELETE /batches/bid0001/states/failed/jid0001:
 ```
 
 ### Job: Held --> DELETED
 - delete job folder
 
 ```yml
-TBD
-```
-
-### Batch: Processing --> Failed
-- status = Failed
-- set error_message 
-
-```yml
-/jobs/jid0002/status: failed
-/jobs/states/failed/10-jid0001:
-/batches/bid0001/states/failed/jid0001:
+# DELETE /jobs/jid0001/configuration:
+# DELETE /jobs/jid0001/status: 
+# DELETE /jobs/jid0001/priority: 
+# DELETE /jobs/jid0001/ark: 
+# DELETE /jobs/states/held/10-jid0001:
+# DELETE /batches/bid0001/states/processing/jid0001:
 ```
 
 ### Batch: Processing --> Reporting
@@ -426,8 +464,12 @@ TBD
 - status = Reporting
 
 ```yml
-/jobs/jid0002/status: reporting
-/jobs/states/reporting/10-jid0001:
+# NOTE the absence of /batches/bid0001/states/processing/*:
+# NOTE check for the presence of /batches/bid0001/states/failed/*:
+# NOTE check for the presence of /batches/bid0001/states/completed/*:
+/batches/bid0001/status: 
+  status: reporting
+  last_modified: now
 ```
 
 ### Batch: Reporting --> Completed
@@ -435,9 +477,13 @@ TBD
 - status = Completed
 
 ```yml
-/jobs/jid0002/status: completed
-/jobs/states/completed/10-jid0001:
-/batches/bid0001/states/completed/jid0001:
+/batches/bid0001/status: 
+  status: reporting
+  last_modified: now
+/batches/bid0001/status-report: 
+  last_modified: now
+  failed_jobs: #empty!
+  successful_jobs:
 ```
 
 ### Batch: Reporting --> Failed
@@ -448,17 +494,54 @@ TBD
   - do we create a "re-run batch"?
   - or is this a question for the end users? 
 
+```yml
+/batches/bid0001/status: 
+  status: failed
+  last_modified: now
+/batches/bid0001/status-report: 
+  last_modified: now
+  failed_jobs: #not empty!
+  successful_jobs:
+```
+
+
 ### Batch: Failed --> UpdateReporting
 - manually triggered if some or all of the jobs have been re-run 
 - status = UpdateReporting 
+
+```yml
+/batches/bid0001/status: 
+  status: update-reporting
+  last_modified: now
+```
 
 ### Batch: UpdateReporting --> Completed
 - detect any updated statuses and report them
 - status = Completed
 
+```yml
+/batches/bid0001/status: 
+  status: completed
+  last_modified: now
+/batches/bid0001/status-report: 
+  last_modified: now
+  failed_jobs: #!empty!
+  successful_jobs: #report on items that succeeded since last report
+```
+
 ### Batch: UpdateReporting --> Failed
 - detect any updated statuses and report them
 - status = Completed
+
+```yml
+/batches/bid0001/status: 
+  status: completed
+  last_modified: now
+/batches/bid0001/status-report: 
+  last_modified: now
+  failed_jobs: #!not empty!
+  successful_jobs: #report on items that succeeded since last report
+```
 
 ### Batch: Failed --> DELETED (admin function)
 - delete any running jobs (and folders)
