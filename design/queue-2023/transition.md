@@ -13,8 +13,8 @@ profile: profile
 payload_url: payload_url
 manifest: 
 - file1.checkm loc001
-- file2.checkm loc002 ark123
-- file3.checkm loc003
+- file2.checkm loc002 
+- file3.checkm loc003 ark123
 ```
 
 #### ZK Nodes
@@ -25,7 +25,7 @@ manifest:
   submitter: submitter
   payload_url: payload_url
   manifest_type: manifest_of_manifests #Question: should we decide this at queue time?
-  response_type: ?? # Should we drop support for this
+  response_type: tbd # Should we drop support for this
   submission_mode: add
 /batches/bid0001/status:
   status: pending
@@ -44,7 +44,7 @@ If the collection is in a held state, the batch should move to held.
   submitter: submitter
   payload_url: payload_url
   manifest_type: manifest_of_manifests 
-  response_type: ?? 
+  response_type: tbd
   submission_mode: add
 /batches/bid0001/status:
   status: held # <-----------------------------------------------
@@ -61,7 +61,7 @@ If the collection is in a held state, the batch should move to held.
   submitter: submitter
   payload_url: payload_url
   manifest_type: manifest_of_manifests 
-  response_type: ?? 
+  response_type: tbd 
   submission_mode: add
 /batches/bid0001/status:
   status: processing
@@ -77,7 +77,7 @@ Create Jobs
   payload_url: file1.checkm
   payload_type: object_manifest
   response_type: response_type
-  response_type: ?? 
+  response_type: tbd 
   submission_mode: add
   working_dir: /zfs/queue/bid0001/jid0001
   local_id: loc001
@@ -90,13 +90,12 @@ Create Jobs
   payload_url: file2.checkm
   payload_type: object_manifest
   response_type: response_type
-  response_type: ?? 
+  response_type: tbd
   submission_mode: add
   working_dir: /zfs/queue/bid0001/jid0002
   local_id: loc002
 /jobs/jid0002/status: pending
 /jobs/jid0002/priority: 5
-/jobs/jid0002/ark: ark123
 /jobs/jid0003/configuration:
   batch_id: bid0001
   profile_name: profile_name
@@ -104,10 +103,11 @@ Create Jobs
   payload_url: file2.checkm
   payload_type: object_manifest
   response_type: response_type
-  response_type: ?? 
+  response_type: tbd 
   submission_mode: add
   working_dir: /zfs/queue/bid0001/jid0003
   local_id: loc003
+/jobs/jid0003/ark: ark123
 /jobs/jid0003/status: pending
 /jobs/jid0003/priority: 5
 ```
@@ -218,6 +218,7 @@ Place jobs in job queue
 - status = Recording
 
 ```yml
+/jobs/jid0002/ark: 555
 /jobs/jid0002/status: recording
 /jobs/states/recording/10-jid0001:
 ```
