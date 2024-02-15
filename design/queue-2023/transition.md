@@ -113,12 +113,12 @@ Create Jobs
 
 Place jobs in job queue
 ```yml
-/batches/bid0001/states/processing/jid0001
-/batches/bid0001/states/processing/jid0002
-/batches/bid0001/states/processing/jid0003
-/jobs/states/processing/05-jid0001
-/jobs/states/processing/05-jid0002
-/jobs/states/processing/05-jid0003
+/batches/bid0001/states/processing/jid0001:
+/batches/bid0001/states/processing/jid0002:
+/batches/bid0001/states/processing/jid0003:
+/jobs/states/processing/05-jid0001:
+/jobs/states/processing/05-jid0002:
+/jobs/states/processing/05-jid0003:
 ```
 
 
