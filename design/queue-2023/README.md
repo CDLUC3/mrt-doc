@@ -13,6 +13,7 @@
 ## Design Details
 - [Queue State Transitions](states.md)
 - [Queue Entry Data Storage](data.md)
+- [State Transition Details](transition.md)
 - [Underlying Queue Service](service.md)
 - [Queue Manager](manager.md)
 - [Batch and Queue State Enums](https://github.com/CDLUC3/merritt-tinker/tree/main/state-transition)
