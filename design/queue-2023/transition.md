@@ -71,10 +71,19 @@ If the collection is in a held state, the batch should move to held.
 > [!NOTE]
 > A new job id will be written in 3 places
 > - To the list of jobs `/jobs/JID`
-> - To the batch's job queue `/batches/bid0001/states/pending/JID:`
+> - To the batch's job queue `/batches/BID/states/STATE/JID`
 >   - this queue is used to determine when a batch is complete
-> - To the actual job queue `/jobs/states/pending/XX-JID:`
+> - To the actual job queue `/jobs/states/STATE/XX-JID`
 >   - XX is the job's initial priority
+>   - This is the only place where the priority appears in the path name
+>
+> When applying a change to the job queue, the following sequence should be used
+> - Update job data `/jobs/JID`
+> - Delete old job queue entry `/jobs/states/OLD_STATE/XX-JID`
+> - Create new job queue entry `/jobs/states/NEW_STATE/XX-JID`
+> - Update the batch queue state (if applicable)
+>   - Delete old batch queue state `/batches/BID/states/OLD_STATE/JID`
+>   - Create new batch queue state `/batches/BOD/states/NEW_STATE/JID`
 
 
 Create Jobs
@@ -121,13 +130,6 @@ Create Jobs
 /jobs/jid0003/priority: 5
 ```
 
-Place jobs references in batch queue
-```yml
-/batches/bid0001/states/pending/jid0001:
-/batches/bid0001/states/pending/jid0002:
-/batches/bid0001/states/pending/jid0003:
-```
-
 Place jobs in job queue, allowing sorting by priority
 ```yml
 /jobs/states/pending/05-jid0001:
@@ -135,7 +137,12 @@ Place jobs in job queue, allowing sorting by priority
 /jobs/states/pending/05-jid0003:
 ```
 
-
+Place jobs references in batch queue
+```yml
+/batches/bid0001/states/pending/jid0001:
+/batches/bid0001/states/pending/jid0002:
+/batches/bid0001/states/pending/jid0003:
+```
 
 ## Job Queue State Transitions
 
