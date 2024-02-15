@@ -548,8 +548,21 @@ Place jobs references in batch queue
 - delete batch folder
 - status = Deleted 
 
+```yml
+# DELETE /batches/bid0001/status: 
+# DELETE /batches/bid0001/status-report: 
+# DELETE /batches/bid0001/submission:
+# DELETE /batches/bid0001/states/*: Delete all jobs, all states
+```
+
 ### Batch: Held --> Deleted (admin function) 
 - delete any running jobs (and folders)
 - delete batch folder
 - status = DELETED
-a
+
+```yml
+# DELETE /batches/bid0001/status: 
+# DELETE /batches/bid0001/status-report: 
+# DELETE /batches/bid0001/submission:
+# DELETE /batches/bid0001/states/*: Delete all jobs, all states
+```
