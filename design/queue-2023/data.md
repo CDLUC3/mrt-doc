@@ -17,7 +17,7 @@
 
 | Zookeeper Node Path | Node Data Type | Fields | Created By | Modified By | Comment |
 | - | - | - | - | - | - |
-| /batches/BID/submission | json | profile_name<br/>submitter<br/>manifest_type<br/>payload_filename<br/>response_type<br/>submission_mode | creation | none | |
+| /batches/BID/submission | json | profile_name<br/>submitter<br/>payload_filename<br/><br/>erc_what<br/>erc_who<br/>erc_when<br/>erc_where<br/>type<br/>submission_mode | creation | none | |
 | /batches/BID/status | json | status<br/>last_modified | creation | all jobs done | | 
 | /batches/BID/status-report | json | failed_jobs | failure | failure | last status report sent to user | 
 | /batches/BID/states/STATE/JID | none | - | | | STATE = pending / held / processing / failed / completed<br/>Create watcher to watch for states/processing to be empty| 
@@ -25,7 +25,7 @@
 | /jobs/JID/status | json | status<br/>last_successful_status<br/>last_modification_date<br/>retry_count | creation | none | |
 | /jobs/JID/priority | int | - | creation | estimating | |
 | /jobs/JID/space_needed | long | - | creation | estimating | |
-| /jobs/JID/ark | string | - | creation | processing | |
+| /jobs/JID/identifiers | json | primary_id<br/>local_id: [] | creation | processing | |
 | /jobs/states/STATE/PP-JID | none | - | | | PP = priority <br/>STATE = pending / held / estimating / provisioning / downloading / processing / recording / notify / failed / completed |
 
 ### Job Transition
