@@ -693,7 +693,7 @@ _Execute this step with caution since the depositor will not be notified of this
 # DELETE /batches/bid0001/states/*: Delete all jobs, all states
 ```
 
-## Batch: Completed --> Deleted (automatic) 
+## Batch: Completed --> Automatic Cleanup
 
 Clean up the remnants of a properly completed batch.
 
