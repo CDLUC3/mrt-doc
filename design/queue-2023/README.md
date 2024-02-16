@@ -16,6 +16,7 @@
 - [State Transition Details](transition.md)
 - [Underlying Queue Service](service.md)
 - [Queue Manager](manager.md)
+- [Admin Function Mapping](queue-admin.md)
 - [Batch and Queue State Enums](https://github.com/CDLUC3/merritt-tinker/tree/main/state-transition)
   - How is the queue item id number conveyed?
   - How does priority work int the queue item sort? 
