@@ -21,6 +21,7 @@
     - Augment mime type with more specific information
     - Pointer re-use for files with identical digest values
     - Nuxeo object version repair
+    - Reset object content at a specific version (supports Nuxeo cleanup and other possible initiatives)
   - Later/Misc
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
     - Normalize JSON handling across services
@@ -34,6 +35,8 @@
     - Improve Notification System - after interrupt
     - Separate Job and Batch Queue - Batch Queue is responsible for notification
 - Terry
+  - Queue redesign
+  - Migrate ZK admin functionality from Ingest to Admin tool
   - Refine admin tool with usability suggestions
   - Deploy FITS as lambda in UC3 account
   - Migrate Docker stack to UC3 account
@@ -56,3 +59,12 @@
   - Re-provision resources after Dryad (Access servers, UI servers)
   - Explore new storage classes and potential benefits to Merritt processing
   - Define Stage Environment Data Goals
+  - Replace LDAP with Cognito Authentication + Yaml authorization rules
+  - Migrate appropriate services to Lambda
+    - Access 
+      - Access presigned-file requests
+      - Access assembly queueing
+      - This would allow us to no longer need HA for the Access service 
+    - Inventory
+      - Local Id service requests
+      - Ingest recording (objects with 100K+ files might require >15min to process, tuning is necessary) 
