@@ -60,3 +60,11 @@
   - Explore new storage classes and potential benefits to Merritt processing
   - Define Stage Environment Data Goals
   - Replace LDAP with Cognito Authentication + Yaml authorization rules
+  - Migrate appropriate services to Lambda
+    - Access 
+      - Access presigned-file requests
+      - Access assembly queueing
+      - This would allow us to no longer need HA for the Access service 
+    - Inventory
+      - Local Id service requests
+      - Ingest recording (objects with 100K+ files might require >15min to process, tuning is necessary) 
