@@ -2,11 +2,18 @@
 
 - [Design](README.md)
 
-## Batch Queue State Transitions
+## Batch: Queue Batch
 
-### Batch: Queue Batch
+User submits a submission payload.  
+A batch is created using the payload url.
+Regardless of the type of submission, the payload should be represented as a URL.
+This step should be as lightweight as possible.
 
-#### Input
+> [!INFO]
+> Question: Do we need to account for the full set of ingest form parameters?  
+> How do we capture the form parameters if they are not part of the payload?
+
+### Input
 ```yml
 submitter: submitter
 profile: profile
@@ -17,7 +24,7 @@ manifest:
 - file3.checkm loc003 ark123
 ```
 
-#### ZK Nodes
+### ZK Nodes
 
 ```yml
 /batches/bid0001/submission:
@@ -32,11 +39,12 @@ manifest:
   last_modified: now
 ```
 
-### Batch: Pending to Held
+## Batch: Pending to Held
 
-If the collection is in a held state, the batch should move to held.
+If the collection is in a held state, the batch should move to a held status.
+An administrative action is necessary to release the hold.
 
-#### ZK Nodes
+### ZK Nodes
 
 ```yml
 /batches/bid0001/status:
@@ -44,15 +52,37 @@ If the collection is in a held state, the batch should move to held.
   last_modified: now
 ```
 
-### Batch: Pending to Processing or Held to Processing
+## Batch Queue Thread
 
-#### ZK Nodes
+### Identifying Pending Batches
+- A "pending batch" can be identified by the absence of a "/states" child
+- If a batch has a "/states" child, the queue will ignore it
+
+> [!INFO]
+> Should we create an explicit batch queue? `/batch-queue/pending/BID`
+
+### Check for Collection Holds
+- If a Hold is in place, change status to Held
+- Otherwise, change status to Processing
+
+
+## Batch: Pending --> Processing
+
+At this phase, the batch payload is downloaded and the payload is analyzed.
+The differences in batch submission types (single file, object manifest, manifest of manifests, manifest of containers) should be handled at this phase.
+One job will be spawned for each object that needs to be created for the payload.
+
+### ZK Nodes
+
+#### Change Batch Status
 
 ```yml
 /batches/bid0001/status:
   status: processing
   last_modified: now
 ```
+
+#### Job Creation
 
 > [!NOTE]
 > A new job id will be written in 3 places
@@ -71,8 +101,9 @@ If the collection is in a held state, the batch should move to held.
 >   - Delete old batch queue state `/batches/BID/states/OLD_STATE/JID`
 >   - Create new batch queue state `/batches/BID/states/NEW_STATE/JID`
 
+### Output
 
-Create Jobs
+#### Job Details
 ```yml
 /jobs/jid0001/configuration:
   batch_id: bid0001
@@ -128,26 +159,34 @@ Create Jobs
 /jobs/jid0003/priority: 5
 ```
 
-Place jobs in job queue, allowing sorting by priority
+#### Place jobs in job queue, allowing sorting by priority
 ```yml
 /jobs/states/pending/05-jid0001:
 /jobs/states/pending/05-jid0002:
 /jobs/states/pending/05-jid0003:
 ```
 
-Place jobs references in batch queue
+#### Place jobs references in batch queue
 ```yml
 /batches/bid0001/states/pending/jid0001:
 /batches/bid0001/states/pending/jid0002:
 /batches/bid0001/states/pending/jid0003:
 ```
 
-## Job Queue State Transitions
+## Batch: Held --> Processing
 
-### Job: Pending --> Failed
+An administrative action is performed to release a "Held" batch.  
+After confirming that the target collection is no longer "Held", proceed to the Processing step.
+
+- See Pending --> Processing, the results are the same
+
+## Job: Pending --> Failed
+
+A job will immediately fail under the following conditions
 - if payload digest does not match depositor digest
 - if manifest is corrupt
-- status = Failed (no recovery is possible)
+
+Recovery is not possible under these conditions.  A new submission will be required.
 
 ```yml
 /jobs/jid0002/status: 
@@ -161,9 +200,16 @@ Place jobs references in batch queue
 /batches/bid0001/states/failed/jid0001:
 ```
 
-### Job: Pending --> Held
-- evaluate if a collection hold is in place 
-- status = Held 
+## Job Queue Thread
+
+The Job Queue Thread runs independently from the Batch Queue Thread
+- The keys in the job queue thread are sorted by job priority which ensures that higher priority jobs will be initiated first
+- If a collection hold has been set since the job was created, set the job state to Held
+- Otherwise, set the job state to Processing
+
+## Job: Pending --> Held
+
+The job will be kept in a Held state until an administrative action releases the job.
 
 ```yml
 /jobs/jid0002/status: 
@@ -175,9 +221,11 @@ Place jobs references in batch queue
 /jobs/states/held/05-jid0001:
 ```
 
-### Job: Pending --> Estimating, Held --> Estimating
-- status = Estimating 
+## Job: Pending --> Estimating
 
+Once a job is acquired, it will move to an Estimating step.
+
+### Status 
 ```yml
 /jobs/jid0002/status: 
   status: estimating
@@ -188,15 +236,38 @@ Place jobs references in batch queue
 /jobs/states/estimating/05-jid0001:
 ```
 
-### Job: Estimating --> Provisioning
-- HEAD request on every download that is needed (multi-thread)
-- sum value into space_needed
-- last_successful_state = Estimating
-- status = Provisioning
+## Job: Help --> Pending
+
+Job is administratively released back to a Pending status.
+
+### Status 
+```yml
+/jobs/jid0002/status: 
+  status: pending
+  last_successful_status: #nil
+  last_modification_date: now
+  retry_count: 0 # no change
+# DELETE /jobs/held/pending/05-jid0001:
+/jobs/states/pending/05-jid0001:
+```
+
+## Job: Estimating --> Provisioning
+
+The first step of a job is to estimate the resources that will be needed to process the job.
+This will be accomplished by running HEAD reqeusts for content to be ingested and calculating a size estimate for the object.
+If a job is excessively large , the job priority may be adjusted.
+If a proper size calculation cannot be made for a job, the space_needed should be set to 0 and job priority may be adjusted.
+
+### Output
 
 ```yml
 /jobs/jid0002/space_needed: 1000000000
 /jobs/jid0002/priority: 10
+```
+
+### Status Change
+
+```yml
 /jobs/jid0002/status: 
   status: provisioning
   last_successful_status: estimating
@@ -206,11 +277,15 @@ Place jobs references in batch queue
 /jobs/states/provisioning/10-jid0001:
 ```
 
-### Job: Provisioning --> Downloading
-- if last_successful_state is not Estimating, total may be inaccurate
-- determine if file system is available
-- determine if there is adequate storage to proceed (throttle at 70% full disk)
-- if space is sufficent state=Downloading  
+## Job: Provisioning --> Downloading
+
+The Provisioning state will be used to determine if there are sufficient system resources for a job to procede.
+At the simplest level, this state would allow us to throttle all subsequent ingests if our ZFS capacity is insufficient to support a specific download.
+Unestimated jobs should be held in this state if the ZFS capacity is below a specific threshold.
+Additionally, this state could be used to hold a job while resources are dynamically provisioned from AWS.  This will not be a feature of the initial release.
+
+
+### Status Change
 
 ```yml
 /jobs/jid0002/status: 
@@ -222,14 +297,22 @@ Place jobs references in batch queue
 /jobs/states/downloading/10-jid0001:
 ```
 
-### Job: Downloading --> Processing
-- GET request on every download (multi-threaded), with a finite number of retries
-- save files to working folder
-- recalculate space_needed (in case estimate was inaccurate)
-- perform digest validation (if user-supplied in manifest)
-- last_successful_state = Downloading
-- status = Processing
+## Job: Downloading --> Processing
 
+The Downloading step performs the following actions
+- Performs a GET request on every download (multi-threaded), with a finite number of retries
+- Saves files to working folder
+- Recalculate space_needed (in case estimate was inaccurate)
+- Perform digest validation (if user-supplied in manifest)
+
+### Ouptut (if changes detected)
+
+```yml
+/jobs/jid0002/space_needed: 1000000000
+/jobs/jid0002/priority: 10
+```
+
+### Status Change
 ```yml
 /jobs/jid0002/status: 
   status: processing
@@ -240,10 +323,9 @@ Place jobs references in batch queue
 /jobs/states/processing/10-jid0001:
 ```
 
-### Job: Downloading --> Failed (downloading)
-- status = Failed
-- last_successful_state remains Estimating
-- error_message = details the file that could not be downloaded 
+## Job: Downloading --> Failed (downloading)
+
+If any individual download does not succeed (after a set number of retries), the job will go to a failed state. 
 
 ```yml
 /jobs/jid0002/status: 
@@ -257,7 +339,10 @@ Place jobs references in batch queue
 /batches/bid0001/states/failed/jid0001:
 ```
 
-### Job: Processing --> Recording
+## Job: Processing --> Recording
+
+The processing step is where the bulk of Merritt Ingest processing takes place
+
 - Local_id lookup
 - Mint ark using EZID if needed
 - if local_id does not match user-supplied ark, fail
@@ -271,11 +356,16 @@ Place jobs references in batch queue
 - Request storage worker for handling request (very low risk of failure)
 - Call storage enpoint to pass storage manifest
 - Check return status from storage
-- last_sucessful_state = Processing
-- status = Recording
+
+### Output
 
 ```yml
 /jobs/jid0002/ark: 555
+```
+
+### Status Change
+
+```yml
 /jobs/jid0002/status: 
   status: recording
   last_successful_status: processing
@@ -285,10 +375,9 @@ Place jobs references in batch queue
 /jobs/states/recording/10-jid0001:
 ```
 
-### Job: Processing --> Failed (processing)
-- due to minting failure or storage failure
-- update error_message 
-- status = Failed   
+## Job: Processing --> Failed (processing)
+
+Jobs may fail processing due to minting failure or storage failures.
 
 ```yml
 /jobs/jid0002/status: 
@@ -302,11 +391,15 @@ Place jobs references in batch queue
 /batches/bid0001/states/failed/jid0001:
 ```
 
-### Job: Recording --> Notify
-- Inventory will read and update THIS queue
-- Save data to INV database
-- status = Notify
-- last_sucessful_state = Recording
+## Job: Recording --> Notify
+
+This step will be processed by the Merritt Inventory service.
+- Inventory will read the storage manifest
+- Inventory will update the Merritt INV database
+
+This will satisfy one of the key motivations for the queue redesign effort.  
+By processing the inventory step from the ingest queue, the depositor notification process will ensure that content is immediately accessible from Merritt.
+Previously, it was possible that depositors were notified of a successful ingest BEFORE content had been recorded in inventory.
 
 ```yml
 /jobs/jid0002/status: 
@@ -318,9 +411,9 @@ Place jobs references in batch queue
 /jobs/states/notify/10-jid0001:
 ```
 
-### Job: Recording --> Failed (recording)
-- update error_message 
-- status = Failed
+## Job: Recording --> Failed (recording)
+
+This status change indicates that an error occurred while recording an object change in the inventory database.
 
 ```yml
 /jobs/jid0002/status: 
@@ -334,12 +427,11 @@ Place jobs references in batch queue
 /batches/bid0001/states/failed/jid0001:
 ```
 
-### Job: Notify --> Completed
-- Invoke callback (if defined)
-- Notify batch queue that job is complete
-- Status = Completed  
-- last_sucessful_state = Notify
-- delete job folder
+## Job: Notify --> Completed
+
+If a callback has been configured in a collection profile, the callback will be invoked for the job.
+As the status of the job is changed to "completed", the batch object for the job will be notified of the update (potentially via a Zookeeper "Watcher").
+This will allow the batch to determine if the entire job has been completed.
 
 ```yml
 /jobs/jid0002/status: 
@@ -353,8 +445,9 @@ Place jobs references in batch queue
 /batches/bid0001/states/completed/jid0001:
 ```
 
-### Job: Notify --> Failed 
-- status = Failed
+## Job: Notify --> Failed 
+
+If the event of a callback failure, the job will go to a Failed state.
 
 ```yml
 /jobs/jid0002/status: 
@@ -368,8 +461,10 @@ Place jobs references in batch queue
 /batches/bid0001/states/failed/jid0001:
 ```
 
-### Job: Failed --> Downloading
-- reset status 
+## Job: Failed --> Downloading
+
+The failed job will be resumed via an admin action. 
+The resumed job will restart at an appropriate state based on the "last_successful_state".
 
 ```yml
 /jobs/jid0002/status: 
@@ -383,8 +478,10 @@ Place jobs references in batch queue
 /batches/bid0001/states/processing/jid0001:
 ```
 
-### Job: Failed --> Processing
-- reset status 
+## Job: Failed --> Processing
+
+The failed job will be resumed via an admin action. 
+The resumed job will restart at an appropriate state based on the "last_successful_state".
 
 ```yml
 /jobs/jid0002/status: 
@@ -398,8 +495,10 @@ Place jobs references in batch queue
 /batches/bid0001/states/processing/jid0001:
 ```
 
-### Job: Failed --> Recording
-- reset status
+## Job: Failed --> Recording
+
+The failed job will be resumed via an admin action. 
+The resumed job will restart at an appropriate state based on the "last_successful_state".
 
 ```yml
 /jobs/jid0002/status: 
@@ -413,8 +512,29 @@ Place jobs references in batch queue
 /batches/bid0001/states/processing/jid0001:
 ```
 
-### Job: Completed --> DELETED
-- delete job folder
+## Job: Failed --> Notify
+
+The failed job will be resumed via an admin action. 
+The resumed job will restart at an appropriate state based on the "last_successful_state".
+
+```yml
+/jobs/jid0002/status: 
+  status: notify
+  last_successful_status: processing # no change
+  last_modification_date: now
+  retry_count: 1 # increment by 1
+# DELETE /jobs/states/failed/10-jid0001:
+/jobs/states/notify/10-jid0001:
+# DELETE /batches/bid0001/states/failed/jid0001:
+/batches/bid0001/states/processing/jid0001:
+```
+
+## Job: Completed --> DELETED
+
+Upon completion of the job, the job's zookeeper nodes and the ZFS working directory can be deleted.
+
+> [!NOTE]
+> Should any job-related data be held in Zookeeper until the entire batch is deleted?
 
 ```yml
 # DELETE /jobs/jid0001/configuration:
@@ -426,8 +546,12 @@ Place jobs references in batch queue
 ```
 
 
-### Job: Failed --> DELETED
-- delete job folder
+## Job: Failed --> DELETED
+
+Upon deletion of a failed job, the job's zookeeper nodes and the ZFS working directory can be deleted.
+
+> [!NOTE]
+> Should any job-related data be held in Zookeeper until the entire batch is deleted?
 
 ```yml
 # DELETE /jobs/jid0001/configuration:
@@ -438,8 +562,12 @@ Place jobs references in batch queue
 # DELETE /batches/bid0001/states/failed/jid0001:
 ```
 
-### Job: Held --> DELETED
-- delete job folder
+## Job: Held --> DELETED
+
+Upon completion of a held job, the job's zookeeper nodes and the ZFS working directory can be deleted.
+
+> [!NOTE]
+> Should any job-related data be held in Zookeeper until the entire batch is deleted?
 
 ```yml
 # DELETE /jobs/jid0001/configuration:
@@ -450,18 +578,9 @@ Place jobs references in batch queue
 # DELETE /batches/bid0001/states/processing/jid0001:
 ```
 
-### Batch: Processing --> Reporting
-- based on the payload
-  - single - we start a 1 job batch
-  - object manifest - we start a 1 job batch
-  - manifest of manifest - create N job entries and create the array of jobids in the batch object
-  - manifest of zips - create N job entries and create the array of jobids in the batch object
-- construct JOB object(s)
-- construct job folder(s)
-  - folder creation could be defererred to the job step 
-- create jobs in job queue
-- we create status array
-- status = Reporting
+## Batch: Processing --> Reporting
+
+Once the last job for a batch has either failed or completed, the batch will move to a reporting step.
 
 ```yml
 # NOTE the absence of /batches/bid0001/states/processing/*:
@@ -472,9 +591,13 @@ Place jobs references in batch queue
   last_modified: now
 ```
 
-### Batch: Reporting --> Completed
-- send summary email
-- status = Completed
+## Batch: Reporting --> Completed
+
+> [!NOTE]
+> Does Batch reporting need to be queued, or is it lightweight enough to be triggered as an event?
+
+The reporting phase will gather a list of completed jobs for a batch and failed jobs for a batch.  
+This will be compiled into a report for the depositor.
 
 ```yml
 /batches/bid0001/status: 
@@ -486,13 +609,12 @@ Place jobs references in batch queue
   successful_jobs:
 ```
 
-### Batch: Reporting --> Failed
-- this occurs when at least one job has occurred
-- status =  Failed
-- or is a batch done after it reports
-  - if jobs are re-run do they report on their own?
-  - do we create a "re-run batch"?
-  - or is this a question for the end users? 
+## Batch: Reporting --> Failed
+
+The reporting phase will gather a list of completed jobs for a batch and failed jobs for a batch.  
+This will be compiled into a report for the depositor.
+
+The list of failed jobs should be saved to a zookeeper node so their status can be re-evaluated for a subsequent report.
 
 ```yml
 /batches/bid0001/status: 
@@ -505,9 +627,9 @@ Place jobs references in batch queue
 ```
 
 
-### Batch: Failed --> UpdateReporting
-- manually triggered if some or all of the jobs have been re-run 
-- status = UpdateReporting 
+## Batch: Failed --> UpdateReporting
+
+This status change will be triggered by an administrative action.  This action indicates that attempts to troubleshoot failed jobs for a batch have concluded.
 
 ```yml
 /batches/bid0001/status: 
@@ -515,9 +637,9 @@ Place jobs references in batch queue
   last_modified: now
 ```
 
-### Batch: UpdateReporting --> Completed
-- detect any updated statuses and report them
-- status = Completed
+## Batch: UpdateReporting --> Completed
+
+A subsequent report will be sent to the depositor indicating jobs that succeeded since the last report was sent.
 
 ```yml
 /batches/bid0001/status: 
@@ -529,9 +651,11 @@ Place jobs references in batch queue
   successful_jobs: #report on items that succeeded since last report
 ```
 
-### Batch: UpdateReporting --> Failed
-- detect any updated statuses and report them
-- status = Completed
+## Batch: UpdateReporting --> Failed
+
+A subsequent report will be sent to the depositor indicating jobs that succeeded since the last report was sent.
+
+It _might_ make sense to also indicate the jobs that were not resolved since the prior report was sent.
 
 ```yml
 /batches/bid0001/status: 
@@ -543,10 +667,11 @@ Place jobs references in batch queue
   successful_jobs: #report on items that succeeded since last report
 ```
 
-### Batch: Failed --> DELETED (admin function)
-- delete any running jobs (and folders)
-- delete batch folder
-- status = Deleted 
+## Batch: Failed --> DELETED (admin function)
+
+An administrative action will trigger the delete of a failed batch (and any outstanding jobs for that batch).
+
+This action should only be taken once all attempts at job recovery have been exhausted.
 
 ```yml
 # DELETE /batches/bid0001/status: 
@@ -555,14 +680,25 @@ Place jobs references in batch queue
 # DELETE /batches/bid0001/states/*: Delete all jobs, all states
 ```
 
-### Batch: Held --> Deleted (admin function) 
-- delete any running jobs (and folders)
-- delete batch folder
-- status = DELETED
+## Batch: Held --> Deleted (admin function) 
+
+An administrative action will trigger the delete of a held batch.
+
+_Execute this step with caution since the depositor will not be notified of this action._
 
 ```yml
 # DELETE /batches/bid0001/status: 
 # DELETE /batches/bid0001/status-report: 
 # DELETE /batches/bid0001/submission:
 # DELETE /batches/bid0001/states/*: Delete all jobs, all states
+```
+
+## Batch: Completed --> Deleted (automatic) 
+
+Clean up the remnants of a properly completed batch.
+
+```yml
+# DELETE /batches/bid0001/status: 
+# DELETE /batches/bid0001/status-report: 
+# DELETE /batches/bid0001/submission:
 ```

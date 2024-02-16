@@ -51,7 +51,7 @@ graph TD
   START --> Pending
   Pending --> Held
   Pending --> Estimating
-  Held -.-> Estimating
+  Held -.-> Pending
   Estimating --> Provisioning
   Provisioning --> Downloading
   Downloading --> Processing
