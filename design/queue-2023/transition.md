@@ -9,7 +9,7 @@ A batch is created using the payload url.
 Regardless of the type of submission, the payload should be represented as a URL.
 This step should be as lightweight as possible.
 
-> [!INFO]
+> [!NOTE]
 > Question: Do we need to account for the full set of ingest form parameters?  
 > How do we capture the form parameters if they are not part of the payload?
 
@@ -58,7 +58,7 @@ An administrative action is necessary to release the hold.
 - A "pending batch" can be identified by the absence of a "/states" child
 - If a batch has a "/states" child, the queue will ignore it
 
-> [!INFO]
+> [!NOTE]
 > Should we create an explicit batch queue? `/batch-queue/pending/BID`
 
 ### Check for Collection Holds
