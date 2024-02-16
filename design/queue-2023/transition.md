@@ -2,6 +2,42 @@
 
 - [Design](README.md)
 
+## Conventions
+
+- BID: Zookeeper will manage the incrementing id numbers for batches
+- JID: Zookeeper will manage the incrementing id numbers for jobs
+
+### Job Creation
+
+> [!NOTE]
+> A new job id will be written in 3 places
+> - To the list of jobs `/jobs/JID`
+> - To the batch's job queue `/batches/BID/states/STATE/JID`
+>   - this queue is used to determine when a batch is complete
+> - To the actual job queue `/jobs/states/STATE/XX-JID`
+>   - XX is the job's initial priority
+>   - This is the only place where the priority appears in the path name
+>
+> When applying a change to the job queue, the following sequence should be used
+> - Update job data `/jobs/JID`
+> - Delete old job queue entry `/jobs/states/OLD_STATE/XX-JID`
+> - Create new job queue entry `/jobs/states/NEW_STATE/XX-JID`
+> - Update the batch queue state (if applicable)
+>   - Delete old batch queue state `/batches/BID/states/OLD_STATE/JID`
+>   - Create new batch queue state `/batches/BID/states/NEW_STATE/JID`
+
+## Consumer Daemons to Create
+
+- Batch Pending
+- Batch Reporting
+- Job Pending
+- Job Estimating
+- Job Provisioning (when work is held in this state, sleep between cycles)
+- Job Downloading
+- Job Processing
+- Job Recording (implemented by Merritt Inventory)
+- Job Notify
+
 ## Batch: Queue Batch
 
 User submits a submission payload.  
@@ -9,13 +45,14 @@ A batch is created using the payload url.
 Regardless of the type of submission, the payload should be represented as a URL.
 This step should be as lightweight as possible.
 
-> [!NOTE]
-> Question: Do we need to account for the full set of ingest form parameters?  
-> How do we capture the form parameters if they are not part of the payload?
-
 ### Input
 ```yml
+erc_what: title
+erc_who: author
+erc_when: date
+erc_where:
 submitter: submitter
+type: file # container or file in the case of a zip deposit
 profile: profile
 payload_url: payload_url
 manifest: 
@@ -31,8 +68,11 @@ manifest:
   profile_name: profile_name
   submitter: submitter
   payload_url: payload_url
-  manifest_type: manifest_of_manifests #Question: should we decide this at queue time?
-  response_type: tbd # Should we drop support for this
+  erc_what: title
+  erc_who: author
+  erc_when: date
+  erc_where:
+  type: file
   submission_mode: add
 /batches/bid0001/status:
   status: pending
@@ -58,19 +98,17 @@ An administrative action is necessary to release the hold.
 - A "pending batch" can be identified by the absence of a "/states" child
 - If a batch has a "/states" child, the queue will ignore it
 
-> [!NOTE]
-> Should we create an explicit batch queue? `/batch-queue/pending/BID`
-
 ### Check for Collection Holds
 - If a Hold is in place, change status to Held
 - Otherwise, change status to Processing
-
 
 ## Batch: Pending --> Processing
 
 At this phase, the batch payload is downloaded and the payload is analyzed.
 The differences in batch submission types (single file, object manifest, manifest of manifests, manifest of containers) should be handled at this phase.
 One job will be spawned for each object that needs to be created for the payload.
+
+If configured in the profile, a summary email should be sent to the depositor confirming the queueing of the batch of jobs.
 
 ### ZK Nodes
 
@@ -81,25 +119,6 @@ One job will be spawned for each object that needs to be created for the payload
   status: processing
   last_modified: now
 ```
-
-#### Job Creation
-
-> [!NOTE]
-> A new job id will be written in 3 places
-> - To the list of jobs `/jobs/JID`
-> - To the batch's job queue `/batches/BID/states/STATE/JID`
->   - this queue is used to determine when a batch is complete
-> - To the actual job queue `/jobs/states/STATE/XX-JID`
->   - XX is the job's initial priority
->   - This is the only place where the priority appears in the path name
->
-> When applying a change to the job queue, the following sequence should be used
-> - Update job data `/jobs/JID`
-> - Delete old job queue entry `/jobs/states/OLD_STATE/XX-JID`
-> - Create new job queue entry `/jobs/states/NEW_STATE/XX-JID`
-> - Update the batch queue state (if applicable)
->   - Delete old batch queue state `/batches/BID/states/OLD_STATE/JID`
->   - Create new batch queue state `/batches/BID/states/NEW_STATE/JID`
 
 ### Output
 
@@ -115,7 +134,9 @@ One job will be spawned for each object that needs to be created for the payload
   response_type: tbd 
   submission_mode: add
   working_dir: /zfs/queue/bid0001/jid0001
-  local_id: loc001
+/jobs/jid0001/identifiers: 
+  primary: 
+  local_id: [loc001]
 /jobs/jid0001/status: 
   status: pending
   last_successful_status: #nil
@@ -133,6 +154,9 @@ One job will be spawned for each object that needs to be created for the payload
   submission_mode: add
   working_dir: /zfs/queue/bid0001/jid0002
   local_id: loc002
+/jobs/jid0002/identifiers: 
+  primary: 
+  local_id: [loc002]
 /jobs/jid0002/status: status: 
   status: pending
   last_successful_status: #nil
@@ -149,8 +173,9 @@ One job will be spawned for each object that needs to be created for the payload
   response_type: tbd 
   submission_mode: add
   working_dir: /zfs/queue/bid0001/jid0003
-  local_id: loc003
-/jobs/jid0003/ark: ark123
+/jobs/jid0003/identifiers: 
+  primary: ark123
+  local_id: [loc003]
 /jobs/jid0003/status: status: 
   status: pending
   last_successful_status: #nil
@@ -161,16 +186,16 @@ One job will be spawned for each object that needs to be created for the payload
 
 #### Place jobs in job queue, allowing sorting by priority
 ```yml
-/jobs/states/pending/05-jid0001:
-/jobs/states/pending/05-jid0002:
-/jobs/states/pending/05-jid0003:
+/jobs/states/pending/05-jid0001: #no data - acts as a reference
+/jobs/states/pending/05-jid0002: #no data - acts as a reference
+/jobs/states/pending/05-jid0003: #no data - acts as a reference
 ```
 
 #### Place jobs references in batch queue
 ```yml
-/batches/bid0001/states/pending/jid0001:
-/batches/bid0001/states/pending/jid0002:
-/batches/bid0001/states/pending/jid0003:
+/batches/bid0001/states/batch-pending/jid0001: #no data - acts as a reference
+/batches/bid0001/states/batch-pending/jid0002: #no data - acts as a reference
+/batches/bid0001/states/batch-pending/jid0003: #no data - acts as a reference
 ```
 
 ## Batch: Held --> Processing
@@ -195,9 +220,9 @@ Recovery is not possible under these conditions.  A new submission will be requi
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/pending/05-jid0001:
-/jobs/states/failed/05-jid0001:
-# DELETE /batches/bid0001/states/pending/jid0001:
-/batches/bid0001/states/failed/jid0001:
+/jobs/states/failed/05-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-pending/jid0001:
+/batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
 ```
 
 ## Job Queue Thread
@@ -218,7 +243,7 @@ The job will be kept in a Held state until an administrative action releases the
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/pending/05-jid0001:
-/jobs/states/held/05-jid0001:
+/jobs/states/held/05-jid0001: #no data - acts as a reference
 ```
 
 ## Job: Pending --> Estimating
@@ -233,10 +258,10 @@ Once a job is acquired, it will move to an Estimating step.
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/pending/05-jid0001:
-/jobs/states/estimating/05-jid0001:
+/jobs/states/estimating/05-jid0001: #no data - acts as a reference
 ```
 
-## Job: Help --> Pending
+## Job: Held --> Pending
 
 Job is administratively released back to a Pending status.
 
@@ -247,8 +272,8 @@ Job is administratively released back to a Pending status.
   last_successful_status: #nil
   last_modification_date: now
   retry_count: 0 # no change
-# DELETE /jobs/held/pending/05-jid0001:
-/jobs/states/pending/05-jid0001:
+# DELETE /jobs/states/held/05-jid0001:
+/jobs/states/pending/05-jid0001: #no data - acts as a reference
 ```
 
 ## Job: Estimating --> Provisioning
@@ -274,7 +299,7 @@ If a proper size calculation cannot be made for a job, the space_needed should b
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/estimating/05-jid0001:
-/jobs/states/provisioning/10-jid0001:
+/jobs/states/provisioning/10-jid0001: #no data - acts as a reference
 ```
 
 ## Job: Provisioning --> Downloading
@@ -282,8 +307,10 @@ If a proper size calculation cannot be made for a job, the space_needed should b
 The Provisioning state will be used to determine if there are sufficient system resources for a job to procede.
 At the simplest level, this state would allow us to throttle all subsequent ingests if our ZFS capacity is insufficient to support a specific download.
 Unestimated jobs should be held in this state if the ZFS capacity is below a specific threshold.
+
 Additionally, this state could be used to hold a job while resources are dynamically provisioned from AWS.  This will not be a feature of the initial release.
 
+Jobs that fail the provisioning test will remain in this state, so it is important that ALL jobs in this state get evaluated.  If some jobs are retained in the provisioning state, it might make sense for the provisioning thread to sleep between tests.
 
 ### Status Change
 
@@ -294,7 +321,7 @@ Additionally, this state could be used to hold a job while resources are dynamic
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/provisioning/10-jid0001:
-/jobs/states/downloading/10-jid0001:
+/jobs/states/downloading/10-jid0001: #no data - acts as a reference
 ```
 
 ## Job: Downloading --> Processing
@@ -320,7 +347,7 @@ The Downloading step performs the following actions
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/downloading/10-jid0001:
-/jobs/states/processing/10-jid0001:
+/jobs/states/processing/10-jid0001: #no data - acts as a reference
 ```
 
 ## Job: Downloading --> Failed (downloading)
@@ -334,9 +361,9 @@ If any individual download does not succeed (after a set number of retries), the
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/provisioning/10-jid0001:
-/jobs/states/failed/10-jid0001:
-# DELETE /batches/bid0001/states/processing/jid0001:
-/batches/bid0001/states/failed/jid0001:
+/jobs/states/failed/10-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-processing/jid0001:
+/batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
 ```
 
 ## Job: Processing --> Recording
@@ -345,10 +372,9 @@ The processing step is where the bulk of Merritt Ingest processing takes place
 
 - Local_id lookup
 - Mint ark using EZID if needed
+- Write ark out to zookeeper immediately
+  - If the job is restarted, a new id will not need to be minted
 - if local_id does not match user-supplied ark, fail
-- Set ark
-- Question: should we break Minting into a separate state
-  - small risk of wasting an ark if the minting process is rerun (only applicable if no localid is provided) 
 - Write ERC file
 - Write dublin_core file
 - Check digest for each file if needed (HandlerDigest)
@@ -360,7 +386,9 @@ The processing step is where the bulk of Merritt Ingest processing takes place
 ### Output
 
 ```yml
-/jobs/jid0002/ark: 555
+/jobs/jid0002/ark: 
+  primary: 555
+  local_id: [loc002]
 ```
 
 ### Status Change
@@ -372,7 +400,7 @@ The processing step is where the bulk of Merritt Ingest processing takes place
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/processing/10-jid0001:
-/jobs/states/recording/10-jid0001:
+/jobs/states/recording/10-jid0001: #no data - acts as a reference
 ```
 
 ## Job: Processing --> Failed (processing)
@@ -386,9 +414,9 @@ Jobs may fail processing due to minting failure or storage failures.
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/processing/10-jid0001:
-/jobs/states/failed/10-jid0001:
-# DELETE /batches/bid0001/states/processing/jid0001:
-/batches/bid0001/states/failed/jid0001:
+/jobs/states/failed/10-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-processing/jid0001:
+/batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
 ```
 
 ## Job: Recording --> Notify
@@ -408,7 +436,7 @@ Previously, it was possible that depositors were notified of a successful ingest
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/recording/10-jid0001:
-/jobs/states/notify/10-jid0001:
+/jobs/states/notify/10-jid0001: #no data - acts as a reference
 ```
 
 ## Job: Recording --> Failed (recording)
@@ -422,9 +450,9 @@ This status change indicates that an error occurred while recording an object ch
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/recording/10-jid0001:
-/jobs/states/failed/10-jid0001:
-# DELETE /batches/bid0001/states/processing/jid0001:
-/batches/bid0001/states/failed/jid0001:
+/jobs/states/failed/10-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-processing/jid0001:
+/batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
 ```
 
 ## Job: Notify --> Completed
@@ -440,9 +468,9 @@ This will allow the batch to determine if the entire job has been completed.
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/notify/10-jid0001:
-/jobs/states/completed/10-jid0001:
-# DELETE /batches/bid0001/states/processing/jid0001:
-/batches/bid0001/states/completed/jid0001:
+/jobs/states/completed/10-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-processing/jid0001:
+/batches/bid0001/states/batch-completed/jid0001: #no data - acts as a reference
 ```
 
 ## Job: Notify --> Failed 
@@ -456,9 +484,9 @@ If the event of a callback failure, the job will go to a Failed state.
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/notify/10-jid0001:
-/jobs/states/failed/10-jid0001:
-# DELETE /batches/bid0001/states/processing/jid0001:
-/batches/bid0001/states/failed/jid0001:
+/jobs/states/failed/10-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-processing/jid0001:
+/batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
 ```
 
 ## Job: Failed --> Downloading
@@ -473,9 +501,9 @@ The resumed job will restart at an appropriate state based on the "last_successf
   last_modification_date: now
   retry_count: 1 # increment by 1
 # DELETE /jobs/states/failed/10-jid0001:
-/jobs/states/downloading/10-jid0001:
-# DELETE /batches/bid0001/states/failed/jid0001:
-/batches/bid0001/states/processing/jid0001:
+/jobs/states/downloading/10-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-failed/jid0001:
+/batches/bid0001/states/batch-processing/jid0001: #no data - acts as a reference
 ```
 
 ## Job: Failed --> Processing
@@ -490,9 +518,9 @@ The resumed job will restart at an appropriate state based on the "last_successf
   last_modification_date: now
   retry_count: 1 # increment by 1
 # DELETE /jobs/states/failed/10-jid0001:
-/jobs/states/processing/10-jid0001:
-# DELETE /batches/bid0001/states/failed/jid0001:
-/batches/bid0001/states/processing/jid0001:
+/jobs/states/processing/10-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-failed/jid0001:
+/batches/bid0001/states/batch-processing/jid0001: #no data - acts as a reference
 ```
 
 ## Job: Failed --> Recording
@@ -507,9 +535,9 @@ The resumed job will restart at an appropriate state based on the "last_successf
   last_modification_date: now
   retry_count: 1 # increment by 1
 # DELETE /jobs/states/failed/10-jid0001:
-/jobs/states/recording/10-jid0001:
-# DELETE /batches/bid0001/states/failed/jid0001:
-/batches/bid0001/states/processing/jid0001:
+/jobs/states/recording/10-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-failed/jid0001:
+/batches/bid0001/states/batch-processing/jid0001: #no data - acts as a reference
 ```
 
 ## Job: Failed --> Notify
@@ -524,34 +552,27 @@ The resumed job will restart at an appropriate state based on the "last_successf
   last_modification_date: now
   retry_count: 1 # increment by 1
 # DELETE /jobs/states/failed/10-jid0001:
-/jobs/states/notify/10-jid0001:
-# DELETE /batches/bid0001/states/failed/jid0001:
-/batches/bid0001/states/processing/jid0001:
+/jobs/states/notify/10-jid0001: #no data - acts as a reference
+# DELETE /batches/bid0001/states/batch-failed/jid0001:
+/batches/bid0001/states/batch-processing/jid0001: #no data - acts as a reference
 ```
 
 ## Job: Completed --> DELETED
 
-Upon completion of the job, the job's zookeeper nodes and the ZFS working directory can be deleted.
+Upon completion of the job, the job's ZFS working directory (producer AND system) can be deleted.
 
-> [!NOTE]
-> Should any job-related data be held in Zookeeper until the entire batch is deleted?
+Other job-related data will be retained in zookeeper to facilitate reporting.
 
 ```yml
-# DELETE /jobs/jid0001/configuration:
-# DELETE /jobs/jid0001/status: 
-# DELETE /jobs/jid0001/priority: 
-# DELETE /jobs/jid0001/ark: 
 # DELETE /jobs/states/completed/10-jid0001:
-# DELETE /batches/bid0001/states/completed/jid0001:
 ```
 
 
 ## Job: Failed --> DELETED
 
-Upon deletion of a failed job, the job's zookeeper nodes and the ZFS working directory can be deleted.
+If the batch is not yet completed, confirm that the user understands that job deletion will prevent notification of job-related information.
 
-> [!NOTE]
-> Should any job-related data be held in Zookeeper until the entire batch is deleted?
+Upon deletion of a failed job, the job's zookeeper nodes and the ZFS working directory can be deleted.
 
 ```yml
 # DELETE /jobs/jid0001/configuration:
@@ -559,15 +580,14 @@ Upon deletion of a failed job, the job's zookeeper nodes and the ZFS working dir
 # DELETE /jobs/jid0001/priority: 
 # DELETE /jobs/jid0001/ark: 
 # DELETE /jobs/states/failed/10-jid0001:
-# DELETE /batches/bid0001/states/failed/jid0001:
+# DELETE /batches/bid0001/states/batch-failed/jid0001:
 ```
 
 ## Job: Held --> DELETED
 
-Upon completion of a held job, the job's zookeeper nodes and the ZFS working directory can be deleted.
+If the batch is not yet completed, confirm tha tthe user understands that job deletion will prevent notification of job-related information.
 
-> [!NOTE]
-> Should any job-related data be held in Zookeeper until the entire batch is deleted?
+Upon completion of a held job, the job's zookeeper nodes and the ZFS working directory can be deleted.
 
 ```yml
 # DELETE /jobs/jid0001/configuration:
@@ -575,7 +595,7 @@ Upon completion of a held job, the job's zookeeper nodes and the ZFS working dir
 # DELETE /jobs/jid0001/priority: 
 # DELETE /jobs/jid0001/ark: 
 # DELETE /jobs/states/held/10-jid0001:
-# DELETE /batches/bid0001/states/processing/jid0001:
+# DELETE /batches/bid0001/states/batch-processing/jid0001:
 ```
 
 ## Batch: Processing --> Reporting
@@ -583,18 +603,16 @@ Upon completion of a held job, the job's zookeeper nodes and the ZFS working dir
 Once the last job for a batch has either failed or completed, the batch will move to a reporting step.
 
 ```yml
-# NOTE the absence of /batches/bid0001/states/processing/*:
-# NOTE check for the presence of /batches/bid0001/states/failed/*:
-# NOTE check for the presence of /batches/bid0001/states/completed/*:
+# NOTE the absence of /batches/bid0001/states/batch-pending/*:
+# NOTE the absence of /batches/bid0001/states/batch-processing/*:
+# NOTE check for the presence of /batches/bid0001/states/batch-failed/*:
+# NOTE check for the presence of /batches/bid0001/states/batch-completed/*:
 /batches/bid0001/status: 
   status: reporting
   last_modified: now
 ```
 
 ## Batch: Reporting --> Completed
-
-> [!NOTE]
-> Does Batch reporting need to be queued, or is it lightweight enough to be triggered as an event?
 
 The reporting phase will gather a list of completed jobs for a batch and failed jobs for a batch.  
 This will be compiled into a report for the depositor.
@@ -603,10 +621,11 @@ This will be compiled into a report for the depositor.
 /batches/bid0001/status: 
   status: reporting
   last_modified: now
-/batches/bid0001/status-report: 
-  last_modified: now
-  failed_jobs: #empty!
-  successful_jobs:
+# status report does not need to be saved for a successful batch
+# /batches/bid0001/status-report: 
+#  last_modified: now
+#  failed_jobs: #empty!
+#  successful_jobs:
 ```
 
 ## Batch: Reporting --> Failed
@@ -645,10 +664,11 @@ A subsequent report will be sent to the depositor indicating jobs that succeeded
 /batches/bid0001/status: 
   status: completed
   last_modified: now
-/batches/bid0001/status-report: 
-  last_modified: now
-  failed_jobs: #!empty!
-  successful_jobs: #report on items that succeeded since last report
+# status report does not need to be saved for a completed batch
+# /batches/bid0001/status-report: 
+#  last_modified: now
+#  failed_jobs: #!empty!
+#  successful_jobs: #report on items that succeeded since last report
 ```
 
 ## Batch: UpdateReporting --> Failed
@@ -677,7 +697,13 @@ This action should only be taken once all attempts at job recovery have been exh
 # DELETE /batches/bid0001/status: 
 # DELETE /batches/bid0001/status-report: 
 # DELETE /batches/bid0001/submission:
-# DELETE /batches/bid0001/states/*: Delete all jobs, all states
+# for every JID in /batches/bid0001/states/batch-*/*:
+#   DELETE /batches/bid0001/states/batch-completed/JID:
+#   DELETE /jobs/states/STATE/*-JID if present
+#   DELETE /jobs/JID/configuration:
+#   DELETE /jobs/JID/status: 
+#   DELETE /jobs/JID/priority: 
+#   DELETE /jobs/JID/ark: 
 ```
 
 ## Batch: Held --> Deleted (admin function) 
@@ -690,7 +716,13 @@ _Execute this step with caution since the depositor will not be notified of this
 # DELETE /batches/bid0001/status: 
 # DELETE /batches/bid0001/status-report: 
 # DELETE /batches/bid0001/submission:
-# DELETE /batches/bid0001/states/*: Delete all jobs, all states
+# for every JID in /batches/bid0001/states/batch-*/*:
+#   DELETE /batches/bid0001/states/batch-completed/JID:
+#   DELETE /jobs/states/STATE/*-JID if present
+#   DELETE /jobs/JID/configuration:
+#   DELETE /jobs/JID/status: 
+#   DELETE /jobs/JID/priority: 
+#   DELETE /jobs/JID/ark: 
 ```
 
 ## Batch: Completed --> Automatic Cleanup
@@ -701,4 +733,11 @@ Clean up the remnants of a properly completed batch.
 # DELETE /batches/bid0001/status: 
 # DELETE /batches/bid0001/status-report: 
 # DELETE /batches/bid0001/submission:
+# for every JID in /batches/bid0001/states/batch-completed/*:
+#   DELETE /batches/bid0001/states/batch-completed/JID:
+#   DELETE /jobs/states/STATE/*-JID if present
+#   DELETE /jobs/JID/configuration:
+#   DELETE /jobs/JID/status: 
+#   DELETE /jobs/JID/priority: 
+#   DELETE /jobs/JID/ark: 
 ```
