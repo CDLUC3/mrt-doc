@@ -11,18 +11,21 @@ Migrate Queue Administration Tasks from Ingest to the Merritt Admin Tool
 
 - This is very do-able.
 - Current ingest queue uses java property serialization.  This may be difficult for ruby code to read.
+- Proposal: modify the Ingest Queue Item to be serialized as JSON instead
 
 ### Write to Zookeeper from Admin Tool
 
 - This is very do-able.
 - Assumes binary data can be written back as-is from ruby
+- Proposal: modify the Ingest Queue Item to be serialized as JSON instead
 
 ### Publish Ingest Profiles as an Artifact
 
 - Ingest service will pull profiles from a deployed artifact (zip file) rather than cloning git
 - Admin tool code will pull profiles from a deployed artifact (zip file) rather than requesting data from ingest
+- See https://github.com/CDLUC3/mrt-doc-private/issues/80
 
-### Mount ZFS to Lambda
+### ~Mount ZFS to Lambda~
 
 - This is not recommended
 - Conceptually, this could allow the remaining set of admin functions to be performed entirely from Lambda
