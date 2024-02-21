@@ -386,7 +386,7 @@ The processing step is where the bulk of Merritt Ingest processing takes place
 ### Output
 
 ```yml
-/jobs/jid0002/ark: 
+/jobs/jid0002/identifier: 
   primary: 555
   local_id: [loc002]
 ```
