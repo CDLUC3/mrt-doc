@@ -198,12 +198,16 @@ If configured in the profile, a summary email should be sent to the depositor co
 /batches/bid0001/states/batch-pending/jid0003: #no data - acts as a reference
 ```
 
-## Batch: Held --> Processing
+## Batch: Held --> Pending
 
 An administrative action is performed to release a "Held" batch.  
 After confirming that the target collection is no longer "Held", proceed to the Processing step.
 
-- See Pending --> Processing, the results are the same
+```yml
+/batches/bid0001/status:
+  status: pending 
+  last_modified: now
+```
 
 ## Job: Pending --> Failed
 
