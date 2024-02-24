@@ -26,6 +26,27 @@
 >   - Delete old batch queue state `/batches/BID/states/OLD_STATE/JID`
 >   - Create new batch queue state `/batches/BID/states/NEW_STATE/JID`
 
+### Locking Batches and Jobs
+
+Locks on Jobs and Batches should be implemented with a [Zookeeper ephemeral lock](https://zookeeper.apache.org/doc/r3.4.5/zookeeperOver.html#Nodes+and+ephemeral+nodes).  If a zookeeper client process terminates, ephemeral locks are released. 
+
+- [ ] TODO: Review this with Mark
+- [ ] TODO: Update the scenarios below to show lock acquistion and release
+
+> [!NOTE]
+> ### Acquiring a Batch
+>
+> ```
+> /batches/BID/lock #ephemeral node
+> ```
+> > ### Acquiring a Job
+>
+> ```
+> /jobs/JID/lock #ephemeral node
+> ```
+
+
+
 ## Consumer Daemons to Create
 
 - Batch Pending
