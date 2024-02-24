@@ -31,7 +31,6 @@
 Locks on Jobs and Batches should be implemented with a [Zookeeper ephemeral lock](https://zookeeper.apache.org/doc/r3.4.5/zookeeperOver.html#Nodes+and+ephemeral+nodes).  If a zookeeper client process terminates, ephemeral locks are released. 
 
 - [ ] TODO: Review this with Mark
-- [ ] TODO: Update the scenarios below to show lock acquistion and release
 
 ### Acquiring a Batch
 ```yml
@@ -47,6 +46,7 @@ Locks on Jobs and Batches should be implemented with a [Zookeeper ephemeral lock
 
 - Batch Pending
 - Batch Reporting
+- Batch Update Reporting
 - Job Pending
 - Job Estimating
 - Job Provisioning (when work is held in this state, sleep between cycles)
@@ -96,6 +96,13 @@ manifest:
   last_modified: now
 ```
 
+## Batch: Acquire Pending Batch
+
+### Create Lock
+```yml
+/batches/bid001/lock: #ephemeral
+```
+
 ## Batch: Pending to Held
 
 If the collection is in a held state, the batch should move to a held status.
@@ -107,6 +114,7 @@ An administrative action is necessary to release the hold.
 /batches/bid0001/status:
   status: held 
   last_modified: now
+# DELETE /batches/bid001/lock
 ```
 
 ## Batch Queue Thread
@@ -135,6 +143,7 @@ If configured in the profile, a summary email should be sent to the depositor co
 /batches/bid0001/status:
   status: processing
   last_modified: now
+# DELETE /batches/bid001/lock
 ```
 
 ### Output
@@ -226,6 +235,20 @@ After confirming that the target collection is no longer "Held", proceed to the 
   last_modified: now
 ```
 
+## Job Queue Thread
+
+The Job Queue Thread runs independently from the Batch Queue Thread
+- The keys in the job queue thread are sorted by job priority which ensures that higher priority jobs will be initiated first
+- If a collection hold has been set since the job was created, set the job state to Held
+- Otherwise, set the job state to Processing
+
+## Job: Acquire Pending Job
+
+### Create Lock
+```yml
+/jobs/jid0001/lock: #ephemeral
+```
+
 ## Job: Pending --> Failed
 
 A job will immediately fail under the following conditions
@@ -235,7 +258,7 @@ A job will immediately fail under the following conditions
 Recovery is not possible under these conditions.  A new submission will be required.
 
 ```yml
-/jobs/jid0002/status: 
+/jobs/jid0001/status: 
   status: failed
   last_successful_status: #nil
   last_modification_date: now
@@ -244,14 +267,8 @@ Recovery is not possible under these conditions.  A new submission will be requi
 /jobs/states/failed/05-jid0001: #no data - acts as a reference
 # DELETE /batches/bid0001/states/batch-pending/jid0001:
 /batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
-
-## Job Queue Thread
-
-The Job Queue Thread runs independently from the Batch Queue Thread
-- The keys in the job queue thread are sorted by job priority which ensures that higher priority jobs will be initiated first
-- If a collection hold has been set since the job was created, set the job state to Held
-- Otherwise, set the job state to Processing
 
 ## Job: Pending --> Held
 
@@ -265,6 +282,7 @@ The job will be kept in a Held state until an administrative action releases the
   retry_count: 0 # no change
 # DELETE /jobs/states/pending/05-jid0001:
 /jobs/states/held/05-jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
 ## Job: Pending --> Estimating
@@ -280,6 +298,7 @@ Once a job is acquired, it will move to an Estimating step.
   retry_count: 0 # no change
 # DELETE /jobs/states/pending/05-jid0001:
 /jobs/states/estimating/05-jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
 ## Job: Held --> Pending
@@ -297,12 +316,20 @@ Job is administratively released back to a Pending status.
 /jobs/states/pending/05-jid0001: #no data - acts as a reference
 ```
 
-## Job: Estimating --> Provisioning
+## Job: Acquire Estimating Job
+
+### Create Lock
+```yml
+/jobs/jid0001/lock: #ephemeral
+```
+
+### State Description
 
 The first step of a job is to estimate the resources that will be needed to process the job.
 This will be accomplished by running HEAD reqeusts for content to be ingested and calculating a size estimate for the object.
 If a job is excessively large , the job priority may be adjusted.
-If a proper size calculation cannot be made for a job, the space_needed should be set to 0 and job priority may be adjusted.
+
+The estimating step does not fail. If a proper size calculation cannot be made for a job, the space_needed should be set to 0 and job priority may be adjusted.
 
 ### Output
 
@@ -310,6 +337,8 @@ If a proper size calculation cannot be made for a job, the space_needed should b
 /jobs/jid0002/space_needed: 1000000000
 /jobs/jid0002/priority: 10
 ```
+
+## Job: Estimating --> Provisioning
 
 ### Status Change
 
@@ -321,9 +350,17 @@ If a proper size calculation cannot be made for a job, the space_needed should b
   retry_count: 0 # no change
 # DELETE /jobs/states/estimating/05-jid0001:
 /jobs/states/provisioning/10-jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
-## Job: Provisioning --> Downloading
+## Job: Acquire Provisioning Job
+
+### Create Lock
+```yml
+/jobs/jid0001/lock: #ephemeral
+```
+
+### State Description
 
 The Provisioning state will be used to determine if there are sufficient system resources for a job to procede.
 At the simplest level, this state would allow us to throttle all subsequent ingests if our ZFS capacity is insufficient to support a specific download.
@@ -332,6 +369,8 @@ Unestimated jobs should be held in this state if the ZFS capacity is below a spe
 Additionally, this state could be used to hold a job while resources are dynamically provisioned from AWS.  This will not be a feature of the initial release.
 
 Jobs that fail the provisioning test will remain in this state, so it is important that ALL jobs in this state get evaluated.  If some jobs are retained in the provisioning state, it might make sense for the provisioning thread to sleep between tests.
+
+## Job: Provisioning --> Downloading
 
 ### Status Change
 
@@ -343,9 +382,17 @@ Jobs that fail the provisioning test will remain in this state, so it is importa
   retry_count: 0 # no change
 # DELETE /jobs/states/provisioning/10-jid0001:
 /jobs/states/downloading/10-jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
-## Job: Downloading --> Processing
+## Job: Acquire Downloading Job
+
+### Create Lock
+```yml
+/jobs/jid0001/lock: #ephemeral
+```
+
+### State Description
 
 The Downloading step performs the following actions
 - Performs a GET request on every download (multi-threaded), with a finite number of retries
@@ -356,19 +403,22 @@ The Downloading step performs the following actions
 ### Ouptut (if changes detected)
 
 ```yml
-/jobs/jid0002/space_needed: 1000000000
-/jobs/jid0002/priority: 10
+/jobs/jid0001/space_needed: 1000000000
+/jobs/jid0001/priority: 10
 ```
+
+## Job: Downloading --> Processing
 
 ### Status Change
 ```yml
-/jobs/jid0002/status: 
+/jobs/jid0001/status: 
   status: processing
   last_successful_status: downloading
   last_modification_date: now
   retry_count: 0 # no change
 # DELETE /jobs/states/downloading/10-jid0001:
 /jobs/states/processing/10-jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
 ## Job: Downloading --> Failed (downloading)
@@ -385,9 +435,17 @@ If any individual download does not succeed (after a set number of retries), the
 /jobs/states/failed/10-jid0001: #no data - acts as a reference
 # DELETE /batches/bid0001/states/batch-processing/jid0001:
 /batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
-## Job: Processing --> Recording
+## Job: Acquire Processing Job
+
+### Create Lock
+```yml
+/jobs/jid0001/lock: #ephemeral
+```
+
+### State Description
 
 The processing step is where the bulk of Merritt Ingest processing takes place
 
@@ -412,6 +470,8 @@ The processing step is where the bulk of Merritt Ingest processing takes place
   local_id: [loc002]
 ```
 
+## Job: Processing --> Recording
+
 ### Status Change
 
 ```yml
@@ -422,6 +482,7 @@ The processing step is where the bulk of Merritt Ingest processing takes place
   retry_count: 0 # no change
 # DELETE /jobs/states/processing/10-jid0001:
 /jobs/states/recording/10-jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
 ## Job: Processing --> Failed (processing)
@@ -438,9 +499,17 @@ Jobs may fail processing due to minting failure or storage failures.
 /jobs/states/failed/10-jid0001: #no data - acts as a reference
 # DELETE /batches/bid0001/states/batch-processing/jid0001:
 /batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
-## Job: Recording --> Notify
+## Job: Acquire Recording Job
+
+### Create Lock
+```yml
+/jobs/jid0001/lock: #ephemeral
+```
+
+### State Description
 
 This step will be processed by the Merritt Inventory service.
 - Inventory will read the storage manifest
@@ -450,6 +519,8 @@ This will satisfy one of the key motivations for the queue redesign effort.
 By processing the inventory step from the ingest queue, the depositor notification process will ensure that content is immediately accessible from Merritt.
 Previously, it was possible that depositors were notified of a successful ingest BEFORE content had been recorded in inventory.
 
+## Job: Recording --> Notify
+
 ```yml
 /jobs/jid0002/status: 
   status: notify
@@ -458,6 +529,7 @@ Previously, it was possible that depositors were notified of a successful ingest
   retry_count: 0 # no change
 # DELETE /jobs/states/recording/10-jid0001:
 /jobs/states/notify/10-jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
 ## Job: Recording --> Failed (recording)
@@ -474,13 +546,23 @@ This status change indicates that an error occurred while recording an object ch
 /jobs/states/failed/10-jid0001: #no data - acts as a reference
 # DELETE /batches/bid0001/states/batch-processing/jid0001:
 /batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
-## Job: Notify --> Completed
+## Job: Acquire Notify Job
+
+### Create Lock
+```yml
+/jobs/jid0001/lock: #ephemeral
+```
+
+### State Description
 
 If a callback has been configured in a collection profile, the callback will be invoked for the job.
 As the status of the job is changed to "completed", the batch object for the job will be notified of the update (potentially via a Zookeeper "Watcher").
 This will allow the batch to determine if the entire job has been completed.
+
+## Job: Notify --> Completed
 
 ```yml
 /jobs/jid0002/status: 
@@ -492,6 +574,7 @@ This will allow the batch to determine if the entire job has been completed.
 /jobs/states/completed/10-jid0001: #no data - acts as a reference
 # DELETE /batches/bid0001/states/batch-processing/jid0001:
 /batches/bid0001/states/batch-completed/jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
 ## Job: Notify --> Failed 
@@ -508,6 +591,7 @@ If the event of a callback failure, the job will go to a Failed state.
 /jobs/states/failed/10-jid0001: #no data - acts as a reference
 # DELETE /batches/bid0001/states/batch-processing/jid0001:
 /batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
+# DELETE /jobs/jid0001/lock
 ```
 
 ## Job: Failed --> Downloading
@@ -633,20 +717,38 @@ Once the last job for a batch has either failed or completed, the batch will mov
   last_modified: now
 ```
 
-## Batch: Reporting --> Completed
+## Batch: Acquire Reporting Batch
+
+### Create Lock
+```yml
+/batches/bid0001/lock: #ephemeral
+```
+
+### State Description
 
 The reporting phase will gather a list of completed jobs for a batch and failed jobs for a batch.  
 This will be compiled into a report for the depositor.
+
+The list of failed jobs should be saved to a zookeeper node so their status can be re-evaluated for a subsequent report.
+
+### Output
+
+```yml
+/batches/bid0001/status-report: 
+  last_modified: now
+  failed_jobs: 
+  # array of jids
+  successful_jobs:
+  # array of jids
+```
+
+## Batch: Reporting --> Completed
 
 ```yml
 /batches/bid0001/status: 
   status: reporting
   last_modified: now
-# status report does not need to be saved for a successful batch
-# /batches/bid0001/status-report: 
-#  last_modified: now
-#  failed_jobs: #empty!
-#  successful_jobs:
+# DELETE /batches/bid0001/lock
 ```
 
 ## Batch: Reporting --> Failed
@@ -654,18 +756,12 @@ This will be compiled into a report for the depositor.
 The reporting phase will gather a list of completed jobs for a batch and failed jobs for a batch.  
 This will be compiled into a report for the depositor.
 
-The list of failed jobs should be saved to a zookeeper node so their status can be re-evaluated for a subsequent report.
-
 ```yml
 /batches/bid0001/status: 
   status: failed
   last_modified: now
-/batches/bid0001/status-report: 
-  last_modified: now
-  failed_jobs: #not empty!
-  successful_jobs:
+# DELETE /batches/bid0001/lock
 ```
-
 
 ## Batch: Failed --> UpdateReporting
 
@@ -677,6 +773,30 @@ This status change will be triggered by an administrative action.  This action i
   last_modified: now
 ```
 
+## Batch: Acquire Update Reporting Batch
+
+### Create Lock
+```yml
+/batches/bid0001/lock: #ephemeral
+```
+
+### State Description
+
+A subsequent report will be sent to the depositor indicating jobs that succeeded since the last report was sent.
+
+It _might_ make sense to also indicate the jobs that were not resolved since the prior report was sent.
+
+### Output
+
+```yml
+/batches/bid0001/status-report: 
+  last_modified: now
+  failed_jobs:
+  # array of jids
+  successful_jobs: 
+  # array of jids
+```
+
 ## Batch: UpdateReporting --> Completed
 
 A subsequent report will be sent to the depositor indicating jobs that succeeded since the last report was sent.
@@ -685,27 +805,16 @@ A subsequent report will be sent to the depositor indicating jobs that succeeded
 /batches/bid0001/status: 
   status: completed
   last_modified: now
-# status report does not need to be saved for a completed batch
-# /batches/bid0001/status-report: 
-#  last_modified: now
-#  failed_jobs: #!empty!
-#  successful_jobs: #report on items that succeeded since last report
+# DELETE /batches/bid0001/lock
 ```
 
 ## Batch: UpdateReporting --> Failed
-
-A subsequent report will be sent to the depositor indicating jobs that succeeded since the last report was sent.
-
-It _might_ make sense to also indicate the jobs that were not resolved since the prior report was sent.
 
 ```yml
 /batches/bid0001/status: 
   status: completed
   last_modified: now
-/batches/bid0001/status-report: 
-  last_modified: now
-  failed_jobs: #!not empty!
-  successful_jobs: #report on items that succeeded since last report
+# DELETE /batches/bid0001/lock
 ```
 
 ## Batch: Failed --> DELETED (admin function)
