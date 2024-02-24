@@ -55,7 +55,7 @@ Locks on Jobs and Batches should be implemented with a [Zookeeper ephemeral lock
 - Job Recording (implemented by Merritt Inventory)
 - Job Notify
 
-## Batch: Queue Batch
+## Batch: API Call Triggers the Creation and Queuing of a Batch
 
 User submits a submission payload.  
 A batch is created using the payload url.
@@ -98,53 +98,22 @@ manifest:
 
 ## Batch: Acquire Pending Batch
 
+### Identifying Pending Batches
+- A "pending batch" can be identified by the absence of a "/states" child
+- If a batch has a "/states" child, the queue will ignore it
+
 ### Create Lock
 ```yml
 /batches/bid001/lock: #ephemeral
 ```
 
-## Batch: Pending to Held
+### State Description
+If a Collection Hold is in place, change status to Held and stop processing.
 
-If the collection is in a held state, the batch should move to a held status.
-An administrative action is necessary to release the hold.
-
-### ZK Nodes
-
-```yml
-/batches/bid0001/status:
-  status: held 
-  last_modified: now
-# DELETE /batches/bid001/lock
-```
-
-## Batch Queue Thread
-
-### Identifying Pending Batches
-- A "pending batch" can be identified by the absence of a "/states" child
-- If a batch has a "/states" child, the queue will ignore it
-
-### Check for Collection Holds
-- If a Hold is in place, change status to Held
-- Otherwise, change status to Processing
-
-## Batch: Pending --> Processing
-
-At this phase, the batch payload is downloaded and the payload is analyzed.
 The differences in batch submission types (single file, object manifest, manifest of manifests, manifest of containers) should be handled at this phase.
 One job will be spawned for each object that needs to be created for the payload.
 
 If configured in the profile, a summary email should be sent to the depositor confirming the queueing of the batch of jobs.
-
-### ZK Nodes
-
-#### Change Batch Status
-
-```yml
-/batches/bid0001/status:
-  status: processing
-  last_modified: now
-# DELETE /batches/bid001/lock
-```
 
 ### Output
 
@@ -224,7 +193,28 @@ If configured in the profile, a summary email should be sent to the depositor co
 /batches/bid0001/states/batch-pending/jid0003: #no data - acts as a reference
 ```
 
-## Batch: Held --> Pending
+### Batch: Pending to Held
+
+If the collection is in a held state, the batch should move to a held status.
+An administrative action is necessary to release the hold.
+
+```yml
+/batches/bid0001/status:
+  status: held 
+  last_modified: now
+# DELETE /batches/bid001/lock
+```
+
+### Batch: Pending --> Processing
+
+```yml
+/batches/bid0001/status:
+  status: processing
+  last_modified: now
+# DELETE /batches/bid001/lock
+```
+
+## Batch: Held --> Pending (Admin Action)
 
 An administrative action is performed to release a "Held" batch.  
 After confirming that the target collection is no longer "Held", proceed to the Processing step.
@@ -235,9 +225,9 @@ After confirming that the target collection is no longer "Held", proceed to the 
   last_modified: now
 ```
 
-## Job Queue Thread
+## The Job Queue
 
-The Job Queue Thread runs independently from the Batch Queue Thread
+The Job Queue runs independently from the Batch Queue 
 - The keys in the job queue thread are sorted by job priority which ensures that higher priority jobs will be initiated first
 - If a collection hold has been set since the job was created, set the job state to Held
 - Otherwise, set the job state to Processing
@@ -249,7 +239,7 @@ The Job Queue Thread runs independently from the Batch Queue Thread
 /jobs/jid0001/lock: #ephemeral
 ```
 
-## Job: Pending --> Failed
+### Job: Pending --> Failed
 
 A job will immediately fail under the following conditions
 - if payload digest does not match depositor digest
@@ -270,7 +260,7 @@ Recovery is not possible under these conditions.  A new submission will be requi
 # DELETE /jobs/jid0001/lock
 ```
 
-## Job: Pending --> Held
+### Job: Pending --> Held
 
 The job will be kept in a Held state until an administrative action releases the job.
 
@@ -285,7 +275,7 @@ The job will be kept in a Held state until an administrative action releases the
 # DELETE /jobs/jid0001/lock
 ```
 
-## Job: Pending --> Estimating
+### Job: Pending --> Estimating
 
 Once a job is acquired, it will move to an Estimating step.
 
@@ -301,7 +291,7 @@ Once a job is acquired, it will move to an Estimating step.
 # DELETE /jobs/jid0001/lock
 ```
 
-## Job: Held --> Pending
+## Job: Held --> Pending (Admin Action)
 
 Job is administratively released back to a Pending status.
 
@@ -338,9 +328,7 @@ The estimating step does not fail. If a proper size calculation cannot be made f
 /jobs/jid0002/priority: 10
 ```
 
-## Job: Estimating --> Provisioning
-
-### Status Change
+### Job: Estimating --> Provisioning
 
 ```yml
 /jobs/jid0002/status: 
@@ -370,9 +358,7 @@ Additionally, this state could be used to hold a job while resources are dynamic
 
 Jobs that fail the provisioning test will remain in this state, so it is important that ALL jobs in this state get evaluated.  If some jobs are retained in the provisioning state, it might make sense for the provisioning thread to sleep between tests.
 
-## Job: Provisioning --> Downloading
-
-### Status Change
+### Job: Provisioning --> Downloading
 
 ```yml
 /jobs/jid0002/status: 
@@ -407,9 +393,8 @@ The Downloading step performs the following actions
 /jobs/jid0001/priority: 10
 ```
 
-## Job: Downloading --> Processing
+### Job: Downloading --> Processing
 
-### Status Change
 ```yml
 /jobs/jid0001/status: 
   status: processing
@@ -421,7 +406,7 @@ The Downloading step performs the following actions
 # DELETE /jobs/jid0001/lock
 ```
 
-## Job: Downloading --> Failed (downloading)
+### Job: Downloading --> Failed (downloading)
 
 If any individual download does not succeed (after a set number of retries), the job will go to a failed state. 
 
@@ -470,9 +455,7 @@ The processing step is where the bulk of Merritt Ingest processing takes place
   local_id: [loc002]
 ```
 
-## Job: Processing --> Recording
-
-### Status Change
+### Job: Processing --> Recording
 
 ```yml
 /jobs/jid0002/status: 
@@ -485,7 +468,7 @@ The processing step is where the bulk of Merritt Ingest processing takes place
 # DELETE /jobs/jid0001/lock
 ```
 
-## Job: Processing --> Failed (processing)
+### Job: Processing --> Failed (processing)
 
 Jobs may fail processing due to minting failure or storage failures.
 
@@ -519,7 +502,7 @@ This will satisfy one of the key motivations for the queue redesign effort.
 By processing the inventory step from the ingest queue, the depositor notification process will ensure that content is immediately accessible from Merritt.
 Previously, it was possible that depositors were notified of a successful ingest BEFORE content had been recorded in inventory.
 
-## Job: Recording --> Notify
+### Job: Recording --> Notify
 
 ```yml
 /jobs/jid0002/status: 
@@ -532,7 +515,7 @@ Previously, it was possible that depositors were notified of a successful ingest
 # DELETE /jobs/jid0001/lock
 ```
 
-## Job: Recording --> Failed (recording)
+### Job: Recording --> Failed (recording)
 
 This status change indicates that an error occurred while recording an object change in the inventory database.
 
@@ -562,7 +545,7 @@ If a callback has been configured in a collection profile, the callback will be 
 As the status of the job is changed to "completed", the batch object for the job will be notified of the update (potentially via a Zookeeper "Watcher").
 This will allow the batch to determine if the entire job has been completed.
 
-## Job: Notify --> Completed
+### Job: Notify --> Completed
 
 ```yml
 /jobs/jid0002/status: 
@@ -577,7 +560,7 @@ This will allow the batch to determine if the entire job has been completed.
 # DELETE /jobs/jid0001/lock
 ```
 
-## Job: Notify --> Failed 
+### Job: Notify --> Failed 
 
 If the event of a callback failure, the job will go to a Failed state.
 
@@ -594,10 +577,12 @@ If the event of a callback failure, the job will go to a Failed state.
 # DELETE /jobs/jid0001/lock
 ```
 
-## Job: Failed --> Downloading
+## Resuming failed jobs
 
 The failed job will be resumed via an admin action. 
 The resumed job will restart at an appropriate state based on the "last_successful_state".
+
+### Job: Failed --> Downloading (Admin Action)
 
 ```yml
 /jobs/jid0002/status: 
@@ -611,10 +596,7 @@ The resumed job will restart at an appropriate state based on the "last_successf
 /batches/bid0001/states/batch-processing/jid0001: #no data - acts as a reference
 ```
 
-## Job: Failed --> Processing
-
-The failed job will be resumed via an admin action. 
-The resumed job will restart at an appropriate state based on the "last_successful_state".
+### Job: Failed --> Processing (Admin Action)
 
 ```yml
 /jobs/jid0002/status: 
@@ -628,10 +610,7 @@ The resumed job will restart at an appropriate state based on the "last_successf
 /batches/bid0001/states/batch-processing/jid0001: #no data - acts as a reference
 ```
 
-## Job: Failed --> Recording
-
-The failed job will be resumed via an admin action. 
-The resumed job will restart at an appropriate state based on the "last_successful_state".
+### Job: Failed --> Recording (Admin Action)
 
 ```yml
 /jobs/jid0002/status: 
@@ -645,10 +624,7 @@ The resumed job will restart at an appropriate state based on the "last_successf
 /batches/bid0001/states/batch-processing/jid0001: #no data - acts as a reference
 ```
 
-## Job: Failed --> Notify
-
-The failed job will be resumed via an admin action. 
-The resumed job will restart at an appropriate state based on the "last_successful_state".
+### Job: Failed --> Notify (Admin Action)
 
 ```yml
 /jobs/jid0002/status: 
@@ -662,7 +638,7 @@ The resumed job will restart at an appropriate state based on the "last_successf
 /batches/bid0001/states/batch-processing/jid0001: #no data - acts as a reference
 ```
 
-## Job: Completed --> DELETED
+## Job: Completed --> DELETED (Automated Task)
 
 Upon completion of the job, the job's ZFS working directory (producer AND system) can be deleted.
 
@@ -672,8 +648,7 @@ Other job-related data will be retained in zookeeper to facilitate reporting.
 # DELETE /jobs/states/completed/10-jid0001:
 ```
 
-
-## Job: Failed --> DELETED
+## Job: Failed --> DELETED (Admin Action)
 
 If the batch is not yet completed, confirm that the user understands that job deletion will prevent notification of job-related information.
 
@@ -688,7 +663,7 @@ Upon deletion of a failed job, the job's zookeeper nodes and the ZFS working dir
 # DELETE /batches/bid0001/states/batch-failed/jid0001:
 ```
 
-## Job: Held --> DELETED
+## Job: Held --> DELETED (Admin Action)
 
 If the batch is not yet completed, confirm tha tthe user understands that job deletion will prevent notification of job-related information.
 
@@ -703,7 +678,7 @@ Upon completion of a held job, the job's zookeeper nodes and the ZFS working dir
 # DELETE /batches/bid0001/states/batch-processing/jid0001:
 ```
 
-## Batch: Processing --> Reporting
+## Batch: Processing --> Reporting (Automated by event)
 
 Once the last job for a batch has either failed or completed, the batch will move to a reporting step.
 
@@ -742,7 +717,7 @@ The list of failed jobs should be saved to a zookeeper node so their status can 
   # array of jids
 ```
 
-## Batch: Reporting --> Completed
+### Batch: Reporting --> Completed
 
 ```yml
 /batches/bid0001/status: 
@@ -751,7 +726,7 @@ The list of failed jobs should be saved to a zookeeper node so their status can 
 # DELETE /batches/bid0001/lock
 ```
 
-## Batch: Reporting --> Failed
+### Batch: Reporting --> Failed
 
 The reporting phase will gather a list of completed jobs for a batch and failed jobs for a batch.  
 This will be compiled into a report for the depositor.
@@ -763,7 +738,7 @@ This will be compiled into a report for the depositor.
 # DELETE /batches/bid0001/lock
 ```
 
-## Batch: Failed --> UpdateReporting
+## Batch: Failed --> UpdateReporting (Admin Action)
 
 This status change will be triggered by an administrative action.  This action indicates that attempts to troubleshoot failed jobs for a batch have concluded.
 
@@ -797,7 +772,7 @@ It _might_ make sense to also indicate the jobs that were not resolved since the
   # array of jids
 ```
 
-## Batch: UpdateReporting --> Completed
+### Batch: UpdateReporting --> Completed
 
 A subsequent report will be sent to the depositor indicating jobs that succeeded since the last report was sent.
 
@@ -808,7 +783,7 @@ A subsequent report will be sent to the depositor indicating jobs that succeeded
 # DELETE /batches/bid0001/lock
 ```
 
-## Batch: UpdateReporting --> Failed
+### Batch: UpdateReporting --> Failed
 
 ```yml
 /batches/bid0001/status: 
@@ -817,7 +792,7 @@ A subsequent report will be sent to the depositor indicating jobs that succeeded
 # DELETE /batches/bid0001/lock
 ```
 
-## Batch: Failed --> DELETED (admin function)
+## Batch: Failed --> DELETED (Admin Action)
 
 An administrative action will trigger the delete of a failed batch (and any outstanding jobs for that batch).
 
@@ -836,7 +811,7 @@ This action should only be taken once all attempts at job recovery have been exh
 #   DELETE /jobs/JID/ark: 
 ```
 
-## Batch: Held --> Deleted (admin function) 
+## Batch: Held --> Deleted (Admin Action) 
 
 An administrative action will trigger the delete of a held batch.
 
