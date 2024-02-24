@@ -33,19 +33,15 @@ Locks on Jobs and Batches should be implemented with a [Zookeeper ephemeral lock
 - [ ] TODO: Review this with Mark
 - [ ] TODO: Update the scenarios below to show lock acquistion and release
 
-> [!NOTE]
-> ### Acquiring a Batch
->
-> ```
-> /batches/BID/lock #ephemeral node
-> ```
-> > ### Acquiring a Job
->
-> ```
-> /jobs/JID/lock #ephemeral node
-> ```
+### Acquiring a Batch
+```yml
+/batches/BID/lock: #ephemeral node
+```
 
-
+### Acquiring a Job
+```yml
+/jobs/JID/lock #ephemeral node
+```
 
 ## Consumer Daemons to Create
 
