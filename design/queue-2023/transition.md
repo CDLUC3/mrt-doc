@@ -35,12 +35,12 @@ Locks on Jobs and Batches should be implemented with a [Zookeeper ephemeral lock
 
 ### Acquiring a Batch
 ```yml
-/batches/BID/lock: #ephemeral node
+/batches/BID/lock: #ephemeral node to be held by a consumer daemon
 ```
 
 ### Acquiring a Job
 ```yml
-/jobs/JID/lock #ephemeral node
+/jobs/JID/lock: #ephemeral node to be held by a consumer daemon
 ```
 
 ## Consumer Daemons to Create
