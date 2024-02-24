@@ -17,12 +17,12 @@
 
 | Zookeeper Node Path | Node Data Type | Fields | Created By | Modified By | Comment |
 | - | - | - | - | - | - |
-| /batches/BID/lock | none | - | Pending, Reporting | - | Ephemeral node to lock a batch, deleted by the thread that creates the node |
+| /batches/BID/lock | none | - | Pending, Reporting | - | **Ephemeral node** to lock a batch, deleted by the thread that creates the node |
 | /batches/BID/submission | json | profile_name<br/>submitter<br/>payload_filename<br/><br/>erc_what<br/>erc_who<br/>erc_when<br/>erc_where<br/>type<br/>submission_mode | creation | none | |
 | /batches/BID/status | json | status<br/>last_modified | creation | all jobs done | | 
 | /batches/BID/status-report | json | failed_jobs | failure | failure | last status report sent to user | 
 | /batches/BID/states/STATE/JID | none | - | | | STATE = pending / held / processing / failed / completed<br/>Create watcher to watch for states/processing to be empty| 
-| /batches/BID/lock | none | - | Several states | - | Ephemeral node to lock a job, deleted by the thread that creates the node |
+| /batches/BID/lock | none | - | Several states | - | **Ephemeral node** to lock a job, deleted by the thread that creates the node |
 | /jobs/JID/configuration | json | batch_id<br/>profile_name<br/>submitter<br/>payload_url<br/>payload_type<br/>response_type<br/>working_dir<br/>local_id | creation | none | |
 | /jobs/JID/status | json | status<br/>last_successful_status<br/>last_modification_date<br/>retry_count | creation | none | |
 | /jobs/JID/priority | int | - | creation | estimating | |
