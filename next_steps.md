@@ -4,6 +4,9 @@
 ## Next Steps by Team Member
 
 - David
+  - Major Migrations
+    - Dryad content cleanup
+    - SDSC storage migration
   - Resume Storage Admin Work
     - Delete object via admin tool
     - Create object tombstone
@@ -12,9 +15,6 @@
     - Transfer object to different primary node
     - Create augmented manifest
     - Reload object using augemented manifest 
-  - Major Migrations
-    - Dryad content cleanup
-    - SDSC storage migration
   - Augment Object Representation
     - Alter/repair owner, collection for object
     - Alter/repair mime type for object
@@ -42,8 +42,10 @@
   - Migrate Docker stack to UC3 account
   - Refine collection health tools based on feedback
 - Ashley 
+  - AL2023 - Tomcat 9
+  - AL2023 - Ruby 3.2
+  - GitHub/CodeBuild for Private Repo Resources
   - New Jenkins server
-  - Linux migration
 - Eric
   - Collection Health Reports
   - ETDs
