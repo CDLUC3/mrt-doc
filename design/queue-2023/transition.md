@@ -64,10 +64,6 @@ This step should be as lightweight as possible.
 
 ### Input
 ```yml
-erc_what: title
-erc_who: author
-erc_when: date
-erc_where:
 submitter: submitter
 type: file # container or file in the case of a zip deposit
 profile: profile
@@ -115,7 +111,26 @@ One job will be spawned for each object that needs to be created for the payload
 
 If configured in the profile, a summary email should be sent to the depositor confirming the queueing of the batch of jobs.
 
-### Output
+### Batch: Pending to Held
+
+If the collection is in a held state, the batch should move to a held status.
+An administrative action is necessary to release the hold.
+
+```yml
+/batches/bid0001/status:
+  status: held 
+  last_modified: now
+# DELETE /batches/bid001/lock
+```
+
+### Batch: Pending --> Processing
+
+```yml
+/batches/bid0001/status:
+  status: processing
+  last_modified: now
+# DELETE /batches/bid001/lock
+```### Output
 
 #### Job Details
 ```yml
@@ -188,30 +203,9 @@ If configured in the profile, a summary email should be sent to the depositor co
 
 #### Place jobs references in batch queue
 ```yml
-/batches/bid0001/states/batch-pending/jid0001: #no data - acts as a reference
-/batches/bid0001/states/batch-pending/jid0002: #no data - acts as a reference
-/batches/bid0001/states/batch-pending/jid0003: #no data - acts as a reference
-```
-
-### Batch: Pending to Held
-
-If the collection is in a held state, the batch should move to a held status.
-An administrative action is necessary to release the hold.
-
-```yml
-/batches/bid0001/status:
-  status: held 
-  last_modified: now
-# DELETE /batches/bid001/lock
-```
-
-### Batch: Pending --> Processing
-
-```yml
-/batches/bid0001/status:
-  status: processing
-  last_modified: now
-# DELETE /batches/bid001/lock
+/batches/bid0001/states/batch-processing/jid0001: #no data - acts as a reference
+/batches/bid0001/states/batch-processing/jid0002: #no data - acts as a reference
+/batches/bid0001/states/batch-processing/jid0003: #no data - acts as a reference
 ```
 
 ## Batch: Held --> Pending (Admin Action)
@@ -255,7 +249,7 @@ Recovery is not possible under these conditions.  A new submission will be requi
   retry_count: 0 # no change
 # DELETE /jobs/states/pending/05-jid0001:
 /jobs/states/failed/05-jid0001: #no data - acts as a reference
-# DELETE /batches/bid0001/states/batch-pending/jid0001:
+# DELETE /batches/bid0001/states/batch-processing/jid0001:
 /batches/bid0001/states/batch-failed/jid0001: #no data - acts as a reference
 # DELETE /jobs/jid0001/lock
 ```
@@ -683,7 +677,6 @@ Upon completion of a held job, the job's zookeeper nodes and the ZFS working dir
 Once the last job for a batch has either failed or completed, the batch will move to a reporting step.
 
 ```yml
-# NOTE the absence of /batches/bid0001/states/batch-pending/*:
 # NOTE the absence of /batches/bid0001/states/batch-processing/*:
 # NOTE check for the presence of /batches/bid0001/states/batch-failed/*:
 # NOTE check for the presence of /batches/bid0001/states/batch-completed/*:
@@ -721,7 +714,7 @@ The list of failed jobs should be saved to a zookeeper node so their status can 
 
 ```yml
 /batches/bid0001/status: 
-  status: reporting
+  status: completed
   last_modified: now
 # DELETE /batches/bid0001/lock
 ```
@@ -787,7 +780,7 @@ A subsequent report will be sent to the depositor indicating jobs that succeeded
 
 ```yml
 /batches/bid0001/status: 
-  status: completed
+  status: failed
   last_modified: now
 # DELETE /batches/bid0001/lock
 ```
