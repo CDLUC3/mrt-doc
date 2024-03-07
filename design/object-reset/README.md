@@ -2,12 +2,23 @@
 
 ## Solution Categories
 
+### Alter Object Composition 
+- Re-write versions in place; Purge files while rewriting; No provenance for changes
+  - This is David's changeToken proposal 
 - Re-ingest content as new object (new ark) - no local id; Delete old object
 - Re-ingest content as new object (new ark) - remap local id; Delete old object
 - Rebuild object from storage manifest (new object_id, same ark); Purge orphaned files
 - Collapse History and Reset object to V1 (same ark); Purge orphaned files; History is lost
 - Collapse History and Reset object to new version (same ark); Purge orphaned files; History is documented but inaccessible
 - Tombstone files in cloud storage to convey key deletions/key renames; History is documented but inaccessible
+
+### Alter Object Hierarchy
+- Change Owner
+  - The latest mrt-owner.txt file will determine ownership for ALL versions of the object
+  - Local id collions might make this impossible
+- Change collection  
+  - The latest mrt-membership.txt file will determine membership for ALL versions of the object
+  - Collection changes could be incompatible with the primary storage node/secondary nodes for a collection
 
 ## Use Cases
 
