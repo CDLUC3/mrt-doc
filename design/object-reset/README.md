@@ -1,5 +1,14 @@
 # Object Version Reset
 
+## Solution Categories
+
+- Re-ingest content as new object (new ark) - no local id; Delete old object
+- Re-ingest content as new object (new ark) - remap local id; Delete old object
+- Rebuild object from storage manifest (new object_id, same ark); Purge orphaned files
+- Collapse History and Reset object to V1 (same ark); Purge orphaned files; History is lost
+- Collapse History and Reset object to new version (same ark); Purge orphaned files; History is documented but inaccessible
+- Tombstone files in cloud storage to convey key deletions/key renames; History is documented but inaccessible
+
 ## Use Cases
 
 ### Use Case: Nuxeo Path Name Cleanup
