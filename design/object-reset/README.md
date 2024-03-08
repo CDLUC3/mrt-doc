@@ -4,12 +4,23 @@
 
 ### Alter Object Composition 
 - Re-write versions in place; Purge files while rewriting; No provenance for changes
-  - This is David's changeToken proposal 
+  - This is David's changeToken proposal
+  - PRO: minimal changes
+  - CON: no provenance for change
 - Re-ingest content as new object (new ark) - no local id; Delete old object
+  - PRO: uses existing functionality
+  - CON: requires a new ark, doesn't work if localid is present 
 - Re-ingest content as new object (new ark) - remap local id; Delete old object
+  - PRO: minimal changes
+  - CON: requires a new ark 
 - Rebuild object from storage manifest (new object_id, same ark); Purge orphaned files
+  - PRO: could save the storage manifest before and after as a provenance change; opportunity to review changes beforee applying
+  - CON: does not facilitate renames 
 - Collapse History and Reset object to V1 (same ark); Purge orphaned files; History is lost
+  - PRO: may be easy to implement the cleanup logic, ark is retained
+  - CON: history is lost, no provenance of change, no opportunity to preview 
 - Collapse History and Reset object to new version (same ark); Purge orphaned files; History is documented but inaccessible
+  - PRO: ark is retained, histoy is kept, need way to retain old history without items in cloud storage 
 - Tombstone files in cloud storage to convey key deletions/key renames; History is documented but inaccessible
 
 ### Alter Object Hierarchy
