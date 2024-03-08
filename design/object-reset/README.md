@@ -22,6 +22,10 @@
 - Collapse History and Reset object to new version (same ark); Purge orphaned files; History is documented but inaccessible
   - PRO: ark is retained, histoy is kept, need way to retain old history without items in cloud storage 
 - Tombstone files in cloud storage to convey key deletions/key renames; History is documented but inaccessible
+  - PRO: change history could be reassembled by referencing 0 byte tombstones; changes are first applied to cloud storage
+- Repair transactions: apply file delete and file rename transactions (conveyed in json) to an existing object to clean up he object
+  - This is an attempt to define a generic solution around David's poposed changeToken fix
+  - A flag could be included in transaction to allow/disallow the complete deletion of all files with identical checksum values 
 
 ### Alter Object Hierarchy
 - Change Owner
@@ -30,6 +34,13 @@
 - Change collection  
   - The latest mrt-membership.txt file will determine membership for ALL versions of the object
   - Collection changes could be incompatible with the primary storage node/secondary nodes for a collection
+
+
+### Provenance Options
+- Create a mrt-repair.txt file
+  - Embed before and after versions of the storage manifest
+  - Include date/time of operation
+  - Include explanation of fix 
 
 ## Use Cases
 
