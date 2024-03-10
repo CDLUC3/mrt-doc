@@ -1,0 +1,8 @@
+test_id:
+  title: Test name
+  input:
+    path: value
+  api-calls:
+  - create-batch
+  output:
+    path: value
