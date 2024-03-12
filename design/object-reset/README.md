@@ -23,11 +23,11 @@
 - Option 2: Re-ingest content as new object (new ark) - no local id; Delete old object
   - Note: this was used for the Dash --> Dryad migration.  The owner id changed creating a new localid. 
   - PRO: uses existing functionality
-  - CON: requires a new ark, doesn't work if localid is present 
+  - CON: requires a new ark, doesn't work if localid is present; history is lost once old object is deleted
 - Option 3: Re-ingest content as new object (new ark) - remap local id; Delete old object
   - New functionality is needed to re-map an existing localid to a new ark 
   - PRO: minimal changes
-  - CON: requires a new ark 
+  - CON: requires a new ark; history is lost once old object is deleted
 - Option 4: Rebuild object from storage manifest (new object_id, same ark); Purge orphaned files
   - PRO: could save the storage manifest before and after as a provenance change; opportunity to review changes beforee applying
   - CON: does not facilitate renames 
