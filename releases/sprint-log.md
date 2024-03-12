@@ -1,6 +1,48 @@
 ## Sprint Goals
 
-#### Sprint 99:  February 7, 2023 - February 27, 2024
+#### Sprint 100:  March 6, 2024 - March 26, 2024
+- Ingest
+  - Investigate approaches to supporting additional ZK states: #1441
+  - https://github.com/CDLUC3/mrt-doc/blob/main/design/queue-2023/states.md
+  - Queue redesign documentation
+  - Migrate queue admin to Admin Tool: #1819
+- Dryad object deletes
+  - Dryad removal plan: #71
+- Storage
+  - Reconcile Storage Bytes Added with OpenSearch Log Byte Counts from Storage Logs: #1790
+- EZID link checker report
+  - Update eSchol ARKs to status Unavailable: #629
+- Nuxeo Harvester and Object update strategy
+  - Feature to update object/file information in Merritt: #1720
+  - Store object “reset”: #1774
+  - String together object modification features: #1775
+  - File names generated via Nuxeo harvest include unneeded characters: #1655
+- Devops
+  - Cron for mrt-ansible-service-restart playbook: #1761
+  - OpenDJ LDAP maintenance: #1652
+  - Ansible documentation: #1778, #1779
+  - OpenSearch documentation: #74
+  - Check on SDSC migration status: #1701 (for after Dryad deletes)
+- Dependency updates
+  - BOM 1.7
+- Collection Health Prototype
+  - Presenting at Born Digital CKG, 3/7 for feedback
+- OpenSearch
+  - Lambda logs into OpenSearch: #1511
+- UCB Law Robbins Collection
+  - Batch 3 ingest: RBN-04
+- UCSF
+  - CTP archive screenshots to GitHub: #1523
+
+#### Releases:
+Stage:
+- Storage: OpenSearch fix for bytes
+- Ingest: JSON serialization
+Production:
+- Storage: OpenSearch fix for bytes
+- Ingest: JSON serialization
+
+#### Sprint 99:  February 7, 2024 - March 5, 2024
 - Ingest
   - Investigate approaches to supporting additional ZK states: #1441
   - https://github.com/CDLUC3/mrt-doc/blob/main/design/queue-2023/states.md
@@ -40,7 +82,7 @@ Production:
 - Ingest: Consumer Daemon control
 - Switch checks from state to jsonstatus
 
-#### Sprint 98:  January 17, 2023 - February 6, 2024
+#### Sprint 98:  January 17, 2024 - February 6, 2024
 - Ingest
   - Investigate approaches to supporting additional ZK states: #1441
   - https://github.com/CDLUC3/mrt-doc/blob/main/design/queue-2023/states.md
