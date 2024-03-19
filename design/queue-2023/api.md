@@ -136,9 +136,9 @@ module MerrittZK
     def set_priority(zk, priority)
     def set_space_needed(zk, space_needed)
     def set_status(zk, status)
-    def batch_state
-    def set_batchstate(zk)
-    def set_jobstate(zk)
+    def batch_state_subpath
+    def set_batch_state_path(zk)
+    def set_job_state_path(zk)
     def states
     def self.prefix_path
     def path
@@ -252,8 +252,6 @@ public class Job extends QueueItem {
   public String bid();
   public int priority();
   public long spaceNeeded();
-  public String jobStatePath();
-  public String batchStatePath();
 
   public static Batch createJob(ZK client, String bid, JSONObject configuration);
   @Override public void loadProperties(ZK client);
