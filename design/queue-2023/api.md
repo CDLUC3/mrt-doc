@@ -207,40 +207,41 @@ public enum JobState implements IngestState {
 ### Merritt ZK API
 
 ```java
-  public class MerrittZKNodeInvalid extends Exception {
-    public MerrittZKNodeInvalid(String message);
-  }
+public class MerrittZKNodeInvalid extends Exception {
+  public MerrittZKNodeInvalid(String message);
+}
 
-  abstract public class QueueItem {
-    private String id;
-    private JSONObject data;
-    private IngestState status;
+abstract public class QueueItem {
+  private String id;
+  private JSONObject data;
+  private IngestState status;
 
-    public String id();
-    public JSONObject data();
-    public IngestState status();
-    public void loadProperties(ZK client) throws MerrittZKNodeInvalid;
-    public String stringProperty(ZK client, String key) throws MerrittZKNodeInvalid;
-    public JSONObject jsonProperty(ZK client, String key) throws MerrittZKNodeInvalid;
-    public int intProperty(ZK client, String key) throws MerrittZKNodeInvalid;
-    public void setData(ZK client, String key, Object data) throws MerrittZKNodeInvalid;
-    public String path();
-    public static String serialize(Object data);
-    public static String createId(ZK client, String prefix);
-    public JSONObject statusObject(IngestState status);
-    public void setStatus(ZK client, IngestState status) throws MerrittZKNodeInvalid;
-    public boolean lock(ZK client) throws MerrittZKNodeInvalid;
-    public boolean unlock(ZK client) throws MerrittZKNodeInvalid;
-  }
+  public String id();
+  public JSONObject data();
+  public IngestState status();
+  public void loadProperties(ZK client) throws MerrittZKNodeInvalid;
+  public String stringProperty(ZK client, String key) throws MerrittZKNodeInvalid;
+  public JSONObject jsonProperty(ZK client, String key) throws MerrittZKNodeInvalid;
+  public int intProperty(ZK client, String key) throws MerrittZKNodeInvalid;
+  public void setData(ZK client, String key, Object data) throws MerrittZKNodeInvalid;
+  public String path();
+  public static String serialize(Object data);
+  public static String createId(ZK client, String prefix);
+  public JSONObject statusObject(IngestState status);
+  public void setStatus(ZK client, IngestState status) throws MerrittZKNodeInvalid;
+  public boolean lock(ZK client) throws MerrittZKNodeInvalid;
+  public boolean unlock(ZK client) throws MerrittZKNodeInvalid;
+}
 
-  class QueueItemConfig
-    def initialize(dir, prefix, init_status)
-    def prefix_path
+public enum QueueItemConfig {
+  BATCH('/batches', 'bid', BatchState.init),
+  JOB('/jobs', 'jid', JobState.init);
+  QueueItemConfig(String dir, String prefix, IngestState int);
 
-    attr_reader :dir, :prefix, :init_status
+  public String dir();
+  public String prefix();
+  public IngestState initState();
+}
 
-    @@BatchItemConfig = QueueItemConfig.new('/batches', 'bid', BatchState.init)
-    @@JobItemConfig = QueueItemConfig.new('/jobs', 'jid', JobState.init)
-  end
 
 ```
