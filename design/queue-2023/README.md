@@ -11,6 +11,7 @@
   - send accurate summary email on completion of a batch regardless of any interruption that occurred while processing
 
 ## Design Details
+- [Merritt ZK API](api.md)
 - [Queue State Transitions](states.md)
 - [Queue Entry Data Storage](data.md)
 - [State Transition Details](transition.md)
