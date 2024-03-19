@@ -177,6 +177,29 @@ public interface IngestState {
   public static JSONObject statesAsJson(IngestState[] values);
 }
 
+public enum BatchState implements IngestState{
+  Pending,
+  Held,
+  Processing,
+  Reporting ,
+  Failed,
+  UpdateReporting,
+  Completed,
+  Deleted;
+}
 
+public enum JobState implements IngestState {
+  Pending,
+  Held,
+  Estimating,
+  Provisioning,
+  Downloading,
+  Processing,
+  Recording,
+  Notify,
+  Failed,
+  Completed,
+  Deleted;
+}
 
 ```
