@@ -127,6 +127,7 @@ module MerrittZK
     def path
     def self.create_batch(zk, submission)
     def self.acquire_pending_batch(zk)  
+    def self.acquire_completed_batch(zk)  
   end
 
   class Job < QueueItem
@@ -233,7 +234,9 @@ public class Batch extends QueueItem {
   public static String prefix();
   public static String prefixPath();
   public static Batch createBatch(ZK client, JSONObject submission);
+
   public static Batch aquirePendingBatch(ZK client);
+  public static Batch aquireCompletedBatch(ZK client);
 }
 
 public class Job extends QueueItem {
