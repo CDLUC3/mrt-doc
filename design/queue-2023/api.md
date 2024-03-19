@@ -160,3 +160,23 @@ end
 ```
 
 ## Java API
+
+### States
+
+```java
+package org.cdlib.mrt;
+
+public interface IngestState {
+  public List<IngestState> nextStates();
+  public String name();
+  public IngestState stateChange(IngestState next);
+  default boolean isDeletable();
+  default boolean stateChangeAllowed(IngestState next);
+  default IngestState success();
+  default IngestState fail();
+  public static JSONObject statesAsJson(IngestState[] values);
+}
+
+
+
+```
