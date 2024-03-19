@@ -85,16 +85,6 @@ module MerrittZK
     def initialize(message)
   end
 
-  class QueueItemConfig
-    def initialize(dir, prefix, init_status)
-    def prefix_path
-
-    attr_reader :dir, :prefix, :init_status
-
-    @@BatchItemConfig = QueueItemConfig.new('/batches', 'bid', BatchState.init)
-    @@JobItemConfig = QueueItemConfig.new('/jobs', 'jid', JobState.init)
-  end
-
   class QueueItem
     # initialize a new queue item
     def initialize(id, data: nil)
@@ -211,11 +201,13 @@ public class MerrittZKNodeInvalid extends Exception {
   public MerrittZKNodeInvalid(String message);
 }
 
-abstract public class QueueItem {
+abstract public class QueueItem 
   private String id;
   private JSONObject data;
   private IngestState status;
 
+  public QueueItem(String id);
+  public QueueItem(String id, JSONObject data);
   public String id();
   public JSONObject data();
   public IngestState status();
@@ -233,14 +225,47 @@ abstract public class QueueItem {
   public boolean unlock(ZK client) throws MerrittZKNodeInvalid;
 }
 
-public enum QueueItemConfig {
-  BATCH('/batches', 'bid', BatchState.init),
-  JOB('/jobs', 'jid', JobState.init);
-  QueueItemConfig(String dir, String prefix, IngestState int);
+public class Batch extends QueueItem {
+  public Batch(String id);
+  public Batch(String id, JSONObject data);
 
-  public String dir();
-  public String prefix();
-  public IngestState initState();
+  public static String dir();
+  public static String prefix();
+  public static String prefixPath();
+  public static Batch createBatch(ZK client, JSONObject submission);
+  public static Batch aquirePendingBatch(ZK client);
+}
+
+public class Job extends QueueItem {
+  private String bid;
+  private int priority;
+  private long space_needed;
+  private String jobStatePath;
+  private String batchStatePath;
+
+  public Job(String id, String bid);
+  public Job(String id, String bid, JSONObject data);
+
+  public static String dir();
+  public static String prefix();
+  public static String prefixPath();
+  public String bid();
+  public int priority();
+  public long spaceNeeded();
+  public String jobStatePath();
+  public String batchStatePath();
+
+  public static Batch createJob(ZK client, String bid, JSONObject configuration);
+  @Override public void loadProperties(ZK client);
+  public void setPriority(ZK client, int priority);
+  public void setSpaceNeeded(ZK client, long space_needed);
+  public void setStatus(ZK client, IngestState status);
+  public String batch_state_subpath();
+  public void setBatchStatePath(ZK client);
+  public void setJobStatePath(ZK client);
+
+  public JSONObject statusObject(IngestState status);
+  public static Job acquireJob(ZK client, IngestState status);
 }
 
 
