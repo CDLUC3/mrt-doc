@@ -125,6 +125,7 @@ module MerrittZK
     def self.dir
     def self.prefix_path
     def path
+    def delete(zk)
     def self.create_batch(zk, submission)
     def self.acquire_pending_batch(zk)  
     def self.acquire_completed_batch(zk)  
@@ -143,6 +144,7 @@ module MerrittZK
     def states
     def self.prefix_path
     def path
+    def delete(zk)
     def self.create_job(zk, bid, data)
     def status_object(status)
     def self.acquire_job(zk, state)
@@ -235,6 +237,8 @@ public class Batch extends QueueItem {
   public static String prefixPath();
   public static Batch createBatch(ZK client, JSONObject submission);
 
+  public void delete(ZK client);
+
   public static Batch aquirePendingBatch(ZK client);
   public static Batch aquireCompletedBatch(ZK client);
 }
@@ -264,6 +268,8 @@ public class Job extends QueueItem {
   public String batch_state_subpath();
   public void setBatchStatePath(ZK client);
   public void setJobStatePath(ZK client);
+
+  public void delete(ZK client);
 
   public JSONObject statusObject(IngestState status);
   public static Job acquireJob(ZK client, IngestState status);
