@@ -85,6 +85,10 @@ module MerrittZK
     def initialize(message)
   end
 
+  class MerrittStateError < StandardError
+    def initialize(message)
+  end
+
   class QueueItem
     # initialize a new queue item
     def initialize(id, data: nil)
@@ -204,6 +208,10 @@ public class MerrittZKNodeInvalid extends Exception {
   public MerrittZKNodeInvalid(String message);
 }
 
+public class MerrittStateError extends Exception {
+  public MerrittZKNodeInvalid(String message);
+}
+
 abstract public class QueueItem 
   private String id;
   private JSONObject data;
@@ -237,7 +245,7 @@ public class Batch extends QueueItem {
   public static String prefixPath();
   public static Batch createBatch(ZK client, JSONObject submission);
 
-  public void delete(ZK client);
+  public void delete(ZK client) throws MerrittStateError;
 
   public static Batch aquirePendingBatch(ZK client);
   public static Batch aquireCompletedBatch(ZK client);
@@ -269,7 +277,7 @@ public class Job extends QueueItem {
   public void setBatchStatePath(ZK client);
   public void setJobStatePath(ZK client);
 
-  public void delete(ZK client);
+  public void delete(ZK client) throws MerrittStateError;
 
   public JSONObject statusObject(IngestState status);
   public static Job acquireJob(ZK client, IngestState status);
