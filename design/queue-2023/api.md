@@ -201,6 +201,22 @@ public enum JobState implements IngestState {
 
 ```
 
+### ZK Node Keys
+
+```java
+public enum ZKKey {
+  STATUS("status"),
+  LOCK("lock"),
+  BATCH_SUBMISSION("submission"),
+  BATCH_STATUS_REPORT("status-report"),
+  JOB_CONFIGURATION("configuration"),
+  JOB_IDENTIFIERS("identifiers"),
+  JOB_PRIORITY("priority"),
+  JOB_SPACE_NEEDED("space_needed"),
+  JOB_BID("bid");
+}
+```
+
 ### Merritt ZK API
 
 ```java
@@ -222,20 +238,20 @@ abstract public class QueueItem
   public String id();
   public JSONObject data();
   public IngestState status();
-  public void loadProperties(ZK client) throws MerrittZKNodeInvalid;
-  public String stringProperty(ZK client, String key) throws MerrittZKNodeInvalid;
-  public JSONObject jsonProperty(ZK client, String key) throws MerrittZKNodeInvalid;
-  public int intProperty(ZK client, String key) throws MerrittZKNodeInvalid;
-  public long longProperty(ZK client, String key) throws MerrittZKNodeInvalid;
-  public void setData(ZK client, String key, Object data) throws MerrittZKNodeInvalid;
+  public void loadProperties(ZooKeeper client) throws MerrittZKNodeInvalid;
+  public String stringProperty(ZooKeeper client, ZKKey key) throws MerrittZKNodeInvalid;
+  public JSONObject jsonProperty(ZooKeeper client, ZKKey key) throws MerrittZKNodeInvalid;
+  public int intProperty(ZooKeeper client, ZKKey key) throws MerrittZKNodeInvalid;
+  public long longProperty(ZooKeeper client, ZKKey key) throws MerrittZKNodeInvalid;
+  public void setData(ZooKeeper client, ZKKey key, Object data) throws MerrittZKNodeInvalid;
   public String path();
   public static String serialize(Object data);
-  public static String createId(ZK client, String prefix);
+  public static String createId(ZooKeeper client, String prefix);
   public JSONObject statusObject(IngestState status);
-  public void setStatus(ZK client, IngestState status) throws MerrittZKNodeInvalid;
-  public boolean lock(ZK client) throws MerrittZKNodeInvalid;
-  public boolean unlock(ZK client) throws MerrittZKNodeInvalid;
-  public abstract delete(ZooKeeper client) throws MerrittStateError;
+  public void setStatus(ZooKeeper client, IngestState status) throws MerrittZKNodeInvalid;
+  public boolean lock(ZooKeeper client) throws MerrittZKNodeInvalid;
+  public boolean unlock(ZooKeeper client) throws MerrittZKNodeInvalid;
+  public abstract void delete(ZooKeeper client) throws MerrittStateError;
 }
 
 public class Batch extends QueueItem {
@@ -245,12 +261,12 @@ public class Batch extends QueueItem {
   public static String dir();
   public static String prefix();
   public static String prefixPath();
-  public static Batch createBatch(ZK client, JSONObject submission);
+  public static Batch createBatch(ZooKeeper client, JSONObject submission);
 
-  public void delete(ZK client) throws MerrittStateError;
+  public void delete(ZooKeeper client) throws MerrittStateError;
 
-  public static Batch aquirePendingBatch(ZK client);
-  public static Batch aquireCompletedBatch(ZK client);
+  public static Batch aquirePendingBatch(ZooKeeper client);
+  public static Batch aquireCompletedBatch(ZooKeeper client);
 }
 
 public class Job extends QueueItem {
@@ -270,19 +286,19 @@ public class Job extends QueueItem {
   public int priority();
   public long spaceNeeded();
 
-  public static Batch createJob(ZK client, String bid, JSONObject configuration);
-  @Override public void loadProperties(ZK client);
-  public void setPriority(ZK client, int priority);
-  public void setSpaceNeeded(ZK client, long space_needed);
-  public void setStatus(ZK client, IngestState status);
+  public static Batch createJob(ZooKeeper client, String bid, JSONObject configuration);
+  @Override public void loadProperties(ZooKeeper client);
+  public void setPriority(ZooKeeper client, int priority);
+  public void setSpaceNeeded(ZooKeeper client, long space_needed);
+  public void setStatus(ZooKeeper client, IngestState status);
   public String batch_state_subpath();
-  public void setBatchStatePath(ZK client);
-  public void setJobStatePath(ZK client);
+  public void setBatchStatePath(ZooKeeper client);
+  public void setJobStatePath(ZooKeeper client);
 
-  public void delete(ZK client) throws MerrittStateError;
+  public void delete(ZooKeeper client) throws MerrittStateError;
 
   public JSONObject statusObject(IngestState status);
-  public static Job acquireJob(ZK client, IngestState status);
+  public static Job acquireJob(ZooKeeper client, IngestState status);
 }
 
 
