@@ -234,6 +234,7 @@ abstract public class QueueItem
   public void setStatus(ZK client, IngestState status) throws MerrittZKNodeInvalid;
   public boolean lock(ZK client) throws MerrittZKNodeInvalid;
   public boolean unlock(ZK client) throws MerrittZKNodeInvalid;
+  public abstract delete(ZooKeeper client) throws MerrittStateError;
 }
 
 public class Batch extends QueueItem {
