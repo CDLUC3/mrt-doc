@@ -226,6 +226,7 @@ abstract public class QueueItem
   public String stringProperty(ZK client, String key) throws MerrittZKNodeInvalid;
   public JSONObject jsonProperty(ZK client, String key) throws MerrittZKNodeInvalid;
   public int intProperty(ZK client, String key) throws MerrittZKNodeInvalid;
+  public long longProperty(ZK client, String key) throws MerrittZKNodeInvalid;
   public void setData(ZK client, String key, Object data) throws MerrittZKNodeInvalid;
   public String path();
   public static String serialize(Object data);
