@@ -1,5 +1,7 @@
 # Merritt ZK Ruby API
 
+- [Design](README.md)
+
 ## States
 
 ```rb
