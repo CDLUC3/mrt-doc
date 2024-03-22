@@ -13,31 +13,37 @@
   - This is not suitable for re-writing history
 
 ### Alter Object Composition 
-- Option 1: Re-write versions in place; Purge files while rewriting; No provenance for changes
+
+#### Option 1: Re-write versions in place; Purge files while rewriting; No provenance for changes
   - This is David's changeToken proposal
   - PRO:
     - aligns with current architecture; minimal changes required
   - CON:
     - this is a one-off solution
     - no provenance recording ther change
-- Option 2: Re-ingest content as new object (new ark) - no local id; Delete old object
+
+#### Option 2: Re-ingest content as new object (new ark) - no local id; Delete old object
   - Note: this was used for the Dash --> Dryad migration.  The owner id changed creating a new localid. 
   - PRO: uses existing functionality
   - CON: requires a new ark, doesn't work if localid is present; history is lost once old object is deleted
-- Option 3: Re-ingest content as new object (new ark) - remap local id; Delete old object
+
+#### Option 3: Re-ingest content as new object (new ark) - remap local id; Delete old object
   - New functionality is needed to re-map an existing localid to a new ark 
   - PRO: minimal changes
   - CON: requires a new ark; history is lost once old object is deleted
-- Option 4: Rebuild object from storage manifest (new object_id, same ark); Purge orphaned files
+
+#### Option 4: Rebuild object from storage manifest (new object_id, same ark); Purge orphaned files
   - PRO: could save the storage manifest before and after as a provenance change; opportunity to review changes beforee applying
   - CON: does not facilitate renames 
-- Option 5: Collapse History and Reset object to V1 (same ark); Purge orphaned files; History is lost
+
+#### Option 5: Collapse History and Reset object to V1 (same ark); Purge orphaned files; History is lost
   - PRO:
     - may be easy to implement the cleanup logic, ark is retained
     - this could be a suitable solution to offer to depositors to initiate
   - CON:
     - history is lost, no provenance of change, no opportunity to preview 
-- Option 6: Collapse History and Reset object to new version (same ark); Purge orphaned files; History is documented but inaccessible
+
+#### Option 6: Collapse History and Reset object to new version (same ark); Purge orphaned files; History is documented but inaccessible
   - Introduce the concept of a "stubbed" version in manifest.xml to retain history
   - PRO:
     - ark is retained, histoy is kept, need way to retain old history without items in cloud storage
@@ -45,17 +51,20 @@
     - may complicate replic logic
     - how would the depositor visualize the stubbed history?
     - what history would exist in the inventory database?   
-- ~Option 7: Tombstone files in cloud storage to convey key deletions/key renames; History is documented but inaccessible~
+
+#### ~Option 7: Tombstone files in cloud storage to convey key deletions/key renames; History is documented but inaccessible~
   - PRO:
     - change history could be reassembled by referencing 0 byte tombstones; changes are first applied to cloud storage
   - CON:
     - David and Terry could not identify a benefit to justify this complexity
     - Tombostone files would complicate scan resolution issues
-- Option 8: Repair transactions: apply file delete and file replace transactions (conveyed in json) to an existing object to clean up he object
+
+#### Option 8: Repair transactions: apply file delete and file replace transactions (conveyed in json) to an existing object to clean up he object
   - This solution might introduce the concept of a stubbed file in the manifest.xml OR the file would be removed entirely. 
   - This is an attempt to define a generic solution around David's poposed changeToken fix
   - A flag could be included in transaction to allow/disallow the complete deletion of all files with identical checksum values
-- Option 9: Use existing tools to make current version "correct"; Apply a "PRUNE" transaction to purge files that are not in the current version of the object.
+
+#### Option 9: Use existing tools to make current version "correct"; Apply a "PRUNE" transaction to purge files that are not in the current version of the object.
   - PRO:
     - leverages existing tools
     - depositor can preview purge candidates in the Merritt UI (and in an enhanced API)
