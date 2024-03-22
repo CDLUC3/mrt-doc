@@ -152,7 +152,7 @@ public class Job extends QueueItem {
   public int priority();
   public long spaceNeeded();
 
-  public static Batch createJob(ZooKeeper client, String bid, JSONObject configuration);
+  public static Job createJob(ZooKeeper client, String bid, JSONObject configuration);
   @Override public void loadProperties(ZooKeeper client);
   public void setPriority(ZooKeeper client, int priority);
   public void setSpaceNeeded(ZooKeeper client, long space_needed);
