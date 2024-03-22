@@ -95,7 +95,13 @@
       - delete prune-able keys from primary storage
       - remove pruned keys from the storage manifest (or mark them as pruned)
       - trigger an inventory rebuild
-      - trigger a re-replication of the entire object  
+      - trigger a re-replication of the entire object
+  - Other Notes
+    - The current billing process does not account for content deletion.  If a motivation for fixing content is to reduce cost, we will need to add features to decrement billing numbers
+      - tombstone deleted file data to a new database table
+      - run a monthy reconciliation process (as needed by collection?) to account for content removal
+    - Consider an API feature that would allow a user identify content that could be pruned
+    - Create a report to total prune-able counts at a collection level   
 
 ### Alter Object Hierarchy
 - Change Owner
