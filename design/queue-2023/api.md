@@ -255,8 +255,12 @@ abstract public class QueueItem
 }
 
 public class Batch extends QueueItem {
+  private boolean hasFailure;
+
   public Batch(String id);
   public Batch(String id, JSONObject data);
+
+  public boolean hasFailure();
 
   public static String dir();
   public static String prefix();
