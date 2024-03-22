@@ -86,7 +86,14 @@ abstract public class QueueItem
   public int intProperty(ZooKeeper client, ZKKey key) throws MerrittZKNodeInvalid;
   public long longProperty(ZooKeeper client, ZKKey key) throws MerrittZKNodeInvalid;
   public void setData(ZooKeeper client, ZKKey key, Object data) throws MerrittZKNodeInvalid;
+
+  public abstract String dir();
+  public abstract String prefix();
+  public abstract IngestState initState();
+  public abstract IngestState[] states();
   public String path();
+  public String prefixPath();
+
   public static String serialize(Object data);
   public static String createId(ZooKeeper client, String prefix);
   public JSONObject statusObject(IngestState status);
@@ -104,9 +111,11 @@ public class Batch extends QueueItem {
 
   public boolean hasFailure();
 
-  public static String dir();
-  public static String prefix();
-  public static String prefixPath();
+  public String dir();
+  public String prefix();
+  public IngestState initState();
+  public IngestState[] states();
+
   public static Batch createBatch(ZooKeeper client, JSONObject submission);
 
   public void delete(ZooKeeper client) throws MerrittStateError;
@@ -121,6 +130,11 @@ public class Job extends QueueItem {
   private long space_needed;
   private String jobStatePath;
   private String batchStatePath;
+
+  public String dir();
+  public String prefix();
+  public IngestState initState();
+  public IngestState[] states();
 
   public Job(String id, String bid);
   public Job(String id, String bid, JSONObject data);
