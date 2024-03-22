@@ -1,6 +1,4 @@
-# Merritt ZK API
-
-# Java API
+# Merritt ZK Java API
 
 ## States
 
