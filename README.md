@@ -160,7 +160,8 @@ Code Repositories
   - [Jenkins Functions](https://github.com/CDLUC3/mrt-jenkins)
 - Other
   - [Merritt Ansible Deployment Tools](https://github.com/CDLUC3/mrt-ansible-service-restart)  
-  - [Merritt LDAP Permission Tools](https://github.com/CDLUC3/merritt_ldap_tools)  
+  - [Merritt LDAP Permission Tools](https://github.com/CDLUC3/merritt_ldap_tools)
+  - [Merritt Maintenance Scripts](https://github.com/CDLUC3/mrt-maint)
 
 ### Documentation Tools (Python)
 -  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
