@@ -1,6 +1,6 @@
 # Merritt ZK Ruby API
 
-- [Design](README.md)
+- [Design](README.md) / [API](api.md)
 
 ## States
 
