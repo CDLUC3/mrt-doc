@@ -92,7 +92,6 @@ abstract public class QueueItem
   public abstract IngestState initState();
   public abstract IngestState[] states();
   public String path();
-  public String prefixPath();
 
   public static String serialize(Object data);
   public static String createId(ZooKeeper client, String prefix);
@@ -115,6 +114,7 @@ public class Batch extends QueueItem {
   public String prefix();
   public IngestState initState();
   public IngestState[] states();
+  public static String prefixPath();
 
   public static Batch createBatch(ZooKeeper client, JSONObject submission);
 
@@ -135,6 +135,7 @@ public class Job extends QueueItem {
   public String prefix();
   public IngestState initState();
   public IngestState[] states();
+  public static String prefixPath();
 
   public Job(String id, String bid);
   public Job(String id, String bid, JSONObject data);
