@@ -1,5 +1,7 @@
 # Merritt ZK Java API
 
+- [Design](README.md) / [API](api.md)
+
 ## States
 
 ```java
