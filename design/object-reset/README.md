@@ -54,7 +54,39 @@
 - Option 8: Repair transactions: apply file delete and file replace transactions (conveyed in json) to an existing object to clean up he object
   - This solution might introduce the concept of a stubbed file in the manifest.xml OR the file would be removed entirely. 
   - This is an attempt to define a generic solution around David's poposed changeToken fix
-  - A flag could be included in transaction to allow/disallow the complete deletion of all files with identical checksum values 
+  - A flag could be included in transaction to allow/disallow the complete deletion of all files with identical checksum values
+- Option 9: Use existing tools to make current version "correct"; Apply a "PRUNE" transaction to purge files that are not in the current version of the object.
+  - PRO:
+    - leverages existing tools
+    - depositor can preview purge candidates in the Merritt UI (and in an enhanced API)
+    - depositor initiates the PRUNE
+    - provenance can be recorded when the PRUNE is applied
+      - should we record a new version to save this provenance information?
+  - CON:
+    - fix is a 2 step process  
+  - Process Description
+    - Repair option 1 (for depositors)
+      - use mrt-delete files to correct the current object
+    - Repair option 2 (for depositors and Merritt Team) 
+      - run a Merritt ADD using a storage-generated ingest manifest for reconstruction
+        - generate the baseline manifest from the current version
+    - Repair option 3 (for Merritt Team) 
+      - run a Merritt ADD using a storage-generated ingest manifest for reconstruction
+        - generate the baseline manifest from ALL versions
+        - this would allow versioning mistakes to be created
+    - Submit the Repair manifest as a Merritt ADD
+    - Review the correction in the Merritt UI
+      - The Merritt Object API could add a JSON array of "prune candidates" from prior versions
+    - Apply a Merritt PRUNE transaction
+      - Submit this through ingest with no payload
+    - Prune options
+      - prune any file key that has not been pulled forward to the current version
+      - prune any file key that has not been pulled forward to the current version AND that has a duplicate checksum on a different key
+    - Storage will
+      - delete prune-able keys from primary storage
+      - remove pruned keys from the storage manifest (or mark them as pruned)
+      - trigger an inventory rebuild
+      - trigger a re-replication of the entire object  
 
 ### Alter Object Hierarchy
 - Change Owner
