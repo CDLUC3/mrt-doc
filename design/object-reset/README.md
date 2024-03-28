@@ -79,6 +79,8 @@
     - Repair option 2 (for depositors and Merritt Team) 
       - run a Merritt ADD using a storage-generated ingest manifest for reconstruction
         - generate the baseline manifest from the current version
+        - if we expose the storage manifest paths as an input format, what restrictions do we need to set on the use of these patterns?  Or, should the use of these paths be a privileged operation?
+        - question - can the manifest be modified so that a rename effectively takes place?
     - Repair option 3 (for Merritt Team) 
       - run a Merritt ADD using a storage-generated ingest manifest for reconstruction
         - generate the baseline manifest from ALL versions
