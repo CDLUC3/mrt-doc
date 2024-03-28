@@ -11,8 +11,7 @@ Apply a "PRUNE" transaction to purge files that are not in the current version o
 - leverages existing tools
 - depositor can preview purge candidates in the Merritt UI (and in an enhanced API)
 - depositor initiates the PRUNE
-- provenance can be recorded when the PRUNE is applied
-  - should we record a new version to save this provenance information?
+- provenance should be recorded when the PRUNE is applied
 
 ### CON:
 - fix is a 2 step process  
@@ -214,9 +213,10 @@ versions:
 ### Repair option 2 (for depositors and Merritt Team) 
 - run a Merritt ADD using a storage-generated ingest manifest for reconstruction
  - generate the baseline manifest from the current version
- - if we expose the storage manifest paths as an input format, what restrictions do we need to set on the use of these patterns?  Or, should the use of these paths be a privileged operation?
- - question - can the manifest be modified so that a rename effectively takes place?
 
+> [!CAUTION]
+> Storage generated manifests will contain presigned URL's.  We will need to ensure that appropriate trust is in place before providing these URLs to end users.
+> Manifests must be processed before the presigned URL's expire.  This might be complicated to offer to depositors.
 
 <details>
 <summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
@@ -236,6 +236,10 @@ https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha
 https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
 https://storage.provider/ark:/test/foo|2|producer/kitty.txt?presigned-params | sha256 | aaa | 111 | datetime | kitty.txt | text/plain
 ```
+
+> [!NOTE]
+> By modifying the `nfo:fileName` column, the user can process a file rename.
+
 </details>
 
 
