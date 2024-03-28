@@ -4,4 +4,4 @@
 
 ## Implementations
 - [Ruby API](ruby-api.md)
-- [Java API](java-api.md)
+- [Java API](https://cdluc3.github.io/merritt-tinker/org/cdlib/mrt/package-summary.html)
