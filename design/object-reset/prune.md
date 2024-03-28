@@ -237,11 +237,10 @@ https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha
 https://storage.provider/ark:/test/foo|2|producer/kitty.txt?presigned-params | sha256 | aaa | 111 | datetime | kitty.txt | text/plain
 ```
 
-> [!NOTE]
-> By modifying the `nfo:fileName` column, the user can process a file rename.
-
 </details>
 
+> [!NOTE]
+> By modifying the `nfo:fileName` column in the generated manifest, the user can process a file rename.  Storage will treat that file as an addition.
 
 ### Repair option 3 (for Merritt Team) 
 - run a Merritt ADD using a storage-generated ingest manifest for reconstruction
@@ -271,6 +270,9 @@ https://storage.provider/ark:/test/foo|2|producer/kitty.txt?presigned-params | s
 </details>
 
 ## Submit the Repair manifest as a Merritt ADD
+
+> [!NOTE]
+> Because the pathname, checksum, and file size are unchanged; the storage service will utilizie the existing storage keys rather than creating new files in version 4.
 
 
 <details>
