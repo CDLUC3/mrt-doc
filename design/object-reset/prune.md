@@ -156,23 +156,6 @@ versions:
  - if we expose the storage manifest paths as an input format, what restrictions do we need to set on the use of these patterns?  Or, should the use of these paths be a privileged operation?
  - question - can the manifest be modified so that a rename effectively takes place?
 
-<details>
-<summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
-
-### Merritt ingest manifest generated from storage (iterated over all versions)
-```
-#%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
-https://storage.provider/ark:/test/foo|1|producer/cat.txt?presigned-params | sha256 | aaa | 111 | datetime | cat.txt | text/plain
-https://storage.provider/ark:/test/foo|2|producer/dog.txt?presigned-params | sha256 | bbb | 112 | datetime | dog.txt | text/plain
-https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
-```
-
-</details>
-
-### Repair option 3 (for Merritt Team) 
-- run a Merritt ADD using a storage-generated ingest manifest for reconstruction
- - generate the baseline manifest from ALL versions
- - this would allow versioning mistakes to be created
 
 <details>
 <summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
@@ -189,6 +172,38 @@ https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha
 #%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
 https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
 ```
+</details>
+
+
+### Repair option 3 (for Merritt Team) 
+- run a Merritt ADD using a storage-generated ingest manifest for reconstruction
+ - generate the baseline manifest from ALL versions
+ - this would allow versioning mistakes to be created
+
+<details>
+<summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
+
+### Merritt ingest manifest generated from storage (iterated over all versions)
+```
+#%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
+https://storage.provider/ark:/test/foo|1|producer/cat.txt?presigned-params | sha256 | aaa | 111 | datetime | cat.txt | text/plain
+https://storage.provider/ark:/test/foo|2|producer/dog.txt?presigned-params | sha256 | bbb | 112 | datetime | dog.txt | text/plain
+https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
+```
+
+### Merritt ingest manifest generated from storage (edited to remove cat.txt and to select a specific version of dog.txt)
+```
+#%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
+https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
+```
+
+</details>
+
+## Submit the Repair manifest as a Merritt ADD
+
+
+<details>
+<summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
 
 ### Version 4: Process ADD using manifest above
 ```yaml
@@ -232,13 +247,12 @@ versions:
 
 </details>
 
-## Submit the Repair manifest as a Merritt ADD
-
 ## Review the correction in the Merritt UI
 - The Merritt Object API could add a JSON array of "prune candidates" from prior versions
 
 ## Apply a Merritt PRUNE transaction
-      - Submit this through ingest with no payload
+Submit this through ingest with no payload
+
 ### Prune options
 - prune any file key that has not been pulled forward to the current version
 - prune any file key that has not been pulled forward to the current version AND that has a duplicate checksum on a different key
