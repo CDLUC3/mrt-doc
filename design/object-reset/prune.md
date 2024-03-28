@@ -19,8 +19,136 @@ Apply a "PRUNE" transaction to purge files that are not in the current version o
 
 ## Process Description
 
+<details>
+<summary>Sample Storage Manifest</summary>
+
+### Version 1: Add cat.txt
+```yaml
+ark: ark:/test/foo
+local_id: loc
+versions:
+- number: 1
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+```
+
+### Version 2: Add dog.txt
+
+```yaml
+ark: ark:/test/foo
+local_id: loc
+versions:
+- number: 1
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+- number: 2
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+    producer/dog.txt:
+      key: ark:/test/foo|2|producer/dog.txt
+      size: 112
+      digest: bbb
+```
+
+### Version 3: Update dog.txt
+
+```yaml
+ark: ark:/test/foo
+local_id: loc
+versions:
+- number: 1
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+- number: 2
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+    producer/dog.txt:
+      key: ark:/test/foo|2|producer/dog.txt
+      size: 112
+      digest: bbb
+- number: 3
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+```
+
+
+</details>
+
 ### Repair option 1 (for depositors)
 - use mrt-delete files to correct the current object
+
+<details>
+<summary>Sample Storage Manifest after mrt-delete.txt</summary>
+
+### Merritt delete file
+```
+producer/cat.txt
+```
+
+### Version 4: Process Merritt Delete of cat.txt
+
+```yaml
+ark: ark:/test/foo
+local_id: loc
+versions:
+- number: 1
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+- number: 2
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+    producer/dog.txt:
+      key: ark:/test/foo|2|producer/dog.txt
+      size: 112
+      digest: bbb
+- number: 3
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+- number: 4
+  files:
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+    system/mrt-delete.txt:
+```
+
+</details>
 
 ### Repair option 2 (for depositors and Merritt Team) 
 - run a Merritt ADD using a storage-generated ingest manifest for reconstruction
@@ -28,10 +156,81 @@ Apply a "PRUNE" transaction to purge files that are not in the current version o
  - if we expose the storage manifest paths as an input format, what restrictions do we need to set on the use of these patterns?  Or, should the use of these paths be a privileged operation?
  - question - can the manifest be modified so that a rename effectively takes place?
 
+<details>
+<summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
+
+### Merritt ingest manifest generated from storage (iterated over all versions)
+```
+#%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
+https://storage.provider/ark:/test/foo|1|producer/cat.txt?presigned-params | sha256 | aaa | 111 | datetime | cat.txt | text/plain
+https://storage.provider/ark:/test/foo|2|producer/dog.txt?presigned-params | sha256 | bbb | 112 | datetime | dog.txt | text/plain
+https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
+```
+
+</details>
+
 ### Repair option 3 (for Merritt Team) 
 - run a Merritt ADD using a storage-generated ingest manifest for reconstruction
  - generate the baseline manifest from ALL versions
  - this would allow versioning mistakes to be created
+
+<details>
+<summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
+
+### Merritt ingest manifest generated from storage
+```
+#%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
+https://storage.provider/ark:/test/foo|1|producer/cat.txt?presigned-params | sha256 | aaa | 111 | datetime | cat.txt | text/plain
+https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
+```
+
+### Merritt ingest manifest generated from storage (edited to remove cat.txt)
+```
+#%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
+https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
+```
+
+### Version 4: Process ADD using manifest above
+```yaml
+ark: ark:/test/foo
+local_id: loc
+versions:
+- number: 1
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+- number: 2
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+    producer/dog.txt:
+      key: ark:/test/foo|2|producer/dog.txt
+      size: 112
+      digest: bbb
+- number: 3
+  files:
+    producer/cat.txt:
+      key: ark:/test/foo|1|producer/cat.txt
+      size: 111
+      digest: aaa
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+- number: 4
+  files:
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+    system/mrt-ingest.txt:
+```
+
+</details>
 
 ## Submit the Repair manifest as a Merritt ADD
 
