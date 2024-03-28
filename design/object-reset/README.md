@@ -1,5 +1,8 @@
 # Object Version Reset
 
+## Object Prune
+- [Object Prune Design](prune.md)
+
 ## Solution Categories
 
 ### Note about existing manifests
