@@ -22,7 +22,7 @@ Apply a "PRUNE" transaction to purge files that are not in the current version o
 <details>
 <summary>Sample Storage Manifest</summary>
 
-### Version 1: Add cat.txt
+### Version 1: Add cat.txt and goat.txt
 ```yaml
 ark: ark:/test/foo
 local_id: loc
@@ -33,9 +33,13 @@ versions:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
 ```
 
-### Version 2: Add dog.txt
+### Version 2: Add dog.txt; add kitty.txt which is identical to cat.txt
 
 ```yaml
 ark: ark:/test/foo
@@ -47,16 +51,28 @@ versions:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
 - number: 2
   files:
     producer/cat.txt:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
     producer/dog.txt:
       key: ark:/test/foo|2|producer/dog.txt
       size: 112
       digest: bbb
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
 ```
 
 ### Version 3: Update dog.txt
@@ -71,26 +87,46 @@ versions:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
 - number: 2
   files:
     producer/cat.txt:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
     producer/dog.txt:
       key: ark:/test/foo|2|producer/dog.txt
       size: 112
       digest: bbb
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
 - number: 3
   files:
     producer/cat.txt:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
     producer/dog.txt:
       key: ark:/test/foo|3|producer/dog.txt
       size: 113
       digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
 ```
 
 
@@ -105,9 +141,10 @@ versions:
 ### Merritt delete file
 ```
 producer/cat.txt
+producer/goat.txt
 ```
 
-### Version 4: Process Merritt Delete of cat.txt
+### Version 4: Process Merritt Delete of cat.txt and goat.txt
 
 ```yaml
 ark: ark:/test/foo
@@ -119,32 +156,56 @@ versions:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
 - number: 2
   files:
     producer/cat.txt:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
     producer/dog.txt:
       key: ark:/test/foo|2|producer/dog.txt
       size: 112
       digest: bbb
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
 - number: 3
   files:
     producer/cat.txt:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
     producer/dog.txt:
       key: ark:/test/foo|3|producer/dog.txt
       size: 113
       digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
 - number: 4
   files:
     producer/dog.txt:
       key: ark:/test/foo|3|producer/dog.txt
       size: 113
       digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
     system/mrt-delete.txt:
 ```
 
@@ -164,6 +225,8 @@ versions:
 ```
 #%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
 https://storage.provider/ark:/test/foo|1|producer/cat.txt?presigned-params | sha256 | aaa | 111 | datetime | cat.txt | text/plain
+https://storage.provider/ark:/test/foo|1|producer/goat.txt?presigned-params | sha256 | ddd | 444 | datetime | goat.txt | text/plain
+https://storage.provider/ark:/test/foo|2|producer/kitty.txt?presigned-params | sha256 | aaa | 111 | datetime | kitty.txt | text/plain
 https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
 ```
 
@@ -171,6 +234,7 @@ https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha
 ```
 #%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
 https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
+https://storage.provider/ark:/test/foo|2|producer/kitty.txt?presigned-params | sha256 | aaa | 111 | datetime | kitty.txt | text/plain
 ```
 </details>
 
@@ -187,7 +251,9 @@ https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha
 ```
 #%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
 https://storage.provider/ark:/test/foo|1|producer/cat.txt?presigned-params | sha256 | aaa | 111 | datetime | cat.txt | text/plain
+https://storage.provider/ark:/test/foo|1|producer/goat.txt?presigned-params | sha256 | ddd | 444 | datetime | goat.txt | text/plain
 https://storage.provider/ark:/test/foo|2|producer/dog.txt?presigned-params | sha256 | bbb | 112 | datetime | dog.txt | text/plain
+https://storage.provider/ark:/test/foo|2|producer/kitty.txt?presigned-params | sha256 | aaa | 111 | datetime | kitty.txt | text/plain
 https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
 ```
 
@@ -195,6 +261,7 @@ https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha
 ```
 #%columns | nfo:fileURL | nfo:hashAlgorithm | nfo:hashValue | nfo:fileSize | nfo:fileLastModified | nfo:fileName | nie:mimeType
 https://storage.provider/ark:/test/foo|3|producer/dog.txt?presigned-params | sha256 | ccc | 113 | datetime | dog.txt | text/plain
+https://storage.provider/ark:/test/foo|2|producer/kitty.txt?presigned-params | sha256 | aaa | 111 | datetime | kitty.txt | text/plain
 ```
 
 </details>
@@ -216,32 +283,56 @@ versions:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
 - number: 2
   files:
     producer/cat.txt:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
     producer/dog.txt:
       key: ark:/test/foo|2|producer/dog.txt
       size: 112
       digest: bbb
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
 - number: 3
   files:
     producer/cat.txt:
       key: ark:/test/foo|1|producer/cat.txt
       size: 111
       digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
     producer/dog.txt:
       key: ark:/test/foo|3|producer/dog.txt
       size: 113
       digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
 - number: 4
   files:
     producer/dog.txt:
       key: ark:/test/foo|3|producer/dog.txt
       size: 113
       digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
     system/mrt-ingest.txt:
 ```
 
@@ -256,6 +347,165 @@ Submit this through ingest with no payload
 ### Prune options
 - prune any file key that has not been pulled forward to the current version
 - prune any file key that has not been pulled forward to the current version AND that has a duplicate checksum on a different key
+
+<details>
+<summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
+
+### Version 5: Process PRUNE (prune all)
+```yaml
+ark: ark:/test/foo
+local_id: loc
+versions:
+- number: 1
+  files:
+    producer/cat.txt:
+      pruned: true
+      size: 111
+      digest: aaa
+    producer/goat.txt:
+      pruned: true
+      size: 444
+      digest: ddd
+- number: 2
+  files:
+    producer/cat.txt:
+      pruned: true
+      size: 111
+      digest: aaa
+    producer/goat.txt:
+      pruned: true
+      size: 444
+      digest: ddd
+    producer/dog.txt:
+      key: ark:/test/foo|2|producer/dog.txt
+      size: 112
+      digest: bbb
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
+- number: 3
+  files:
+    producer/cat.txt:
+      pruned: true
+      size: 111
+      digest: aaa
+    producer/goat.txt:
+      pruned: true
+      size: 444
+      digest: ddd
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
+- number: 4
+  files:
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
+    system/mrt-ingest.txt:
+- number: 5
+  files:
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
+    system/mrt-provenance.txt:
+```
+</details>
+
+<details>
+<summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
+
+### Version 4: Process PRUNE (prune only if a checksum is duplicated in the current version)
+```yaml
+ark: ark:/test/foo
+local_id: loc
+versions:
+- number: 1
+  files:
+    producer/cat.txt:
+      pruned: true
+      size: 111
+      digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
+- number: 2
+  files:
+    producer/cat.txt:
+      pruned: true
+      size: 111
+      digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
+    producer/dog.txt:
+      key: ark:/test/foo|2|producer/dog.txt
+      size: 112
+      digest: bbb
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
+- number: 3
+  files:
+    producer/cat.txt:
+      pruned: true
+      size: 111
+      digest: aaa
+    producer/goat.txt:
+      key: ark:/test/foo|1|producer/goat.txt
+      size: 444
+      digest: ddd
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
+- number: 4
+  files:
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
+    system/mrt-ingest.txt:
+- number: 5
+  files:
+    producer/dog.txt:
+      key: ark:/test/foo|3|producer/dog.txt
+      size: 113
+      digest: ccc
+    producer/kitty.txt:
+      key: ark:/test/foo|2|producer/kitty.txt
+      size: 111
+      digest: aaa
+    system/mrt-provenance.txt:
+```
+
+</details>
 
 ## Storage actions
 - delete prune-able keys from primary storage
