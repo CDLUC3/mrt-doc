@@ -1,3 +1,7 @@
+# docker run --rm -v "$(pwd):/data" minlag/mermaid-cli:latest -i /data/states.mdd
+
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose', 'themeVariables': {'fontFamily': 'arial'}}}%%
+
 graph LR
   START --> Pending
   click START "javascript:alert(222)" "Tip"
