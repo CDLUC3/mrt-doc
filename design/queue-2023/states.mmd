@@ -13,6 +13,7 @@ graph LR
   UpdateReporting --> COMPLETED
   Failed -.-> DELETED
   Held -.-> DELETED
+end
 
 graph TD
   START --> Pending
@@ -35,3 +36,4 @@ graph TD
   Failed -.-> Notify
   Failed -.-> DELETED
   Held -.-> DELETED
+end
