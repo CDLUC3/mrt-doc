@@ -1,39 +1,6 @@
-%%{init: {'theme': 'neutral', 'securityLevel': 'loose', 'themeVariables': {'fontFamily': 'arial'}}}%%
-graph LR
-  START --> Pending
-  click START "javascript:alert(222)" "Tip"
-  Pending --> Held
-  Pending --> Processing
-  Held -.-> Processing
-  Processing --> Reporting
-  Reporting --> COMPLETED
-  Reporting --> Failed
-  Failed -.-> UpdateReporting
-  UpdateReporting --> Failed
-  UpdateReporting --> COMPLETED
-  Failed -.-> DELETED
-  Held -.-> DELETED
-end
+## make svg
+```sh
+docker run --rm -v "$(pwd):/data" minlag/mermaid-cli:latest -i /data/batches.mmd
+docker run --rm -v "$(pwd):/data" minlag/mermaid-cli:latest -i /data/jobs.mmd
+```
 
-graph TD
-  START --> Pending
-  Pending --> Held
-  Pending --> Estimating
-  Held -.-> Pending
-  Estimating --> Provisioning
-  Provisioning --> Downloading
-  Downloading --> Processing
-  Downloading --> Failed
-  Failed -.-> Downloading
-  Processing --> Recording
-  Processing --> Failed
-  Failed -.-> Processing
-  Recording --> Notify
-  Recording --> Failed
-  Failed -.-> Recording
-  Notify --> COMPLETED
-  Notify --> Failed
-  Failed -.-> Notify
-  Failed -.-> DELETED
-  Held -.-> DELETED
-end
