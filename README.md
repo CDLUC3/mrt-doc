@@ -134,7 +134,10 @@ Code Repositories
   - [Core](https://github.com/CDLUC3/mrt-core2)
   - [Cloud](https://github.com/CDLUC3/mrt-cloud)
   - [Zoo](https://github.com/CDLUC3/mrt-zoo)
+    - to be deprecated 
   - [ZK Queue](https://github.com/CDLUC3/cdl-zk-queue)
+    - to be deprecated 
+  - [Merritt ZK 20204 Refactor](https://github.com/CDLUC3/mrt-zk)
 - Ruby
   - [SSM Gem](https://github.com/CDLUC3/uc3-ssm) - Shared with other UC3 services
   - [Merritt Atom](https://github.com/cdluc3/mrt-atom) - Nuxeo processing for ingest
