@@ -524,3 +524,23 @@ versions:
   - tombstone deleted file data to a new database table
   - run a monthy reconciliation process (as needed by collection?) to account for content removal
 - Create a report to total prune-able counts at a collection level   
+
+
+----
+## Nuxeo Brainstorming
+
+1 foo.pdf?change=1 dig=aaa
+2 foo.pdf?change=2 dig=aaa
+3 foo.pdf?change=3 dig=bbb
+4 foo.pdf?change=4 dig=ccc
+5 foo.pdf?change=5 dig=ccc
+6 foo.pdf dig=ccc
+
+After Prune algorithm 1
+6 foo.pdf dig=ccc
+
+After Prune algorithm 2
+1 foo.pdf?change=1 dig=aaa
+2 foo.pdf?change=2 dig=aaa
+3 foo.pdf?change=3 dig=bbb
+6 foo.pdf dig=ccc
