@@ -347,10 +347,12 @@ versions:
 ## Review the correction in the Merritt UI
 - The Merritt Object API could add a JSON array of "prune candidates" from prior versions
 
-## Apply a Merritt PRUNE transaction
+## Ingest: Apply a Merritt PRUNE transaction
 - Submit this through ingest with no payload
 - ### Question: what does this transaction look like for ingest?
 - ### Question: what happens if we enable more than one pruning algorithm?
+
+## Storage: Apply Prune Algorithm
 
 ### Prune Alororithm 1: Prune any pathname ("fileid") not in the current version
 - prune any pathname ("file id") that has not been pulled forward to the current version
