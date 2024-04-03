@@ -1,5 +1,52 @@
 ## Sprint Goals
 
+#### Sprint 101:  March 27, 2023 - April 16, 2024
+- Ingest
+  - Investigate approaches to supporting additional ZK states: #1441
+  - Define and implement new Merritt ZK library: #1828
+  - https://github.com/CDLUC3/mrt-doc/blob/main/design/queue-2023/states.md
+  - Migrate queue admin to Admin Tool: #1819
+  - Migrate non core "Admin" tasks in Ingest to the Merritt Admin Tool: #1796
+- Dryad object deletes
+  - Dryad removal plan: #71
+  - Review and update documentation: #72
+  - Delete scripts being integrated with new Storage servers
+- Storage, Update object strategy
+  - Feature to update object/file information in Merritt: #1720
+  - Store object “reset”: #1774
+  - String together object modification features: #1775
+  - File names generated via Nuxeo harvest include unneeded characters: #1655
+  - Explore Magika for file identification #1795
+- Merritt UI
+  - Dependabot: mrt-dashboard gem updates: #1825
+  - Expose object api endpoint for end user
+- Devops
+  - UI: update to Ruby 3.2, deploy new servers
+  - Cron for mrt-ansible-service-restart playbook: #1761
+  - Ansible documentation: #1778, #1779
+  - OpenSearch documentation: #74
+  - Tomcat 8.5 is EOL in March: #54
+  - Bulk correct n2t entries that resolve to merritt-aws.cdlib.org #1782
+- Dependency updates
+  - BOM 1.7: #1823
+- End-to-end tests
+  - Modify V1/V2 End to End Test Cases to Validate Add vs Update behavior: #1834
+  - Integration test - Add UTF-8 local ID: #1835
+- Collection Health Prototype
+  - LOC presentation
+  - Analysis documentation
+- UCB Law Robbins Collection
+  - Batch 3 ingest: RBN-04: #1776
+  - Batch 4 ingest: BSLW-RBN-02
+
+#### Releases:
+Stage:
+- BOM 1.7
+- UI gem updates
+Production:
+- BOM 1.7
+- UI gem updates
+
 #### Sprint 100:  March 6, 2024 - March 26, 2024
 - Ingest
   - Investigate approaches to supporting additional ZK states: #1441
