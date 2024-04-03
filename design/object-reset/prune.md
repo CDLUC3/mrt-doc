@@ -529,6 +529,7 @@ versions:
 ----
 ## Nuxeo Brainstorming
 
+```
 1 foo.pdf?change=1 dig=aaa
 2 foo.pdf?change=2 dig=aaa
 3 foo.pdf?change=3 dig=bbb
@@ -544,3 +545,4 @@ After Prune algorithm 2
 2 foo.pdf?change=2 dig=aaa
 3 foo.pdf?change=3 dig=bbb
 6 foo.pdf dig=ccc
+```
