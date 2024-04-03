@@ -350,14 +350,13 @@ versions:
 ## Apply a Merritt PRUNE transaction
 Submit this through ingest with no payload
 
-### Prune options
-- prune any file key that has not been pulled forward to the current version
-- prune any file key that has not been pulled forward to the current version AND that has a duplicate checksum on a different key
+### Prune Alororithm 1: Prune any pathname ("fileid") not in the current version
+- prune any pathname ("file id") that has not been pulled forward to the current version
 
 <details>
 <summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
 
-### Version 5: Process PRUNE (prune all)
+### Version 5: Process PRUNE (prune cat.txt and goat.txt)
 ```yaml
 ark: ark:/test/foo
 local_id: loc
@@ -433,10 +432,14 @@ versions:
 ```
 </details>
 
+### Prune Algorithm 2: Prune any pathname ("fileid") not in the current version IF the file's checksum exists in the current version of the object
+- prune any pathname ("fileid") that has not been pulled forward to the current version IF the file's checksum exists in the current version of the object under a different pathname ("fileid")
+- this is a more conservative option that ensures no unique digital files will be purged
+
 <details>
 <summary>Sample Storage Manifest: ADD from ingest manfiest</summary>
 
-### Version 4: Process PRUNE (prune only if a checksum is duplicated in the current version)
+### Version 5: Process PRUNE (prune only cat.txt)
 ```yaml
 ark: ark:/test/foo
 local_id: loc
@@ -537,12 +540,12 @@ versions:
 5 foo.pdf?change=5 dig=ccc
 6 foo.pdf dig=ccc
 
-After Prune algorithm 1
+After Prune algorithm 1 (deletes 5 files)
 6 foo.pdf dig=ccc
 
-After Prune algorithm 2
+After Prune algorithm 2 (deletes 2 files)
 1 foo.pdf?change=1 dig=aaa
-2 foo.pdf?change=2 dig=aaa
+2 foo.pdf?change=2 dig=aaa # the algorithm does not catch that this is duplicated elsewhere
 3 foo.pdf?change=3 dig=bbb
 6 foo.pdf dig=ccc
 ```
