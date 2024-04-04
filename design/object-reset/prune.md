@@ -520,6 +520,14 @@ versions:
 
 </details>
 
+### Prune Algorithm 3: Prune and Push Corrected Pathnames To Older Versions (not fully documented)
+- Identify prune candidates as in Algorithm 1
+- If a matching checksum exists in the current version
+  - Restroactively rename the older version/file to use the pathname of the current version/file with a matching checksum
+  - Rebuild history to use the corrected pathname in all subsequent versions
+- _This could more assertively clean up the changeToken issues in Nuxeo content_
+ 
+
 ## Storage actions
 - delete prune-able keys from primary storage
 - remove pruned keys from the storage manifest (or mark them as pruned)
