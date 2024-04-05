@@ -35,17 +35,15 @@
     - Improve Notification System - after interrupt
     - Separate Job and Batch Queue - Batch Queue is responsible for notification
 - Terry
-  - Queue redesign
   - Migrate ZK admin functionality from Ingest to Admin tool
+  - Merritt Dev Cloud Front Server
   - Refine admin tool with usability suggestions
-  - Deploy FITS as lambda in UC3 account
   - Migrate Docker stack to UC3 account
   - Refine collection health tools based on feedback
 - Ashley 
-  - AL2023 - Tomcat 9
-  - AL2023 - Ruby 3.2
+  - New Dev boxes (AL2023): Jenkins, Docker, David's Sandbox
   - GitHub/CodeBuild for Private Repo Resources
-  - New Jenkins server
+  - Misc Servers AL2023: LDAP, ZK, Batch
 - Eric
   - Collection Health Reports
   - ETDs
