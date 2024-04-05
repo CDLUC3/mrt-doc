@@ -1,4 +1,4 @@
-# Merritt Object Guidance
+# Merritt Object Guidance and Capacity Planning
 
 _Notes derived from [#1285](https://github.com/CDLUC3/mrt-doc/issues/1285)_
 
