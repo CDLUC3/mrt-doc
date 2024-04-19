@@ -5,8 +5,10 @@
 
 - David
   - Major Migrations
-    - Dryad content cleanup
     - SDSC storage migration
+  - Zookeeper
+    - Migrate inventory to mrt-zk
+    - Migrate Storage/Access to mrt-zk  
   - Resume Storage Admin Work
     - Delete object via admin tool
     - Create object tombstone
@@ -25,6 +27,7 @@
   - Later/Misc
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
     - Normalize JSON handling across services
+    - Eliminate DIA code
 - Mark
   - Queue redesign
     - Allow ingest jobs to run on any server
