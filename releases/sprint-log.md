@@ -1,5 +1,47 @@
 ## Sprint Goals
 
+#### Sprint 102:  April, 17 2023 - May 7, 2024
+- Ingest
+  - Investigate approaches to supporting additional ZK states: #1441
+  - Ingest implementation with mrt-zk library
+  - Migrate queue admin to Admin Tool: #1819
+  - Migrate non core "Admin" tasks in Ingest to the Merritt Admin Tool: #1796
+  - mrt-zk: support legacy queue structure for admin tool integration (ruby): #1866
+  - mrt-zk: support storage locks and access queue functions (java and ruby): #1867
+- Dryad object deletes
+  - Review and update documentation: #72
+  - Remove Dryad user and collection LDAP entries from Stage and Prod: #88
+  - Remove Dryad collection content on Stage: # (forthcoming)
+- Storage, Update object strategy
+  - Storage "fix" - Inventory "replace" methods: #1815
+  - Feature to update object/file information in Merritt: #1720
+  - Store object “reset”: #1774
+  - String together object modification features: #1775
+  - File names generated via Nuxeo harvest include unneeded characters: #1655
+- Coll Admin
+  - jquery error occurs during profile creation process: #1862
+  - Unable to reach the collection admin object submission page in Coll Admin: #1863
+- Devops
+  - Ansible documentation: #1778, #1779
+  - OpenSearch documentation: #74
+- Dependency updates
+  - BOM 1.8: #1855
+- End-to-end tests
+  - Integration test - Add UTF-8 local ID: #1835
+- Collection Health Prototype
+  - Analysis documentation
+  - Consider sample output in PDF form to accompany documentation
+- UCB Law Robbins Collection
+  - Batch 4 ingest: BSLW-RBN-02
+  - File lists to confirm re: removing earlier batch content from ZFS
+
+#### Releases:
+Stage:
+- BOM 1.8
+- Ingest ZK implementation
+Production:
+- BOM 1.8
+  
 #### Sprint 101:  March 27, 2023 - April 16, 2024
 - Ingest
   - Investigate approaches to supporting additional ZK states: #1441
