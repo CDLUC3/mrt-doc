@@ -7,19 +7,18 @@ _This is still a draft document.  The team continues to review and make adjustme
   - Be especially careful before a holiday weekened or curtailment
 - For ALL deployments: Post a note in #uc3-maint one day prior to the release
 - Avoid releases before the responsible developer goes on vacation
-- Activity that impacts Dryad should be scheduled between 4p - 6p
 - We need to avoid being overly scrupulous about this window since it impacts our release velocity
 
 | Service    | Coordinate with Dryad to Pause?  | Window    | Pause to Shutdown Duration | Notes        |
 | -----------| ------------------ | ---------- | ---- |----------------|
 | Ingest     | No Pause           | 9-5p, M-W   |  |            |
 | Store      | No Pause           | 9-5p, M-W   | 30 min aft removal from ALB | Look at tomcat tmp to see if ingests are active |
-| Access     | No Pause | 9-5p, M-W | 2 min | Look at tomcat tmp to see if assemblies are active |              |
+| Access     | No Pause           | 9-5p, M-W | 2 min | Look at tomcat tmp to see if assemblies are active |              |
 | Access Large | No Pause         | 9-5p, M-W   | 1 hour | Large Access Pause to be Introduced.  Look at tomcat tmp to see if assemblies are active. |
 | Inventory  | No Pause           | 9-5p, M-W   | 60 sec | Local ID service |
 | Replic     | No Pause           | 9-5p, M-Th AM   |  |              |          
 | Audit      | No Pause           | 9-5p, M-Th AM   |  | Low risk     |          
-| UI         | No Pause     | 9-5p, M-W   |  |            |          
+| UI         | No Pause           | 9-5p, M-W   |  |            |          
 | Admin      | No Pause           | 9-5p, M-F   |  | Low risk     |
 | mrt-cron   | No Pause           | 9-5p, M-F   |  |             | 
 | EZID downtime |                 | 5-6a, Th    |  | Used when needed, Merritt Ingest is Paused |
@@ -40,15 +39,13 @@ _This is still a draft document.  The team continues to review and make adjustme
     - Schedule an early pause of ingest if needed to ensure availability 
   - Pause ingest processing (queue)
     - Timing - should be permissible anytime
-  - Optionally ask Dryad to pause ingests
-    - If yes, perform release between 3pm - 5pm weekdays
-  - Remove instances from laod balancer unless both Ingest and Dryad are paused
+  - Remove instances from laod balancer unless both Ingest is paused
   - Confirm that processing is complete for instance
   - Stop instance
   - Deploy code
   - Restart instance
   - Re-add to load balancer if needed
-  - Release hold on ingest queue / dryad 
+  - Release hold on ingest queue 
 
 ### Storage
 - Note: code changes deployed for Access or Storage should be kept in sync as quickly as possible since the code base is identical
@@ -61,16 +58,14 @@ _This is still a draft document.  The team continues to review and make adjustme
   - Optionally pause ingest processing (queue)
     - Timing - should be permissible anytime
     - Is it feasible to do a high availability release with only 2 storage instances?
-  - Optionally ask Dryad to pause ingests
-    - If yes, perform release between 3pm - 5pm weekdays
-  - Remove instances from laod balancer unless both Ingest and Dryad are paused
+  - Remove instances from laod balancer unless both Ingest is paused
   - Confirm that processing is complete for instance
     - New ticket to be created to establish a mechanism for this
   - Stop instance
   - Deploy code
   - Restart instance
   - Re-add to load balancer if needed
-  - Release hold on ingest queue / dryad 
+  - Release hold on ingest queue 
 
 ### Access
 - Note: code changes deployed for Access or Storage should be kept in sync as quickly as possible since the code base is identical
@@ -101,7 +96,7 @@ _This is still a draft document.  The team continues to review and make adjustme
 - Load balancer exists for localid processing
 - Endpoint exists to pause processing before deployment
 - Must remove instances from zookeeper before deployment
-- Must remove instances from the load balancer before deployment unless Ingest Queue and Dryad ingests are held
+- Must remove instances from the load balancer before deployment unless Ingest Queue and is held
 ##### Deployment process
 - stop zookeeper handling for server to be deployed
 ~~~
