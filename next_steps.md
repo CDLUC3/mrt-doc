@@ -4,39 +4,33 @@
 ## Next Steps by Team Member
 
 - David
-  - Major Migrations
-    - SDSC storage migration
+  - Storage Fix Operation: changeToken
+    - backup node
+    - storage fix plumbing
+    - changeToken fix 
   - Zookeeper
     - Migrate inventory to mrt-zk
-    - Migrate Storage/Access to mrt-zk  
+    - Migrate Storage/Access to mrt-zk
+  - Major Migrations
+    - SDSC storage migration
+  - Storage Prune Operation 
   - Resume Storage Admin Work
     - Delete object via admin tool
     - Create object tombstone
       - Create tombstone for prior deletes 
     - Change primary node for a collection
     - Transfer object to different primary node
-    - Create augmented manifest
-    - Reload object using augemented manifest 
   - Augment Object Representation
     - Alter/repair owner, collection for object
     - Alter/repair mime type for object
     - Augment mime type with more specific information
-    - Pointer re-use for files with identical digest values
-    - Nuxeo object version repair
-    - Reset object content at a specific version (supports Nuxeo cleanup and other possible initiatives)
   - Later/Misc
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
     - Normalize JSON handling across services
     - Eliminate DIA code
 - Mark
-  - Queue redesign
-    - Allow ingest jobs to run on any server
-      - Store job details in Zookeeper rather than in memory 
-    - Allow ingest jobs to wait for resource provisioning
-    - Trigger inventory processing from the job queue
-    - Make callback aware of inventory
-    - Improve Notification System - after interrupt
-    - Separate Job and Batch Queue - Batch Queue is responsible for notification
+  - Refactor Batches and Jobs to use mrt-zk library
+  - Storage prune - pass operation through ingest
 - Terry
   - Migrate ZK admin functionality from Ingest to Admin tool
   - Merritt Dev Cloud Front Server
