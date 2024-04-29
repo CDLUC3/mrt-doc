@@ -4,6 +4,9 @@
 ## Next Steps by Team Member
 
 - David
+  - Zookeeper
+    - Migrate inventory to mrt-zk
+    - Migrate Storage/Access to mrt-zk
   - Storage Fix Operation:
     - changeToken fix 
     - generic "storage fix" solution
@@ -12,9 +15,6 @@
       - admin tool invokes appropriate "fix" operation in storage
     - implement storage prune operation 
       - create file tombstone table?
-  - Zookeeper
-    - Migrate inventory to mrt-zk
-    - Migrate Storage/Access to mrt-zk
   - Major Migrations
     - SDSC storage migration
   - Resume Storage Admin Work
@@ -29,11 +29,11 @@
     - Augment mime type with more specific information
   - Later/Misc
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
-    - Normalize JSON handling across services
     - Eliminate DUA code
 - Mark
   - Refactor Batches and Jobs to use mrt-zk library
   - Storage prune - pass operation through ingest
+  - Post-N2T migration tombstone tasks
 - Terry
   - Migrate ZK admin functionality from Ingest to Admin tool
   - Merritt Dev Cloud Front Server
@@ -41,13 +41,14 @@
   - Refine admin tool with usability suggestions
   - Migrate Docker stack to UC3 account
   - Refine collection health tools based on feedback
-- Ashley 
+- Ashley
   - New Dev boxes (AL2023): Jenkins, Docker, David's Sandbox
   - GitHub/CodeBuild for Private Repo Resources
   - Misc Servers AL2023: LDAP, ZK, Batch
 - Eric
   - Collection Health Reports
-  - ETDs
+  - ETDs, ETDs v2
+  - New collections
   - Robbins Collection
   - UCSF Glantz videos
 - Team
