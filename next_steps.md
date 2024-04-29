@@ -27,7 +27,7 @@
   - Later/Misc
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
     - Normalize JSON handling across services
-    - Eliminate DIA code
+    - Eliminate DUA code
 - Mark
   - Refactor Batches and Jobs to use mrt-zk library
   - Storage prune - pass operation through ingest
@@ -51,7 +51,7 @@
     - Introduce new manifest type (JSON)
       - Allow multiple files and metadata to be specified for a set of objects
     - Presigned file upload solution (large single file)
-    - Presigned fiel upload solution (directory of files)
+    - Presigned file upload solution (directory of files)
     - Build a solution that can deprecate the need for hard drive processing   
   - Re-provision resources after Dryad (Access servers, UI servers)
   - Explore new storage classes and potential benefits to Merritt processing
