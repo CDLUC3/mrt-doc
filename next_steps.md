@@ -4,16 +4,19 @@
 ## Next Steps by Team Member
 
 - David
-  - Storage Fix Operation: changeToken
-    - backup node
-    - storage fix plumbing
+  - Storage Fix Operation:
     - changeToken fix 
+    - generic "storage fix" solution
+      - create backup node
+      - back up object to backup node
+      - admin tool invokes appropriate "fix" operation in storage
+    - implement storage prune operation 
+      - create file tombstone table?
   - Zookeeper
     - Migrate inventory to mrt-zk
     - Migrate Storage/Access to mrt-zk
   - Major Migrations
     - SDSC storage migration
-  - Storage Prune Operation 
   - Resume Storage Admin Work
     - Delete object via admin tool
     - Create object tombstone
@@ -34,6 +37,7 @@
 - Terry
   - Migrate ZK admin functionality from Ingest to Admin tool
   - Merritt Dev Cloud Front Server
+  - Admin interface for storage fix
   - Refine admin tool with usability suggestions
   - Migrate Docker stack to UC3 account
   - Refine collection health tools based on feedback
@@ -53,9 +57,7 @@
     - Presigned file upload solution (large single file)
     - Presigned file upload solution (directory of files)
     - Build a solution that can deprecate the need for hard drive processing   
-  - Re-provision resources after Dryad (Access servers, UI servers)
   - Explore new storage classes and potential benefits to Merritt processing
-  - Define Stage Environment Data Goals
   - Replace LDAP with Cognito Authentication + Yaml authorization rules
   - Migrate appropriate services to Lambda
     - Access 
