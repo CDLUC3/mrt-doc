@@ -1,6 +1,41 @@
 ## Sprint Goals
 
-#### Sprint 102:  April, 17 2023 - May 7, 2024
+#### Sprint 102:  May 8, 2024 - May 28, 2024
+- Ingest
+  - Investigate approaches to supporting additional ZK states: #1441
+  - Store/Access implementation with mrt-zk library: #1869
+  - Migrate queue admin to Admin Tool: #1819
+  - Migrate non core "Admin" tasks in Ingest to the Merritt Admin Tool: #1796
+  - mrt-zk: support legacy queue structure for admin tool integration (ruby): #1866
+- Collection maintenance
+  - Download obsolete items report and note the owners and collections that should be deleted: #1891
+- Storage, Update object strategy
+  - Storage "Fix" Framework: #1876
+  - Storage "fix" - Inventory "replace" methods: #1815
+  - Store object “reset”: #1774
+  - File names generated via Nuxeo harvest include unneeded characters: #1655
+- Admin
+  - Admin Tool Object Management Option Changes: #1886
+  - Update build instructions for mrt-zk and for admin tool: #1892
+- Devops
+  - Ansible documentation: #1778, #1779
+  - OpenSearch documentation: #74
+  - Merritt UI: Object endpoints documentation: #1839
+- Collection Health Prototype
+  - Analysis documentation: #1895
+  - Consider sample output in PDF form to accompany documentation
+- UCB Law Robbins Collection
+  - Batch 4 ingest: BSLW-RBN-02
+- ETDs
+  - Process UCI April USMARC records: #1890
+
+#### Releases:
+Stage:
+- Ingest ZK implementation
+- Store/Access ZK Implementation
+Production:
+
+#### Sprint 102:  April, 17 2024 - May 7, 2024
 - Ingest
   - Investigate approaches to supporting additional ZK states: #1441
   - Ingest implementation with mrt-zk library
@@ -38,7 +73,6 @@
 #### Releases:
 Stage:
 - BOM 1.8
-- Ingest ZK implementation
 Production:
 - BOM 1.8
   
