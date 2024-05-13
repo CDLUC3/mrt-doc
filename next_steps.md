@@ -37,6 +37,7 @@
 - Terry
   - Migrate ZK admin functionality from Ingest to Admin tool
   - Merritt Dev Cloud Front Server
+  - Explore addding a Merritt service into the UC3 account (lambda or docker)
   - Admin interface for storage fix
   - Refine admin tool with usability suggestions
   - Migrate Docker stack to UC3 account
