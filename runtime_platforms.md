@@ -26,30 +26,34 @@
   -  Collection Tool
 
 ### Future Platforms
-*This presumes that our general purpose EC2 apps can go to ECS and that our Instance Type optimized platforms will need to go to a specialized Auto Scaling Group.  Perhaps we can have a consult with Kevin at some time.*
-- Auto Scaling Groups
+
+Assumptions based on May 2024 conversation with IAS
+- For containers, prefer Fargate.  It may be more costly than EC2, but it requires less administrative support.
+- If a specialized instance type is needed, use ECS.  This would then require us to manage the underlying EC2 instances.  These should be re-created as needed via Auto Scaling Groups.
+
+- ECS
   - Auto Scaling Group - Network Optmized 
     - Ingest (ZFS needed)
     - Audit
   - Auto Scaling Group - IO optimized 
-    - Sorage (ZFS needed)
+    - Storage (ZFS needed)
     - Access Assembly
     - Replication
-- ECS
-  - Zookeeper
+- Fargate
+  - Zookeeper (maybe, but hostnames need to be known)
   - LDAP
   - UI - Rails
   - Inventory Tomcat
-- EC2
-  - EC2 Misc
-    - Batch Server
+- EC2 (not a containerized service)
+  - Batch server
+  - Jenkins 
 - RDS
   - MySQL      
 - Lambda
   -  Admin Tool
   -  Collection Tool
-- Lambda + API Gateway
+- Lambda + API Gateway candidates
+  - _Microservice functionality that could be extracted from a primary microservice container_
   - Merritt API (currently part of UI)   
   - Access File Requests and Assembly Queuing
-  - Queue Management (currently part of Ingest Admin API)
   - Inventory - Local ID Service
