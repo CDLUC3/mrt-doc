@@ -1,4 +1,9 @@
 # Object Reset Solutions
+
+## Use Cases
+- [Object Fix Use Cases](use_cases.md)
+
+## Solutions to Implement
 - [Object Version Reset](version_reset.md)
   - https://github.com/CDLUC3/mrt-doc/issues/1774
   - [Object Prune Design](prune.md)
