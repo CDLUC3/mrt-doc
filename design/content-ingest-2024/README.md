@@ -1,13 +1,14 @@
 # Content Ingest Workspace Design
 
 ## Workspace Domain
-- Workspace should be considered a DEV environment.
 - Content may be ingested into either Stage or Prod.
 
 ## File System
 
 ZFS/EFS file systems should be mounted and unmounted as projects are started and completed.
 All content should be accessible to CDL servers by URL.
+
+Moderately performant to ingest.
 
 - Merritt Box process should write to the workspace
 - Any hard drives that are sent to Merritt should be copied to this workspace
@@ -16,9 +17,29 @@ If no active content projects are in process, the environment should scale down 
 
 Consider a 2TB workspace, separate from the shared ZFS to upload incoming content to.
 
-File system should be mounted to the ingest servers.
+File system should be mounted to the PROD and STAGE ingest servers as well as DEV servers for manifest creation.
 
-Merritt manifests will pull content with file:// URLs.
+Merritt manifests will pull content with `file://` URLs.
+
+Possibly want to back up until content goes away.
+
+
+## Compute Environment
+
+Activities
+- Run zips
+- Run checksums
+- Generate manfiests
+
+Options
+- re-use the batch servers (may need to evaluate instance type)
+- provision a special batch server on demand
+  - get IAS' opinion
+  - ideally Eric could run a command to provision on-demand
+  - IAS requests would be needed to re-size
+  - Example: up for 6 weeks, then down for 6 weeks
+- minimal scratch space
+  - scripts and tools should persist in source code manifest 
 
 ## Cloud Storage
 
