@@ -6,7 +6,7 @@
 
 ## File System
 
-ZFS file systems should be mounted and unmounted as projects are started and completed.
+ZFS/EFS file systems should be mounted and unmounted as projects are started and completed.
 All content should be accessible to CDL servers by URL.
 
 - Merritt Box process should write to the workspace
@@ -14,9 +14,11 @@ All content should be accessible to CDL servers by URL.
 
 If no active content projects are in process, the environment should scale down to minimal costs.
 
-Consider a .5-1TB workspace, separate from the shared ZFS to upload incoming content to.
-- Determine associated cost and if this could be maintained over time
-- Or would we reduce the existing ZFS allocation to 4TB and establish a separate file system of 1TB for use
+Consider a 2TB workspace, separate from the shared ZFS to upload incoming content to.
+
+File system should be mounted to the ingest servers.
+
+Merritt manifests will pull content with file:// URLs.
 
 ## Cloud Storage
 
