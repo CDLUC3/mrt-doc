@@ -5,7 +5,12 @@
 
 ## File System
 
-ZFS/EFS file systems should be mounted and unmounted as projects are started and completed.
+~ZFS/EFS file systems should be mounted and unmounted as projects are started and completed.~
+
+Options
+- Bring up a large i3en with a big volume and serve up content over http.  Volume will need backed up.
+- Create a dedicated EBS volume on a batch server (size can be configurable)
+
 All content should be accessible to CDL servers by URL.
 
 Moderately performant to ingest.
@@ -19,10 +24,7 @@ Consider a 2TB workspace, separate from the shared ZFS to upload incoming conten
 
 File system should be mounted to the PROD and STAGE ingest servers as well as DEV servers for manifest creation.
 
-Merritt manifests will pull content with `file://` URLs.
-
-Possibly want to back up until content goes away.
-
+Merritt manifests will pull content with `http://` URLs.
 
 ## Compute Environment
 
@@ -41,6 +43,9 @@ Options
 - minimal scratch space
   - scripts and tools should persist in source code manifest 
 
+## Cost Considerations
+Consider how to charge back or estimate the cost of running this environment for a campus.
+
 ## Cloud Storage
 
 Dedicated cloud buckets should be accessible to this environment.  These should be separate from Merritt buckets.
@@ -53,6 +58,8 @@ All cloud content should be accessible to CDL servers by URL using the tools tha
 The PalMu ingest code might also be informative.
 
 ## Workspace Code
+
+We are simulating campus depositor activity from this environment.  We should use this environment as a test ground to validate the depositor tools that we provide to campuses.
 
 ### Ingest Tools
 A generic library of code should be written to facilitate the creation of ingest manifests within this environment.
