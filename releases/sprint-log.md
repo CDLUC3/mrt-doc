@@ -1,6 +1,35 @@
 ## Sprint Goals
 
-#### Sprint 102:  May 8, 2024 - May 28, 2024
+#### Sprint 104:  May 29, 2024 - June 18, 2024
+- Ingest
+  - Investigate approaches to supporting additional ZK states: #1441
+  - Store/Access implementation with mrt-zk library: #1869
+  - Use new mrt-zk methods for queue hold, collection hold, ark locking #1883
+- Collection maintenance
+  - Download obsolete items report and note the owners and collections that should be deleted: #1891
+- Storage, Update object strategy
+  - SDSC S3 Storage #1927
+  - Establish SDSC backup bucket for Nuxeo object correction #1897
+  - Storage "Fix" Framework: #1876
+  - Storage "fix" - Inventory "replace" methods: #1815
+  - File names generated via Nuxeo harvest include unneeded characters: #1655
+- UC3 AWS account
+  - UC3 AWS: Create Cloud Front Distribution for Merritt DEV resources #1850
+  - UC3 AWS: migrate from default uc3 s3 buckets used by admin tool #1922
+- Collection Health Prototype
+  - Analysis documentation: #1895
+  - Consider sample output in PDF form to accompany documentation
+- UCB Law Robbins Collection
+  - Batch 4 ingest: BSLW-RBN-02
+- ETDs
+  - UCSB Legacy ETDs #1926
+
+#### Releases:
+Stage:
+- Store/Access ZK Implementation
+Production:
+
+#### Sprint 103:  May 8, 2024 - May 28, 2024
 - Ingest
   - Investigate approaches to supporting additional ZK states: #1441
   - Store/Access implementation with mrt-zk library: #1869
@@ -31,9 +60,12 @@
 
 #### Releases:
 Stage:
-- Ingest ZK implementation
-- Store/Access ZK Implementation
+- UI - Privacy Statement and Gem Updates
+- ETDs - Update 856 field indicator for UCI
+- Ingest - Queue redesign
 Production:
+- UI - Privacy Statement and Gem Updates
+- ETDs - Update 856 field indicator for UCI
 
 #### Sprint 102:  April, 17 2024 - May 7, 2024
 - Ingest
