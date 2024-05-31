@@ -16,7 +16,7 @@ show query here
 
 ---
 
-### Use Case: Depositor acceidentally uploads unwanted file
+### Use Case: Depositor accidentally uploads unwanted file
 
 #### Examples
 - Accidental PII ingest
