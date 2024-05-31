@@ -34,6 +34,13 @@ show query here
 - escholarship metadata changes
 - very granular metadata changes may not be meaningful to future users accessing preservation content
 
+---
+
+### Use Case: Upstream Object composition workflow is altered
+
+#### Example
+- Composition of older objects in a collection adhere to earlier curation practices
+  - e.g. Early manuscript objects each contain a single manuscript page, while later objects contain all pages of a manuscript
 
 ---
 
