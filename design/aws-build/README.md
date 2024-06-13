@@ -1,4 +1,10 @@
 # AWS Build of Merritt Assets
+- CloudFront: https://github.com/CDLUC3/mrt-doc/issues/1850
+- CodeArtifact: https://github.com/CDLUC3/mrt-doc/issues/1931
+- ECR: https://github.com/CDLUC3/mrt-doc/issues/1945
+- Private Bucket:
+  - https://github.com/CDLUC3/mrt-doc/issues/1923
+  - https://github.com/CDLUC3/mrt-doc/issues/1924
 
 ## Workflow
 
@@ -25,6 +31,7 @@ graph LR
   WarFiles --> |deploy| EC2
   Gems -.-> Build
   JarFiles -.-> Build
+  S3_Private
   subgraph CloudFront
     Javadocs
     Rubydocs
@@ -108,6 +115,8 @@ graph LR
 
   mrt-doc --> |manifest tool| Webapp
   mrt-cron --> RevealJsSlideshow
+  mrt-ingest-profile --> S3_Private
+  mrt-dashboard-config --> S3_Private
 ```
 
 ## No Repo Outputs
