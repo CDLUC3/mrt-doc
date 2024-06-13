@@ -15,8 +15,11 @@ graph TD
   Pipeline(Code Pipeline)
   Pipeline --> Build
   Build(Code Build)
+  S3_Private
+  S3_Public
   Build --> CodeArtifact
-  Build --> |publish| CloudFront
+  Build --> |copy| S3_Public
+  S3_Public --> |publish| CloudFront
   Build --> |docker push| ECR
   Build --> |copy| S3_Private
   ECR
@@ -48,64 +51,16 @@ graph TD
 
 ```mermaid
 graph TD
-  subgraph DOC
-    mrt-doc
-    mrt-doc-private
-    merritt_ldap_tools
-    mrt-ansible-service-restart
-    mrt-box
-    mrt-maint
-    mrt-jenkins
-  end
-  subgraph CONFIG
-    mrt-ingest-profiles
-    mrt-tomcat
-  end
-  subgraph DOCKIT[Docker Maven IT Images]
-    merritt-docker_inttest
-  end
-  subgraph DOCKSTACK[Docker Stack Generic Services]
-    zookeeper
-    mysql
-    minio
-    ldap
-    smtp_mock
-    ezid_mock
-    merritt_init
-    callback
-    mrt-integ-tests
-  end
-  subgraph DOCKSERVICE[Docker Stack Merritt Services]
-    store
-    ingest
-    audit
-    replic
-    inventory
-    ui
-  end
-  subgraph JAR[Jar: Merritt Libraries]
-    mrt-zk_java
-    mrt-core2
-    mrt-cloud
-  end
-  subgraph WAR[War: Merritt Services]
-    mrt-store
-    mrt-ingest
-    mrt-audit
-    mrt-replic
-    mrt-inventory
-  end
-  subgraph GEM[Gem: Merritt Libraries]
-    uc3-ssm
-    mrt-zk_ruby
-  end
+  DOC
+  CONFIG
+  DOCKIT[Docker Maven IT Images]
+  DOCKSTACK[Docker Stack Generic Services]
+  DOCKSERVICE[Docker Stack Merritt Services]
+  JAR[Jar: Merritt Libraries]
+  WAR[War: Merritt Services]
+  GEM[Gem: Merritt Libraries]
   LAMBDA(Docker Merritt Lambda)
-  subgraph RUBY[Ruby App Code]
-    mrt-dashboard
-    mrt-admin-lambda
-    mrt-cron
-    mrt-atom
-  end
+  RUBY[Ruby App Code]
   RUBYDEPLOY(Merritt Ruby App - Bundled on Deploy)
   JAVADEPLOY(Merritt Tomcat App)
   DOCKTEST(Docker Development Stack)
@@ -122,101 +77,68 @@ graph TD
   DOCKSTACK -->DOCKTEST
 ```
 
----
+### Repos
 
-## Library Repo Outputs
+- Documentation
+  - mrt-doc
+    - Outputs: Cloudfront Webapp (Manifest Tool)
+  - mrt-doc-private
+  - merritt_ldap_tools
+  - mrt-ansible-service-restart
+  - mrt-box
+  - mrt-maint
+  - mrt-jenkins
+- Configuration
+  - mrt-ingest-profiles
+    - Private S3 bucket
+  - mrt-dashboard-config
+    - Private S3 bucket
+  - mrt-tomcat
+- Docker Maven IT Images
+  - merritt-docker_inttest
+    - Outputs: ECR Image
+- Docker Stack Generic Services
+  - zookeeper
+  - mysql
+  - minio
+  - ldap
+  - smtp_mock
+  - ezid_mock
+  - merritt_init
+  - callback
+  - mrt-integ-tests
+- Docker Stack Merritt Services
+  - store
+  - ingest
+  - audit
+  - replic
+  - inventory
+  - ui
+- Jar: Merritt Libraries
+  - Outputs: Code Artifact and Javadoc
+  - mrt-zk_java
+  - mrt-core2
+  - mrt-cloud
+- War: Merritt Services
+  - Outputs: Code Artifact and ECR Image
+  - mrt-store
+  - mrt-ingest
+  - mrt-audit
+  - mrt-replic
+  - mrt-inventory
+- Gem: Merritt Libraries
+  - Outputs: Code Artifact and Rubydocs
+  - uc3-ssm
+  - mrt-zk_ruby
+- Ruby App Code
+  - mrt-dashboard
+    - Outputs: ECR Image, Cloudfront: Swagger Docs
+  - mrt-admin-lambda
+    - Outputs: ECR Image, Cloudfront: Generated Documentation
+  - mrt-cron
+    - Outputs: Cloudfront: RevealJS presentation
+  - mrt-atom
+- Deprecated Libraries
+  - cdl-zk-queue
+  - mrt-zoo
 
-```mermaid
-graph LR
-  ECR(ECR)
-  Gems(Gems)
-  JarFiles(JarFiles)
-  Javadocs(Javadocs)
-  Rubydocs(Rubydocs)
-
-  mrt-cloud --> JarFiles
-  mrt-cloud --> Javadocs
-  mrt-cloud --> ECR
-  mrt-core2 --> JarFiles
-  mrt-core2 --> Javadocs
-  mrt-core2 --> ECR
-  mrt-zk --> JarFiles
-  mrt-zk --> Javadocs
-  mrt-zk --> Rubydocs
-  mrt-zk --> ECR
-  mrt-zk --> Gems
-  mrt-ingest-ruby --> Gems
-  uc3-ssm --> Gems
-  uc3-ssm --> Rubydocs
-```
-
-## Service Repo Outputs
-
-```mermaid
-graph LR
-  ECR(ECR)
-  WarFiles(WarFiles)
-  Swagger(Swagger)
-
-  mrt-inventory --> JarFiles
-  mrt-inventory --> WarFiles
-  mrt-inventory --> ECR
-  mrt-ingest --> WarFiles
-  mrt-ingest --> ECR
-  mrt-audit --> WarFiles
-  mrt-audit --> ECR
-  mrt-replic --> WarFiles
-  mrt-replic --> ECR
-  mrt-store --> WarFiles
-  mrt-store --> ECR
-  mrt-dashboard --> Swagger
-  mrt-dashboard --> ECR
-```
-
-## Docker Repo Outputs
-
-```mermaid
-graph LR
-  ECR(ECR)
-  Documentation(Generated Documentation)
-
-  mrt-admin-lambda --> ECR
-  mrt-admin-lambda --> Documentation
-  mrt-integ-tests --> ECR
-  merritt-docker --> ECR
-```
-
-## Misc Repo Outputs
-
-```mermaid
-graph LR
-  RevealJsSlideshow(RevealJsSlideshow)
-  Webapp(Webapp)
-
-  mrt-doc --> |manifest tool| Webapp
-  mrt-cron --> RevealJsSlideshow
-  mrt-ingest-profile --> S3_Private
-  mrt-dashboard-config --> S3_Private
-```
-
-## No Repo Outputs
-
-```mermaid
-graph LR
-  mrt-doc-private
-  mrt-box
-  mrt-maint
-  mrt-atom
-  mrt-jenkins
-  mrt-tomcat
-  merritt_ldap_tools
-  mrt-ansible-service-restart
-```
-
-## Deprecated Repo Outputs
-
-```mermaid
-graph LR
-  cdl-zk-queue
-  mrt-zoo
-```
