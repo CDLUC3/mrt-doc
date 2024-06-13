@@ -18,6 +18,7 @@ graph LR
   Build --> CodeArtifact
   Build --> |publish| CloudFront
   Build --> |docker push| ECR
+  Build --> |copy| S3_Private
   ECR
   ECR --> |deploy| Lambda
   ECR -.-> |docker pull| EC2_Dev
@@ -31,7 +32,6 @@ graph LR
   WarFiles --> |deploy| EC2
   Gems -.-> Build
   JarFiles -.-> Build
-  S3_Private
   subgraph CloudFront
     Javadocs
     Rubydocs
