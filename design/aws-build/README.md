@@ -3,7 +3,7 @@
 ## Workflow
 
 ```mermaid
-graph LR
+graph TD
   GitHub --> Pipeline
   Cron --> Pipeline
   Pipeline(Code Pipeline)
@@ -33,6 +33,86 @@ graph LR
     Webapp
     Documentation
   end
+```
+
+---
+
+## Artifact Build Order
+
+```mermaid
+graph TD
+  subgraph DOC
+    mrt-doc
+    mrt-doc-private
+    merritt_ldap_tools
+    mrt-ansible-service-restart
+    mrt-box
+    mrt-maint
+    mrt-jenkins
+  end
+  subgraph CONFIG
+    mrt-ingest-profiles
+    mrt-tomcat
+  end
+  subgraph DOCKIT[Docker Maven IT Images]
+    merritt-docker_inttest
+  end
+  subgraph DOCKSTACK[Docker Stack Generic Services]
+    zookeeper
+    mysql
+    minio
+    ldap
+    smtp_mock
+    ezid_mock
+    merritt_init
+    callback
+    mrt-integ-tests
+  end
+  subgraph DOCKSERVICE[Docker Stack Merritt Services]
+    store
+    ingest
+    audit
+    replic
+    inventory
+    ui
+  end
+  subgraph JAR[Jar: Merritt Libraries]
+    mrt-zk_java
+    mrt-core2
+    mrt-cloud
+  end
+  subgraph WAR[War: Merritt Services]
+    mrt-store
+    mrt-ingest
+    mrt-audit
+    mrt-replic
+    mrt-inventory
+  end
+  subgraph GEM[Gem: Merritt Libraries]
+    uc3-ssm
+    mrt-zk_ruby
+  end
+  LAMBDA(Docker Merritt Lambda)
+  subgraph RUBY[Ruby App Code]
+    mrt-dashboard
+    mrt-admin-lambda
+    mrt-cron
+    mrt-atom
+  end
+  RUBYDEPLOY(Merritt Ruby App - Bundled on Deploy)
+  JAVADEPLOY(Merritt Tomcat App)
+  DOCKTEST(Docker Development Stack)
+  DOCKIT -.-> |IT test| JAR
+  JAR --> WAR
+  DOCKIT -.-> |IT test| WAR
+  WAR --> JAVADEPLOY
+  WAR --> DOCKSERVICE
+  GEM --> RUBY
+  RUBY --> RUBYDEPLOY
+  RUBY --> LAMBDA
+  RUBY --> DOCKSERVICE
+  DOCKSERVICE --> DOCKTEST
+  DOCKSTACK -->DOCKTEST
 ```
 
 ---
