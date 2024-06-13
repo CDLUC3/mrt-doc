@@ -1,4 +1,10 @@
 # AWS Build of Merritt Assets
+- CloudFront: https://github.com/CDLUC3/mrt-doc/issues/1850
+- CodeArtifact: https://github.com/CDLUC3/mrt-doc/issues/1931
+- ECR: https://github.com/CDLUC3/mrt-doc/issues/1945
+- Private Bucket:
+  - https://github.com/CDLUC3/mrt-doc/issues/1923
+  - https://github.com/CDLUC3/mrt-doc/issues/1924
 
 ## Workflow
 
@@ -12,6 +18,7 @@ graph TD
   Build --> CodeArtifact
   Build --> |publish| CloudFront
   Build --> |docker push| ECR
+  Build --> |copy| S3_Private
   ECR
   ECR --> |deploy| Lambda
   ECR -.-> |docker pull| EC2_Dev
@@ -188,6 +195,8 @@ graph LR
 
   mrt-doc --> |manifest tool| Webapp
   mrt-cron --> RevealJsSlideshow
+  mrt-ingest-profile --> S3_Private
+  mrt-dashboard-config --> S3_Private
 ```
 
 ## No Repo Outputs
