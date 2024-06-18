@@ -1,5 +1,39 @@
 ## Sprint Goals
 
+#### Sprint 105: June 19, 2024 - July 9, 2024
+- Ingest
+  - Queue redesign (Part 3) - Support additional zookeeper states: #1441
+  - Integrate mrt-zk library into inventory service #1868
+  - Use new mrt-zk methods for queue hold, collection hold, ark locking #1883
+  - Create queue test plan #1934
+- Storage, Update object strategy
+  - SDSC S3 Storage #1927
+  - Establish SDSC backup bucket for Nuxeo object correction #1897
+- UC3 AWS account
+  - UC3 AWS: Explore AWS CodeArtifact to simplify CodeBuild jobs #1931
+  - UC3 AWS: Create Cloud Front Distribution for Merritt DEV resources #1850
+- Dev-ops
+  - [Merritt-Tomcat] Add "ingestqueue" symlink back into Tomcat server.xml for ingest workers #95
+  - Capture/document all VSCode dependencies #1944
+  - Dependabot: gem updates, June-July 2024 #1935
+- Admin
+  - Limit popups when deleting multiple queue jobs #1946
+- Nuxeo Object Updates
+  - Providing UCI with file lists of changeToken-impacted objects #1938
+- Collection Health Prototype
+  - Analysis documentation: #1895
+- UCB Law Robbins Collection
+  - Batch 3-4 validation: #1939
+- ETDs
+  - UCI records processing: #1942
+  - UCSB Legacy ETDs #1926
+
+#### Releases:
+Stage:
+- Inventory mrt-zk implementation, Ingest mrt-zk implementation (to Production in August)
+Production:
+- Store mrt-zk implementation
+
 #### Sprint 104:  May 29, 2024 - June 18, 2024
 - Ingest
   - Investigate approaches to supporting additional ZK states: #1441
@@ -26,8 +60,9 @@
 
 #### Releases:
 Stage:
-- Store/Access ZK Implementation
+- Ingest mrt-zk implementation, Store/Access mrt-zk implementation
 Production:
+- Access mrt-zk implementation
 
 #### Sprint 103:  May 8, 2024 - May 28, 2024
 - Ingest
