@@ -2,6 +2,11 @@
     "recommendations": [
         "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
         "vstirbu.vscode-mermaid-preview",
-        "bierner.markdown-mermaid"
+		"redhat.vscode-yaml",
+		"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+		"ms-vscode.remote-server",
+		"ms-vscode.remote-explorer",
+		"ritwickdey.liveserver",
+		"bierner.markdown-mermaid"
     ]
 }
