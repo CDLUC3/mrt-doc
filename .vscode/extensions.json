@@ -5,20 +5,25 @@
 	// List of extensions which should be recommended for users of this workspace.
 	"recommendations": [
 		"ms-azuretools.vscode-docker",
+
 		"ms-vscode-remote.remote-containers",
 		"ms-vscode-remote.remote-ssh",
 		"ms-vscode-remote.remote-ssh-edit",
 		"ms-vscode-remote.remote-ssh-edit",
-		"redhat.vscode-yaml",
-		"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
 		"ms-vscode.remote-server",
 		"ms-vscode.remote-explorer",
-		"ritwickdey.liveserver",
-		"visualstudioexptteam.vscodeintellicode",
-		"visualstudioexptteam.intellicode-api-usage-examples",
-		"vstirbu.vscode-mermaid-preview",
 		"ms-vscode-remote.vscode-remote-extensionpack",
 		"ms-vscode-remote.remote-wsl",
+
+		"redhat.vscode-yaml",
+
+		"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+		"vstirbu.vscode-mermaid-preview",
+		"ritwickdey.liveserver",
+
+		"visualstudioexptteam.vscodeintellicode",
+		"visualstudioexptteam.intellicode-api-usage-examples",
+
 		"eamodio.gitlens"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
