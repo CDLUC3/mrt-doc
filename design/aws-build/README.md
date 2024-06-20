@@ -47,7 +47,7 @@ graph TD
 
 ---
 
-## Artifact Build Order
+## Artifact Build Dependencies
 
 ```mermaid
 graph TD
@@ -76,6 +76,16 @@ graph TD
   DOCKSERVICE --> DOCKTEST
   DOCKSTACK -->DOCKTEST
 ```
+
+### Build Sequence
+1. Build Docker Maven IT Images --> ECR
+2. Build Docker Stack Generic Services --> ECR
+3. Build JAR files --> Code Artifact
+4. Ruby libraries and gems - build from github tag rather than from a gem
+5. Build WAR files --> Code Artifact
+6. Build Docker Stack Merritt Services (Tomcat and Rails) --> ECR
+7. Build Lambda Docker Images --> ECR
+
 
 ### Anticipated Outputs
 - https://merritt.uc3dev.cdlib.org/index.html
