@@ -87,7 +87,23 @@ graph TD
 7. Build Lambda Docker Images --> ECR
 
 
-### Anticipated Outputs
+## Anticipated Outputs
 - https://merritt.uc3dev.cdlib.org/index.html
   - [html source](https://github.com/CDLUC3/merritt-tinker/blob/main/aws/uc3-mrt-devresources/index.html)
+
+## Environment Variables for Builds
+
+### Stack Output
+- domain: 'merritt.uc3dev.cdlib.org'
+- hosted_zone: ... # note that DMP stores this in SSM
+- S3CFBUCKET
+- S3PRIVBUCKET
+- CFDISTRIBUTIONID ... # used to invalidate a cloudfront cache
+
+### Computed Environment or Hard Coded
+- export AWS_ACCOUNT_ID=`aws sts get-caller-identity| jq -r .Account`
+- export AWS_REGION=us-west-2
+- export ECR_REGISTRY=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+- export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain cdlib-uc3-mrt --domain-owner $AWS_ACCOUNT_ID --region us-west-2 --query authorizationToken --output text`
+
 
