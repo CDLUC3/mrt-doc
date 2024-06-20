@@ -47,7 +47,7 @@ graph TD
 
 ---
 
-## Artifact Build Order
+## Artifact Build Dependencies
 
 ```mermaid
 graph TD
@@ -77,68 +77,33 @@ graph TD
   DOCKSTACK -->DOCKTEST
 ```
 
-### Repos
+### Build Sequence
+1. Build Docker Maven IT Images --> ECR
+2. Build Docker Stack Generic Services --> ECR
+3. Build JAR files --> Code Artifact
+4. Ruby libraries and gems - build from github tag rather than from a gem
+5. Build WAR files --> Code Artifact
+6. Build Docker Stack Merritt Services (Tomcat and Rails) --> ECR
+7. Build Lambda Docker Images --> ECR
 
-- Documentation
-  - mrt-doc
-    - Outputs: Cloudfront Webapp (Manifest Tool)
-  - mrt-doc-private
-  - merritt_ldap_tools
-  - mrt-ansible-service-restart
-  - mrt-box
-  - mrt-maint
-  - mrt-jenkins
-- Configuration
-  - mrt-ingest-profiles
-    - Private S3 bucket
-  - mrt-dashboard-config
-    - Private S3 bucket
-  - mrt-tomcat
-- Docker Maven IT Images
-  - merritt-docker_inttest
-    - Outputs: ECR Image
-- Docker Stack Generic Services
-  - zookeeper
-  - mysql
-  - minio
-  - ldap
-  - smtp_mock
-  - ezid_mock
-  - merritt_init
-  - callback
-  - mrt-integ-tests
-- Docker Stack Merritt Services
-  - store
-  - ingest
-  - audit
-  - replic
-  - inventory
-  - ui
-- Jar: Merritt Libraries
-  - Outputs: Code Artifact and Javadoc
-  - mrt-zk_java
-  - mrt-core2
-  - mrt-cloud
-- War: Merritt Services
-  - Outputs: Code Artifact and ECR Image
-  - mrt-store
-  - mrt-ingest
-  - mrt-audit
-  - mrt-replic
-  - mrt-inventory
-- Gem: Merritt Libraries
-  - Outputs: Code Artifact and Rubydocs
-  - uc3-ssm
-  - mrt-zk_ruby
-- Ruby App Code
-  - mrt-dashboard
-    - Outputs: ECR Image, Cloudfront: Swagger Docs
-  - mrt-admin-lambda
-    - Outputs: ECR Image, Cloudfront: Generated Documentation
-  - mrt-cron
-    - Outputs: Cloudfront: RevealJS presentation
-  - mrt-atom
-- Deprecated Libraries
-  - cdl-zk-queue
-  - mrt-zoo
+
+## Anticipated Outputs
+- https://merritt.uc3dev.cdlib.org/index.html
+  - [html source](https://github.com/CDLUC3/merritt-tinker/blob/main/aws/uc3-mrt-devresources/index.html)
+
+## Environment Variables for Builds
+
+### Stack Output
+- domain: 'merritt.uc3dev.cdlib.org'
+- hosted_zone: ... # note that DMP stores this in SSM
+- S3CFBUCKET
+- S3PRIVBUCKET
+- CFDISTRIBUTIONID ... # used to invalidate a cloudfront cache
+
+### Computed Environment or Hard Coded
+- export AWS_ACCOUNT_ID=`aws sts get-caller-identity| jq -r .Account`
+- export AWS_REGION=us-west-2
+- export ECR_REGISTRY=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+- export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain cdlib-uc3-mrt --domain-owner $AWS_ACCOUNT_ID --region us-west-2 --query authorizationToken --output text`
+
 
