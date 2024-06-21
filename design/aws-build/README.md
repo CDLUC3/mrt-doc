@@ -93,6 +93,10 @@ graph TD
 
 ## Environment Variables for Builds
 
+### SSM Inputs
+- /uc3/mrt/codestar
+  - TODO: could Sceptre introspect this with a query? 
+
 ### Stack Output
 - domain: 'merritt.uc3dev.cdlib.org'
 - hosted_zone: ... # note that DMP stores this in SSM
