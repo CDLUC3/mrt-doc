@@ -22,7 +22,8 @@ graph TD
   Build --> |copy| S3_Public
   S3_Public --> |publish| CloudFront
   Build --> |docker push| ECR
-  Build --> |copy| S3_Private
+  Pipeline -.-> S3_Private
+  S3_Private -.-> Build
   ECR
   ECR -.-> |docker pull| EC2_Dev
   ECR -.-> |docker pull| Build
@@ -52,12 +53,14 @@ graph TD
   Build --> |copy| S3_Public
   S3_Public --> |publish| CloudFront
   Build --> |docker push| ECR
-  Build --> |copy| S3_Private
+  Pipeline -.-> S3_Private
+  S3_Private -.-> Build
   ECR
   ECR --> |deploy| Lambda
   ECR -.-> |docker pull| EC2_Dev
   ECR -.-> |docker pull| Build
   EC2[EC2 Stage/Prod]
+  Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
   subgraph CloudFront
     Rubydocs
@@ -71,18 +74,31 @@ graph TD
   Cron --> Pipeline
   Pipeline(Code Pipeline)
   Pipeline --> Build
+  Pipeline -.-> S3_Private
+  S3_Private -.-> Build
   Build(Code Build)
   S3_Private
   S3_Public
   Build --> |copy| S3_Public
   S3_Public --> |publish| CloudFront
-  Build --> |copy| S3_Private
   subgraph CloudFront
     Swagger
     RevealJsSlideshow
     Webapp
     Documentation
   end
+```
+
+### Private Config Data
+```mermaid
+graph TD
+  GitHub --> Pipeline
+  Cron --> Pipeline
+  Pipeline(Code Pipeline)
+  Pipeline --> Build
+  Build(Code Build)
+  S3_Private
+  Build --> |copy| S3_Private
 ```
 
 ---
