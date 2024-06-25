@@ -8,6 +8,7 @@
 
 ## Workflow
 
+### Java Code
 ```mermaid
 graph TD
   GitHub --> Pipeline
@@ -23,22 +24,60 @@ graph TD
   Build --> |docker push| ECR
   Build --> |copy| S3_Private
   ECR
-  ECR --> |deploy| Lambda
   ECR -.-> |docker pull| EC2_Dev
   ECR -.-> |docker pull| Build
   subgraph CodeArtifact
-    Gems
     JarFiles
     WarFiles
   end
   EC2[EC2 Stage/Prod]
   WarFiles --> |deploy| EC2
   WarFiles -.-> |docker build| Build
-  Gems -.-> Build
   JarFiles -.-> Build
   subgraph CloudFront
     Javadocs
+  end
+```
+
+### Ruby Code
+```mermaid
+graph TD
+  GitHub --> Pipeline
+  Cron --> Pipeline
+  Pipeline(Code Pipeline)
+  Pipeline --> Build
+  Build(Code Build)
+  S3_Private
+  S3_Public
+  Build --> |copy| S3_Public
+  S3_Public --> |publish| CloudFront
+  Build --> |docker push| ECR
+  Build --> |copy| S3_Private
+  ECR
+  ECR --> |deploy| Lambda
+  ECR -.-> |docker pull| EC2_Dev
+  ECR -.-> |docker pull| Build
+  EC2[EC2 Stage/Prod]
+  Gems -.-> Build
+  subgraph CloudFront
     Rubydocs
+  end
+```
+
+### Documentation and Web Assets
+```mermaid
+graph TD
+  GitHub --> Pipeline
+  Cron --> Pipeline
+  Pipeline(Code Pipeline)
+  Pipeline --> Build
+  Build(Code Build)
+  S3_Private
+  S3_Public
+  Build --> |copy| S3_Public
+  S3_Public --> |publish| CloudFront
+  Build --> |copy| S3_Private
+  subgraph CloudFront
     Swagger
     RevealJsSlideshow
     Webapp
@@ -50,13 +89,10 @@ graph TD
 
 ## Artifact Build Dependencies
 
+### Stage/Production Deployments
 ```mermaid
 graph TD
-  DOC
-  CONFIG
   DOCKIT[Docker Maven IT Images]
-  DOCKSTACK[Docker Stack Generic Services]
-  DOCKSERVICE[Docker Stack Merritt Services]
   JAR[Jar: Merritt Libraries]
   WAR[War: Merritt Services]
   GEM[Gem: Merritt Libraries]
@@ -64,19 +100,36 @@ graph TD
   RUBY[Ruby App Code]
   RUBYDEPLOY(Merritt Ruby App - Bundled on Deploy)
   JAVADEPLOY(Merritt Tomcat App)
-  DOCKTEST(Docker Development Stack)
   DOCKIT -.-> |IT test| JAR
   JAR --> WAR
   DOCKIT -.-> |IT test| WAR
   WAR --> JAVADEPLOY
-  WAR --> DOCKSERVICE
   GEM --> RUBY
   RUBY --> RUBYDEPLOY
   RUBY --> LAMBDA
+```
+
+### Development Testing
+```mermaid
+graph TD
+  DOCKIT[Docker Maven IT Images]
+  DOCKSTACK[Docker Stack Generic Services]
+  DOCKSERVICE[Docker Stack Merritt Services]
+  JAR[Jar: Merritt Libraries]
+  WAR[War: Merritt Services]
+  GEM[Gem: Merritt Libraries]
+  RUBY[Ruby App Code]
+  DOCKTEST(Docker Development Stack)
+  DOCKIT -.-> |IT test| JAR
+  JAR --> WAR
+  DOCKIT -.-> |IT test| WAR
+  WAR --> DOCKSERVICE
+  GEM --> RUBY
   RUBY --> DOCKSERVICE
   DOCKSERVICE --> DOCKTEST
   DOCKSTACK -->DOCKTEST
 ```
+
 
 ### Build Sequence
 1. Build Docker Maven IT Images --> ECR
