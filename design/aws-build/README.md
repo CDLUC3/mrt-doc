@@ -33,6 +33,7 @@ graph TD
   end
   EC2[EC2 Stage/Prod]
   WarFiles --> |deploy| EC2
+  WarFiles -.-> |docker build| CodeBuild
   Gems -.-> Build
   JarFiles -.-> Build
   subgraph CloudFront
