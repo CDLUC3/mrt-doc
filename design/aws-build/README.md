@@ -62,6 +62,7 @@ graph TD
   EC2[EC2 Stage/Prod]
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
+  Gems --> EC2
   subgraph CloudFront
     Rubydocs
   end
