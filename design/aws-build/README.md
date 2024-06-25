@@ -32,6 +32,7 @@ graph TD
     WarFiles
   end
   EC2[EC2 Stage/Prod]
+  EC2_Dev[EC2 Dev Docker Stack]
   WarFiles --> |deploy| EC2
   WarFiles -.-> |docker build| Build
   JarFiles -.-> Build
@@ -60,6 +61,8 @@ graph TD
   ECR -.-> |docker pull| EC2_Dev
   ECR -.-> |docker pull| Build
   EC2[EC2 Stage/Prod]
+  EC2_Dev[EC2 Dev Docker Stack]
+  Lambda[Lambda Stage/Prod]
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
   Gems --> EC2
@@ -90,7 +93,7 @@ graph TD
   end
 ```
 
-### Private Config Data
+### Private Config Data - Evolve From File System Copy
 ```mermaid
 graph TD
   GitHub --> Pipeline
@@ -100,6 +103,12 @@ graph TD
   Build(Code Build)
   S3_Private
   Build --> |copy| S3_Private
+  EC2[EC2 Stage/Prod]
+  EC2_Dev[EC2 Dev Docker Stack]
+  Lambda[Lambda Stage/Prod]
+  S3_Private -.-> EC2
+  S3_Private -.-> EC2_Dev
+  S3_Private -.-> Lambda
 ```
 
 ---
