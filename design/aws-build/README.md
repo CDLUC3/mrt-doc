@@ -5,6 +5,9 @@
 - Private Bucket:
   - https://github.com/CDLUC3/mrt-doc/issues/1923
   - https://github.com/CDLUC3/mrt-doc/issues/1924
+ 
+## Tagging Ideas
+- [Tagging Ideas](tagging.md)
 
 ## Workflow
 
