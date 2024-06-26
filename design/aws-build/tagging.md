@@ -52,3 +52,7 @@ TODO: can we trigger the insertion of the version if a new tag is created?
 https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-env-vars.html
 
 See `CODEBUILD_WEBHOOK_TRIGGER`
+
+### V2 Pipeline Needed for Tag Tracking
+
+<img width="1269" alt="image" src="https://github.com/CDLUC3/mrt-doc/assets/1111057/02a72896-9309-41ab-a0d5-f8d38fdcbcb1">
