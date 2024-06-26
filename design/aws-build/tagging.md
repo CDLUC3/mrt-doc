@@ -1,5 +1,7 @@
 # CodeArtifact Tagging for Merritt
 
+- [Design](README.md)
+
 ## Merritt JAR Versioning
 
 - Non-breaking changes SHOULD NOT update snapshot versions.
