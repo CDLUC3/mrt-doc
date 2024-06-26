@@ -48,3 +48,7 @@ TO
 ```
 
 TODO: can we trigger the insertion of the version if a new tag is created?
+
+https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-env-vars.html
+
+See `CODEBUILD_WEBHOOK_TRIGGER`
