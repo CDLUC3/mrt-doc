@@ -76,7 +76,7 @@ mvn -ntp clean install
 if [[ "${BRANCHTAG}" == "main" ]]
 then
   SEMVER=''
-elsif [[ "${BRANCHTAG}" == "codebuild" ]]
+elif [[ "${BRANCHTAG}" == "codebuild" ]]
 then
   SEMVER=''
 else
