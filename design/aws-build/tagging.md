@@ -47,11 +47,27 @@ TO
       - mvn deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=audit-war/target/mrt-auditwarpub-1.0-SNAPSHOT.war -Dversion=2.0.0
 ```
 
-TODO: can we trigger the insertion of the version if a new tag is created?
+## Identifying the Tag/Branch for a build
 
 https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-env-vars.html
 
-See `CODEBUILD_WEBHOOK_TRIGGER`
+Note that we are not using webhooks, so the following cannot be used. `CODEBUILD_WEBHOOK_TRIGGER`
+
+If we perform a `full clone`, we can use git commands to identify branch and tag names.
+
+```
+              Configuration:
+                BranchName: main
+                ConnectionArn: !Ref CodeStarConnectionArn
+                FullRepositoryId: !Ref RepositoryName
+                OutputArtifactFormat: CODEBUILD_CLONE_REF
+```
+
+## Git Commands to extract branch and tag
+
+```
+      - BRANCHTAG=`git describe --tags --exact-match 2> /dev/null || git symbolic-ref -q --short HEAD || git rev-parse --short HEAD || echo 'na'`
+```
 
 ### V2 Pipeline Needed for Tag Tracking
 
