@@ -35,16 +35,16 @@ WAR file snapshot changes can be updated as listed above.
 
 In `buildspec.yml`, change
 
-```
-      - mvn deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=audit-it/target/mrt-audit-it-1.0-SNAPSHOT.war
-      - mvn deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=audit-war/target/mrt-auditwarpub-1.0-SNAPSHOT.war
+```bash
+mvn deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=$(ls audit-it/target/mrt-audit-it-*.war)
+mvn deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=$(ls audit-war/target/mrt-auditwarpub-*.war)
 ```
 
 TO
 
-```
-      - mvn deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=audit-it/target/mrt-audit-it-1.0-SNAPSHOT.war -Dversion=2.0.0
-      - mvn deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=audit-war/target/mrt-auditwarpub-1.0-SNAPSHOT.war -Dversion=2.0.0
+```bash
+mvn deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=$(ls audit-it/target/mrt-audit-it-*.war) -Dversion=2.0.0
+mvn deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=$(ls audit-war/target/mrt-auditwarpub-*.war) -Dversion=2.0.0
 ```
 
 ## Identifying the Tag/Branch for a build
@@ -54,7 +54,7 @@ https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-env-vars.ht
 Note that we are not using webhooks, so the following cannot be used. `CODEBUILD_WEBHOOK_TRIGGER`
 
 If we perform a `full clone`, we can use git commands to identify branch and tag names.
-
+yaml
 ```
               Configuration:
                 BranchName: main
@@ -65,8 +65,24 @@ If we perform a `full clone`, we can use git commands to identify branch and tag
 
 ## Git Commands to extract branch and tag
 
+```bash
+BRANCHTAG=`git describe --tags --exact-match 2> /dev/null || git symbolic-ref -q --short HEAD || git name-rev $(git rev-parse --short HEAD) | cut -d' ' -f2 || git rev-parse --short HEAD`
 ```
-      - BRANCHTAG=`git describe --tags --exact-match 2> /dev/null || git symbolic-ref -q --short HEAD || git rev-parse --short HEAD || echo 'na'`
+
+## Publish with tag
+
+```bash
+mvn -ntp clean install
+if [[ "${BRANCHTAG}" == "main" ]]; then
+  SEMVER=''
+elsif [[ "${BRANCHTAG}" == "codebuild" ]]; then
+  SEMVER=''
+else
+  SEMVER="-Dversion=${BRANCHTAG}"
+fi
+echo "Semver $SEMVER"
+mvn -ntp deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=$(ls audit-it/target/mrt-audit-it-*.war) ${SEMVER}
+mvn -ntp deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=$(ls audit-war/target/mrt-auditwarpub-*.war) ${SEMVER}
 ```
 
 ### V2 Pipeline Needed for Tag Tracking
