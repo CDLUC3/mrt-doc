@@ -73,9 +73,11 @@ BRANCHTAG=`git describe --tags --exact-match 2> /dev/null || git symbolic-ref -q
 
 ```bash
 mvn -ntp clean install
-if [[ "${BRANCHTAG}" == "main" ]]; then
+if [[ "${BRANCHTAG}" == "main" ]]
+then
   SEMVER=''
-elsif [[ "${BRANCHTAG}" == "codebuild" ]]; then
+elsif [[ "${BRANCHTAG}" == "codebuild" ]]
+then
   SEMVER=''
 else
   SEMVER="-Dversion=${BRANCHTAG}"
