@@ -9,6 +9,9 @@
 ## Tagging Ideas
 - [Tagging Ideas](tagging.md)
 
+## Using CodeArtifact Resources in a Docker Build
+- https://stackoverflow.com/questions/67426509/how-to-use-aws-codeartifact-within-a-dockerfile-in-awscodebuild
+
 ## Workflow
 
 ### Java Code
