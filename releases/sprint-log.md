@@ -1,5 +1,36 @@
 ## Sprint Goals
 
+#### Sprint 106: July 17, 2024 - August 6, 2024
+- Ingest
+  - Queue redesign (Part 3) - Support additional zookeeper states: #1441
+  - Integrate mrt-zk library into inventory service #1868
+  - Use new mrt-zk methods for queue hold, collection hold, ark locking #1883
+  - Create queue test plan #1934
+- Storage, Update object strategy
+  - SDSC S3 Storage #1927
+- UC3 AWS account
+  - UC3 AWS: Explore AWS CodeArtifact to simplify CodeBuild jobs #1931
+  - UC3 AWS: Create Cloud Front Distribution for Merritt DEV resources #1850
+- Dev-ops
+  - Dependabot: gem updates, June-July 2024 #1935
+- Admin
+  - Limit popups when deleting multiple queue jobs #1946
+- Nuxeo Object Updates
+  - Providing UCI with file lists of changeToken-impacted objects #1938
+- Collection Health Prototype
+  - Presentation of Analysis documentation at BD-CKG
+- UCB Law Robbins Collection
+  - Batch 5 validation
+  - Batch 6 ingest
+- ETDs
+  - UCI records processing: #1942
+  - UCSB Legacy ETDs #1926
+  - Update ETD sender address: #1970
+
+#### Releases:
+Stage:
+Production:
+
 #### Sprint 105: June 19, 2024 - July 9, 2024
 - Ingest
   - Queue redesign (Part 3) - Support additional zookeeper states: #1441
