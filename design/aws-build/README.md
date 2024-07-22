@@ -227,23 +227,26 @@ graph TD
 graph TD
   Build(Code Build?)
   Build --> |docker push| ECR
-  subgraph ECR
-    subgraph BaseImages
-      mysql-ruby-lambda
-      src-common
-    end
-
-    subgraph Lambdas
-      src-admintool
-      src-colladmin
-      cognito-lambda-nonvpc
-    end
-  end
   ECR --> |deploy| Lambda
   ECR -.-> |docker pull| Build
   Lambda[Lambda Stage/Prod]
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
+  ECR -.- Images
+  Images["`
+    - a
+    - c
+    - b
+  `"]
+  subgraph BaseImages
+    mysql-ruby-lambda
+    src-common
+  end
+  subgraph Lambdas
+    src-admintool
+    src-colladmin
+    cognito-lambda-nonvpc
+  end
 ```
 
 ---
