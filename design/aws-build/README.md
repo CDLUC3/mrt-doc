@@ -150,13 +150,46 @@ graph TD
   WarFiles --> |deploy| EC2
 ```
 
+### Ruby Library Build
+```mermaid
+graph TD
+  GitHub --> Pipeline
+  Cron --> Pipeline
+  Pipeline(Code Pipeline)
+  Pipeline --> Build
+  Build(Code Build)
+  S3_Public
+  Build --> |copy| S3_Public
+  S3_Public --> |publish| CloudFront
+  Gems[Ruby Code include by Git Tag]
+  Gems -.-> Build
+  subgraph CloudFront
+    Rubydocs
+  end
+```
+
+### Ruby Service Build Image
+```mermaid
+graph TD
+  GitHub --> Pipeline
+  Cron --> Pipeline
+  Pipeline(Code Pipeline)
+  Pipeline --> Build
+  Build(Code Build)
+  Build --> |docker push| ECR
+  subgraph ECR
+    mrt-dashboard-image
+  end
+  Gems[Ruby Code include by Git Tag]
+  Gems -.-> Build
+```
 ### Run Docker Stack
 ```mermaid
 graph TD
   ECR -.-> |docker pull| EC2_Dev
   EC2_Dev[EC2 Dev Docker Stack]
   subgraph ECR
-    subgraph IntegrationTestImages
+    subgraph MerrittServiceImages
       mrt-dashboard-image
       mrt-ingest-image
       mrt-store-image
@@ -171,6 +204,38 @@ graph TD
       mrt-init
       mrt-database
     end
+  end
+```
+
+
+
+### Ruby Lambda Build and Deploy
+```mermaid
+graph TD
+  GitHub --> Pipeline
+  Cron --> Pipeline
+  Pipeline(Code Pipeline)
+  Pipeline --> Build
+  Build(Code Build)
+  S3_Private
+  S3_Public
+  Build --> |copy| S3_Public
+  S3_Public --> |publish| CloudFront
+  Build --> |docker push| ECR
+  Pipeline -.-> S3_Private
+  S3_Private -.-> Build
+  ECR
+  ECR --> |deploy| Lambda
+  ECR -.-> |docker pull| EC2_Dev
+  ECR -.-> |docker pull| Build
+  EC2[EC2 Stage/Prod]
+  EC2_Dev[EC2 Dev Docker Stack]
+  Lambda[Lambda Stage/Prod]
+  Gems[Ruby Code include by Git Tag]
+  Gems -.-> Build
+  Gems --> EC2
+  subgraph CloudFront
+    Rubydocs
   end
 ```
 
