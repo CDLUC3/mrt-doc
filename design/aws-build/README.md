@@ -31,25 +31,25 @@ graph TD
   Build(Code Build)
   Build --> |docker push| ECR
   subgraph ECR
-    subgraph BaseImages
+    BaseImages[["`
       merritt-tomcat
       merritt-maven
-    end
+    `"]]
 
-    subgraph IntegrationTestImages
+    IntegrationTestImages[["`
       mock-merritt-it
       mrt-it-database
       mrt-it-database-audit-replic
       mrt-minio-it
       mrt-minio-it-with-content
-    end
+    `"]]
 
-    subgraph DockerStackSupportImages
+    DockerStackSupportImages[["`
       callback
       mrt-opendj
       mrt-init
       mrt-database
-    end
+    `"]]
   end
 ```
 
@@ -59,11 +59,11 @@ graph TD
 
 ```mermaid
 graph TD
-  subgraph GitHub
+  GitHub[["`
     mrt-core2
     mrt-cloud
     mrt-zk
-  end
+  `"]]
   GitHub --> Pipeline
   Cron --> Pipeline
   Pipeline(Code Pipeline)
@@ -76,13 +76,13 @@ graph TD
   ECR
   ECR -.-> |docker pull| Build
   subgraph CodeArtifact
-    subgraph JarFiles
+    JarFiles[["`
       merritt-parprops
       merritt-bom
       mrt-core2.jars
       mrt-cloud.jar
       mrt-zk.jar
-    end
+    `"]]
   end
   JarFiles -.-> Build
   subgraph CloudFront
@@ -93,13 +93,13 @@ graph TD
 ### Java Services (WAR)
 ```mermaid
 graph TD
-  subgraph GitHub
+  GitHub[["`
     mrt-ingest
     mrt-store
     mrt-inventory
     mrt-audit
     mrt-replic
-  end
+  `"]]
   GitHub --> Pipeline
   Cron --> Pipeline
   Pipeline(Code Pipeline)
@@ -111,24 +111,24 @@ graph TD
   ECR
   subgraph CodeArtifact
     JarFiles
-    subgraph WarFilesArtifact
+    WarFilesArtifact[["`
       ingest.war
       store.war
       inventory.war
       audit.war
       replic.war
-    end
+    `"]]
   end
   WarFiles --> WarFilesArtifact
   JarFiles -.-> Build
   subgraph ECR
-    subgraph IntegrationTestImages
+    IntegrationTestImages[["`
       mrt-ingest-image
       mrt-store-image
       mrt-inventory-image
       mrt-audit-image
       mrt-replic-image
-    end
+    `"]]
   end
 ```
 
@@ -139,13 +139,13 @@ graph TD
     JarFiles
     WarFiles
   end
-  subgraph WarFiles
+  WarFiles[["`
     ingest.war
     store.war
     inventory.war
     audit.war
     replic.war
-  end
+  `"]]
   EC2[EC2 Stage/Prod]
   WarFiles --> |deploy| EC2
 ```
