@@ -232,8 +232,7 @@ graph TD
   Lambda[Lambda Stage/Prod]
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
-  ECR -.- Images
-  Images[["`
+  ECR[["`
     mysql-ruby-lambda
     src-common
     src-admintool
