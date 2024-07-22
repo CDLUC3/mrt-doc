@@ -26,6 +26,27 @@ graph TD
   Pipeline --> Build
   Build(Code Build)
   Build --> |docker push| ECR
+  subgraph ECR
+    subgraph BaseImages
+      merritt-tomcat
+      merritt-maven
+    end
+
+    subgraph IntegrationTestImages
+      mock-merritt-it
+      mrt-it-database
+      mrt-it-database-audit-replic
+      mrt-minio-it
+      mrt-minio-it-with-content
+    end
+
+    subgraph DockerStackSupportImages
+      callback
+      mrt-opendj
+      mrt-init
+      mrt-database
+    end
+  end
 ```
 
 ### Java Libraries
@@ -79,6 +100,15 @@ graph TD
     WarFiles
   end
   JarFiles -.-> Build
+  subgraph ECR
+    subgraph IntegrationTestImages
+      mrt-ingest
+      mrt-store
+      mrt-inventory
+      mrt-audit
+      mrt-replic
+    end
+  end
 ```
 
 ### Java Service Deployment
@@ -102,9 +132,25 @@ graph TD
 ### Run Docker Stack
 ```mermaid
 graph TD
-  ECR
   ECR -.-> |docker pull| EC2_Dev
   EC2_Dev[EC2 Dev Docker Stack]
+  subgraph ECR
+    subgraph IntegrationTestImages
+      mrt-dashboard
+      mrt-ingest
+      mrt-store
+      mrt-inventory
+      mrt-audit
+      mrt-replic
+    end
+
+    subgraph DockerStackSupportImages
+      callback
+      mrt-opendj
+      mrt-init
+      mrt-database
+    end
+  end
 ```
 
 ### Ruby Code
