@@ -202,21 +202,21 @@ graph TD
   ECR -.-> |docker pull| EC2_Dev
   EC2_Dev[EC2 Dev Docker Stack]
   subgraph ECR
-    subgraph MerrittServiceImages
+    MerrittServiceImages[["`
       mrt-dashboard-image
       mrt-ingest-image
       mrt-store-image
       mrt-inventory-image
       mrt-audit-image
       mrt-replic-image
-    end
+    `"]]
 
-    subgraph DockerStackSupportImages
+    DockerStackSupportImages[["`
       callback
       mrt-opendj
       mrt-init
       mrt-database
-    end
+    `"]]
   end
 ```
 
@@ -233,13 +233,13 @@ graph TD
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
   ECR -.- Images
-  Images["`
+  Images[["`
     mysql-ruby-lambda
     src-common
     src-admintool
     src-colladmin
     cognito-lambda-nonvpc
-  `"]
+  `"]]
 ```
 
 ---
