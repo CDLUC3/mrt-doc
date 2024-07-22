@@ -168,6 +168,16 @@ graph TD
   end
 ```
 
+### Ruby Service Deploy
+```mermaid
+graph TD
+  Build(Capistrano Build)
+  Gems[Ruby Code include by Git Tag]
+  Gems -.-> Build
+  Build --> EC2
+  EC2[EC2 Stage/Prod]
+```
+
 ### Ruby Service Build Image
 ```mermaid
 graph TD
@@ -183,6 +193,8 @@ graph TD
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
 ```
+
+
 ### Run Docker Stack
 ```mermaid
 graph TD
