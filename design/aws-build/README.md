@@ -14,37 +14,97 @@
 
 ## Workflow
 
-### Java Code
+### Integration Test Images
 ```mermaid
 graph TD
+  subgraph GitHub
+    merritt-docker
+  end
   GitHub --> Pipeline
   Cron --> Pipeline
   Pipeline(Code Pipeline)
   Pipeline --> Build
   Build(Code Build)
-  S3_Private
+  Build --> |docker push| ECR
+```
+
+### Java Libraries
+```mermaid
+graph TD
+  subgraph GitHub
+    mrt-core2
+    mrt-cloud
+    mrt-zk
+  end
+  GitHub --> Pipeline
+  Cron --> Pipeline
+  Pipeline(Code Pipeline)
+  Pipeline --> Build
+  Build(Code Build)
   S3_Public
-  Build --> CodeArtifact
+  Build --> JarFiles
   Build --> |copy| S3_Public
   S3_Public --> |publish| CloudFront
-  Build --> |docker push| ECR
-  Pipeline -.-> S3_Private
-  S3_Private -.-> Build
   ECR
-  ECR -.-> |docker pull| EC2_Dev
   ECR -.-> |docker pull| Build
   subgraph CodeArtifact
     JarFiles
-    WarFiles
   end
-  EC2[EC2 Stage/Prod]
-  EC2_Dev[EC2 Dev Docker Stack]
-  WarFiles --> |deploy| EC2
-  WarFiles -.-> |docker build| Build
   JarFiles -.-> Build
   subgraph CloudFront
     Javadocs
   end
+```
+
+### Java Services (WAR)
+```mermaid
+graph TD
+  subgraph GitHub
+    mrt-ingest
+    mrt-store
+    mrt-inventory
+    mrt-audit
+    mrt-replic
+  end
+  GitHub --> Pipeline
+  Cron --> Pipeline
+  Pipeline(Code Pipeline)
+  Pipeline --> Build
+  Build(Code Build)
+  Build --> WarFiles
+  Build --> |docker push| ECR
+  ECR
+  subgraph CodeArtifact
+    JarFiles
+    WarFiles
+  end
+  JarFiles -.-> Build
+```
+
+### Java Service Deployment
+```mermaid
+graph TD
+  subgraph CodeArtifact
+    JarFiles
+    WarFiles
+  end
+  subgraph WarFiles
+    ingest.war
+    store.war
+    inventory.war
+    audit.war
+    replic.war
+  end
+  EC2[EC2 Stage/Prod]
+  WarFiles --> |deploy| EC2
+```
+
+### Run Docker Stack
+```mermaid
+graph TD
+  ECR
+  ECR -.-> |docker pull| EC2_Dev
+  EC2_Dev[EC2 Dev Docker Stack]
 ```
 
 ### Ruby Code
