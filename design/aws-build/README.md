@@ -194,6 +194,7 @@ graph TD
   Gems -.-> Build
 ```
 
+---
 
 ### Run Docker Stack
 ```mermaid
@@ -219,67 +220,33 @@ graph TD
   end
 ```
 
-
+---
 
 ### Ruby Lambda Build and Deploy
 ```mermaid
 graph TD
-  GitHub --> Pipeline
-  Cron --> Pipeline
-  Pipeline(Code Pipeline)
-  Pipeline --> Build
-  Build(Code Build)
-  S3_Private
-  S3_Public
-  Build --> |copy| S3_Public
-  S3_Public --> |publish| CloudFront
+  Build(Code Build?)
   Build --> |docker push| ECR
-  Pipeline -.-> S3_Private
-  S3_Private -.-> Build
-  ECR
+  subraph ECR
+    subgraph BaseImages
+      mysql-ruby-lambda
+      src-common
+    end
+
+    subgraph Lambdas
+      src-admintool
+      src-colladmin
+      cognito-lambda-nonvpc
+    end
+  end
   ECR --> |deploy| Lambda
-  ECR -.-> |docker pull| EC2_Dev
   ECR -.-> |docker pull| Build
-  EC2[EC2 Stage/Prod]
-  EC2_Dev[EC2 Dev Docker Stack]
   Lambda[Lambda Stage/Prod]
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
-  Gems --> EC2
-  subgraph CloudFront
-    Rubydocs
-  end
 ```
 
-### Ruby Code
-```mermaid
-graph TD
-  GitHub --> Pipeline
-  Cron --> Pipeline
-  Pipeline(Code Pipeline)
-  Pipeline --> Build
-  Build(Code Build)
-  S3_Private
-  S3_Public
-  Build --> |copy| S3_Public
-  S3_Public --> |publish| CloudFront
-  Build --> |docker push| ECR
-  Pipeline -.-> S3_Private
-  S3_Private -.-> Build
-  ECR
-  ECR --> |deploy| Lambda
-  ECR -.-> |docker pull| EC2_Dev
-  ECR -.-> |docker pull| Build
-  EC2[EC2 Stage/Prod]
-  EC2_Dev[EC2 Dev Docker Stack]
-  Lambda[Lambda Stage/Prod]
-  Gems[Ruby Code include by Git Tag]
-  Gems -.-> Build
-  Gems --> EC2
-  subgraph CloudFront
-    Rubydocs
-  end
-```
+---
 
 ### Documentation and Web Assets
 ```mermaid
@@ -302,6 +269,8 @@ graph TD
     Documentation
   end
 ```
+
+---
 
 ### Private Config Data - Evolve From File System Copy
 ```mermaid
