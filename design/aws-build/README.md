@@ -102,11 +102,11 @@ graph TD
   JarFiles -.-> Build
   subgraph ECR
     subgraph IntegrationTestImages
-      mrt-ingest
-      mrt-store
-      mrt-inventory
-      mrt-audit
-      mrt-replic
+      mrt-ingest-image
+      mrt-store-image
+      mrt-inventory-image
+      mrt-audit-image
+      mrt-replic-image
     end
   end
 ```
@@ -136,12 +136,12 @@ graph TD
   EC2_Dev[EC2 Dev Docker Stack]
   subgraph ECR
     subgraph IntegrationTestImages
-      mrt-dashboard
-      mrt-ingest
-      mrt-store
-      mrt-inventory
-      mrt-audit
-      mrt-replic
+      mrt-dashboard-image
+      mrt-ingest-image
+      mrt-store-image
+      mrt-inventory-image
+      mrt-audit-image
+      mrt-replic-image
     end
 
     subgraph DockerStackSupportImages
