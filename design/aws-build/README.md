@@ -14,7 +14,11 @@
 
 ## Workflow
 
-### Integration Test Images
+### Build Integration Test Images
+
+- Triggered by commit to merritt-docker
+- Triggered on demand
+
 ```mermaid
 graph TD
   subgraph GitHub
@@ -50,6 +54,9 @@ graph TD
 ```
 
 ### Java Libraries
+- Triggered by commit to repo
+- Triggered on demand
+
 ```mermaid
 graph TD
   subgraph GitHub
@@ -69,7 +76,13 @@ graph TD
   ECR
   ECR -.-> |docker pull| Build
   subgraph CodeArtifact
-    JarFiles
+    subgraph JarFiles
+      merritt-parprops
+      merritt-bom
+      mrt-core2.jars
+      mrt-cloud.jar
+      mrt-zk.jar
+    end
   end
   JarFiles -.-> Build
   subgraph CloudFront
@@ -93,12 +106,20 @@ graph TD
   Pipeline --> Build
   Build(Code Build)
   Build --> WarFiles
-  Build --> |docker push| ECR
+  WarFiles --> DockerBuild
+  DockerBuild --> |docker push| ECR
   ECR
   subgraph CodeArtifact
     JarFiles
-    WarFiles
+    subgraph WarFilesArtifact
+      ingest.war
+      store.war
+      inventory.war
+      audit.war
+      replic.war
+    end
   end
+  WarFiles --> WarFilesArtifact
   JarFiles -.-> Build
   subgraph ECR
     subgraph IntegrationTestImages
