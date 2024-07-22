@@ -227,7 +227,7 @@ graph TD
 graph TD
   Build(Code Build?)
   Build --> |docker push| ECR
-  subraph ECR
+  subgraph ECR
     subgraph BaseImages
       mysql-ruby-lambda
       src-common
