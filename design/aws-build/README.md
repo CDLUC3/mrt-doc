@@ -234,19 +234,13 @@ graph TD
   Gems -.-> Build
   ECR -.- Images
   Images["`
-    - a
-    - c
-    - b
-  `"]
-  subgraph BaseImages
     mysql-ruby-lambda
     src-common
-  end
-  subgraph Lambdas
+
     src-admintool
     src-colladmin
     cognito-lambda-nonvpc
-  end
+  `"]
 ```
 
 ---
