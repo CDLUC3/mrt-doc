@@ -236,7 +236,6 @@ graph TD
   Images["`
     mysql-ruby-lambda
     src-common
-
     src-admintool
     src-colladmin
     cognito-lambda-nonvpc
