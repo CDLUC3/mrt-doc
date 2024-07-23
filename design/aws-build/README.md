@@ -172,6 +172,7 @@ graph TD
     replic.war
   `"]]
   EC2[EC2 Stage/Prod - MAIN ACCOUNT]
+  style EC2 fill:pink
   WarFiles --> |deploy| EC2
 ```
 
@@ -209,6 +210,7 @@ graph TD
   Gems -.-> Build
   Build --> EC2
   EC2[EC2 Stage/Prod - MAIN ACCOUNT]
+  style EC2 fill:pink
 ```
 
 ---
@@ -241,6 +243,7 @@ graph TD
 graph TD
   ECR -.-> |docker pull| EC2_Dev
   EC2_Dev[EC2 Dev Docker Stack - MAIN ACCOUNT]
+  style EC2_Dev fill:pink
   subgraph ECR
     MerrittServiceImages[["`
       mrt-dashboard-image
@@ -272,11 +275,11 @@ graph TD
   end
   GitHub --> Build
   Build(Code Build?)
-  ECR[ECR MAIN ACCOUNT]
   Build --> |docker push| ECR
   ECR --> |deploy| Lambda
   ECR -.-> |docker pull| Build
   Lambda[Lambda Stage/Prod - MAIN ACCOUNT]
+  style Lambda fill:pink
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
   subgraph ECR[ECR - MAIN ACCOUNT]
@@ -288,6 +291,7 @@ graph TD
       cognito-lambda-nonvpc
     `"]]
   end
+  style ECR fill:pink
 ```
 
 ---
@@ -332,6 +336,10 @@ graph TD
   S3_Private -.-> EC2
   S3_Private -.-> EC2_Dev
   S3_Private -.-> Lambda
+  style EC2 fill:pink
+  style EC2_Dev fill:pink
+  style Lambda fill:pink
+
 ```
 
 
