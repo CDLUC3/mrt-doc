@@ -117,10 +117,19 @@ graph TD
   Pipeline(Code Pipeline)
   Pipeline --> Build
   Build(Code Build)
+  ECR --> Build
   Build --> WarFiles
   WarFiles --> DockerBuild
-  DockerBuild --> |docker push| ECR
-  ECR
+  DockerBuild --> |docker push| ECRPub
+  subgraph ECR
+    Img[["`**Integration Test Images**
+      mock-merritt-it
+      mrt-it-database
+      mrt-it-database-audit-replic
+      mrt-minio-it
+      mrt-minio-it-with-content
+    `"]]
+  end
   subgraph CodeArtifact
     JarFiles
     WarFilesArtifact[["`
@@ -133,7 +142,7 @@ graph TD
   end
   WarFiles --> WarFilesArtifact
   JarFiles -.-> Build
-  subgraph ECR
+  subgraph ECRPub
     IntegrationTestImages[["`
       mrt-ingest-image
       mrt-store-image
