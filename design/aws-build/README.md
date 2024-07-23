@@ -61,11 +61,13 @@ graph TD
 
 ```mermaid
 graph TD
-  GitHub[["`
-    mrt-core2
-    mrt-cloud
-    mrt-zk
-  `"]]
+  subgraph GitHub
+    Repos[["`
+      mrt-core2
+      mrt-cloud
+      mrt-zk
+    `"]]
+  end
   GitHub --> Pipeline
   Cron --> Pipeline
   Pipeline(Code Pipeline)
@@ -105,13 +107,15 @@ graph TD
 ### Java Services (WAR)
 ```mermaid
 graph TD
-  GitHub[["`
-    mrt-ingest
-    mrt-store
-    mrt-inventory
-    mrt-audit
-    mrt-replic
-  `"]]
+  subgraph GitHub
+    Repos[["`
+      mrt-ingest
+      mrt-store
+      mrt-inventory
+      mrt-audit
+      mrt-replic
+    `"]]
+  end
   GitHub --> Pipeline
   Cron --> Pipeline
   Pipeline(Code Pipeline)
@@ -176,6 +180,12 @@ graph TD
 ### Ruby Library Build
 ```mermaid
 graph TD
+  subgraph GitHub
+    Repos[["`
+      mrt-zk
+      uc3-ssm
+    `"]]
+  end
   GitHub --> Pipeline
   Cron --> Pipeline
   Pipeline(Code Pipeline)
@@ -207,6 +217,11 @@ graph TD
 ```mermaid
 graph TD
   GitHub --> Pipeline
+  subgraph GitHub
+    Repos[["`
+      mrt-dashboard
+    `"]]
+  end
   Cron --> Pipeline
   Pipeline(Code Pipeline)
   Pipeline --> Build
@@ -250,6 +265,12 @@ graph TD
 ### Ruby Lambda Build and Deploy
 ```mermaid
 graph TD
+  subgraph GitHub
+    Repos[["`
+      mrt-admin-lambda
+    `"]]
+  end
+  GitHub --> Build
   Build(Code Build?)
   ECR[ECR MAIN ACCOUNT]
   Build --> |docker push| ECR
