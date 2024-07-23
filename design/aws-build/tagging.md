@@ -50,4 +50,4 @@ This is the most complicated scenario.  This will also make it easier to keep se
 ### Tag new versions for each service
 - Tag new versions for each service
 - Deploy each service using semantic tag
-\
+
