@@ -71,11 +71,17 @@ graph TD
 > Snapshots can be over-written in CodeArtifact.
 >
 > Going forward, the Merritt Team will bump up the snapshot version number for a jar file when making a breaking change to the JAR file.
-> The updated snapshot number will then need to be registered in the bom file. 
+> The updated snapshot number will then need to be registered in the bom file.
+>
+> Javadocs will be generated for Merritt library code.
 
 #### Build Trigger
 - Triggered by commit to repo
 - Triggered on demand
+
+#### Development Note
+- A developer can build Jar files files locally with maven to test local code changes.
+- Only the CodeBuild process should have permssion to push to CodeArtifact.
 
 ```mermaid
 graph TD
@@ -133,11 +139,20 @@ graph TD
 >
 > Release candidates for an artifact must be generated with a unique semantic tag.
 > Artifacts with a semantic tag (non-snapshots) may not be over-written.
+>
+> ### Future enhancements
+> - The Merritt team could experiment with Javadoc generation for Merritt services.
+> - The Merritt team could generate swagger documentation for Merritt services.
+> - The Merritt team should explore if there are any other mechanisms for generating API docs from a Jersey service.
 
 #### Build Trigger
 - Triggered by commit to repo (snapshot update)
 - Triggered on demand (snapshot update)
 - Triggered by the tagging of a repo (semantically tagged artifact)
+
+#### Development Note
+- A developer can build Jar files and War files locally with maven to test local code changes.
+- Only the CodeBuild process should have permssion to push to CodeArtifact.
 
 ```mermaid
 graph TD
@@ -195,11 +210,15 @@ graph TD
 
 > [!NOTE]
 > The Merritt code deployment process will pull WAR files from CodeArtifact.
+> Because CodeArtifact will manage a historical repository of deployed artifacts, Capistrano will no longer be needed for deployments.
 > 
 > By convention, a production deployment should always use a semantically tagged artifact.
 >
-> Stage deployments may pull a wAR file snapshot for development testing.
+> Stage deployments may pull a WAR file snapshot for development testing.
 > Stage deployments should pull a semantically tagged artifact when performing pre-release testing.
+
+#### Deployment Trigger
+- Triggered on demand
 
 ```mermaid
 graph TD
@@ -222,6 +241,25 @@ graph TD
 ---
 
 ### Ruby Library Build
+
+> [!NOTE]
+> Merritt Ruby libraries are implemented in pure ruby code (no C code binaries).
+> Therefore, the code has not been packaged into gems.
+> AWS CodeArtifact could be utilized as a gem store if needed.
+> In practice, the team has found it simpler to just provide a github tag reference within the Gemfile rather than explicity packaging the code as a gem.
+>
+> The "build" process is minimal for Ruby code.
+> 
+> Rubydocs are generated for Merritt Ruby libraries.
+>
+> ### Future enhancements
+> - invoke rubocop in CodeBuild (currently invoked with GitHub actions)
+> - invoke rspec tests in CodeBuild (currently invoked with GitHub actions)
+
+#### Build Trigger
+- Triggered by commit to repo
+- Triggered on demand
+
 ```mermaid
 graph TD
   subgraph GitHub
@@ -245,20 +283,21 @@ graph TD
   end
 ```
 
-### Ruby Service Deploy
-```mermaid
-graph TD
-  Build(Capistrano Build)
-  Gems[Ruby Code include by Git Tag]
-  Gems -.-> Build
-  Build --> EC2
-  EC2[EC2 Stage/Prod - MAIN ACCOUNT]
-  style EC2 fill:pink
-```
-
 ---
 
 ### Ruby Service Build Image
+
+> [!NOTE]
+> A docker image will bundled and generated for a Merritt service
+>
+> ### Future enhancements
+> - invoke rubocop in CodeBuild (currently invoked with GitHub actions)
+> - invoke rspec tests in CodeBuild (currently invoked with GitHub actions)
+
+#### Build Trigger
+- Triggered by commit to repo
+- Triggered on demand
+
 ```mermaid
 graph TD
   GitHub --> Pipeline
@@ -281,7 +320,42 @@ graph TD
 
 ---
 
+### Ruby Service Deploy
+
+> [!NOTE]
+> Capistrano will pull and build Ruby code when performing a deployment.
+> 
+> By convention, a production deployment should always use a semantically tagged version of the repo.
+
+#### Deployment Trigger
+- Triggered on demand
+
+```mermaid
+graph TD
+  Build(Capistrano Build)
+  Gems[Ruby Code include by Git Tag]
+  Gems -.-> Build
+  Build --> EC2
+  EC2[EC2 Stage/Prod - MAIN ACCOUNT]
+  style EC2 fill:pink
+```
+
+---
+
 ### Run Docker Stack
+
+> [!NOTE]
+> A Merritt Development stack could be intiated from ECR images at any time.
+> 
+> Using local code copies, a developer can build development copies of docker images for development testing.
+
+#### Deployment Trigger
+- Triggered on demand 
+
+#### Development Note
+- A developer can build docker images locally to test local code changes.
+- The CodeBuild process will be the only mechanism for pushing an image to ECR.
+
 ```mermaid
 graph TD
   ECR -.-> |docker pull| EC2_Dev
