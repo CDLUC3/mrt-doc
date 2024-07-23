@@ -20,10 +20,10 @@
 > Some Merritt Java Libraries and Services have integration tests as part of their code.
 > These integration tests run against mocked services that are implemented as docker images.
 > These Docker Images must be build first.
-
-#### Build Trigger
-- Triggered by commit to merritt-docker
-- Triggered on demand
+>
+> #### Build Trigger
+> - Triggered by commit to merritt-docker
+> - Triggered on demand
 
 ```mermaid
 graph TD
@@ -74,14 +74,14 @@ graph TD
 > The updated snapshot number will then need to be registered in the bom file.
 >
 > Javadocs will be generated for Merritt library code.
-
-#### Build Trigger
-- Triggered by commit to repo
-- Triggered on demand
-
-#### Development Note
-- A developer can build Jar files files locally with maven to test local code changes.
-- Only the CodeBuild process should have permssion to push to CodeArtifact.
+> 
+> #### Build Trigger
+> - Triggered by commit to repo
+> - Triggered on demand
+> 
+> #### Development Note
+> - A developer can build Jar files files locally with maven to test local code changes.
+> - Only the CodeBuild process should have permssion to push to CodeArtifact.
 
 ```mermaid
 graph TD
@@ -144,15 +144,15 @@ graph TD
 > - The Merritt team could experiment with Javadoc generation for Merritt services.
 > - The Merritt team could generate swagger documentation for Merritt services.
 > - The Merritt team should explore if there are any other mechanisms for generating API docs from a Jersey service.
-
-#### Build Trigger
-- Triggered by commit to repo (snapshot update)
-- Triggered on demand (snapshot update)
-- Triggered by the tagging of a repo (semantically tagged artifact)
-
-#### Development Note
-- A developer can build Jar files and War files locally with maven to test local code changes.
-- Only the CodeBuild process should have permssion to push to CodeArtifact.
+> 
+> #### Build Trigger
+> - Triggered by commit to repo (snapshot update)
+> - Triggered on demand (snapshot update)
+> - Triggered by the tagging of a repo (semantically tagged artifact)
+> 
+> #### Development Note
+> - A developer can build Jar files and War files locally with maven to test local code changes.
+> - Only the CodeBuild process should have permssion to push to CodeArtifact.
 
 ```mermaid
 graph TD
@@ -216,9 +216,9 @@ graph TD
 >
 > Stage deployments may pull a WAR file snapshot for development testing.
 > Stage deployments should pull a semantically tagged artifact when performing pre-release testing.
-
-#### Deployment Trigger
-- Triggered on demand
+> 
+> #### Deployment Trigger
+> - Triggered on demand
 
 ```mermaid
 graph TD
@@ -255,10 +255,10 @@ graph TD
 > ### Future enhancements
 > - invoke rubocop in CodeBuild (currently invoked with GitHub actions)
 > - invoke rspec tests in CodeBuild (currently invoked with GitHub actions)
-
-#### Build Trigger
-- Triggered by commit to repo
-- Triggered on demand
+> 
+> #### Build Trigger
+> - Triggered by commit to repo
+> - Triggered on demand
 
 ```mermaid
 graph TD
@@ -293,10 +293,10 @@ graph TD
 > ### Future enhancements
 > - invoke rubocop in CodeBuild (currently invoked with GitHub actions)
 > - invoke rspec tests in CodeBuild (currently invoked with GitHub actions)
-
-#### Build Trigger
-- Triggered by commit to repo
-- Triggered on demand
+> 
+> #### Build Trigger
+> - Triggered by commit to repo
+> - Triggered on demand
 
 ```mermaid
 graph TD
@@ -326,9 +326,9 @@ graph TD
 > Capistrano will pull and build Ruby code when performing a deployment.
 > 
 > By convention, a production deployment should always use a semantically tagged version of the repo.
-
-#### Deployment Trigger
-- Triggered on demand
+> 
+> #### Deployment Trigger
+> - Triggered on demand
 
 ```mermaid
 graph TD
@@ -348,13 +348,13 @@ graph TD
 > A Merritt Development stack could be intiated from ECR images at any time.
 > 
 > Using local code copies, a developer can build development copies of docker images for development testing.
-
-#### Deployment Trigger
-- Triggered on demand 
-
-#### Development Note
-- A developer can build docker images locally to test local code changes.
-- The CodeBuild process will be the only mechanism for pushing an image to ECR.
+> 
+> #### Deployment Trigger
+> - Triggered on demand 
+> 
+> #### Development Note
+> - A developer can build docker images locally to test local code changes.
+> - The CodeBuild process will be the only mechanism for pushing an image to ECR.
 
 ```mermaid
 graph TD
@@ -383,6 +383,15 @@ graph TD
 ---
 
 ### Ruby Lambda Build and Deploy
+
+> [!ALERT]
+> This code must be deployed in the main account.  Therefore, the existing build scripts will be maintained.
+>
+> ### Future enhancements
+> - build with CodeBuild
+> - enable development branches to be deployed to stage and prod
+> - report an alert when a branch other than main is deployed to lambda
+
 ```mermaid
 graph TD
   subgraph GitHub
