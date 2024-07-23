@@ -279,13 +279,15 @@ graph TD
   Lambda[Lambda Stage/Prod - MAIN ACCOUNT]
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
-  ECR[["`
-    mysql-ruby-lambda
-    src-common
-    src-admintool
-    src-colladmin
-    cognito-lambda-nonvpc
-  `"]]
+  subgraph ECR[ECR - MAIN ACCOUNT]
+    Img[["`
+      mysql-ruby-lambda
+      src-common
+      src-admintool
+      src-colladmin
+      cognito-lambda-nonvpc
+    `"]]
+  end
 ```
 
 ---
