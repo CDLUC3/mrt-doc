@@ -66,8 +66,10 @@ graph TD
 > [!NOTE]
 > Merritt Java libraries are compiled and packaged as Jar files.
 > These Jar files are saved to AWS CodeArtifact.
+> 
 > Merritt libraries will always be written to CodeArtifact as a *maven snapshot* `-SNAPSHOT.jar`.
 > Snapshots can be over-written in CodeArtifact.
+>
 > Going forward, the Merritt Team will bump up the snapshot version number for a jar file when making a breaking change to the JAR file.
 > The updated snapshot number will then need to be registered in the bom file. 
 
@@ -124,12 +126,13 @@ graph TD
 
 > [!NOTE]
 > Merritt Java services are compiled and packaged as War files.
-> These Jar files are saved to AWS CodeArtifact.
+> These War files are saved to AWS CodeArtifact.
+> 
 > Development artifacts may be written to CodeArtifact as a *maven snapshot* `-SNAPSHOT.war`.
 > Snapshots can be over-written in CodeArtifact.
+>
 > Release candidates for an artifact must be generated with a unique semantic tag.
 > Artifacts with a semantic tag (non-snapshots) may not be over-written.
-> The Merritt code deployment process will pull WAR files from CodeArtifact. 
 
 #### Build Trigger
 - Triggered by commit to repo (snapshot update)
@@ -189,6 +192,15 @@ graph TD
 ---
 
 ### Java Service Deployment
+
+> [!NOTE]
+> The Merritt code deployment process will pull WAR files from CodeArtifact.
+> 
+> By convention, a production deployment should always use a semantically tagged artifact.
+>
+> Stage deployments may pull a wAR file snapshot for development testing.
+> Stage deployments should pull a semantically tagged artifact when performing pre-release testing.
+
 ```mermaid
 graph TD
   subgraph CodeArtifact
