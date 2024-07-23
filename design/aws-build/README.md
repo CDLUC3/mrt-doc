@@ -75,13 +75,15 @@ graph TD
   Build --> JarFiles
   Build --> |copy| S3_Public
   S3_Public --> |publish| CloudFront
-  ECR[["`**Integration Test Images**
+  subraph ECR
+    Img[["`**Integration Test Images**
       mock-merritt-it
       mrt-it-database
       mrt-it-database-audit-replic
       mrt-minio-it
       mrt-minio-it-with-content
     `"]]
+  end
   ECR -.-> |docker pull| Build
   subgraph CodeArtifact
     JarFiles[["`
