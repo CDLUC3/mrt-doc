@@ -171,7 +171,7 @@ graph TD
     audit.war
     replic.war
   `"]]
-  EC2[EC2 Stage/Prod MAIN ACCOUNT]
+  EC2[EC2 Stage/Prod - MAIN ACCOUNT]
   WarFiles --> |deploy| EC2
 ```
 
@@ -208,7 +208,7 @@ graph TD
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
   Build --> EC2
-  EC2[EC2 Stage/Prod MAIN ACCOUNT]
+  EC2[EC2 Stage/Prod - MAIN ACCOUNT]
 ```
 
 ---
@@ -276,7 +276,7 @@ graph TD
   Build --> |docker push| ECR
   ECR --> |deploy| Lambda
   ECR -.-> |docker pull| Build
-  Lambda[Lambda Stage/Prod MAIN ACCOUNT]
+  Lambda[Lambda Stage/Prod - MAIN ACCOUNT]
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
   ECR[["`
@@ -324,9 +324,9 @@ graph TD
   Build(Code Build)
   S3_Private
   Build --> |copy| S3_Private
-  EC2[EC2 Stage/Prod]
-  EC2_Dev[EC2 Dev Docker Stack]
-  Lambda[Lambda Stage/Prod]
+  EC2[EC2 Stage/Prod - MAIN ACCOUNT]
+  EC2_Dev[EC2 Dev Docker Stack - MAIN ACCOUNT]
+  Lambda[Lambda Stage/Prod - MAIN ACCOUNT]
   S3_Private -.-> EC2
   S3_Private -.-> EC2_Dev
   S3_Private -.-> Lambda
