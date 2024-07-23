@@ -384,10 +384,11 @@ graph TD
 
 ### Ruby Lambda Build and Deploy
 
-> [!ALERT]
-> This code must be deployed in the main account.  Therefore, the existing build scripts will be maintained.
+> [!IMPORTANT]
+> This code must be deployed in the main account.  
 >
 > ### Future enhancements
+> - explore deploying a main account lambda from UC3 ECR.
 > - build with CodeBuild
 > - enable development branches to be deployed to stage and prod
 > - report an alert when a branch other than main is deployed to lambda
@@ -423,6 +424,14 @@ graph TD
 ---
 
 ### Documentation and Web Assets
+
+> [!NOTE]
+> Re-publish documentation assets based on a change to a repo.
+>
+> #### Build Trigger
+> - Triggered by commit to repo
+> - Triggered on demand
+
 ```mermaid
 graph TD
   GitHub --> Pipeline
@@ -447,6 +456,11 @@ graph TD
 ---
 
 ### Private Config Data - Evolve From File System Copy
+
+> [!IMPORTANT]
+> This work has not yet started
+
+
 ```mermaid
 graph TD
   GitHub --> Pipeline
