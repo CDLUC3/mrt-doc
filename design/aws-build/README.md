@@ -75,7 +75,7 @@ graph TD
   Build --> JarFiles
   Build --> |copy| S3_Public
   S3_Public --> |publish| CloudFront
-  subraph ECR
+  subgraph ECR
     Img[["`**Integration Test Images**
       mock-merritt-it
       mrt-it-database
