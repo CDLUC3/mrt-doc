@@ -38,34 +38,16 @@
 ## Breaking/significant change to Merritt Library
 This is the most complicated scenario.  This will also make it easier to keep services consistent with the appropriate version of a jar file.
 
+- TODO: document the purpose intention of each snapshot somewhere?
 
 ### Update the appropriate library/libraries
 - Run `mvn release:update-versions` to update the snapshot(s) for the library/libraries being modified.
 - Commit the change to pom.xml
 
-### Update BOM
-> [!IMPORTANT]
-> You must create a new version of the BOM in order to register your new snapshot
-
-- cd to mrt-core2/reflect
-- Run `mvn release:update-versions` to force a new version of the BOM
-- Modify the version number for you library/libraries in the BOM's pom.xml
-- Commit the change to pom.xml
-
-### Update BOM version number in ALL dependent libaries and Merritt Services
-```
-<dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.cdlib.mrt</groupId>
-        <artifactId>mrt-reflectoring-bom</artifactId>
-        <version>1.0.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-```
-
+### Update Merritt snapshot version number in ALL dependent libaries and Merritt Services
 - Update all the dependent pom.files
+
+### Tag new versions for each service
 - Tag new versions for each service
+- Deploy each service using semantic tag
+\
