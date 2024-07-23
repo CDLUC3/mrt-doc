@@ -53,6 +53,8 @@ graph TD
   end
 ```
 
+---
+
 ### Java Libraries
 - Triggered by commit to repo
 - Triggered on demand
@@ -89,6 +91,8 @@ graph TD
     Javadocs
   end
 ```
+
+---
 
 ### Java Services (WAR)
 ```mermaid
@@ -132,6 +136,8 @@ graph TD
   end
 ```
 
+---
+
 ### Java Service Deployment
 ```mermaid
 graph TD
@@ -146,9 +152,11 @@ graph TD
     audit.war
     replic.war
   `"]]
-  EC2[EC2 Stage/Prod]
+  EC2[EC2 Stage/Prod MAIN ACCOUNT]
   WarFiles --> |deploy| EC2
 ```
+
+---
 
 ### Ruby Library Build
 ```mermaid
@@ -175,8 +183,10 @@ graph TD
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
   Build --> EC2
-  EC2[EC2 Stage/Prod]
+  EC2[EC2 Stage/Prod MAIN ACCOUNT]
 ```
+
+---
 
 ### Ruby Service Build Image
 ```mermaid
@@ -200,7 +210,7 @@ graph TD
 ```mermaid
 graph TD
   ECR -.-> |docker pull| EC2_Dev
-  EC2_Dev[EC2 Dev Docker Stack]
+  EC2_Dev[EC2 Dev Docker Stack - MAIN ACCOUNT]
   subgraph ECR
     MerrittServiceImages[["`
       mrt-dashboard-image
@@ -226,10 +236,11 @@ graph TD
 ```mermaid
 graph TD
   Build(Code Build?)
+  ECR[ECR MAIN ACCOUNT]
   Build --> |docker push| ECR
   ECR --> |deploy| Lambda
   ECR -.-> |docker pull| Build
-  Lambda[Lambda Stage/Prod]
+  Lambda[Lambda Stage/Prod MAIN ACCOUNT]
   Gems[Ruby Code include by Git Tag]
   Gems -.-> Build
   ECR[["`
