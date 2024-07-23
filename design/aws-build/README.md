@@ -117,10 +117,10 @@ graph TD
   Pipeline(Code Pipeline)
   Pipeline --> Build
   Build(Code Build)
-  ECR --> Build
+  Img --> Build
   Build --> WarFiles
   WarFiles --> DockerBuild
-  DockerBuild --> |docker push| ECRPub
+  DockerBuild --> |docker push| ImgSrv
   subgraph ECR
     Img[["`**Integration Test Images**
       mock-merritt-it
@@ -128,6 +128,13 @@ graph TD
       mrt-it-database-audit-replic
       mrt-minio-it
       mrt-minio-it-with-content
+    `"]]
+    ImgSrv[["`**Service Images**
+      mrt-ingest-image
+      mrt-store-image
+      mrt-inventory-image
+      mrt-audit-image
+      mrt-replic-image
     `"]]
   end
   subgraph CodeArtifact
@@ -142,15 +149,6 @@ graph TD
   end
   WarFiles --> WarFilesArtifact
   JarFiles -.-> Build
-  subgraph ECRPub
-    IntegrationTestImages[["`
-      mrt-ingest-image
-      mrt-store-image
-      mrt-inventory-image
-      mrt-audit-image
-      mrt-replic-image
-    `"]]
-  end
 ```
 
 ---
