@@ -31,12 +31,12 @@ graph TD
   Build(Code Build)
   Build --> |docker push| ECR
   subgraph ECR
-    BaseImages[["`
+    BaseImages[["`**Base Images**
       merritt-tomcat
       merritt-maven
     `"]]
 
-    IntegrationTestImages[["`
+    IntegrationTestImages[["`**Integration Test Images**
       mock-merritt-it
       mrt-it-database
       mrt-it-database-audit-replic
@@ -44,7 +44,7 @@ graph TD
       mrt-minio-it-with-content
     `"]]
 
-    DockerStackSupportImages[["`
+    DockerStackSupportImages[["`**Docker Stack Support Images**
       callback
       mrt-opendj
       mrt-init
@@ -75,7 +75,13 @@ graph TD
   Build --> JarFiles
   Build --> |copy| S3_Public
   S3_Public --> |publish| CloudFront
-  ECR
+  ECR[["`**Integration Test Images**
+      mock-merritt-it
+      mrt-it-database
+      mrt-it-database-audit-replic
+      mrt-minio-it
+      mrt-minio-it-with-content
+    `"]]
   ECR -.-> |docker pull| Build
   subgraph CodeArtifact
     JarFiles[["`
