@@ -16,6 +16,12 @@
 
 ### Build Integration Test Images
 
+> [!NOTE]
+> Some Merritt Java Libraries and Services have integration tests as part of their code.
+> These integration tests run against mocked services that are implemented as docker images.
+> These Docker Images must be build first.
+
+#### Build Trigger
 - Triggered by commit to merritt-docker
 - Triggered on demand
 
@@ -56,6 +62,16 @@ graph TD
 ---
 
 ### Java Libraries
+
+> [!NOTE]
+> Merritt Java libraries are compiled and packaged as Jar files.
+> These Jar files are saved to AWS CodeArtifact.
+> Merritt libraries will always be written to CodeArtifact as a *maven snapshot* `-SNAPSHOT.jar`.
+> Snapshots can be over-written in CodeArtifact.
+> Going forward, the Merritt Team will bump up the snapshot version number for a jar file when making a breaking change to the JAR file.
+> The updated snapshot number will then need to be registered in the bom file. 
+
+#### Build Trigger
 - Triggered by commit to repo
 - Triggered on demand
 
@@ -105,6 +121,21 @@ graph TD
 ---
 
 ### Java Services (WAR)
+
+> [!NOTE]
+> Merritt Java services are compiled and packaged as War files.
+> These Jar files are saved to AWS CodeArtifact.
+> Development artifacts may be written to CodeArtifact as a *maven snapshot* `-SNAPSHOT.war`.
+> Snapshots can be over-written in CodeArtifact.
+> Release candidates for an artifact must be generated with a unique semantic tag.
+> Artifacts with a semantic tag (non-snapshots) may not be over-written.
+> The Merritt code deployment process will pull WAR files from CodeArtifact. 
+
+#### Build Trigger
+- Triggered by commit to repo (snapshot update)
+- Triggered on demand (snapshot update)
+- Triggered by the tagging of a repo (semantically tagged artifact)
+
 ```mermaid
 graph TD
   subgraph GitHub
