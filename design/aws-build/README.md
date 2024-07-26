@@ -1,18 +1,31 @@
 # AWS Build of Merritt Assets
+
+## Purpose
+- Create a build process that will be intuitive for current and future Merritt developers
+- Properly leverage AWS resources
+  - Facilitate Merritt migration to the UC3 AWS account 
+- Mimizie rebuilds by using an artifact repository
+
+## Tickets Related to this Work
 - CloudFront: https://github.com/CDLUC3/mrt-doc/issues/1850
 - CodeArtifact: https://github.com/CDLUC3/mrt-doc/issues/1931
 - ECR: https://github.com/CDLUC3/mrt-doc/issues/1945
 - Private Bucket:
   - https://github.com/CDLUC3/mrt-doc/issues/1923
   - https://github.com/CDLUC3/mrt-doc/issues/1924
+
+## Use Cases
+- Generate artifacts suitable for Stage and Production deployment
+- Generate images suitable for deployment to a a UC3 ECS environment for testing
+- Generate images for docker stack testing on an EC2 box using docker compose
+- Generate images for docker stack testing on a Merritt developer's desktop
+- Enable local build, maven testing, rspec testing on EC2
+- Enable local build, maven testing, rspec testing on Merritt developer's desktop
  
-## Tagging Ideas
+## Merritt Repo Tagging Process
 - [Tagging Ideas](tagging.md)
 
-## Using CodeArtifact Resources in a Docker Build
-- https://stackoverflow.com/questions/67426509/how-to-use-aws-codeartifact-within-a-dockerfile-in-awscodebuild
-
-## Workflow
+## Build Workflow
 
 ### Build Integration Test Images
 
