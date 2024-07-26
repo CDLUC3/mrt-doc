@@ -2,9 +2,11 @@
 
 ## Purpose
 - Create a build process that will be intuitive for current and future Merritt developers
-- Properly leverage AWS resources
-  - Facilitate Merritt migration to the UC3 AWS account 
-- Mimizie rebuilds by using an artifact repository
+  - Enable the build of all Merritt serivces at one time
+  - Enable the build of a single Merritt service in isolation (using code artifacts)
+  - Minimize unnecessary rebuilding of artifacts and images
+  - Enable a robust tagging mechanism to capture the deployment history for Merritt services
+- Facilitate Merritt migration to the UC3 AWS account where all Merritt services will be deployed in the future.
 
 ## Tickets Related to this Work
 - CloudFront: https://github.com/CDLUC3/mrt-doc/issues/1850
