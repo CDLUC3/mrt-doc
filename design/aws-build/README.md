@@ -18,11 +18,17 @@
 
 ## Use Cases
 - Generate artifacts suitable for Stage and Production deployment
+  - Automatically generated based on tag git tags 
 - Generate images suitable for deployment to a a UC3 ECS environment for testing
+  - Automatically generated based on branch names 
 - Generate images for docker stack testing on an EC2 box using docker compose
+  - Automatically generated based on branch names 
 - Generate images for docker stack testing on a Merritt developer's desktop
+  - Automatically generated based on branch names
 - Enable local build, maven testing, rspec testing on EC2
+  - Manually built based on local clones of code 
 - Enable local build, maven testing, rspec testing on Merritt developer's desktop
+  - Manually built based on local clones of code 
  
 ## Merritt Repo Tagging Process
 - [Tagging Ideas](tagging.md)
