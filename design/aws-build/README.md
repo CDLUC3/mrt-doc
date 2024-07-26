@@ -22,12 +22,14 @@
 - Generate images suitable for deployment to a a UC3 ECS environment for testing
   - Automatically generated based on branch names 
 - Generate images for docker stack testing on an EC2 box using docker-compose
+  - Requires a clone of merritt-docker and all submodules
   - Automatically generated based on branch names 
 - Generate images for docker stack testing on a Merritt developer's desktop using docker-compose
+  - Requires a clone of merritt-docker and all submodules
   - Automatically generated based on branch names
-- Enable local build, maven testing, rspec testing on EC2
+- Enable local build, maven testing, rspec testing of a Merritt service on EC2
   - Manually built based on local clones of code 
-- Enable local build, maven testing, rspec testing on Merritt developer's desktop
+- Enable local build, maven testing, rspec testing of a Merritt serviceon Merritt developer's desktop
   - Manually built based on local clones of code 
  
 ## Merritt Repo Tagging Process
