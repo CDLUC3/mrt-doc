@@ -19,9 +19,11 @@
 ## Use Cases
 
 ### 1. Generate artifacts suitable for Stage and Production deployment
-- Automatically generated based on tag git tags 
+- Automatically generated based on tag git tags
+
 ### 2. Generate images suitable for deployment to a a UC3 ECS environment for testing
 - Automatically generated based on branch names 
+
 ### 3. Generate images for docker stack testing on an EC2 box using docker-compose
 - Requires a clone of merritt-docker and all submodules
 - Automatically generated based on branch names
@@ -36,11 +38,13 @@ export ECR_REGISTRY=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
 export CODEARTIFACT_URL=https://cdlib-uc3-mrt-${AWS_ACCOUNT_ID}.d.codeartifact.${AWS_REGION}.amazonaws.com/maven/uc3-mrt-java/
 
 ~/bin/it_build.sh
+# pull pre-build images from ECR
 docker-compose -p merritt -f mrt-services/docker-compose.yml pull
 cd mrt-services
 mvn -ntp clean install -Ddocker.skip -DskipITs -Dmaven.test.skip=true
-docker-compose -p merritt -f mrt-services/docker-compose.yml -f mrt-services/local.yml up -d
+docker-compose -p merritt -f mrt-services/docker-compose.yml -f mrt-services/local.yml up -d --build
 ```
+
 </details>
 
 ### 4. Generate images for docker stack testing on a Merritt developer's desktop using docker-compose
@@ -48,6 +52,7 @@ docker-compose -p merritt -f mrt-services/docker-compose.yml -f mrt-services/loc
 
 <details>
 <summary>Procedure</summary>
+
 ```sh
 export AWS_ACCOUNT_ID=...
 export AWS_REGION=us-west-2
@@ -58,13 +63,16 @@ export CODEARTIFACT_URL=https://cdlib-uc3-mrt-${AWS_ACCOUNT_ID}.d.codeartifact.$
 cd mrt-services
 mvn -ntp clean install -Ddocker.skip -DskipITs -Dmaven.test.skip=true
 cd ..
+# For Mac/PC, build platform-specific images
 docker-compose -p merritt -f mrt-services/docker-compose.yml build
 docker-compose -p merritt -f mrt-services/docker-compose.yml up -d
 ```
+
 </details>
 
 ### 5. Enable local build, maven testing, rspec testing of a Merritt service on EC2
 - Manually built based on local clones of code 
+
 ### 6. Enable local build, maven testing, rspec testing of a Merritt serviceon Merritt developer's desktop
 - Manually built based on local clones of code 
  
