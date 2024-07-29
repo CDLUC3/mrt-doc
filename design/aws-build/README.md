@@ -42,7 +42,7 @@ export CODEARTIFACT_URL=https://cdlib-uc3-mrt-${AWS_ACCOUNT_ID}.d.codeartifact.$
 docker-compose -p merritt -f mrt-services/docker-compose.yml pull
 cd mrt-services
 mvn -ntp clean install -Ddocker.skip -DskipITs -Dmaven.test.skip=true
-docker-compose -p merritt -f mrt-services/docker-compose.yml -f mrt-services/local.yml up -d --build
+docker-compose -p merritt -f mrt-services/docker-compose.yml up -d --build
 ```
 
 </details>
@@ -65,7 +65,7 @@ mvn -ntp clean install -Ddocker.skip -DskipITs -Dmaven.test.skip=true
 cd ..
 # For Mac/PC, build platform-specific images
 docker-compose -p merritt -f mrt-services/docker-compose.yml build
-docker-compose -p merritt -f mrt-services/docker-compose.yml up -d
+docker-compose -p merritt -f mrt-services/docker-compose.yml -f mrt-services/local.yml up -d
 ```
 
 </details>
