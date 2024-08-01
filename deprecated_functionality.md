@@ -1,5 +1,7 @@
 # Deprecated Functionality
 
+Functionality deprecated by the [Merritt Preservation System](https://github.com/CDLUC3/mrt-doc).
+
 ## Database Fields that are no longer actively used
 
 ### inv_nodes
