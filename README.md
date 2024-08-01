@@ -87,14 +87,6 @@ graph TD
   EZID -.-> |resolves to| UI
 ```
 
-Code Repositories
-- Ruby
-  - [UI](https://github.com/CDLUC3/mrt-dashboard)
-- Java
-  - [Ingest](https://github.com/CDLUC3/mrt-ingest)
-  - [Inventory](https://github.com/CDLUC3/mrt-inventory)
-  - [Storage (Store and Access)](https://github.com/CDLUC3/mrt-store)
-
 ### Audit and Replication Services (Java)
 
 ```mermaid
@@ -121,10 +113,14 @@ graph TD
 ```
 
 Code Repositories
-- [Replication](https://github.com/CDLUC3/mrt-replic)
-- [Audit (Fixity Check)](https://github.com/CDLUC3/mrt-audit)
-
-Code Repositories
+- Ruby
+  - [UI](https://github.com/CDLUC3/mrt-dashboard)
+- Java
+  - [Ingest](https://github.com/CDLUC3/mrt-ingest)
+  - [Inventory](https://github.com/CDLUC3/mrt-inventory)
+  - [Storage (Store and Access)](https://github.com/CDLUC3/mrt-store)
+  - [Replication](https://github.com/CDLUC3/mrt-replic)
+  - [Audit (Fixity Check)](https://github.com/CDLUC3/mrt-audit)
 
 ### Other Production Services (Python/XSLT)
 - [ETD - Electronic Theses and Dissertations](https://github.com/CDLUC3/uc3-etds)
@@ -133,10 +129,6 @@ Code Repositories
 - Java
   - [Core](https://github.com/CDLUC3/mrt-core2)
   - [Cloud](https://github.com/CDLUC3/mrt-cloud)
-  - [Zoo](https://github.com/CDLUC3/mrt-zoo)
-    - to be deprecated 
-  - [ZK Queue](https://github.com/CDLUC3/cdl-zk-queue)
-    - to be deprecated
 - Java and Ruby 
   - [Merritt ZK](https://github.com/CDLUC3/mrt-zk) (created in 2024)
 - Ruby
@@ -166,6 +158,7 @@ Code Repositories
   - [Merritt Ansible Deployment Tools](https://github.com/CDLUC3/mrt-ansible-service-restart)  
   - [Merritt LDAP Permission Tools](https://github.com/CDLUC3/merritt_ldap_tools)
   - [Merritt Maintenance Scripts](https://github.com/CDLUC3/mrt-maint)
+  - [Merritt Sceptre Scripts](https://github.com/CDLUC3/mrt-sceptre)
 
 ### Documentation Tools (Python)
 -  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
