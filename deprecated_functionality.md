@@ -49,6 +49,10 @@
 - [OAI](https://github.com/CDLUC3/mrt-oai)
 - [Sword](https://github.com/CDLUC3/mrt-sword)
 
+## Libraries
+- [Zoo](https://github.com/CDLUC3/mrt-zoo)
+- [ZK Queue](https://github.com/CDLUC3/cdl-zk-queue)
+
 ## Other retired repositories
 - [tomcat8_catalina_base](https://github.com/CDLUC3/tomcat8_catalina_base)
 - [mrt-store-admin](https://github.com/CDLUC3/mrt-store-admin)
