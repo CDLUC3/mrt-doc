@@ -8,6 +8,9 @@
   - Enable a robust tagging mechanism to capture the deployment history for Merritt services
 - Facilitate Merritt migration to the UC3 AWS account where all Merritt services will be deployed in the future.
 
+## Related Links
+- [Merritt Build System - Sceptre](https://github.com/CDLUC3/mrt-sceptre/tree/main/build)
+
 ## Tickets Related to this Work
 - CloudFront: https://github.com/CDLUC3/mrt-doc/issues/1850
 - CodeArtifact: https://github.com/CDLUC3/mrt-doc/issues/1931
