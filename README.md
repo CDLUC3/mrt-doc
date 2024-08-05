@@ -152,8 +152,6 @@ Code Repositories
     - Merritt Object Health analysis
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
-- Build Support
-  - [Jenkins Functions](https://github.com/CDLUC3/mrt-jenkins)
 - Other
   - [Merritt Ansible Deployment Tools](https://github.com/CDLUC3/mrt-ansible-service-restart)  
   - [Merritt LDAP Permission Tools](https://github.com/CDLUC3/merritt_ldap_tools)
