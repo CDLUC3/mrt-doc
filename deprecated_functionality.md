@@ -59,6 +59,7 @@ Functionality deprecated by the [Merritt Preservation System](https://github.com
 - [tomcat8_catalina_base](https://github.com/CDLUC3/tomcat8_catalina_base)
 - [mrt-store-admin](https://github.com/CDLUC3/mrt-store-admin)
 - [merritt-manifest](https://github.com/CDLUC3/merritt-manifest)
+- [Jenkins Functions](https://github.com/CDLUC3/mrt-jenkins)
 
 ## Microservice Functionality
 - Storage
