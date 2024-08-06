@@ -1,0 +1,9 @@
+version: 0.2
+
+phases:
+
+  build:
+    on-failure: ABORT
+    commands:
+      - aws s3 cp --recursive manifest s3://${S3CFBUCKET}/sites/ 
+      - aws cloudfront create-invalidation --distribution-id ${CFDISTRIBUTIONID} --paths /sites/manifest --region us-east-1
