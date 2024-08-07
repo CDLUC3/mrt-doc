@@ -51,3 +51,19 @@ This is the most complicated scenario.  This will also make it easier to keep se
 - Tag new versions for each service
 - Deploy each service using semantic tag
 
+## Tagging Notes
+
+### Commit to Branch `main`
+
+- JAR file repos (mrt-core2, mrt-cloud, mrt-zk) :
+  - 3.0-SNAPSHOT.jar in CodeArtifact
+- WAR file repos (mrt-audit, mrt-ingest, mrt-inventory, mrt-store, mrt-replic) :
+  - 3.0-SNAPSHOT.war in CodeArtifact
+  - image:dev in ECR
+- Rails (mrt-dashboard)
+  - image:dev in ECR
+- Lambda (mrt-admin-lambda)
+  - image:latest for base images  
+  - image:main for lambda images (admintool, colladmin, cognito)
+- Other Docker (merritt-docker, mrt-integ-tests)
+  - image:dev in ECR    
