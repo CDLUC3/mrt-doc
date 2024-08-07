@@ -51,19 +51,32 @@ This is the most complicated scenario.  This will also make it easier to keep se
 - Tag new versions for each service
 - Deploy each service using semantic tag
 
-## Tagging Notes
+## Commits and Trigges
 
-### Commit to Branch `main`
-
-- JAR file repos (mrt-core2, mrt-cloud, mrt-zk) :
+### JAR file repos (mrt-core2, mrt-cloud, mrt-zk)
+- Commit to BRANCH `main`:
   - 3.0-SNAPSHOT.jar in CodeArtifact
-- WAR file repos (mrt-audit, mrt-ingest, mrt-inventory, mrt-store, mrt-replic) :
+- Commit to other BRANCH:
+- TAG commit (other than `sprint-*)`
+### WAR file repos (mrt-audit, mrt-ingest, mrt-inventory, mrt-store, mrt-replic)
+- Commit to BRANCH `main`:
   - 3.0-SNAPSHOT.war in CodeArtifact
   - image:dev in ECR
-- Rails (mrt-dashboard)
+- Commit to other BRANCH:
+- TAG commit (other than `sprint-*)`
+### Rails (mrt-dashboard)
+- Commit to BRANCH `main`:
   - image:dev in ECR
-- Lambda (mrt-admin-lambda)
+- Commit to other BRANCH:
+- TAG commit (other than `sprint-*)`
+### Lambda (mrt-admin-lambda)
+- Commit to BRANCH `main`:
   - image:latest for base images  
   - image:main for lambda images (admintool, colladmin, cognito)
-- Other Docker (merritt-docker, mrt-integ-tests)
+- Commit to other BRANCH:
+- TAG commit (other than `sprint-*)`
+### Other Docker (merritt-docker, mrt-integ-tests)
+- Commit to BRANCH `main`:
   - image:dev in ECR    
+- Commit to other BRANCH:
+- TAG commit (other than `sprint-*)`
