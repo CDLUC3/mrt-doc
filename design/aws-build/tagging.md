@@ -54,49 +54,56 @@ This is the most complicated scenario.  This will also make it easier to keep se
 ## Commits and Trigges
 
 ### JAR file repos (mrt-core2, mrt-cloud, mrt-zk)
-- Commit to BRANCH `main`:
-  - 3.0-SNAPSHOT.jar in CodeArtifact
-- Commit to other BRANCH:
-  - BRANCH.jar in CodeArtifact
-- TAG commit (other than `sprint-*)`
-  - TAG.jar in CodeArtifact
+- regardless of BRANCH/TAG
+  - `*-SNAPSHOT.jar` in CodeArtifact
+  - Snapshots can be re-written
+  - if a breaking change is introduced, the snapshot number should be incremented in the pom.xml file
+
 ### WAR file repos (mrt-audit, mrt-ingest, mrt-inventory, mrt-store, mrt-replic)
 - Commit to BRANCH `main`:
-  - 3.0-SNAPSHOT.war in CodeArtifact
-  - image:dev in ECR
+  - `3.0-SNAPSHOT.war` in CodeArtifact
+    - snapshots can be over-written 
+  - `image:dev` in ECR
   - rebuild daily
 - Commit to other BRANCH:
-  - BRANCH.war in CodeArtifact
-  - image:BRANCH in ECR
+  - `BRANCH.war` in CodeArtifact
+    - this artifact name cannot be over-written, so we might need a different strategy 
+  - `image:BRANCH` in ECR
 - TAG commit (other than `sprint-*)`
-  - TAG.war in CodeArtifact
-  - image:TAG in ECR
+  - `TAG.war` in CodeArtifact
+    - the tagged artifact name cannot be over-written.  A new tag would be required to re-publish.
+  - `image:TAG` in ECR
+
 ### Rails (mrt-dashboard)
 - Commit to BRANCH `main`:
-  - image:dev in ECR
+  - `image:dev` in ECR
   - rebuild daily
 - Commit to other BRANCH:
-  - image:BRANCH in ECR
+  - `image:BRANCH` in ECR
 - TAG commit (other than `sprint-*)`
-  - image:TAG in ECR
+  - `image:TAG` in ECR
+
 ### Lambda (mrt-admin-lambda)
 - Commit to BRANCH `main`:
-  - image:latest in ECR for base images  
-  - image:main in ECR for lambda images (admintool, colladmin, cognito)
+  - `image:latest` in ECR for base images  
+  - `image:main` in ECR for lambda images (admintool, colladmin, cognito)
   - rebuild daily
 - Commit to other BRANCH:
-  - image:latest in ECR for base images  
-  - image:BRANCH in ECR for lambda images (admintool, colladmin, cognito)
+  - `image:latest` in ECR for base images  
+  - `image:BRANCH` in ECR for lambda images (admintool, colladmin, cognito)
 - TAG commit (other than `sprint-*)`
-  - image:latest in ECR for base images  
-  - image:TAG in ECR for lambda images (admintool, colladmin, cognito)
+  - `image:latest` in ECR for base images  
+  - `image:TAG` in ECR for lambda images (admintool, colladmin, cognito)
+
 ### Other Docker (merritt-docker, mrt-integ-tests)
 - Commit to BRANCH `main`:
-  - image:dev in ECR
+  - `image:dev` in ECR
   - rebuild daily    
 - Commit to other BRANCH:
-  - image:BRANCH in ECR
+  - `image:BRANCH` in ECR
 - TAG commit (other than `sprint-*)`
-  - image:TAG in ECR
+  - `image:TAG` in ECR
+
 ### Other Code
-- since neither ECR nor CodeArtifact are involved, the tagging is not copied to a repository
+- regardless of BRANCH/TAG
+  - since neither ECR nor CodeArtifact are involved, the tagging is not copied to a repository
