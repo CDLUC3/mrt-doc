@@ -1,6 +1,7 @@
 # CodeArtifact Tagging for Merritt
 
 - [Merritt AWS Build Design](README.md)
+- [Tagging Ideas Demonstration](demo.md)
 
 ## General Guidelines
 
