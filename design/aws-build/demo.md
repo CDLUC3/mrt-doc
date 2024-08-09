@@ -19,13 +19,34 @@ To github.com:cdluc3/mrt-ingest
 
 <img width="1363" alt="image" src="https://github.com/user-attachments/assets/24e03d1d-dd80-49c8-b07f-0fb937652a4d">
 
+### CodePipeline will be triggered by the "tag" action.  Build will be initiated with the tagged commit
+
 <img width="1417" alt="image" src="https://github.com/user-attachments/assets/d37c81f8-f729-4d42-861f-e2798d359e7c">
 
 ## CodeBuild
 
 <img width="1365" alt="image" src="https://github.com/user-attachments/assets/2a02ef4d-b782-458d-9d92-4ca5787de425">
 
+### Build Script resides in the code repo
+
+> [!NOTE]
+> TODO: build script needs to use the tag when pushing to ECR
+
 https://github.com/CDLUC3/mrt-ingest/blob/queue_LIB/buildspec.yml
+
+### Maven Deploy to Code Artifact
+```
+[Container] 2024/08/09 22:51:44.063313 Running command echo "Semver [${SEMVER}]"
+Semver [-Dversion=demo-1.3.0]
+
+[Container] 2024/08/09 22:51:44.071339 Running command mvn -ntp deploy:deploy-file -Durl=${CODEARTIFACT_URL} -DrepositoryId=cdlib-uc3-mrt-uc3-mrt-java -Dfile=$(ls ingest-war/target/mrt-ingestwar-*.war) ${SEMVER}
+```
+
+### Docker Push to ECR
+```
+docker push 99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-ingest:demo-1.3.0
+The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-ingest]
+```
 
 ## CodeArtifact
 
