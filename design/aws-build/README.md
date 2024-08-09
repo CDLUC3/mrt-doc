@@ -81,6 +81,7 @@ docker-compose -p merritt -f mrt-services/docker-compose.yml -f mrt-services/loc
  
 ## Merritt Repo Tagging Process
 - [Tagging Ideas](tagging.md)
+- [Tagging Demonstration](demo.md)
 
 ## Build Workflow
 
