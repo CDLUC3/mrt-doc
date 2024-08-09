@@ -1,4 +1,4 @@
-# Tagging Demo
+# Merritt AWS Build - Tagging Demo
 
 ## Tag Repo
 
