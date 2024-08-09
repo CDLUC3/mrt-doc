@@ -1,5 +1,7 @@
 # Merritt AWS Build - Tagging Demo
 
+This is an illustration of the concepts defined in [Merritt Tagging Ideas](tagging.md).
+
 ## Tag Repo
 
 ```bash
