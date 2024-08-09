@@ -35,8 +35,5 @@ https://github.com/CDLUC3/mrt-ingest/blob/queue_LIB/buildspec.yml
 
 ## Elastic Container Registry
 
-> [!NOTE]  
-> TODO: need to publish the image with TAG rather than `dev`
-
-<img width="1456" alt="image" src="https://github.com/user-attachments/assets/3de68fd6-1260-4258-90a7-bd8fd59e5097">
+<img width="1441" alt="image" src="https://github.com/user-attachments/assets/7ccb7d05-e1cb-47be-93d8-ac000117705a">
 
