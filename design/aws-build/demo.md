@@ -1,5 +1,8 @@
 # Merritt AWS Build - Tagging Demo
 
+- [Merritt AWS Build Design](README.md)
+
+## Purpose
 This is an illustration of the concepts defined in [Merritt Tagging Ideas](tagging.md).
 
 ## Tag Repo
