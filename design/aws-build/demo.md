@@ -35,6 +35,9 @@ To github.com:cdluc3/mrt-ingest
 https://github.com/CDLUC3/mrt-ingest/blob/queue_LIB/buildspec.yml
 
 ### Maven Deploy to Code Artifact
+
+Semantically tagged WAR files can be downloaded from CodeArtifact and deployed to our Stage and Production EC2 instances.
+
 ```
 [Container] 2024/08/09 22:51:44.063313 Running command echo "Semver [${SEMVER}]"
 Semver [-Dversion=demo-1.3.0]
@@ -43,6 +46,9 @@ Semver [-Dversion=demo-1.3.0]
 ```
 
 ### Docker Push to ECR
+
+Eventually, Merritt services will migrate to ECS.  Semantically tagged images will be used in the ECS stack.
+
 ```
 docker push 99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-ingest:demo-1.3.0
 The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-ingest]
@@ -58,3 +64,10 @@ The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-inge
 
 <img width="1441" alt="image" src="https://github.com/user-attachments/assets/7ccb7d05-e1cb-47be-93d8-ac000117705a">
 
+## Main Branch Daily Build
+
+This process will push an updated image to ECR each day to enable up-to-date docker image scanning.
+
+This will produce an image `mrt-ingest:dev` for use in development testing.
+
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/f6f60ed3-e43d-437a-ae5f-c1b67c8a750c">
