@@ -67,7 +67,7 @@ This is the most complicated scenario.  This will also make it easier to keep se
   - `image:dev` in ECR
   - rebuild daily
 - Commit to other BRANCH:
-  - `BRANCH.war` in CodeArtifact
+  - `BRANCH-SNAPSHOT.war` in CodeArtifact
     - this artifact name cannot be over-written, so we might need a different strategy 
   - `image:BRANCH` in ECR
 - TAG commit (other than `sprint-*)`
