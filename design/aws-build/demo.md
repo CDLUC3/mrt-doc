@@ -43,7 +43,7 @@ This is an illustration of the concepts defined in [Merritt Tagging Ideas](https
 ----
 
 ## Java Services: WAR files
-- Commit to other BRANCH:
+- Commit to other feature BRANCH:
   - `BRANCH-SNAPSHOT.war` in CodeArtifact
   - `image:BRANCH` in ECR
 
@@ -70,7 +70,7 @@ This is an illustration of the concepts defined in [Merritt Tagging Ideas](https
 ----
 
 ## Rails Service
-- Commit to other BRANCH:
+- Commit to other feature BRANCH:
   - `image:BRANCH` in ECR
 
 ----
@@ -161,7 +161,9 @@ To github.com:cdluc3/mrt-ingest
 
 ----
 
-### CodePipeline will be triggered by the "tag" action.  Build will be initiated with the tagged commit
+### CodePipeline 
+- will be triggered by the "tag" action.  
+- build will be initiated with the tagged commit
 
 ----
 
@@ -196,15 +198,18 @@ To github.com:cdluc3/mrt-ingest
 
 ----
 
-### Maven Deploy to Code Artifact
+### Maven Deploy FROM Code Artifact
 
 - Download semantically tagged WAR files from CodeArtifact 
 - Deploy to our Stage and Production EC2 instances
 
 ```
-aws codeartifact get-package-version-asset --domain=cdlib-uc3-mrt --repository=uc3-mrt-java 
-  --package=mrt-storewar --package-version=demo-1.1.1 --format=maven --namespace=org.cdlib.mrt 
-  --asset=mrt-storewar-demo-1.1.1.war --domain-owner $AWS_ACCOUNT_ID store.war
+aws codeartifact get-package-version-asset 
+  --domain=cdlib-uc3-mrt --repository=uc3-mrt-java 
+  --package=mrt-storewar --package-version=demo-1.1.1 
+  --format=maven --namespace=org.cdlib.mrt 
+  --asset=mrt-storewar-demo-1.1.1.war 
+  --domain-owner $AWS_ACCOUNT_ID store.war
 ```
 
 ----
@@ -247,9 +252,9 @@ The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-inge
 
 ## Main Branch Daily Build
 
-This process will push an updated image to ECR each day to enable up-to-date docker image scanning.
-
-This will produce an image `mrt-ingest:dev` for use in development testing.
+- push an updated image to ECR each day 
+  - to enable up-to-date docker image scanning.
+- image `mrt-ingest:dev` can be used for development testing.
 
 ----
 
@@ -260,7 +265,8 @@ This will produce an image `mrt-ingest:dev` for use in development testing.
 ## Infrastructure as code
 
 - Our build infrastructure is created with sceptre templates
-- https://github.com/CDLUC3/mrt-sceptre (private repo)
+- https://github.com/CDLUC3/mrt-sceptre 
+  - private repo
 
 ---
 
