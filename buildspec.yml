@@ -5,13 +5,13 @@ phases:
   build:
     on-failure: ABORT
     commands:
-      - aws s3 cp --recursive manifest s3://${S3CFBUCKET}/sites/manifest
-      - aws cloudfront create-invalidation --distribution-id ${CFDISTRIBUTIONID} --paths /sites/manifest --region us-east-1
+    - aws s3 cp --recursive manifest s3://${S3CFBUCKET}/sites/manifest
+    - aws cloudfront create-invalidation --distribution-id ${CFDISTRIBUTIONID} --paths /sites/manifest --region us-east-1
 
   post_build:
     on-failure: CONTINUE
     commands:
     - cd design/aws-build
-      - docker-compose -f docker-compose-static.yml up --build
-      - aws s3 cp --recursive present_build s3://${S3CFBUCKET}/present_build
-      - aws cloudfront create-invalidation --distribution-id ${CFDISTRIBUTIONID} --paths /present_build --region us-east-1
+    - docker-compose -f docker-compose-static.yml up --build
+    - aws s3 cp --recursive present_build s3://${S3CFBUCKET}/present_build
+    - aws cloudfront create-invalidation --distribution-id ${CFDISTRIBUTIONID} --paths /present_build --region us-east-1
