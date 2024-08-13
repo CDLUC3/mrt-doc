@@ -1,11 +1,11 @@
 # Merritt AWS Build - Tagging Demo
 
-- [Merritt AWS Build Design](README.md)
+- [Merritt AWS Build Design](https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md)
 
 ---
 
 ## Purpose
-This is an illustration of the concepts defined in [Merritt Tagging Ideas](tagging.md).
+This is an illustration of the concepts defined in [Merritt Tagging Ideas](https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/tagging.md).
 
 ----
 
@@ -20,10 +20,17 @@ This is an illustration of the concepts defined in [Merritt Tagging Ideas](taggi
 
 ## Java Libraries: JAR files
 
+- https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#java-libraries
 - Versioning is controlled in **source code**
 - Commit to BRANCH `main`:
   - `*-SNAPSHOT.jar` in CodeArtifact
 - "Snapshots" can be re-written
+
+----
+
+## Java Services: WAR files
+
+- https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#java-services-war
 
 ----
 
@@ -51,6 +58,11 @@ This is an illustration of the concepts defined in [Merritt Tagging Ideas](taggi
 ----
 
 ## Rails Service
+- https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#ruby-service-build-image
+
+----
+
+## Rails Service
 - Commit to BRANCH `main`:
   - `image:dev` in ECR
   - rebuild daily
@@ -72,7 +84,7 @@ This is an illustration of the concepts defined in [Merritt Tagging Ideas](taggi
 
 ## Lambda Apps 
 - Merritt Lambdas are packaged as docker images
-
+- https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#ruby-lambda-build-and-deploy
 ----
 
 ## Lambda Apps 
@@ -127,6 +139,16 @@ To github.com:cdluc3/mrt-ingest
 ## GitHub
 
 <img alt="image" src="https://github.com/user-attachments/assets/a017539b-9feb-4ef4-9dbc-d06acf7cebd2">
+
+----
+
+## AWS Connector for GitHub
+
+- The CDLUC3 organization in GitHub has granted this application access to our git repositories
+- This enables the tracking of commits and tags (public and private)
+- This allows AWS CodePipeline to clone our repositories (including private)
+- Some AWS screens call this a "CodeStar connection"
+
 
 ---
 
@@ -221,3 +243,10 @@ This will produce an image `mrt-ingest:dev` for use in development testing.
 ----
 
 <img alt="image" src="https://github.com/user-attachments/assets/f6f60ed3-e43d-437a-ae5f-c1b67c8a750c">
+
+---
+
+## Infrastructure as code
+
+- Our build infrastructure is created with sceptre templates
+- https://github.com/CDLUC3/mrt-sceptre (private repo)
