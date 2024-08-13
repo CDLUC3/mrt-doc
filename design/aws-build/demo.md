@@ -20,7 +20,7 @@ This is an illustration of the concepts defined in [Merritt Tagging Ideas](https
 
 ## Java Libraries: JAR files
 
-- https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#java-libraries
+- [JAR Build Design](https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#java-libraries)
 - Versioning is controlled in **source code**
 - Commit to BRANCH `main`:
   - `*-SNAPSHOT.jar` in CodeArtifact
@@ -30,7 +30,7 @@ This is an illustration of the concepts defined in [Merritt Tagging Ideas](https
 
 ## Java Services: WAR files
 
-- https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#java-services-war
+- [WAR Build Design](https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#java-services-war)
 
 ----
 
@@ -58,7 +58,7 @@ This is an illustration of the concepts defined in [Merritt Tagging Ideas](https
 ----
 
 ## Rails Service
-- https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#ruby-service-build-image
+- [Rails Build Design](https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#ruby-service-build-image)
 
 ----
 
@@ -84,7 +84,7 @@ This is an illustration of the concepts defined in [Merritt Tagging Ideas](https
 
 ## Lambda Apps 
 - Merritt Lambdas are packaged as docker images
-- https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#ruby-lambda-build-and-deploy
+- [Lambda Build Design](https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md#ruby-lambda-build-and-deploy)
 ----
 
 ## Lambda Apps 
@@ -144,11 +144,14 @@ To github.com:cdluc3/mrt-ingest
 
 ## AWS Connector for GitHub
 
-- The CDLUC3 organization in GitHub has granted this application access to our git repositories
-- This enables the tracking of commits and tags (public and private)
-- This allows AWS CodePipeline to clone our repositories (including private)
-- Some AWS screens call this a "CodeStar connection"
+<img alt="image" src="https://github.com/user-attachments/assets/17d73256-fea2-4368-9e3a-5d165274d175">
 
+----
+
+## AWS Connector for GitHub
+- enables the tracking of commits and tags
+- This allows AWS CodePipeline to clone selected private repos
+- Some AWS screens call this a "CodeStar connection"
 
 ---
 
@@ -174,7 +177,8 @@ To github.com:cdluc3/mrt-ingest
 
 ### Build Script resides in the code repo
 
-https://github.com/CDLUC3/mrt-ingest/blob/queue_LIB/buildspec.yml
+- [Repo Build Script](https://github.com/CDLUC3/mrt-ingest/blob/queue_LIB/buildspec.yml)
+- 15 Merritt repos currentl have buildspec.yml files
 
 ----
 
@@ -194,7 +198,14 @@ https://github.com/CDLUC3/mrt-ingest/blob/queue_LIB/buildspec.yml
 
 ### Maven Deploy to Code Artifact
 
-Semantically tagged WAR files can be downloaded from CodeArtifact and deployed to our Stage and Production EC2 instances.
+- Download semantically tagged WAR files from CodeArtifact 
+- Deploy to our Stage and Production EC2 instances
+
+```
+aws codeartifact get-package-version-asset --domain=cdlib-uc3-mrt --repository=uc3-mrt-java 
+  --package=mrt-storewar --package-version=demo-1.1.1 --format=maven --namespace=org.cdlib.mrt 
+  --asset=mrt-storewar-demo-1.1.1.war --domain-owner $AWS_ACCOUNT_ID store.war
+```
 
 ----
 
@@ -250,3 +261,7 @@ This will produce an image `mrt-ingest:dev` for use in development testing.
 
 - Our build infrastructure is created with sceptre templates
 - https://github.com/CDLUC3/mrt-sceptre (private repo)
+
+---
+
+## Reach out if you have questions!
