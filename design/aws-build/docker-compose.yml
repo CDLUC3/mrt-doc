@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+  reveal-md:
+    image: webpronl/reveal-md
+    ports:
+    - 8099:1948
+    command: ["/slides", "demo.md"]
+    volumes:
+    - ".:/slides"
