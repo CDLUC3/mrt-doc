@@ -4,9 +4,6 @@ services:
     image: webpronl/reveal-md
     ports:
     - 8099:1948
-    # To create the directory where the site will be generated...
-    #   mkdir assets
-    #   chmod 777 assets
     command: ["/slides", "demo.md", "--static", "/assets"]
     volumes:
     - ".:/slides"
