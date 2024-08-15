@@ -270,4 +270,35 @@ The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-inge
 
 ---
 
+## Resource Cleanup
+- Docker Images
+- Java Artifacts
+
+----
+
+## Resource Cleanup: Docker Images
+
+- Untagged Images 
+  - Lifecycle Policy will delete
+- Feature Branch/Tag Images
+  - Older than 30 days (report)
+- Semantic Tag Imags
+  - No more than 10 (report)
+  - No more than 5 older than 30 days (report)
+
+----
+
+## Resource Cleanup: Docker Images
+
+- Unpublished Artifacts 
+  - No lifecycle policy available
+  - Delete all (code)
+- Feature Branch/Tag Images
+  - Older than 30 days (report)
+- Semantic Tag Imags
+  - No more than 10 (report)
+  - No more than 5 older than 30 days (report)
+
+---
+
 ## Reach out if you have questions!
