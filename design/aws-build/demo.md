@@ -180,7 +180,7 @@ To github.com:cdluc3/mrt-ingest
 ### Build Script resides in the code repo
 
 - [Repo Build Script](https://github.com/CDLUC3/mrt-ingest/blob/queue_LIB/buildspec.yml)
-- 15 Merritt repos currentl have buildspec.yml files
+- 15 Merritt repos currently have buildspec.yml files
 
 ----
 
@@ -298,6 +298,12 @@ The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-inge
 - Semantic Tag Imags
   - No more than 10 (report)
   - No more than 5 older than 30 days (report)
+
+----
+
+## Question
+- how do we differentiate a deployment tag from a development tag?
+  - I posted this question in Slack #dev
 
 ---
 
