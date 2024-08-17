@@ -271,8 +271,63 @@ The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-inge
 ---
 
 ## Resource Cleanup
+- Tag Auditing Reports
 - Docker Images
 - Java Artifacts
+
+----
+
+## Tag Audit Reports
+- See *Tag Reports* on the [dev resources page](https://merritt.uc3dev.cdlib.org/)
+
+----
+## List Semantic Tags
+
+```bash
+git for-each-ref --sort=-creatordate --format '- %(refname) (%(creatordate:short))' refs/tags \
+        | egrep "tags/[0-9]+\.[0-9]+\.[0-9]+ " \
+        | sed -e "s/refs\/tags\///" \
+        | head -10
+```
+
+----
+## List Feature Tags
+
+```bash
+git for-each-ref --sort=-creatordate --format '- %(refname) (%(creatordate:short))' refs/tags \
+        | egrep -v "tags/[0-9]+\.[0-9]+\.[0-9]+ " \
+        | egrep -v "sprint-" \
+        | sed -e "s/refs\/tags\///" \
+        | head -10
+```
+
+----
+
+## List CodeArtifact Packages
+
+```bash
+for pkg in mrt-inventoryconf mrt-invwar
+do
+        echo "## Code Artifact Packages for $pkg" >> $RPT
+        aws codeartifact list-package-versions \
+          --domain=cdlib-uc3-mrt --repository=uc3-mrt-java \
+          --format=maven --namespace=org.cdlib.mrt \
+          --package=$pkg --status=Published --output=text \
+          | grep Published \
+          | cut -f4 \
+          | sed -e "s/^/- /"
+done
+```
+
+----
+
+## List ECR Images
+
+```bash
+aws ecr list-images --repository-name mrt-inventory --filter tagStatus=TAGGED --output=text \
+        | cut -f3 \
+        | sed -e "s/^/- /"
+```
 
 ----
 
@@ -288,9 +343,9 @@ The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-inge
 
 ----
 
-## Resource Cleanup: Docker Images
+## Resource Cleanup: CodeArtifact Packages
 
-- Unpublished Artifacts 
+- Unlisted Artifacts 
   - No lifecycle policy available
   - Delete all (code)
 - Feature Branch/Tag Images
@@ -298,6 +353,27 @@ The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-inge
 - Semantic Tag Imags
   - No more than 10 (report)
   - No more than 5 older than 30 days (report)
+
+----
+
+## Prune "Unlisted" Artifact Packages
+
+```bash
+      for pkg in mrt-inventoryconf mrt-invwar
+      do
+        for ver in `aws codeartifact list-package-versions \
+          --domain=cdlib-uc3-mrt --repository=uc3-mrt-java \
+          --format=maven --namespace=org.cdlib.mrt \
+          --package=$pkg --status=Unlisted \
+          --output=text | grep Unlisted | cut -f4`
+        do
+          aws codeartifact delete-package-versions \
+            --domain=cdlib-uc3-mrt --repository=uc3-mrt-java \
+            --format=maven --namespace=org.cdlib.mrt \
+            --package=$pkg --versions=$ver --no-cli-pager
+        done
+      done
+```
 
 ----
 
