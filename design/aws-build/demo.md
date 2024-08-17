@@ -151,7 +151,7 @@ To github.com:cdluc3/mrt-ingest
 ## AWS Connector for GitHub
 - enables the tracking of commits and tags
 - This allows AWS CodePipeline to clone selected private repos
-- Some AWS screens call this a "CodeStar connection"
+- Some AWS screens call this an *AWS CodeConnection*
 
 ---
 
