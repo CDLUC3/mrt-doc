@@ -11,6 +11,7 @@
 - For the latest Merritt documentation, see the [wiki](https://github.com/cdluc3/mrt-doc/wiki).
 - [Manifest Validation Tool](https://cdluc3.github.io/mrt-doc/manifest/index.html)
 - [Manifest Validation Tool with Unit Tests](https://cdluc3.github.io/mrt-doc/manifest/index.html?unittest=1)
+- [Merritt Development Resources](https://merritt.uc3dev.cdlib.org/)
 
 ## Code Repositories
 
