@@ -162,6 +162,9 @@ Code Repositories
 ### Documentation Tools (Python)
 -  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
 
+## Merritt Build System
+- [Merritt Build System Design](https://github.com/CDLUC3/mrt-doc/tree/main/design/aws-build)
+
 ## Project Overview
 - [Project Board](https://github.com/CDLUC3/mrt-doc/projects/1)
 - [System Operations Board](https://github.com/CDLUC3/mrt-doc/projects/4)
