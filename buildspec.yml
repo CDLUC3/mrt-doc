@@ -14,6 +14,7 @@ phases:
     on-failure: CONTINUE
     commands:
     - cd design/aws-build
+    - docker pull ${ECR_REGISTRY}/docker-hub/webpronl/reveal-md
     - docker-compose -f docker-compose-static.yml up --build
     - aws s3 rm --recursive s3://${S3CFBUCKET}/present_build
     - aws s3 cp --recursive present_build s3://${S3CFBUCKET}/present_build
