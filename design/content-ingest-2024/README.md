@@ -8,16 +8,18 @@ graph TD
   Eric --> EC2
   HardDrive --> Desktop
   Desktop --> S3
-  S3 --> LustreFSX
+  S3 <--> LustreFSX
   S3 --> Lambda
-  LustreFSX --> EC2
+  LustreFSX <--> EC2
   LoadBalancer --> LoadBalancerListener
   LoadBalancerListener --> TargetGroup
   TargetGroup --> Lambda
   DNSName --> LoadBalancer
-  Cert --> DNSName
-  Cert --> LoadBalancer
+  DNSName -.-> Cert
+  LoadBalancer -.-> Cert
   Browser --> DNSName
+  Ingest --> DNSName
+  SSM --> Lambda
 ```
 
 ## Workspace Domain
