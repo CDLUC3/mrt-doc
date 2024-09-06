@@ -1,5 +1,25 @@
 # Content Ingest Workspace Design
 
+```mermaid
+graph TD
+  Eric
+  Eric --> Desktop
+  Eric --> Browser
+  Eric --> EC2
+  HardDrive --> Desktop
+  Desktop --> S3
+  S3 --> LustreFSX
+  S3 --> Lambda
+  LustreFSX --> EC2
+  LoadBalancer --> LoadBalancerListener
+  LoadBalancerListener --> TargetGroup
+  TargetGroup --> Lambda
+  DNSName --> LoadBalancer
+  Cert --> DNSName
+  Cert --> LoadBalancer
+  Browser --> DNSName
+```
+
 ## Workspace Domain
 - Content may be ingested into either Stage or Prod.
 
