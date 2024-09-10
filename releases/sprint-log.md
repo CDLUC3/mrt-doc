@@ -1,5 +1,30 @@
 ## Sprint Goals
 
+#### Sprint 108: September 3, 2024 - September 24, 2024
+- Ingest
+  - Queue redesign (Part 3) - Support additional zookeeper states: #1441
+  - While running Ingest IT tests, the node /locks/collections/merritt_test_content keeps getting set #1975
+  - Use new mrt-zk methods for queue hold, collection hold, ark locking #1883
+  - Create queue test plan #1934
+- Storage, Update object strategy
+  - SDSC data migration from Minio to native S3 #1701
+- UC3 AWS Account + Content Ingest
+  - Content Ingest Workspace Design #1767
+- Nuxeo Object Updates
+  - Storage "fix" - Inventory "replace" methods #1815
+  - Provide UCI with file lists of changeToken-impacted objects #1938
+- Collection Health Prototype
+  - Gather feedback from BD-CKG and UCB LIT
+- Depositor tools survey #96
+- UCB Law Robbins Collection
+  - Batch 6 validation
+- ETDs
+  - UCSB Legacy ETDs #1926
+
+#### Releases:
+Stage: Queue redesign
+Production:
+
 #### Sprint 107: August 14, 2024 - September 3, 2024
 - Ingest
   - Queue redesign (Part 3) - Support additional zookeeper states: #1441
@@ -10,7 +35,7 @@ keeps getting set #1975
 - Storage, Update object strategy
   - SDSC S3 Storage #1927
 - Dev-ops
-  - em updates for xml gem - update everywhere #2003
+  - Gem updates for xml gem - update everywhere #2003
 - UC3 AWS Account
   - Provision EBS as an ingest workspace #1929
 - Content Ingest
@@ -27,8 +52,8 @@ keeps getting set #1975
   - UCSB Legacy ETDs #1926
 
 #### Releases:
-Stage:
-Production:
+Stage: Audit updates
+Production: Audit updates
 
 #### Sprint 106: July 17, 2024 - August 6, 2024
 - Ingest
