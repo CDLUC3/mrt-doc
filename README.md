@@ -154,10 +154,8 @@ Code Repositories
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
 - Other
-  - [Merritt Ansible Deployment Tools](https://github.com/CDLUC3/mrt-ansible-service-restart)  
   - [Merritt LDAP Permission Tools](https://github.com/CDLUC3/merritt_ldap_tools)
   - [Merritt Maintenance Scripts](https://github.com/CDLUC3/mrt-maint)
-  - [Merritt Sceptre Scripts](https://github.com/CDLUC3/mrt-sceptre)
 
 ### Documentation Tools (Python)
 -  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
@@ -166,6 +164,9 @@ Code Repositories
 - [Merritt Build System Design](https://github.com/CDLUC3/mrt-doc/tree/main/design/aws-build)
 - [Merritt Tomcat Deploy](https://github.com/CDLUC3/mrt-tomcat-deploy)
 - [Merritt Service Release Manifest](https://github.com/CDLUC3/mrt-service-release-manifest)
+- [Merritt Sceptre Scripts](https://github.com/CDLUC3/mrt-sceptre)
+- Deprecated?
+  - [Merritt Ansible Deployment Tools](https://github.com/CDLUC3/mrt-ansible-service-restart)  
 
 ## Project Overview
 - [Project Board](https://github.com/CDLUC3/mrt-doc/projects/1)
