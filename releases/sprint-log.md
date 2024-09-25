@@ -1,5 +1,32 @@
 ## Sprint Goals
 
+#### Sprint 109: September 25, 2024 - October 15, 2024
+- Ingest
+  - Queue redesign (Part 3) - Support additional zookeeper states: #1441
+  - All on Stage #s 1975, 1883, 1981, 1982, 2023
+- Storage - Object update strategy
+  - SDSC data migration from Minio to native S3 #1701
+- Nuxeo Object Updates
+  - Storage "fix" - Inventory "replace" methods #1815
+  - Provide UCI with file lists of changeToken-impacted objects #1938
+- Admin
+  - Migrate non core "Admin" tasks in Ingest to the Merritt Admin Tool (m2 migration) #1908
+  - Terry/Mark - notes from Admin Tool testing #2035
+  - Colladmin - show secondary node count on "manage collection nodes" page ALSO ensure that missing secondary nodes appear in the secondary node report #2036
+- Collection Health Prototype
+  - Gather feedback from BD-CKG and UCB LIT
+- Depositor tools survey #96
+- UCB Law Robbins Collection
+  - Batch 6 validation #2018
+  - Batch 7 ingest #2038
+- ETDs
+  - UCSB Legacy ETDs #1926
+
+#### Releases:
+Stage: Queue redesign; Audit, Replic, Storage, Inventory redeploys with new deploy script #2036
+Production: 
+
+
 #### Sprint 108: September 3, 2024 - September 24, 2024
 - Ingest
   - Queue redesign (Part 3) - Support additional zookeeper states: #1441
