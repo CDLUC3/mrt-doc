@@ -151,6 +151,7 @@ Code Repositories
     - Merritt Consistency reports
     - Merritt OpenSearch Visualizations
     - Merritt Object Health analysis
+  - [Ingest Workspace Manifest Builder](https://github.com/CDLUC3/s3-sinatra) 
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
 - Other
