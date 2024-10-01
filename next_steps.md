@@ -4,9 +4,6 @@
 ## Next Steps by Team Member
 
 - David
-  - Zookeeper
-    - Migrate inventory to mrt-zk
-    - Migrate Storage/Access to mrt-zk
   - Storage Fix Operation:
     - changeToken fix 
     - generic "storage fix" solution
@@ -15,6 +12,7 @@
       - admin tool invokes appropriate "fix" operation in storage
     - implement storage prune operation 
       - create file tombstone table?
+  - AWS Java Api Migration 
   - Major Migrations
     - SDSC storage migration
   - Resume Storage Admin Work
@@ -31,41 +29,38 @@
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
     - Eliminate DUA code
 - Mark
-  - Refactor Batches and Jobs to use mrt-zk library
-  - Storage prune - pass operation through ingest
-  - Post-N2T migration tombstone tasks
+  - ZK Estimate Task
+  - Move profiles from file system to S3 
+  - New Manifest Type
+  - Nuxeo refactor and cleanup
+  - Passing storage fix parameters to INV/Storage
 - Terry
-  - Migrate ZK admin functionality from Ingest to Admin tool
-  - Merritt Dev Cloud Front Server
-  - Explore addding a Merritt service into the UC3 account (lambda or docker)
+  - UCB wildcard search
   - Admin interface for storage fix
+  - Move profiles from file system to S3 
+  - Migrate Docker stack to UC3 account (docker-compose to ECS)
+  - Admin tool functionality in UC3 account
+  - Migration of Merritt to UC3 account
   - Refine admin tool with usability suggestions
-  - Migrate Docker stack to UC3 account
   - Refine collection health tools based on feedback
 - Ashley
   - New Dev boxes (AL2023): Jenkins, Docker, David's Sandbox
-  - GitHub/CodeBuild for Private Repo Resources
   - Misc Servers AL2023: LDAP, ZK, Batch
 - Eric
-  - Collection Health Reports
+  - Depositor Tool Survey
+  - Collection Health Feedback Actions
   - ETDs, ETDs v2
-  - New collections
   - Robbins Collection
   - UCSF Glantz videos
+  - UCSB Legacy ETD's
 - Team
+  - LDAP 
+    - Evalauate managed LDAP 
+    - Replace LDAP with Cognito Authentication + Yaml authorization rules
+    - Create / Manage LDAP groups via admin tools
   - Depositor services
-    - Introduce new manifest type (JSON)
-      - Allow multiple files and metadata to be specified for a set of objects
     - Presigned file upload solution (large single file)
     - Presigned file upload solution (directory of files)
-    - Build a solution that can deprecate the need for hard drive processing   
+      - requires a javascript enabled solution like the one Dryad ahad used    
   - Explore new storage classes and potential benefits to Merritt processing
-  - Replace LDAP with Cognito Authentication + Yaml authorization rules
-  - Migrate appropriate services to Lambda
-    - Access 
-      - Access presigned-file requests
-      - Access assembly queueing
-      - This would allow us to no longer need HA for the Access service 
-    - Inventory
-      - Local Id service requests
-      - Ingest recording (objects with 100K+ files might require >15min to process, tuning is necessary) 
+  - Eliminate the "admin object submission process" - build tools that create INV db relationships as needed
