@@ -30,12 +30,15 @@
     - Eliminate DUA code
 - Mark
   - ZK Estimate Task
+  - ZK Update reporting task
   - Move profiles from file system to S3 
   - New Manifest Type
   - Nuxeo refactor and cleanup
   - Passing storage fix parameters to INV/Storage
 - Terry
   - UCB wildcard search
+    - also look at performance of UI for users with many LDAP collections
+  - Eliminate legacy queue logic from admin tool  
   - Admin interface for storage fix
   - Move profiles from file system to S3 
   - Migrate Docker stack to UC3 account (docker-compose to ECS)
