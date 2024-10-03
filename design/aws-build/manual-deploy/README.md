@@ -118,16 +118,6 @@ mvn dependency:get \
 ls -lart ~/.m2/repository/org/cdlib/mrt/mrt-ingestwar/
 ```
 
-#### Verify versions
-```
-aws codeartifact list-package-versions \
-  --domain=cdlib-uc3-mrt --repository=uc3-mrt-java \
-  --domain-owner $AWS_ACCOUNT_ID \
-  --format=maven --namespace=org.cdlib.mrt \
-  --package=mrt-ingestwar \
-  --output=text 
-```
-
 ### Store Deploy
 
 ```bash
