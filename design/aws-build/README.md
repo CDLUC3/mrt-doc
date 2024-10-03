@@ -10,6 +10,7 @@
 
 ## Related Links
 - [Merritt Build System - Sceptre](https://github.com/CDLUC3/mrt-sceptre/tree/main/build)
+- [Manual WAR deployment](manual-deploy/README.md)
 
 ## Tickets Related to this Work
 - CloudFront: https://github.com/CDLUC3/mrt-doc/issues/1850

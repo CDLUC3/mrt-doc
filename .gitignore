@@ -16,7 +16,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -101,3 +102,7 @@ flycheck_*.el
 
 # Visio autosave temporary files
 *.~vsd*
+
+design/aws-build/manual-deploy/*.pom
+design/aws-build/manual-deploy/*.war
+design/aws-build/manual-deploy/static
