@@ -1,5 +1,42 @@
 ## Sprint Goals
 
+#### Sprint 110:  October 15, 2024 - November 5, 2024
+Primary tasks:
+- Ingest 
+  - [Ingest] Support Batch Update Reporting State: #2058
+  - Ensure batch/job cleanup is performing appropriately: #2069
+  - [Ingest] Notification title does not reflect a failed batch submission: #2071
+- Inventory
+  - [Inventory] Zookeeper Ephemeral lock management: #2060
+- Storage
+  - SDSC data migration from Minio to native S3 #1701
+- Nuxeo Object Updates – Object update strategy
+  - Storage "fix" - Inventory "replace" methods #1815
+  - Provide UCI with file lists of changeToken-impacted objects #1938
+- UI
+  - UI: Fuzzy filename search: #2052
+- Systems and dependencies
+  - End-of-support for Java v1.x AWS SDK - December 31, 2025: #1972
+  - Merritt UI: rails update to v7.2: #2066
+  - add inv_tasks to docker tables and to mrt-dashboard test image: #2015
+- Admin
+  - Add "LDAP Collection Map" report to consistency reports
+  - Check/validate deploy tags from git repo for deploys
+  - Remove Admin code that reads old ZK queue data
+  - Migration to AWS SSO for Admin
+- Collection Health Prototype
+  - Gather feedback from BD-CKG and UCB LIT
+  - Upcoming presentation on depositor tools at BD-CKG
+  - Depositor tools survey #96
+- UCB Law Robbins Collection
+  - Batch 7 ingest #2038
+- ETDs
+  - Investigate ETD createmarc failure: #2074
+  - UCSB Legacy ETDs: #1926
+
+#### Releases:
+- TBD
+
 #### Sprint 109: September 25, 2024 - October 15, 2024
 - Ingest
   - Queue redesign (Part 3) - Support additional zookeeper states: #1441
@@ -23,8 +60,8 @@
   - UCSB Legacy ETDs #1926
 
 #### Releases:
-Stage: Queue redesign; Audit, Replic, Storage, Inventory redeploys with new deploy script #2036
-Production: 
+Stage: Queue redesign; UI gem updates
+Production: Queue redesign; UI gem updates
 
 
 #### Sprint 108: September 3, 2024 - September 24, 2024
