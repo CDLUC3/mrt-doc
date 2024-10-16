@@ -1,7 +1,6 @@
 ## Sprint Goals
 
 #### Sprint 110:  October 15, 2024 - November 5, 2024
-Primary tasks:
 - Ingest 
   - [Ingest] Support Batch Update Reporting State: #2058
   - Ensure batch/job cleanup is performing appropriately: #2069
