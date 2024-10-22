@@ -12,7 +12,8 @@
       - admin tool invokes appropriate "fix" operation in storage
     - implement storage prune operation 
       - create file tombstone table?
-  - AWS Java Api Migration 
+  - AWS Java Api Migration
+  - Java 21
   - Major Migrations
     - SDSC storage migration
   - Resume Storage Admin Work
