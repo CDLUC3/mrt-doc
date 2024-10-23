@@ -152,6 +152,7 @@ Code Repositories
     - Merritt OpenSearch Visualizations
     - Merritt Object Health analysis
   - [Ingest Workspace Manifest Builder](https://github.com/CDLUC3/s3-sinatra) 
+  - [Merritt Admin Tool for New AWS Account](https://github.com/CDLUC3/mrt-admin-sinatra) 
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
 - Other
