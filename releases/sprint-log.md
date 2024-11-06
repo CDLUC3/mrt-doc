@@ -1,5 +1,41 @@
 ## Sprint Goals
 
+#### Sprint 111:  November 6, 2024 - November 26, 2024
+- Ingest
+  - [Ingest] Investigate Ingest not communicating with Zookeeper after patching: #2100
+  - [Ingest] Support Batch Update Reporting State: #2058
+  - Implement Estimate Handler to compute object size: #2043
+- Zookeeper
+  - ZK: job under 2 batch states after requeue (associated Admin tool report): #2075
+- Nuxeo Object Updates – Object update strategy
+  - Storage "fix" - Inventory "replace" methods #1815
+  - Provide UCI with file lists of changeToken-impacted objects #1938
+- Nuxeo direct deposits
+  - UCI Nuxeo feed: School of Social Ecology Living Archive of Poetic Justice collection: #2090
+  - Restart and monitor existing deposits
+- Systems and dependencies
+  - Ingest Workspace: Advanced Sceptre Config: #2102
+  - [Storage] JVM killed by operating system: #2101
+  - End-of-support for Java v1.x AWS SDK - December 31, 2025: #1972
+  - Merritt UI: rails update to v7.2: #2066
+- Admin
+  - UC3 acct admin tool SSO auth: #2097
+  - Admin: New Object report based on Producer Files for a Mnemonic: #2095
+- Collection Health Prototype
+  - With UCSC: Second round presentation on depositor tools at December BD-CKG
+- Depositor tools survey #96
+- UCB Law Robbins Collection
+  - Batches 7 and 8 ingest #2038
+- ETDs
+  - UCSB Legacy ETDs: #1926
+  - MARC records for UCI: #2017
+  - ETD deposit issue: #2083
+- UCSD
+  - UCSD test collection on Stage: #2099
+#### Releases:
+Stage: TBD
+Production: TBD
+
 #### Sprint 110:  October 15, 2024 - November 5, 2024
 - Ingest 
   - [Ingest] Support Batch Update Reporting State: #2058
@@ -34,7 +70,18 @@
   - UCSB Legacy ETDs: #1926
 
 #### Releases:
-- TBD
+- Stage:
+  - Ingest: Local ID lock, new status, bug fixes
+  - Ingest: Remove conflicting logging provider + decrease threads
+  - Inventory: Fix ephemeral ZK lock
+  - UI: Fuzzy search
+- Production: 
+  - merritt-aws nt2 entry updates complete
+  - Ingest: Local ID lock, new status, bug fixes
+  - Ingest: Remove conflicting logging provider + decrease threads
+  - Inventory: Fix ephemeral ZK lock
+  - UI: Fuzzy search
+  - ETDs v1: CSV report sql queries
 
 #### Sprint 109: September 25, 2024 - October 15, 2024
 - Ingest
