@@ -158,9 +158,9 @@ Code Repositories
 - Other
   - [Merritt LDAP Permission Tools](https://github.com/CDLUC3/merritt_ldap_tools)
   - [Merritt Maintenance Scripts](https://github.com/CDLUC3/mrt-maint)
-
-### Documentation Tools (Python)
--  [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
+- Python
+  - [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
+  - [Merritt Locust Testing](https://github.com/CDLUC3/mrt-locust)
 
 ## Merritt DevOps
 - [Merritt Build System Design](https://github.com/CDLUC3/mrt-doc/tree/main/design/aws-build)
