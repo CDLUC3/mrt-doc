@@ -35,3 +35,43 @@
 - These tests may require the initiation of specific services in order to perform the test
 
 ## Types of Tests by Repository
+
+### Production Code
+|Repo|Type|Unit|Integ|Notes|
+|-|-|-|-|-|
+|mrt-inventory|type|unit|integ|notes|
+|mrt-ingest|type|unit|integ|notes|
+|mrt-audit|type|unit|integ|notes|
+|mrt-replic|type|unit|integ|notes|
+|mrt-store|type|unit|integ|notes|
+|mrt-cloud|type|unit|integ|notes|
+|mrt-core2|type|unit|integ|notes|
+|mrt-zk (Java)|type|unit|integ|notes|
+|mrt-zk (Ruby)|type|unit|integ|notes|
+|mrt-dashboard|type|unit|integ|notes|
+|mrt-admin-lambda|type|unit|integ|notes|
+|uc3-ssm|type|unit|integ|notes|
+|mrt-atom|type|unit|integ|notes|
+|mrt-cron|type|unit|integ|notes|
+|mrt-ingest-ruby|type|unit|integ|notes|
+|mrt-admin-sinatra|type|unit|integ|notes|
+|s3-sinatra|type|unit|integ|notes|
+|uc3-etds|type|unit|integ|notes|
+|mrt-locust|type|unit|integ|notes|
+|mrt-integ-tests|type|unit|integ|notes|
+
+### Support Code and Documentation
+- mrt-doc
+- mrt-doc-private
+- File-Analyzer
+- mrt-box
+- mrt-maint
+- mrt-tomcat
+- mrt-ingest-profile
+- merritt_ldap_tools
+- mrt-ansible-service-restart
+- mrt-sceptre
+- mrt-tomcat-deploy
+- mrt-service-release-manifest
+- merritt-docker
+- mrt-repo-tagger
