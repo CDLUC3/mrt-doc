@@ -15,6 +15,8 @@
   - Automated tests that send traffic to a specific service in stage or production.  Response times are evaluated against a pre-set standard.
 - Load Testing
   - Automated tests that initate a predictable load against Merritt back-end services.  Test results are manually verified OR are verified through data consistency checks.
+- Continuous Deployment
+  - TODO: will be implemented for microservices once they are migrated to the UC3 account.  
  
 ## Scheduled Tests
 - Data Consistency Tests are initiated by cron on the Merritt batch server.
@@ -39,26 +41,27 @@
 ### Production Code
 |Repo|Type|Unit|Integ|Notes|
 |-|-|-|-|-|
-|mrt-inventory|type|unit|integ|notes|
-|mrt-ingest|type|unit|integ|notes|
-|mrt-audit|type|unit|integ|notes|
-|mrt-replic|type|unit|integ|notes|
-|mrt-store|type|unit|integ|notes|
-|mrt-cloud|type|unit|integ|notes|
-|mrt-core2|type|unit|integ|notes|
-|mrt-zk (Java)|type|unit|integ|notes|
-|mrt-zk (Ruby)|type|unit|integ|notes|
-|mrt-dashboard|type|unit|integ|notes|
-|mrt-admin-lambda|type|unit|integ|notes|
+|mrt-inventory|type|unit|integ|rebuilt daily and on push|
+|mrt-ingest|type|unit|integ|rebuilt daily and on push|
+|mrt-audit|type|unit|integ|rebuilt daily and on push|
+|mrt-replic|type|unit|integ|rebuilt daily and on push|
+|mrt-store|type|unit|integ|rebuilt daily and on push|
+|mrt-cloud|type|unit|integ|rebuilt on push|
+|mrt-core2|type|unit|integ|rebuilt on push|
+|mrt-zk (Java)|type|unit|integ|rebuilt on push|
+|mrt-zk (Ruby)|type|unit|integ|manually tested. TODO: automate|
+|mrt-dashboard|type|unit|integ|tests on push (GitHub); image rebuilt daily|
+|mrt-admin-lambda|ruby lambda||run manually against stage|daily consistency checks|
 |uc3-ssm|type|unit|integ|notes|
 |mrt-atom|type|unit|integ|notes|
 |mrt-cron|type|unit|integ|notes|
 |mrt-ingest-ruby|type|unit|integ|notes|
-|mrt-admin-sinatra|type|unit|integ|notes|
-|s3-sinatra|type|unit|integ|notes|
-|uc3-etds|type|unit|integ|notes|
-|mrt-locust|type|unit|integ|notes|
-|mrt-integ-tests|type|unit|integ|notes|
+|mrt-admin-sinatra|ruby lambda|||not yet deployed|
+|s3-sinatra|ruby lambda|||run on demand|
+|uc3-etds|standalone system|unit|integ|notes|
+|mrt-locust|test driver|||tests run daily|
+|mrt-integ-tests|test driver|||docker images rebuilt daily; tests run daily|
+|merritt-docker|test docker images|||docker images rebuilt daily|
 
 ### Support Code and Documentation
 - mrt-doc
@@ -73,5 +76,4 @@
 - mrt-sceptre
 - mrt-tomcat-deploy
 - mrt-service-release-manifest
-- merritt-docker
 - mrt-repo-tagger
