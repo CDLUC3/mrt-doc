@@ -3,6 +3,11 @@
 [Merritt Documentation Home](README.md)
 
 ## Types of Testing
+- Linting and Validation Testing
+  - Test Code Format
+  - Merritt employs lint testing for Ruby code (rubocop)
+  - Merritt has not implemnted Java linting since the team does not use a consistent set of tools
+  - Some Yaml schema checks are in place 
 - Data Consistency Testing
   - Data validation checks run on a daily basis.  The status of each check is reported to a dashboard. 
 - Unit Tests
