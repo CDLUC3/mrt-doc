@@ -20,8 +20,8 @@
   - Automated tests that send traffic to a specific service in stage or production.  Response times are evaluated against a pre-set standard.
 - Load Testing
   - Automated tests that initate a predictable load against Merritt back-end services.  Test results are manually verified OR are verified through data consistency checks.
-- Continuous Deployment
-  - TODO: will be implemented for microservices once they are migrated to the UC3 account.  
+- Continuous Deployment Testing
+  - TODO: once Merritt microservices have migrated to the UC3 account, a daily DEV stack will be re-built.  Automated end to end tests will be run against this stack.
  
 ## Scheduled Tests
 - Data Consistency Tests are initiated by cron on the Merritt batch server.
