@@ -54,9 +54,9 @@
 |mrt-admin-lambda|ruby lambda||run manually against stage|daily consistency checks||
 |uc3-ssm|ruby library|limited tests|na|||
 |mrt-atom|standalone app|na|na||migration to new nuxeo service|
-|mrt-cron - consistency checks|standalone app||||migrate from ec2 to other aws automation|
-|mrt-cron - daily stats|standalone app||||migrate from ec2 to other aws automation|
-|mrt-cron - object health|standalone app||tests exist||migrate to lambda or web service|
+|mrt-cron - consistency checks|standalone app|na|na|run daily|migrate from ec2 to other aws automation|
+|mrt-cron - daily stats|standalone app|na|na|run daily|migrate from ec2 to other aws automation|
+|mrt-cron - object health|standalone app|na|tests exist||migrate to lambda or web service|
 |mrt-ingest-ruby|ruby library||||migration to new nuxeo service|
 |mrt-admin-sinatra|ruby lambda|||not yet deployed|TBD|
 |s3-sinatra|ruby lambda|||run on demand||
