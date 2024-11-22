@@ -39,29 +39,29 @@
 ## Types of Tests by Repository
 
 ### Production Code
-|Repo|Type|Unit|Integ|Notes|
-|-|-|-|-|-|
-|mrt-inventory|type|unit|integ|rebuilt daily and on push|
-|mrt-ingest|type|unit|integ|rebuilt daily and on push|
-|mrt-audit|type|unit|integ|rebuilt daily and on push|
-|mrt-replic|type|unit|integ|rebuilt daily and on push|
-|mrt-store|type|unit|integ|rebuilt daily and on push|
-|mrt-cloud|type|unit|integ|rebuilt on push|
-|mrt-core2|type|unit|integ|rebuilt on push|
-|mrt-zk (Java)|type|unit|integ|rebuilt on push|
-|mrt-zk (Ruby)|type|unit|integ|manually tested. TODO: automate|
-|mrt-dashboard|type|unit|integ|tests on push (GitHub); image rebuilt daily|
-|mrt-admin-lambda|ruby lambda||run manually against stage|daily consistency checks|
-|uc3-ssm|type|unit|integ|notes|
-|mrt-atom|type|unit|integ|notes|
-|mrt-cron|type|unit|integ|notes|
-|mrt-ingest-ruby|type|unit|integ|notes|
-|mrt-admin-sinatra|ruby lambda|||not yet deployed|
-|s3-sinatra|ruby lambda|||run on demand|
-|uc3-etds|standalone system|unit|integ|notes|
-|mrt-locust|test driver|||tests run daily|
-|mrt-integ-tests|test driver|||docker images rebuilt daily; tests run daily|
-|merritt-docker|test docker images|||docker images rebuilt daily|
+|Repo|Type|Unit|Integ|Notes|Todo|
+|-|-|-|-|-|-|
+|mrt-inventory|java service|limited tests|docker maven tests|rebuilt daily and on push||
+|mrt-ingest|java service|tests exist|docker maven tests|rebuilt daily and on push||
+|mrt-audit|java service|tests exist|docker maven tests|rebuilt daily and on push||
+|mrt-replic|java service|na|docker maven tests|rebuilt daily and on push||
+|mrt-store|java service|limited tests|docker maven tests|rebuilt daily and on push||
+|mrt-cloud|java library|tests exist|docker maven tests|rebuilt on push||
+|mrt-core2|java library|tests exist|n/a|rebuilt on push||
+|mrt-zk (Java)|java library|limited tests|extensive tests - java and ruby parity|rebuilt on push||
+|mrt-zk (Ruby)|ruby library|limited tests|extensive tests - java and ruby parity|manually tested|automate ruby tests|
+|mrt-dashboard|ruby service|unit|integ|tests on push (GitHub); image rebuilt daily||
+|mrt-admin-lambda|ruby lambda||run manually against stage|daily consistency checks||
+|uc3-ssm|ruby library||integ|notes||
+|mrt-atom|standalone app||integ|notes|migration needed|
+|mrt-cron|standalone app|unit|integ|notes|migrate to AWS batch|
+|mrt-ingest-ruby|ruby library|unit|integ|notes||
+|mrt-admin-sinatra|ruby lambda|||not yet deployed||
+|s3-sinatra|ruby lambda|||run on demand||
+|uc3-etds|standalone system|unit|integ|notes|deprecated|
+|mrt-locust|test driver|||tests run daily||
+|mrt-integ-tests|test driver|||docker images rebuilt daily; tests run daily||
+|merritt-docker|test docker images|||docker images rebuilt daily||
 
 ### Support Code and Documentation
 - mrt-doc
