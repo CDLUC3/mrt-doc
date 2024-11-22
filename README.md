@@ -141,6 +141,7 @@ Code Repositories
 - [Tomcat](https://github.com/CDLUC3/mrt-tomcat)
 
 ### Supporting Services
+- [Merritt Testing](testing.md)
 - Java 
   - [Merritt Box Tools](https://github.com/CDLUC3/mrt-box) 
 - Ruby
