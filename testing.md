@@ -50,7 +50,7 @@
 |mrt-core2|java library|tests exist|n/a|rebuilt on push||
 |mrt-zk (Java)|java library|limited tests|extensive tests - java and ruby parity|rebuilt on push||
 |mrt-zk (Ruby)|ruby library|limited tests|extensive tests - java and ruby parity|manually tested|add ruby testing to daily build|
-|mrt-dashboard|ruby service|unit|integ|tests on push (GitHub); image rebuilt daily|add coverage checks to daily build|
+|mrt-dashboard|ruby service|na|extensive tests including coverage|tests on push (GitHub); image rebuilt daily|add coverage checks to daily build|
 |mrt-admin-lambda|ruby lambda||run manually against stage|daily consistency checks||
 |uc3-ssm|ruby library|limited tests|na|||
 |mrt-atom|standalone app|na|na||migration to new nuxeo service|
@@ -60,7 +60,7 @@
 |mrt-ingest-ruby|ruby library||||migration to new nuxeo service|
 |mrt-admin-sinatra|ruby lambda|||not yet deployed|TBD|
 |s3-sinatra|ruby lambda|||run on demand||
-|uc3-etds|standalone system|unit|integ|notes|deprecated|
+|uc3-etds|standalone system|na|na|na|deprecated|
 |mrt-locust|test driver|||tests run daily||
 |mrt-integ-tests|test driver|||docker images rebuilt daily; tests run daily||
 |merritt-docker|test docker images|||docker images rebuilt daily||
