@@ -49,14 +49,16 @@
 |mrt-cloud|java library|tests exist|docker maven tests|rebuilt on push||
 |mrt-core2|java library|tests exist|n/a|rebuilt on push||
 |mrt-zk (Java)|java library|limited tests|extensive tests - java and ruby parity|rebuilt on push||
-|mrt-zk (Ruby)|ruby library|limited tests|extensive tests - java and ruby parity|manually tested|automate ruby tests|
-|mrt-dashboard|ruby service|unit|integ|tests on push (GitHub); image rebuilt daily||
+|mrt-zk (Ruby)|ruby library|limited tests|extensive tests - java and ruby parity|manually tested|add ruby testing to daily build|
+|mrt-dashboard|ruby service|unit|integ|tests on push (GitHub); image rebuilt daily|add coverage checks to daily build|
 |mrt-admin-lambda|ruby lambda||run manually against stage|daily consistency checks||
-|uc3-ssm|ruby library||integ|notes||
-|mrt-atom|standalone app||integ|notes|migration needed|
-|mrt-cron|standalone app|unit|integ|notes|migrate to AWS batch|
-|mrt-ingest-ruby|ruby library|unit|integ|notes||
-|mrt-admin-sinatra|ruby lambda|||not yet deployed||
+|uc3-ssm|ruby library|limited tests|na|||
+|mrt-atom|standalone app|na|na||migration to new nuxeo service|
+|mrt-cron - consistency checks|standalone app||||migrate from ec2 to other aws automation|
+|mrt-cron - daily stats|standalone app||||migrate from ec2 to other aws automation|
+|mrt-cron - object health|standalone app||tests exist||migrate to lambda or web service|
+|mrt-ingest-ruby|ruby library||||migration to new nuxeo service|
+|mrt-admin-sinatra|ruby lambda|||not yet deployed|TBD|
 |s3-sinatra|ruby lambda|||run on demand||
 |uc3-etds|standalone system|unit|integ|notes|deprecated|
 |mrt-locust|test driver|||tests run daily||
