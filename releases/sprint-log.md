@@ -1,5 +1,36 @@
 ## Sprint Goals
 
+#### Sprint 112:  December 4, 2024 - December 20, 2024
+- Ingest
+  - [Ingest] Support Batch Update Reporting State: #2058
+  - Implement Estimate Handler to compute object size: #2043
+  - Zookeeper ingest status is incorrect: #2125
+  - Zookeeper Job status is null: #2121
+- Nuxeo Object Updates – Object update strategy
+  - Storage "fix" - Inventory "replace" methods #1815
+  - Provide UCI with file lists of changeToken-impacted objects #1938
+- Nuxeo direct deposits
+  - UCR Nuxeo feed: Gage Canal Collection: #2114
+  - Additional tickets forthcoming
+- Systems and dependencies
+  - End-of-support for Java v1.x AWS SDK - December 31, 2025: #1972
+- Admin
+  - Begin UC3 admin functionality: #2123
+- Collection Analysis
+  - With UCSC: Second round presentation on depositor tools at December BD-CKG
+- Depositor tools survey #96
+- UCB Law Robbins Collection
+  - Multi-drive batch ingest #2038
+- ETDs
+  - UCSB Legacy ETDs: #1926
+  - MARC records for UCI: #2017
+  - ETD deposit issue: #2083
+#### Releases
+- Stage: 
+  - Storage object update: FIX changeToken: #2120
+- Production:
+  - Storage object update: FIX changeToken: #2120
+
 #### Sprint 111:  November 6, 2024 - November 26, 2024
 - Ingest
   - [Ingest] Investigate Ingest not communicating with Zookeeper after patching: #2100
@@ -33,8 +64,16 @@
 - UCSD
   - UCSD test collection on Stage: #2099
 #### Releases:
-Stage: TBD
-Production: TBD
+- Stage:
+  - Ingest - Callback state fix and ZK sessionTimeout increase: #2104
+  - Ingest Zookeeper session expiration: #2109
+  - Merritt UI Rails 7.2 change: #2116
+  - UI - fix prod logging: #2122
+- Production:
+  - Ingest - Callback state fix and ZK sessionTimeout increase: #2104
+  - Ingest Zookeeper session expiration: #2109
+  - Merritt UI Rails 7.2 change: #2116
+  - UI - fix prod logging: #2122
 
 #### Sprint 110:  October 15, 2024 - November 5, 2024
 - Ingest 
