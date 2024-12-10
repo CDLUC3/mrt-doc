@@ -24,6 +24,7 @@ authentication-method:
 batch-manifests:
 - url: # http:, https:, file:, s3: should be supported
   size:
+  mime:
   fixity: # is this applicable for a manifest
     algorithm:
     value:
@@ -32,6 +33,7 @@ batch-manifests:
 containers: # Terry would really like to drop support for this
 - url: # http:, https:, file:, s3: should be supported
   size:
+  mime:
   fixity: # is this applicable for a manifest
     algorithm:
     value:
@@ -40,6 +42,7 @@ containers: # Terry would really like to drop support for this
 objects:
 - primary-id:
   local-id:
+  -
   erc-who:
   erc-what:
   erc-when:
@@ -47,6 +50,7 @@ objects:
   - url: # http:, https:, file:, s3: should be supported
     merritt-pathname:
     size:
+    mime:
     fixity: # is this applicable for a manifest
       algorithm:
       value:
@@ -55,6 +59,7 @@ objects:
 metadata-replacement
 - primary-id:
   local-id:
+  -
   erc-who:
   erc-what:
   erc-when:
