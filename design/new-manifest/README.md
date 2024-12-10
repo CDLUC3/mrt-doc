@@ -52,4 +52,10 @@ objects:
       value:
     date: # why does Merritt care?
     authentication-method-id: # if different from the default
+metadata-replacement
+- primary-id:
+  local-id:
+  erc-who:
+  erc-what:
+  erc-when:
 ```
