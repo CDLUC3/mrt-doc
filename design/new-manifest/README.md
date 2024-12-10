@@ -10,6 +10,7 @@ authentication-method:
   id:
   default: # default: true; applies to all retrievals unless otherwise specified
   type: # default: none; none | basic | api-key | cognito | api-gw | aws-enabled
+  # assumption that users would reference known credentials rather than re-supplying on-demand
   basic:
     user:
     password:
