@@ -29,7 +29,6 @@ batch-manifests:
   fixity: # is this applicable for a manifest
     algorithm:
     value:
-  date: # why does Merritt care?
   authentication-method-id: # if different from the default
 containers: # Terry would really like to drop support for this
 - url: # http:, https:, file:, s3: should be supported
@@ -38,7 +37,6 @@ containers: # Terry would really like to drop support for this
   fixity: # is this applicable for a manifest
     algorithm:
     value:
-  date: # why does Merritt care?
   authentication-method-id: # if different from the default
 objects:
 - primary-id:
@@ -55,7 +53,6 @@ objects:
     fixity: # is this applicable for a manifest
       algorithm:
       value:
-    date: # why does Merritt care?
     authentication-method-id: # if different from the default
 metadata-replacement
 - primary-id:
