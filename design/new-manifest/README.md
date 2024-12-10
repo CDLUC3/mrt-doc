@@ -1,6 +1,6 @@
 # New Manaifest Type
 
-## Associate Tickets
+## Associated Tickets
 - https://github.com/CDLUC3/mrt-doc/issues/1136
 
 ## Potential Schema
@@ -19,7 +19,7 @@ authentication-method:
   api-gw:
     header:
     value:
-  cognitio: #tbd
+  cognito: #tbd
   aws-enabled: # no parameters specified, this indicates that Merritt servers have network-enabled permissions to pull the resource
 batch-manifests:
 - url: # http:, https:, file:, s3: should be supported
