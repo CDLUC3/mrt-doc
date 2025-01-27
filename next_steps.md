@@ -55,8 +55,8 @@
   - Collection Health Feedback Actions
   - ETDs, ETDs v2
   - Robbins Collection
+  - Institute of Governmental Studies Library Collections
   - UCSF Glantz videos
-  - UCSB Legacy ETD's
 - Team
   - LDAP 
     - Evalauate managed LDAP 
