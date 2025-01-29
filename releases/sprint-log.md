@@ -1,5 +1,32 @@
 ## Sprint Goals
 
+#### Sprint 114:  January 29, 2025 - February 18, 2025
+- Ingest
+  - Implement Estimate Handler to compute object size: #2043
+  - Zookeeper Job status is null: #2121
+  - Batch processing logic for HOLD condition not correct: #2142
+- Nuxeo Object Updates – Object update strategy
+  - changeToken collections fix: #2140
+- Nuxeo direct deposits
+  UCR Nuxeo feed: Sherman Indian Museum: #2148
+  - Additional tickets in Sprint 114, 115
+- Systems and dependencies
+  - End-of-support for Java v1.x AWS SDK - December 31, 2025: #1972
+  - BOM update 2.1 -> 2.2 + Java 11 compile: #2068
+- UC3 account migration
+  - Begin UC3 admin functionality: #2123
+- Depositor tools survey #96
+- UCB Law Robbins Collection
+  - New batch to prep
+- ETDs
+  - MARC records for UCI: #2017
+  - ETD deposit issue: #2083
+#### Releases
+- Stage: 
+  - BOM update 2.1 -> 2.2 + Java 11 compile
+- Production:
+  - BOM update 2.1 -> 2.2 + Java 11 compile
+
 #### Sprint 113:  January 8, 2025 - January 28, 2025
 - Ingest
   - [Ingest] Support Batch Update Reporting State: #2058
@@ -30,9 +57,9 @@
   - ETDs v1: Add retry logic to createmarc for its use of eSchol xtf search: #2143
 #### Releases
 - Stage: 
-  - ZooKeeper 3.9.3 server and client
+  - ZooKeeper 3.9.3 server and client, batch update reporting
 - Production:
-  - TBD
+  - ZooKeeper 3.9.3 server and client, batch update reporting
 
 #### Sprint 112:  December 4, 2024 - December 20, 2024
 - Ingest
