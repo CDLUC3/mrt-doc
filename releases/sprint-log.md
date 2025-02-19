@@ -30,7 +30,7 @@
   - MARC records for UCI: #2017
   - ETD deposit issue: #2083
 #### Releases:
--Stage: 
+- Stage: 
   - Ingest: ZooKeeper, Storage: deleteOnExitHook fix
 - Production:
   - Ingest: ZooKeeper, Storage: deleteOnExitHook fix
