@@ -30,10 +30,10 @@
   - MARC records for UCI: #2017
   - ETD deposit issue: #2083
 #### Releases:
-Stage: 
-- Ingest: ZooKeeper, Storage: deleteOnExitHook fix
-Production:
-- Ingest: ZooKeeper, Storage: deleteOnExitHook fix
+-Stage: 
+  - Ingest: ZooKeeper, Storage: deleteOnExitHook fix
+- Production:
+  - Ingest: ZooKeeper, Storage: deleteOnExitHook fix
 
 #### Sprint 114:  January 29, 2025 - February 18, 2025
 - Ingest
