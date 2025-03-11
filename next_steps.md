@@ -31,20 +31,22 @@
     - Eliminate DUA code
 - Mark
   - ZK Estimate Task
-  - ZK Update reporting task
   - Move profiles from file system to S3 
   - New Manifest Type
   - Nuxeo refactor and cleanup
+  - Re-refactoring of Collection Creation (for Mig in Jul 2026)
+    - Eliminate admin object submission - apply updates to INV service directly
+    - Centralize all profile contents (unless different from the norm)
+    - More LDAP automation
   - Passing storage fix parameters to INV/Storage
 - Terry
-  - UCB wildcard search
-    - also look at performance of UI for users with many LDAP collections
-  - Eliminate legacy queue logic from admin tool  
-  - Admin interface for storage fix
   - Move profiles from file system to S3 
   - Migrate Docker stack to UC3 account (docker-compose to ECS)
   - Admin tool functionality in UC3 account
   - Migration of Merritt to UC3 account
+  - Depositor API or Admin Tool
+  - Performance test new stack (for Jul 2026 migrations)
+  - Support re-refactoring of collection creation
   - Refine admin tool with usability suggestions
   - Refine collection health tools based on feedback
 - Ashley
@@ -62,9 +64,5 @@
     - Evalauate managed LDAP 
     - Replace LDAP with Cognito Authentication + Yaml authorization rules
     - Create / Manage LDAP groups via admin tools
-  - Depositor services
-    - Presigned file upload solution (large single file)
-    - Presigned file upload solution (directory of files)
-      - requires a javascript enabled solution like the one Dryad ahad used    
   - Explore new storage classes and potential benefits to Merritt processing
-  - Eliminate the "admin object submission process" - build tools that create INV db relationships as needed
+  - Consider Indexing/Tagging/Search faceting for objects
