@@ -1,5 +1,37 @@
 ## Sprint Goals
 
+#### Sprint 116:  March 12, 2025 - April 1, 2025
+- Ingest
+  - Implement Estimate Handler to compute object size: #2043
+  - Manifest validation bug: #2168
+- Storage
+  - Continue investigating high swap usage: deleteOnExitHook fix: #127
+- Nuxeo Object Updates
+  - changeToken collections fix: #2140
+- Inventory
+  - Remove Inv entries for UC Berkeley Library Sheet Music collection: #117
+- Nuxeo direct deposits
+  - Additional tickets forthcoming
+- Systems and dependencies
+  - End-of-support for Java v1.x AWS SDK - December 31, 2025: #1972
+  - AWS java sdk v1 to v2 deploy: #2187
+  - Gem updates: merritt-docker, mrt-integ-tests, mrt-admin-sinatra, mrt-cron, s3-sinatra: #2194
+- UC3 account migration
+  - Begin UC3 admin functionality: #2123
+  - Build DEV stack in UC3 account: #2163
+- Depositor tools survey #96
+- Remove checkm files from affected objects: #2186
+- UCB Law Robbins Collection
+  - New batch submissions: #2166
+- ETDs
+  - MARC records for UCI: #2017
+  - ETD deposit issue: #2083
+#### Releases:
+- Stage: 
+  - Ingest: 
+- Production:
+  - Ingest: Estimate handler
+
 #### Sprint 115:  February 19, 2025 - March 11, 2025
 - Ingest
   - Implement Estimate Handler to compute object size: #2043
@@ -33,7 +65,11 @@
 - Stage: 
   - Ingest: ZooKeeper, Storage: deleteOnExitHook fix
 - Production:
-  - Ingest: ZooKeeper, Storage: deleteOnExitHook fix
+  - Ingest: ZooKeeper locking issue
+  - Ingest: Zookeeper changes to eliminate Orphan znodes
+  - Storage: deleteOnExitHook fix (SWAP usage)
+  - BOM 2.1->2.2
+  - UI Gem update 1.7.4
 
 #### Sprint 114:  January 29, 2025 - February 18, 2025
 - Ingest
