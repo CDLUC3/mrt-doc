@@ -1,5 +1,36 @@
 ## Sprint Goals
 
+#### Sprint 117: April 2, 2025 - April 22, 2025
+- Ingest
+  - Implement Estimate Handler to compute object size: #2043
+  - Provisioning Handler to use Estimate Handler: #2203
+  - Zookeeper lock not removed upon Batch deletion: #2216
+  - Manifest validation bug: #2168
+- Nuxeo Object Updates
+  - changeToken collections fix: #2140
+  - Storage FIX - update to late update handling needs correction: #2207
+- Nuxeo direct deposits
+  - New UCR tickets available: #2219-2224
+  - New UCI deposit requested: #2225
+- Systems and dependencies
+  - End-of-support for Java v1.x AWS SDK - December 31, 2025: #1972
+  - AWS java sdk v1 to v2 deploy: #2187
+  - mrt-core2 dependency scan update for MySQL connector: #2213
+- UC3 account migration
+  - Begin UC3 admin functionality: #2123
+  - Build DEV stack in UC3 account: #2163
+  - Modify mrt-cloud to avoid the use of InstanceProfileCredentialsProvider: #2210
+- Depositor tools survey #96
+- Remove checkm files from affected objects: #2186
+- UCB Law Robbins Collection
+  - Four remaining drives to process: #2206
+- ETDs
+  - MARC records for UCI: #2017
+#### Releases:
+- Stage: 
+  - Ingest: 
+- Production:
+
 #### Sprint 116:  March 12, 2025 - April 1, 2025
 - Ingest
   - Implement Estimate Handler to compute object size: #2043
@@ -30,7 +61,7 @@
 - Stage: 
   - Ingest: 
 - Production:
-  - Ingest: Estimate handler
+  - Ingest: Merritt UI and mrt-atom gem updates
 
 #### Sprint 115:  February 19, 2025 - March 11, 2025
 - Ingest
