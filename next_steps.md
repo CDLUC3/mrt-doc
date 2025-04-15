@@ -4,15 +4,17 @@
 ## Next Steps by Team Member
 
 - David
-  - Storage Fix Operation:
-    - changeToken fix 
-    - generic "storage fix" solution
+  - In progress
+    - Storage Fix Nuxeo:
+      - changeToken fix 
       - create backup node
       - back up object to backup node
+    - AWS Java Api Migration
+  - Storage Fix Operation:
+    - generic "storage fix" workflow
       - admin tool invokes appropriate "fix" operation in storage
     - implement storage prune operation 
       - create file tombstone table?
-  - AWS Java Api Migration
   - Java 21
   - Major Migrations
     - SDSC storage migration
@@ -26,11 +28,13 @@
     - Alter/repair owner, collection for object
     - Alter/repair mime type for object
     - Augment mime type with more specific information
+  - Ensure that Inventory Endpoints can support a simplified "collection creation" without Admin objects
   - Later/Misc
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
     - Eliminate DUA code
 - Mark
-  - ZK Estimate Task
+  - In progress
+    - ZK Estimate Task
   - Move profiles from file system to S3 
   - New Manifest Type
   - Nuxeo refactor and cleanup
@@ -39,30 +43,28 @@
     - Centralize all profile contents (unless different from the norm)
     - More LDAP automation
   - Passing storage fix parameters to INV/Storage
+  - Eliminate Ingest Folder file system - use storage buckets instead
 - Terry
+  - In progress
+    - Migrate Docker stack to UC3 account (docker-compose to ECS)
+    - Admin tool functionality in UC3 account
+    - Performance test new stack (for Jul 2026 migrations)
+    - Refine admin tool with usability suggestions
   - Move profiles from file system to S3 
-  - Migrate Docker stack to UC3 account (docker-compose to ECS)
-  - Admin tool functionality in UC3 account
   - Migration of Merritt to UC3 account
   - Depositor API or Admin Tool
-  - Performance test new stack (for Jul 2026 migrations)
   - Support re-refactoring of collection creation
-  - Refine admin tool with usability suggestions
   - Refine collection health tools based on feedback
 - Ashley
-  - New Dev boxes (AL2023): Jenkins, Docker, David's Sandbox
-  - Misc Servers AL2023: LDAP, ZK, Batch
+  - In Progress
+    - New Dev boxes (AL2023): Jenkins, Docker, David's Sandbox
 - Eric
-  - Depositor Tool Survey
+  - In progress
+    - ETDs, ETDs v2
+    - Robbins Collection
   - Collection Health Feedback Actions
-  - ETDs, ETDs v2
-  - Robbins Collection
   - Institute of Governmental Studies Library Collections
   - UCSF Glantz videos
 - Team
-  - LDAP 
-    - Evalauate managed LDAP 
-    - Replace LDAP with Cognito Authentication + Yaml authorization rules
-    - Create / Manage LDAP groups via admin tools
   - Explore new storage classes and potential benefits to Merritt processing
   - Consider Indexing/Tagging/Search faceting for objects
