@@ -16,6 +16,9 @@
     - implement storage prune operation 
       - create file tombstone table?
   - Java 21
+  - Simplify Storage Node Configuration
+    - Currently includes Yaml Changes, deployed in WAR files + INV database changes
+    - Consider deploying Yaml Config to S3 rather than as a part of the WAR file 
   - Major Migrations
     - SDSC storage migration
   - Resume Storage Admin Work
@@ -62,6 +65,7 @@
   - In progress
     - ETDs, ETDs v2
     - Robbins Collection
+  - Pal Museum JPEGs on Box
   - Collection Health Feedback Actions
   - Institute of Governmental Studies Library Collections
   - UCSF Glantz videos
