@@ -53,6 +53,7 @@
     - Admin tool functionality in UC3 account
     - Performance test new stack (for Jul 2026 migrations)
     - Refine admin tool with usability suggestions
+  - Eliminate Guest Login from UI ?
   - Move profiles from file system to S3 
   - Migration of Merritt to UC3 account
   - Depositor API or Admin Tool
