@@ -1,5 +1,35 @@
 ## Sprint Goals
 
+#### Sprint 118: April 23, 2025 - May 13, 2025
+- ZooKeeper
+  - Truncate eschol metadata that goes to the Merritt UI: #2183 
+- Nuxeo Object Updates
+  - changeToken collections fix: #2140
+- Nuxeo direct deposits
+  - New UCR tickets available: 
+- Systems and dependencies
+  - End-of-support for Java v1.x AWS SDK - December 31, 2025: #1972
+  - AWS java sdk v1 to v2 deploy: #2187
+  - mrt-core2 dependency scan update for MySQL connector: #2213
+    - No patch available yet
+- LDAP
+  - Eliminate LDAP cert check cron, script, consistency check: #2235
+- UI
+  - Investigate recent UI 500 errors (not mysql related): #2245
+- UC3 account migration
+  - Begin UC3 admin functionality: #2123
+  - Build DEV stack in UC3 account: #2163
+  - Replace Merritt Docker Initialization with inventory api calls: #2252
+- Depositor tools survey #96
+- Remove checkm files from affected objects: #2186
+- UCB Law Robbins Collection
+  - Additional drives to process: #2206
+- ETDs
+  - New createmarc script error starting April 18: #2253
+#### Releases:
+- Stage: 
+- Production: 
+
 #### Sprint 117: April 2, 2025 - April 22, 2025
 - Ingest
   - Implement Estimate Handler to compute object size: #2043
@@ -28,8 +58,15 @@
   - MARC records for UCI: #2017
 #### Releases:
 - Stage: 
-  - Ingest: 
+  - Ingest - Estimate/Provision/Batch deletion/Deduplication
+  - Storage FIX previous
+  - Tomcat upgrade to 9.0.104
+  - UI Release - service jqueryui from web server to simplify ECS end to end testing
 - Production:
+  - Ingest - Estimate/Provision/Batch deletion/Deduplication
+  - Storage FIX previous
+  - Tomcat upgrade to 9.0.104
+  - UI Release - service jqueryui from web server to simplify ECS end to end testing
 
 #### Sprint 116:  March 12, 2025 - April 1, 2025
 - Ingest
