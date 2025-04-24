@@ -3,6 +3,14 @@
 - [Merritt AWS Build Design](README.md)
 - [Tagging Ideas Demonstration](demo.md)
 
+## UPDATED DOCUMENTATION
+
+https://github.com/CDLUC3/mrt-admin-sinatra/blob/main/present/tagging/build.md
+
+---
+
+(OLDER DOCUMENTATION)
+
 ## General Guidelines
 
 - Non-breaking changes SHOULD NOT update snapshot versions.
