@@ -179,3 +179,7 @@ Code Repositories
 ## More info
 - [Deprecated Functionality](deprecated_functionality.md)
 
+---
+
+## Internal Links
+- [Merritt Troubleshooting](https://github.com/CDLUC3/mrt-doc-private/blob/main/docs/system-recovery/README.md)
