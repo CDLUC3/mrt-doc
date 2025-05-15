@@ -1,5 +1,30 @@
 ## Sprint Goals
 
+#### Sprint 119: May 14, 2025 - June 3, 2025
+- ZooKeeper
+  - ZK peristent lock for storage: #2272
+  - Truncate eschol metadata that goes to the Merritt UI: #2183 
+- Nuxeo Object Updates
+  - changeToken collections fix: #2140
+- Nuxeo direct deposits
+  - New UCR tickets available: #s 2256-2261
+- Systems and dependencies
+  - End-of-support for Java v1.x AWS SDK - December 31, 2025: #1972
+  - AWS java sdk v1 to v2 deploy: #2187
+- UC3 account migration
+  - Begin UC3 admin functionality: #2123
+  - Build DEV stack in UC3 account: #2163
+  - Replace Merritt Docker Initialization with inventory api calls: #2252
+- Depositor tools survey #96
+- Remove checkm files from affected objects: #2186
+- UCB Law Robbins Collection
+  - Additional drives to process: #2206
+- ETDs
+  - ETDs v1: ProQuest changed their external ID string - update service regex to parse: #2262
+#### Releases:
+- Stage: ZK peristent lock for storage, truncate eSchol data
+- Production: ZK peristent lock for storage, truncate eSchol data; AWS java sdk v1 to v2
+
 #### Sprint 118: April 23, 2025 - May 13, 2025
 - ZooKeeper
   - Truncate eschol metadata that goes to the Merritt UI: #2183 
@@ -27,8 +52,8 @@
 - ETDs
   - New createmarc script error starting April 18: #2253
 #### Releases:
-- Stage: 
-- Production: 
+- Stage: UI Gem Update 1.7.12
+- Production: UI Gem Update 1.7.12
 
 #### Sprint 117: April 2, 2025 - April 22, 2025
 - Ingest
