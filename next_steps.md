@@ -43,6 +43,7 @@
     - Eliminate admin object submission - apply updates to INV service directly
     - Centralize all profile contents (unless different from the norm)
     - More LDAP automation
+  - Consider writing producer directory to S3 rather than to ingest folder file system 
   - Passing storage fix parameters to INV/Storage
   - Eliminate Ingest Folder file system - use storage buckets instead
 - Terry
