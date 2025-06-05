@@ -1,5 +1,28 @@
 ## Sprint Goals
 
+#### Sprint 119: June 4, 2025 - June 24, 2025
+- Ingest
+  - Design: Profile access changes pertaining to repo and storage in S3: Ticket TBD
+  - Move mrt-ingest-profiles and mrt-dashboard-config from CDLIB to CDLUC3: #1813
+- Nuxeo Object Updates
+  - changeToken collections fix: #2140
+- Nuxeo direct deposits
+  - New UCR tickets available: #s 2291-2297
+- UC3 account migration
+  - Begin UC3 admin functionality: #2123
+  - Build DEV stack in UC3 account: #2163
+  - ZK: run 3 node cluster in ECS: #2274
+  - Replace Merritt Docker Initialization with inventory api calls: #2252
+- Depositor tools survey #96
+- Remove checkm files from affected objects: #2186
+- UCB Law Robbins Collection
+  - Additional drives to process: #2206
+- ETDs
+  - ETDs v1: ProQuest changed their external ID string - update service regex to parse: #2262
+#### Releases:
+- Stage: ...
+- Production: Storage - no backout exception
+
 #### Sprint 119: May 14, 2025 - June 3, 2025
 - ZooKeeper
   - ZK peristent lock for storage: #2272
@@ -22,7 +45,7 @@
 - ETDs
   - ETDs v1: ProQuest changed their external ID string - update service regex to parse: #2262
 #### Releases:
-- Stage: ZK peristent lock for storage, truncate eSchol data
+- Stage: ZK peristent lock for storage, truncate eSchol data, Storage - no backout exception
 - Production: ZK peristent lock for storage, truncate eSchol data; AWS java sdk v1 to v2
 
 #### Sprint 118: April 23, 2025 - May 13, 2025
