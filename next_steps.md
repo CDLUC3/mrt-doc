@@ -5,11 +5,11 @@
 
 - David
   - In progress
+    - Ensure that Inventory Endpoints can support a simplified "collection creation" without Admin objects
     - Storage Fix Nuxeo:
       - changeToken fix 
       - create backup node
       - back up object to backup node
-    - AWS Java Api Migration
   - Storage Fix Operation:
     - generic "storage fix" workflow
       - admin tool invokes appropriate "fix" operation in storage
@@ -31,14 +31,12 @@
     - Alter/repair owner, collection for object
     - Alter/repair mime type for object
     - Augment mime type with more specific information
-  - Ensure that Inventory Endpoints can support a simplified "collection creation" without Admin objects
   - Later/Misc
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
     - Eliminate DUA code
 - Mark
   - In progress
-    - ZK Estimate Task
-  - Move profiles from file system to S3 
+    - Move profiles from file system to S3 
   - New Manifest Type
   - Nuxeo refactor and cleanup
   - Re-refactoring of Collection Creation (for Mig in Jul 2026)
@@ -65,6 +63,7 @@
 - Eric
   - In progress
     - ETDs, ETDs v2
+    - Depositor tools survey
     - Robbins Collection
   - Pal Museum JPEGs on Box
   - Collection Health Feedback Actions
