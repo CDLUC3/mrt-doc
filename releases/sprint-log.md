@@ -1,6 +1,36 @@
 ## Sprint Goals
 
-#### Sprint 119: June 4, 2025 - June 24, 2025
+#### Sprint 121: June 25, 2025 - July 15, 2025
+- Ingest
+  - Callback not working for failed jobs: #2103
+  - Design: Profile access changes pertaining to repo and storage in S3
+  - Move mrt-ingest-profiles and mrt-dashboard-config from CDLIB to CDLUC3: #1813
+- Inventory
+ - Replace Merritt Docker Initialization with Inventory api calls: #2252
+ - Microservice start on initialization: #2228
+ - Timeout communicating with Storage: #2308
+- Merritt Core
+  - Recent build issue with Ingest: #2306
+- Nuxeo object updates
+  - Backup bucket review for changeToken content: #2290
+  - Billing database reset for FY24-25, post changeToken process: #153
+- Nuxeo direct deposits
+  - On hold per PAD dev
+- UC3 account migration
+  - New Admin Tool - Consistency Reports Framework: #2302
+  - Begin UC3 admin functionality: #2123
+  - Build DEV stack in UC3 account: #2163
+- Depositor tools survey #96
+- Remove checkm files from affected objects: #2186
+- UCB Law Robbins Collection
+  - Additional drives to process: #2206
+- ETDs
+  - ETDs v1: ProQuest changed their external ID string - update service regex to parse: #2262
+#### Releases:
+- Stage: ...
+- Production: ...
+
+#### Sprint 120: June 4, 2025 - June 24, 2025
 - Ingest
   - Design: Profile access changes pertaining to repo and storage in S3: Ticket TBD
   - Move mrt-ingest-profiles and mrt-dashboard-config from CDLIB to CDLUC3: #1813
