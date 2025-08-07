@@ -1,5 +1,36 @@
 ## Sprint Goals
 
+#### Sprint 123: August 6, 2025 - August 26, 2025
+- Ingest
+  - Callback not working for failed jobs: #2103
+  - Move mrt-ingest-profiles and mrt-dashboard-config from CDLIB to CDLUC3: #1813
+- Inventory
+ - Replace Merritt Docker Initialization with Inventory api calls: #2252
+ - Microservice start on initialization: #2228
+ - Timeout communicating with Storage: #2308
+- Admin
+  - [Admin UI] Deleted batches are not cleaned up: #2342
+- Dev-ops
+  - merritt-tomcat - try updating to tomcat:11: #2344
+  - Coordinated Java and Tomcat updates: #2327
+- Nuxeo object updates
+  - Billing database reset for FY24-25, post changeToken process: #153
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - ECS Migrate: Get Admin Tool Running in Stage/Prod ECS Stack: #2343
+  - Utilize new INV API when constructing a DEV instance of Merritt Stack: #2320
+  - Design: Replace Owner/Collection creation with calls to the new INV API: #2321
+- Depositor tools survey #96
+- Cloud scan
+  - Cloud scan results June 2025: #155
+- UCB Law Robbins Collection
+  - Two drives to process: HDD-160 and BSLW-RBN-03: #2319
+- ETDs
+  - Support ETDs v2 rollout
+#### Releases:
+- Stage: ...
+- Production: ...
+
 #### Sprint 122: July 16, 2025 - August 5, 2025
 - Ingest
   - Callback not working for failed jobs: #2103
@@ -25,8 +56,14 @@
 - ETDs
   - Support ETDs v2 rollout
 #### Releases:
-- Stage: ...
-- Production: ...
+- Stage:
+  - UI Release 1.7.21 - Gem Updates
+  - [Zookeeper] Increase Server JVM to 1GB
+  - Ingest - Ensure valid ZK connection prior to creating Jobs
+- Production:
+  - UI Release 1.7.21 - Gem Updates
+  - [Zookeeper] Increase Server JVM to 1GB
+  - Ingest - Ensure valid ZK connection prior to creating Jobs
 
 #### Sprint 121: June 25, 2025 - July 15, 2025
 - Ingest
