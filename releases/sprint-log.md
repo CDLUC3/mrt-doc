@@ -1,5 +1,43 @@
 ## Sprint Goals
 
+#### Sprint 124: August 27, 2025 - September 16, 2025
+- Ingest
+  - UC3 AWS: Ingest service pulls profiles from S3: #1924
+  - Ingest profiles: repo transfer, storage in S3, branches: #2299
+- Inventory
+ - Replace Merritt Docker Initialization with Inventory api calls: #2252
+ - Microservice start on initialization: #2228
+ - Timeout communicating with Storage: #2308
+- ZK
+  - [Zookeeper Lib] Error acquiring Batch data: #2304
+- Admin
+  - [Admin UI] Deleted batches are not cleaned up: #2342
+  - Design: Replace Owner/Collection creation with calls to the new INV API: #2321
+  - ECS Admin: Port Collection Creation to new Admin Tool: #2364
+- Dev-ops
+  - Migration java 21: #1898
+  - BOM 4.0 - java 21, LOG_SERVICE, automatic startup inv, audit, replic: #2330
+  - Jersey update required to support tomcat 11+: #2354
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - ECS Migrate: Get Admin Tool Running in Stage/Prod ECS Stack: #2343
+  - Utilize new INV API when constructing a DEV instance of Merritt Stack: #2320
+  - Explore LDAP cert options when running in stage/prod ECS: #161
+- Depositor tools survey #96
+- Cloud scan
+  - Cloud scan results June 2025: #155
+- UCB Law Robbins Collection
+  - Robbins: Two drives to process: HDD-142 and UCB-09: #2358
+
+#### Releases:
+- Stage:
+  -  Inventory admin db API: #2349
+  -  BOM4+ java 21: #2360
+- Production:
+  -  Inventory admin db API: #2349
+  -  BOM4+ java 21: #2360
+ 
+
 #### Sprint 123: August 6, 2025 - August 26, 2025
 - Ingest
   - Callback not working for failed jobs: #2103
@@ -28,8 +66,14 @@
 - ETDs
   - Support ETDs v2 rollout
 #### Releases:
-- Stage: ...
-- Production: ...
+- Stage:
+  -  Ingest - Support Batch failures
+  -  Ingest - Enable Callback for Failed Jobs
+  -  UI - Gem update
+- Production:
+  -  Ingest - Support Batch failures
+  -  Ingest - Enable Callback for Failed Jobs
+  -  UI - Gem update
 
 #### Sprint 122: July 16, 2025 - August 5, 2025
 - Ingest
