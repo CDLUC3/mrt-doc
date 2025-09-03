@@ -6,16 +6,12 @@
 - David
   - In progress
     - Ensure that Inventory Endpoints can support a simplified "collection creation" without Admin objects
-    - Storage Fix Nuxeo:
-      - changeToken fix 
-      - create backup node
-      - back up object to backup node
+    - Java 21
   - Storage Fix Operation:
     - generic "storage fix" workflow
       - admin tool invokes appropriate "fix" operation in storage
     - implement storage prune operation 
       - create file tombstone table?
-  - Java 21
   - Simplify Storage Node Configuration
     - Currently includes Yaml Changes, deployed in WAR files + INV database changes
     - Consider deploying Yaml Config to S3 rather than as a part of the WAR file 
