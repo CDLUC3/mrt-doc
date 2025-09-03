@@ -44,22 +44,17 @@
   - Eliminate Ingest Folder file system - use storage buckets instead
 - Terry
   - In progress
-    - Migrate Docker stack to UC3 account (docker-compose to ECS)
-    - Admin tool functionality in UC3 account
     - Performance test new stack (for Jul 2026 migrations)
-    - Refine admin tool with usability suggestions
+    - Move profiles from file system to S3 
+    - Migration of Merritt to UC3 account
+    - Support re-refactoring of collection creation
   - Eliminate Guest Login from UI ?
-  - Move profiles from file system to S3 
-  - Migration of Merritt to UC3 account
   - Depositor API or Admin Tool
-  - Support re-refactoring of collection creation
   - Refine collection health tools based on feedback
 - Ashley
   - In Progress
-    - New Dev boxes (AL2023): Jenkins, Docker, David's Sandbox
 - Eric
   - In progress
-    - ETDs, ETDs v2
     - Depositor tools survey
     - Robbins Collection
   - Pal Museum JPEGs on Box
