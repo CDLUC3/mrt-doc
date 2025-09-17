@@ -1,5 +1,29 @@
 ## Sprint Goals
 
+#### Sprint 125: September 17, 2025 - October 7, 2025
+- Ingest
+  - Cached profiles are not being culled after batch completes: #2381
+- Ingest/Storage
+ - Consider driving storage requests via ZK rather than by API call from ingest: #2339
+- Admin
+  - LDAP entry automation for collection creation: #2368
+  - Support for "Ingest Jobs by Batch and Profile": #2367
+  - Collection creation: add ezid metadata: #2379
+- Dev-ops
+  - Explore LDAP cert options when running in stage/prod ECS: #161
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+- Depositor tools survey distribution: #2380
+- Cloud scan
+  - Cloud scan results June 2025: #155
+- UCB Law Robbins Collection
+  - Robbins: Two drives to process: HDD-142 and UCB-09: #2358
+#### Releases:
+- Stage:
+  -  TBD
+- Production:
+  -  TBD
+
 #### Sprint 124: August 27, 2025 - September 16, 2025
 - Ingest
   - UC3 AWS: Ingest service pulls profiles from S3: #1924
@@ -33,11 +57,14 @@
 - Stage:
   -  Inventory admin db API: #2349
   -  BOM4+ java 21: #2360
+  -  Ingest Profiles stored in S3: #2374
+  -  Ingest and Java 21: #2366
 - Production:
   -  Inventory admin db API: #2349
   -  BOM4+ java 21: #2360
+  -  Ingest Profiles stored in S3: #2374
+  -  Ingest and Java 21: #2366
  
-
 #### Sprint 123: August 6, 2025 - August 26, 2025
 - Ingest
   - Callback not working for failed jobs: #2103
