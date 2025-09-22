@@ -50,6 +50,7 @@ Functionality deprecated by the [Merritt Preservation System](https://github.com
 - [Merritt Express](https://github.com/CDLUC3/mrt-doc/wiki/Merritt-Express-(Archived))
 - [OAI](https://github.com/CDLUC3/mrt-oai)
 - [Sword](https://github.com/CDLUC3/mrt-sword)
+- [ETD - Electronic Theses and Dissertations](https://github.com/CDLUC3/uc3-etds)
 
 ## Libraries
 - [Zoo](https://github.com/CDLUC3/mrt-zoo)
@@ -80,3 +81,5 @@ Functionality deprecated by the [Merritt Preservation System](https://github.com
   - HandlerCharacterize (Currently not used.  Initially, JHOVE2 was used)
   - HandlerCallback (Currently, not used)
   - RDF/turtle file support in Merritt System files
+  - Submission of "Admin" objects for Collection and Owner Creation
+  - Ingest "admin" api calls in support of collection creation
