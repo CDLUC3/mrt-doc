@@ -154,7 +154,6 @@ Code Repositories
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
 - Other
-  - [Merritt LDAP Permission Tools](https://github.com/CDLUC3/merritt_ldap_tools)
   - [Merritt Maintenance Scripts](https://github.com/CDLUC3/mrt-maint)
 - Python
   - [Merritt Repository Tagger](https://github.com/CDLUC3/mrt-repo-tagger)
