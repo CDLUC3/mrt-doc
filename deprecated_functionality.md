@@ -61,6 +61,8 @@ Functionality deprecated by the [Merritt Preservation System](https://github.com
 - [mrt-store-admin](https://github.com/CDLUC3/mrt-store-admin)
 - [merritt-manifest](https://github.com/CDLUC3/merritt-manifest)
 - [Jenkins Functions](https://github.com/CDLUC3/mrt-jenkins)
+- [Merritt LDAP Permission Tools](https://github.com/CDLUC3/merritt_ldap_tools)
+
 
 ## Microservice Functionality
 - Storage
