@@ -143,13 +143,13 @@ Code Repositories
   - [Merritt Box Tools](https://github.com/CDLUC3/mrt-box) 
 - Ruby
   - [Merritt Admin Tool - UC3 Account](https://github.com/CDLUC3/mrt-admin-sinatra) 
-  - [Admin Tool - Main Account](https://github.com/CDLUC3/mrt-admin-lambda)
+  - [Admin Tool - Main Account](https://github.com/CDLUC3/mrt-admin-lambda) (soon to be deprecated)
   - [Merritt End to End Tests](https://github.com/CDLUC3/mrt-integ-tests)
   - [Merritt Integration Test Images](https://github.com/CDLUC3/merritt-docker/tree/main/mrt-inttest-services)
   - [Merritt Crons Jobs](https://github.com/CDLUC3/mrt-cron)
-    - Merritt Consistency reports
-    - Merritt OpenSearch Visualizations
-    - Merritt Object Health analysis
+    - Merritt Consistency reports (soon to be deprecated)
+    - Merritt OpenSearch Visualizations (soon to be deprecated)
+    - Merritt Object Health analysis 
   - [Ingest Workspace Manifest Builder](https://github.com/CDLUC3/s3-sinatra) 
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
