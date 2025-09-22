@@ -123,9 +123,6 @@ Code Repositories
   - [Replication](https://github.com/CDLUC3/mrt-replic)
   - [Audit (Fixity Check)](https://github.com/CDLUC3/mrt-audit)
 
-### Other Production Services (Python/XSLT)
-- [ETD - Electronic Theses and Dissertations](https://github.com/CDLUC3/uc3-etds)
-
 ### Libraries
 - Java
   - [Core](https://github.com/CDLUC3/mrt-core2)
@@ -145,7 +142,8 @@ Code Repositories
 - Java 
   - [Merritt Box Tools](https://github.com/CDLUC3/mrt-box) 
 - Ruby
-  - [Admin Tool](https://github.com/CDLUC3/mrt-admin-lambda)
+  - [Merritt Admin Tool - UC3 Account](https://github.com/CDLUC3/mrt-admin-sinatra) 
+  - [Admin Tool - Main Account](https://github.com/CDLUC3/mrt-admin-lambda)
   - [Merritt End to End Tests](https://github.com/CDLUC3/mrt-integ-tests)
   - [Merritt Integration Test Images](https://github.com/CDLUC3/merritt-docker/tree/main/mrt-inttest-services)
   - [Merritt Crons Jobs](https://github.com/CDLUC3/mrt-cron)
@@ -153,7 +151,6 @@ Code Repositories
     - Merritt OpenSearch Visualizations
     - Merritt Object Health analysis
   - [Ingest Workspace Manifest Builder](https://github.com/CDLUC3/s3-sinatra) 
-  - [Merritt Admin Tool for New AWS Account](https://github.com/CDLUC3/mrt-admin-sinatra) 
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
 - Other
