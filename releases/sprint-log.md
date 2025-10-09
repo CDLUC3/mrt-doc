@@ -3,21 +3,27 @@
 #### Sprint 125: September 17, 2025 - October 7, 2025
 - Ingest
   - Cached profiles are not being culled after batch completes: #2381
+  - EZID minting error response not being processed correctly: #2409
 - Ingest/Storage
  - Consider driving storage requests via ZK rather than by API call from ingest: #2339
 - Admin
-  - LDAP entry automation for collection creation: #2368
-  - Support for "Ingest Jobs by Batch and Profile": #2367
-  - Collection creation: add ezid metadata: #2379
+  - Admin Refactor: throw/handle exceptions in 3 query methods: #2414
+  - Admin Refactor: simplify menu and breadcrumb creation: #2415
+  - [Admin UI] Deleted batches are not cleaned up: #2342
+  - Implement collection lock in new admin tool: #2411
 - Dev-ops
-  - Explore LDAP cert options when running in stage/prod ECS: #161
+  - BOM 5.0: #2398
+  - Update Maven plug-ins: #2269
+  - Apache Commons FileUpload: FileUpload DoS via part headers #78
 - ECS Stack, UC3 account migration
   - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
 - Depositor tools survey distribution: #2380
 - Cloud scan
   - Cloud scan results June 2025: #155
 - UCB Law Robbins Collection
-  - Robbins: Two drives to process: HDD-142 and UCB-09: #2358
+  - Robbins: One drive left to process: UCB-09: #2358
+- Create new UC Berkeley Museum of Vertebrate Zoology collection (to document): #887
+- Merritt UI: Collection creation and object endpoints documentation: #1839
 #### Releases:
 - Stage:
   -  TBD
