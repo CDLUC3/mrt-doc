@@ -143,7 +143,6 @@ Code Repositories
   - [Merritt Box Tools](https://github.com/CDLUC3/mrt-box) 
 - Ruby
   - [Merritt Admin Tool - UC3 Account](https://github.com/CDLUC3/mrt-admin-sinatra) 
-  - [Admin Tool - Main Account](https://github.com/CDLUC3/mrt-admin-lambda) (soon to be deprecated)
   - [Merritt End to End Tests](https://github.com/CDLUC3/mrt-integ-tests)
   - [Merritt Integration Test Images](https://github.com/CDLUC3/merritt-docker/tree/main/mrt-inttest-services)
   - [Merritt Crons Jobs](https://github.com/CDLUC3/mrt-cron)
