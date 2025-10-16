@@ -51,6 +51,7 @@ Functionality deprecated by the [Merritt Preservation System](https://github.com
 - [OAI](https://github.com/CDLUC3/mrt-oai)
 - [Sword](https://github.com/CDLUC3/mrt-sword)
 - [ETD - Electronic Theses and Dissertations](https://github.com/CDLUC3/uc3-etds)
+- [Admin Tool - Main Account](https://github.com/CDLUC3/mrt-admin-lambda)
 
 ## Libraries
 - [Zoo](https://github.com/CDLUC3/mrt-zoo)
