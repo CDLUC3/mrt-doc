@@ -63,7 +63,10 @@ Functionality deprecated by the [Merritt Preservation System](https://github.com
 - [merritt-manifest](https://github.com/CDLUC3/merritt-manifest)
 - [Jenkins Functions](https://github.com/CDLUC3/mrt-jenkins)
 - [Merritt LDAP Permission Tools](https://github.com/CDLUC3/merritt_ldap_tools)
-
+- [Merritt Crons Jobs](https://github.com/CDLUC3/mrt-cron)
+  - Merritt Consistency reports 
+  - Merritt OpenSearch Visualizations
+  - Merritt Object Health analysis 
 
 ## Microservice Functionality
 - Storage
