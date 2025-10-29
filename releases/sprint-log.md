@@ -1,5 +1,64 @@
 ## Sprint Goals
 
+#### Sprint 127: October 29, 2025 - November 18, 2025
+- Ingest/Storage
+ - Consider driving storage requests via ZK rather than by API call from ingest: #2339
+- Audit
+  - Merritt Audit Performance Degraded since 10/8: #2458
+- Admin
+  - [Admin UI] Deleted batches are not cleaned up: #2342
+  - After coding the storage scan screens in the admin tool, make sure to have an ability to run a key-file based scan: #2423
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Dev EC2s in the UC3 Account if/when needed: #2391
+  - Scope/review stack permissions: #166
+  - Merrittdev container: tools and documentation: #2426
+- Dev-ops
+  - BOM 5.0: #2398
+  - Apache Commons FileUpload: FileUpload DoS via part headers #78
+- Nuxeo feeds
+  - UCR feeds
+  - UCI feed refresh
+- UCB Law Robbins Collection
+  - Robbins: One drive left to process: UCB-09: #2358
+  - Robbins: Collaborate with TIND to move all TIFFs to their S3: #170
+- Merritt UI: Collection creation and object endpoints documentation: #1839
+#### Releases:
+- Stage:
+  - TBD
+- Production:
+  - TBD
+
+#### Sprint 126: October 8, 2025 - October 28, 2025
+- Ingest
+  - Cached profiles are not being culled after batch completes: #2381
+  - EZID minting error response not being processed correctly: #2409
+- Ingest/Storage
+ - Consider driving storage requests via ZK rather than by API call from ingest: #2339
+- Admin
+  - Merritt Admin Tool: migrate storage admin operations from the old admin tool: #2388
+  - Admin Refactor: throw/handle exceptions in 3 query methods: #2414
+  - Admin Refactor: simplify menu and breadcrumb creation: #2415
+  - [Admin UI] Deleted batches are not cleaned up: #2342
+  - Implement collection lock in new admin tool: #2411
+- Dev-ops
+  - BOM 5.0: #2398
+  - Update Maven plug-ins: #2269
+  - Apache Commons FileUpload: FileUpload DoS via part headers #78
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+- UCB Law Robbins Collection
+  - Robbins: One drive left to process: UCB-09: #2358
+- Create new UC Berkeley Museum of Vertebrate Zoology collection (to document): #887
+- Merritt UI: Collection creation and object endpoints documentation: #1839
+#### Releases:
+- Stage:
+  - EZID Response Code/Profile cull
+  - UI: 1.7.25.4 gem updates
+- Production:
+  - EZID Response Code/Profile cull
+  - UI: 1.7.25.4 gem updates
+
 #### Sprint 125: September 17, 2025 - October 7, 2025
 - Ingest
   - Cached profiles are not being culled after batch completes: #2381
