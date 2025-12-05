@@ -1,5 +1,38 @@
 ## Sprint Goals
 
+#### Sprint 128: December 2, 2025 - December 23, 2025
+- Ingest/Storage
+  - Consider driving storage requests via ZK rather than by API call from ingest: #2339
+  - [Zookeeper/Store/Ingest] Store locking failure: #2486
+- Audit
+  - Merritt Audit Performance Degraded since 10/8: #2458
+  - Audit Test Plan: #181
+  - Create Audit Benchmarking ECS Task: #2505
+- Admin
+  - Disallow deletion of semantically tagged artifacts that are less that 6 months old: #2493
+  - Disallow the deletion of semantically tagged docker images that had been released in the last 6 months: #2494
+  - Determine consistency report values that would be valuable to track as CloudWatch metrics: #2496
+  - Jobs by collection reports: show total bytes (if available): #2507
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Dev EC2s in the UC3 Account if/when needed: #2391
+  - Scope/review stack permissions: #166
+  - Merrittdev container: tools and documentation: #2426
+  - Add SDSC USS to merritt-dev configs AND to dev stack (if available): #2499
+- Devops
+  - BOM 5.0: #2398
+  - Apache Commons FileUpload: FileUpload DoS via part headers: #78
+  - Create ECS Task Def for end to end tests that includes the chrome container: #2485
+- Nuxeo feeds
+  - UCI feed refresh
+- UCB Law Robbins Collection
+  - Robbins: Two drives to process: HDD-142 and UCB-09: #2358
+  - Robbins: Collaborate with TIND to move all TIFFs to their S3: #170
+  - Vacate Robbins ingest workspace
+Releases:
+- Stage: Potentially new Audit logging
+- Production: Potentially new Audit logging and Audit, Replic v1 > v2
+
 #### Sprint 127: October 29, 2025 - November 18, 2025
 - Ingest/Storage
  - Consider driving storage requests via ZK rather than by API call from ingest: #2339
@@ -25,9 +58,9 @@
 - Merritt UI: Collection creation and object endpoints documentation: #1839
 #### Releases:
 - Stage:
-  - TBD
+  - UI Gem Updates and language change on screen
 - Production:
-  - TBD
+  - UI Gem Updates and language change on screen
 
 #### Sprint 126: October 8, 2025 - October 28, 2025
 - Ingest
