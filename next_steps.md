@@ -5,8 +5,8 @@
 
 - David
   - In progress
-    - Ensure that Inventory Endpoints can support a simplified "collection creation" without Admin objects
-    - Java 21
+    - Finish V2 Rollout
+    - S3 Workspace for Ingest and Storage
   - Storage Fix Operation:
     - generic "storage fix" workflow
       - admin tool invokes appropriate "fix" operation in storage
@@ -32,33 +32,27 @@
     - Eliminate DUA code
 - Mark
   - In progress
-    - Move profiles from file system to S3 
+    - Storage Decoupling
+    - EC2 Sceptre for Docker Box replacement 
+  - Workspace: Consider writing producer directory to S3 rather than to ingest folder file system 
   - New Manifest Type
   - Nuxeo refactor and cleanup
-  - Re-refactoring of Collection Creation (for Mig in Jul 2026)
-    - Eliminate admin object submission - apply updates to INV service directly
-    - Centralize all profile contents (unless different from the norm)
-    - More LDAP automation
-  - Consider writing producer directory to S3 rather than to ingest folder file system 
   - Passing storage fix parameters to INV/Storage
   - Eliminate Ingest Folder file system - use storage buckets instead
 - Terry
   - In progress
     - Performance test new stack (for Jul 2026 migrations)
-    - Move profiles from file system to S3 
     - Migration of Merritt to UC3 account
-    - Support re-refactoring of collection creation
   - Eliminate Guest Login from UI ?
   - Depositor API or Admin Tool
-  - Refine collection health tools based on feedback
 - Ashley
   - In Progress
+    - Logging: CW to OpenSearch
+    - Monitoring 
 - Eric
   - In progress
-    - Depositor tools survey
     - Robbins Collection
   - Pal Museum JPEGs on Box
-  - Collection Health Feedback Actions
   - Institute of Governmental Studies Library Collections
   - UCSF Glantz videos
 - Team
