@@ -66,7 +66,9 @@ Functionality deprecated by the [Merritt Preservation System](https://github.com
 - [Merritt Crons Jobs](https://github.com/CDLUC3/mrt-cron)
   - Merritt Consistency reports 
   - Merritt OpenSearch Visualizations
-  - Merritt Object Health analysis 
+  - Merritt Object Health analysis
+- [Merritt Locust Testing](https://github.com/CDLUC3/mrt-locust)
+
 
 ## Microservice Functionality
 - Storage
