@@ -1,6 +1,44 @@
 ## Sprint Goals
 
-#### Sprint 128: December 2, 2025 - December 23, 2025
+#### Sprint 130: January 14, 2026 - February 4, 2026
+- Ingest/Storage
+  - Consider driving storage requests via ZK rather than by API call from ingest: #2339
+  - Recover from a queue error: #2532
+- Replic
+  - Add fixity validation to Replic on copy: #2525
+  - Investigate TransferManager Exception: - errstatus503: #193
+- UI
+  - Add Consent Manager to Merritt UI: #2543
+- LDAP
+  - Investigate collection missing LDAP entries – ark:/99166/p9qv3c95g: #2529
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Dev EC2s in the UC3 Account if/when needed: #2391
+  - Planning for UI migration to ECS - how to handle the DNS switch: #195
+  - Migrate Merritt UI to ECS: #2483
+  - Create logstash rules for ECS Dev Stack: #2544
+- Devops
+  - Apache Commons FileUpload high severity CVE reported in mrt-core2: #156
+  - mrt-core2 - Apache Tika has XXE vulnerability: #186
+  - Update zookeeper on uc3-mrt-zookeeper to 3.9.4: #176
+  - RDS Mig: Jan 2026 - upgrade ECS DEV db to t4small: #2491
+  - Publish Merritt SNS messages to Cloudwatch or OpenSearch: #2468
+  - Migrate away from the dependency for campus depositors to know Ingest Server IP addresses: #1838
+  - AWS Recommendation on VPC Permissions: #187
+  - URL to S3 for Ingest staging (mrt-cloud): 2461
+- Documentation
+  - Troubleshooting docs Refactoring: #2534
+- Community
+  - DASSI CoreTrustSeal review #196
+  - Merritt CTS application
+Releases:
+- Stage: TBD
+- Production: 
+  - Ingest, Store, Inventory v1 > v2
+  - Decoupling Ingest and Store
+  - ZK 3.9.4 client upgrade: Ingest, Store, Inventory
+
+#### Sprint 128 & 129 (includes EOY shutdown): December 2, 2025 - Jan 13, 2026
 - Ingest/Storage
   - Consider driving storage requests via ZK rather than by API call from ingest: #2339
   - [Zookeeper/Store/Ingest] Store locking failure: #2486
@@ -30,8 +68,12 @@
   - Robbins: Collaborate with TIND to move all TIFFs to their S3: #170
   - Vacate Robbins ingest workspace
 Releases:
-- Stage: Potentially new Audit logging
-- Production: Potentially new Audit logging and Audit, Replic v1 > v2
+- Stage: 
+  - Two Audit releases: 1byte file fix and add new streamMs property for more granular benchmark metrics
+  - UI Rails 8 update
+- Production:
+  - Two Audit releases: 1byte file fix and add new streamMs property for more granular benchmark metrics
+  - UI Rails 8 update
 
 #### Sprint 127: October 29, 2025 - November 18, 2025
 - Ingest/Storage
