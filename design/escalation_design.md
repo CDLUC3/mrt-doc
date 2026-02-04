@@ -28,6 +28,17 @@
 
 ## Monitoring Process
 
+- Check Admin Tool State
+  - uc3-merritt-prd-background
+- Check RDS availability via Admin Tool (**New**)
+  - Request fails --> uc3-merritt-prd-background (error will show up elsewhere)
+  - If failure state --> uc3-merritt-prd-critical
+- Check ZK availability via Admin Tool (**New**)
+  - Request fails --> uc3-merritt-prd-background (error will show up elsewhere)
+  - If failure state --> uc3-merritt-prd-critical
+- Check LDAP availability via Admin Tool (**New**)
+  - Request fails --> uc3-merritt-prd-background (no other test available without logging into the UI)
+  - If failure state --> uc3-merritt-prd-critical
 - Check UI State
   - uc3-merritt-prd-critical
 - Check Ingest State
