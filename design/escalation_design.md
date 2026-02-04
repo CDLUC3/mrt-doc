@@ -56,3 +56,20 @@
   - Request fails --> uc3-merritt-prd-critical
   - JSON: Check state not running --> uc3-merritt-prd-background
 
+## Escalope Payload
+
+```
+payload = {'host': host, 'service': service, 'state': status, 'cause': message}
+```
+
+- host: ecs stack
+- service: service name
+- state: ?
+- cause: free text
+
+## Escalope API Call
+
+```
+escalope_token=$(get value from SSM)
+POST https://${ESCALOPE_URL}${escalope_token}
+```
