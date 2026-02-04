@@ -1,5 +1,29 @@
 ## Sprint Goals
 
+#### Sprint 131: February 4, 2026 - February 24, 2026
+- Ingest/Storage
+  - Metadata in mrt-erc file submitted as a container is not applied to objects on ingest #2567
+  - Recover from a queue error: #2532
+- LDAP
+  - Investigate collection missing LDAP entries – ark:/99166/p9qv3c95g: #2529
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Dev EC2s in the UC3 Account if/when needed: #2391
+  - Migrate Merritt UI to ECS Stage: #2479
+  - Url2S3 - container files #2565
+  - Url2S3 - copy validate java tool / class #2566
+- Devops
+  - Migrate away from the dependency for campus depositors to know Ingest Server IP addresses: #1838
+  - AWS Recommendation on VPC Permissions: #187
+- Documentation
+  - Troubleshooting docs Refactoring: #2534
+- Community
+  - DASSI CoreTrustSeal review #196
+  - Merritt CTS application: #200
+Releases:
+- Stage: TBD
+- Production: TBD
+
 #### Sprint 130: January 14, 2026 - February 4, 2026
 - Ingest/Storage
   - Consider driving storage requests via ZK rather than by API call from ingest: #2339
@@ -32,11 +56,12 @@
   - DASSI CoreTrustSeal review #196
   - Merritt CTS application
 Releases:
-- Stage: TBD
+- Stage: Ingest empty manifest handling
 - Production: 
   - Ingest, Store, Inventory v1 > v2
   - Decoupling Ingest and Store
   - ZK 3.9.4 client upgrade: Ingest, Store, Inventory
+  - Ingest empty manifest handling
 
 #### Sprint 128 & 129 (includes EOY shutdown): December 2, 2025 - Jan 13, 2026
 - Ingest/Storage
