@@ -11,10 +11,6 @@
   - Escalation is within UC3 
   - Background service (Audit/Replic/AdminTool is down)
   - Queue is frozen
-- uc3-merritt-prd-storage (**NEW**)
-  - How could this escalation differ from the background escalation?  
-  - Storage node is unavailable
-  - Note: this is also likely a user/depositor facing issue 
 - uc3-mrt-stg
   - Escalation is slack only
 
@@ -59,10 +55,10 @@
 ## Escalope Payload
 
 ```
-payload = {'host': host, 'service': service, 'state': status, 'cause': message}
+payload = {'host': host, 'service': service, 'state': state, 'cause': message}
 ```
 
-- host: ecs stack
+- host: ecs-uc3-mrt-STACKNAME-stack
 - service: service name
 - state: ?
 - cause: free text
@@ -73,3 +69,7 @@ payload = {'host': host, 'service': service, 'state': status, 'cause': message}
 escalope_token=$(get value from SSM)
 POST https://${ESCALOPE_URL}${escalope_token}
 ```
+
+## Code
+
+https://github.com/CDLUC3/merritt-docker/blob/main/mrt-inttest-services/merritt-ops/scripts/run-monitor-checks.sh
