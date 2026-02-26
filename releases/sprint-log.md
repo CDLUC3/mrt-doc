@@ -1,5 +1,49 @@
 ## Sprint Goals
 
+#### Sprint 132: February 25, 2026 - March 17, 2026
+- Ingest/Storage
+  - Recover from a queue error: #2532
+  - Zip file disaggregate failure: #2569
+  - ZIP container with encoding issue: #2472
+  - On hold: Investigate mount-s3 as solution for staging (retrieve) ingest workspace: #2571
+  - Error acquiring Batch data: #2304
+- Inventory
+  - Use Access service to grab content (vs. Storage): #2453
+- LDAP
+  - Update to OpenDJ 5.03 #212
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Dev EC2s in the UC3 Account if/when needed: #2391
+  - Migrate Merritt UI to ECS Stage: #2479
+  - mrt-dashboard Gem updates: #211
+  - On hold: Url2S3 - container files #2565
+  - On hold: Url2S3 - copy validate java tool / class #2566
+  - On hold: URL to S3 for Ingest staging (mrt-cloud): #2461
+  - ECS Performance testing of EFS in Dev: #2587
+  - UI cutover to ECS – work with IAS regarding DNS and load balancer changes
+- Devops
+  - BOM 6 support dependency versioning: #2482
+  - Tomcat: CVEs suggest updating to version 9.0.115 (from 9.0.108): #210
+  - Review latest available JAR updates Feb. 2026: #205
+  - Migrate away from the dependency for campus depositors to know Ingest Server IP addresses: #1838
+  - AWS Recommendation on VPC Permissions: #187
+  - Determine consistency report values that would be valuable to track as CloudWatch metrics: #2496
+- Documentation
+  - Troubleshooting docs Refactoring: #2534
+- Community
+  - Coordinate Moorea Biocode dataset deposit to Dryad: #208
+  - LoC Benchmark Retrieval Metrics presentation #207
+  - Merritt CTS application: #200
+Releases:
+- Stage:
+  - Inventory: Access pointer
+  - Ingest - Zip file with ISO8859-1 encoding
+  - Ingest - Address Batch Acquire error
+- Production:
+  - Inventory: Access pointer
+  - Ingest - Zip file with ISO8859-1 encoding
+  - Ingest - Address Batch Acquire error
+
 #### Sprint 131: February 4, 2026 - February 24, 2026
 - Ingest/Storage
   - Metadata in mrt-erc file submitted as a container is not applied to objects on ingest #2567
@@ -21,9 +65,13 @@
   - DASSI CoreTrustSeal review #196
   - Merritt CTS application: #200
 Releases:
-- Stage: TBD
-- Production: TBD
-
+- Stage:
+  - Update Access to 2.5.2 to be in parity with Store
+  - RDS Graviton update
+- Production:
+  - Update Access to 2.5.2 to be in parity with Store
+  - RDS Graviton update
+ 
 #### Sprint 130: January 14, 2026 - February 4, 2026
 - Ingest/Storage
   - Consider driving storage requests via ZK rather than by API call from ingest: #2339
