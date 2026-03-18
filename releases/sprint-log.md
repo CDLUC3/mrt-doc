@@ -1,5 +1,51 @@
 ## Sprint Goals
 
+#### Sprint 133: March 18 - April 7, 2026
+- Ingest/Storage
+  - On hold: Investigate mount-s3 as solution for staging (retrieve) ingest workspace: #2571
+  - Renewed discussion re: SDSC data migration from Minio to native S3: #1701
+  - ZK retry logic advanced State twice: #2597
+- Inventory
+  - Use Access service to grab content (vs. Storage): #2453
+- LDAP
+  - Update to OpenDJ 5.03 #212
+- Admin
+  - Admin tool task completion status grid shows inaccurate dates: #2590
+  - Admin tool - create new endpoint that generates metrics of interest for CW metrics: #2591
+  - Create an admin endpoint and cleanup task to purge old archive images: #2618
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Dev EC2s in the UC3 Account if/when needed: #2391
+  - Migrate Merritt UI to ECS Stage: #2479
+  - On hold: Url2S3 - container files #2565
+  - On hold: Url2S3 - copy validate java tool / class #2566
+  - On hold: URL to S3 for Ingest staging (mrt-cloud): #2461
+  - ECS Performance testing of EFS in Dev: #2587
+  - Explore LDAP cert options when running in stage/prod ECS: #161
+  - Refine cpu/memory allocated to ECS tasks, allow task-specific overrides: #2596
+  - S3 copy with no intermediate files between different s3 compliant services: #2607
+  - Write up ECS Preparation Checklist for the java services: #2614
+  - After the retirement of UI EC2's, clean up mrt-dashboard codebase: #2616
+  - Special UI Prod Config Tests: #221
+- Devops
+  - Review latest available JAR updates Feb. 2026: #205
+  - Migrate away from the dependency for campus depositors to know Ingest Server IP addresses: #1838
+  - AWS Recommendation on VPC Permissions: #187
+  - Create object delete process (from an ark list) to run as an ECS Task or endpoint: #198
+  - OpenDJ version: #212
+  - Support manifest of manifest ingest from the Ingest Workspace: #220
+- Documentation
+  - Troubleshooting docs Refactoring: #2534
+- Community
+  - Coordinate Moorea Biocode dataset deposit to Dryad: #208
+  - Merritt CTS application #200
+  - Ingest PM content from BOX: #217
+Releases:
+- Stage: 
+  - TBD
+- Production: 
+  - UI cutover to ECS
+
 #### Sprint 132: February 25, 2026 - March 17, 2026
 - Ingest/Storage
   - Recover from a queue error: #2532
