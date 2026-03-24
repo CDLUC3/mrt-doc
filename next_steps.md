@@ -4,19 +4,21 @@
 ## Next Steps by Team Member
 
 - David
-  - In progress
-    - Finish V2 Rollout
+  - On hold (as of 2026-03)
     - S3 Workspace for Ingest and Storage
-  - Storage Fix Operation:
-    - generic "storage fix" workflow
-      - admin tool invokes appropriate "fix" operation in storage
-    - implement storage prune operation 
-      - create file tombstone table?
+  - Service graceful shutdown for ECS stack
+    - Starting with Audit
   - Simplify Storage Node Configuration
     - Currently includes Yaml Changes, deployed in WAR files + INV database changes
     - Consider deploying Yaml Config to S3 rather than as a part of the WAR file 
   - Major Migrations
+    - Replicate and cleanup in-process
     - SDSC storage migration
+  - Storage Fix Operation:
+    - generic "storage fix" workflow for object updates
+      - admin tool invokes appropriate "fix" operation in storage
+    - implement storage prune operation 
+      - create file tombstone table?
   - Resume Storage Admin Work
     - Delete object via admin tool
     - Create object tombstone
@@ -32,29 +34,31 @@
     - Eliminate DUA code
 - Mark
   - In progress
-    - Storage Decoupling
-    - EC2 Sceptre for Docker Box replacement 
-  - Workspace: Consider writing producer directory to S3 rather than to ingest folder file system 
+    - EC2 Sceptre for Docker Box replacement
+  - Service graceful shutdown for ECS stack
+    - Starting with Ingest
+  - On hold (as of 2026-03)
+    - Workspace: Consider writing producer directory to S3 rather than to ingest folder file system 
   - New Manifest Type
   - Nuxeo refactor and cleanup
-  - Passing storage fix parameters to INV/Storage
-  - Eliminate Ingest Folder file system - use storage buckets instead
+  - Passing storage fix parameters to INV/Storage for object updates
 - Terry
   - In progress
     - Performance test new stack (for Jul 2026 migrations)
     - Migration of Merritt to UC3 account
+    - Nagios monitoring replacements
   - Eliminate Guest Login from UI ?
   - Depositor API or Admin Tool
 - Ashley
-  - In Progress
-    - Logging: CW to OpenSearch
-    - Monitoring 
+  - Backup and disaster recovery tasks as we continue to move to the UC3 account
 - Eric
   - In progress
-    - Robbins Collection
-  - Pal Museum JPEGs on Box
-  - Institute of Governmental Studies Library Collections
-  - UCSF Glantz videos
+    - CoreTrustSeal application for Merritt
+    - CoreTrustSeal reviews
+    - Finance, storage provider and migration tasks
+    - Pal Museum JPEGs on Box
+    - Institute of Governmental Studies Library Collections
+    - UCSF Glantz videos
 - Team
   - Explore new storage classes and potential benefits to Merritt processing
   - Consider Indexing/Tagging/Search faceting for objects
