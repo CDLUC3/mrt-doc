@@ -4,7 +4,7 @@
 ## CDL All-Staff
 - [Content Authenticity & Provenance - Engaging in the Library of Congress Government + LAM Community of Practice](https://github.com/CDLUC3/mrt-doc/blob/main/presentations/LC%20G%2BLAMS%20Community%20and%20C2PA.pdf)
 
-## Library of Congress [Designing Storage Architectures Meeting, 2026](https://digitalpreservation.gov/meetings/)
+## Library of Congress [Designing Storage Architectures Meeting, 2026](https://digitalpreservation.gov/meetings/storage26.html)
 - [Presentation: When milliseconds turn into seconds. The impact of cloud storage performance on
 digital preservation operations](https://github.com/user-attachments/files/26068784/E_Lopatin_CDL_LC_DSA_2026.pdf)
 
