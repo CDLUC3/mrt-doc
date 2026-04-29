@@ -1,5 +1,73 @@
 ## Sprint Goals
 
+#### Sprint 135: April 29 - May 19, 2026
+Ingest/Storage
+- Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
+- ZK retry logic advanced State twice: #2597
+- Renew discussion re: SDSC data migration from Minio to native S3: #1701
+LDAP
+- Potentially move to ECS after Access
+ECS Stack, UC3 account migration
+- Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+- Dev EC2s in the UC3 Account if/when needed: #2391
+- On hold: Url2S3 - container files #2565
+- On hold: Url2S3 - copy validate java tool / class #2566
+- On hold: URL to S3 for Ingest staging (mrt-cloud): #2461
+- ECS Performance testing of EFS in Dev: #2587
+- Explore LDAP cert options when running in stage/prod ECS: #161
+- S3 copy with no intermediate files between different s3 compliant services: #2607
+- Write up ECS Preparation Checklist for the java services: #2614
+- After the retirement of UI EC2's, clean up mrt-dashboard codebase: #2616
+Devops
+- Review latest available JAR updates Feb. 2026: #205
+- AWS Recommendation on VPC Permissions: #187
+- On hold: Support manifest of manifest ingest from the Ingest Workspace: #220
+Community
+- Storage provider investigation: #231
+- Merritt CTS application #200
+Releases:
+- Stage: 
+  - Store with new Replic API - S3ToS3: #2658
+- Production: 
+  - Store with new Replic API - S3ToS3: #2658
+
+#### Sprint 134: April 8 - April 28, 2026
+Ingest/Storage
+- On hold: Investigate mount-s3 as solution for staging (retrieve) ingest workspace: #2571
+- Renewed discussion re: SDSC data migration from Minio to native S3: #1701
+- ZK retry logic advanced State twice: #2597
+- Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
+LDAP
+- Potentially move to ECS after Audit
+- Explore LDAP cert options when running in stage/prod ECS: #161
+ECS Stack, UC3 account migration
+- Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+- Dev EC2s in the UC3 Account if/when needed: #2391
+- Create S3 FileSystem using Sceptre: #2657
+- Preparation tasks for Access Migration to ECS: #240
+- ECS Performance testing of EFS in Dev: #2587
+- S3 copy with no intermediate files between different s3 compliant services: #2607
+- Write up ECS Preparation Checklist for the java services: #2614
+- On hold: Url2S3 - container files #2565
+- On hold: Url2S3 - copy validate java tool / class #2566
+- On hold: URL to S3 for Ingest staging (mrt-cloud): #2461
+Devops
+- Review latest available JAR updates Feb. 2026: #205
+- AWS Recommendation on VPC Permissions: #187
+- On hold: Support manifest of manifest ingest from the Ingest Workspace: #220
+Community
+- Storage provider investigation: #231
+- Coordinate Moorea Biocode dataset deposit to Dryad: #208
+- Merritt CTS application #200
+- Ingest PM content from BOX: #217
+Releases:
+- Stage: 
+  - Gem Updates and Post-ECS config cleanup
+  - Ingest BOM and ZK Client upgrade
+- Production: 
+  - Gem Updates and Post-ECS config cleanup
+  - Ingest BOM and ZK Client upgrade
+
 #### Sprint 133: March 18 - April 7, 2026
 - Ingest/Storage
   - On hold: Investigate mount-s3 as solution for staging (retrieve) ingest workspace: #2571
