@@ -1,5 +1,28 @@
 ## Sprint Goals
 
+#### Sprint 136: May 20 - June 09, 2026
+Ingest/Storage
+- Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
+- ZK retry logic advanced State twice: #2597
+LDAP
+- Potentially move to ECS after Access
+ECS Stack, UC3 account migration
+- Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+- Dev EC2s in the UC3 Account if/when needed: #2391
+- Explore LDAP cert options when running in stage/prod ECS: #161
+Devops
+- Review latest available JAR updates Feb. 2026: #205
+- AWS Recommendation on VPC Permissions: #187
+- Renew discussion re: SDSC data migration from Minio to native S3: #1701
+Community
+- Merritt CTS application #200
+- CTS application reviews: #256
+Releases:
+- Stage: 
+  - Inventory to ECS
+- Production:
+  - Inventory to ECS
+
 #### Sprint 135: April 29 - May 19, 2026
 Ingest/Storage
 - Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
@@ -27,9 +50,15 @@ Community
 - Merritt CTS application #200
 Releases:
 - Stage: 
-  - Store with new Replic API - S3ToS3: #2658
+  - UI 2.1.2 Gem updates: #2667
+  - Replic with new S3ToS3 Copy: #2668
+  - Ingest - Graceful Shutdown: #2669
+  - Migrate Access to ECS: #233
 - Production: 
-  - Store with new Replic API - S3ToS3: #2658
+  - UI 2.1.2 Gem updates: #2667
+  - Replic with new S3ToS3 Copy: #2668
+  - Ingest - Graceful Shutdown: #2669
+  - Migrate Access to ECS: #233
 
 #### Sprint 134: April 8 - April 28, 2026
 Ingest/Storage
