@@ -1,5 +1,28 @@
 ## Sprint Goals
 
+#### Sprint 137: June 10 - June 30, 2026
+Ingest/Storage
+- Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
+- ZK retry logic advanced State twice: #2597
+- Prod delete create inv_tasks entry for each deleted ark: #2630
+Replic
+- Migrate Replic to Production ECS during week of June 15
+LDAP
+- Migrate to Stage ECS after Replic, during week of June 15
+ECS Stack, UC3 account migration
+- Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+- Explore LDAP deploy options when running in stage/prod ECS: #161
+Devops
+- Review latest available JAR updates May. 2026: #205
+- Removal AWS java SDK v1, BOM 7, core2 log cleanup: #2725
+Community
+- Merritt CTS application #200
+Releases:
+- Stage: 
+ - LDAP to Stage ECS
+- Production:
+ - Replic to Production ECS
+
 #### Sprint 136: May 20 - June 09, 2026
 Ingest/Storage
 - Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
