@@ -10,7 +10,9 @@
     - Starting with Audit
   - Simplify Storage Node Configuration
     - Currently includes Yaml Changes, deployed in WAR files + INV database changes
-    - Consider deploying Yaml Config to S3 rather than as a part of the WAR file 
+    - Consider deploying Yaml Config to S3 rather than as a part of the WAR file
+      - https://github.com/CDLUC3/mrt-doc-private/issues/277
+    - https://github.com/CDLUC3/mrt-doc/issues/2715
   - Major Migrations
     - Replicate and cleanup in-process
     - SDSC storage migration
