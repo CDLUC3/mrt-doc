@@ -8,13 +8,14 @@
     - S3 Workspace for Ingest and Storage
   - Service graceful shutdown for ECS stack
     - Starting with Audit
+  - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
   - Simplify Storage Node Configuration
     - Currently includes Yaml Changes, deployed in WAR files + INV database changes
-    - Consider deploying Yaml Config to S3 rather than as a part of the WAR file
-      - https://github.com/CDLUC3/mrt-doc-private/issues/277
-    - https://github.com/CDLUC3/mrt-doc/issues/2715
+    - Consider deploying Yaml Config to S3 rather than as a part of the WAR file [#277](https://github.com/CDLUC3/mrt-doc-private/issues/277)
   - Major Migrations
+    - Test NCSA S3-fronted tape storage. Prototype Replication container generation in advance of PUT operations
     - Replicate and cleanup in-process
+      - Consider pros and cons of Replic copy to new node with automated clean-up https://github.com/CDLUC3/mrt-doc/issues/2715
     - SDSC storage migration
   - Storage Fix Operation:
     - generic "storage fix" workflow for object updates
