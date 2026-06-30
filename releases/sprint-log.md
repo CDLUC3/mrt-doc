@@ -1,6 +1,6 @@
 ## Sprint Goals
 
-#### Sprint 137: July 1 - July 21, 2026
+#### Sprint 138: July 1 - July 21, 2026
 - Ingest/Storage
   - Migrate Storage and Ingest to ECS: #237
   - Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
