@@ -59,6 +59,7 @@
   - In progress
     - CoreTrustSeal application for Merritt
     - CoreTrustSeal reviews
+    - iPRES ECS Autoscaling poster
     - Finance, storage provider and migration tasks
     - Pal Museum JPEGs on Box
     - Institute of Governmental Studies Library Collections
