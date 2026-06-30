@@ -1,27 +1,58 @@
 ## Sprint Goals
 
+#### Sprint 137: July 1 - July 21, 2026
+- Ingest/Storage
+  - Migrate Storage and Ingest to ECS: #237
+  - Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
+  - [Storage] Add graceful shutdown for Daemon and threads: #2674
+  - Log throttling for Ingest: #2677
+  - [Ingest] Forward Proxy research: #2724
+  - Support Basic Auth for collection/server based retrieval: #2737
+- Inventory
+  - Log throttling in Inventory: #2679
+- LDAP
+  - Migrate to Stage ECS after Replic, during week of June 15
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Explore LDAP deploy options when running in stage/prod ECS: #161
+- Devops
+  - Prod delete create inv_tasks entry for each deleted ark: #2630
+- Content projects
+  - UCR Nuxeo feed: Inland Empire aerial photographs: #2747
+- Community
+  - Merritt CTS application #200
+  - Update existing Merritt user guidelines PDF with revised Accessibility statement: #2698
+Releases:
+- Stage: 
+ - Ingest/Store: Removal AWS java SDK v1, BOM 7, core2 log cleanup
+- Production:
+ - Ingest/Store: Removal AWS java SDK v1, BOM 7, core2 log cleanup
+
 #### Sprint 137: June 10 - June 30, 2026
-Ingest/Storage
-- Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
-- ZK retry logic advanced State twice: #2597
-- Prod delete create inv_tasks entry for each deleted ark: #2630
-Replic
-- Migrate Replic to Production ECS during week of June 15
-LDAP
-- Migrate to Stage ECS after Replic, during week of June 15
-ECS Stack, UC3 account migration
-- Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
-- Explore LDAP deploy options when running in stage/prod ECS: #161
-Devops
-- Review latest available JAR updates May. 2026: #205
-- Removal AWS java SDK v1, BOM 7, core2 log cleanup: #2725
-Community
-- Merritt CTS application #200
+- Ingest/Storage
+  - Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
+  - ZK retry logic advanced State twice: #2597
+  - Prod delete create inv_tasks entry for each deleted ark: #2630
+- Replic
+  - Migrate Replic to Production ECS during week of June 15
+- LDAP
+  - Migrate to Stage ECS after Replic, during week of June 15
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Explore LDAP deploy options when running in stage/prod ECS: #161
+- Devops
+  - Review latest available JAR updates May. 2026: #205
+  - Removal AWS java SDK v1, BOM 7, core2 log cleanup: #2725
+- Community
+  - Merritt CTS application #200
 Releases:
 - Stage: 
  - LDAP to Stage ECS
+ - All except Ingest/Store: Removal AWS java SDK v1, BOM 7, core2 log cleanup
 - Production:
  - Replic to Production ECS
+ - LDAP to Production ECS
+ - All except Ingest/Store: Removal AWS java SDK v1, BOM 7, core2 log cleanup
 
 #### Sprint 136: May 20 - June 09, 2026
 Ingest/Storage
