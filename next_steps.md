@@ -4,10 +4,6 @@
 ## Next Steps by Team Member
 
 - David
-  - On hold (as of 2026-03)
-    - S3 Workspace for Ingest and Storage
-  - Service graceful shutdown for ECS stack
-    - Starting with Audit
   - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
   - Simplify Storage Node Configuration
     - Currently includes Yaml Changes, deployed in WAR files + INV database changes
@@ -17,11 +13,6 @@
     - Replicate and cleanup in-process
       - Consider pros and cons of Replic copy to new node with automated clean-up https://github.com/CDLUC3/mrt-doc/issues/2715
     - SDSC storage migration
-  - Storage Fix Operation:
-    - generic "storage fix" workflow for object updates
-      - admin tool invokes appropriate "fix" operation in storage
-    - implement storage prune operation 
-      - create file tombstone table?
   - Resume Storage Admin Work
     - Delete object via admin tool
     - Create object tombstone
@@ -29,29 +20,39 @@
     - Change primary node for a collection
     - Transfer object to different primary node
   - Augment Object Representation
-    - Alter/repair owner, collection for object
+    - Alter/repair owner, collection for object (for collections that have the standard storage config) 
     - Alter/repair mime type for object
     - Augment mime type with more specific information
   - Later/Misc
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
     - Eliminate DUA code
 - Mark
-  - In progress
+  - On hold
     - EC2 Sceptre for Docker Box replacement
-  - Service graceful shutdown for ECS stack
-    - Starting with Ingest
-  - On hold (as of 2026-03)
-    - Workspace: Consider writing producer directory to S3 rather than to ingest folder file system 
-  - New Manifest Type
-  - Nuxeo refactor and cleanup
-  - Passing storage fix parameters to INV/Storage for object updates
-- Terry
   - In progress
-    - Performance test new stack (for Jul 2026 migrations)
-    - Migration of Merritt to UC3 account
-    - Nagios monitoring replacements
-  - Eliminate Guest Login from UI ?
-  - Depositor API or Admin Tool
+    - Service graceful shutdown for ECS stack
+    - Starting with Ingest
+  - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
+    - Starting with Ingest  
+  - ECS Migration
+    - Proxy handler for campuses that need to allow an IP range
+    - Authentication injection handler
+    - Email solution for Ingest
+    - Migrate Nuxeo feed processing to an ECS task
+  - New JSON-based Manifest Type
+    - Assist with UC Berkeley Library object consolidation with new manifest type
+- Terry
+  - ECS Migration
+    - Remaining service migrations (Ingest, Store, ZooKeeper)
+    - ZFS to EFS copy process
+    - Migrate Nuxeo feed processing to an ECS task
+  - UI enhancements
+    - Consent manager implementation
+    - Display file path for on search results page
+  - New JSON-based Manifest Type
+    - Assist with UC Berkeley Library object consolidation with new manifest type
+    - JSON schema validation possibilities
+  - Revive collection health analysis implementation for ECS stack
 - Ashley
   - Backup and disaster recovery tasks as we continue to move to the UC3 account
 - Eric
@@ -63,5 +64,5 @@
     - Institute of Governmental Studies Library Collections
     - UCSF Glantz videos
 - Team
-  - Explore new storage classes and potential benefits to Merritt processing
-  - Consider Indexing/Tagging/Search faceting for objects
+  - Explore new storage classes, solutions and potential benefits to Merritt processing
+  - Explore ideas around an exit path for depositors
