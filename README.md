@@ -18,6 +18,7 @@
 Code Repositories
 - Ruby
   - [UI](https://github.com/CDLUC3/mrt-dashboard)
+  - [Merritt Admin Tool](https://github.com/CDLUC3/mrt-admin-sinatra) 
 - Java
   - [Ingest](https://github.com/CDLUC3/mrt-ingest)
   - [Inventory](https://github.com/CDLUC3/mrt-inventory)
@@ -44,12 +45,11 @@ Code Repositories
 - Java 
   - [Merritt Box Tools](https://github.com/CDLUC3/mrt-box) 
 - Ruby
-  - [Merritt Admin Tool - UC3 Account](https://github.com/CDLUC3/mrt-admin-sinatra) 
   - [Merritt End to End Tests](https://github.com/CDLUC3/mrt-integ-tests)
-  - [Merritt Integration Test Images](https://github.com/CDLUC3/merritt-docker/tree/main/mrt-inttest-services)
   - [Ingest Workspace Manifest Builder](https://github.com/CDLUC3/s3-sinatra) 
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
+  - [Merritt Integration Test Images](https://github.com/CDLUC3/merritt-docker/tree/main/mrt-inttest-services)
 - Other
   - [Merritt Maintenance Scripts](https://github.com/CDLUC3/mrt-maint)
 - Python
