@@ -1,7 +1,25 @@
 # Content Ingest Workspace Design
 
+## Note
+
+- This effort has been replaced by the [Merritt Ingest Workspace - internal link](https://github.com/CDLUC3/mrt-sceptre/tree/main/ingest-wkspace) which uses mount-s3 to expose an S3 bucket as a file system.
+
+## Design
+
 ```mermaid
 graph TD
+  accTitle: 'Content Ingest Workspace Design'
+  accDesc {
+    Eric mounts a hard drive to his desktop.
+    Eric copies hard drive content to S3.
+    S3 bucket has been configured to replicate to a LusterFSX file system.
+    Eric connects to an EC2 instance to manipulate S3 content with file system commands.
+    S3 bucket content is can be made available for ingest using a lambda.
+    Eric connect to this lambda from a browser.
+    A load balance associates a DNS with the lambda.
+    The lambda code can generate Merritt batch manifests for the S3 content.
+    The Merritt lambda will perform presigned file retrievals of content as needed.
+  }
   Eric
   Eric --> Desktop
   Eric --> Browser
