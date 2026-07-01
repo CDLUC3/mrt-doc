@@ -1,10 +1,21 @@
 ## Incomplete Storage Admin Efforts
 
+Some of these design details are obsolete.
+
 ### Delete Object
 
 ```mermaid
 %%{init: {'theme': 'neutral', 'securityLevel': 'loose', 'themeVariables': {'fontFamily': 'arial'}}}%%
 graph TD
+  accTitle: 'Storage Admin Delete Object'
+  accDescr {
+    Delete secondary copies of an object.
+    Delete primary copies of an object.
+    Delete from inventory.
+    Delete localid.
+    Update EZID.
+    Record the delection in inv_storage_maints.
+  }
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
   REPLIC(Replication)
