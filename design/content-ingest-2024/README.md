@@ -9,7 +9,7 @@
 ```mermaid
 graph TD
   accTitle: 'Content Ingest Workspace Design'
-  accDesc {
+  accDescr {
     Eric mounts a hard drive to his desktop.
     Eric copies hard drive content to S3.
     S3 bucket has been configured to replicate to a LusterFSX file system.
