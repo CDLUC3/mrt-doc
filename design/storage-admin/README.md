@@ -77,6 +77,10 @@ create table inv_object_maints(
 ```mermaid
 %%{init: {'theme': 'neutral', 'securityLevel': 'loose', 'themeVariables': {'fontFamily': 'arial'}}}%%
 graph TD
+  accTitle: 'Storage Admin Change Primary Storage Node'
+  accDescr {
+    Flowchart brainstorming mechanism to change the primary storage node for an object.
+  }
   SAUI("Storage Admin UI")
   SA("Storage Admin Lambda")
   RDS[(Inventory DB)]
