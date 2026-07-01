@@ -139,13 +139,13 @@ To github.com:cdluc3/mrt-ingest
 
 ## GitHub
 
-<img alt="image" src="https://github.com/user-attachments/assets/a017539b-9feb-4ef4-9dbc-d06acf7cebd2">
+<img alt="Screenshot of GitHub website illustrating the creation of tag 'dmo-1.3.0' for the repository 'CDLUC3/mrt-ingest'" src="https://github.com/user-attachments/assets/a017539b-9feb-4ef4-9dbc-d06acf7cebd2">
 
 ----
 
 ## AWS Connector for GitHub
 
-<img alt="image" src="https://github.com/user-attachments/assets/17d73256-fea2-4368-9e3a-5d165274d175">
+<img alt="Screenshot of the GitHub website showing that the 'AWS Connector for GitHub' has been installed within the 'CDLUC3' GitHub organization" src="https://github.com/user-attachments/assets/17d73256-fea2-4368-9e3a-5d165274d175">
 
 ----
 
@@ -158,7 +158,7 @@ To github.com:cdluc3/mrt-ingest
 
 ## CodePipeline
 
-<img alt="image" src="https://github.com/user-attachments/assets/24e03d1d-dd80-49c8-b07f-0fb937652a4d">
+<img alt="Screenshot of the AWS Console illustrating that a CodePipeline named 'mrt_pipeline-mrt-ingest-OnPush' was triggered and has a status of Succeded" src="https://github.com/user-attachments/assets/24e03d1d-dd80-49c8-b07f-0fb937652a4d">
 
 ----
 
@@ -168,13 +168,13 @@ To github.com:cdluc3/mrt-ingest
 
 ----
 
-<img alt="image" src="https://github.com/user-attachments/assets/d37c81f8-f729-4d42-861f-e2798d359e7c">
+<img alt="Screenshot of the AWS Console page for the pipeline 'mrt_pipeline-mrt-ingest-OnPush'.  On this page you can see that the pipeline was triggered from a specific GitHub commit and that a CodeBuild job was successful." src="https://github.com/user-attachments/assets/d37c81f8-f729-4d42-861f-e2798d359e7c">
 
 ---
 
 ## CodeBuild
 
-<img alt="image" src="https://github.com/user-attachments/assets/2a02ef4d-b782-458d-9d92-4ca5787de425">
+<img alt="Screenshot of the AWS Console page for a CodeBuild job that was triggered for the pipeline 'mrt_pipeline-mrt-ingest-OnPush'.  The status for the job is Succeded." src="https://github.com/user-attachments/assets/2a02ef4d-b782-458d-9d92-4ca5787de425">
 
 ----
 
@@ -237,17 +237,17 @@ The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-inge
 
 ## CodeArtifact
 
-<img alt="image" src="https://github.com/user-attachments/assets/e1fc89d0-6cbe-41b9-96c4-5328e05a5703">
+<img alt="Screenshot of the AWS Console page for the the CodeArtifact named 'org.cdlib.mrt:mrt-ingestwar'.  On this page you can see that the most recently published artifcat has a package version of 'demo-1.3.0'.  Other snapshot versions of this artifact also exist." src="https://github.com/user-attachments/assets/e1fc89d0-6cbe-41b9-96c4-5328e05a5703">
 
 ----
 
-<img alt="image" src="https://github.com/user-attachments/assets/6456e47c-31ea-431b-9d48-9e8fc7759e84">
+<img alt="Screenshot of the AWS Console page for artifact named 'UC3-mrtBatchWar' associated wiht version 'demo-1.3.0' of the artifact.  This artifact contains both a pom file and a war file.  Both files are suffixed with a tag name containing '-demo-1.3.0'" src="https://github.com/user-attachments/assets/6456e47c-31ea-431b-9d48-9e8fc7759e84">
 
 ---
 
 ## Elastic Container Registry
 
-<img alt="image" src="https://github.com/user-attachments/assets/7ccb7d05-e1cb-47be-93d8-ac000117705a">
+<img alt="Screenshot of the AWS Console page for an Elastic Container Registry reposistory named 'mrt-ingest'.  The repository contains a docker image with the tagname 'demo-1.3.0' and 'dev'. The docke rimage has an associated Digest values.  A couple additional docker images are present.  These images have a unique digest value, but they do not have an associated tag name." src="https://github.com/user-attachments/assets/7ccb7d05-e1cb-47be-93d8-ac000117705a">
 
 ---
 
@@ -259,7 +259,7 @@ The push refers to repository [99999999.dkr.ecr.us-west-2.amazonaws.com/mrt-inge
 
 ----
 
-<img alt="image" src="https://github.com/user-attachments/assets/f6f60ed3-e43d-437a-ae5f-c1b67c8a750c">
+<img alt="Screenshot of the AWS Console listing Event Bridge schedules.  On this screen, there are scheduled builds associated with several Merritt repositories.  " src="https://github.com/user-attachments/assets/f6f60ed3-e43d-437a-ae5f-c1b67c8a750c">
 
 ---
 
