@@ -1,5 +1,6 @@
 # Merritt AWS Build - Tagging Demo
 
+- [Presentation Source](https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/demo.md)
 - [Merritt AWS Build Design](https://github.com/CDLUC3/mrt-doc/blob/main/design/aws-build/README.md)
 - [Merritt Dev Resources](https://merritt.uc3dev.cdlib.org/)
 
