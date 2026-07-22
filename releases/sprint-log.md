@@ -1,5 +1,39 @@
 ## Sprint Goals
 
+#### Sprint 139: July 22 - August 11, 2026
+- Ingest/Storage
+  - Migrate Storage and Ingest to ECS: #237
+  - Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
+  - [Storage] Add graceful shutdown for Daemon and threads: #2674
+  - Log throttling for Ingest: #2677
+  - Support Basic Auth for collection/server based retrieval: #2737
+- Inventory
+  - [Inventory] Add graceful shutdown for Daemon and threads: #2673
+  - Log throttling in Inventory: #2679
+- LDAP
+  - Migrate to Stage ECS after Replic, during week of June 15
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Explore LDAP deploy options when running in stage/prod ECS: #161
+- Devops
+  - Prod delete create inv_tasks entry for each deleted ark: #2630
+- Content projects
+  - Address UCSC Corrupted File Paths: #298
+  - Assist with UCI RFA content copy: #300
+  - Contact campuses using S3 buckets to request UC3 Prod and Stage VPC IDs be added: #268
+- Community
+  - Merritt CTS application #200
+  - Update existing Merritt user guidelines PDF with revised Accessibility statement: #2698
+  - Address accessibility issues in PDF-based documentation: #2768
+  - Consider altering Nuxeo Atom processor to use the Update endpoint: #295
+  - Update ETDs page on cdlib.org to align with eScholarship help info: #2760
+  - Prevent highly escaped file paths in Merritt objects that can break the system: #299
+Releases:
+- Stage: 
+ - Ingest and Store: Testing and implementation of above features
+- Production:
+ - TBD
+
 #### Sprint 138: July 1 - July 21, 2026
 - Ingest/Storage
   - Migrate Storage and Ingest to ECS: #237
@@ -27,6 +61,7 @@ Releases:
  - Ingest/Store: Removal AWS java SDK v1, BOM 7, core2 log cleanup
 - Production:
  - Ingest/Store: Removal AWS java SDK v1, BOM 7, core2 log cleanup
+ - UI: UX priority accessibility changes; configure UCR global search
 
 #### Sprint 137: June 10 - June 30, 2026
 - Ingest/Storage
