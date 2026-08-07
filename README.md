@@ -14,6 +14,66 @@
 - [Merritt Development Resources](https://merritt.uc3dev.cdlib.org/)
 - A system-specific dataflow diagram is available via each of the below code repository README files.
 
+### Core Microservices Diagram 
+
+```mermaid
+%%{init: {'theme': 'neutral', 'securityLevel': 'loose', 'themeVariables': {'fontFamily': 'arial'}}}%%
+graph TD
+  RDS[(Inventory DB)]
+  UI("Merritt UI")
+  click UI href "https://github.com/CDLUC3/mrt-dashboard" "source code"
+  ING(Ingest)
+  click ING href "https://github.com/CDLUC3/mrt-ingest" "source code"
+  ST(Storage)
+  click ST href "https://github.com/CDLUC3/mrt-store" "source code"
+  STACC(Storage - Access)
+  click STACC href "https://github.com/CDLUC3/mrt-store" "source code"
+  INV(Inventory)
+  click INV href "https://github.com/CDLUC3/mrt-inventory" "source code"
+  CLOUD(("Cloud Storage"))
+  click CLOUD href "https://github.com/CDLUC3/mrt-cloud" "source code"
+  LDAP[/LDAP\]
+  ZFS[/ZFS Working Storage/]
+  ZOO>Zookeeper]
+  click ZOO href "https://github.com/CDLUC3/mrt-zoo" "source code"
+  EZID(EZID Service)
+  click EZID href "https://ezid.cdlib.org/" "service link"
+  BROWSER[[Browser]]
+
+  subgraph flowchart
+    BROWSER --> |ingest or retrieval| UI
+    UI --> |authorization| LDAP
+    RDS --> UI
+    UI --> |"file or ingest manifest"| ING
+    ING --> |queue job| ZOO
+    ING --> |check obj lock| ZOO
+    ZOO --> |start job| ING
+    ING -.-> |local id request| INV
+    ING --> EZID
+    ING --> |download content| ZFS
+    ING --> |"sync deposit"| ST
+    ST --> CLOUD
+    ZFS --> ST
+    ZOO --> INV
+    INV -.-> |retrieve storage manifest| ST
+    INV --> RDS
+    UI ---> |retrieval req| STACC
+    STACC --> |retrieval req| CLOUD
+    CLOUD -.-> |presigned URL| STACC
+    STACC -.-> |presigned URL| UI
+    CLOUD -.-> |presigned retrieval| BROWSER
+  end
+
+  style CLOUD fill:#77913C
+  style RDS fill:#F68D2F
+  style LDAP fill:cyan
+  style ZOO fill:cyan
+  style EZID fill:cyan
+  
+  classDef FOCUS stroke:red,stroke-width:5px,fill:yellow
+```
+
+
 ## Code Repositories
 
 Code Repositories
