@@ -19,6 +19,10 @@
 ```mermaid
 %%{init: {'theme': 'neutral', 'securityLevel': 'loose', 'themeVariables': {'fontFamily': 'arial'}}}%%
 graph TD
+  accTitle: Merritt repository core microservices diagram
+  accDescr {
+    Flowchart displaying interactions and dataflow across all Merritt repository microservices.
+  }
   RDS[(Inventory DB)]
   UI("Merritt UI")
   click UI href "https://github.com/CDLUC3/mrt-dashboard" "source code"
