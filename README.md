@@ -22,6 +22,16 @@ graph TD
   accTitle: Merritt repository core microservices diagram
   accDescr {
     Flowchart displaying interactions and dataflow across all Merritt repository microservices.
+    This flowchart illustrates the dataflow of new content when it is submitted to the repository via its web-based user interface (UI).
+    Beginning with the UI, a user logs in to Merritt, a process that is managed by the LDAP service. When a submission is uploaded to a collection via the UI,
+    data flows to the Ingest microservice. At this time, Ingest communicates with the Zookeeper (ZK) service to generate batch data in the ZK queue. 
+    It also talks to the EZID service to aquire an Archival Resource Key that will be used as the primary identifier for the resulting object in the system.
+    Ingest downloads the user's content to an intermediate staging volume, which is established with Amazon FSx for OpenZFS. The Storage microservice then tracks
+    the downloaded data using a manifest file. Storage uses the manifest to obtain the location of each content file and uploads files to cloud storage.
+    At this time, the file in cloud storage is checked for integrity. Finally, the Inventory microservice fetches data from the ZK queue and writes metadata to
+    Merritt's central inventory database. This completes the deposit workflow. If a user chooses to download an object or individual file from the repository, 
+    a retrieval request is sent from the UI to Merritt's Access microservice. A package or file is then made available for download via a secure, AWS
+    presigned URL that is provided to the user's web browser. The download then commences.
   }
   RDS[(Inventory DB)]
   UI("Merritt UI")
