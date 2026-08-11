@@ -27,19 +27,16 @@
     - Configure new 4byte character Wasabi node (as an alternate secondary node for new collections)
     - Eliminate DUA code
 - Mark
-  - On hold
-    - EC2 Sceptre for Docker Box replacement
   - In progress
     - Service graceful shutdown for ECS stack
     - Starting with Ingest
+    - ECS Migration
+      - Proxy handler for campuses that need to allow an IP range
+      - Authentication injection handler
+      - Email solution for Ingest
   - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
     - Starting with Ingest  
-  - ECS Migration
-    - Proxy handler for campuses that need to allow an IP range
-    - Authentication injection handler
-    - Email solution for Ingest
-    - Migrate Nuxeo feed processing to an ECS task
-  - New JSON-based Manifest Type
+  - Implement JSON-based Manifest Type
     - Assist with UC Berkeley Library object consolidation with new manifest type
 - Terry
   - ECS Migration
@@ -49,7 +46,7 @@
   - UI enhancements
     - Consent manager implementation
     - Display file path for on search results page
-  - New JSON-based Manifest Type
+  - Design New JSON-based Manifest Type
     - Assist with UC Berkeley Library object consolidation with new manifest type
     - JSON schema validation possibilities
   - Revive collection health analysis implementation for ECS stack
