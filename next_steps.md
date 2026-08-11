@@ -43,6 +43,10 @@
     - Remaining service migrations (Ingest, Store, ZooKeeper)
     - ZFS to EFS copy process
     - Migrate Nuxeo feed processing to an ECS task
+  - Create manifest builder tool
+    - Using S3 API access
+    - Using S3 https access
+    - Using a generic directory listing 
   - UI enhancements
     - Consent manager implementation
     - Display file path for on search results page
