@@ -1,5 +1,36 @@
 ## Sprint Goals
 
+#### Sprint 139: August 12 - September 01, 2026
+- Ingest/Storage
+  - Migrate Storage and Ingest to ECS: #237
+  - Support Basic Auth for collection/server based retrieval: #2737
+  - Support switching between proxy, basic auth, and Nuxeo processing: #2794
+  - 9 UCR Nuxeo objects with fixity error: #310
+  - Consider graceful / controlled shutdown for Merritt services in ECS (where needed): #2575
+  - [Storage] Add graceful shutdown for Daemon and threads: #2674
+  - Log throttling for Ingest: #2677
+  - Document Ingest/Store Migration Notes: #2730
+- Inventory
+  - [Inventory] Add graceful shutdown for Daemon and threads: #2673
+  - Log throttling in Inventory: #2679
+- ECS Stack, UC3 account migration
+  - Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: #2335
+  - Ingest Store Test Plan: #294
+  - Configure Test Data bucket that can be used for DEV/STG/PRD: #2793
+  - Configure Ingest/Store Auto Scaling: #286
+- Content projects
+  - Consider altering Nuxeo Atom processor to use the Update endpoint: #295
+  - Assist with UCI RFA content copy: #300
+  - Contact campuses using S3 buckets to request UC3 Prod and Stage VPC IDs be added: #268
+- Community
+  - Merritt CTS application #200
+  - Prevent highly escaped file paths in Merritt objects that can break the system: #299
+Releases:
+- Stage: 
+ - Ingest and Store: Testing and implementation of above features
+- Production:
+ - TBD
+
 #### Sprint 139: July 22 - August 11, 2026
 - Ingest/Storage
   - Migrate Storage and Ingest to ECS: #237
