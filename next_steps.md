@@ -4,7 +4,10 @@
 ## Next Steps by Team Member
 
 - David
-  - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
+  - In Progress
+    - 9 objects with fixity issue in Nuxeo collection (private 310) 
+    - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
+    - Migrate to new DEV workspace and eliminate old DEV docker box
   - Simplify Storage Node Configuration
     - Currently includes Yaml Changes, deployed in WAR files + INV database changes
     - Consider deploying Yaml Config to S3 rather than as a part of the WAR file [#277](https://github.com/CDLUC3/mrt-doc-private/issues/277)
@@ -36,6 +39,7 @@
       - Email solution for Ingest
   - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
     - Starting with Ingest  
+  - Migrate to new DEV workspace and eliminate old DEV docker box
   - Implement JSON-based Manifest Type
     - Assist with UC Berkeley Library object consolidation with new manifest type
 - Terry
