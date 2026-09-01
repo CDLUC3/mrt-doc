@@ -34,7 +34,8 @@
   - In progress
     - Testing store/ingest in Stage
   - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
-    - Starting with Ingest  
+    - Starting with Ingest
+  - Configure CWLogs for the Proxy server 
   - Migrate to new DEV workspace and eliminate old DEV docker box
   - Implement JSON-based Manifest Type
     - Assist with UC Berkeley Library object consolidation with new manifest type
