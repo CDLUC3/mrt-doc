@@ -11,6 +11,7 @@
   - Simplify Storage Node Configuration
     - Currently includes Yaml Changes, deployed in WAR files + INV database changes
     - Consider deploying Yaml Config to S3 rather than as a part of the WAR file [#277](https://github.com/CDLUC3/mrt-doc-private/issues/277)
+  - Save storage manifest with a version number (discussed at 8/31 team meeting) 
   - Major Migrations
     - Test NCSA S3-fronted tape storage. Prototype Replication container generation in advance of PUT operations
     - Replicate and cleanup in-process
@@ -31,12 +32,7 @@
     - Eliminate DUA code
 - Mark
   - In progress
-    - Service graceful shutdown for ECS stack
-    - Starting with Ingest
-    - ECS Migration
-      - Proxy handler for campuses that need to allow an IP range
-      - Authentication injection handler
-      - Email solution for Ingest
+    - Testing store/ingest in Stage
   - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
     - Starting with Ingest  
   - Migrate to new DEV workspace and eliminate old DEV docker box
