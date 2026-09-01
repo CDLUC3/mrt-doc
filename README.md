@@ -121,7 +121,8 @@ Code Repositories
   - [Merritt Box Tools](https://github.com/CDLUC3/mrt-box) 
 - Ruby
   - [Merritt End to End Tests](https://github.com/CDLUC3/mrt-integ-tests)
-  - [Ingest Workspace Manifest Builder](https://github.com/CDLUC3/s3-sinatra) 
+  - [Ingest Workspace Manifest Builder](https://github.com/CDLUC3/s3-sinatra)
+  - [Merritt Manifest Generator](https://github.com/CDLUC3/mrt-manifest-gen)
 - Docker
   - [Merritt Docker](https://github.com/CDLUC3/merritt-docker)
   - [Merritt Integration Test Images](https://github.com/CDLUC3/merritt-docker/tree/main/mrt-inttest-services)
