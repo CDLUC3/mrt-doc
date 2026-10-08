@@ -70,7 +70,7 @@
 |mrt-cron - object health|standalone app||tests exist||migrate to lambda or web service|
 |mrt-ingest-ruby|ruby library||||migration to new nuxeo service|
 |mrt-admin-sinatra|ruby lambda|||not yet deployed|TBD|
-|s3-sinatra|ruby lambda|||run on demand||
+|mrt-manifest-gen|ruby lambda|||run on demand||
 |uc3-etds|standalone system||||deprecated|
 |mrt-locust|test driver|||tests run daily||
 |mrt-integ-tests|test driver|||docker images rebuilt daily; tests run daily||
