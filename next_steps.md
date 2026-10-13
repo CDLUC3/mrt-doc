@@ -11,6 +11,8 @@
   - Simplify Storage Node Configuration
     - Currently includes Yaml Changes, deployed in WAR files + INV database changes
     - Consider deploying Yaml Config to S3 rather than as a part of the WAR file [#277](https://github.com/CDLUC3/mrt-doc-private/issues/277)
+  - New manifest type
+    - mrt-core2 library changes for new manifest type
   - Save storage manifest with a version number (discussed at 8/31 team meeting) 
   - Major Migrations
     - Test NCSA S3-fronted tape storage. Prototype Replication container generation in advance of PUT operations
