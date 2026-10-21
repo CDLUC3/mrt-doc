@@ -6,18 +6,17 @@
 - David
   - In Progress
     - 9 objects with fixity issue in Nuxeo collection (private 310) 
-    - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
     - Migrate to new DEV workspace and eliminate old DEV docker box
   - Simplify Storage Node Configuration
     - Currently includes Yaml Changes, deployed in WAR files + INV database changes
     - Consider deploying Yaml Config to S3 rather than as a part of the WAR file [#277](https://github.com/CDLUC3/mrt-doc-private/issues/277)
   - New manifest type
     - mrt-core2 library changes for new manifest type
-  - Save storage manifest with a version number (discussed at 8/31 team meeting) 
+  - Save storage manifest with a version number [#2821](https://github.com/CDLUC3/mrt-doc/issues/2821)
   - Major Migrations
-    - Test NCSA S3-fronted tape storage. Prototype Replication container generation in advance of PUT operations
     - Replicate and cleanup in-process
       - Consider pros and cons of Replic copy to new node with automated clean-up https://github.com/CDLUC3/mrt-doc/issues/2715
+    - Test NCSA S3-fronted tape storage. Prototype Replication container generation in advance of PUT operations
     - SDSC storage migration
   - Resume Storage Admin Work
     - Delete object via admin tool
@@ -34,35 +33,31 @@
     - Eliminate DUA code
 - Mark
   - In progress
-    - Testing store/ingest in Stage
-  - Complete remaining log throttling for Java services and shared libraries [#2652](https://github.com/CDLUC3/mrt-doc/issues/2652)
-    - Starting with Ingest
+    - Testing ZooKeeper in Stage
   - Configure CWLogs for the Proxy server 
   - Migrate to new DEV workspace and eliminate old DEV docker box
   - Implement JSON-based Manifest Type
     - Assist with UC Berkeley Library object consolidation with new manifest type
 - Terry
   - ECS Migration
-    - Remaining service migrations (Ingest, Store, ZooKeeper)
-    - UI: Consent manager implementation
-    - UI: Accessibility improvements
+    - Remaining service migrations (ZooKeeper)
   - Create manifest builder tool
     - Using S3 API access
     - Using S3 https access
     - Using a generic directory listing 
-  - UI enhancements
-    - Display file path for on search results page
   - Design New JSON-based Manifest Type
     - Assist with UC Berkeley Library object consolidation with new manifest type
     - JSON schema validation possibilities
+  - UI enhancements
+    - Display file path for on search results page
   - Revive collection health analysis implementation for ECS stack
 - Ashley
   - Backup and disaster recovery tasks as we continue to move to the UC3 account
 - Eric
   - In progress
     - CoreTrustSeal application for Merritt
+    - Support campus S3 deposit workflows
     - CoreTrustSeal reviews
-    - iPRES ECS Autoscaling poster
     - Finance, storage provider and migration tasks
     - Pal Museum JPEGs on Box
     - Institute of Governmental Studies Library Collections
