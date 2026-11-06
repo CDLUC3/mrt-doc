@@ -1,5 +1,155 @@
 ## Sprint Goals
 
+**Sprint 144: November 4 \- November 24, 2026**
+
+* Ingest/Storage  
+  * Document Ingest/Store Migration Notes: \#2730  
+  * eSchol ERC file w/o trailing carriage return: \#2840  
+  * \[ECS\] Create submission that will trigger a down-scale condition, but Batch is active: \#2867  
+  * Migrate Storage Node Table to a private config repo: \#277  
+* Inventory  
+  * Resolve outstanding fixity issues: \#328  
+  * Potentially recurring Wasabi replication issue: \#335  
+* Dependency updates  
+  * BOM 8 plus dependabot \#2858  
+  * Netty vulnerabilities \- likely brought in by ZK or AWS: \#326  
+* ECS Stack, UC3 account migration  
+  * Publish selected logs from proxy EC2 to CloudWatch: \#2810  
+  * Migrate remaining mysql\_native\_password users (stg and prd): \#321  
+  * Post Migration Yaml Cleanup of References to Main Account SSM Vars: \#2728  
+  * Netty vulnerabilities \- likely brought in by ZK or AWS: \#326  
+* Content Projects  
+  * Ingest workspace prototyping – Support access to depositor-owned buckets: \#2807  
+  * Buckets for remote manifest generation testing: \#319  
+  * Consider altering Nuxeo Atom processor to use the Update endpoint: \#295  
+  * Assist with UCI RFA content copy: \#300  
+  * UCSD data migration work plan DRAFT: \#311  
+  * Edge case: extracting objects over 200GiB: \#320  
+* Community  
+  * CTS: Open Data Commons review, initial round: \#2836
+
+Releases:
+
+* Stage:  
+  * BOM 8, UI Gem updates and change dbuser to match other services  
+* Production:  
+  * BOM 8, UI Gem updates and change dbuser to match other services
+
+**Sprint 143: October 14 \- November 3, 2026**
+
+* Ingest/Storage  
+  * Document Ingest/Store Migration Notes: \#2730  
+  * \[Nuxeo\] Remove credentials from URL: \#2811  
+  * eSchol ERC file w/o trailing carriage return: \#2840  
+* Inventory  
+  * Resolve outstanding fixity issues: \#328  
+  * Merritt object version manifest: \#2821 (TBD)  
+  * Complete review of storage scan results: \#2823  
+* Zookeeper  
+  * Load testing on Stage:  
+* ECS Stack, UC3 account migration  
+  * Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: \#2335  
+  * Publish selected logs from proxy EC2 to CloudWatch: \#2810  
+  * Migrate remaining mysql\_native\_password users (stg and prd): \#321  
+  * Post Migration Yaml Cleanup of References to Main Account SSM Vars: \#2728  
+  * \[EC2 Shutdown\] ECS migration of Ingest/Store Stage: \#230  
+  * Netty vulnerabilities \- likely brought in by ZK or AWS: \#326  
+* Content Projects  
+  * Ingest workspace prototyping – Support access to depositor-owned buckets: \#2807  
+  * Buckets for remote manifest generation testing: \#319  
+  * Consider altering Nuxeo Atom processor to use the Update endpoint: \#295  
+  * Assist with UCI RFA content copy: \#300  
+  * UCSD data migration work plan DRAFT: \#311  
+  * Edge case: extracting objects over 200GiB: \#320  
+* Community  
+  * Prevent highly escaped file paths in Merritt objects that can break the system: \#299
+
+Releases:
+
+* Stage:  
+  * Zookeeper deployed to Stage ECS stack  
+* Production:  
+  * Zookeeper deployed to Production ECS stack\!
+
+**Sprint 141 \- 142: September 02 \- October 13, 2026**
+
+**NB: 141 and 142 were combined because PM was away**
+
+* Ingest/Storage  
+  * Migrate Storage and Ingest to ECS: \#237  
+  * 9 UCR Nuxeo objects with fixity error: \#310  
+  * Consider graceful / controlled shutdown for Merritt services in ECS: \#2575  
+    * \[Storage\] Add graceful shutdown for Daemon and threads: \#2674  
+  * Log throttling for Ingest: \#2677  
+  * Document Ingest/Store Migration Notes: \#2730  
+  * \[Nuxeo\] Remove credentials from URL: \#2811  
+* Inventory  
+  * \[Inventory\] Add graceful shutdown for Daemon and threads: \#2673  
+  * Log throttling in Inventory: \#2679  
+  * Remove Inv entries for unused UCI collection: \#2812  
+* UI  
+  * Merritt UI Accessibility Spreadsheet Items: \#280  
+  * Add Consent Manager to Merritt UI: \#2543  
+* ECS Stack, UC3 account migration  
+  * Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: \#2335  
+  * Ingest Store Test Plan: \#294  
+  * Publish selected logs from proxy EC2 to CloudWatch: \#2810  
+* Content Projects  
+  * Ingest workspace prototyping – Support access to depositor-owned buckets: \#2807  
+  * Consider altering Nuxeo Atom processor to use the Update endpoint: \#295  
+  * Assist with UCI RFA content copy: \#300  
+  * Contact campuses using S3 buckets to request UC3 Prod and Stage VPC IDs be added: \#268  
+  * UCSD data migration work plan DRAFT: \#311  
+  * iPRES ECS autoscaling poster: \#2749  
+* Community  
+  * Prevent highly escaped file paths in Merritt objects that can break the system: \#299
+
+Releases:
+
+* Stage:  
+  * UI Accessibility updates, Inventory log throttling, TBD  
+* Production:  
+  * UI Accessibility updates, Inventory log throttling, TBD
+
+**Sprint 140: August 12 \- September 01, 2026**
+
+* Ingest/Storage  
+  * Migrate Storage and Ingest to ECS: \#237  
+  * Support Basic Auth for collection/server based retrieval: \#2737  
+  * Support switching between proxy, basic auth, and Nuxeo processing: \#2794  
+  * 9 UCR Nuxeo objects with fixity error: \#310  
+  * Consider graceful / controlled shutdown for Merritt services in ECS (where needed): \#2575  
+    * \[Storage\] Add graceful shutdown for Daemon and threads: \#2674  
+  * Log throttling for Ingest: \#2677  
+  * Document Ingest/Store Migration Notes: \#2730  
+* Inventory  
+  * \[Inventory\] Add graceful shutdown for Daemon and threads: \#2673  
+  * Log throttling in Inventory: \#2679  
+* ECS Stack, UC3 account migration  
+  * Merritt Dev Stacks Introduction; Initial ECS Plans for Stage/Prod: \#2335  
+  * Ingest Store Test Plan: \#294  
+  * Configure Test Data bucket that can be used for DEV/STG/PRD: \#2793  
+  * Configure Ingest/Store Auto Scaling: \#286  
+* Content Projects  
+  * Consider altering Nuxeo Atom processor to use the Update endpoint: \#295  
+  * Assist with UCI RFA content copy: \#300  
+  * Contact campuses using S3 buckets to request UC3 Prod and Stage VPC IDs be added: \#268  
+* Community  
+  * Merritt CTS application: \#200  
+  * Prevent highly escaped file paths in Merritt objects that can break the system: \#299
+
+Releases:
+
+* Stage:  
+  * Ingest and Store: Testing and implementation of above features  
+  * UI gem updates  
+  * Ingest proxy and basic auth support  
+  * Ingest estimation handler fix  
+* Production:  
+  * UI gem updates  
+  * Ingest proxy and basic auth support  
+  * Ingest estimation handler fix
+
 #### Sprint 139: August 12 - September 01, 2026
 - Ingest/Storage
   - Migrate Storage and Ingest to ECS: #237
