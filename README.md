@@ -132,7 +132,6 @@ Code Repositories
 
 ## Merritt DevOps
 - [Merritt Build System Design](https://github.com/CDLUC3/mrt-doc/tree/main/design/aws-build)
-- [Merritt Tomcat Deploy](https://github.com/CDLUC3/mrt-tomcat-deploy)
 - [Merritt Service Release Manifest](https://github.com/CDLUC3/mrt-service-release-manifest)
 - [Merritt Sceptre Scripts](https://github.com/CDLUC3/mrt-sceptre)
 - Deprecated?
