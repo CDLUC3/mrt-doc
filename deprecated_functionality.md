@@ -69,6 +69,7 @@ Functionality deprecated by the [Merritt Preservation System](https://github.com
   - Merritt Object Health analysis
 - [Merritt Locust Testing](https://github.com/CDLUC3/mrt-locust)
 - [Ingest Workspace Manifest Builder](https://github.com/CDLUC3/s3-sinatra)
+- [Merritt Tomcat Deploy](https://github.com/CDLUC3/mrt-tomcat-deploy)
 
 
 
